@@ -5,6 +5,7 @@ using System.Linq;
 using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class SongNoteEditor : MonoBehaviour
 {
@@ -29,25 +30,6 @@ public class SongNoteEditor : MonoBehaviour
         OnRightMouseHold();
 
         ScaleNote();
-
-
-
-
-
-        //Debug Shenanagins
-
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            RescaleNotesFromBPM();
-        }
-        if (Input.GetKeyDown(KeyCode.Minus))
-        {
-            GameManager.instance.PrepareNotesPiano(SongEditor.instance.bpm, SongEditor.instance.noteEvents);
-            //StartCoroutine(MP3Handler.instance.PlaySong(currentSettings.currentSongName));
-            GameManager.instance.startTimer = true;
-        }
-        selectCount = selectedNotes.Count;
     }
     public void OnRightMouseDown()
     {
@@ -89,6 +71,7 @@ public class SongNoteEditor : MonoBehaviour
         {
             DeselectNote();
         }
+
         else { SubtractNote(); }
     }
     public void OnLeftMouseDown()
@@ -96,6 +79,7 @@ public class SongNoteEditor : MonoBehaviour
         if (!Input.GetMouseButtonDown(0)) return; // only run if LMB down.
         var mousePositionWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition); // convert mouse position in screen space to world space.
         hit = Physics2D.Raycast(mousePositionWorld, Vector2.zero);// shoot ray from mouse position.
+
 
         if (hit) { mousePosition1 = hit.point; } // set mousepos1 if hit, otherwise return.
         else { Debug.Log("NullHit"); return; }
@@ -171,6 +155,11 @@ public class SongNoteEditor : MonoBehaviour
     {
         if (!Input.GetMouseButtonUp(0)) return;
 
+        foreach (GameObject note in SongEditor.instance.noteObjects)
+        {
+            UpdateStartEndTimes(note.GetComponent<EditorNote>().noteEvent,note.transform.position.y );
+        }
+
         isDragging = false;
 
 
@@ -232,7 +221,7 @@ public class SongNoteEditor : MonoBehaviour
     }
     public void ScaleNote()
     {
-        if (selectedNotes.Count > 0 && !isDragging)
+        if (selectedNotes.Count > 0 && Input.GetKey(KeyCode.LeftShift))
         {
             var scroll = Input.mouseScrollDelta.y;
             if (scroll != 0)
@@ -242,20 +231,14 @@ public class SongNoteEditor : MonoBehaviour
 
                     if (noteEvent.endTime <= noteEvent.startTime || noteEvent.endTime + Mathf.Sign(scroll) * 0.1f <= noteEvent.startTime)
                     {
-                        noteEvent.endTime = noteEvent.startTime + 0.1f;
+                        noteEvent.endTime = noteEvent.startTime + 0.05f;
                     }
                     else
                     {
-                        noteEvent.endTime += Mathf.Sign(scroll) * 0.1f;
+
+                        noteEvent.endTime += Mathf.Sign(scroll) * 0.05f;
                     }
                     RescaleNotesFromBPM();
-
-
-                    // Calculate the snapped position
-                    //Vector2 snappedPosition = GridSnapNote(mousePosition2 + dragNote.initialOffset);
-
-                    // Update the note's position            // idk why i need to realign it with a -0.25f shift but whatever, it works
-                    // dragNote.noteTransform.position = new Vector2(snappedPosition.x - 0.05f, snappedPosition.y);
                 }
             }
         }
@@ -273,23 +256,42 @@ public class SongNoteEditor : MonoBehaviour
                 temp.noteTransform.GetComponent<EditorNote>().SetHighlightColour(Color.red);
             }
         }
-        if (selectedNotes.Count > 0 && isDragging && Input.GetKeyDown(KeyCode.LeftShift))
+        if (selectedNotes.Count > 0 && isDragging && !Input.GetKeyDown(KeyCode.LeftShift))
         {
 
             Vector2 mousePosition2 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if (Vector2.Distance(mousePosition1, mousePosition2) > 0.25f)
+            foreach (EditorNoteWrapper dragNote in selectedNotes)
             {
-                foreach (EditorNoteWrapper dragNote in selectedNotes)
-                {
-                    // Calculate the snapped position
-                    Vector2 snappedPosition = GridSnapNote(mousePosition2 + dragNote.initialOffset);
+                // Calculate the snapped position
+                Vector2 snappedPosition = GridSnapNote(mousePosition2 + dragNote.initialOffset);
 
-                    // Update the note's position          
-                    dragNote.noteTransform.position = new Vector2(snappedPosition.x - 0.05f, snappedPosition.y);  // idk why i need to realign it with a -0.25f shift but whatever, it works
-                }
+                // Update the note's position          
+                dragNote.noteTransform.position = new Vector2(snappedPosition.x - 0.05f, snappedPosition.y);
+                UpdateStartEndTimes(dragNote.noteTransform.GetComponent<EditorNote>().noteEvent, snappedPosition.y);
+                // idk why i need to realign it with a -0.25f shift but whatever, it works
             }
         }
+
     }
+    void UpdateStartEndTimes(NoteEventInfo noteEvent, float snappedYPos)
+    {
+        float duration = noteEvent.GetDuration();
+        float newStartTime = snappedYPos - (duration / 2); // ConvertYPositionToSongTime(snappedPosition);
+        noteEvent.SetStartEndTime(newStartTime, newStartTime + duration);
+    }
+    public float ConvertYPositionToSongTime(Vector2 position)
+    {
+        // 1 unit = 1 "beat" or bar on the UI
+        return position.y / (SettingsManager.instance.gameSettings.bpm / 60);
+        // y position / bpm /60 so it is bpS
+    }
+
+    public Vector2 ConvertNoteEventToNotePosition(NoteEventInfo noteEvent) // finish this to set x position as well.
+    {
+        var result = new Vector2(noteEvent.noteNumber * 1, noteEvent.startTime * (SettingsManager.instance.gameSettings.bpm / 60));
+        return result;
+    }
+
     void CopySelection()
     {
 
@@ -322,7 +324,7 @@ public class SongNoteEditor : MonoBehaviour
             var sr = g.GetComponent<SpriteRenderer>();
             var newSize = new Vector2(sr.size.x, Mathf.Clamp(((
                 g.GetComponent<EditorNote>().noteEvent.endTime -
-                g.GetComponent<EditorNote>().noteEvent.startTime) * modifiedScale), 0.5f, Mathf.Infinity));
+                g.GetComponent<EditorNote>().noteEvent.startTime)), 0.5f, Mathf.Infinity));
 
             sr.size = newSize;
             sr.GetComponent<EditorNote>().SetShadowSize(newSize.y);
@@ -343,7 +345,10 @@ public class SongNoteEditor : MonoBehaviour
 
         return new Vector2(x, input.y);
     }
+
+
 }
+
 
 
 

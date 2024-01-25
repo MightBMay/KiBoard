@@ -28,7 +28,7 @@ public class MP3Handler : MonoBehaviour
     public IEnumerator PlaySong(string fileName)
     {
         string filePath = Application.persistentDataPath + "/Songs/" + fileName + ".mp3";
-        float bpm = MidiInput.currentSettings.bpm;
+        float bpm = SettingsManager.instance.gameSettings.bpm;
         if (!File.Exists(filePath)) { Debug.LogError($"MP3 File \"{fileName}\" not found at path {filePath}"); yield break; }
         audioThread = new Thread(() => ReadMP3File(filePath));
         yield return new WaitUntil(() => GameManager.instance.songTime >= 0);

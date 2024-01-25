@@ -1,6 +1,7 @@
 using MidiJack;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.TerrainTools;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,7 +9,6 @@ public class MidiInput : MonoBehaviour
 {
     public static MidiInput instance;
     public List<NoteEventInfo> storedNoteEvents;
-    public static GameSettings currentSettings;
     Coroutine PrepareNotesCoroutine;
 
 
@@ -84,7 +84,7 @@ public class MidiInput : MonoBehaviour
     public void LoadSongFromCurrentSettings()
     {
         SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
-        currentSettings = SettingsManager.instance.gameSettings;
+        var currentSettings = SettingsManager.instance.gameSettings;
         NoteEventDataWrapper data = MidiReadFile.GetNoteEventsFromName(currentSettings.currentSongName);
         currentSettings.bpm = currentSettings.bpm == 0 ? data.BPM : currentSettings.bpm;
         storedNoteEvents = data.NoteEvents;
@@ -95,7 +95,8 @@ public class MidiInput : MonoBehaviour
     public IEnumerator StartSong()
     {
         GameManager.instance.currentSongScore.ClearScore();
-        if (SettingsManager.instance.gameSettings.usePiano)
+        var currentSettings = SettingsManager.instance.gameSettings;
+        if (currentSettings.usePiano)
         {
 
             yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotesPiano(currentSettings.bpm, storedNoteEvents));
@@ -109,9 +110,10 @@ public class MidiInput : MonoBehaviour
         GameManager.instance.startTimer = true;
     }
 
-    public IEnumerator StartSong(float bpm, List<NoteEventInfo> loadEvents)
+    public IEnumerator StartSong(List<NoteEventInfo> loadEvents)
     {
         GameManager.instance.currentSongScore.ClearScore();
+        var bpm = SettingsManager.instance.gameSettings.bpm;
         if (SettingsManager.instance.gameSettings.usePiano)
         {
 
@@ -121,7 +123,7 @@ public class MidiInput : MonoBehaviour
         {
             yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotesKeyboard12(bpm, loadEvents));
         }
-        // StartCoroutine(MP3Handler.instance.PlaySong(currentSettings.currentSongName));                ============================================================ disabled for testing
+        StartCoroutine(MP3Handler.instance.PlaySong(SettingsManager.instance.gameSettings.currentSongName));
         GameManager.instance.startTimer = true;
     }
     public void StopSong()
@@ -172,7 +174,7 @@ public class MidiInput : MonoBehaviour
 
     public bool IsNoteCorrect(int noteNumber, float timing, NoteEventInfo storedNote)
     {
-        if (currentSettings.usePiano) return noteNumber == storedNote.noteNumber && !storedNote.triggered && timing < 0.5f;
+        if (SettingsManager.instance.gameSettings.usePiano) return noteNumber == storedNote.noteNumber && !storedNote.triggered && timing < 0.5f;
         return noteNumber % 12 == storedNote.noteNumber % 12 && !storedNote.triggered && timing < 0.5f;
 
     }

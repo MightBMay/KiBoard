@@ -10,7 +10,6 @@ public class SongEditor : MonoBehaviour
     public static SongEditor instance;
     public GameObject editorNotePrefab;
     public List<GameObject> noteObjects;
-    public float bpm;
     public List<NoteEventInfo> noteEvents;
     public Transform noteHolder, keyOrigin;
 
@@ -37,7 +36,7 @@ public class SongEditor : MonoBehaviour
     }
     public void StartSongTest()
     {
-        StartCoroutine(MidiInput.instance.StartSong(bpm, noteEvents));
+        StartCoroutine(MidiInput.instance.StartSong(noteEvents));
     }
 
 

@@ -18,4 +18,14 @@ public class NoteEventInfo
         this.endTime = endTime;
         this.triggered = false;
     }
+
+    public float GetDuration()
+    {
+        return endTime - startTime;
+    }
+    public void SetStartEndTime(float start, float end)
+    {
+        startTime = start;
+        endTime = end;
+    }
 }

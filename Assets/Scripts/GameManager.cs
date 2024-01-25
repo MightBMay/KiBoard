@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     float screenHeight;
     float fallSpeed;
     float distanceToFall;
-    float spawnOffset = 2f;
+    [SerializeField]float spawnOffset = 2f;
     public float verticalNoteOffset;
     public GameObject notePrefab;
     public float baseNoteScalingFactor = 5.4f; // do not ask me where this number came from.
@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
             // scale/length of the note deterimned by the note duration, and a scaling factor (~~~~~~~~~~~~~~~~~BASE THIS ON MF BPM)``````````````````````````````````````````````````````````````````````````````````
             float noteScale = (noteEvent.endTime - noteEvent.startTime) * modifiedNoteScale;
             //spawn a note and store a reference.
-            GameObject noteInstance = Instantiate(notePrefab, new Vector3(-13.2f + (0.20505f * (noteEvent.noteNumber)), screenHeight + (noteScale / 2) - 3 + verticalNoteOffset, 0f), Quaternion.identity);
+            GameObject noteInstance = Instantiate(notePrefab, new Vector3(-13.2f + (0.20505f * (noteEvent.noteNumber)), screenHeight + (noteScale / 2) - 2.5f, 0f), Quaternion.identity);
             FallingNote fallingNote = noteInstance.GetComponent<FallingNote>();
             SpriteRenderer spriteRenderer = noteInstance.GetComponent<SpriteRenderer>();
             fallingNote.velocity = fallSpeed; // set falling speed of the note to the value calculated in AssignSongValues()
@@ -173,7 +173,7 @@ public class GameManager : MonoBehaviour
             // scale/length of the note deterimned by the note duration, and a scaling factor (~~~~~~~~~~~~~~~~~BASE THIS ON MF BPM)``````````````````````````````````````````````````````````````````````````````````
             float noteScale = (noteEvent.endTime - noteEvent.startTime) * modifiedNoteScale;
             //spawn a note and store a reference.
-            GameObject noteInstance = Instantiate(notePrefab, new Vector3(-13.2f + (0.20505f * (48 + (noteEvent.noteNumber % 12))), screenHeight + (noteScale / 2) - 3, 0f), Quaternion.identity);
+            GameObject noteInstance = Instantiate(notePrefab, new Vector3(-13.2f + (0.20505f * (48 + (noteEvent.noteNumber % 12))), screenHeight + (noteScale / 2) - 2.5f, 0f), Quaternion.identity);
             FallingNote fallingNote = noteInstance.GetComponent<FallingNote>();
             SpriteRenderer spriteRenderer = noteInstance.GetComponent<SpriteRenderer>();
             fallingNote.velocity = fallSpeed; // set falling speed of the note to the value calculated in AssignSongValues()
