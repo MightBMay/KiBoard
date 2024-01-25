@@ -2,6 +2,9 @@ using System.IO;
 using UnityEngine;
 using System.Collections.Generic;
 
+/// <summary>
+/// Represents a group of files related to a specific song.
+/// </summary>
 [System.Serializable]
 public struct FileGroup
 {
@@ -11,15 +14,23 @@ public struct FileGroup
     public List<string> JsonFiles;
     public string PngFile;
 
+    /// <summary>
+    /// Initializes a new instance of the FileGroup struct with the specified file name.
+    /// </summary>
+    /// <param name="fileName">The name of the file group.</param>
     public FileGroup(string fileName)
     {
         FileName = fileName;
         Mp3File = string.Empty;
-        MidiFiles = new();
-        JsonFiles = new();
+        MidiFiles = new List<string>();
+        JsonFiles = new List<string>();
         PngFile = string.Empty;
     }
 
+    /// <summary>
+    /// Checks the contents of the file group and returns any missing files as a formatted string.
+    /// </summary>
+    /// <returns>A formatted string indicating missing files.</returns>
     public string CheckFileGroupContents()
     {
         string str = "";
@@ -42,6 +53,11 @@ public struct FileGroup
         return str;
     }
 
+    /// <summary>
+    /// Loads an image from the specified file path and returns it as a Texture2D.
+    /// </summary>
+    /// <param name="path">The file path of the image.</param>
+    /// <returns>The loaded image as a Texture2D.</returns>
     public Texture2D LoadImageFromFile(string path)
     {
         if (File.Exists(path))
@@ -62,4 +78,3 @@ public struct FileGroup
         }
     }
 }
-

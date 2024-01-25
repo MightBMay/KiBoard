@@ -1,6 +1,9 @@
 using UnityEngine;
 using Cinemachine;
 
+/// <summary>
+/// Controls camera shake effect using Cinemachine.
+/// </summary>
 public class CameraShake : MonoBehaviour
 {
     private static CinemachineVirtualCamera virtualCamera;
@@ -12,6 +15,11 @@ public class CameraShake : MonoBehaviour
         virtualCamera = GetComponent<CinemachineVirtualCamera>();
     }
 
+    /// <summary>
+    /// Initiates a camera shake effect.
+    /// </summary>
+    /// <param name="intensity">The intensity of the shake.</param>
+    /// <param name="duration">The duration of the shake.</param>
     public static void ShakeCamera(float intensity, float duration)
     {
         CinemachineBasicMultiChannelPerlin noise = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();

@@ -64,10 +64,19 @@ public class GameManager : MonoBehaviour
             songTime += Time.deltaTime;
         }
     }
+    /// <summary>
+    /// Sets the total number of notes in the song.
+    /// </summary>
+    /// <param name="noteCount">The total number of notes.</param>
     public void SetSongTotalNotes(int noteCount)
     {
         totalNotes = noteCount;
     }
+    /// <summary>
+    /// Prepares notes for playback using piano input.
+    /// </summary>
+    /// <param name="BPM">The BPM (Beats Per Minute) of the song.</param>
+    /// <param name="noteEvents">List of note events to prepare.</param>
     public IEnumerator PrepareNotesPiano(float BPM, List<NoteEventInfo> noteEvents) // TEMP 0.5f, change to 5.4f i think`````````````````````````````````````````````````````````````````````````````````````````````````````````
     {
         if (noteEvents == null) { Debug.Log("gameloop noteEvents null"); yield break; }
@@ -131,6 +140,11 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    /// <summary>
+    /// Prepares notes for playback using keyboard input.
+    /// </summary>
+    /// <param name="BPM">The BPM (Beats Per Minute) of the song.</param>
+    /// <param name="noteEvents">List of note events to prepare.</param>
     public IEnumerator PrepareNotesKeyboard12(float BPM, List<NoteEventInfo> noteEvents)
     {
         if (noteEvents == null) { Debug.Log("gameloop noteEvents null"); yield break; }
@@ -191,6 +205,9 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    /// <summary>
+    /// Stops all coroutines for preparing notes.
+    /// </summary>
     public void StopReadiedNotes()
     {
         foreach (Coroutine c in readiedNotes)
@@ -199,6 +216,11 @@ public class GameManager : MonoBehaviour
         }
         readiedNotes.Clear();
     }
+    /// <summary>
+    /// Updates the player's score based on the hit timing.
+    /// </summary>
+    /// <param name="score">The hit score (Perfect, Good, Okay, Miss).</param>
+
     public void UpdatePlayerScore(string score)
     {
         currentSongScore ??= new();
@@ -222,6 +244,11 @@ public class GameManager : MonoBehaviour
         }
         TimingHitText.instance.CreateTimingText(score);
     }
+    /// <summary>
+    /// Converts a MIDI note number to its corresponding name.
+    /// </summary>
+    /// <param name="noteNumber">The MIDI note number.</param>
+    /// <returns>The note name (e.g., C, C#, D).</returns>
     public static string ConvertNoteNumberToName(int noteNumber)
     {
         string[] noteNames = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
@@ -236,7 +263,11 @@ public class GameManager : MonoBehaviour
         }
         return $"{noteName}";
     }
-
+    /// <summary>
+    /// Converts a note name to its corresponding MIDI note number.
+    /// </summary>
+    /// <param name="noteName">The note name (e.g., C, C#, D).</param>
+    /// <returns>The MIDI note number.</returns>
     public static int ConvertNoteNameToNumber(string noteName)
     {
         if (!char.IsDigit(noteName[0]))
@@ -258,7 +289,9 @@ public class GameManager : MonoBehaviour
 
     }
 
-
+    /// <summary>
+    /// Coroutine for handling song end actions.
+    /// </summary>
     public IEnumerator OnSongEnd()
     {
         startTimer = false;
@@ -268,10 +301,16 @@ public class GameManager : MonoBehaviour
         ReturnToSongSelection();
         //`````````````````````````````````````````````````````````````````````````````````````````````````` make this open some sort of ui with retry, back to song selection scene, etc.
     }
+    /// <summary>
+    /// Loads the song based on the current game settings.
+    /// </summary>
     public void LoadSongFromCurrentGameSettings()
     {
         MidiInput.instance.LoadSongFromCurrentSettings();
     }
+    /// <summary>
+    /// Returns to the song selection scene.
+    /// </summary>
     public void ReturnToSongSelection()
     {
         startTimer = false;
@@ -284,11 +323,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Enters the song editor mode.
+    /// </summary>
     public void EnterSongEditor()
     {
         inEditor = true;
     }
-
+    /// <summary>
+    /// Modifies the note scale based on the BPM (Beats Per Minute).
+    /// </summary>
+    /// <param name="BPM">The BPM of the song.</param>
+    /// <returns>The modified note scale.</returns>
     public static float ModifyNoteScale(float BPM)
     {
         return GameManager.instance.modifiedNoteScale = GameManager.instance.baseNoteScalingFactor * (130 / BPM);

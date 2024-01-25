@@ -66,7 +66,12 @@ public class MidiInput : MonoBehaviour
         //CheckNotesKeyboard8();
 
     }
-
+    /// <summary>
+    /// Handles MIDI sustain pedal state changes.
+    /// </summary>
+    /// <param name="channel">The MIDI channel.</param>
+    /// <param name="knobNumber">The knob number.</param>
+    /// <param name="knobValue">The knob value.</param>
     void PedalStateChanged(MidiChannel channel, int knobNumber, float knobValue)
     {
         if (knobNumber == 64 && knobValue > 0.5f)
@@ -81,6 +86,9 @@ public class MidiInput : MonoBehaviour
             catch { }
         }
     }
+    /// <summary>
+    /// Loads the selected song for gameplay.
+    /// </summary>
     public void LoadSongFromCurrentSettings()
     {
         SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
@@ -92,6 +100,10 @@ public class MidiInput : MonoBehaviour
         StartCoroutine(StartSong());
 
     }
+    /// <summary>
+    /// Starts playing the loaded song.
+    /// </summary>
+    /// <returns>Coroutine for preparing notes and playing the song.</returns>
     public IEnumerator StartSong()
     {
         GameManager.instance.currentSongScore.ClearScore();
@@ -109,7 +121,11 @@ public class MidiInput : MonoBehaviour
         StartCoroutine(MP3Handler.instance.PlaySong(currentSettings.currentSongName));
         GameManager.instance.startTimer = true;
     }
-
+    /// <summary>
+    /// Starts playing a song with specified note events.
+    /// </summary>
+    /// <param name="loadEvents">The list of note events to play.</param>
+    /// <returns>Coroutine for preparing notes and playing the song.</returns>
     public IEnumerator StartSong(List<NoteEventInfo> loadEvents)
     {
         GameManager.instance.currentSongScore.ClearScore();
@@ -126,6 +142,9 @@ public class MidiInput : MonoBehaviour
         StartCoroutine(MP3Handler.instance.PlaySong(SettingsManager.instance.gameSettings.currentSongName));
         GameManager.instance.startTimer = true;
     }
+    /// <summary>
+    /// Stops the currently playing song.
+    /// </summary>
     public void StopSong()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -139,6 +158,12 @@ public class MidiInput : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Handles MIDI note on events.
+    /// </summary>
+    /// <param name="channel">The MIDI channel.</param>
+    /// <param name="note">The MIDI note number.</param>
+    /// <param name="velocity">The note velocity.</param>
     void NoteOn(MidiChannel channel, int note, float velocity)
     {
         if (!inGame) { return; }
@@ -158,20 +183,33 @@ public class MidiInput : MonoBehaviour
 
         }
         enabledKeys[note - 21] = true;
-        score = score ?? GetTimingScore(timing);
+        score ??= GetTimingScore(timing);
         SpawnPiano.instance.UpdateKeyColours(note - 21, true, score);
         GameManager.instance.UpdatePlayerScore(score);
 
 
     }
 
+    /// <summary>
+    /// Handles successful note presses
+    /// </summary>
+    /// <param name="score"></param>
+    /// <param name="note"></param>
+    /// <param name="timing"></param>
+    /// <param name="storedNote"></param>
     public void OnNoteSuccess(ref string score, int note, float timing, NoteEventInfo storedNote)
     {
         score = GetTimingScore(timing);
         SpawnPiano.instance.SpawnKeyParticle(note - 21, score);
         storedNote.triggered = true;
     }
-
+    /// <summary>
+    /// Check if note is was played at a correct timing.
+    /// </summary>
+    /// <param name="noteNumber">Number of the note played.</param>
+    /// <param name="timing"> What time the note was hit.</param>
+    /// <param name="storedNote">Note that is being compared to.</param>
+    /// <returns></returns>
     public bool IsNoteCorrect(int noteNumber, float timing, NoteEventInfo storedNote)
     {
         if (SettingsManager.instance.gameSettings.usePiano) return noteNumber == storedNote.noteNumber && !storedNote.triggered && timing < 0.5f;
@@ -179,6 +217,12 @@ public class MidiInput : MonoBehaviour
 
     }
 
+
+    /// <summary>
+    /// Handles MIDI note off events.
+    /// </summary>
+    /// <param name="channel">The MIDI channel.</param>
+    /// <param name="note">The MIDI note number.</param>
     void NoteOff(MidiChannel channel, int note)
     {
         if (!inGame || isPedalPressed) { return; }
@@ -186,7 +230,9 @@ public class MidiInput : MonoBehaviour
         SpawnPiano.instance.UpdateKeyColours(note - 21, false);
     }
 
-
+    /// <summary>
+    /// Checks for pressed keys in the 12-key keyboard layout.
+    /// </summary>
     void CheckNotesKeyboard12()
     {
         // Check for computer keyboard key presses and releases
@@ -208,6 +254,9 @@ public class MidiInput : MonoBehaviour
             }
         }
     }
+    /// <summary>
+    /// Checks for pressed keys in the 8-key keyboard layout.
+    /// </summary>
     void CheckNotesKeyboard8()
     {
         // Check for computer keyboard key presses and releases
@@ -230,7 +279,10 @@ public class MidiInput : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Checks if any note is currently active (pressed).
+    /// </summary>
+    /// <returns>True if any note is active, otherwise false.</returns>
     public bool GetAnyNoteActive()
     {
         foreach (bool b in enabledKeys)
@@ -243,6 +295,11 @@ public class MidiInput : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// Calculates the time difference between the stored timing and the current song time.
+    /// </summary>
+    /// <param name="storedTiming">The stored timing value.</param>
+    /// <returns>The time difference.</returns>
     float GetTimeDifference(float storedTiming)
     {
         // Adjust this threshold based on your timing accuracy requirements
@@ -252,7 +309,11 @@ public class MidiInput : MonoBehaviour
 
         return Mathf.Abs(GameManager.instance.songTime - inputDelay - storedTiming);
     }
-
+    /// <summary>
+    /// Gets the timing score based on the timing difference.
+    /// </summary>
+    /// <param name="timing">The timing difference.</param>
+    /// <returns>The timing score (e.g., "Perfect", "Good", "Okay", "Miss").</returns>
     public string GetTimingScore(float timing)
     {
         if (timing < 0.075f) { return "Perfect"; }
