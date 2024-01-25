@@ -20222,7 +20222,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   editorNotePrefab: {fileID: 5445194452809718800, guid: 2f49bfb25e4c97b48ab112062a7a701c, type: 3}
   noteObjects: []
-  bpm: 130
   noteEvents: []
   noteHolder: {fileID: 1647967143}
   keyOrigin: {fileID: 603361324}
