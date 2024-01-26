@@ -323,6 +323,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+    public void StopSong()
+    {
+        startTimer = false;
+        StopReadiedNotes();
+    }
+
     /// <summary>
     /// Enters the song editor mode.
     /// </summary>

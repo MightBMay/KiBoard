@@ -79,6 +79,8 @@ public class SongEditor : MonoBehaviour
     /// </summary>
     public void StartSongTest()
     {
+        noteHolder.gameObject.SetActive(false);
+        FindObjectOfType<SongNoteEditor>().enabled = false;
         StartCoroutine(MidiInput.instance.StartSong(noteEvents));
     }
 
