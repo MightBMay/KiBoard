@@ -284,6 +284,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void StopSong()
+    {
+        startTimer = false;
+        StopReadiedNotes();
+    }
+
     public void EnterSongEditor()
     {
         inEditor = true;

@@ -61,7 +61,10 @@ public class MidiInput : MonoBehaviour
 
     private void Update()
     {
-        StopSong();
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            StopSong(GameManager.instance.inEditor);
+        }
         CheckNotesKeyboard12();
         //CheckNotesKeyboard8();
 
@@ -126,16 +129,23 @@ public class MidiInput : MonoBehaviour
         StartCoroutine(MP3Handler.instance.PlaySong(SettingsManager.instance.gameSettings.currentSongName));
         GameManager.instance.startTimer = true;
     }
-    public void StopSong()
+    public void StopSong(bool inEditor)
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
 
-            GameManager.instance.ReturnToSongSelection();
+
+
             StopCoroutine(PrepareNotesCoroutine);
             MP3Handler.instance.StopMusic();
             SettingsManager.instance.gameSettings.ResetSettings();
-            SceneManager.LoadScene("SongSelect");
+            GameManager.instance.ReturnToSongSelection();
+            if (inEditor)
+            {
+                FindObjectOfType<SongEditor>().noteHolder.gameObject.SetActive(true);
+                FindObjectOfType<SongNoteEditor>().enabled = true;
+            }
+
         }
     }
 
