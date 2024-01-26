@@ -4,27 +4,53 @@ using UnityEngine;
 using TMPro;
 using NAudio.Midi;
 
+/// <summary>
+/// Represents a falling note object in the game.
+/// </summary>
 public class FallingNote : MonoBehaviour
 {
+    /// <summary>
+    /// Velocity of the falling note.
+    /// </summary>
     public float velocity;
+
+    /// <summary>
+    /// Name of the note.
+    /// </summary>
     public string noteName;
+
+    /// <summary>
+    /// Maximum Y bound for the falling note.
+    /// </summary>
     public float maxYBound;
+
+    /// <summary>
+    /// Indicates if this is the last falling note.
+    /// </summary>
     public bool isLast = false;
+
     TextMeshProUGUI text;
+
     private void Start()
     {
         text = GetComponentInChildren<TextMeshProUGUI>();
         text.text = noteName;
-
     }
+
     private void Update()
     {
+        // Move the falling note downwards
         transform.Translate(Vector2.down * velocity * Time.deltaTime, Space.World);
+
+        // Destroy the falling note if it goes below a certain Y position
         if ((transform.position + (Vector3.up * maxYBound)).y < -10) { Destroy(gameObject); }
     }
+
     private void OnDestroy()
     {
-        if (isLast){
+        // Start the song end coroutine if this is the last falling note being destroyed
+        if (isLast)
+        {
             GameManager.instance.StartCoroutine(GameManager.instance.OnSongEnd());
         }
     }

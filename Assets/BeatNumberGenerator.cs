@@ -3,10 +3,17 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// Generates beat numbers as TextMeshProUGUI objects.
+/// </summary>
 public class BeatNumberGenerator : MonoBehaviour
 {
     [SerializeField] GameObject prefab;
     [SerializeField] int quantity;
+
+    /// <summary>
+    /// Instantiates beat number TextMeshProUGUI objects.
+    /// </summary>
     private void Start()
     {
         for (int i = 0; i <= quantity; i++)
