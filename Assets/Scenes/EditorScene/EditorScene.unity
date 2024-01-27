@@ -8779,6 +8779,10 @@ PrefabInstance:
       value: 130
       objectReference: {fileID: 0}
     - target: {fileID: 7258294308359916721, guid: 8713daea6d5d4cb42b89a26c61b32971, type: 3}
+      propertyPath: gameSettings.usePiano
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7258294308359916721, guid: 8713daea6d5d4cb42b89a26c61b32971, type: 3}
       propertyPath: gameSettings.currentSongName
       value: Amberlea
       objectReference: {fileID: 0}

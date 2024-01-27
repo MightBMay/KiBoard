@@ -146,10 +146,12 @@ public class MidiInput : MonoBehaviour
         GameManager.instance.startTimer = true;
     }
 
+    public void StopSong(bool inEditor)
+
     /// <summary>
     /// Stops the currently playing song.
     /// </summary>
-    public void StopSong(bool inEditor)
+    public void StopSong()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
