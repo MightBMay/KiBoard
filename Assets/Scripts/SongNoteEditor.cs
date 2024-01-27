@@ -30,6 +30,7 @@ public class SongNoteEditor : MonoBehaviour
         OnRightMouseHold();
 
         ScaleNote();
+        selectCount = selectedNotes.Count;
     }
     public void OnRightMouseDown()
     {
