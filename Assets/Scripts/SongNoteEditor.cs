@@ -169,9 +169,7 @@ public class SongNoteEditor : MonoBehaviour
         if (hit.collider.CompareTag("KeyLane"))
         {
             DeselectAllNotes();
-            int temp = SpawnPiano.instance.GetIndexOfSpriteRenderer(hit.transform.parent.GetComponent<SpriteRenderer>());
-            Debug.Log(temp + 1);
-            int noteNumber = 1 + temp;
+            int noteNumber = 1 + SpawnPiano.instance.GetIndexOfSpriteRenderer(hit.transform.parent.GetComponent<SpriteRenderer>());
             SongEditor.instance.CreateNote(noteNumber, mousePosition1.y, mousePosition1.y + 0.5f, mousePosition1.y);
             RescaleNotesFromBPM();
         }
@@ -281,12 +279,10 @@ public class SongNoteEditor : MonoBehaviour
         float newStartTime = snappedYPos - (duration / 2); // ConvertYPositionToSongTime(snappedPosition);
         noteEvent.SetStartEndTime(newStartTime, newStartTime + duration);
     }
-    public float ConvertYPositionToSongTime(Transform noteTrans)
+    public float ConvertYPositionToSongTime(Vector2 position)
     {
         // 1 unit = 1 "beat" or bar on the UI
-
-        //return (noteTrans.position.y - noteTrans.GetComponent<Collider2D>().bounds.extents.y)  / (SettingsManager.instance.gameSettings.bpm / 60);
-        return (noteTrans.position.y) / (SettingsManager.instance.gameSettings.bpm / 60);
+        return position.y / (SettingsManager.instance.gameSettings.bpm / 60);
         // y position / bpm /60 so it is bpS
     }
 
