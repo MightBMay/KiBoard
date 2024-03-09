@@ -105,6 +105,13 @@ public class MidiInput : MonoBehaviour
         StartCoroutine(StartSong());
 
     }
+
+    public NoteEventDataWrapper GetNoteEventWrapperFromSelectedSong(GameSettings currentSettings)
+    {
+        NoteEventDataWrapper data = MidiReadFile.GetNoteEventsFromName(currentSettings.currentSongName);
+        storedNoteEvents = data.NoteEvents;
+        return data;
+    }
     /// <summary>
     /// Starts playing the loaded song.
     /// </summary>

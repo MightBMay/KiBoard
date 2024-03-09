@@ -149,7 +149,7 @@ Transform:
   m_GameObject: {fileID: 2340535}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.89292634, y: -2.5663729, z: -0.13204645}
+  m_LocalPosition: {x: -0.89292634, y: 0.4336271, z: -0.13204645}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -173,7 +173,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollSpeed: 1
-  minHeight: -2.566373
+  minHeight: 0.4336271
+  canScroll: 1
 --- !u!1 &30165084
 GameObject:
   m_ObjectHideFlags: 0
@@ -21228,7 +21229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e5f7674fef9e604eba445ec9025bf7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  editorNotePrefab: {fileID: 5445194452809718800, guid: 2f49bfb25e4c97b48ab112062a7a701c, type: 3}
+  editorNotePrefab: {fileID: 7860569162244882878, guid: ad85f25218b521542bedfbb629ba9336, type: 3}
   noteObjects: []
   noteEvents: []
   noteHolder: {fileID: 1011067807}

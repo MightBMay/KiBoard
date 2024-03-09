@@ -56,6 +56,11 @@ public class SongEditor : MonoBehaviour
         else { Destroy(gameObject); }
     }
 
+    private void Start()
+    {
+        LoadSongAsEditorNotes(SettingsManager.instance.gameSettings);
+    }
+
     /// <summary>
     /// Update is called once per frame.
     /// </summary>
@@ -77,6 +82,26 @@ public class SongEditor : MonoBehaviour
         }
     }
 
+
+
+
+    void LoadSongAsEditorNotes(GameSettings settings)
+    {
+       NoteEventDataWrapper notes = MidiInput.instance.GetNoteEventWrapperFromSelectedSong(settings);
+        float startOffset = notes.NoteEvents[0].startTime+ 0.4336271f;
+        foreach (var note in notes.NoteEvents)
+        {
+            note.noteNumber -= 20;
+            note.startTime -= startOffset;
+            note.endTime -= startOffset;
+        }
+        foreach (var note in notes.NoteEvents)
+        {
+            CreateNote(note.noteNumber, note.startTime, note.endTime, (note.startTime+note.endTime)/2 );
+        }
+    }
+
+
     /// <summary>
     /// Starts testing the song by invoking a coroutine to play the song.
     /// </summary>
@@ -85,7 +110,10 @@ public class SongEditor : MonoBehaviour
         noteHolder.gameObject.SetActive(false);
         FindObjectOfType<SongNoteEditor>().enabled = false;
         StartCoroutine(MidiInput.instance.StartSong(noteEvents));
+        var cameraScroll = FindObjectOfType<CameraScrollManager>();
+        cameraScroll.ResetCamera(); 
         yield return new WaitUntil(() => IsTestDone() );
+        cameraScroll.canScroll = true;
 
 
         bool IsTestDone()
