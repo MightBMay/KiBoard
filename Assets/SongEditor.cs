@@ -40,6 +40,9 @@ public class SongEditor : MonoBehaviour
     /// </summary>
     public Transform keyOrigin;
 
+    public bool isTesting;
+    public Coroutine SongTestCoroutine;
+
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
@@ -70,18 +73,25 @@ public class SongEditor : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.L))
         {
             // Start testing the song
-            StartSongTest();
+           SongTestCoroutine=  StartCoroutine(StartSongTest());
         }
     }
 
     /// <summary>
     /// Starts testing the song by invoking a coroutine to play the song.
     /// </summary>
-    public void StartSongTest()
+    public IEnumerator StartSongTest()
     {
         noteHolder.gameObject.SetActive(false);
         FindObjectOfType<SongNoteEditor>().enabled = false;
         StartCoroutine(MidiInput.instance.StartSong(noteEvents));
+        yield return new WaitUntil(() => IsTestDone() );
+
+
+        bool IsTestDone()
+        {
+            return !isTesting;
+        }
     }
 
     /// <summary>
@@ -101,6 +111,7 @@ public class SongEditor : MonoBehaviour
         editorNote.noteEvent = noteEvent;
         editorNote.SetNotePosition(mouseHeight, keyOrigin.position.x);
         noteEvents.Add(noteEvent);
+        
 
         return noteEvent;
     }

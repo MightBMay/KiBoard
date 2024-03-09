@@ -63,8 +63,8 @@ public class EditorNote : MonoBehaviour
     public void SetNotePosition(float mouseHeight, float keyOriginX)
     {
         float height = mouseHeight >= Mathf.NegativeInfinity ? mouseHeight : 1;
-        Vector2 gridSnap = GridSnapNote(new Vector2(keyOriginX + (0.20505f * (noteEvent.noteNumber - 1)), height));
-        transform.position = new Vector3(gridSnap.x - 7, gridSnap.y, 0);
+        Vector2 gridSnap = GridSnapNote(new Vector2(keyOriginX  + (0.20505f * (noteEvent.noteNumber - 1)), height));
+        transform.position = new Vector3(gridSnap.x-.095f , gridSnap.y, 0);
     }
 
     /// <summary>

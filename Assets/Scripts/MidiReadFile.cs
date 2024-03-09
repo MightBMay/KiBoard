@@ -81,6 +81,7 @@ public static class MidiReadFile {
 
         void ProcessNoteOnEvent(NoteEvent noteOnEvent)//```````````````````````````````````````````````````````modify so if you (somehow ) press a note 2 times before you let go of the first note, it marks its end time.
         {
+            Debug.Log(noteOnEvent.NoteNumber + "" + noteOnEvent.NoteName);
             int noteNumber = noteOnEvent.NoteNumber;
 
             float ticksPerQuarterNote = 96; // Adjust this based on your DAW

@@ -81,7 +81,7 @@ public class SongNoteEditor : MonoBehaviour
         hit = Physics2D.Raycast(mousePositionWorld, Vector2.zero);// shoot ray from mouse position.
 
 
-        if (hit) { mousePosition1 = hit.point; } // set mousepos1 if hit, otherwise return.
+        if (hit) { mousePosition1 = hit.point; Debug.Log(hit.collider.name); } // set mousepos1 if hit, otherwise return.
         else { Debug.Log("NullHit"); return; }
         UpdateSelectedNoteOffsets();
 

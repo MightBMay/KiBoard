@@ -5,7 +5,8 @@ using UnityEngine.Timeline;
 
 public class CameraScrollManager : MonoBehaviour
 {
-    public float scrollSpeed; // rate at which the camera scrolls.
+    [SerializeField] float scrollSpeed; // rate at which the camera scrolls.
+    [SerializeField] float minHeight;
 
     void Update()
     {
@@ -21,6 +22,6 @@ public class CameraScrollManager : MonoBehaviour
         float scrollDelta = Input.mouseScrollDelta.y;
         if ( scrollDelta == 0 || Input.GetKey(KeyCode.LeftShift)) { return; }
         transform.position += Mathf.Sign(scrollDelta) * scrollSpeed * Vector3.up;
-        if (transform.position.y <= 3.5f) { transform.position = new(transform.position.x, 3.55f, transform.position.z); }
+        if (transform.position.y <= minHeight) { transform.position = new(transform.position.x, minHeight, transform.position.z); }
     }
 }

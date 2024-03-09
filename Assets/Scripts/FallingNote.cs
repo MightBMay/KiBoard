@@ -52,6 +52,7 @@ public class FallingNote : MonoBehaviour
         if (isLast)
         {
             GameManager.instance.StartCoroutine(GameManager.instance.OnSongEnd());
+            GameManager.instance.modifiedNoteScale = 0;
         }
     }
 }

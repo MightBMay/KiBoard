@@ -22,7 +22,9 @@ public class GameManager : MonoBehaviour
     public GameObject notePrefab;
     public float baseNoteScalingFactor = 5.4f; // do not ask me where this number came from.
     public float modifiedNoteScale;
+    [SerializeField] Transform noteHolder;
     List<Coroutine> readiedNotes = new();
+    string[] noteNames = {  "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B", };
 
     static Dictionary<string, int> nameToNoteMap = new()
     {
@@ -82,20 +84,14 @@ public class GameManager : MonoBehaviour
         if (noteEvents == null) { Debug.Log("gameloop noteEvents null"); yield break; }
         songTime = -3;
         modifiedNoteScale = baseNoteScalingFactor * (130 / BPM);
+        Debug.Log(modifiedNoteScale);
         StopReadiedNotes();
         AssignSongValues();
 
         yield return new WaitUntil(() => (Input.anyKeyDown || MidiInput.instance.GetAnyNoteActive()));
-        foreach (NoteEventInfo noteEvent in noteEvents)
-        {
-            // Calculate spawn time (with an offset)
 
-            float spawnTime = noteEvent.startTime - spawnOffset;
+        noteEvents.ForEach(noteEvent => readiedNotes.Add(StartCoroutine(ReadyNote(noteEvent.startTime - spawnOffset, noteEvent))));
 
-            // Check if the note should be spawned now or later based on songTime
-            readiedNotes.Add(StartCoroutine(ReadyNote(spawnTime, noteEvent)));
-
-        }
         // Game loop is finished
         yield return null;
 
@@ -127,9 +123,12 @@ public class GameManager : MonoBehaviour
             SpriteRenderer spriteRenderer = noteInstance.GetComponent<SpriteRenderer>();
             fallingNote.velocity = fallSpeed; // set falling speed of the note to the value calculated in AssignSongValues()
             fallingNote.noteName = ConvertNoteNumberToName(noteEvent.noteNumber);
-            fallingNote.maxYBound = spriteRenderer.bounds.extents.y; //Used to determine when a note is far enough off screen to be destroyed.
+            fallingNote.maxYBound = spriteRenderer.bounds.max.y; //Used to determine when a note is far enough off screen to be destroyed.
             fallingNote.GetComponentInChildren<NoteShadow>().SetShadowSize(noteScale + 0.075f);
-
+            if(noteHolder != null)
+            {
+                noteInstance.transform.SetParent(noteHolder.transform, false);
+            }
             spriteRenderer.size = new Vector2(spriteRenderer.size.x, noteScale);
 
 
@@ -155,13 +154,7 @@ public class GameManager : MonoBehaviour
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~REPLACE THIS WITH WHATEVER INPUT IS TO GO BACK~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         yield return new WaitUntil(() => ((Input.anyKeyDown) || MidiInput.instance.GetAnyNoteActive())); // wait for any input to start.
-        foreach (NoteEventInfo noteEvent in noteEvents)
-        {
-
-            float spawnTime = noteEvent.startTime - spawnOffset; // calculate what time the note should spawn.
-            readiedNotes.Add(StartCoroutine(ReadyNote(spawnTime, noteEvent)));
-
-        }
+        noteEvents.ForEach(noteEvent => readiedNotes.Add(StartCoroutine(ReadyNote(noteEvent.startTime - spawnOffset, noteEvent))));
         // Game loop is finished
         yield return null;
 
@@ -192,7 +185,7 @@ public class GameManager : MonoBehaviour
             SpriteRenderer spriteRenderer = noteInstance.GetComponent<SpriteRenderer>();
             fallingNote.velocity = fallSpeed; // set falling speed of the note to the value calculated in AssignSongValues()
             fallingNote.noteName = ConvertNoteNumberToName(noteEvent.noteNumber);
-            fallingNote.maxYBound = spriteRenderer.bounds.extents.y; //Used to determine when a note is far enough off screen to be destroyed.
+            fallingNote.maxYBound = spriteRenderer.bounds.max.y; //Used to determine when a note is far enough off screen to be destroyed.
             fallingNote.GetComponentInChildren<NoteShadow>().SetShadowSize(noteScale + 0.075f);
 
             spriteRenderer.size = new Vector2(spriteRenderer.size.x, noteScale);
@@ -224,38 +217,20 @@ public class GameManager : MonoBehaviour
     public void UpdatePlayerScore(string score)
     {
         currentSongScore ??= new();
-        switch (score)
-        {
-            case "Perfect":
-                currentSongScore.perfect++;
-                break;
-
-            case "Good":
-                currentSongScore.good++;
-                break;
-
-            case "Okay":
-                currentSongScore.okay++;
-                break;
-            default:
-                currentSongScore.extra++;
-                CameraShake.ShakeCamera(3f, 0.1f);
-                break;
-        }
-        TimingHitText.instance.CreateTimingText(score);
+        currentSongScore.AddScore(score);
+        
     }
     /// <summary>
     /// Converts a MIDI note number to its corresponding name.
     /// </summary>
     /// <param name="noteNumber">The MIDI note number.</param>
     /// <returns>The note name (e.g., C, C#, D).</returns>
-    public static string ConvertNoteNumberToName(int noteNumber)
+    public string ConvertNoteNumberToName(int noteNumber)
     {
-        string[] noteNames = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
 
-        int octave = (noteNumber / 12);
+        int octave = (noteNumber / 12)-1;
 
-        int noteIndex = noteNumber % 12;
+        int noteIndex = (noteNumber) % 12;
         string noteName = noteNames[noteIndex];
         if (SettingsManager.instance.gameSettings.usePiano)
         {
@@ -296,9 +271,10 @@ public class GameManager : MonoBehaviour
     {
         startTimer = false;
         int[] score = currentSongScore.GetScoreArray(totalNotes);
-        Debug.Log($"Perfect: {score[0]}, Good: {score[1]}, Okay: {score[2]}, Extra (testing): {score[3]}, Missed: {score[4]}");
+        Debug.Log($"Total Score: {score[0]} |     Perfect: {score[1]}, Good: {score[2]}, Okay: {score[3]}, Extra: {score[4]}, Missed: {score[5]}");
         yield return new WaitForSeconds(5f);
         ReturnToSongSelection();
+        SettingsManager.instance.gameSettings.ResetSettings();
         //`````````````````````````````````````````````````````````````````````````````````````````````````` make this open some sort of ui with retry, back to song selection scene, etc.
     }
     /// <summary>

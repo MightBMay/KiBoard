@@ -98,6 +98,8 @@ public class MidiInput : MonoBehaviour
         var currentSettings = SettingsManager.instance.gameSettings;
         NoteEventDataWrapper data = MidiReadFile.GetNoteEventsFromName(currentSettings.currentSongName);
         currentSettings.bpm = currentSettings.bpm == 0 ? data.BPM : currentSettings.bpm;
+        GameManager.instance.modifiedNoteScale = GameManager.instance.baseNoteScalingFactor * (130 / data.BPM);
+
         storedNoteEvents = data.NoteEvents;
         inGame = true;
         StartCoroutine(StartSong());
@@ -113,11 +115,12 @@ public class MidiInput : MonoBehaviour
         var currentSettings = SettingsManager.instance.gameSettings;
         if (currentSettings.usePiano)
         {
-
+            GameManager.instance.modifiedNoteScale = GameManager.instance.baseNoteScalingFactor * (130 / SettingsManager.instance.gameSettings.bpm);
             yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotesPiano(currentSettings.bpm, storedNoteEvents));
         }
         else
         {
+            GameManager.instance.modifiedNoteScale = GameManager.instance.baseNoteScalingFactor * (130 / SettingsManager.instance.gameSettings.bpm);
             yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotesKeyboard12(currentSettings.bpm, storedNoteEvents));
         }
 
@@ -133,6 +136,9 @@ public class MidiInput : MonoBehaviour
     {
         GameManager.instance.currentSongScore.ClearScore();
         var bpm = SettingsManager.instance.gameSettings.bpm;
+        loadEvents.ForEach(noteEvent => noteEvent.noteNumber += 20); // i - for the fucking life of me- cannot figure out why directly processing the midi files makes the note numbers
+                                                                   // 20 higher, but i have to do this to match that with the song editor.
+
         if (SettingsManager.instance.gameSettings.usePiano)
         {
 
@@ -144,6 +150,7 @@ public class MidiInput : MonoBehaviour
         }
         StartCoroutine(MP3Handler.instance.PlaySong(SettingsManager.instance.gameSettings.currentSongName));
         GameManager.instance.startTimer = true;
+
     }
 
     /// <summary>
@@ -327,8 +334,8 @@ public class MidiInput : MonoBehaviour
     /// <returns>The timing score (e.g., "Perfect", "Good", "Okay", "Miss").</returns>
     public string GetTimingScore(float timing)
     {
-        if (timing < 0.075f) { return "Perfect"; }
-        else if (timing < 0.15f) { return "Good"; }
+        if (timing < 0.1f) { return "Perfect"; }
+        else if (timing < 0.175f) { return "Good"; }
         else if (timing < 0.275f) { return "Okay"; }
         else { return "Miss"; }
     }
