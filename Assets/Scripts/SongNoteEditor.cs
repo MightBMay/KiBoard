@@ -273,6 +273,19 @@ public class SongNoteEditor : MonoBehaviour
         }
 
     }
+
+
+  
+
+    void CopySelection()
+    {
+
+    }
+    void PasteSelection()
+    {
+
+    }
+
     void UpdateStartEndTimes(NoteEventInfo noteEvent, float snappedYPos)
     {
         float duration = noteEvent.GetDuration();
@@ -290,15 +303,6 @@ public class SongNoteEditor : MonoBehaviour
     {
         var result = new Vector2(noteEvent.noteNumber * 1, noteEvent.startTime * (SettingsManager.instance.gameSettings.bpm / 60));
         return result;
-    }
-
-    void CopySelection()
-    {
-
-    }
-    void PasteSelection()
-    {
-
     }
     Vector2 GetOffsetFromTransform(Vector2 point, Transform referenceTransform)
     {
@@ -343,7 +347,7 @@ public class SongNoteEditor : MonoBehaviour
     {
         float x = Mathf.Round(input.x / increment) * increment;
 
-        return new Vector2(x, input.y);
+        return new Vector2(x-0.095f, input.y);
     }
 
 

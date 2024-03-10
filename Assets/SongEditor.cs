@@ -87,8 +87,8 @@ public class SongEditor : MonoBehaviour
 
     void LoadSongAsEditorNotes(GameSettings settings)
     {
-       NoteEventDataWrapper notes = MidiInput.instance.GetNoteEventWrapperFromSelectedSong(settings);
-        float startOffset = notes.NoteEvents[0].startTime+ 0.4336271f;
+        NoteEventDataWrapper notes = MidiInput.instance.GetNoteEventWrapperFromSelectedSong(settings);
+        settings.bpm = notes.BPM;
         foreach (var note in notes.NoteEvents)
         {
             note.noteNumber -= 20;

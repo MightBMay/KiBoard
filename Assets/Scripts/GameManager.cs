@@ -203,7 +203,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void StopReadiedNotes()
     {
-        int count=0;
+        int count = 0;
         foreach (Coroutine c in readiedNotes)
         {
             StopCoroutine(c);
@@ -314,6 +314,10 @@ public class GameManager : MonoBehaviour
     public void EnterSongEditor()
     {
         inEditor = true;
+        string songName = SettingsManager.instance.gameSettings.currentSongName;
+        if (string.IsNullOrEmpty(songName)) { return; }
+        SceneManager.LoadScene("SongEditorScene", LoadSceneMode.Single);
+        MidiInput.instance.GetBPM(songName);
     }
     /// <summary>
     /// Modifies the note scale based on the BPM (Beats Per Minute).
@@ -324,4 +328,6 @@ public class GameManager : MonoBehaviour
     {
         return GameManager.instance.modifiedNoteScale = GameManager.instance.baseNoteScalingFactor * (130 / BPM);
     }
+
+
 }

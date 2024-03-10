@@ -198,8 +198,12 @@ public class SongSelection : MonoBehaviour
     {
         // Check if the current song name is null or empty, and return if true
         if (string.IsNullOrEmpty(SettingsManager.instance.gameSettings.currentSongName)) { return; }
-
-        // Load the song from current game settings using the GameManager
-        GameManager.instance.LoadSongFromCurrentGameSettings();
+        if (Input.GetKey(KeyCode.LeftShift)) { GameManager.instance.EnterSongEditor(); } // if you hold shift and start, enter the editor.
+        else
+        {
+            // Load the song from current game settings using the GameManager
+            GameManager.instance.LoadSongFromCurrentGameSettings();
+        }
     }
+
 }

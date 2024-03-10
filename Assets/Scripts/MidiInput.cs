@@ -1,7 +1,6 @@
 using MidiJack;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.TerrainTools;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -111,6 +110,11 @@ public class MidiInput : MonoBehaviour
         NoteEventDataWrapper data = MidiReadFile.GetNoteEventsFromName(currentSettings.currentSongName);
         storedNoteEvents = data.NoteEvents;
         return data;
+    }
+
+    public float GetBPM(string songName)
+    {
+        return MidiReadFile.GetNoteEventsFromName(songName).BPM; // yeah, its inefficient, but im lazy.
     }
     /// <summary>
     /// Starts playing the loaded song.
