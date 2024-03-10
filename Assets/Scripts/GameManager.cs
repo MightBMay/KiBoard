@@ -84,7 +84,6 @@ public class GameManager : MonoBehaviour
         if (noteEvents == null) { Debug.Log("gameloop noteEvents null"); yield break; }
         songTime = -3;
         modifiedNoteScale = baseNoteScalingFactor * (130 / BPM);
-        Debug.Log(modifiedNoteScale);
         StopReadiedNotes();
         AssignSongValues();
 
@@ -209,7 +208,6 @@ public class GameManager : MonoBehaviour
             StopCoroutine(c);
             count++;
         }
-        Debug.Log(count);
         readiedNotes.Clear();
     }
     /// <summary>

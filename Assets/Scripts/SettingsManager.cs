@@ -17,6 +17,12 @@ public class SettingsManager : MonoBehaviour
         }
         else { Destroy(gameObject); }
     }
+
+    public void SetVolume(float volume)
+    {
+        playerSettings.musicVolume = Mathf.Round(volume*100)/100;
+    }
+
 }
 
 [System.Serializable]
