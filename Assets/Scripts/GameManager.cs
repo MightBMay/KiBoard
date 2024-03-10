@@ -17,14 +17,14 @@ public class GameManager : MonoBehaviour
     float screenHeight;
     float fallSpeed;
     float distanceToFall;
-    [SerializeField]float spawnOffset = 2f;
+    [SerializeField] float spawnOffset = 2f;
     public float verticalNoteOffset;
     public GameObject notePrefab;
     public float baseNoteScalingFactor = 5.4f; // do not ask me where this number came from.
     public float modifiedNoteScale;
     [SerializeField] Transform noteHolder;
     List<Coroutine> readiedNotes = new();
-    string[] noteNames = {  "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B", };
+    string[] noteNames = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B", };
 
     static Dictionary<string, int> nameToNoteMap = new()
     {
@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour
             fallingNote.noteName = ConvertNoteNumberToName(noteEvent.noteNumber);
             fallingNote.maxYBound = spriteRenderer.bounds.max.y; //Used to determine when a note is far enough off screen to be destroyed.
             fallingNote.GetComponentInChildren<NoteShadow>().SetShadowSize(noteScale + 0.075f);
-            if(noteHolder != null)
+            if (noteHolder != null)
             {
                 noteInstance.transform.SetParent(noteHolder.transform, false);
             }
@@ -203,10 +203,13 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void StopReadiedNotes()
     {
+        int count=0;
         foreach (Coroutine c in readiedNotes)
         {
             StopCoroutine(c);
+            count++;
         }
+        Debug.Log(count);
         readiedNotes.Clear();
     }
     /// <summary>
@@ -218,7 +221,7 @@ public class GameManager : MonoBehaviour
     {
         currentSongScore ??= new();
         currentSongScore.AddScore(score);
-        
+
     }
     /// <summary>
     /// Converts a MIDI note number to its corresponding name.
@@ -228,7 +231,7 @@ public class GameManager : MonoBehaviour
     public string ConvertNoteNumberToName(int noteNumber)
     {
 
-        int octave = (noteNumber / 12)-1;
+        int octave = (noteNumber / 12) - 1;
 
         int noteIndex = (noteNumber) % 12;
         string noteName = noteNames[noteIndex];
@@ -293,10 +296,8 @@ public class GameManager : MonoBehaviour
         inEditor = false;
         StopReadiedNotes();
         MidiInput.instance.inGame = false;
-        if (!inEditor)
-        {
-            SceneManager.LoadScene("SongSelect");
-        }
+        SceneManager.LoadScene("SongSelect");
+
     }
 
 
@@ -304,6 +305,7 @@ public class GameManager : MonoBehaviour
     {
         startTimer = false;
         StopReadiedNotes();
+        MidiInput.instance.inGame = false;
     }
 
     /// <summary>

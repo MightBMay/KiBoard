@@ -92,8 +92,6 @@ public class SongEditor : MonoBehaviour
         foreach (var note in notes.NoteEvents)
         {
             note.noteNumber -= 20;
-            note.startTime -= startOffset;
-            note.endTime -= startOffset;
         }
         foreach (var note in notes.NoteEvents)
         {

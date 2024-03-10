@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2554291369270175101}
   - component: {fileID: 5089215422155329571}
   - component: {fileID: 4625582945041550474}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: note
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 2942033320903916095}
   - component: {fileID: 8617828213495371910}
   - component: {fileID: 5907528287844114287}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,12 +241,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2752722331278187477}
   - component: {fileID: 7964204333099878202}
-  - component: {fileID: 3030931181619671293}
   - component: {fileID: -5649407480592743980}
   - component: {fileID: 4795898161974665796}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EditorNote
-  m_TagString: Untagged
+  m_TagString: EditorNote
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -320,22 +319,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3030931181619671293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7860569162244882878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9dfb593b30c11141a836cee178ac846, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocity: 0
-  noteName: 
-  maxYBound: 0
-  isLast: 0
 --- !u!61 &-5649407480592743980
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -411,7 +394,7 @@ GameObject:
   - component: {fileID: 9083142907423736611}
   - component: {fileID: 3192352598719325790}
   - component: {fileID: 4943427984617723620}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

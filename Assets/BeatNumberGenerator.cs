@@ -16,7 +16,7 @@ public class BeatNumberGenerator : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        for (int i = 0; i <= quantity; i++)
+        for (int i = -3; i <= quantity; i++)
         {
             Transform trans = Instantiate(prefab, transform).transform;
             trans.position = new Vector2(trans.position.x, i);

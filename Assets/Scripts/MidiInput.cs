@@ -167,18 +167,22 @@ public class MidiInput : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-
-
-
+            GameManager.instance.StopSong();
             StopCoroutine(PrepareNotesCoroutine);
             MP3Handler.instance.StopMusic();
-            SettingsManager.instance.gameSettings.ResetSettings();
-            GameManager.instance.ReturnToSongSelection();
             if (inEditor)
             {
                 FindObjectOfType<SongEditor>().noteHolder.gameObject.SetActive(true);
                 FindObjectOfType<SongNoteEditor>().enabled = true;
+                
+                foreach(FallingNote note in FindObjectsOfType<FallingNote>())
+                {
+                    Destroy(note.gameObject);
+                }
+                return;
             }
+            SettingsManager.instance.gameSettings.ResetSettings();
+            GameManager.instance.ReturnToSongSelection();
 
         }
     }

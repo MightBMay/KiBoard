@@ -149,7 +149,7 @@ Transform:
   m_GameObject: {fileID: 2340535}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.89292634, y: 0.4336271, z: -0.13204645}
+  m_LocalPosition: {x: -0.89292634, y: -2.566373, z: -0.13204645}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollSpeed: 1
-  minHeight: 0.4336271
+  minHeight: -2.566373
   canScroll: 1
 --- !u!1 &30165084
 GameObject:
@@ -11172,7 +11172,7 @@ Transform:
   m_GameObject: {fileID: 1011067806}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.2016623, y: 0.84887, z: 0.90833604}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22107,7 +22107,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7258294308359916721, guid: 8713daea6d5d4cb42b89a26c61b32971, type: 3}
       propertyPath: playerSettings.musicVolume
-      value: 0
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 7258294308359916721, guid: 8713daea6d5d4cb42b89a26c61b32971, type: 3}
       propertyPath: gameSettings.currentSongName
