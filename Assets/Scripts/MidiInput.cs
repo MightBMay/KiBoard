@@ -93,11 +93,11 @@ public class MidiInput : MonoBehaviour
     /// </summary>
     public void LoadSongFromCurrentSettings()
     {
-        SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
+        TransitionManager.instance.LoadNewScene("GameScene");
         var currentSettings = SettingsManager.instance.gameSettings;
         NoteEventDataWrapper data = MidiReadFile.GetNoteEventsFromName(currentSettings.currentSongName);
         currentSettings.bpm = currentSettings.bpm == 0 ? data.BPM : currentSettings.bpm;
-        GameManager.instance.modifiedNoteScale = GameManager.instance.baseNoteScalingFactor * (130 / data.BPM);
+        GameManager.instance.ModifyNoteScale(data.BPM);
 
         storedNoteEvents = data.NoteEvents;
         inGame = true;
@@ -123,19 +123,20 @@ public class MidiInput : MonoBehaviour
     public IEnumerator StartSong()
     {
         GameManager.instance.currentSongScore.ClearScore();
+        GameManager.instance.combo.ClearCombo();
         var currentSettings = SettingsManager.instance.gameSettings;
         if (currentSettings.usePiano)
         {
-            GameManager.instance.modifiedNoteScale = GameManager.instance.baseNoteScalingFactor * (130 / SettingsManager.instance.gameSettings.bpm);
+            GameManager.instance.ModifyNoteScale(SettingsManager.instance.gameSettings.bpm);
             yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotesPiano(currentSettings.bpm, storedNoteEvents));
         }
         else
         {
-            GameManager.instance.modifiedNoteScale = GameManager.instance.baseNoteScalingFactor * (130 / SettingsManager.instance.gameSettings.bpm);
+            GameManager.instance.ModifyNoteScale(SettingsManager.instance.gameSettings.bpm);
             yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotesKeyboard12(currentSettings.bpm, storedNoteEvents));
         }
 
-        StartCoroutine(MP3Handler.instance.PlaySong(currentSettings.currentSongName));
+        StartCoroutine(MP3Handler.instance.PlaySong(SongSelection.GetUnderscoreSubstring(currentSettings.currentSongName)));
         GameManager.instance.startTimer = true;
     }
     /// <summary>
@@ -217,8 +218,11 @@ public class MidiInput : MonoBehaviour
         }
         enabledKeys[note - 21] = true;
         score ??= GetTimingScore(timing);
+        GameManager.instance.combo.ChangeMultiplier(score);
+
         SpawnPiano.instance.UpdateKeyColours(note - 21, true, score);
-        GameManager.instance.UpdatePlayerScore(score);
+        if(GameManager.instance.songTime >=0) GameManager.instance.UpdatePlayerScore(score);
+
 
 
     }

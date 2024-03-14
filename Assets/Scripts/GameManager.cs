@@ -11,20 +11,23 @@ public class GameManager : MonoBehaviour
     public bool inEditor;
     public float songTime;
     public bool startTimer;
-    public int beatsToFall;
-    public SongScore currentSongScore;
+    int beatsToFall=4;
+
     public int totalNotes;
     float screenHeight;
     float fallSpeed;
     float distanceToFall;
     [SerializeField] float spawnOffset = 2f;
-    public float verticalNoteOffset;
     public GameObject notePrefab;
-    public float baseNoteScalingFactor = 5.4f; // do not ask me where this number came from.
+    float baseNoteScalingFactor = 5.4f; // do not ask me where this number came from.
     public float modifiedNoteScale;
     [SerializeField] Transform noteHolder;
     List<Coroutine> readiedNotes = new();
     string[] noteNames = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B", };
+    public SongScore currentSongScore;
+    public SongScore selectedSongHighScore;
+    public Combo combo = new();
+
 
     static Dictionary<string, int> nameToNoteMap = new()
     {
@@ -138,6 +141,11 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    public void ModifyNoteScale(float bpm)
+    {
+        modifiedNoteScale = baseNoteScalingFactor * (130 / bpm);
+    }
+
     /// <summary>
     /// Prepares notes for playback using keyboard input.
     /// </summary>
@@ -218,7 +226,7 @@ public class GameManager : MonoBehaviour
     public void UpdatePlayerScore(string score)
     {
         currentSongScore ??= new();
-        currentSongScore.AddScore(score);
+        currentSongScore.AddScore(score, combo.multiplier);
 
     }
     /// <summary>
@@ -271,8 +279,8 @@ public class GameManager : MonoBehaviour
     public IEnumerator OnSongEnd()
     {
         startTimer = false;
-        int[] score = currentSongScore.GetScoreArray(totalNotes);
-        Debug.Log($"Total Score: {score[0]} |     Perfect: {score[1]}, Good: {score[2]}, Okay: {score[3]}, Extra: {score[4]}, Missed: {score[5]}");
+        FinalizeScore( currentSongScore.GetScoreArray(totalNotes));
+       
         yield return new WaitForSeconds(5f);
         ReturnToSongSelection();
         SettingsManager.instance.gameSettings.ResetSettings();
@@ -294,7 +302,8 @@ public class GameManager : MonoBehaviour
         inEditor = false;
         StopReadiedNotes();
         MidiInput.instance.inGame = false;
-        SceneManager.LoadScene("SongSelect");
+
+        TransitionManager.instance.LoadNewScene("SongSelect");
 
     }
 
@@ -314,7 +323,7 @@ public class GameManager : MonoBehaviour
         inEditor = true;
         string songName = SettingsManager.instance.gameSettings.currentSongName;
         if (string.IsNullOrEmpty(songName)) { return; }
-        SceneManager.LoadScene("SongEditorScene", LoadSceneMode.Single);
+        TransitionManager.instance.LoadNewScene("SongEditorScene");
         MidiInput.instance.GetBPM(songName);
     }
     /// <summary>
@@ -322,10 +331,16 @@ public class GameManager : MonoBehaviour
     /// </summary>
     /// <param name="BPM">The BPM of the song.</param>
     /// <returns>The modified note scale.</returns>
-    public static float ModifyNoteScale(float BPM)
+
+
+    public void FinalizeScore(int[] score)
     {
-        return GameManager.instance.modifiedNoteScale = GameManager.instance.baseNoteScalingFactor * (130 / BPM);
+        Debug.Log($"Total Score: {score[0]} |     Perfect: {score[1]}, Good: {score[2]}, Okay: {score[3]}, Extra: {score[4]}, Missed: {score[5]}");
+        Debug.Log("Longest Combo: " + combo.highestCount);
+        currentSongScore.FinalizeScore();
     }
 
 
 }
+
+

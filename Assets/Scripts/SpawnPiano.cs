@@ -112,5 +112,6 @@ public class SpawnPiano : MonoBehaviour
         ParticleSystem.MainModule main = particle.main;
         main.startColor = GetKeyColour(keyNum, score);
         particle.Play();
+        Destroy(particle, 5f);
     }
 }

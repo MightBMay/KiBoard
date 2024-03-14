@@ -322,7 +322,7 @@ public class SongNoteEditor : MonoBehaviour
     }
     public void RescaleNotesFromBPM()
     {
-        float modifiedScale = GameManager.ModifyNoteScale(SettingsManager.instance.gameSettings.bpm);
+        float modifiedScale = GameManager.instance.modifiedNoteScale;
         foreach (GameObject g in SongEditor.instance.noteObjects)
         {
             var sr = g.GetComponent<SpriteRenderer>();

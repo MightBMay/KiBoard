@@ -53,15 +53,23 @@ MonoBehaviour:
   startTimer: 0
   beatsToFall: 4
   currentSongScore:
+    score: 0
     perfect: 0
     good: 0
     okay: 0
     extra: 0
     miss: 0
   totalNotes: 0
+  spawnOffset: 2
   verticalNoteOffset: 0.5
   notePrefab: {fileID: 7860569162244882878, guid: f57b30213bc9ca04c9cf7a85b2ee7330, type: 3}
-  noteScalingFactor: 5.4
+  baseNoteScalingFactor: 5.4
+  modifiedNoteScale: 0
+  noteHolder: {fileID: 0}
+  combo:
+    multiplier: 0
+    count: 0
+    dropCounter: 0
 --- !u!114 &7258294308359916721
 MonoBehaviour:
   m_ObjectHideFlags: 0

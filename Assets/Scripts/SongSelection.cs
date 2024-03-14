@@ -151,7 +151,7 @@ public class SongSelection : MonoBehaviour
     /// <summary>
     /// Gets a substring of the input string up to the first underscore character (inclusive).
     /// </summary>
-    string GetUnderscoreSubstring(string input)
+    public static string GetUnderscoreSubstring(string input)
     {
         // Find the index of the first underscore character in the input string
         int underscoreIndex = input.IndexOf('_');

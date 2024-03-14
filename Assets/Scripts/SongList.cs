@@ -3,12 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-
+using System.Linq;
 public class SongList : MonoBehaviour
 {
+    public static SongList instance;
     [SerializeField] GameObject songItemPrefab;
     SongItem[] songItemList;
+    public SongItem currentlySelected;
 
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else { Destroy(this); }
+    }
+    public void SelectItem(SongItem item)
+    {
+        if (currentlySelected != null) { DeselectItem(); }
+        currentlySelected = item;
+        currentlySelected.GetComponentInChildren<Button>().interactable = false;
+    }
+
+    public void DeselectItem()
+    {
+        
+        currentlySelected.GetComponentInChildren<Button>().interactable = true;
+        currentlySelected = null;
+    }
     public void SpawnSongItems(List<FileGroup> fileGroups)
     {
         songItemList = new SongItem[fileGroups.Count];
