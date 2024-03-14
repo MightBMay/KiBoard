@@ -160,6 +160,15 @@ public class SongSelection : MonoBehaviour
         return (underscoreIndex >= 0) ? input.Substring(0, underscoreIndex) : input;
     }
 
+    public static string GetPostUnderscoreSubstring(string input)
+    {
+        // Find the index of the first underscore character in the input string
+        int underscoreIndex = input.IndexOf('_');
+
+        // Return a substring from the start of the input string to the underscore index, inclusive
+        return (underscoreIndex >= 0) ? input.Substring(underscoreIndex+1) : input;
+    }
+
     /// <summary>
     /// Assembles a FileGroup object based on the given file name.
     /// </summary>
