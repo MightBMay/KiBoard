@@ -7,7 +7,7 @@ public class TransitionManager : MonoBehaviour
 {
     public static TransitionManager instance;
     [SerializeField] Animator animator; // Made private and readonly
-    static float TransitionDuration = 0.5f; // Made property
+    static float TransitionDuration = 0.25f; // Made property
 
 
     private void Awake()
