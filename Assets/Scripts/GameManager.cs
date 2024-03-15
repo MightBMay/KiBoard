@@ -303,7 +303,8 @@ public class GameManager : MonoBehaviour
         StopReadiedNotes();
         MidiInput.instance.inGame = false;
 
-        TransitionManager.instance.LoadNewScene("SongSelect");
+        try { TransitionManager.instance.LoadNewScene("GameScene"); }
+        catch { SceneManager.LoadScene("GameScene"); }
 
     }
 
@@ -323,7 +324,8 @@ public class GameManager : MonoBehaviour
         inEditor = true;
         string songName = SettingsManager.instance.gameSettings.currentSongName;
         if (string.IsNullOrEmpty(songName)) { return; }
-        TransitionManager.instance.LoadNewScene("SongEditorScene");
+        try { TransitionManager.instance.LoadNewScene("GameScene"); }
+        catch { SceneManager.LoadScene("GameScene"); }
         MidiInput.instance.GetBPM(songName);
     }
     /// <summary>

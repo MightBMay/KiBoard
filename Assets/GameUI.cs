@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
-using System.Diagnostics.Tracing;
+using UnityEngine;
+using UnityEngine.UI;
 
-public class TimingHitText : MonoBehaviour
+public class GameUI : MonoBehaviour
 {
-    public static TimingHitText instance;
+    public static GameUI instance;
     [SerializeField] GameObject textPrefab;
     [SerializeField] float fadeoutTimer;
+    [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] Slider comboBar;
+    [SerializeField] Gradient comboGradient;
     private void Awake()
     {
         if (instance == null)
@@ -16,6 +19,10 @@ public class TimingHitText : MonoBehaviour
             instance = this;
         }
         else { Destroy(this); }
+    }
+    private void Update()
+    {
+        SetComboBarValue(GameManager.instance.combo.multiplier);
     }
     void SpawnTimingText(string score, Color color)
     {
@@ -50,25 +57,37 @@ public class TimingHitText : MonoBehaviour
         Destroy(textMesh.gameObject);
     }
 
-    public void CreateTimingText(string score)
+    public void CreateTimingText(int score, string scoretext)
     {
-        switch (score)
+        switch (scoretext)
         {
             case "Perfect":
-                SpawnTimingText(score, new Color(1, 0, 0.75f, .5f));
+                SpawnTimingText("+" + score.ToString(), new Color(1, 0, 0.75f, .5f));
                 break;
 
             case "Good":
-                SpawnTimingText(score, new Color(0.15f, 1, .5f, .5f));
+                SpawnTimingText("+" + score.ToString(), new Color(0.15f, 1, .5f, .5f));
                 break;
 
             case "Okay":
-                SpawnTimingText(score, new Color(0, 0.04f, 1, .5f));
+                SpawnTimingText("+" + score.ToString(), new Color(0, 0.04f, 1, .5f));
                 break;
             default:
-                SpawnTimingText(score, new Color(1, 0, 0, .5f));
+                SpawnTimingText((-10).ToString(), new Color(1, 0, 0, .5f));
                 break;
         }
+        scoreText.text = GameManager.instance.currentSongScore.score.ToString();
+    }
+
+    public void SetComboBarValue(float value)
+    {
+        // Assuming the input value ranges from 1 to 3
+        float normalizedValue = (value - 1) / (3 - 1);
+        comboBar.value = normalizedValue;
+        ColorBlock newColours = new ColorBlock();
+        newColours.disabledColor = comboGradient.Evaluate(normalizedValue);
+        newColours.colorMultiplier = 1;
+        comboBar.colors = newColours;
     }
 
 }

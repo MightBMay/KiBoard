@@ -14,11 +14,13 @@ public class SongItem : MonoBehaviour
     }
     public void LoadSongInfoToGameSettings()
     {
+        
         OpenSongVersions();
         SettingsManager.instance.gameSettings.currentSongName = fileGroup.FileName;
+        string songName = SettingsManager.instance.gameSettings.currentSongName;
         SongSelection.instance.startButton.interactable = true;
         SongList.instance.SelectItem(this);
-        GameManager.instance.selectedSongHighScore = SongScore.ReadFieldsFromJsonFile(SettingsManager.instance.gameSettings.currentSongName);
-        ExtraSongInfoMenu.instance.SetText();
+        GameManager.instance.selectedSongHighScore = SongScore.ReadFieldsFromJsonFile(songName);
+        ExtraSongInfoMenu.instance.SetText(songName);
     }
 }

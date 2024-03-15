@@ -1,6 +1,7 @@
 using MidiJack;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,7 @@ public class MidiInput : MonoBehaviour
     public static MidiInput instance;
     public List<NoteEventInfo> storedNoteEvents;
     Coroutine PrepareNotesCoroutine;
+    [SerializeField] TextMeshProUGUI warningText;
 
 
     public bool isPedalPressed;
@@ -53,6 +55,7 @@ public class MidiInput : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else { Destroy(gameObject); }
+
         MidiMaster.noteOnDelegate += NoteOn;
         MidiMaster.noteOffDelegate += NoteOff;
         MidiMaster.knobDelegate += PedalStateChanged;
@@ -68,6 +71,7 @@ public class MidiInput : MonoBehaviour
         //CheckNotesKeyboard8();
 
     }
+
     /// <summary>
     /// Handles MIDI sustain pedal state changes.
     /// </summary>
@@ -93,7 +97,8 @@ public class MidiInput : MonoBehaviour
     /// </summary>
     public void LoadSongFromCurrentSettings()
     {
-        TransitionManager.instance.LoadNewScene("GameScene");
+        try { TransitionManager.instance.LoadNewScene("GameScene"); }
+        catch { SceneManager.LoadScene("GameScene"); }
         var currentSettings = SettingsManager.instance.gameSettings;
         NoteEventDataWrapper data = MidiReadFile.GetNoteEventsFromName(currentSettings.currentSongName);
         currentSettings.bpm = currentSettings.bpm == 0 ? data.BPM : currentSettings.bpm;

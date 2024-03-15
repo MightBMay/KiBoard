@@ -13,14 +13,14 @@ public class ExtraSongInfoMenu : MonoBehaviour
         else { Destroy(this); }
     }
 
-    public void SetText()
+    public void SetText(string songName)
     {
         childObjects.SetActive(true);
         SongScore score = GameManager.instance.selectedSongHighScore;
         if (score == null) { text.text = ""; childObjects.SetActive(false);  return; }
 
         string newText =
-            $"Score: {score.score}\nPerfect: {score.perfect}\nGood: {score.good}\nOkay: {score.okay}\nExtra: {score.extra}\nMissed: {score.miss}\nBest Combo: {score.highestCombo}";
+            $"{songName}\nScore: {score.score}\nPerfect: {score.perfect}\nGood: {score.good}\nOkay: {score.okay}\nExtra: {score.extra}\nMissed: {score.miss}\nBest Combo: {score.highestCombo}";
         text.text = newText ;
     }
 }

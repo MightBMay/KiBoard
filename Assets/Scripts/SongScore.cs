@@ -31,29 +31,34 @@ public class SongScore
     }
     public void AddScore(string Score, float multiplier)
     {
+        int ans = 0;
         switch (Score)
         {
             case "Perfect":
                 perfect++;
-                score += (int)(100 * multiplier);
+                ans = (int)(100 * multiplier);
+                score += ans;
                 break;
 
             case "Good":
                 good++;
-                score += (int)(60 * multiplier);
+                ans = (int)(60 * multiplier);
+                score += ans;
                 break;
 
             case "Okay":
                 okay++;
-                score += (int)(30 * multiplier);
+                ans = (int)(30 * multiplier);
+                score += ans;
                 break;
             default:
                 extra++;
-                score -= 10;
+                ans = -10;
+                score += ans;
                 CameraShake.ShakeCamera(2.5f, 0.1f);
                 break;
         }
-        TimingHitText.instance.CreateTimingText(Score);
+        GameUI.instance.CreateTimingText(ans, Score);
     }
     public void ClearScore()
     {
@@ -75,7 +80,7 @@ public class SongScore
         if (score > savedScores.score) { writeScore = true; }
         if (savedScores.highestCombo > curHighestCombo) { highestCombo = savedScores.highestCombo; }
         else { highestCombo = curHighestCombo; writeScore = true; }
-        if(writeScore) WriteScoreToJson(SettingsManager.instance.gameSettings.currentSongName);
+        if (writeScore) WriteScoreToJson(SettingsManager.instance.gameSettings.currentSongName);
 
     }
 
@@ -85,7 +90,7 @@ public class SongScore
         {
             // Serialize the object to JSON format
             string json = JsonUtility.ToJson(this);
-            string filePath = Application.persistentDataPath + "/Songs/" + filename +".score";
+            string filePath = Application.persistentDataPath + "/Songs/" + filename + ".score";
 
 
             // Write the JSON string to the file
@@ -104,7 +109,7 @@ public class SongScore
         try
         {
             // Construct the file path with the custom file extension
-            string filePath = Application.persistentDataPath +"/Songs/"+ fileName + ".score";
+            string filePath = Application.persistentDataPath + "/Songs/" + fileName + ".score";
 
             // Check if the file exists
             if (File.Exists(filePath))
@@ -117,7 +122,7 @@ public class SongScore
             }
             else
             {
-                Debug.LogError($"File '{filePath}' does not exist.");
+                Debug.Log($"File '{filePath}' does not exist.");
                 return null;
             }
         }
