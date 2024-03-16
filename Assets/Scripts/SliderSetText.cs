@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using NAudio.Wave;
 
 public class SliderSetText : MonoBehaviour
 {
@@ -22,11 +23,12 @@ public class SliderSetText : MonoBehaviour
     }
     public void SetText(float value)
     {
-        textmesh.text = Mathf.RoundToInt(value*100).ToString();
+        textmesh.text = value.ToString();
     }
 
     public void SetText(string value)
     {
         textmesh.text = value;
     }
+
 }

@@ -8,6 +8,7 @@ public class SongItem : MonoBehaviour
     public TextMeshProUGUI songName, songContains;
     public FileGroup fileGroup;
 
+
     public void OpenSongVersions()
     {
         SongVersionMenu.instance.OpenMenu(fileGroup);
@@ -22,5 +23,6 @@ public class SongItem : MonoBehaviour
         SongList.instance.SelectItem(this);
         GameManager.instance.selectedSongHighScore = SongScore.ReadFieldsFromJsonFile(songName);
         ExtraSongInfoMenu.instance.SetText(songName);
+        MP3Handler.instance.StartSongDemo(songName);
     }
 }

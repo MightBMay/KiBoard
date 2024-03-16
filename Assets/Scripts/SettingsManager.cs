@@ -20,7 +20,7 @@ public class SettingsManager : MonoBehaviour
 
     public void SetVolume(float volume)
     {
-        playerSettings.musicVolume = Mathf.Round(volume*100)/100;
+        playerSettings.musicVolume = volume;
     }
 
 }

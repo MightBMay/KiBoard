@@ -9,6 +9,10 @@ public class MP3Handler : MonoBehaviour
     public static MP3Handler instance;
     private Thread audioThread;
     private WaveOutEvent waveOut;
+    Coroutine songDemoCoroutine;
+
+    [SerializeField] float songDemoLength;
+    [SerializeField] float songDemoFadeDuration;
     private void Awake()
     {
         if (instance == null)
@@ -21,20 +25,103 @@ public class MP3Handler : MonoBehaviour
     private void Update()
     {
         if (waveOut == null) return;
-
-        waveOut.Volume = SettingsManager.instance.playerSettings.musicVolume;
     }
-
+    public void SetVolume(float newVolume)
+    {
+        if(waveOut==null) return;
+        waveOut.Volume = newVolume / 100;
+    }
     public IEnumerator PlaySong(string fileName)
     {
         string filePath = Application.persistentDataPath + "/Songs/" + fileName + ".mp3";
-        float bpm = SettingsManager.instance.gameSettings.bpm;
         if (!File.Exists(filePath)) { Debug.LogError($"MP3 File \"{fileName}\" not found at path {filePath}"); yield break; }
         audioThread = new Thread(() => ReadMP3File(filePath));
         yield return new WaitUntil(() => GameManager.instance.songTime >= 0);
         audioThread.Start();
 
 
+
+    }
+
+    public void StartSongDemo(string fileName)
+    {
+        if(songDemoCoroutine != null)
+        {
+            StopCoroutine(songDemoCoroutine);
+        }
+        songDemoCoroutine = StartCoroutine(LoadSongDemo(fileName));
+    }
+    public IEnumerator LoadSongDemo(string fileName)
+    {
+        StopMusic();
+        float currentVolume = SettingsManager.instance.playerSettings.musicVolume / 100;
+        string filePath = Application.persistentDataPath + "/Songs/" + fileName + ".mp3";
+        if (!File.Exists(filePath))
+        {
+            Debug.LogError($"MP3 File \"{fileName}\" not found at path {filePath}");
+            yield break;
+        }
+
+        // Start playing the song
+        yield return audioThread = new Thread(() => ReadMP3File(filePath));
+        audioThread.Start();
+        while (waveOut == null)
+        {
+            yield return null;
+        }
+
+        // Calculate the actual duration of the song being played
+        float actualSongDuration = GetSongDuration(filePath);
+
+        // Calculate fade durations based on the actual song duration
+        float fadeInDuration = Mathf.Min(actualSongDuration / 2, songDemoFadeDuration);
+        float fadeOutDuration = Mathf.Min(actualSongDuration / 2, songDemoFadeDuration);
+
+        float timeElapsed = 0;
+
+        // Fade in
+        while (timeElapsed <= fadeInDuration)
+        {
+            timeElapsed += Time.deltaTime;
+            float t = timeElapsed / fadeInDuration;
+            waveOut.Volume = Mathf.Lerp(0f, currentVolume, t);
+            yield return null;
+        }
+
+        // Wait for the middle part of the song
+        float temp = Mathf.Clamp(songDemoLength - (2*songDemoFadeDuration), 0,5); // make this shorter when song length is shorter than 2x songdemofade.
+        Debug.Log(temp);
+        if (temp > 0)
+        {
+            yield return new WaitForSecondsRealtime(temp);
+        }
+
+        // Fade out
+        timeElapsed = 0;
+        while (timeElapsed <= fadeOutDuration)
+        {
+            timeElapsed += Time.deltaTime;
+            float t = timeElapsed / fadeOutDuration;
+            waveOut.Volume = Mathf.Lerp(currentVolume, 0f, t);
+            yield return null;
+        }
+
+        SetVolume(currentVolume);
+        StopMusic();
+
+    }
+    private float GetSongDuration(string filePath)
+    {
+        if (string.IsNullOrEmpty(filePath) || !File.Exists(filePath))
+        {
+            Debug.LogError("File path is invalid or does not exist.");
+            return 0f;
+        }
+
+        using (Mp3FileReader reader = new Mp3FileReader(filePath))
+        {
+            return (float)reader.TotalTime.TotalSeconds;
+        }
     }
 
     // Function to read the MP3 file
