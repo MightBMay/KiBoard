@@ -74,7 +74,7 @@ public class SongScore
     public void FinalizeScore()
     {
         bool writeScore = false;
-        SongScore savedScores = GameManager.instance.selectedSongHighScore;
+        SongScore savedScores = GameManager.instance?.selectedSongHighScore ?? new SongScore();
         int curHighestCombo = GameManager.instance.combo.highestCount;
         noteAccuracy = GetNotePercentage(GameManager.instance.totalNotes);
         if (score > savedScores.score) { writeScore = true; }

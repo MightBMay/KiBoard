@@ -25,6 +25,7 @@ public class MP3Handler : MonoBehaviour
     private void Update()
     {
         if (waveOut == null) return;
+        Debug.Log(waveOut.Volume);
     }
     public void SetVolume(float newVolume)
     {
@@ -33,6 +34,7 @@ public class MP3Handler : MonoBehaviour
     }
     public IEnumerator PlaySong(string fileName)
     {
+        StopMusic();
         string filePath = Application.persistentDataPath + "/Songs/" + fileName + ".mp3";
         if (!File.Exists(filePath)) { Debug.LogError($"MP3 File \"{fileName}\" not found at path {filePath}"); yield break; }
         audioThread = new Thread(() => ReadMP3File(filePath));
@@ -54,7 +56,6 @@ public class MP3Handler : MonoBehaviour
     public IEnumerator LoadSongDemo(string fileName)
     {
         StopMusic();
-        float currentVolume = SettingsManager.instance.playerSettings.musicVolume / 100;
         string filePath = Application.persistentDataPath + "/Songs/" + fileName + ".mp3";
         if (!File.Exists(filePath))
         {
@@ -80,6 +81,7 @@ public class MP3Handler : MonoBehaviour
         float timeElapsed = 0;
 
         // Fade in
+        float currentVolume = SettingsManager.instance.playerSettings.musicVolume / 100;
         while (timeElapsed <= fadeInDuration)
         {
             timeElapsed += Time.deltaTime;
@@ -95,6 +97,7 @@ public class MP3Handler : MonoBehaviour
         {
             yield return new WaitForSecondsRealtime(temp);
         }
+        currentVolume = SettingsManager.instance.playerSettings.musicVolume / 100;
 
         // Fade out
         timeElapsed = 0;
@@ -105,7 +108,7 @@ public class MP3Handler : MonoBehaviour
             waveOut.Volume = Mathf.Lerp(currentVolume, 0f, t);
             yield return null;
         }
-
+        currentVolume = SettingsManager.instance.playerSettings.musicVolume / 100;
         SetVolume(currentVolume);
         StopMusic();
 
@@ -159,6 +162,11 @@ public class MP3Handler : MonoBehaviour
     // Called when the application loses or gains focus
     public void StopMusic()
     {
+        if(songDemoCoroutine!= null)
+        {
+            StopCoroutine(songDemoCoroutine);
+            SetVolume(SettingsManager.instance.playerSettings.musicVolume);
+        }
         if (audioThread != null)
         {
             waveOut.Stop();

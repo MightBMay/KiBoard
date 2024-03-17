@@ -97,6 +97,7 @@ public class MidiInput : MonoBehaviour
     /// </summary>
     public void LoadSongFromCurrentSettings()
     {
+        MP3Handler.instance.StopMusic();
         try { TransitionManager.instance.LoadNewScene("GameScene"); }
         catch { SceneManager.LoadScene("GameScene"); }
         var currentSettings = SettingsManager.instance.gameSettings;
@@ -127,6 +128,7 @@ public class MidiInput : MonoBehaviour
     /// <returns>Coroutine for preparing notes and playing the song.</returns>
     public IEnumerator StartSong()
     {
+        
         GameManager.instance.currentSongScore.ClearScore();
         GameManager.instance.combo.ClearCombo();
         var currentSettings = SettingsManager.instance.gameSettings;
