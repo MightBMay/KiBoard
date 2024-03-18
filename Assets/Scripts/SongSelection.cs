@@ -206,7 +206,7 @@ public class SongSelection : MonoBehaviour
     public void StartGame()
     {
         // Check if the current song name is null or empty, and return if true
-        if (string.IsNullOrEmpty(SettingsManager.instance.gameSettings.currentSongName)) { return; }
+        if (string.IsNullOrEmpty(GameSettings.currentSongName)) { return; }
         if (Input.GetKey(KeyCode.LeftShift)) { GameManager.instance.EnterSongEditor(); } // if you hold shift and start, enter the editor.
         else
         {

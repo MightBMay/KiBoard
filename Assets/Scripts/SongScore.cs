@@ -80,7 +80,7 @@ public class SongScore
         if (score > savedScores.score) { writeScore = true; }
         if (savedScores.highestCombo > curHighestCombo) { highestCombo = savedScores.highestCombo; }
         else { highestCombo = curHighestCombo; writeScore = true; }
-        if (writeScore) WriteScoreToJson(SettingsManager.instance.gameSettings.currentSongName);
+        if (writeScore) WriteScoreToJson(GameSettings.currentSongName);
 
     }
 

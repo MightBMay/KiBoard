@@ -25,7 +25,6 @@ public class MP3Handler : MonoBehaviour
     private void Update()
     {
         if (waveOut == null) return;
-        Debug.Log(waveOut.Volume);
     }
     public void SetVolume(float newVolume)
     {

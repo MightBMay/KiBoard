@@ -17,8 +17,8 @@ public class SongItem : MonoBehaviour
     {
         
         OpenSongVersions();
-        SettingsManager.instance.gameSettings.currentSongName = fileGroup.FileName;
-        string songName = SettingsManager.instance.gameSettings.currentSongName;
+        GameSettings.currentSongName = fileGroup.FileName;
+        string songName = GameSettings.currentSongName;
         SongSelection.instance.startButton.interactable = true;
         SongList.instance.SelectItem(this);
         GameManager.instance.selectedSongHighScore = SongScore.ReadFieldsFromJsonFile(songName);

@@ -15,11 +15,6 @@ public class FallingNote : MonoBehaviour
     public float velocity;
 
     /// <summary>
-    /// Name of the note.
-    /// </summary>
-    public string noteName;
-
-    /// <summary>
     /// Maximum Y bound for the falling note.
     /// </summary>
     public float maxYBound;
@@ -29,13 +24,6 @@ public class FallingNote : MonoBehaviour
     /// </summary>
     public bool isLast = false;
 
-    TextMeshProUGUI text;
-
-    private void Start()
-    {
-        text = GetComponentInChildren<TextMeshProUGUI>();
-        text.text = noteName;
-    }
 
     private void Update()
     {

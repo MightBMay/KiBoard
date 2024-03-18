@@ -28,12 +28,18 @@ public class SettingsManager : MonoBehaviour
 [System.Serializable]
 public class GameSettings
 {
-    public string currentSongName;
-    public bool usePedal;
-    public float timeInterval;
-    public bool usePiano;
-    public float bpm;
-    public int noteCount;
+    public static GameSettings instance;
+    public static string currentSongName;
+    public static bool usePedal;
+    public static float timeInterval;
+    public static bool usePiano;
+    public static float bpm = 0;
+    public static int noteCount;
+
+    public GameSettings()
+    {
+        instance = this;
+    }
 
     public void ResetSettings()
     {
@@ -46,5 +52,11 @@ public class GameSettings
 [System.Serializable]
 public class PlayerSettings
 {
+    public static PlayerSettings instance;
     public float musicVolume;
+
+    public PlayerSettings()
+    {
+        instance = this;
+    }
 }

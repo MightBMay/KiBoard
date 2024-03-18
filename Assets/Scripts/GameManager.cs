@@ -28,10 +28,6 @@ public class GameManager : MonoBehaviour
     public SongScore selectedSongHighScore;
     public Combo combo = new();
 
-    [SerializeField] const float preSpawnDistance = 2;
-    [SerializeField] float temp;
-
-
     static Dictionary<string, int> nameToNoteMap = new()
     {
         {"cb", 1 },
@@ -106,7 +102,7 @@ public class GameManager : MonoBehaviour
             screenHeight = 2f * Camera.main.orthographicSize;
             distanceToFall = screenHeight;
             // Calculate the speed based on the distance and duration
-            fallSpeed = preSpawnDistance*(distanceToFall / spawnOffset);
+            fallSpeed = (distanceToFall / spawnOffset);
             SetSongTotalNotes(noteEvents.Count);
             SongScore songScore = new();
         }
@@ -123,11 +119,10 @@ public class GameManager : MonoBehaviour
             // scale/length of the note deterimned by the note duration, and a scaling factor (~~~~~~~~~~~~~~~~~BASE THIS ON MF BPM)``````````````````````````````````````````````````````````````````````````````````
             float noteScale = (noteEvent.endTime - noteEvent.startTime) * modifiedNoteScale;
             //spawn a note and store a reference.
-            GameObject noteInstance = Instantiate(notePrefab, new Vector3(-13.2f + (0.20505f * (noteEvent.noteNumber)), (preSpawnDistance*screenHeight) + (noteScale / 2) - 2.5f, 0f), Quaternion.identity);
+            GameObject noteInstance = Instantiate(notePrefab, new Vector3(-13.2f + (0.20505f * (noteEvent.noteNumber)), (screenHeight) + (noteScale / 2) - 2.5f, 0f), Quaternion.identity);
             FallingNote fallingNote = noteInstance.GetComponent<FallingNote>();
             SpriteRenderer spriteRenderer = noteInstance.GetComponent<SpriteRenderer>();
             fallingNote.velocity = fallSpeed; // set falling speed of the note to the value calculated in AssignSongValues()
-            fallingNote.noteName = ConvertNoteNumberToName(noteEvent.noteNumber);
             fallingNote.maxYBound = spriteRenderer.bounds.max.y; //Used to determine when a note is far enough off screen to be destroyed.
             fallingNote.GetComponentInChildren<NoteShadow>().SetShadowSize(noteScale + 0.075f);
             if (noteHolder != null)
@@ -157,6 +152,7 @@ public class GameManager : MonoBehaviour
     public IEnumerator PrepareNotesKeyboard12(float BPM, List<NoteEventInfo> noteEvents)
     {
         if (noteEvents == null) { Debug.Log("gameloop noteEvents null"); yield break; }
+        
         songTime = -3;
         modifiedNoteScale = baseNoteScalingFactor * (130 / BPM);
         StopReadiedNotes();
@@ -174,7 +170,7 @@ public class GameManager : MonoBehaviour
             screenHeight = 2f * Camera.main.orthographicSize; // base fall distance off camera height.
             distanceToFall = screenHeight;
             // Calculate the speed based on the distance and duration
-            fallSpeed = preSpawnDistance *(distanceToFall / spawnOffset);
+            fallSpeed = (distanceToFall / spawnOffset);
             SetSongTotalNotes(noteEvents.Count); // sets the total note count.
             SongScore songScore = new(); // resets scoring for the song.
         }
@@ -190,11 +186,10 @@ public class GameManager : MonoBehaviour
             // scale/length of the note deterimned by the note duration, and a scaling factor (~~~~~~~~~~~~~~~~~BASE THIS ON MF BPM)``````````````````````````````````````````````````````````````````````````````````
             float noteScale = (noteEvent.endTime - noteEvent.startTime) * modifiedNoteScale;
             //spawn a note and store a reference.
-            GameObject noteInstance = Instantiate(notePrefab, new Vector3(-13.2f + (0.20505f * (48 + (noteEvent.noteNumber % 12))), (preSpawnDistance * screenHeight )+ (noteScale / 2) - 2.5f, 0f), Quaternion.identity);
+            GameObject noteInstance = Instantiate(notePrefab, new Vector3(-13.2f + (0.20505f * (48 + (noteEvent.noteNumber % 12))), ( screenHeight )+ (noteScale / 2) - 2.5f, 0f), Quaternion.identity);
             FallingNote fallingNote = noteInstance.GetComponent<FallingNote>();
             SpriteRenderer spriteRenderer = noteInstance.GetComponent<SpriteRenderer>();
             fallingNote.velocity = fallSpeed; // set falling speed of the note to the value calculated in AssignSongValues()
-            fallingNote.noteName = ConvertNoteNumberToName(noteEvent.noteNumber);
             fallingNote.maxYBound = spriteRenderer.bounds.max.y; //Used to determine when a note is far enough off screen to be destroyed.
             fallingNote.GetComponentInChildren<NoteShadow>().SetShadowSize(noteScale + 0.075f);
 
@@ -244,7 +239,7 @@ public class GameManager : MonoBehaviour
 
         int noteIndex = (noteNumber) % 12;
         string noteName = noteNames[noteIndex];
-        if (SettingsManager.instance.gameSettings.usePiano)
+        if (GameSettings.usePiano)
         {
             return $"{noteName} {octave}";
         }
@@ -325,7 +320,7 @@ public class GameManager : MonoBehaviour
     public void EnterSongEditor()
     {
         inEditor = true;
-        string songName = SettingsManager.instance.gameSettings.currentSongName;
+        string songName = GameSettings.currentSongName;
         if (string.IsNullOrEmpty(songName)) { return; }
         try { TransitionManager.instance.LoadNewScene("SongEditorScene"); }
         catch { SceneManager.LoadScene("SongEditorScene"); }
@@ -343,6 +338,13 @@ public class GameManager : MonoBehaviour
         Debug.Log($"Total Score: {score[0]} |     Perfect: {score[1]}, Good: {score[2]}, Okay: {score[3]}, Extra: {score[4]}, Missed: {score[5]}");
         Debug.Log("Longest Combo: " + combo.highestCount);
         currentSongScore.FinalizeScore();
+    }
+
+    public void RefreshJsonFiles()
+    {
+        NoteEventDataWrapper temp = MidiReadFile.GetNoteEventsFromMidiFileName(GameSettings.currentSongName);
+        MidiDataHandler.SaveNoteEventData(GameSettings.currentSongName, temp.BPM, temp.NoteEvents);
+
     }
 
 

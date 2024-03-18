@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.IO;
 
 
-public static class MidiReadFile { 
+public static class MidiReadFile
+{
 
     static Dictionary<int, NoteEventInfo> activeNotes = new Dictionary<int, NoteEventInfo>();
 
@@ -33,6 +34,69 @@ public static class MidiReadFile {
             return null;
         }
 
+    }
+
+    public static NoteEventDataWrapper GetNoteEventsFromMidiFileName(string songName)
+    {
+        string path = Application.persistentDataPath + "/Songs/" + songName;
+        string jsonFilePath = path + ".json";
+        string midiFilePath = path + ".mid";
+        if (File.Exists(midiFilePath))
+        {
+            return ReadMidiFile(midiFilePath, songName);
+        }
+        else
+        {
+            Debug.LogError("NO .JSON/.MID FILE FOUND WITH NAME: " + songName);
+            return null;
+        }
+    }
+
+    public static int CountNotes(string songName)
+    {
+
+
+        string path = Application.persistentDataPath + "/Songs/" + songName;
+        string jsonFilePath = path + ".json";
+        string midiFilePath = path + ".mid";
+        if (File.Exists(jsonFilePath))
+        {
+            return GetDataFile(songName).NoteEvents.Count;
+        }
+        else if (File.Exists(midiFilePath))
+        {
+            return CountFromMidi();
+        }
+        else
+        {
+            Debug.LogError("NO .JSON/.MID FILE FOUND WITH NAME: " + songName);
+            return -1;
+        }
+
+        int CountFromMidi()
+        {
+            int noteOnCount = 0;
+            string midiFilePath = Application.persistentDataPath + "/Songs/" + songName;
+
+            // Load the MIDI file
+            MidiFile midiFile = new MidiFile(midiFilePath, false);
+
+            // Iterate through all track chunks in the MIDI file
+            foreach (var trackChunk in midiFile.Events)
+            {
+                // Iterate through all MIDI events in the track chunk
+                foreach (var midiEvent in trackChunk)
+                {
+                    // Check if the MIDI event is a NoteOn event
+                    if (midiEvent.CommandCode == MidiCommandCode.NoteOn)
+                    {
+                        noteOnCount++;
+                    }
+                }
+            }
+
+            return noteOnCount;
+        }
     }
 
 
@@ -81,7 +145,6 @@ public static class MidiReadFile {
 
         void ProcessNoteOnEvent(NoteEvent noteOnEvent)//```````````````````````````````````````````````````````modify so if you (somehow ) press a note 2 times before you let go of the first note, it marks its end time.
         {
-            Debug.Log(noteOnEvent.NoteNumber + "" + noteOnEvent.NoteName);
             int noteNumber = noteOnEvent.NoteNumber;
 
             float ticksPerQuarterNote = 96; // Adjust this based on your DAW

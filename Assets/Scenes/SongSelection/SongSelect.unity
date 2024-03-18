@@ -3434,7 +3434,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4721146048424595500, guid: 8713daea6d5d4cb42b89a26c61b32971, type: 3}
       propertyPath: beatsToFall
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4891119375135277128, guid: 8713daea6d5d4cb42b89a26c61b32971, type: 3}
       propertyPath: inputDelay

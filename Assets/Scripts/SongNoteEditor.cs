@@ -295,13 +295,13 @@ public class SongNoteEditor : MonoBehaviour
     public float ConvertYPositionToSongTime(Vector2 position)
     {
         // 1 unit = 1 "beat" or bar on the UI
-        return position.y / (SettingsManager.instance.gameSettings.bpm / 60);
+        return position.y / (GameSettings.bpm / 60);
         // y position / bpm /60 so it is bpS
     }
 
     public Vector2 ConvertNoteEventToNotePosition(NoteEventInfo noteEvent) // finish this to set x position as well.
     {
-        var result = new Vector2(noteEvent.noteNumber * 1, noteEvent.startTime * (SettingsManager.instance.gameSettings.bpm / 60));
+        var result = new Vector2(noteEvent.noteNumber * 1, noteEvent.startTime * (GameSettings.bpm / 60));
         return result;
     }
     Vector2 GetOffsetFromTransform(Vector2 point, Transform referenceTransform)

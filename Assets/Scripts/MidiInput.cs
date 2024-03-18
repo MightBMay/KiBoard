@@ -101,8 +101,9 @@ public class MidiInput : MonoBehaviour
         try { TransitionManager.instance.LoadNewScene("GameScene"); }
         catch { SceneManager.LoadScene("GameScene"); }
         var currentSettings = SettingsManager.instance.gameSettings;
-        NoteEventDataWrapper data = MidiReadFile.GetNoteEventsFromName(currentSettings.currentSongName);
-        currentSettings.bpm = currentSettings.bpm == 0 ? data.BPM : currentSettings.bpm;
+        NoteEventDataWrapper data = MidiReadFile.GetNoteEventsFromName(GameSettings.currentSongName);
+        Debug.Log(data.BPM);
+        GameSettings.bpm = GameSettings.bpm == 0 ? data.BPM : GameSettings.bpm;
         GameManager.instance.ModifyNoteScale(data.BPM);
 
         storedNoteEvents = data.NoteEvents;
@@ -113,7 +114,7 @@ public class MidiInput : MonoBehaviour
 
     public NoteEventDataWrapper GetNoteEventWrapperFromSelectedSong(GameSettings currentSettings)
     {
-        NoteEventDataWrapper data = MidiReadFile.GetNoteEventsFromName(currentSettings.currentSongName);
+        NoteEventDataWrapper data = MidiReadFile.GetNoteEventsFromName(GameSettings.currentSongName);
         storedNoteEvents = data.NoteEvents;
         return data;
     }
@@ -131,19 +132,18 @@ public class MidiInput : MonoBehaviour
         
         GameManager.instance.currentSongScore.ClearScore();
         GameManager.instance.combo.ClearCombo();
-        var currentSettings = SettingsManager.instance.gameSettings;
-        if (currentSettings.usePiano)
+        if (GameSettings.usePiano)
         {
-            GameManager.instance.ModifyNoteScale(SettingsManager.instance.gameSettings.bpm);
-            yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotesPiano(currentSettings.bpm, storedNoteEvents));
+            GameManager.instance.ModifyNoteScale(GameSettings.bpm);
+            yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotesPiano(GameSettings.bpm, storedNoteEvents));
         }
         else
         {
-            GameManager.instance.ModifyNoteScale(SettingsManager.instance.gameSettings.bpm);
-            yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotesKeyboard12(currentSettings.bpm, storedNoteEvents));
+            GameManager.instance.ModifyNoteScale(GameSettings.bpm);
+            yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotesKeyboard12(GameSettings.bpm, storedNoteEvents));
         }
 
-        StartCoroutine(MP3Handler.instance.PlaySong(SongSelection.GetUnderscoreSubstring(currentSettings.currentSongName)));
+        StartCoroutine(MP3Handler.instance.PlaySong(SongSelection.GetUnderscoreSubstring(GameSettings.currentSongName)));
         GameManager.instance.startTimer = true;
     }
     /// <summary>
@@ -154,11 +154,11 @@ public class MidiInput : MonoBehaviour
     public IEnumerator StartSong(List<NoteEventInfo> loadEvents)
     {
         GameManager.instance.currentSongScore.ClearScore();
-        var bpm = SettingsManager.instance.gameSettings.bpm;
+        var bpm = GameSettings.bpm;
         loadEvents.ForEach(noteEvent => noteEvent.noteNumber += 20); // i - for the fucking life of me- cannot figure out why directly processing the midi files makes the note numbers
                                                                    // 20 higher, but i have to do this to match that with the song editor.
 
-        if (SettingsManager.instance.gameSettings.usePiano)
+        if (GameSettings.usePiano)
         {
 
             yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotesPiano(bpm, loadEvents));
@@ -167,7 +167,7 @@ public class MidiInput : MonoBehaviour
         {
             yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotesKeyboard12(bpm, loadEvents));
         }
-        StartCoroutine(MP3Handler.instance.PlaySong(SettingsManager.instance.gameSettings.currentSongName));
+        StartCoroutine(MP3Handler.instance.PlaySong(GameSettings.currentSongName));
         GameManager.instance.startTimer = true;
 
     }
@@ -256,7 +256,7 @@ public class MidiInput : MonoBehaviour
     /// <returns></returns>
     public bool IsNoteCorrect(int noteNumber, float timing, NoteEventInfo storedNote)
     {
-        if (SettingsManager.instance.gameSettings.usePiano) return noteNumber == storedNote.noteNumber && !storedNote.triggered && timing < 0.5f;
+        if (GameSettings.usePiano) return noteNumber == storedNote.noteNumber && !storedNote.triggered && timing < 0.5f;
         return noteNumber % 12 == storedNote.noteNumber % 12 && !storedNote.triggered && timing < 0.5f;
 
     }
