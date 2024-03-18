@@ -281,7 +281,7 @@ public class GameManager : MonoBehaviour
        
         yield return new WaitForSeconds(5f);
         ReturnToSongSelection();
-        SettingsManager.instance.gameSettings.ResetSettings();
+        GameSettings.ResetSettings();
         //`````````````````````````````````````````````````````````````````````````````````````````````````` make this open some sort of ui with retry, back to song selection scene, etc.
     }
     /// <summary>

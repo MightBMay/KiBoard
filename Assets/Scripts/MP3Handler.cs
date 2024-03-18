@@ -80,7 +80,7 @@ public class MP3Handler : MonoBehaviour
         float timeElapsed = 0;
 
         // Fade in
-        float currentVolume = SettingsManager.instance.playerSettings.musicVolume / 100;
+        float currentVolume = PlayerSettings.musicVolume / 100;
         while (timeElapsed <= fadeInDuration)
         {
             timeElapsed += Time.deltaTime;
@@ -96,7 +96,7 @@ public class MP3Handler : MonoBehaviour
         {
             yield return new WaitForSecondsRealtime(temp);
         }
-        currentVolume = SettingsManager.instance.playerSettings.musicVolume / 100;
+        currentVolume = PlayerSettings.musicVolume / 100;
 
         // Fade out
         timeElapsed = 0;
@@ -107,7 +107,7 @@ public class MP3Handler : MonoBehaviour
             waveOut.Volume = Mathf.Lerp(currentVolume, 0f, t);
             yield return null;
         }
-        currentVolume = SettingsManager.instance.playerSettings.musicVolume / 100;
+        currentVolume = PlayerSettings.musicVolume / 100;
         SetVolume(currentVolume);
         StopMusic();
 
@@ -164,7 +164,7 @@ public class MP3Handler : MonoBehaviour
         if(songDemoCoroutine!= null)
         {
             StopCoroutine(songDemoCoroutine);
-            SetVolume(SettingsManager.instance.playerSettings.musicVolume);
+            SetVolume(PlayerSettings.musicVolume);
         }
         if (audioThread != null)
         {

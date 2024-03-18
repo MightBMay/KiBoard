@@ -100,7 +100,6 @@ public class MidiInput : MonoBehaviour
         MP3Handler.instance.StopMusic();
         try { TransitionManager.instance.LoadNewScene("GameScene"); }
         catch { SceneManager.LoadScene("GameScene"); }
-        var currentSettings = SettingsManager.instance.gameSettings;
         NoteEventDataWrapper data = MidiReadFile.GetNoteEventsFromName(GameSettings.currentSongName);
         Debug.Log(data.BPM);
         GameSettings.bpm = GameSettings.bpm == 0 ? data.BPM : GameSettings.bpm;
@@ -112,7 +111,7 @@ public class MidiInput : MonoBehaviour
 
     }
 
-    public NoteEventDataWrapper GetNoteEventWrapperFromSelectedSong(GameSettings currentSettings)
+    public NoteEventDataWrapper GetNoteEventWrapperFromSelectedSong()
     {
         NoteEventDataWrapper data = MidiReadFile.GetNoteEventsFromName(GameSettings.currentSongName);
         storedNoteEvents = data.NoteEvents;
@@ -193,7 +192,7 @@ public class MidiInput : MonoBehaviour
                 }
                 return;
             }
-            SettingsManager.instance.gameSettings.ResetSettings();
+            GameSettings.ResetSettings();
             GameManager.instance.ReturnToSongSelection();
 
         }

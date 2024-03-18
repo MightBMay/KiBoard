@@ -58,7 +58,7 @@ public class SongEditor : MonoBehaviour
 
     private void Start()
     {
-        LoadSongAsEditorNotes(SettingsManager.instance.gameSettings);
+        LoadSongAsEditorNotes();
     }
 
     /// <summary>
@@ -85,9 +85,9 @@ public class SongEditor : MonoBehaviour
 
 
 
-    void LoadSongAsEditorNotes(GameSettings settings)
+    void LoadSongAsEditorNotes()
     {
-        NoteEventDataWrapper notes = MidiInput.instance.GetNoteEventWrapperFromSelectedSong(settings);
+        NoteEventDataWrapper notes = MidiInput.instance.GetNoteEventWrapperFromSelectedSong();
         GameSettings.bpm = notes.BPM;
         foreach (var note in notes.NoteEvents)
         {

@@ -20,7 +20,7 @@ public class SettingsManager : MonoBehaviour
 
     public void SetVolume(float volume)
     {
-        playerSettings.musicVolume = volume;
+        PlayerSettings.musicVolume = volume;
     }
 
 }
@@ -41,7 +41,7 @@ public class GameSettings
         instance = this;
     }
 
-    public void ResetSettings()
+    public static void ResetSettings()
     {
         currentSongName = "";
         bpm = 0;
@@ -53,7 +53,7 @@ public class GameSettings
 public class PlayerSettings
 {
     public static PlayerSettings instance;
-    public float musicVolume;
+    public static float musicVolume;
 
     public PlayerSettings()
     {

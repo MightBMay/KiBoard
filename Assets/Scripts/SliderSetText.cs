@@ -12,7 +12,7 @@ public class SliderSetText : MonoBehaviour
 
     private void Start()
     {
-        float volume = SettingsManager.instance.playerSettings.musicVolume;
+        float volume = PlayerSettings.musicVolume;
         SetText(volume);
         GetComponent<Slider>().value = volume;
     }
