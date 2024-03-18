@@ -29,23 +29,28 @@ public class SettingsManager : MonoBehaviour
 public class GameSettings
 {
     public static GameSettings instance;
-    public static string currentSongName;
-    public static bool usePedal;
-    public static float timeInterval;
-    public static bool usePiano;
+    public static string currentSongName = "";
+    public static bool usePedal = false;
+    public static bool usePiano = true;
     public static float bpm = 0;
-    public static int noteCount;
+    public static int noteCount = 0;
 
     public GameSettings()
     {
         instance = this;
     }
 
-    public static void ResetSettings()
+    public static void ResetSettings(bool fullReset)
     {
         currentSongName = "";
         bpm = 0;
         noteCount = 0;
+
+        if (fullReset)
+        {
+            usePedal = false;
+            usePiano = true;
+        }
     }
 }
 
@@ -53,7 +58,7 @@ public class GameSettings
 public class PlayerSettings
 {
     public static PlayerSettings instance;
-    public static float musicVolume;
+    public static float musicVolume = 20;
 
     public PlayerSettings()
     {
