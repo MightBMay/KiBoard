@@ -43,14 +43,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: UI
+    uniqueID: 1137413269
+    locked: 0
   - name: Notes
     uniqueID: 638689905
     locked: 0
   - name: Piano
     uniqueID: 485089349
-    locked: 0
-  - name: UI
-    uniqueID: 1137413269
     locked: 0
   - name: Transition
     uniqueID: 1175418077

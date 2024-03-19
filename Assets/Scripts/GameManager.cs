@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
         void AssignSongValues()
         {
             spawnOffset = (beatsToFall * 60f / BPM);
-            screenHeight = 2f * Camera.main.orthographicSize;
+            screenHeight = 80;//2f * Camera.main.orthographicSize;
             distanceToFall = screenHeight;
             // Calculate the speed based on the distance and duration
             fallSpeed = (distanceToFall / spawnOffset);
@@ -167,7 +167,7 @@ public class GameManager : MonoBehaviour
         void AssignSongValues()
         {
             spawnOffset = (beatsToFall * 60f / BPM); // notes will spawn beatstofall #beats before reaching the hit spot.
-            screenHeight = 2f * Camera.main.orthographicSize; // base fall distance off camera height.
+            screenHeight = 80; // base fall distance off camera height.
             distanceToFall = screenHeight;
             // Calculate the speed based on the distance and duration
             fallSpeed = (distanceToFall / spawnOffset);
