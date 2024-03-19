@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public bool inEditor;
     public float songTime;
     public bool startTimer;
-    public int beatsToFall=4;
+    public int beatsToFall = 4;
 
     public int totalNotes;
     float screenHeight;
@@ -28,8 +28,7 @@ public class GameManager : MonoBehaviour
     public SongScore currentSongScore;
     public SongScore selectedSongHighScore;
     public Combo combo = new();
-    bool exitOnClick = false;
-
+   
     static Dictionary<string, int> nameToNoteMap = new()
     {
         {"cb", 1 },
@@ -154,7 +153,7 @@ public class GameManager : MonoBehaviour
     public IEnumerator PrepareNotesKeyboard12(float BPM, List<NoteEventInfo> noteEvents)
     {
         if (noteEvents == null) { Debug.Log("gameloop noteEvents null"); yield break; }
-        
+
         songTime = -3;
         modifiedNoteScale = baseNoteScalingFactor * (130 / BPM);
         StopReadiedNotes();
@@ -188,7 +187,7 @@ public class GameManager : MonoBehaviour
             // scale/length of the note deterimned by the note duration, and a scaling factor (~~~~~~~~~~~~~~~~~BASE THIS ON MF BPM)``````````````````````````````````````````````````````````````````````````````````
             float noteScale = (noteEvent.endTime - noteEvent.startTime) * modifiedNoteScale;
             //spawn a note and store a reference.
-            GameObject noteInstance = Instantiate(notePrefab, new Vector3(-13.2f + (0.20505f * (48 + (noteEvent.noteNumber % 12))), ( screenHeight )+ (noteScale / 2) - 2.5f, 0f), Quaternion.identity);
+            GameObject noteInstance = Instantiate(notePrefab, new Vector3(-13.2f + (0.20505f * (48 + (noteEvent.noteNumber % 12))), (screenHeight) + (noteScale / 2) - 2.5f, 0f), Quaternion.identity);
             FallingNote fallingNote = noteInstance.GetComponent<FallingNote>();
             SpriteRenderer spriteRenderer = noteInstance.GetComponent<SpriteRenderer>();
             fallingNote.velocity = fallSpeed; // set falling speed of the note to the value calculated in AssignSongValues()
@@ -279,8 +278,8 @@ public class GameManager : MonoBehaviour
     public IEnumerator OnSongEnd()
     {
         startTimer = false;
-        FinalizeScore( currentSongScore.GetScoreArray(totalNotes));
-       
+        FinalizeScore(currentSongScore.GetScoreArray(totalNotes));
+
         yield return new WaitForSeconds(5f);
         ReturnToSongSelection();
         GameSettings.ResetSettings(false);
@@ -341,19 +340,7 @@ public class GameManager : MonoBehaviour
         MidiDataHandler.SaveNoteEventData(GameSettings.currentSongName, temp.BPM, temp.NoteEvents);
 
     }
-    Coroutine exitButtonCoroutine;
-    public void ExitToDesktop(TextMeshProUGUI text)
-    {
-        if (exitOnClick) { Application.Quit(); }
-        else { exitButtonCoroutine = StartCoroutine(ResetExitButton(text)); }
-    }
-    IEnumerator ResetExitButton(TextMeshProUGUI text)
-    {
-        exitOnClick = true;
-        yield return new WaitForSecondsRealtime(5f);
-        text.text = "Exit";
-        exitOnClick = false;
-    }
+
 
 }
 
