@@ -3579,7 +3579,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1741563221}
   m_PlaneDistance: 100
   m_PixelPerfect: 1
   m_ReceivesEvents: 1
@@ -7396,8 +7396,8 @@ Camera:
   m_GameObject: {fileID: 1741563219}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 1, g: 0.6666667, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -7584,7 +7584,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 7.400007}
+  m_AnchoredPosition: {x: 0, y: 7.4000053}
   m_SizeDelta: {x: 0, y: -14.799987}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1774353560
@@ -7930,7 +7930,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -26.86501, y: -43.199997}
+  m_AnchoredPosition: {x: -26.865005, y: -43.199997}
   m_SizeDelta: {x: -53.72998, y: -86.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1844967144
@@ -9654,6 +9654,18 @@ PrefabInstance:
     - target: {fileID: 4862753890084886504, guid: c56bdef3b3a7f1146a646e9348326e13, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5449399625689053571, guid: c56bdef3b3a7f1146a646e9348326e13, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1741563221}
+    - target: {fileID: 5449399625689053571, guid: c56bdef3b3a7f1146a646e9348326e13, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5449399625689053571, guid: c56bdef3b3a7f1146a646e9348326e13, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1175418077
       objectReference: {fileID: 0}
     - target: {fileID: 6333892562893241397, guid: c56bdef3b3a7f1146a646e9348326e13, type: 3}
       propertyPath: m_Name

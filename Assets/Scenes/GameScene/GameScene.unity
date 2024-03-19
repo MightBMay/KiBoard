@@ -1982,7 +1982,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 58c5bc8b918b90b4f9d25a88edd14f5d, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 5c6229bb81e3bab4c89c5e09a93d734b, type: 2}
 --- !u!4 &154863498
 Transform:
   m_ObjectHideFlags: 0
@@ -14321,6 +14321,10 @@ PrefabInstance:
     - target: {fileID: 6333892562893241397, guid: c56bdef3b3a7f1146a646e9348326e13, type: 3}
       propertyPath: m_Name
       value: SceneTransitions
+      objectReference: {fileID: 0}
+    - target: {fileID: 6333892562893241397, guid: c56bdef3b3a7f1146a646e9348326e13, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
