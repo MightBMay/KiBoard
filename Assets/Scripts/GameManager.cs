@@ -2,6 +2,7 @@ using NAudio.Midi;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
     public SongScore currentSongScore;
     public SongScore selectedSongHighScore;
     public Combo combo = new();
+    bool exitOnClick = false;
 
     static Dictionary<string, int> nameToNoteMap = new()
     {
@@ -339,7 +341,19 @@ public class GameManager : MonoBehaviour
         MidiDataHandler.SaveNoteEventData(GameSettings.currentSongName, temp.BPM, temp.NoteEvents);
 
     }
-
+    Coroutine exitButtonCoroutine;
+    public void ExitToDesktop(TextMeshProUGUI text)
+    {
+        if (exitOnClick) { Application.Quit(); }
+        else { exitButtonCoroutine = StartCoroutine(ResetExitButton(text)); }
+    }
+    IEnumerator ResetExitButton(TextMeshProUGUI text)
+    {
+        exitOnClick = true;
+        yield return new WaitForSecondsRealtime(5f);
+        text.text = "Exit";
+        exitOnClick = false;
+    }
 
 }
 
