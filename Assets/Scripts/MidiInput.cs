@@ -192,7 +192,7 @@ public class MidiInput : MonoBehaviour
                 }
                 return;
             }
-            GameSettings.ResetSettings();
+            GameSettings.ResetSettings(false);
             GameManager.instance.ReturnToSongSelection();
 
         }

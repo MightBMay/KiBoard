@@ -211,7 +211,7 @@ public class SongSelection : MonoBehaviour
         else
         {
             // Load the song from current game settings using the GameManager
-            GameManager.instance.LoadSongFromCurrentGameSettings();
+            MidiInput.instance.LoadSongFromCurrentSettings();
         }
     }
 

@@ -281,15 +281,8 @@ public class GameManager : MonoBehaviour
        
         yield return new WaitForSeconds(5f);
         ReturnToSongSelection();
-        GameSettings.ResetSettings();
+        GameSettings.ResetSettings(false);
         //`````````````````````````````````````````````````````````````````````````````````````````````````` make this open some sort of ui with retry, back to song selection scene, etc.
-    }
-    /// <summary>
-    /// Loads the song based on the current game settings.
-    /// </summary>
-    public void LoadSongFromCurrentGameSettings()
-    {
-        MidiInput.instance.LoadSongFromCurrentSettings();
     }
     /// <summary>
     /// Returns to the song selection scene.
