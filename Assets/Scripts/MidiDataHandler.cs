@@ -3,10 +3,9 @@ using NAudio.Midi;
 using System.Collections.Generic;
 using System.IO;
 using static MidiReadFile;
+using System.Linq;
+using System.IO.Compression;
 
-/// <summary>
-/// Handles saving and loading MIDI data.
-/// </summary>
 public static class MidiDataHandler
 {
     /// <summary>
@@ -50,13 +49,15 @@ public static class MidiDataHandler
         }
 
         // Write the JSON string to the file
-        File.WriteAllText(folderPath + fileName + extension, json);
+        SaveToFileCompressed(json, folderPath + fileName + extension);
         return wrapper;
     }
-    public static NoteEventDataWrapper SaveNoteEventData(string fileName, string extension, NoteEventDataWrapper wrapper)
+
+    public static NoteEventDataWrapper SaveNoteEventData(string fileName, string extension,NoteEventDataWrapper wrapper)
     {
         if (wrapper == null) { Debug.LogError("Data Save Error: NoteEventDataWrapper Null"); return null; }
         // Create a wrapper class to hold both BPM and NoteEventInfo
+
 
         // Convert the wrapper to a JSON string
         string json = JsonUtility.ToJson(wrapper);
@@ -70,7 +71,7 @@ public static class MidiDataHandler
         }
 
         // Write the JSON string to the file
-        File.WriteAllText(folderPath + fileName + extension, json);
+        SaveToFileCompressed(json, folderPath + fileName + extension);
         return wrapper;
     }
 
@@ -89,7 +90,7 @@ public static class MidiDataHandler
         if (File.Exists(filePath))
         {
             // Read the JSON string from the file
-            string json = File.ReadAllText(filePath);
+            string json = LoadFromFileCompressed(filePath);
 
             // Convert the JSON string back to a list of NoteEventInfo
             return JsonUtility.FromJson<NoteEventDataWrapper>(json);
@@ -98,6 +99,34 @@ public static class MidiDataHandler
         {
             Debug.LogWarning("Note event data file does not exist.");
             return new NoteEventDataWrapper();
+        }
+    }
+
+    private static void SaveToFileCompressed(string data, string filePath)
+    {
+        using (FileStream fileStream = new FileStream(filePath, FileMode.Create))
+        {
+            using (GZipStream zipStream = new GZipStream(fileStream, CompressionMode.Compress))
+            {
+                using (StreamWriter writer = new StreamWriter(zipStream))
+                {
+                    writer.Write(data);
+                }
+            }
+        }
+    }
+
+    private static string LoadFromFileCompressed(string filePath)
+    {
+        using (FileStream fileStream = new FileStream(filePath, FileMode.Open))
+        {
+            using (GZipStream zipStream = new GZipStream(fileStream, CompressionMode.Decompress))
+            {
+                using (StreamReader reader = new StreamReader(zipStream))
+                {
+                    return reader.ReadToEnd();
+                }
+            }
         }
     }
 }

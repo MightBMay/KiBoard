@@ -82,7 +82,6 @@ public static class MidiReadFile
         int CountFromMidi()
         {
             int noteOnCount = 0;
-            string midiFilePath = Application.persistentDataPath + "/Songs/" + songName;
 
             // Load the MIDI file
             MidiFile midiFile = new MidiFile(midiFilePath, false);

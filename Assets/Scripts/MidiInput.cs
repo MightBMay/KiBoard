@@ -127,7 +127,7 @@ public class MidiInput : MonoBehaviour
     /// <returns>Coroutine for preparing notes and playing the song.</returns>
     public IEnumerator StartSong()
     {
-        
+
         GameManager.instance.currentSongScore.ClearScore();
         GameManager.instance.combo.ClearCombo();
         if (GameSettings.usePiano)
@@ -154,7 +154,7 @@ public class MidiInput : MonoBehaviour
         GameManager.instance.currentSongScore.ClearScore();
         var bpm = GameSettings.bpm;
         loadEvents.ForEach(noteEvent => noteEvent.noteNumber += 20); // i - for the fucking life of me- cannot figure out why directly processing the midi files makes the note numbers
-                                                                   // 20 higher, but i have to do this to match that with the song editor.
+                                                                     // 20 higher, but i have to do this to match that with the song editor.
 
         if (GameSettings.usePiano)
         {
@@ -184,8 +184,8 @@ public class MidiInput : MonoBehaviour
             {
                 FindObjectOfType<SongEditor>().noteHolder.gameObject.SetActive(true);
                 FindObjectOfType<SongNoteEditor>().enabled = true;
-                
-                foreach(FallingNote note in FindObjectsOfType<FallingNote>())
+
+                foreach (FallingNote note in FindObjectsOfType<FallingNote>())
                 {
                     Destroy(note.gameObject);
                 }
@@ -229,8 +229,8 @@ public class MidiInput : MonoBehaviour
         if (GameManager.instance.songTime >= 0)
         {
             GameManager.instance.UpdatePlayerScore(score);
-            Replay.UpdateReplay(note, GameManager.instance.songTime);
         }
+        Replay.UpdateReplay(note, GameManager.instance.songTime);
 
 
 
@@ -274,10 +274,8 @@ public class MidiInput : MonoBehaviour
         if (!inGame || isPedalPressed) { return; }
         enabledKeys[note - 21] = false;
         SpawnPiano.instance.UpdateKeyColours(note - 21, false);
-        if (GameManager.instance.songTime >= 0)
-        {
-            Replay.UpdateReplay(note, GameManager.instance.songTime);
-        }
+        Replay.UpdateReplay(note, GameManager.instance.songTime);
+
     }
 
     /// <summary>
