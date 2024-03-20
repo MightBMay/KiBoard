@@ -28,7 +28,7 @@ public class MP3Handler : MonoBehaviour
     }
     public void SetVolume(float newVolume)
     {
-        if(waveOut==null) return;
+        if (waveOut == null) return;
         waveOut.Volume = newVolume / 100;
     }
     public IEnumerator PlaySong(string fileName)
@@ -46,7 +46,7 @@ public class MP3Handler : MonoBehaviour
 
     public void StartSongDemo(string fileName)
     {
-        if(songDemoCoroutine != null)
+        if (songDemoCoroutine != null)
         {
             StopCoroutine(songDemoCoroutine);
         }
@@ -90,7 +90,7 @@ public class MP3Handler : MonoBehaviour
         }
 
         // Wait for the middle part of the song
-        float temp = Mathf.Clamp(songDemoLength - (2*songDemoFadeDuration), 0,5); // make this shorter when song length is shorter than 2x songdemofade.
+        float temp = Mathf.Clamp(songDemoLength - (2 * songDemoFadeDuration), 0, 5); // make this shorter when song length is shorter than 2x songdemofade.
         Debug.Log(temp);
         if (temp > 0)
         {
@@ -161,7 +161,7 @@ public class MP3Handler : MonoBehaviour
     // Called when the application loses or gains focus
     public void StopMusic()
     {
-        if(songDemoCoroutine!= null)
+        if (songDemoCoroutine != null)
         {
             StopCoroutine(songDemoCoroutine);
             SetVolume(PlayerSettings.musicVolume);
@@ -190,5 +190,10 @@ public class MP3Handler : MonoBehaviour
         // Abort the audio playback thread
 
     }
+
+
 }
+
+
+
 

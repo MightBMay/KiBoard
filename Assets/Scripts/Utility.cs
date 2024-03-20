@@ -11,5 +11,7 @@ public class Utility : MonoBehaviour
         return min + (input * (max - min));
     }
 
+
+
 }
 
