@@ -10,6 +10,7 @@ public class GameUI : MonoBehaviour
     [SerializeField] GameObject textPrefab;
     [SerializeField] float fadeoutTimer;
     [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] TextMeshProUGUI comboText;
     [SerializeField] Slider comboBar;
     [SerializeField] Gradient comboGradient;
     private void Awake()
@@ -83,11 +84,13 @@ public class GameUI : MonoBehaviour
     {
         // Assuming the input value ranges from 1 to 3
         float normalizedValue = (value - 1) / (3 - 1);
+        float roundedNormalizedValue = Mathf.Round(value * 10) / 10;
         comboBar.value = normalizedValue;
         ColorBlock newColours = new ColorBlock();
         newColours.disabledColor = comboGradient.Evaluate(normalizedValue);
         newColours.colorMultiplier = 1;
         comboBar.colors = newColours;
+        comboText.text = (roundedNormalizedValue).ToString() + "X";
     }
 
 }

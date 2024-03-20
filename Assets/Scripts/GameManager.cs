@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -85,10 +86,11 @@ public class GameManager : MonoBehaviour
     public IEnumerator PrepareNotesPiano(float BPM, List<NoteEventInfo> noteEvents) // TEMP 0.5f, change to 5.4f i think`````````````````````````````````````````````````````````````````````````````````````````````````````````
     {
         if (noteEvents == null) { Debug.Log("gameloop noteEvents null"); yield break; }
-        songTime = -3;
-        modifiedNoteScale = baseNoteScalingFactor * (130 / BPM);
+       
         StopReadiedNotes();
         AssignSongValues();
+        songTime = -spawnOffset - 0.1f;
+        modifiedNoteScale = baseNoteScalingFactor * (130 / BPM);
 
         yield return new WaitUntil(() => (Input.anyKeyDown || MidiInput.instance.GetAnyNoteActive()));
 
@@ -100,7 +102,7 @@ public class GameManager : MonoBehaviour
         void AssignSongValues()
         {
             spawnOffset = (beatsToFall * 60f / BPM);
-            screenHeight = 80;//2f * Camera.main.orthographicSize;
+            screenHeight = 40.16f;//2f * Camera.main.orthographicSize;
             distanceToFall = screenHeight;
             // Calculate the speed based on the distance and duration
             fallSpeed = (distanceToFall / spawnOffset);

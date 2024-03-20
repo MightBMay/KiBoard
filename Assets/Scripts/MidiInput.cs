@@ -16,7 +16,7 @@ public class MidiInput : MonoBehaviour
     public bool isPedalPressed;
     public bool[] enabledKeys = new bool[88];
     public bool inGame = false;
-    public float inputDelay;
+    public float inputDelay = 0.125f;
 
     // Define the mapping between keyboard keys and MIDI note numbers
     Dictionary<KeyCode, int> keyboard12 = new Dictionary<KeyCode, int>
@@ -101,7 +101,6 @@ public class MidiInput : MonoBehaviour
         try { TransitionManager.instance.LoadNewScene("GameScene"); }
         catch { SceneManager.LoadScene("GameScene"); }
         NoteEventDataWrapper data = MidiReadFile.GetNoteEventsFromName(GameSettings.currentSongName);
-        Debug.Log(data.BPM);
         GameSettings.bpm = GameSettings.bpm == 0 ? data.BPM : GameSettings.bpm;
         GameManager.instance.ModifyNoteScale(data.BPM);
 
