@@ -335,16 +335,13 @@ public class GameManager : MonoBehaviour
         Debug.Log($"Total Score: {score[0]} |     Perfect: {score[1]}, Good: {score[2]}, Okay: {score[3]}, Extra: {score[4]}, Missed: {score[5]}");
         Debug.Log("Longest Combo: " + combo.highestCount);
         currentSongScore.FinalizeScore();
-        foreach(NoteEventInfo note in Replay.instance.replayNoteEvents.NoteEvents)
-        {
-            Debug.Log($"{note.noteNumber}:     {note.startTime}| {note.endTime}");
-        }
+        MidiDataHandler.SaveNoteEventData(GameSettings.currentSongName, ".replay", Replay.instance.replayNoteData);
     }
 
     public void RefreshJsonFiles()
     {
         NoteEventDataWrapper temp = MidiReadFile.GetNoteEventsFromMidiFileName(GameSettings.currentSongName);
-        MidiDataHandler.SaveNoteEventData(GameSettings.currentSongName, temp.BPM, temp.NoteEvents);
+        MidiDataHandler.SaveNoteEventData(GameSettings.currentSongName,".json", temp.BPM, temp.NoteEvents);
 
     }
     

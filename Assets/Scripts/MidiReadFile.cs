@@ -22,7 +22,7 @@ public static class MidiReadFile
         string midiFilePath = path + ".mid";
         if (File.Exists(jsonFilePath))
         {
-            return GetDataFile(songName);
+            return GetDataFile(songName, ".json");
         }
         else if (File.Exists(midiFilePath))
         {
@@ -33,6 +33,12 @@ public static class MidiReadFile
             Debug.LogError("NO .JSON/.MID FILE FOUND WITH NAME: " + songName);
             return null;
         }
+
+    }
+    public static NoteEventDataWrapper GetNoteEventsFromReplay(string replayName, string extension = ".replay")
+    {
+        string path = Application.persistentDataPath + "/Replay/" + replayName + ".replay";
+        return GetDataFile(replayName, extension);
 
     }
 
@@ -61,7 +67,7 @@ public static class MidiReadFile
         string midiFilePath = path + ".mid";
         if (File.Exists(jsonFilePath))
         {
-            return GetDataFile(songName).NoteEvents.Count;
+            return GetDataFile(songName,".json").NoteEvents.Count;
         }
         else if (File.Exists(midiFilePath))
         {
@@ -100,9 +106,9 @@ public static class MidiReadFile
     }
 
 
-    public static NoteEventDataWrapper GetDataFile(string jsonFilePath)
+    public static NoteEventDataWrapper GetDataFile(string jsonFilePath, string extension)
     {
-        return MidiDataHandler.GetJSONData(jsonFilePath);
+        return MidiDataHandler.GetJSONData(jsonFilePath, extension);
     }
 
     static NoteEventDataWrapper ReadMidiFile(string midiFilePath, string songName)
@@ -141,7 +147,7 @@ public static class MidiReadFile
             }
         }
         if (bpm == 0) { Debug.LogError("BPM WAS NOT FOUND/ IS 0."); return null; }
-        return MidiDataHandler.SaveNoteEventData(songName, bpm, noteEvents);
+        return MidiDataHandler.SaveNoteEventData(songName,".json", bpm, noteEvents);
 
         void ProcessNoteOnEvent(NoteEvent noteOnEvent)//```````````````````````````````````````````````````````modify so if you (somehow ) press a note 2 times before you let go of the first note, it marks its end time.
         {
