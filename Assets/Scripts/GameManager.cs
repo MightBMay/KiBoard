@@ -101,6 +101,7 @@ public class GameManager : MonoBehaviour
 
         void AssignSongValues()
         {
+            Replay.StartReplayCapture();
             spawnOffset = (beatsToFall * 60f / BPM);
             screenHeight = 40.16f;//2f * Camera.main.orthographicSize;
             distanceToFall = screenHeight;
@@ -334,6 +335,10 @@ public class GameManager : MonoBehaviour
         Debug.Log($"Total Score: {score[0]} |     Perfect: {score[1]}, Good: {score[2]}, Okay: {score[3]}, Extra: {score[4]}, Missed: {score[5]}");
         Debug.Log("Longest Combo: " + combo.highestCount);
         currentSongScore.FinalizeScore();
+        foreach(NoteEventInfo note in Replay.instance.replayNoteEvents.NoteEvents)
+        {
+            Debug.Log($"{note.noteNumber}:     {note.startTime}| {note.endTime}");
+        }
     }
 
     public void RefreshJsonFiles()
@@ -342,8 +347,10 @@ public class GameManager : MonoBehaviour
         MidiDataHandler.SaveNoteEventData(GameSettings.currentSongName, temp.BPM, temp.NoteEvents);
 
     }
+    
 
 
 }
+
 
 

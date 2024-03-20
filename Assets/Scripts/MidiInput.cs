@@ -226,7 +226,11 @@ public class MidiInput : MonoBehaviour
         GameManager.instance.combo.ChangeMultiplier(score);
 
         SpawnPiano.instance.UpdateKeyColours(note - 21, true, score);
-        if(GameManager.instance.songTime >=0) GameManager.instance.UpdatePlayerScore(score);
+        if (GameManager.instance.songTime >= 0)
+        {
+            GameManager.instance.UpdatePlayerScore(score);
+            Replay.UpdateReplay(note, GameManager.instance.songTime);
+        }
 
 
 
@@ -270,6 +274,10 @@ public class MidiInput : MonoBehaviour
         if (!inGame || isPedalPressed) { return; }
         enabledKeys[note - 21] = false;
         SpawnPiano.instance.UpdateKeyColours(note - 21, false);
+        if (GameManager.instance.songTime >= 0)
+        {
+            Replay.UpdateReplay(note, GameManager.instance.songTime);
+        }
     }
 
     /// <summary>

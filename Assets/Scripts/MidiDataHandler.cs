@@ -95,4 +95,14 @@ public class NoteEventDataWrapper
     /// The list of NoteEventInfo representing MIDI notes.
     /// </summary>
     public List<NoteEventInfo> NoteEvents;
+
+    public void AddNewNote(int noteNumber, float startTime, float endTime)
+    {
+        NoteEvents.Add(new NoteEventInfo(noteNumber, startTime, endTime));
+    }
+    public void Reset()
+    {
+        BPM = Mathf.NegativeInfinity;
+        NoteEvents.Clear();
+    }
 }
