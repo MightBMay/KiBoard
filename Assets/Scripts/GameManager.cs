@@ -314,7 +314,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Enters the song editor mode.
     /// </summary>
-    public void EnterSongEditor()
+    /*public void EnterSongEditor()
     {
         inEditor = true;
         string songName = GameSettings.currentSongName;
@@ -322,7 +322,7 @@ public class GameManager : MonoBehaviour
         try { TransitionManager.instance.LoadNewScene("SongEditorScene"); }
         catch { SceneManager.LoadScene("SongEditorScene"); }
         MidiInput.instance.GetBPM(songName);
-    }
+    }*/
     /// <summary>
     /// Modifies the note scale based on the BPM (Beats Per Minute).
     /// </summary>

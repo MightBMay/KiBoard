@@ -9,12 +9,6 @@ public static class MidiReadFile
 
     static Dictionary<int, NoteEventInfo> activeNotes = new Dictionary<int, NoteEventInfo>();
 
-
-
-
-
-
-
     public static NoteEventDataWrapper GetNoteEventsFromName(string songName)
     {
         string path = Application.persistentDataPath + "/Songs/" + songName;
@@ -37,8 +31,16 @@ public static class MidiReadFile
     }
     public static NoteEventDataWrapper GetNoteEventsFromReplay(string replayName, string extension = ".replay")
     {
-        string path = Application.persistentDataPath + "/Replay/" + replayName + ".replay";
-        return GetDataFile(replayName, extension);
+        string path = Application.persistentDataPath + "/Replays/" + replayName + ".replay";
+        if (File.Exists(path))
+        {
+            return GetDataFile(replayName, extension);
+        }
+        else
+        {
+            Debug.Log("no file at path " + path);
+            return GetNoteEventsFromName(replayName);
+        }
 
     }
 

@@ -98,7 +98,7 @@ public static class MidiDataHandler
         else
         {
             Debug.LogWarning("Note event data file does not exist.");
-            return new NoteEventDataWrapper();
+            return null;
         }
     }
 

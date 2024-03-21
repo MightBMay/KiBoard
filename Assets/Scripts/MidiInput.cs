@@ -95,12 +95,15 @@ public class MidiInput : MonoBehaviour
     /// <summary>
     /// Loads the selected song for gameplay.
     /// </summary>
-    public void LoadSongFromCurrentSettings()
+    public void LoadSongFromCurrentSettings(bool isReplay)
     {
         MP3Handler.instance.StopMusic();
         try { TransitionManager.instance.LoadNewScene("GameScene"); }
         catch { SceneManager.LoadScene("GameScene"); }
-        NoteEventDataWrapper data = MidiReadFile.GetNoteEventsFromName(GameSettings.currentSongName);
+        NoteEventDataWrapper data;
+        string songName = GameSettings.currentSongName;
+        if (isReplay) { data = MidiReadFile.GetNoteEventsFromReplay(GameSettings.currentSongName, ".replay"); }
+        else { data = MidiReadFile.GetNoteEventsFromName(songName); }
         GameSettings.bpm = GameSettings.bpm == 0 ? data.BPM : GameSettings.bpm;
         GameManager.instance.ModifyNoteScale(data.BPM);
 
