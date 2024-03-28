@@ -81,7 +81,7 @@ public class SongSelection : MonoBehaviour
         }
         else
         { // if directory not found, Log the error, create the directory, and continue.
-            Debug.LogError("Directory not found: " + directoryPath);
+            Debug.LogError("Directory not found: " + directoryPath+". Creating Directory.");
             Directory.CreateDirectory(directoryPath);
             goto CreateSongsFolder;
         }

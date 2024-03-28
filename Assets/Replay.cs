@@ -6,6 +6,8 @@ using UnityEngine;
 public class Replay : MonoBehaviour
 {
     public static Replay instance;
+
+    public NoteEventDataWrapper replayNoteData;
     private void Awake()
     {
         if(instance == null)
@@ -15,7 +17,6 @@ public class Replay : MonoBehaviour
         else { Destroy(this); }
     }
 
-    public NoteEventDataWrapper replayNoteData;
     public static void StartReplayCapture()
     {
         ClearReplay();

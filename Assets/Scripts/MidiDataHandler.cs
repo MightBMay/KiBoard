@@ -53,7 +53,7 @@ public static class MidiDataHandler
         return wrapper;
     }
 
-    public static NoteEventDataWrapper SaveNoteEventData(string fileName, string extension,NoteEventDataWrapper wrapper)
+    public static NoteEventDataWrapper SaveNoteEventData(string fileName, string extension, NoteEventDataWrapper wrapper)
     {
         if (wrapper == null) { Debug.LogError("Data Save Error: NoteEventDataWrapper Null"); return null; }
         // Create a wrapper class to hold both BPM and NoteEventInfo
@@ -69,10 +69,25 @@ public static class MidiDataHandler
         {
             Directory.CreateDirectory(folderPath);
         }
+        int versionCount = 0;
+        while (true)
+        {
+            Debug.Log($"{folderPath}{fileName}_{versionCount}{extension}");
+            if (!File.Exists($"{folderPath}{fileName}_{versionCount}{extension}"))
+            {
+                SaveToFileCompressed(json, $"{folderPath}{fileName}_{versionCount}{extension}");
+                return wrapper;
+            }
+            else
+            {
+
+                versionCount++;
+            }
+        }
 
         // Write the JSON string to the file
-        SaveToFileCompressed(json, folderPath + fileName + extension);
-        return wrapper;
+
+
     }
 
     /// <summary>
