@@ -124,6 +124,11 @@ public class MidiInput : MonoBehaviour
     {
         return MidiReadFile.GetNoteEventsFromName(songName).BPM; // yeah, its inefficient, but im lazy.
     }
+
+    public void StartSongCoroutine()
+    {
+        StartCoroutine(StartSong());
+    }
     /// <summary>
     /// Starts playing the loaded song.
     /// </summary>

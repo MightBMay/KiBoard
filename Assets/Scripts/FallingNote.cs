@@ -39,7 +39,7 @@ public class FallingNote : MonoBehaviour
         // Start the song end coroutine if this is the last falling note being destroyed
         if (isLast)
         {
-            GameManager.instance.StartCoroutine(GameManager.instance.OnSongEnd());
+            GameManager.instance.OnSongEnd();
             GameManager.instance.modifiedNoteScale = 0;
         }
     }

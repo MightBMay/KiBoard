@@ -29,30 +29,31 @@ public class GameManager : MonoBehaviour
     public SongScore currentSongScore;
     public SongScore selectedSongHighScore;
     public Combo combo = new();
-   
+    [SerializeField] string scoreString;
+
     static Dictionary<string, int> nameToNoteMap = new()
     {
-        {"cb", 1 },
-        {"c", 1 },
-        {"c#", 2 },
-        {"db", 2 },
-        {"d", 3 },
-        {"d#", 4 },
-        {"eb", 4 },
-        {"e", 5 },
-        {"e#", 6 },
-        {"fb", 5 },
-        {"f", 6 },
-        {"f#", 7 },
-        {"gb", 7 },
-        {"g", 8 },
-        {"g#", 9 },
-        {"ab", 9 },
-        {"a", 10 },
-        {"a#", 11 },
-        {"bb", 11 },
-        {"b", 12 },
-        {"b#", 1 },
+        { "cb", 1 },
+        { "c", 1 },
+        { "c#", 2 },
+        { "db", 2 },
+        { "d", 3 },
+        { "d#", 4 },
+        { "eb", 4 },
+        { "e", 5 },
+        { "e#", 6 },
+        { "fb", 5 },
+        { "f", 6 },
+        { "f#", 7 },
+        { "gb", 7 },
+        { "g", 8 },
+        { "g#", 9 },
+        { "ab", 9 },
+        { "a", 10 },
+        { "a#", 11 },
+        { "bb", 11 },
+        { "b", 12 },
+        { "b#", 1 },
     };
 
     private void Awake()
@@ -86,7 +87,7 @@ public class GameManager : MonoBehaviour
     public IEnumerator PrepareNotesPiano(float BPM, List<NoteEventInfo> noteEvents) // TEMP 0.5f, change to 5.4f i think`````````````````````````````````````````````````````````````````````````````````````````````````````````
     {
         if (noteEvents == null) { Debug.Log("gameloop noteEvents null"); yield break; }
-       
+
         StopReadiedNotes();
         AssignSongValues();
         songTime = -spawnOffset - 0.1f;
@@ -278,16 +279,19 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Coroutine for handling song end actions.
     /// </summary>
-    public IEnumerator OnSongEnd()
+    public void OnSongEnd()
     {
         startTimer = false;
-        FinalizeScore(currentSongScore.GetScoreArray(totalNotes));
+        int[] score = currentSongScore.GetScoreArray(totalNotes);
+        
+        EndSongMessage.instance.ShowScore($"Total Score: {score[0]}\nPerfect: {score[1]}\nGood: {score[2]}\nOkay: {score[3]}\nExtra: {score[4]}\nMissed: {score[5]}\nLongest Combo: {combo.highestCount}", currentSongScore.FinalizeScore());
+        
+        MidiDataHandler.SaveNoteEventData(GameSettings.currentSongName, ".replay", Replay.instance.replayNoteData);
 
-        yield return new WaitForSeconds(5f);
-        ReturnToSongSelection();
-        GameSettings.ResetSettings(false);
-        //`````````````````````````````````````````````````````````````````````````````````````````````````` make this open some sort of ui with retry, back to song selection scene, etc.
     }
+
+
+
     /// <summary>
     /// Returns to the song selection scene.
     /// </summary>
@@ -297,6 +301,7 @@ public class GameManager : MonoBehaviour
         inEditor = false;
         StopReadiedNotes();
         MidiInput.instance.inGame = false;
+        GameSettings.ResetSettings(false);
 
         try { TransitionManager.instance.LoadNewScene("SongSelect"); }
         catch { SceneManager.LoadScene("SongSelect"); }
@@ -329,22 +334,13 @@ public class GameManager : MonoBehaviour
     /// <param name="BPM">The BPM of the song.</param>
     /// <returns>The modified note scale.</returns>
 
-
-    public void FinalizeScore(int[] score)
-    {
-        Debug.Log($"Total Score: {score[0]} |     Perfect: {score[1]}, Good: {score[2]}, Okay: {score[3]}, Extra: {score[4]}, Missed: {score[5]}");
-        Debug.Log("Longest Combo: " + combo.highestCount);
-        currentSongScore.FinalizeScore();
-        MidiDataHandler.SaveNoteEventData(GameSettings.currentSongName, ".replay", Replay.instance.replayNoteData);
-    }
-
     public void RefreshJsonFiles()
     {
         NoteEventDataWrapper temp = MidiReadFile.GetNoteEventsFromMidiFileName(GameSettings.currentSongName);
-        MidiDataHandler.SaveNoteEventData(GameSettings.currentSongName,".json", temp.BPM, temp.NoteEvents);
+        MidiDataHandler.SaveNoteEventData(GameSettings.currentSongName, ".json", temp.BPM, temp.NoteEvents);
 
     }
-    
+
 
 
 }

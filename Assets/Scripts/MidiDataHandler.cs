@@ -72,7 +72,6 @@ public static class MidiDataHandler
         int versionCount = 0;
         while (true)
         {
-            Debug.Log($"{folderPath}{fileName}_{versionCount}{extension}");
             if (!File.Exists($"{folderPath}{fileName}_{versionCount}{extension}"))
             {
                 SaveToFileCompressed(json, $"{folderPath}{fileName}_{versionCount}{extension}");

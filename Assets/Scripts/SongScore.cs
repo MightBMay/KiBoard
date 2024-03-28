@@ -71,7 +71,7 @@ public class SongScore
         highestCombo = 0;
     }
 
-    public void FinalizeScore()
+    public bool FinalizeScore()
     {
         bool writeScore = false;
         SongScore savedScores = GameManager.instance?.selectedSongHighScore ?? new SongScore();
@@ -81,6 +81,7 @@ public class SongScore
         if (savedScores.highestCombo > curHighestCombo) { highestCombo = savedScores.highestCombo; }
         else { highestCombo = curHighestCombo; writeScore = true; }
         if (writeScore) WriteScoreToJson(GameSettings.currentSongName);
+        return writeScore;
 
     }
 
@@ -96,7 +97,6 @@ public class SongScore
             // Write the JSON string to the file
             File.WriteAllText(filePath, json);
 
-            Debug.Log("Fields written to JSON file successfully.");
         }
         catch (Exception ex)
         {

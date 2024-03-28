@@ -6080,7 +6080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d119d4c99c5ad24cbf3f0e837150bae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  replayNoteEvents:
+  replayNoteData:
     BPM: 0
     NoteEvents: []
 --- !u!1 &1526936411
@@ -9710,7 +9710,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6333892562893241397, guid: c56bdef3b3a7f1146a646e9348326e13, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
