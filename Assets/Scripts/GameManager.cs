@@ -281,8 +281,7 @@ public class GameManager : MonoBehaviour
     public IEnumerator OnSongEnd()
     {
         startTimer = false;
-        FinalizeScore(currentSongScore.GetScoreArray(totalNotes));
-
+        FinalizeScore(currentSongScore.GetScoreArray(totalNotes), out string scoreString);
         yield return new WaitForSeconds(5f);
         ReturnToSongSelection();
         GameSettings.ResetSettings(false);
@@ -330,12 +329,11 @@ public class GameManager : MonoBehaviour
     /// <returns>The modified note scale.</returns>
 
 
-    public void FinalizeScore(int[] score)
-    {
-        Debug.Log($"Total Score: {score[0]} |     Perfect: {score[1]}, Good: {score[2]}, Okay: {score[3]}, Extra: {score[4]}, Missed: {score[5]}");
-        Debug.Log("Longest Combo: " + combo.highestCount);
-        currentSongScore.FinalizeScore();
+    public HighScoreType FinalizeScore(int[] score, out string scoreString)
+    { 
         MidiDataHandler.SaveNoteEventData(GameSettings.currentSongName, ".replay", Replay.instance.replayNoteData);
+        scoreString =  $"Total Score: {score[0]}\nPerfect: {score[1]}\nGood: {score[2]}\nOkay: {score[3]}\nExtra: {score[4]}\nMissed: {score[5]}\nLongest Combo: {combo.highestCount}";
+        return currentSongScore.FinalizeScore(); 
     }
 
     public void RefreshJsonFiles()
@@ -343,6 +341,17 @@ public class GameManager : MonoBehaviour
         NoteEventDataWrapper temp = MidiReadFile.GetNoteEventsFromMidiFileName(GameSettings.currentSongName);
         MidiDataHandler.SaveNoteEventData(GameSettings.currentSongName,".json", temp.BPM, temp.NoteEvents);
 
+    }
+
+
+    public void SetBeatsBeforeDrop(string num)
+    {
+        if(!int.TryParse(num,out int newNum))
+        {
+            if(newNum <= 0) { Debug.LogWarning("BeatBeforeDrop Setting attempted to be set to <=0");return; }
+            Debug.LogError("Non Int Input into Beats Before Drop Setting");return;
+        }
+        beatsToFall = newNum;
     }
     
 

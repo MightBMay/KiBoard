@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9135538165553372744}
   - component: {fileID: 7327583115366753834}
   - component: {fileID: 7822527826920556315}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: logo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 9004878903231909382}
   - component: {fileID: 6532036510158444015}
   - component: {fileID: 5032867475341216974}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SceneTransitions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 538691656395706485}
   - component: {fileID: 7486486667875707096}
   - component: {fileID: 6905270957973798318}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FadeImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}

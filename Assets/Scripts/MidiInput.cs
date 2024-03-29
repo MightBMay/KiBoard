@@ -15,6 +15,7 @@ public class MidiInput : MonoBehaviour
 
     public bool isPedalPressed;
     public bool[] enabledKeys = new bool[88];
+    public bool takeInput = true;
     public bool inGame = false;
     public float inputDelay = 0.125f;
 
@@ -108,6 +109,7 @@ public class MidiInput : MonoBehaviour
         GameManager.instance.ModifyNoteScale(data.BPM);
 
         storedNoteEvents = data.NoteEvents;
+        takeInput = true;
         inGame = true;
         StartCoroutine(StartSong());
 
@@ -208,32 +210,37 @@ public class MidiInput : MonoBehaviour
     /// <param name="velocity">The note velocity.</param>
     void NoteOn(MidiChannel channel, int note, float velocity)
     {
-        if (!inGame) { return; }
+        if (!takeInput) { return; }
         // Check if the received note and timing match any stored events
-        string score = "";
-        float timing = Mathf.Infinity;
-        foreach (NoteEventInfo storedNote in storedNoteEvents)
+        if (inGame)
         {
-            if (storedNoteEvents == null) { return; }
-            timing = GetTimeDifference(storedNote.startTime);
-            if (IsNoteCorrect(note, timing, storedNote))
+            string score = "";
+            float timing = Mathf.Infinity;
+            foreach (NoteEventInfo storedNote in storedNoteEvents)
             {
-                OnNoteSuccess(ref score, note, timing, storedNote);
-                break;  // Exit the loop after the first match
+                if (storedNoteEvents == null) { return; }
+                timing = GetTimeDifference(storedNote.startTime);
+                if (IsNoteCorrect(note, timing, storedNote))
+                {
+                    OnNoteSuccess(ref score, note, timing, storedNote);
+                    break;  // Exit the loop after the first match
+
+                }
 
             }
 
+            score ??= GetTimingScore(timing);
+            GameManager.instance.combo.ChangeMultiplier(score);
+
+            SpawnPiano.instance.UpdateKeyColours(note - 21, true, score);
+            if (GameManager.instance.songTime >= 0)
+            {
+                GameManager.instance.UpdatePlayerScore(score);
+            }
+            Replay.UpdateReplay(note, GameManager.instance.songTime);
         }
         enabledKeys[note - 21] = true;
-        score ??= GetTimingScore(timing);
-        GameManager.instance.combo.ChangeMultiplier(score);
 
-        SpawnPiano.instance.UpdateKeyColours(note - 21, true, score);
-        if (GameManager.instance.songTime >= 0)
-        {
-            GameManager.instance.UpdatePlayerScore(score);
-        }
-        Replay.UpdateReplay(note, GameManager.instance.songTime);
 
 
 
@@ -274,10 +281,13 @@ public class MidiInput : MonoBehaviour
     /// <param name="note">The MIDI note number.</param>
     void NoteOff(MidiChannel channel, int note)
     {
-        if (!inGame || isPedalPressed) { return; }
+        if (!takeInput || isPedalPressed) { return; }
+        if (inGame)
+        {
+            SpawnPiano.instance.UpdateKeyColours(note - 21, false);
+            Replay.UpdateReplay(note, GameManager.instance.songTime);
+        }
         enabledKeys[note - 21] = false;
-        SpawnPiano.instance.UpdateKeyColours(note - 21, false);
-        Replay.UpdateReplay(note, GameManager.instance.songTime);
 
     }
 

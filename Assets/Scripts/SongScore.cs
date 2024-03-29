@@ -71,16 +71,35 @@ public class SongScore
         highestCombo = 0;
     }
 
-    public void FinalizeScore()
+    public HighScoreType FinalizeScore()
     {
-        bool writeScore = false;
+        bool highScore =false, combo= false;
         SongScore savedScores = GameManager.instance?.selectedSongHighScore ?? new SongScore();
         int curHighestCombo = GameManager.instance.combo.highestCount;
         noteAccuracy = GetNotePercentage(GameManager.instance.totalNotes);
-        if (score > savedScores.score) { writeScore = true; }
+        if (score > savedScores.score) { highScore = true; }
         if (savedScores.highestCombo > curHighestCombo) { highestCombo = savedScores.highestCombo; }
-        else { highestCombo = curHighestCombo; writeScore = true; }
-        if (writeScore) WriteScoreToJson(GameSettings.currentSongName);
+        else { highestCombo = curHighestCombo; combo = true; }
+        if (highScore||combo) { WriteScoreToJson(GameSettings.currentSongName); }
+        return GetScoreType();
+
+
+        HighScoreType GetScoreType()
+        {
+            switch(highScore, combo)
+            {                    
+                case (true, false):
+                    return HighScoreType.score; 
+                case (false, true):
+                    return HighScoreType.combo; 
+                case (true, true):
+                    return HighScoreType.both;
+                default:
+                    return HighScoreType.none;
+
+            }
+
+        }
 
     }
 
@@ -132,4 +151,13 @@ public class SongScore
             return null;
         }
     }
+}
+
+public enum HighScoreType
+{
+    none,
+    combo,
+    score,
+    both,
+
 }
