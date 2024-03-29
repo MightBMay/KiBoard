@@ -23,8 +23,6 @@ public class OctaveAction
     public bool isActive(bool[] activeKeys)
     {
         var indicies = GetTrueIndices(activeKeys);
-        foreach (var key in indicies) { Debug.Log(key); }
-
         bool currentActive = noteNumbers.All(num => indicies.Contains(num));
 
 

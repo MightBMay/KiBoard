@@ -342,6 +342,17 @@ public class GameManager : MonoBehaviour
     }
 
 
+    public void SetBeatsBeforeDrop(string num)
+    {
+        if(!int.TryParse(num,out int newNum))
+        {
+            if(newNum <= 0) { Debug.LogWarning("BeatBeforeDrop Setting attempted to be set to <=0");return; }
+            Debug.LogError("Non Int Input into Beats Before Drop Setting");return;
+        }
+        beatsToFall = newNum;
+    }
+    
+
 
 }
 

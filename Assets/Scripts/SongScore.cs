@@ -73,11 +73,11 @@ public class SongScore
 
     public bool FinalizeScore()
     {
-        bool writeScore = false;
+        bool highScore =false, combo= false;
         SongScore savedScores = GameManager.instance?.selectedSongHighScore ?? new SongScore();
         int curHighestCombo = GameManager.instance.combo.highestCount;
         noteAccuracy = GetNotePercentage(GameManager.instance.totalNotes);
-        if (score > savedScores.score) { writeScore = true; }
+        if (score > savedScores.score) { highScore = true; }
         if (savedScores.highestCombo > curHighestCombo) { highestCombo = savedScores.highestCombo; }
         else { highestCombo = curHighestCombo; writeScore = true; }
         if (writeScore) WriteScoreToJson(GameSettings.currentSongName);
@@ -133,3 +133,4 @@ public class SongScore
         }
     }
 }
+

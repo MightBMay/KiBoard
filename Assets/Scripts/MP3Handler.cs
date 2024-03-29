@@ -91,7 +91,6 @@ public class MP3Handler : MonoBehaviour
 
         // Wait for the middle part of the song
         float temp = Mathf.Clamp(songDemoLength - (2 * songDemoFadeDuration), 0, 5); // make this shorter when song length is shorter than 2x songdemofade.
-        Debug.Log(temp);
         if (temp > 0)
         {
             yield return new WaitForSecondsRealtime(temp);
