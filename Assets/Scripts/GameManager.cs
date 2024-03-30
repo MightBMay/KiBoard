@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
         AssignSongValues();
         songTime = -spawnOffset - 0.1f;
         modifiedNoteScale = baseNoteScalingFactor * (130 / BPM);
-
+        yield return new WaitForSecondsRealtime(1f);
         yield return new WaitUntil(() => (Input.anyKeyDown || MidiInput.instance.GetAnyNoteActive()));
 
         noteEvents.ForEach(noteEvent => readiedNotes.Add(StartCoroutine(ReadyNote(noteEvent.startTime - spawnOffset, noteEvent))));
@@ -164,6 +164,7 @@ public class GameManager : MonoBehaviour
         AssignSongValues();
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~REPLACE THIS WITH WHATEVER INPUT IS TO GO BACK~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        yield return new WaitForSecondsRealtime(1f);
         yield return new WaitUntil(() => ((Input.anyKeyDown) || MidiInput.instance.GetAnyNoteActive())); // wait for any input to start.
         noteEvents.ForEach(noteEvent => readiedNotes.Add(StartCoroutine(ReadyNote(noteEvent.startTime - spawnOffset, noteEvent))));
         // Game loop is finished
