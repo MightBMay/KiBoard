@@ -287,7 +287,7 @@ public class GameManager : MonoBehaviour
         
         EndSongMessage.instance.ShowScore($"Total Score: {score[0]}\nPerfect: {score[1]}\nGood: {score[2]}\nOkay: {score[3]}\nExtra: {score[4]}\nMissed: {score[5]}\nLongest Combo: {combo.highestCount}", currentSongScore.FinalizeScore());
         
-        MidiDataHandler.SaveNoteEventData(GameSettings.currentSongName, ".replay", Replay.instance.replayNoteData);
+        MidiDataHandler.SaveNoteEventData(".replay", Replay.instance.replayNoteData);
 
     }
 
@@ -337,8 +337,8 @@ public class GameManager : MonoBehaviour
 
     public void RefreshJsonFiles()
     {
-        NoteEventDataWrapper temp = MidiReadFile.GetNoteEventsFromMidiFileName(GameSettings.currentSongName);
-        MidiDataHandler.SaveNoteEventData(GameSettings.currentSongName, ".json", temp.BPM, temp.NoteEvents);
+        NoteEventDataWrapper temp = MidiReadFile.GetNoteEventsFromFilePath(GameSettings.currentSongPath);
+        MidiDataHandler.SaveNoteEventData(".json", temp.BPM, temp.NoteEvents);
 
     }
 

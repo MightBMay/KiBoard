@@ -20,7 +20,7 @@ public class SongVersionItem : MonoBehaviour
 
     public void SelectVersion()
     {
-        GameSettings.currentSongName = Path.GetFileNameWithoutExtension(versionPath);
+        GameSettings.currentSongPath = versionPath;
         button.interactable = false;
         SongVersionMenu.instance.selectedButton.interactable = true;
         SongVersionMenu.instance.selectedButton = button;

@@ -2,91 +2,71 @@ using UnityEngine;
 using NAudio.Midi;
 using System.Collections.Generic;
 using System.IO;
-
+using System.Linq;
 
 public static class MidiReadFile
 {
 
     static Dictionary<int, NoteEventInfo> activeNotes = new Dictionary<int, NoteEventInfo>();
 
-    public static NoteEventDataWrapper GetNoteEventsFromName(string songName)
+    public static NoteEventDataWrapper GetNoteEventsFromFilePath(string filePath)
     {
-        string path = Application.persistentDataPath + "/Songs/" + songName;
-        string jsonFilePath = path + ".json";
-        string midiFilePath = path + ".mid";
-        if (File.Exists(jsonFilePath))
+        if (File.Exists(filePath))
         {
-            return GetDataFile(songName, ".json");
-        }
-        else if (File.Exists(midiFilePath))
-        {
-            return ReadMidiFile(midiFilePath, songName);
+
+            if (Path.GetExtension(filePath) == ".json" || Path.GetExtension(filePath) == ".replay")
+            {
+                return GetDataFile(filePath);
+            }
+            else if (Path.GetExtension(filePath) == ".mid")
+            {
+                return ReadMidiFile(filePath);
+            }
+            else return null;
         }
         else
         {
-            Debug.LogError("NO .JSON/.MID FILE FOUND WITH NAME: " + songName);
+            Debug.LogError("NO .JSON/.REPLAY/.MID FILE FOUND AT PATH: "+ filePath);
             return null;
         }
 
     }
-    public static NoteEventDataWrapper GetNoteEventsFromReplay(string replayName, string extension = ".replay")
-    {
-        string path = Application.persistentDataPath + "/Replays/" + replayName + ".replay";
-        if (File.Exists(path))
-        {
-            return GetDataFile(replayName, extension);
-        }
-        else
-        {
-            Debug.Log("no file at path " + path);
-            return GetNoteEventsFromName(replayName);
-        }
 
-    }
 
-    public static NoteEventDataWrapper GetNoteEventsFromMidiFileName(string songName)
-    {
-        string path = Application.persistentDataPath + "/Songs/" + songName;
-        string jsonFilePath = path + ".json";
-        string midiFilePath = path + ".mid";
-        if (File.Exists(midiFilePath))
-        {
-            return ReadMidiFile(midiFilePath, songName);
-        }
-        else
-        {
-            Debug.LogError("NO .JSON/.MID FILE FOUND WITH NAME: " + songName);
-            return null;
-        }
-    }
-
-    public static int CountNotes(string songName)
+    public static int CountNotes()
     {
 
 
-        string path = Application.persistentDataPath + "/Songs/" + songName;
-        string jsonFilePath = path + ".json";
-        string midiFilePath = path + ".mid";
-        if (File.Exists(jsonFilePath))
+        
+        if (File.Exists(GameSettings.currentSongPath))
         {
-            return GetDataFile(songName,".json").NoteEvents.Count;
+            if (Path.GetExtension(GameSettings.currentSongPath)==".json")
+            {
+                return GetDataFile(GameSettings.currentSongPath).NoteEvents.Count;
+            }
+
+            else if (Path.GetExtension(GameSettings.currentSongPath) == ".mid")
+            {
+                return CountFromMidi();
+            }
+            else
+            {
+                Debug.LogError("Current Song Path Not Json or Midi");
+                return int.MinValue;
+            }
         }
-        else if (File.Exists(midiFilePath))
-        {
-            return CountFromMidi();
-        }
+        
         else
         {
-            Debug.LogError("NO .JSON/.MID FILE FOUND WITH NAME: " + songName);
+            Debug.LogError("NO .JSON/.MID FILE FOUND AT PATH: " + GameSettings.currentSongPath);
             return -1;
         }
 
         int CountFromMidi()
         {
             int noteOnCount = 0;
-
             // Load the MIDI file
-            MidiFile midiFile = new MidiFile(midiFilePath, false);
+            MidiFile midiFile = new MidiFile(GameSettings.currentSongPath, false);
 
             // Iterate through all track chunks in the MIDI file
             foreach (var trackChunk in midiFile.Events)
@@ -107,12 +87,12 @@ public static class MidiReadFile
     }
 
 
-    public static NoteEventDataWrapper GetDataFile(string jsonFilePath, string extension)
+    public static NoteEventDataWrapper GetDataFile(string jsonFilePath)
     {
-        return MidiDataHandler.GetJSONData(jsonFilePath, extension);
+        return MidiDataHandler.GetJSONData(jsonFilePath);
     }
 
-    static NoteEventDataWrapper ReadMidiFile(string midiFilePath, string songName)
+    static NoteEventDataWrapper ReadMidiFile(string midiFilePath)
     {
 
         MidiFile midiFile = new MidiFile(midiFilePath, false);
@@ -148,7 +128,7 @@ public static class MidiReadFile
             }
         }
         if (bpm == 0) { Debug.LogError("BPM WAS NOT FOUND/ IS 0."); return null; }
-        return MidiDataHandler.SaveNoteEventData(songName,".json", bpm, noteEvents);
+        return MidiDataHandler.SaveNoteEventData(".json", bpm, noteEvents);
 
         void ProcessNoteOnEvent(NoteEvent noteOnEvent)//```````````````````````````````````````````````````````modify so if you (somehow ) press a note 2 times before you let go of the first note, it marks its end time.
         {

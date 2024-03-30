@@ -1,7 +1,11 @@
+using JetBrains.Annotations;
+using NAudio.Midi;
+using NLayer;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,26 +18,13 @@ public class SongSelection : MonoBehaviour
     /// Contains groups of midi,mp3,png, and json files that share the same file name.
     /// </summary>
     [SerializeField] List<FileGroup> fileGroups;
-    /// <summary>
-    /// dictionary of all MP3 files at Application.persistntdatapath.
-    /// </summary>
-    public Dictionary<string, string> mp3Files;
-    /// <summary>
-    /// dictionary of all MP3 files at Application.persistntdatapath.
-    /// </summary>
-    public Dictionary<string, List<string>> midiFiles;
-    /// <summary>
-    /// dictionary of all Midi files at Application.persistntdatapath.
-    /// </summary>
-    public Dictionary<string, string> pngFiles;
-    /// <summary>
-    /// dictionary of all PNG files at Application.persistntdatapath.
-    /// </summary>
-    public Dictionary<string, List<string>> jsonFiles;
+
     /// <summary>
     /// Reference to the start song button..
     /// </summary>
     public Button startButton;
+
+    string defaultPath;
 
 
     private void Awake()
@@ -46,44 +37,20 @@ public class SongSelection : MonoBehaviour
     }
     void Start()
     {
+        defaultPath = Application.persistentDataPath + "/Songs/";
         // Assign the song directory path to a local variable.
-        string directoryPath = Application.persistentDataPath + "/Songs/"; 
-
-        // label to goto if path is created after it isn't found. 
-        CreateSongsFolder:
-
-        //Check if path exists.
-        if (Directory.Exists(directoryPath))
-        { 
-
-            // Get an array of all file paths in the directory
-            string[] allFiles = Directory.GetFiles(directoryPath);
-            // Separate files based on their extensions
-            mp3Files = GetFilesByExtension(allFiles, ".mp3");
-            midiFiles = GetListFilesByExtension(allFiles, ".mid");
-            pngFiles = GetFilesByExtension(allFiles, ".png");
-            jsonFiles = GetListFilesByExtension(allFiles, ".json");
-
-            // create empty string list that will contain one filename. ( this realistically should be a dictionary or hashset but oh well).
-            List<string> fileNames = new List<string>();
-            foreach (string s in allFiles)
+        if (Directory.Exists(defaultPath))
+        {
+            string[] directoryPath = Directory.GetDirectories(defaultPath);
+            foreach (string directory in directoryPath)
             {
-                string filename = GetUnderscoreSubstring(Path.GetFileNameWithoutExtension(s)); // gets only the file name
-                if (fileNames.Contains(filename)) { continue; } // if the filename is already in the list, go to the next iteration of the loop.
-
-
-                fileNames.Add(filename); // if filename is not in list, add it to the list.
-                fileGroups.Add(AssembleFileGroups(filename));// assemble a filegroup with the filename, and add it to the fileGroups list.
+                fileGroups.Add( AssembleFileGroup(directory) );
             }
-
-
-
         }
         else
         { // if directory not found, Log the error, create the directory, and continue.
-            Debug.LogError("Directory not found: " + directoryPath+". Creating Directory.");
-            Directory.CreateDirectory(directoryPath);
-            goto CreateSongsFolder;
+            Debug.LogError("Directory not found: " + defaultPath + ". Creating Directory.");
+            Directory.CreateDirectory(defaultPath);
         }
         FindObjectOfType<SongList>().SpawnSongItems(fileGroups); // spawns the UI elements based off of the newly assembled fileGroups list.
     }
@@ -166,38 +133,37 @@ public class SongSelection : MonoBehaviour
         int underscoreIndex = input.IndexOf('_');
 
         // Return a substring from the start of the input string to the underscore index, inclusive
-        return (underscoreIndex >= 0) ? input.Substring(underscoreIndex+1) : input;
+        return (underscoreIndex >= 0) ? input.Substring(underscoreIndex + 1) : input;
     }
 
     /// <summary>
     /// Assembles a FileGroup object based on the given file name.
     /// </summary>
-    private FileGroup AssembleFileGroups(string fileName)
+
+    public FileGroup AssembleFileGroup(string directory)
     {
-        // Create a new FileGroup object with the given file name
-        FileGroup group = new(fileName);
-
-        // Try to retrieve associated files for different file types and assign them to the FileGroup object
-        if (jsonFiles.TryGetValue(fileName, out List<string> jsonFile))
-        {
-            group.JsonFiles = jsonFile;
-        }
-
-        if (pngFiles.TryGetValue(fileName, out string pngFile))
-        {
-            group.PngFile = pngFile;
-        }
-
-        if (mp3Files.TryGetValue(fileName, out string mp3File))
-        {
-            group.Mp3File = mp3File;
-        }
-
-        if (midiFiles.TryGetValue(fileName, out List<string> midiFile))
-        {
-            group.MidiFiles = midiFile;
-        }
-        return group;
+        string[]allFiles = Directory.GetFiles(directory);
+        FileGroupError error = new FileGroupError();
+        string[] jsonfiles= null, midifiles = null, replayfiles = null;
+        string mp3file= "", pngfile="", scorefile="";
+        try { jsonfiles = allFiles.Where(file => Path.GetExtension(file) == ".json").ToArray(); error.json = true; } catch { }
+        try { mp3file = allFiles.First(file => Path.GetExtension(file) == ".mp3"); error.mp3 = true; } catch { }
+        try { pngfile = allFiles.First(file => Path.GetExtension(file) == ".png"); error.png = true; } catch { }
+        try { midifiles = allFiles.Where(file => Path.GetExtension(file) == ".mid").ToArray(); error.midi = true; } catch { }
+        try { scorefile = allFiles.First(file => Path.GetExtension(file) == ".score"); error.score = true; } catch { }
+        try { replayfiles = allFiles.Where(file => Path.GetExtension(file) == ".replay").ToArray(); error.replay = true; } catch { } // don't need to do anything in catch since the values for the error struct are automatically false.
+        return new FileGroup() {
+            errors = error,
+            FileName = Path.GetFileNameWithoutExtension(directory),
+            FolderPath = directory,
+            JsonFiles = jsonfiles,
+            Mp3File = mp3file,
+            PngFile = pngfile,
+            ScoreFile = scorefile,
+            ReplayFiles = replayfiles,
+            MidiFiles = midifiles,
+        
+        };
     }
 
     /// <summary>
@@ -206,7 +172,7 @@ public class SongSelection : MonoBehaviour
     public void StartGame()
     {
         // Check if the current song name is null or empty, and return if true
-        if (string.IsNullOrEmpty(GameSettings.currentSongName)) { return; }
+        if (string.IsNullOrEmpty(GameSettings.currentSongPath)) { return; }
         if (Input.GetKey(KeyCode.LeftShift)) { MidiInput.instance.LoadSongFromCurrentSettings(true); } // if you hold shift and start, enter the editor.
         else
         {

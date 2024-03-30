@@ -23,7 +23,7 @@ public class EndSongMessage : MonoBehaviour
     public void ShowScore(string score, bool isHighScore)
     {
         messageObject.SetActive(true);
-        songName.text = GameSettings.currentSongName;
+        songName.text = GameSettings.currentFileGroup.FileName;
         scoreText.text = score;
         if (isHighScore) { highScoreText.gameObject.SetActive(true); StartCoroutine(FlickerText()); }
     }

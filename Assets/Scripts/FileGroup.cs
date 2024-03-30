@@ -8,11 +8,15 @@ using System.Collections.Generic;
 [System.Serializable]
 public struct FileGroup
 {
+    public FileGroupError? errors;
     public string FileName;
+    public string FolderPath;
     public string Mp3File;
-    public List<string> MidiFiles;
-    public List<string> JsonFiles;
+    public string[] MidiFiles;
+    public string[] JsonFiles;
     public string PngFile;
+    public string ScoreFile;
+    public string[] ReplayFiles;
 
     /// <summary>
     /// Initializes a new instance of the FileGroup struct with the specified file name.
@@ -20,11 +24,15 @@ public struct FileGroup
     /// <param name="fileName">The name of the file group.</param>
     public FileGroup(string fileName)
     {
+        errors = null;
+        FolderPath = string.Empty;
         FileName = fileName;
         Mp3File = string.Empty;
-        MidiFiles = new List<string>();
-        JsonFiles = new List<string>();
+        MidiFiles = null;
+        JsonFiles = null;
         PngFile = string.Empty;
+        ScoreFile = string.Empty;
+        ReplayFiles = null;
     }
 
     /// <summary>
@@ -36,9 +44,9 @@ public struct FileGroup
         string str = "";
         if (string.IsNullOrEmpty(Mp3File)) { str += "<color=red> MP3 file not found. \n</color>"; }
 
-        if (MidiFiles.Count <= 0)
+        if (MidiFiles.Length <= 0)
         {
-            if (JsonFiles.Count <= 0)
+            if (JsonFiles.Length <= 0)
             {
                 str += "<color=red> Midi AND Json file not found. \n</color>";
             }
@@ -77,4 +85,16 @@ public struct FileGroup
             return null;
         }
     }
+ 
+}
+[System.Serializable]
+public struct FileGroupError
+{
+    public bool json;
+    public bool mp3;
+    public bool png;
+    public bool midi;
+    public bool score;
+    public bool replay;
+
 }

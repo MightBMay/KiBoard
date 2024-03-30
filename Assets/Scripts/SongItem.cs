@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Linq;
 
 public class SongItem : MonoBehaviour
 {
@@ -17,12 +18,12 @@ public class SongItem : MonoBehaviour
     {
         
         OpenSongVersions();
-        GameSettings.currentSongName = fileGroup.FileName;
-        string songName = GameSettings.currentSongName;
+        GameSettings.currentFileGroup = fileGroup;
+        GameSettings.currentSongPath = fileGroup.JsonFiles.Count() > 0 ? fileGroup.JsonFiles[0] : fileGroup.MidiFiles[0];
         SongSelection.instance.startButton.interactable = true;
         SongList.instance.SelectItem(this);
-        GameManager.instance.selectedSongHighScore = SongScore.ReadFieldsFromJsonFile(songName);
-        ExtraSongInfoMenu.instance.SetText(songName);
-        MP3Handler.instance.StartSongDemo(songName);
+        GameManager.instance.selectedSongHighScore = SongScore.ReadFieldsFromJsonFile(fileGroup.ScoreFile);
+        ExtraSongInfoMenu.instance.SetText(fileGroup.FileName);
+        MP3Handler.instance.StartSongDemo(fileGroup.Mp3File);
     }
 }

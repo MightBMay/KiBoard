@@ -80,7 +80,7 @@ public class SongScore
         if (score > savedScores.score) { writeScore = true; }
         if (savedScores.highestCombo > curHighestCombo) { highestCombo = savedScores.highestCombo; }
         else { highestCombo = curHighestCombo; writeScore = true; }
-        if (writeScore) WriteScoreToJson(GameSettings.currentSongName);
+        if (writeScore) WriteScoreToJson(GameSettings.currentFileGroup.FolderPath);
         return writeScore;
 
     }
@@ -104,15 +104,13 @@ public class SongScore
         }
     }
 
-    public static SongScore ReadFieldsFromJsonFile(string fileName)
+    public static SongScore ReadFieldsFromJsonFile(string filePath)
     {
+        
         try
         {
-            // Construct the file path with the custom file extension
-            string filePath = Application.persistentDataPath + "/Songs/" + fileName + ".score";
-
             // Check if the file exists
-            if (File.Exists(filePath))
+            if (File.Exists(filePath) && !string.IsNullOrEmpty(filePath))
             {
                 // Read the JSON string from the file
                 string json = File.ReadAllText(filePath);
@@ -122,7 +120,7 @@ public class SongScore
             }
             else
             {
-                Debug.Log($"File '{filePath}' does not exist.");
+                Debug.Log($"Score File '{filePath}' does not exist.");
                 return null;
             }
         }

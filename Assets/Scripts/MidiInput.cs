@@ -101,10 +101,7 @@ public class MidiInput : MonoBehaviour
         MP3Handler.instance.StopMusic();
         try { TransitionManager.instance.LoadNewScene("GameScene"); }
         catch { SceneManager.LoadScene("GameScene"); }
-        NoteEventDataWrapper data;
-        string songName = GameSettings.currentSongName;
-        if (isReplay) { data = MidiReadFile.GetNoteEventsFromReplay(GameSettings.currentSongName, ".replay"); }
-        else { data = MidiReadFile.GetNoteEventsFromName(songName); }
+        NoteEventDataWrapper data = MidiReadFile.GetNoteEventsFromFilePath(GameSettings.currentSongPath);
         GameSettings.bpm = GameSettings.bpm == 0 ? data.BPM : GameSettings.bpm;
         GameManager.instance.ModifyNoteScale(data.BPM);
 
@@ -117,14 +114,9 @@ public class MidiInput : MonoBehaviour
 
     public NoteEventDataWrapper GetNoteEventWrapperFromSelectedSong()
     {
-        NoteEventDataWrapper data = MidiReadFile.GetNoteEventsFromName(GameSettings.currentSongName);
+        NoteEventDataWrapper data = MidiReadFile.GetNoteEventsFromFilePath(GameSettings.currentSongPath);
         storedNoteEvents = data.NoteEvents;
         return data;
-    }
-
-    public float GetBPM(string songName)
-    {
-        return MidiReadFile.GetNoteEventsFromName(songName).BPM; // yeah, its inefficient, but im lazy.
     }
 
     public void StartSongCoroutine()
@@ -150,8 +142,8 @@ public class MidiInput : MonoBehaviour
             GameManager.instance.ModifyNoteScale(GameSettings.bpm);
             yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotesKeyboard12(GameSettings.bpm, storedNoteEvents));
         }
-
-        StartCoroutine(MP3Handler.instance.PlaySong(SongSelection.GetUnderscoreSubstring(GameSettings.currentSongName)));
+        Debug.Log(GameSettings.currentSongPath);
+        StartCoroutine(MP3Handler.instance.PlaySong(SongSelection.GetUnderscoreSubstring(GameSettings.currentFileGroup.Mp3File)));
         GameManager.instance.startTimer = true;
     }
     /// <summary>
@@ -175,7 +167,7 @@ public class MidiInput : MonoBehaviour
         {
             yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotesKeyboard12(bpm, loadEvents));
         }
-        StartCoroutine(MP3Handler.instance.PlaySong(GameSettings.currentSongName));
+        StartCoroutine(MP3Handler.instance.PlaySong(GameSettings.currentSongPath));
         GameManager.instance.startTimer = true;
 
     }

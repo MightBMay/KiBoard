@@ -29,7 +29,8 @@ public class SettingsManager : MonoBehaviour
 public class GameSettings
 {
     public static GameSettings instance;
-    public static string currentSongName = "";
+    public static string currentSongPath = "";
+    public static FileGroup currentFileGroup;
     public static bool usePedal = false;
     public static bool usePiano = true;
     public static float bpm = 0;
@@ -42,7 +43,7 @@ public class GameSettings
 
     public static void ResetSettings(bool fullReset)
     {
-        currentSongName = "";
+        currentSongPath = "";
         bpm = 0;
         noteCount = 0;
 

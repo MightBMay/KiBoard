@@ -31,11 +31,10 @@ public class MP3Handler : MonoBehaviour
         if (waveOut == null) return;
         waveOut.Volume = newVolume / 100;
     }
-    public IEnumerator PlaySong(string fileName)
+    public IEnumerator PlaySong(string filePath)
     {
         StopMusic();
-        string filePath = Application.persistentDataPath + "/Songs/" + fileName + ".mp3";
-        if (!File.Exists(filePath)) { Debug.LogError($"MP3 File \"{fileName}\" not found at path {filePath}"); yield break; }
+        if (!File.Exists(filePath)) { Debug.LogError($"MP3 File not found at path {filePath}"); yield break; }
         audioThread = new Thread(() => ReadMP3File(filePath));
         yield return new WaitUntil(() => GameManager.instance.songTime >= 0);
         audioThread.Start();
@@ -44,21 +43,20 @@ public class MP3Handler : MonoBehaviour
 
     }
 
-    public void StartSongDemo(string fileName)
+    public void StartSongDemo(string filePath)
     {
         if (songDemoCoroutine != null)
         {
             StopCoroutine(songDemoCoroutine);
         }
-        songDemoCoroutine = StartCoroutine(LoadSongDemo(fileName));
+        songDemoCoroutine = StartCoroutine(LoadSongDemo(filePath));
     }
-    public IEnumerator LoadSongDemo(string fileName)
+    public IEnumerator LoadSongDemo(string filePath)
     {
         StopMusic();
-        string filePath = Application.persistentDataPath + "/Songs/" + fileName + ".mp3";
         if (!File.Exists(filePath))
         {
-            Debug.LogError($"MP3 File \"{fileName}\" not found at path {filePath}");
+            Debug.LogError($"MP3 File not found at path {filePath}");
             yield break;
         }
 
