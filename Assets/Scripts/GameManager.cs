@@ -286,8 +286,8 @@ public class GameManager : MonoBehaviour
         int[] score = currentSongScore.GetScoreArray(totalNotes);
         
         EndSongMessage.instance.ShowScore($"Total Score: {score[0]}\nPerfect: {score[1]}\nGood: {score[2]}\nOkay: {score[3]}\nExtra: {score[4]}\nMissed: {score[5]}\nLongest Combo: {combo.highestCount}", currentSongScore.FinalizeScore());
-        
-        MidiDataHandler.SaveNoteEventData(".replay", Replay.instance.replayNoteData);
+
+        if (!Replay.isPlayingReplay) { MidiDataHandler.SaveNoteEventData(".replay", Replay.instance.replayNoteData); } // only record replays if you arent playing back a replay.
 
     }
 

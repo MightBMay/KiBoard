@@ -12,11 +12,12 @@ public class SongItem : MonoBehaviour
 
     public void OpenSongVersions()
     {
-        SongVersionMenu.instance.OpenMenu(fileGroup);
+        if (Input.GetKey(KeyCode.LeftShift)) { SongVersionMenu.instance.OpenReplayMenu(fileGroup); }
+        else{ SongVersionMenu.instance.OpenMenu(fileGroup); }
     }
     public void LoadSongInfoToGameSettings()
     {
-        
+
         OpenSongVersions();
         GameSettings.currentFileGroup = fileGroup;
         GameSettings.currentSongPath = fileGroup.JsonFiles.Count() > 0 ? fileGroup.JsonFiles[0] : fileGroup.MidiFiles[0];

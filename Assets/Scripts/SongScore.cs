@@ -91,7 +91,7 @@ public class SongScore
         {
             // Serialize the object to JSON format
             string json = JsonUtility.ToJson(this);
-            string filePath = Application.persistentDataPath + "/Songs/" + filename + ".score";
+            string filePath =  filename + ".score";
 
 
             // Write the JSON string to the file

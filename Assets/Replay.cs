@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 
 public class Replay : MonoBehaviour
 {
-    public static Replay instance;
 
+    public static Replay instance;
+    public static bool  isPlayingReplay = false;
     public NoteEventDataWrapper replayNoteData;
     private void Awake()
     {
@@ -20,11 +22,13 @@ public class Replay : MonoBehaviour
     public static void StartReplayCapture()
     {
         ClearReplay();
+        if (Path.GetExtension(GameSettings.currentSongPath).Equals(".replay")) { isPlayingReplay = true; }
         instance.replayNoteData.BPM = GameSettings.bpm;
     }
 
     public static void UpdateReplay(int noteNum, float time)
     {
+        if (isPlayingReplay) { return; }
         // Check if the note exists with endTime as Mathf.NegativeInfinity
         var existingNote = instance.replayNoteData.NoteEvents.Find(note => note.noteNumber == noteNum && note.endTime == Mathf.NegativeInfinity);
 

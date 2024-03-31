@@ -66,7 +66,7 @@ public static class MidiDataHandler
         // Convert the wrapper to a JSON string
         string json = JsonUtility.ToJson(wrapper);
         string folderPath = GameSettings.currentFileGroup.FolderPath;
-        string fileName = Path.GetFileNameWithoutExtension(folderPath);
+        string fileName = Path.GetFileNameWithoutExtension(GameSettings.currentSongPath);
         // Define the path where you want to save the JSON file
         if (!Directory.Exists(folderPath))
         {
@@ -75,9 +75,9 @@ public static class MidiDataHandler
         int versionCount = 0;
         while (true)
         {
-            if (!File.Exists($"{folderPath}{fileName}_{versionCount}{extension}"))
+            if (!File.Exists($"{folderPath}/{fileName}_{versionCount}{extension}"))
             {
-                SaveToFileCompressed(json, $"{folderPath}{fileName}_{versionCount}{extension}");
+                SaveToFileCompressed(json, $"{folderPath}/{fileName}_{versionCount}{extension}");
                 return wrapper;
             }
             else

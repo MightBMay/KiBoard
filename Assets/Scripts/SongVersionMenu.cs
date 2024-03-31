@@ -61,7 +61,28 @@ public class SongVersionMenu : MonoBehaviour
             svi.SetValues(miniFileGroup.midiPath, miniFileGroup.jsonPath);
             itemList.Add(svi.GetComponent<Button>());
         }
-        if(selectedButton != null)selectedButton.interactable = true;
+        if (selectedButton != null) selectedButton.interactable = true;
+        selectedButton = itemList[0];
+        selectedButton.interactable = false;
+    }
+    public void OpenReplayMenu(FileGroup fileGroup)
+    {
+        // Clear the itemList
+        itemList.ForEach(item => { Destroy(item.gameObject); });
+        itemList.Clear();
+
+        // Set the versionMenu to active
+        versionMenu.SetActive(true);
+
+
+        // Instantiate SongVersionItem objects
+        foreach (string path in fileGroup.ReplayFiles)
+        {
+            SongVersionItem svi = Instantiate(songVersionPrefab, itemHolder).GetComponent<SongVersionItem>();
+            svi.SetValues(path);
+            itemList.Add(svi.GetComponent<Button>());
+        }
+        if (selectedButton != null) selectedButton.interactable = true;
         selectedButton = itemList[0];
         selectedButton.interactable = false;
     }

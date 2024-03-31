@@ -142,7 +142,6 @@ public class MidiInput : MonoBehaviour
             GameManager.instance.ModifyNoteScale(GameSettings.bpm);
             yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotesKeyboard12(GameSettings.bpm, storedNoteEvents));
         }
-        Debug.Log(GameSettings.currentSongPath);
         StartCoroutine(MP3Handler.instance.PlaySong(SongSelection.GetUnderscoreSubstring(GameSettings.currentFileGroup.Mp3File)));
         GameManager.instance.startTimer = true;
     }
