@@ -40,7 +40,7 @@ public static class MidiDataHandler
         // Convert the wrapper to a JSON string
         string json = JsonUtility.ToJson(wrapper);
         string folderPath = GameSettings.currentFileGroup.FolderPath;
-        string fileName = Path.GetFileNameWithoutExtension(folderPath);
+        string fileName = Path.GetFileNameWithoutExtension(GameSettings.currentSongPath);
         // Define the path where you want to save the JSON file
         if (!Directory.Exists(folderPath))
         {
@@ -51,8 +51,13 @@ public static class MidiDataHandler
         SaveToFileCompressed(json, folderPath + "/" +fileName+ extension);
         return wrapper;
     }
-
-    public static NoteEventDataWrapper SaveNoteEventData(string extension, NoteEventDataWrapper wrapper)
+    /// <summary>
+    /// ONLY USE FOR REPLAYS UNLESS MODIFIED
+    /// </summary>
+    /// <param name="extension"></param>
+    /// <param name="wrapper"></param>
+    /// <returns></returns>
+    public static NoteEventDataWrapper SaveNoteEventData(string extension, NoteEventDataWrapper wrapper) 
     {
         if (wrapper == null) { Debug.LogError("Data Save Error: NoteEventDataWrapper Null"); return null; }
         // Create a wrapper class to hold both BPM and NoteEventInfo
