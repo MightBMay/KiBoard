@@ -45,10 +45,6 @@ public class MidiInput : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else { Destroy(gameObject); }
-
-        MidiMaster.noteOnDelegate += NoteOn;
-        MidiMaster.noteOffDelegate += NoteOff;
-        MidiMaster.knobDelegate += PedalStateChanged;
     }
 
     private void Update()
@@ -90,14 +86,14 @@ public class MidiInput : MonoBehaviour
         MP3Handler.instance.StopMusic();
         try
         {
-            if (GameSettings.usePiano) { TransitionManager.instance.LoadNewScene("GameScene88"); }
-            else { TransitionManager.instance.LoadNewScene("GameScene12"); }
+            if (GameSettings.usePiano) { TransitionManager.instance.LoadNewScene("GameScene88"); HookMidiDevice(); }
+            else { TransitionManager.instance.LoadNewScene("GameScene12"); UnHookMidiDevice(); }
         }
 
         catch
         {
-            if (GameSettings.usePiano) { SceneManager.LoadScene("GameScene88"); }
-            else { SceneManager.LoadScene("GameScene12"); }
+            if (GameSettings.usePiano) { SceneManager.LoadScene("GameScene88"); HookMidiDevice(); }
+            else { SceneManager.LoadScene("GameScene12"); UnHookMidiDevice(); }
         }
 
         NoteEventDataWrapper data = MidiReadFile.GetNoteEventsFromFilePath(GameSettings.currentSongPath);
@@ -109,6 +105,20 @@ public class MidiInput : MonoBehaviour
         inGame = true;
         StartCoroutine(StartSong());
 
+
+    }
+
+    public void HookMidiDevice()
+    {
+        MidiMaster.noteOnDelegate += NoteOn;
+        MidiMaster.noteOffDelegate += NoteOff;
+        MidiMaster.knobDelegate += PedalStateChanged;
+    }
+    public void UnHookMidiDevice()
+    {
+        MidiMaster.noteOnDelegate -= NoteOn;
+        MidiMaster.noteOffDelegate -= NoteOff;
+        MidiMaster.knobDelegate -= PedalStateChanged;
     }
 
 
@@ -314,27 +324,7 @@ public class MidiInput : MonoBehaviour
     /// <summary>
     /// Checks for pressed keys in the 8-key keyboard layout.
     /// </summary>
-    void CheckNotesKeyboard8()
-    {
-        // Check for computer keyboard key presses and releases
-        foreach (var keyValuePair in keyboard12)
-        {
-            KeyCode key = keyValuePair.Key;
-            int noteNumber = keyValuePair.Value;
 
-            if (Input.GetKeyDown(key))
-            {
-                // Simulate Note On event for the pressed key
-                NoteOn(MidiChannel.All, noteNumber, 1.0f);
-            }
-
-            if (Input.GetKeyUp(key))
-            {
-                // Simulate Note Off event for the released key
-                NoteOff(MidiChannel.All, noteNumber);
-            }
-        }
-    }
 
     /// <summary>
     /// Checks if any note is currently active (pressed).

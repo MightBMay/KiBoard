@@ -33,7 +33,7 @@ public class GameSettings
     public static FileGroup currentFileGroup;
     public static GameType? gameType;
     public static bool usePedal = false;
-    public static bool usePiano = false;
+    public static bool usePiano = true;
     public static float bpm = 0;
     public static int noteCount = 0;
 

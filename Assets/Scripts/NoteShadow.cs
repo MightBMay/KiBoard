@@ -9,6 +9,6 @@ public class NoteShadow : MonoBehaviour
     public void SetShadowSize(float ySize)
     {
         var spriterend = GetComponent<SpriteRenderer>();
-        spriterend.size = new Vector2(1.35f, ySize);
+        spriterend.size =  new Vector2(GameSettings.usePiano ? 1.35f: 4.8f, ySize);
     }
 }

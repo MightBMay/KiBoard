@@ -67,7 +67,6 @@ public class SpawnPiano : MonoBehaviour
         }
         else
         {
-            Debug.Log(noteNumber % 12);
             spriterenderers[(noteNumber-3 )% 12].color = GetKeyColour(noteNumber, enabled, timingScore);
         }
     }
@@ -118,7 +117,9 @@ public class SpawnPiano : MonoBehaviour
 
     public void SpawnKeyParticle(int keyNum, string score = "")
     {
-        var particle = Instantiate(keyParticlePrefab, spriterenderers[keyNum].transform).GetComponent<ParticleSystem>();
+        ParticleSystem particle;
+        if (GameSettings.usePiano) { particle = Instantiate(keyParticlePrefab, spriterenderers[keyNum].transform).GetComponent<ParticleSystem>(); }
+        else { particle = Instantiate(keyParticlePrefab, spriterenderers[(keyNum-3 )%12].transform).GetComponent<ParticleSystem>(); }
         particle.transform.position += Vector3.up / 2;
         ParticleSystem.MainModule main = particle.main;
         main.startColor = GetKeyColour(keyNum, score);

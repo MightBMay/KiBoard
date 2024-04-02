@@ -159,17 +159,17 @@ public class GameManager : MonoBehaviour
         }
         void SpawnNote12(NoteEventInfo noteEvent, float spawnTime)
         {
-            // scale/length of the note deterimned by the note duration, and a scaling factor (~~~~~~~~~~~~~~~~~BASE THIS ON MF BPM)``````````````````````````````````````````````````````````````````````````````````
+            // scale/length of the note deterimned by the note duration, and a scaling factor  (~~~~~~~~~~~~~~~~~BASE THIS ON MF BPM)``````````````````````````````````````````````````````````````````````````````````
             float noteScale = (noteEvent.endTime - noteEvent.startTime) * modifiedNoteScale;
             //spawn a note and store a reference.
-            GameObject noteInstance = Instantiate(notePrefab, new Vector3(-13.2f + (0.20505f * (48 + (noteEvent.noteNumber % 12))), (screenHeight) + (noteScale / 2) - 2.5f, 0f), Quaternion.identity);
+            GameObject noteInstance = Instantiate(notePrefab, new Vector3(-5.6f +(1 * (noteEvent.noteNumber % 12)), (screenHeight) + (noteScale / 2) - 2.5f, 0f), Quaternion.identity);
             FallingNote fallingNote = noteInstance.GetComponent<FallingNote>();
             SpriteRenderer spriteRenderer = noteInstance.GetComponent<SpriteRenderer>();
             fallingNote.velocity = fallSpeed; // set falling speed of the note to the value calculated in AssignSongValues()
             fallingNote.maxYBound = spriteRenderer.bounds.max.y; //Used to determine when a note is far enough off screen to be destroyed.
             fallingNote.GetComponentInChildren<NoteShadow>().SetShadowSize(noteScale + 0.075f);
 
-            spriteRenderer.size = new Vector2(spriteRenderer.size.x, noteScale);
+            spriteRenderer.size = new Vector2(4.5f, noteScale);
 
 
             if (noteEvent == noteEvents[noteEvents.Count - 1]) // check if note is the final note.
