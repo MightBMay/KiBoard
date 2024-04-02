@@ -120,8 +120,10 @@ public class SongSelection : MonoBehaviour
     /// </summary>
     public static string GetUnderscoreSubstring(string input)
     {
-        // Find the index of the first underscore character in the input string
+
+        if (string.IsNullOrEmpty(input)) return input;// Find the index of the first underscore character in the input string
         int underscoreIndex = input.IndexOf('_');
+        
 
         // Return a substring from the start of the input string to the underscore index, inclusive
         return (underscoreIndex >= 0) ? input.Substring(0, underscoreIndex) : input;

@@ -34,19 +34,8 @@ public class MidiInput : MonoBehaviour
         { KeyCode.H, 57 },
         { KeyCode.U, 58 },
         { KeyCode.J, 59 },
-        { KeyCode.K, 60 },
     };
-    Dictionary<KeyCode, int> keyboard8 = new Dictionary<KeyCode, int>
-    {
-        { KeyCode.A, 48 },
-        { KeyCode.S, 50 },
-        { KeyCode.D, 52 },
-        { KeyCode.F, 53 },
-        { KeyCode.G, 55 },
-        { KeyCode.H, 57 },
-        { KeyCode.J, 59 },
-        { KeyCode.K, 60},
-    };
+
 
     private void Awake()
     {
@@ -99,8 +88,18 @@ public class MidiInput : MonoBehaviour
     public void LoadSongFromCurrentSettings(bool isReplay)
     {
         MP3Handler.instance.StopMusic();
-        try { TransitionManager.instance.LoadNewScene("GameScene"); }
-        catch { SceneManager.LoadScene("GameScene"); }
+        try
+        {
+            if (GameSettings.usePiano) { TransitionManager.instance.LoadNewScene("GameScene88"); }
+            else { TransitionManager.instance.LoadNewScene("GameScene12"); }
+        }
+
+        catch
+        {
+            if (GameSettings.usePiano) { SceneManager.LoadScene("GameScene88"); }
+            else { SceneManager.LoadScene("GameScene12"); }
+        }
+
         NoteEventDataWrapper data = MidiReadFile.GetNoteEventsFromFilePath(GameSettings.currentSongPath);
         GameSettings.bpm = GameSettings.bpm == 0 ? data.BPM : GameSettings.bpm;
         GameManager.instance.ModifyNoteScale(data.BPM);
@@ -111,6 +110,8 @@ public class MidiInput : MonoBehaviour
         StartCoroutine(StartSong());
 
     }
+
+
 
     public NoteEventDataWrapper GetNoteEventWrapperFromSelectedSong()
     {
@@ -132,17 +133,21 @@ public class MidiInput : MonoBehaviour
 
         GameManager.instance.currentSongScore.ClearScore();
         GameManager.instance.combo.ClearCombo();
-        if (GameSettings.usePiano)
-        {
-            GameManager.instance.ModifyNoteScale(GameSettings.bpm);
-            yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotesPiano(GameSettings.bpm, storedNoteEvents));
-        }
-        else
-        {
-            GameManager.instance.ModifyNoteScale(GameSettings.bpm);
-            yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotesKeyboard12(GameSettings.bpm, storedNoteEvents));
-        }
+        GameSettings.gameType = GameSettings.usePiano ? GameType.Key88 : GameType.Key12;
+        GameManager.instance.ModifyNoteScale(GameSettings.bpm);
+        yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotes(GameSettings.bpm, storedNoteEvents));
         StartCoroutine(MP3Handler.instance.PlaySong(SongSelection.GetUnderscoreSubstring(GameSettings.currentFileGroup.Mp3File)));
+        GameManager.instance.startTimer = true;
+    }
+    public IEnumerator StartSong(string mp3Path)
+    {
+
+        GameManager.instance.currentSongScore.ClearScore();
+        GameManager.instance.combo.ClearCombo();
+        GameSettings.gameType = GameSettings.usePiano ? GameType.Key88 : GameType.Key12;
+        GameManager.instance.ModifyNoteScale(GameSettings.bpm);
+        yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotes(GameSettings.bpm, storedNoteEvents));
+        StartCoroutine(MP3Handler.instance.PlaySong(mp3Path));
         GameManager.instance.startTimer = true;
     }
     /// <summary>
@@ -157,15 +162,10 @@ public class MidiInput : MonoBehaviour
         loadEvents.ForEach(noteEvent => noteEvent.noteNumber += 20); // i - for the fucking life of me- cannot figure out why directly processing the midi files makes the note numbers
                                                                      // 20 higher, but i have to do this to match that with the song editor.
 
-        if (GameSettings.usePiano)
-        {
+        GameManager.instance.ModifyNoteScale(GameSettings.bpm);
+        GameSettings.gameType = GameSettings.usePiano ? GameType.Key88 : GameType.Key12;
+        yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotes(GameSettings.bpm, storedNoteEvents));
 
-            yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotesPiano(bpm, loadEvents));
-        }
-        else
-        {
-            yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotesKeyboard12(bpm, loadEvents));
-        }
         StartCoroutine(MP3Handler.instance.PlaySong(GameSettings.currentSongPath));
         GameManager.instance.startTimer = true;
 

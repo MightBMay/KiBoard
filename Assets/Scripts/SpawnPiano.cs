@@ -53,12 +53,23 @@ public class SpawnPiano : MonoBehaviour
 
     static bool CheckBlackNote(int i)
     {
-        return i % 12 == 2 || i % 12 == 5 || i % 12 == 7 || i % 12 == 10 || (i % 12 == 0 && i != 0);
+        int value = i % 12;   
+        if(GameSettings.usePiano) return value == 2 || value == 5 || value == 7 || value == 10 || (value == 0 && i != 0);
+        return value == 0 || value == 2 ||value == 5 || value == 7 || value == 10 ;
+
     }
 
     public void UpdateKeyColours(int noteNumber, bool enabled, string timingScore = "")
     {
-        spriterenderers[noteNumber].color = GetKeyColour(noteNumber, enabled, timingScore);
+        if (GameSettings.usePiano)
+        {
+            spriterenderers[noteNumber].color = GetKeyColour(noteNumber, enabled, timingScore);
+        }
+        else
+        {
+            Debug.Log(noteNumber % 12);
+            spriterenderers[(noteNumber-3 )% 12].color = GetKeyColour(noteNumber, enabled, timingScore);
+        }
     }
 
     public static Color GetKeyColour(int keyNum, string timingScore = "")

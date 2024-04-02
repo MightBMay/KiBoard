@@ -44,7 +44,7 @@ public static class MidiDataHandler
         // Define the path where you want to save the JSON file
         if (!Directory.Exists(folderPath))
         {
-            Directory.CreateDirectory(folderPath);
+            try { Directory.CreateDirectory(folderPath); } catch { }
         }
 
         // Write the JSON string to the file

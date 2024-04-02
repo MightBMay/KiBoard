@@ -79,12 +79,13 @@ public class GameManager : MonoBehaviour
     {
         totalNotes = noteCount;
     }
-    /// <summary>
-    /// Prepares notes for playback using piano input.
-    /// </summary>
-    /// <param name="BPM">The BPM (Beats Per Minute) of the song.</param>
-    /// <param name="noteEvents">List of note events to prepare.</param>
-    public IEnumerator PrepareNotesPiano(float BPM, List<NoteEventInfo> noteEvents) // TEMP 0.5f, change to 5.4f i think`````````````````````````````````````````````````````````````````````````````````````````````````````````
+
+    public void ModifyNoteScale(float bpm)
+    {
+        modifiedNoteScale = baseNoteScalingFactor * (130 / bpm);
+    }
+
+    public IEnumerator PrepareNotes(float BPM, List<NoteEventInfo> noteEvents) // TEMP 0.5f, change to 5.4f i think`````````````````````````````````````````````````````````````````````````````````````````````````````````
     {
         if (noteEvents == null) { Debug.Log("gameloop noteEvents null"); yield break; }
 
@@ -115,11 +116,24 @@ public class GameManager : MonoBehaviour
         IEnumerator ReadyNote(float spawnTime, NoteEventInfo noteEvent)
         {
             yield return new WaitUntil(() => songTime >= spawnTime);
-            SpawnNote(noteEvent, spawnTime);
+            switch (GameSettings.gameType)
+            {
+
+                case GameType.Key88:
+                    SpawnNote88(noteEvent, spawnTime);
+                    break;
+                case GameType.Key12:
+                    SpawnNote12(noteEvent, spawnTime);
+                    break;
+                case null:
+                default:
+                    break;
+            }
+
         }
 
 
-        void SpawnNote(NoteEventInfo noteEvent, float spawnTime)
+        void SpawnNote88(NoteEventInfo noteEvent, float spawnTime)
         {
             // scale/length of the note deterimned by the note duration, and a scaling factor (~~~~~~~~~~~~~~~~~BASE THIS ON MF BPM)``````````````````````````````````````````````````````````````````````````````````
             float noteScale = (noteEvent.endTime - noteEvent.startTime) * modifiedNoteScale;
@@ -143,51 +157,7 @@ public class GameManager : MonoBehaviour
 
             }
         }
-    }
-    public void ModifyNoteScale(float bpm)
-    {
-        modifiedNoteScale = baseNoteScalingFactor * (130 / bpm);
-    }
-
-    /// <summary>
-    /// Prepares notes for playback using keyboard input.
-    /// </summary>
-    /// <param name="BPM">The BPM (Beats Per Minute) of the song.</param>
-    /// <param name="noteEvents">List of note events to prepare.</param>
-    public IEnumerator PrepareNotesKeyboard12(float BPM, List<NoteEventInfo> noteEvents)
-    {
-        if (noteEvents == null) { Debug.Log("gameloop noteEvents null"); yield break; }
-
-        songTime = -3;
-        modifiedNoteScale = baseNoteScalingFactor * (130 / BPM);
-        StopReadiedNotes();
-        AssignSongValues();
-
-        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~REPLACE THIS WITH WHATEVER INPUT IS TO GO BACK~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        yield return new WaitForSecondsRealtime(1f);
-        yield return new WaitUntil(() => ((Input.anyKeyDown) || MidiInput.instance.GetAnyNoteActive())); // wait for any input to start.
-        noteEvents.ForEach(noteEvent => readiedNotes.Add(StartCoroutine(ReadyNote(noteEvent.startTime - spawnOffset, noteEvent))));
-        // Game loop is finished
-        yield return null;
-
-        void AssignSongValues()
-        {
-            spawnOffset = (beatsToFall * 60f / BPM); // notes will spawn beatstofall #beats before reaching the hit spot.
-            screenHeight = 80; // base fall distance off camera height.
-            distanceToFall = screenHeight;
-            // Calculate the speed based on the distance and duration
-            fallSpeed = (distanceToFall / spawnOffset);
-            SetSongTotalNotes(noteEvents.Count); // sets the total note count.
-            SongScore songScore = new(); // resets scoring for the song.
-        }
-
-        IEnumerator ReadyNote(float spawnTime, NoteEventInfo noteEvent)
-        { // waits until spawntime, then spawns note.
-            yield return new WaitUntil(() => songTime >= spawnTime);
-            SpawnNote(noteEvent, spawnTime);
-        }
-
-        void SpawnNote(NoteEventInfo noteEvent, float spawnTime)
+        void SpawnNote12(NoteEventInfo noteEvent, float spawnTime)
         {
             // scale/length of the note deterimned by the note duration, and a scaling factor (~~~~~~~~~~~~~~~~~BASE THIS ON MF BPM)``````````````````````````````````````````````````````````````````````````````````
             float noteScale = (noteEvent.endTime - noteEvent.startTime) * modifiedNoteScale;
@@ -284,7 +254,7 @@ public class GameManager : MonoBehaviour
     {
         startTimer = false;
         int[] score = currentSongScore.GetScoreArray(totalNotes);
-        
+
         EndSongMessage.instance.ShowScore($"Total Score: {score[0]}\nPerfect: {score[1]}\nGood: {score[2]}\nOkay: {score[3]}\nExtra: {score[4]}\nMissed: {score[5]}\nLongest Combo: {combo.highestCount}", currentSongScore.FinalizeScore());
 
         if (!Replay.isPlayingReplay) { MidiDataHandler.SaveNoteEventData(".replay", Replay.instance.replayNoteData); } // only record replays if you arent playing back a replay.
@@ -345,14 +315,14 @@ public class GameManager : MonoBehaviour
 
     public void SetBeatsBeforeDrop(string num)
     {
-        if(!int.TryParse(num,out int newNum))
+        if (!int.TryParse(num, out int newNum))
         {
-            if(newNum <= 0) { Debug.LogWarning("BeatBeforeDrop Setting attempted to be set to <=0");return; }
-            Debug.LogError("Non Int Input into Beats Before Drop Setting");return;
+            if (newNum <= 0) { Debug.LogWarning("BeatBeforeDrop Setting attempted to be set to <=0"); return; }
+            Debug.LogError("Non Int Input into Beats Before Drop Setting"); return;
         }
         beatsToFall = newNum;
     }
-    
+
 
 
 }
