@@ -45,7 +45,7 @@ public class Combo
 
         multiplier = Mathf.Clamp(multiplier, 1, maxMultiplier);
         dropCounter = Mathf.Clamp(dropCounter, comboKillThreshold, 0);
-        GameUI.instance.SetComboBarValue(multiplier);
+        try { GameUI.instance.SetComboBarValue(multiplier); } catch { Debug.Log("Error Setting ComboBarValue"); }
 
     }
 

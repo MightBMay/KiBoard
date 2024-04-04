@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -60,9 +61,18 @@ public class GameManager : MonoBehaviour
     {
         if (instance == null)
         {
+            SetFPS("60");
             instance = this;
         }
         else { Destroy(gameObject); }
+    }
+    public void SetFPS(string str)
+    {
+        if (int.TryParse(str, out int newFps))
+        {
+            Application.targetFrameRate = newFps;
+        }
+        else { Debug.LogError($"FPS Cap of : {str} is invalid"); }
     }
     private void Update()
     {
