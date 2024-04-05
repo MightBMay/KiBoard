@@ -13,6 +13,7 @@ using UnityEngine.UI;
 public class SongSelection : MonoBehaviour
 {
     public static SongSelection instance;
+    public Animator animator;
 
     /// <summary>
     /// Contains groups of midi,mp3,png, and json files that share the same file name.

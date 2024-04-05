@@ -6,7 +6,7 @@ using TMPro;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -31,7 +31,6 @@ public class GameManager : MonoBehaviour
     public SongScore selectedSongHighScore;
     public Combo combo = new();
     [SerializeField] string scoreString;
-
     static Dictionary<string, int> nameToNoteMap = new()
     {
         { "cb", 1 },
@@ -65,6 +64,11 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
         else { Destroy(gameObject); }
+    }
+    
+    public void AssignFpsText(TMP_InputField text)
+    {
+        text.text = Application.targetFrameRate.ToString();
     }
     public void SetFPS(string str)
     {
@@ -283,6 +287,7 @@ public class GameManager : MonoBehaviour
         StopReadiedNotes();
         MidiInput.instance.inGame = false;
         GameSettings.ResetSettings(false);
+        MidiInput.instance.UnHookMidiDevice();
 
         try { TransitionManager.instance.LoadNewScene("SongSelect"); }
         catch { SceneManager.LoadScene("SongSelect"); }

@@ -135,11 +135,10 @@ public class MP3Handler : MonoBehaviour
         // Create a new WaveFileReader with the provided path
         using (var reader = new Mp3FileReader(path))
         {
-            // Create a buffer to read audio data
-            byte[] buffer = new byte[4096];
 
             // Create a WaveOutEvent to play the audio
             waveOut = new WaveOutEvent();
+            waveOut.DesiredLatency = 100;
 
             // Set the WaveOutEvent's WaveStream to the Mp3FileReader
             waveOut.Init(reader);

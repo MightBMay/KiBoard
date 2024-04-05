@@ -274,7 +274,7 @@ public class MidiInput : MonoBehaviour
     /// <returns></returns>
     public bool IsNoteCorrect(int noteNumber, float timing, NoteEventInfo storedNote)
     {
-        if (GameSettings.usePiano) return noteNumber == storedNote.noteNumber && !storedNote.triggered && timing < 0.5f;
+        if (GameSettings.usePiano){return noteNumber == storedNote.noteNumber && !storedNote.triggered && timing < 0.5f; }
         return noteNumber % 12 == storedNote.noteNumber % 12 && !storedNote.triggered && timing < 0.5f;
 
     }
