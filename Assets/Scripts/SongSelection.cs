@@ -176,9 +176,10 @@ public class SongSelection : MonoBehaviour
     {
         // Check if the current song name is null or empty, and return if true
         if (string.IsNullOrEmpty(GameSettings.currentSongPath)) { return; }
-        if (Input.GetKey(KeyCode.LeftShift)) { MidiInput.instance.LoadSongFromCurrentSettings(true); } // if you hold shift and start, enter the editor.
+        if (Input.GetKey(KeyCode.LeftShift)) { TransitionManager.canTransition = false; MidiInput.instance.LoadSongFromCurrentSettings(true); } 
         else
         {
+            TransitionManager.canTransition = true;
             // Load the song from current game settings using the GameManager
             MidiInput.instance.LoadSongFromCurrentSettings(false);
         }

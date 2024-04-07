@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     public SongScore selectedSongHighScore;
     public Combo combo = new();
     [SerializeField] string scoreString;
+    
     static Dictionary<string, int> nameToNoteMap = new()
     {
         { "cb", 1 },
@@ -99,7 +100,7 @@ public class GameManager : MonoBehaviour
         modifiedNoteScale = baseNoteScalingFactor * (130 / bpm);
     }
 
-    public IEnumerator PrepareNotes(float BPM, List<NoteEventInfo> noteEvents) // TEMP 0.5f, change to 5.4f i think`````````````````````````````````````````````````````````````````````````````````````````````````````````
+    public IEnumerator PrepareNotes(float BPM, List<NoteEventInfo> noteEvents, bool isPreview) // TEMP 0.5f, change to 5.4f i think`````````````````````````````````````````````````````````````````````````````````````````````````````````
     {
         if (noteEvents == null) { Debug.Log("gameloop noteEvents null"); yield break; }
 
@@ -170,13 +171,14 @@ public class GameManager : MonoBehaviour
                 fallingNote.isLast = true;// set flag to end song after the last note is destroyed.
 
             }
+            if (isPreview) AssignToPreviewLayer(noteInstance);
         }
         void SpawnNote12(NoteEventInfo noteEvent, float spawnTime)
         {
             // scale/length of the note deterimned by the note duration, and a scaling factor  (~~~~~~~~~~~~~~~~~BASE THIS ON MF BPM)``````````````````````````````````````````````````````````````````````````````````
             float noteScale = (noteEvent.endTime - noteEvent.startTime) * modifiedNoteScale;
             //spawn a note and store a reference.
-            GameObject noteInstance = Instantiate(notePrefab, new Vector3(-5.6f +(1 * (noteEvent.noteNumber % 12)), (screenHeight) + (noteScale / 2) - 2.5f, 0f), Quaternion.identity);
+            GameObject noteInstance = Instantiate(notePrefab, new Vector3(-5.6f + (1 * (noteEvent.noteNumber % 12)), (screenHeight) + (noteScale / 2) - 2.5f, 0f), Quaternion.identity);
             FallingNote fallingNote = noteInstance.GetComponent<FallingNote>();
             SpriteRenderer spriteRenderer = noteInstance.GetComponent<SpriteRenderer>();
             fallingNote.velocity = fallSpeed; // set falling speed of the note to the value calculated in AssignSongValues()
@@ -191,6 +193,19 @@ public class GameManager : MonoBehaviour
                 fallingNote.isLast = true;// set flag to end song after the last note is destroyed.
 
             }
+            if (isPreview) AssignToPreviewLayer(noteInstance);
+        }
+    }
+
+    void AssignToPreviewLayer(GameObject obj)
+    {
+        // Assign the object to the "PreviewLayer"
+        obj.layer = LayerMask.NameToLayer("PreviewLayer");
+
+        // Recursively assign children to the "PreviewLayer"
+        foreach (Transform child in obj.transform)
+        {
+            AssignToPreviewLayer(child.gameObject);
         }
     }
     /// <summary>

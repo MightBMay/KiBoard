@@ -6,6 +6,7 @@ public class UiHolder : MonoBehaviour
 {
     public static UiHolder instance;
     public Animator animator;
+    public GameObject scenePreview;
 
     private void Awake()
     {

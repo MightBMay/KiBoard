@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MidiInput : MonoBehaviour
 {
@@ -18,6 +20,10 @@ public class MidiInput : MonoBehaviour
     public bool takeInput = true;
     public bool inGame = false;
     public float inputDelay = 0.125f;
+
+    public Camera sceneCamera;
+    public RenderTexture renderTexture;
+    [SerializeField] GameObject imagePrefab;
 
     // Define the mapping between keyboard keys and MIDI note numbers
     Dictionary<KeyCode, int> keyboard12 = new Dictionary<KeyCode, int>
@@ -78,32 +84,120 @@ public class MidiInput : MonoBehaviour
             catch { }
         }
     }
+
+    public void LoadScenePreview(string sceneName)
+    {
+        SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive).completed += OnSceneLoaded;
+
+
+        void OnSceneLoaded(AsyncOperation asyncOperation)
+        {
+            Scene previewScene = SceneManager.GetSceneByName(sceneName);
+
+            Debug.Log("Root game objects count in the preview scene: " + previewScene.rootCount);
+
+            // Iterate through the root game objects of the scene
+            foreach (GameObject rootObject in previewScene.GetRootGameObjects())
+            {
+                // Assign the object to the "PreviewLayer"
+                AssignToPreviewLayer(rootObject);
+
+                // Check if the object has an EventSystem component and destroy it
+                if (rootObject.TryGetComponent(out EventSystem eventSystem))
+                {
+                    Destroy(eventSystem.gameObject);
+                }
+
+                // Find the camera in the preview scene
+                Camera camera = rootObject.GetComponentInChildren<Camera>();
+                if (camera != null)
+                {
+
+                    // Set the camera to render to the specified RenderTexture
+                    camera.cullingMask = 1 << LayerMask.NameToLayer("PreviewLayer");
+                    camera.targetTexture = renderTexture;
+                    Debug.Log("Preview camera found and RenderTexture assigned.");
+                }
+            }
+
+            // Create a new UI Image object
+            GameObject imageObject = Instantiate(imagePrefab, UiHolder.instance.transform);
+            RawImage image = imageObject.GetComponent<RawImage>();
+
+            // Check if RawImage component exists
+            if (image != null)
+            {
+                // Assign the RenderTexture to the RawImage component's texture
+                image.texture = renderTexture;
+                UiHolder.instance.scenePreview = imageObject;
+                Debug.Log("RenderTexture assigned to the UI Image.");
+            }
+            else
+            {
+                Debug.LogError("RawImage component not found on the instantiated image prefab.");
+            }
+        }
+
+        // Method to assign an object and its children to the "PreviewLayer"
+        void AssignToPreviewLayer(GameObject obj)
+        {
+            // Assign the object to the "PreviewLayer"
+            obj.layer = LayerMask.NameToLayer("PreviewLayer");
+
+            // Recursively assign children to the "PreviewLayer"
+            foreach (Transform child in obj.transform)
+            {
+                AssignToPreviewLayer(child.gameObject);
+            }
+        }
+    }
+
+    
+
     /// <summary>
     /// Loads the selected song for gameplay.
     /// </summary>
-    public void LoadSongFromCurrentSettings(bool isReplay)
+    public void LoadSongFromCurrentSettings(bool isPreview = false)
     {
         MP3Handler.instance.StopMusic();
-        try
+        string gameMode;
+        if (GameSettings.usePiano) { gameMode = "GameScene88"; HookMidiDevice(); } else { gameMode = "GameScene12"; UnHookMidiDevice(); }
+
+        if (isPreview)
         {
-            if (GameSettings.usePiano) { TransitionManager.instance.LoadNewScene("GameScene88"); HookMidiDevice(); }
-            else { TransitionManager.instance.LoadNewScene("GameScene12"); UnHookMidiDevice(); }
+            LoadScenePreview(gameMode);
+            NoteEventDataWrapper data = MidiReadFile.GetNoteEventsFromFilePath(GameSettings.currentSongPath);
+            GameSettings.bpm = GameSettings.bpm == 0 ? data.BPM : GameSettings.bpm;
+            GameManager.instance.ModifyNoteScale(data.BPM);
+
+            storedNoteEvents = data.NoteEvents;
+            takeInput = true;
+            inGame = true;
+            StartCoroutine(StartSong(true));
+        }
+        else
+        {
+            try
+            {
+                TransitionManager.instance.LoadNewScene(gameMode);
+            }
+
+            catch
+            {
+                SceneManager.LoadScene(gameMode);
+            }
+
+
+            NoteEventDataWrapper data = MidiReadFile.GetNoteEventsFromFilePath(GameSettings.currentSongPath);
+            GameSettings.bpm = GameSettings.bpm == 0 ? data.BPM : GameSettings.bpm;
+            GameManager.instance.ModifyNoteScale(data.BPM);
+
+            storedNoteEvents = data.NoteEvents;
+            takeInput = true;
+            inGame = true;
+            StartCoroutine(StartSong());
         }
 
-        catch
-        {
-            if (GameSettings.usePiano) { SceneManager.LoadScene("GameScene88"); HookMidiDevice(); }
-            else { SceneManager.LoadScene("GameScene12"); UnHookMidiDevice(); }
-        }
-
-        NoteEventDataWrapper data = MidiReadFile.GetNoteEventsFromFilePath(GameSettings.currentSongPath);
-        GameSettings.bpm = GameSettings.bpm == 0 ? data.BPM : GameSettings.bpm;
-        GameManager.instance.ModifyNoteScale(data.BPM);
-
-        storedNoteEvents = data.NoteEvents;
-        takeInput = true;
-        inGame = true;
-        StartCoroutine(StartSong());
 
 
     }
@@ -138,25 +232,25 @@ public class MidiInput : MonoBehaviour
     /// Starts playing the loaded song.
     /// </summary>
     /// <returns>Coroutine for preparing notes and playing the song.</returns>
-    public IEnumerator StartSong()
+    public IEnumerator StartSong(bool isPreview = false)
     {
 
         GameManager.instance.currentSongScore.ClearScore();
         GameManager.instance.combo.ClearCombo();
         GameSettings.gameType = GameSettings.usePiano ? GameType.Key88 : GameType.Key12;
         GameManager.instance.ModifyNoteScale(GameSettings.bpm);
-        yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotes(GameSettings.bpm, storedNoteEvents));
+        yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotes(GameSettings.bpm, storedNoteEvents, isPreview));
         StartCoroutine(MP3Handler.instance.PlaySong(SongSelection.GetUnderscoreSubstring(GameSettings.currentFileGroup.Mp3File)));
         GameManager.instance.startTimer = true;
     }
-    public IEnumerator StartSong(string mp3Path)
+    public IEnumerator StartSong(string mp3Path, bool isPreview = false)
     {
 
         GameManager.instance.currentSongScore.ClearScore();
         GameManager.instance.combo.ClearCombo();
         GameSettings.gameType = GameSettings.usePiano ? GameType.Key88 : GameType.Key12;
         GameManager.instance.ModifyNoteScale(GameSettings.bpm);
-        yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotes(GameSettings.bpm, storedNoteEvents));
+        yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotes(GameSettings.bpm, storedNoteEvents, isPreview));
         StartCoroutine(MP3Handler.instance.PlaySong(mp3Path));
         GameManager.instance.startTimer = true;
     }
@@ -165,7 +259,7 @@ public class MidiInput : MonoBehaviour
     /// </summary>
     /// <param name="loadEvents">The list of note events to play.</param>
     /// <returns>Coroutine for preparing notes and playing the song.</returns>
-    public IEnumerator StartSong(List<NoteEventInfo> loadEvents)
+    public IEnumerator StartSong(List<NoteEventInfo> loadEvents, bool isPreview = false)
     {
         GameManager.instance.currentSongScore.ClearScore();
         var bpm = GameSettings.bpm;
@@ -174,7 +268,7 @@ public class MidiInput : MonoBehaviour
 
         GameManager.instance.ModifyNoteScale(GameSettings.bpm);
         GameSettings.gameType = GameSettings.usePiano ? GameType.Key88 : GameType.Key12;
-        yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotes(GameSettings.bpm, storedNoteEvents));
+        yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotes(GameSettings.bpm, storedNoteEvents, isPreview));
 
         StartCoroutine(MP3Handler.instance.PlaySong(GameSettings.currentSongPath));
         GameManager.instance.startTimer = true;

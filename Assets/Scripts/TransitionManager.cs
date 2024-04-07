@@ -6,13 +6,14 @@ using UnityEngine.SceneManagement;
 public class TransitionManager : MonoBehaviour
 {
     public static TransitionManager instance;
+    public static bool canTransition;
     [SerializeField] Animator animator; // Made private and readonly
     static float TransitionDuration = 0.25f; // Made property
 
 
     private void Awake()
     {
-        if(instance== null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -33,15 +34,15 @@ public class TransitionManager : MonoBehaviour
     IEnumerator TransitionToScene(int sceneID)
     {
 
-        animator.SetTrigger("StartFadeOut");
-        yield return new WaitForSeconds(1+TransitionDuration);
+        if (canTransition) animator.SetTrigger("StartFadeOut");
+        yield return new WaitForSeconds(1 + TransitionDuration);
         SceneManager.LoadScene(sceneID);
     }
 
     IEnumerator TransitionToScene(string sceneName)
     {
-        animator.SetTrigger("StartFadeOut");
-        yield return new WaitForSeconds(1+TransitionDuration);
+        if (canTransition) animator.SetTrigger("StartFadeOut");
+        yield return new WaitForSeconds(1 + TransitionDuration);
         SceneManager.LoadScene(sceneName);
     }
 

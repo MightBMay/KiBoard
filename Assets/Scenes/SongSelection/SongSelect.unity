@@ -1694,6 +1694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 283116487}
+  scenePreview: {fileID: 2149505300138531998, guid: 13a5906957eed694f88ebaa938688134, type: 3}
 --- !u!1 &300556905
 GameObject:
   m_ObjectHideFlags: 0
@@ -3987,6 +3988,10 @@ PrefabInstance:
       propertyPath: temp
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 4891119375135277128, guid: 8713daea6d5d4cb42b89a26c61b32971, type: 3}
+      propertyPath: imagePrefab
+      value: 
+      objectReference: {fileID: 2149505300138531998, guid: 13a5906957eed694f88ebaa938688134, type: 3}
     - target: {fileID: 6773693939016771462, guid: 8713daea6d5d4cb42b89a26c61b32971, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
