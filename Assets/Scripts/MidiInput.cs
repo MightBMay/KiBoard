@@ -93,7 +93,7 @@ public class MidiInput : MonoBehaviour
         {
             SceneManager.UnloadSceneAsync(currentPreview);
         }
-
+        GameManager.instance.ModifyNoteScale(GameSettings.bpm);
         AsyncOperation loadOperation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         loadOperation.completed += (operation) =>
         {
@@ -141,7 +141,7 @@ public class MidiInput : MonoBehaviour
             // Create a new UI Image object
             GameObject imageObject = Instantiate(imagePrefab, UiHolder.instance.transform);
             RawImage image = imageObject.GetComponent<RawImage>();
-            GameManager.instance.ModifyNoteScale(GameSettings.bpm);
+            
 
             // Check if RawImage component exists
             if (image != null)

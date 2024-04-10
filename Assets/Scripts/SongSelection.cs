@@ -45,7 +45,7 @@ public class SongSelection : MonoBehaviour
             string[] directoryPath = Directory.GetDirectories(defaultPath);
             foreach (string directory in directoryPath)
             {
-                fileGroups.Add( AssembleFileGroup(directory) );
+                fileGroups.Add(AssembleFileGroup(directory));
             }
         }
         else
@@ -124,7 +124,7 @@ public class SongSelection : MonoBehaviour
 
         if (string.IsNullOrEmpty(input)) return input;// Find the index of the first underscore character in the input string
         int underscoreIndex = input.IndexOf('_');
-        
+
 
         // Return a substring from the start of the input string to the underscore index, inclusive
         return (underscoreIndex >= 0) ? input.Substring(0, underscoreIndex) : input;
@@ -145,17 +145,18 @@ public class SongSelection : MonoBehaviour
 
     public FileGroup AssembleFileGroup(string directory)
     {
-        string[]allFiles = Directory.GetFiles(directory);
+        string[] allFiles = Directory.GetFiles(directory);
         FileGroupError error = new FileGroupError();
-        string[] jsonfiles= null, midifiles = null, replayfiles = null;
-        string mp3file= "", pngfile="", scorefile="";
+        string[] jsonfiles = null, midifiles = null, replayfiles = null;
+        string mp3file = "", pngfile = "", scorefile = "";
         try { jsonfiles = allFiles.Where(file => Path.GetExtension(file) == ".json").ToArray(); error.json = true; } catch { }
         try { mp3file = allFiles.First(file => Path.GetExtension(file) == ".mp3"); error.mp3 = true; } catch { }
         try { pngfile = allFiles.First(file => Path.GetExtension(file) == ".png"); error.png = true; } catch { }
         try { midifiles = allFiles.Where(file => Path.GetExtension(file) == ".mid").ToArray(); error.midi = true; } catch { }
         try { scorefile = allFiles.First(file => Path.GetExtension(file) == ".score"); error.score = true; } catch { }
         try { replayfiles = allFiles.Where(file => Path.GetExtension(file) == ".replay").ToArray(); error.replay = true; } catch { } // don't need to do anything in catch since the values for the error struct are automatically false.
-        return new FileGroup() {
+        return new FileGroup()
+        {
             errors = error,
             FileName = Path.GetFileNameWithoutExtension(directory),
             FolderPath = directory,
@@ -165,7 +166,7 @@ public class SongSelection : MonoBehaviour
             ScoreFile = scorefile,
             ReplayFiles = replayfiles,
             MidiFiles = midifiles,
-        
+
         };
     }
 
@@ -176,13 +177,10 @@ public class SongSelection : MonoBehaviour
     {
         // Check if the current song name is null or empty, and return if true
         if (string.IsNullOrEmpty(GameSettings.currentSongPath)) { return; }
-        if (Input.GetKey(KeyCode.LeftShift)) { TransitionManager.canTransition = false; MidiInput.instance.LoadSongFromCurrentSettings(true); } 
-        else
-        {
-            TransitionManager.canTransition = true;
-            // Load the song from current game settings using the GameManager
-            MidiInput.instance.LoadSongFromCurrentSettings(false);
-        }
+        TransitionManager.canTransition = true;
+        // Load the song from current game settings using the GameManager
+        MidiInput.instance.LoadSongFromCurrentSettings(false);
+
     }
 
 }

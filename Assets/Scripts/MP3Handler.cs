@@ -37,7 +37,7 @@ public class MP3Handler : MonoBehaviour
         if (!File.Exists(filePath)) { Debug.LogError($"MP3 File not found at path {filePath}"); yield break; }
         audioThread = new Thread(() => ReadMP3File(filePath));
         yield return new WaitUntil(() => GameManager.instance.songTime >= 0);
-        audioThread.Start();
+        try { audioThread.Start(); } catch { }
 
 
 
@@ -163,8 +163,11 @@ public class MP3Handler : MonoBehaviour
         }
         if (audioThread != null)
         {
-            waveOut.Stop();
-            waveOut.Dispose();
+            if (waveOut != null)
+            {
+                waveOut.Stop();
+                waveOut.Dispose();
+            }
         }
         if (audioThread != null && audioThread.IsAlive)
         {
