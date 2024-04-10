@@ -6,12 +6,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static Cinemachine.CinemachineTriggerAction.ActionSettings;
 
 public class MidiInput : MonoBehaviour
 {
     public static MidiInput instance;
     public List<NoteEventInfo> storedNoteEvents;
-    Coroutine PrepareNotesCoroutine;
+    public Coroutine PrepareNotesCoroutine;
     [SerializeField] TextMeshProUGUI warningText;
 
 
@@ -85,13 +86,26 @@ public class MidiInput : MonoBehaviour
         }
     }
 
+    public Scene currentPreview;
     public void LoadScenePreview(string sceneName)
     {
-        SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive).completed += OnSceneLoaded;
+        if (currentPreview.isLoaded)
+        {
+            SceneManager.UnloadSceneAsync(currentPreview);
+        }
+
+        AsyncOperation loadOperation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+        loadOperation.completed += (operation) =>
+        {
+            currentPreview = SceneManager.GetSceneByName(sceneName); // Assign the loaded scene to currentPreview
+            OnSceneLoaded(operation);
+        };
 
 
         void OnSceneLoaded(AsyncOperation asyncOperation)
         {
+            
+
             Scene previewScene = SceneManager.GetSceneByName(sceneName);
 
             Debug.Log("Root game objects count in the preview scene: " + previewScene.rootCount);
@@ -99,6 +113,10 @@ public class MidiInput : MonoBehaviour
             // Iterate through the root game objects of the scene
             foreach (GameObject rootObject in previewScene.GetRootGameObjects())
             {
+                if (rootObject.TryGetComponent(out TransitionManager transition))
+                {
+                    transition.GetComponent<Canvas>().enabled = false;
+                }
                 // Assign the object to the "PreviewLayer"
                 AssignToPreviewLayer(rootObject);
 
@@ -123,6 +141,7 @@ public class MidiInput : MonoBehaviour
             // Create a new UI Image object
             GameObject imageObject = Instantiate(imagePrefab, UiHolder.instance.transform);
             RawImage image = imageObject.GetComponent<RawImage>();
+            GameManager.instance.ModifyNoteScale(GameSettings.bpm);
 
             // Check if RawImage component exists
             if (image != null)
@@ -136,6 +155,7 @@ public class MidiInput : MonoBehaviour
             {
                 Debug.LogError("RawImage component not found on the instantiated image prefab.");
             }
+            asyncOperation.completed -= OnSceneLoaded;
         }
 
         // Method to assign an object and its children to the "PreviewLayer"
@@ -152,11 +172,12 @@ public class MidiInput : MonoBehaviour
         }
     }
 
-    
+
 
     /// <summary>
     /// Loads the selected song for gameplay.
     /// </summary>
+
     public void LoadSongFromCurrentSettings(bool isPreview = false)
     {
         MP3Handler.instance.StopMusic();
@@ -195,6 +216,8 @@ public class MidiInput : MonoBehaviour
             storedNoteEvents = data.NoteEvents;
             takeInput = true;
             inGame = true;
+            if (PrepareNotesCoroutine != null) StopCoroutine(PrepareNotesCoroutine);
+            GameManager.instance.StopReadiedNotes();
             StartCoroutine(StartSong());
         }
 
@@ -241,7 +264,6 @@ public class MidiInput : MonoBehaviour
         GameManager.instance.ModifyNoteScale(GameSettings.bpm);
         yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotes(GameSettings.bpm, storedNoteEvents, isPreview));
         StartCoroutine(MP3Handler.instance.PlaySong(SongSelection.GetUnderscoreSubstring(GameSettings.currentFileGroup.Mp3File)));
-        GameManager.instance.startTimer = true;
     }
     public IEnumerator StartSong(string mp3Path, bool isPreview = false)
     {
@@ -252,7 +274,6 @@ public class MidiInput : MonoBehaviour
         GameManager.instance.ModifyNoteScale(GameSettings.bpm);
         yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotes(GameSettings.bpm, storedNoteEvents, isPreview));
         StartCoroutine(MP3Handler.instance.PlaySong(mp3Path));
-        GameManager.instance.startTimer = true;
     }
     /// <summary>
     /// Starts playing a song with specified note events.
@@ -271,7 +292,6 @@ public class MidiInput : MonoBehaviour
         yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotes(GameSettings.bpm, storedNoteEvents, isPreview));
 
         StartCoroutine(MP3Handler.instance.PlaySong(GameSettings.currentSongPath));
-        GameManager.instance.startTimer = true;
 
     }
 
@@ -368,7 +388,7 @@ public class MidiInput : MonoBehaviour
     /// <returns></returns>
     public bool IsNoteCorrect(int noteNumber, float timing, NoteEventInfo storedNote)
     {
-        if (GameSettings.usePiano){return noteNumber == storedNote.noteNumber && !storedNote.triggered && timing < 0.5f; }
+        if (GameSettings.usePiano) { return noteNumber == storedNote.noteNumber && !storedNote.triggered && timing < 0.5f; }
         return noteNumber % 12 == storedNote.noteNumber % 12 && !storedNote.triggered && timing < 0.5f;
 
     }

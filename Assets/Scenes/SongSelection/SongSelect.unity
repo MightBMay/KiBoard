@@ -3992,6 +3992,10 @@ PrefabInstance:
       propertyPath: imagePrefab
       value: 
       objectReference: {fileID: 2149505300138531998, guid: 13a5906957eed694f88ebaa938688134, type: 3}
+    - target: {fileID: 4891119375135277128, guid: 8713daea6d5d4cb42b89a26c61b32971, type: 3}
+      propertyPath: renderTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: a740532bd4fc8f344a7011dbd319ea0d, type: 2}
     - target: {fileID: 6773693939016771462, guid: 8713daea6d5d4cb42b89a26c61b32971, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -8634,7 +8638,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1023
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -11316,6 +11320,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1741563221}
     - target: {fileID: 5449399625689053571, guid: c56bdef3b3a7f1146a646e9348326e13, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5449399625689053571, guid: c56bdef3b3a7f1146a646e9348326e13, type: 3}
       propertyPath: m_RenderMode
       value: 0
       objectReference: {fileID: 0}
@@ -11333,7 +11341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6333892562893241397, guid: c56bdef3b3a7f1146a646e9348326e13, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -2,6 +2,7 @@ using NAudio.Midi;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using TMPro;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -109,8 +110,8 @@ public class GameManager : MonoBehaviour
         songTime = -spawnOffset - 0.1f;
         modifiedNoteScale = baseNoteScalingFactor * (130 / BPM);
         yield return new WaitForSecondsRealtime(1f);
-        yield return new WaitUntil(() => (Input.anyKeyDown || MidiInput.instance.GetAnyNoteActive()));
-
+        yield return new WaitUntil(() => (Input.anyKeyDown || MidiInput.instance.GetAnyNoteActive()) || isPreview);
+        startTimer = true;
         noteEvents.ForEach(noteEvent => readiedNotes.Add(StartCoroutine(ReadyNote(noteEvent.startTime - spawnOffset, noteEvent))));
 
         // Game loop is finished
@@ -171,7 +172,7 @@ public class GameManager : MonoBehaviour
                 fallingNote.isLast = true;// set flag to end song after the last note is destroyed.
 
             }
-            if (isPreview) AssignToPreviewLayer(noteInstance);
+            if (isPreview) { AssignToPreviewLayer(noteInstance); }
         }
         void SpawnNote12(NoteEventInfo noteEvent, float spawnTime)
         {
@@ -199,13 +200,14 @@ public class GameManager : MonoBehaviour
 
     void AssignToPreviewLayer(GameObject obj)
     {
-        // Assign the object to the "PreviewLayer"
-        obj.layer = LayerMask.NameToLayer("PreviewLayer");
 
-        // Recursively assign children to the "PreviewLayer"
-        foreach (Transform child in obj.transform)
+        // Assign the object to the "PreviewLayer"
+        LayerMask layer = LayerMask.NameToLayer("PreviewLayer");
+        try { SceneManager.MoveGameObjectToScene(obj, MidiInput.instance.currentPreview); } catch { }
+
+        foreach (Transform child in obj.GetComponentsInChildren<Transform>(true))
         {
-            AssignToPreviewLayer(child.gameObject);
+            child.gameObject.layer = layer;
         }
     }
     /// <summary>

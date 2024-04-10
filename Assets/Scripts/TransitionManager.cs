@@ -22,11 +22,13 @@ public class TransitionManager : MonoBehaviour
 
     public void LoadNewScene(int sceneID)
     {
+        if (GameManager.instance != null) { GameManager.instance.startTimer = false; }
         StartCoroutine(TransitionToScene(sceneID));
 
     }
     public void LoadNewScene(string sceneName)
     {
+        if (GameManager.instance != null) { GameManager.instance.startTimer = false; }
         StartCoroutine(TransitionToScene(sceneName));
 
     }
