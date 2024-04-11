@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class SettingsManager : MonoBehaviour
 {
@@ -54,6 +55,11 @@ public class GameSettings
             usePedal = false;
             usePiano = true;
         }
+    }
+
+    public override string ToString()
+    {
+        return $"Bpm: {bpm}";
     }
 }
 

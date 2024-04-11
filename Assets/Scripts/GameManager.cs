@@ -101,6 +101,17 @@ public class GameManager : MonoBehaviour
         modifiedNoteScale = baseNoteScalingFactor * (130 / bpm);
     }
 
+    public void AssignSongValues(float bpm)
+    {
+        Replay.StartReplayCapture();
+        spawnOffset = (beatsToFall * 60f / bpm);
+        screenHeight = 40.16f;//2f * Camera.main.orthographicSize;
+        distanceToFall = screenHeight;
+        fallSpeed = (distanceToFall / spawnOffset);
+        SongScore songScore = new();
+    }
+
+
     public IEnumerator PrepareNotes(float BPM, List<NoteEventInfo> noteEvents, bool isPreview) // TEMP 0.5f, change to 5.4f i think`````````````````````````````````````````````````````````````````````````````````````````````````````````
     {
         if (noteEvents == null) { Debug.Log("gameloop noteEvents null"); yield break; }

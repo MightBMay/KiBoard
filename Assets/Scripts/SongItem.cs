@@ -27,7 +27,8 @@ public class SongItem : MonoBehaviour
         ExtraSongInfoMenu.instance.SetText(fileGroup.FileName);
         MP3Handler.instance.StartSongDemo(fileGroup.Mp3File);
         UiHolder.instance.animator.SetBool("isSongSelected", true);
-        TransitionManager.canTransition = false; 
+        TransitionManager.canTransition = false;
         MidiInput.instance.LoadSongFromCurrentSettings(true);
+        Debug.Log(GameSettings.instance.ToString() + " " + GameSettings.currentSongPath) ;
     }
 }

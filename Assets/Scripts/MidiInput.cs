@@ -188,9 +188,9 @@ public class MidiInput : MonoBehaviour
         {
             LoadScenePreview(gameMode);
             NoteEventDataWrapper data = MidiReadFile.GetNoteEventsFromFilePath(GameSettings.currentSongPath);
-            GameSettings.bpm = GameSettings.bpm == 0 ? data.BPM : GameSettings.bpm;
+            GameSettings.bpm = data.BPM;
             GameManager.instance.ModifyNoteScale(data.BPM);
-
+            GameManager.instance.AssignSongValues(data.BPM);
             storedNoteEvents = data.NoteEvents;
             takeInput = true;
             inGame = true;
