@@ -29,6 +29,5 @@ public class SongItem : MonoBehaviour
         UiHolder.instance.animator.SetBool("isSongSelected", true);
         TransitionManager.canTransition = false;
         MidiInput.instance.LoadSongFromCurrentSettings(true);
-        Debug.Log(GameSettings.instance.ToString() + " " + GameSettings.currentSongPath) ;
     }
 }

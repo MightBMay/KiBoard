@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     public SongScore selectedSongHighScore;
     public Combo combo = new();
     [SerializeField] string scoreString;
-    
+
     static Dictionary<string, int> nameToNoteMap = new()
     {
         { "cb", 1 },
@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
         }
         else { Destroy(gameObject); }
     }
-    
+
     public void AssignFpsText(TMP_InputField text)
     {
         text.text = Application.targetFrameRate.ToString();
@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
 
         StopReadiedNotes();
         AssignSongValues();
-        songTime = -spawnOffset - 0.1f;
+        songTime = -spawnOffset - 0.45f;
         modifiedNoteScale = baseNoteScalingFactor * (130 / BPM);
         yield return new WaitForSecondsRealtime(1f);
         yield return new WaitUntil(() => (Input.anyKeyDown || MidiInput.instance.GetAnyNoteActive()) || isPreview);
@@ -138,6 +138,7 @@ public class GameManager : MonoBehaviour
             fallSpeed = (distanceToFall / spawnOffset);
             SetSongTotalNotes(noteEvents.Count);
             SongScore songScore = new();
+            if (isPreview) { isCurSongPreview = true; } else { isCurSongPreview = false; }
         }
 
         IEnumerator ReadyNote(float spawnTime, NoteEventInfo noteEvent)
@@ -183,7 +184,7 @@ public class GameManager : MonoBehaviour
                 fallingNote.isLast = true;// set flag to end song after the last note is destroyed.
 
             }
-            if (isPreview) { AssignToPreviewLayer(noteInstance); }
+            if (isPreview) AssignToPreviewLayer(noteInstance);
         }
         void SpawnNote12(NoteEventInfo noteEvent, float spawnTime)
         {
@@ -204,11 +205,13 @@ public class GameManager : MonoBehaviour
             {
                 fallingNote.isLast = true;// set flag to end song after the last note is destroyed.
 
+
             }
             if (isPreview) AssignToPreviewLayer(noteInstance);
         }
     }
 
+    public bool isCurSongPreview;
     void AssignToPreviewLayer(GameObject obj)
     {
 

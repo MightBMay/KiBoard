@@ -89,6 +89,7 @@ public class MidiInput : MonoBehaviour
     public Scene currentPreview;
     public void LoadScenePreview(string sceneName)
     {
+
         if (currentPreview.isLoaded)
         {
             SceneManager.UnloadSceneAsync(currentPreview);
@@ -108,7 +109,6 @@ public class MidiInput : MonoBehaviour
 
             Scene previewScene = SceneManager.GetSceneByName(sceneName);
 
-            Debug.Log("Root game objects count in the preview scene: " + previewScene.rootCount);
 
             // Iterate through the root game objects of the scene
             foreach (GameObject rootObject in previewScene.GetRootGameObjects())
@@ -116,6 +116,10 @@ public class MidiInput : MonoBehaviour
                 if (rootObject.TryGetComponent(out TransitionManager transition))
                 {
                     transition.GetComponent<Canvas>().enabled = false;
+                }
+                if(rootObject.TryGetComponent(out Canvas canvas))
+                {
+                    canvas.enabled = false;
                 }
                 // Assign the object to the "PreviewLayer"
                 AssignToPreviewLayer(rootObject);
@@ -134,13 +138,12 @@ public class MidiInput : MonoBehaviour
                     // Set the camera to render to the specified RenderTexture
                     camera.cullingMask = 1 << LayerMask.NameToLayer("PreviewLayer");
                     camera.targetTexture = renderTexture;
-                    Debug.Log("Preview camera found and RenderTexture assigned.");
                 }
             }
 
             // Create a new UI Image object
             GameObject imageObject = Instantiate(imagePrefab, UiHolder.instance.transform);
-            RawImage image = imageObject.GetComponent<RawImage>();
+            RawImage image = imageObject.GetComponentInChildren<RawImage>();
             
 
             // Check if RawImage component exists
@@ -148,8 +151,8 @@ public class MidiInput : MonoBehaviour
             {
                 // Assign the RenderTexture to the RawImage component's texture
                 image.texture = renderTexture;
+                if(UiHolder.instance.scenePreview != null) { Destroy(UiHolder.instance.scenePreview); }
                 UiHolder.instance.scenePreview = imageObject;
-                Debug.Log("RenderTexture assigned to the UI Image.");
             }
             else
             {
@@ -182,7 +185,7 @@ public class MidiInput : MonoBehaviour
     {
         MP3Handler.instance.StopMusic();
         string gameMode;
-        if (GameSettings.usePiano) { gameMode = "GameScene88"; HookMidiDevice(); } else { gameMode = "GameScene12"; UnHookMidiDevice(); }
+        if (GameSettings.usePiano) { gameMode = "GameScene88";  } else { gameMode = "GameScene12";  }
 
         if (isPreview)
         {
@@ -192,12 +195,13 @@ public class MidiInput : MonoBehaviour
             GameManager.instance.ModifyNoteScale(data.BPM);
             GameManager.instance.AssignSongValues(data.BPM);
             storedNoteEvents = data.NoteEvents;
-            takeInput = true;
-            inGame = true;
+            takeInput = false;
+            inGame = false;
             StartCoroutine(StartSong(true));
         }
         else
         {
+
             try
             {
                 TransitionManager.instance.LoadNewScene(gameMode);
@@ -208,7 +212,7 @@ public class MidiInput : MonoBehaviour
                 SceneManager.LoadScene(gameMode);
             }
 
-
+            if (GameSettings.usePiano) {  HookMidiDevice(); } else {  UnHookMidiDevice(); }
             NoteEventDataWrapper data = MidiReadFile.GetNoteEventsFromFilePath(GameSettings.currentSongPath);
             GameSettings.bpm = GameSettings.bpm == 0 ? data.BPM : GameSettings.bpm;
             GameManager.instance.ModifyNoteScale(data.BPM);
