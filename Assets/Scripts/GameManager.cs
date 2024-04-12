@@ -96,29 +96,13 @@ public class GameManager : MonoBehaviour
         totalNotes = noteCount;
     }
 
-    public void ModifyNoteScale(float bpm)
-    {
-        modifiedNoteScale = baseNoteScalingFactor * (130 / bpm);
-    }
-
-    public void AssignSongValues(float bpm)
-    {
-        Replay.StartReplayCapture();
-        spawnOffset = (beatsToFall * 60f / bpm);
-        screenHeight = 40.16f;//2f * Camera.main.orthographicSize;
-        distanceToFall = screenHeight;
-        fallSpeed = (distanceToFall / spawnOffset);
-        SongScore songScore = new();
-    }
-
-
     public IEnumerator PrepareNotes(float BPM, List<NoteEventInfo> noteEvents, bool isPreview) // TEMP 0.5f, change to 5.4f i think`````````````````````````````````````````````````````````````````````````````````````````````````````````
     {
         if (noteEvents == null) { Debug.Log("gameloop noteEvents null"); yield break; }
 
         StopReadiedNotes();
         AssignSongValues();
-        songTime = -spawnOffset - 0.45f;
+        songTime = -3f - (130/BPM);
         modifiedNoteScale = baseNoteScalingFactor * (130 / BPM);
         yield return new WaitForSecondsRealtime(1f);
         yield return new WaitUntil(() => (Input.anyKeyDown || MidiInput.instance.GetAnyNoteActive()) || isPreview);
