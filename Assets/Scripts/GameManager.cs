@@ -130,7 +130,8 @@ public class GameManager : MonoBehaviour
 
         void AssignSongValues()
         {
-            Replay.StartReplayCapture();
+            if (!isCurSongPreview) { Replay.recordReplay = true; Replay.StartReplayCapture(); }
+            else { Replay.recordReplay = false; }
             spawnOffset = (beatsToFall * 60f / BPM);
             screenHeight = 40.16f;//2f * Camera.main.orthographicSize;
             distanceToFall = screenHeight;
@@ -300,7 +301,8 @@ public class GameManager : MonoBehaviour
         startTimer = false;
         int[] score = currentSongScore.GetScoreArray(totalNotes);
 
-        EndSongMessage.instance.ShowScore($"Total Score: {score[0]}\nPerfect: {score[1]}\nGood: {score[2]}\nOkay: {score[3]}\nExtra: {score[4]}\nMissed: {score[5]}\nLongest Combo: {combo.highestCount}", currentSongScore.FinalizeScore());
+        if (!isCurSongPreview) { EndSongMessage.instance.ShowScore($"Total Score: {score[0]}\nPerfect: {score[1]}\nGood: {score[2]}\nOkay: {score[3]}\nExtra: {score[4]}\nMissed: {score[5]}\nLongest Combo: {combo.highestCount}", currentSongScore.FinalizeScore()); }
+        else{ FindObjectOfType<EndPreview>()?.EndPreviewFade(); }
 
         if (!Replay.isPlayingReplay) { MidiDataHandler.SaveNoteEventData(".replay", Replay.instance.replayNoteData); } // only record replays if you arent playing back a replay.
 

@@ -58,7 +58,7 @@ public class MidiInput : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            StopSong(GameManager.instance.inEditor);
+            StopSong();
         }
         CheckNotesKeyboard12();
         //CheckNotesKeyboard8();
@@ -105,7 +105,7 @@ public class MidiInput : MonoBehaviour
 
         void OnSceneLoaded(AsyncOperation asyncOperation)
         {
-            
+
 
             Scene previewScene = SceneManager.GetSceneByName(sceneName);
 
@@ -117,7 +117,7 @@ public class MidiInput : MonoBehaviour
                 {
                     transition.GetComponent<Canvas>().enabled = false;
                 }
-                if(rootObject.TryGetComponent(out Canvas canvas))
+                if (rootObject.TryGetComponent(out Canvas canvas))
                 {
                     canvas.enabled = false;
                 }
@@ -144,14 +144,14 @@ public class MidiInput : MonoBehaviour
             // Create a new UI Image object
             GameObject imageObject = Instantiate(imagePrefab, UiHolder.instance.transform);
             RawImage image = imageObject.GetComponentInChildren<RawImage>();
-            
+
 
             // Check if RawImage component exists
             if (image != null)
             {
                 // Assign the RenderTexture to the RawImage component's texture
                 image.texture = renderTexture;
-                if(UiHolder.instance.scenePreview != null) { Destroy(UiHolder.instance.scenePreview); }
+                if (UiHolder.instance.scenePreview != null) { Destroy(UiHolder.instance.scenePreview); }
                 UiHolder.instance.scenePreview = imageObject;
             }
             else
@@ -185,7 +185,7 @@ public class MidiInput : MonoBehaviour
     {
         MP3Handler.instance.StopMusic();
         string gameMode;
-        if (GameSettings.usePiano) { gameMode = "GameScene88";  } else { gameMode = "GameScene12";  }
+        if (GameSettings.usePiano) { gameMode = "GameScene88"; } else { gameMode = "GameScene12"; }
 
         if (isPreview)
         {
@@ -212,7 +212,7 @@ public class MidiInput : MonoBehaviour
                 SceneManager.LoadScene(gameMode);
             }
 
-            if (GameSettings.usePiano) {  HookMidiDevice(); } else {  UnHookMidiDevice(); }
+            if (GameSettings.usePiano) { HookMidiDevice(); } else { UnHookMidiDevice(); }
             NoteEventDataWrapper data = MidiReadFile.GetNoteEventsFromFilePath(GameSettings.currentSongPath);
             GameSettings.bpm = GameSettings.bpm == 0 ? data.BPM : GameSettings.bpm;
             GameManager.instance.ModifyNoteScale(data.BPM);
@@ -302,28 +302,17 @@ public class MidiInput : MonoBehaviour
     /// <summary>
     /// Stops the currently playing song.
     /// </summary>
-    public void StopSong(bool inEditor)
+    public void StopSong()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            GameManager.instance.StopSong();
-            StopCoroutine(PrepareNotesCoroutine);
-            MP3Handler.instance.StopMusic();
-            if (inEditor)
-            {
-                FindObjectOfType<SongEditor>().noteHolder.gameObject.SetActive(true);
-                FindObjectOfType<SongNoteEditor>().enabled = true;
+        if (GameManager.instance.isCurSongPreview) { return; }
+        GameManager.instance.StopSong();
+        StopCoroutine(PrepareNotesCoroutine);
+        MP3Handler.instance.StopMusic();
 
-                foreach (FallingNote note in FindObjectsOfType<FallingNote>())
-                {
-                    Destroy(note.gameObject);
-                }
-                return;
-            }
-            GameSettings.ResetSettings(false);
-            GameManager.instance.ReturnToSongSelection();
+        GameSettings.ResetSettings(false);
+        GameManager.instance.ReturnToSongSelection();
 
-        }
+
     }
 
     /// <summary>
