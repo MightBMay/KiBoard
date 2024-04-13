@@ -1,13 +1,8 @@
-using NAudio.Midi;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using TMPro;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -100,13 +95,14 @@ public class GameManager : MonoBehaviour
     {
         if (noteEvents == null) { Debug.Log("gameloop noteEvents null"); yield break; }
 
-        StopReadiedNotes();
+        
         AssignSongValues();
         songTime = -3f - (130/BPM);
         modifiedNoteScale = baseNoteScalingFactor * (130 / BPM);
         yield return new WaitForSecondsRealtime(1f);
         yield return new WaitUntil(() => (Input.anyKeyDown || MidiInput.instance.GetAnyNoteActive()) || isPreview);
         startTimer = true;
+        StopReadiedNotes();
         noteEvents.ForEach(noteEvent => readiedNotes.Add(StartCoroutine(ReadyNote(noteEvent.startTime - spawnOffset, noteEvent))));
 
         // Game loop is finished

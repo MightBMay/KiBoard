@@ -22,7 +22,6 @@ public class MidiInput : MonoBehaviour
     public bool inGame = false;
     public float inputDelay = 0.125f;
 
-    public Camera sceneCamera;
     public RenderTexture renderTexture;
     [SerializeField] GameObject imagePrefab;
 
@@ -104,7 +103,7 @@ public class MidiInput : MonoBehaviour
 
         void OnSceneLoaded(AsyncOperation asyncOperation)
         {
-
+            Debug.LogError(imagePrefab == null);
 
             Scene previewScene = SceneManager.GetSceneByName(sceneName);
 
@@ -142,7 +141,7 @@ public class MidiInput : MonoBehaviour
 
             // Create a new UI Image object
             GameObject imageObject = Instantiate(imagePrefab, UiHolder.instance.transform);
-            RawImage image = imageObject.GetComponentInChildren<RawImage>();
+            RawImage image = imageObject.GetComponentInChildren<RawImage>(); // CAN ONLY DO THIS BECAUSE IT IS RAWIMAGE, SINCE I USE MANY NORMAL IMAGE TYPES.
 
 
             // Check if RawImage component exists
@@ -158,6 +157,7 @@ public class MidiInput : MonoBehaviour
                 Debug.LogError("RawImage component not found on the instantiated image prefab.");
             }
             asyncOperation.completed -= OnSceneLoaded;
+
         }
 
         // Method to assign an object and its children to the "PreviewLayer"
