@@ -862,6 +862,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4891119375135277128, guid: 8713daea6d5d4cb42b89a26c61b32971, type: 3}
+      propertyPath: imagePrefab
+      value: 
+      objectReference: {fileID: 4475225670068461732, guid: 4a8e9ffa46dfe7b4e904dc65284584ab, type: 3}
+    - target: {fileID: 4891119375135277128, guid: 8713daea6d5d4cb42b89a26c61b32971, type: 3}
+      propertyPath: renderTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: a740532bd4fc8f344a7011dbd319ea0d, type: 2}
     - target: {fileID: 6773693939016771462, guid: 8713daea6d5d4cb42b89a26c61b32971, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
