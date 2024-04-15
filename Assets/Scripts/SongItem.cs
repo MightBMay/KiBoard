@@ -25,7 +25,6 @@ public class SongItem : MonoBehaviour
         SongList.instance.SelectItem(this);
         GameManager.instance.selectedSongHighScore = SongScore.ReadFieldsFromJsonFile(fileGroup.ScoreFile);
         ExtraSongInfoMenu.instance.SetText(fileGroup.FileName);
-        MP3Handler.instance.StartSongDemo(fileGroup.Mp3File);
         UiHolder.instance.animator.SetBool("isSongSelected", true);
         TransitionManager.canTransition = false;
         MidiInput.instance.LoadSongFromCurrentSettings(true);

@@ -19,9 +19,10 @@ public class SettingsManager : MonoBehaviour
         else { Destroy(gameObject); }
     }
 
-    public void SetVolume(float volume)
+    public static void SetVolume(float volume)
     {
         PlayerSettings.musicVolume = volume;
+        MP3Handler.instance.SetVolume(volume);
     }
 
 }

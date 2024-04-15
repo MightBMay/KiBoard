@@ -103,7 +103,6 @@ public class MidiInput : MonoBehaviour
 
         void OnSceneLoaded(AsyncOperation asyncOperation)
         {
-            Debug.LogError(imagePrefab == null);
 
             Scene previewScene = SceneManager.GetSceneByName(sceneName);
 

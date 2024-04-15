@@ -6,16 +6,19 @@ using UnityEngine.UI;
 
 public class GameSettingsMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    [SerializeField] TextMeshProUGUI bpmText;
-
-
-    public void SetUsePiano(Toggle toggle)
+    public void SetUsePiano(bool enabled)
     {
-        GameSettings.usePiano = toggle.isOn;
+        GameSettings.usePiano = enabled;
+        Debug.Log(GameSettings.usePiano);
     }
-    public void SetUsePedal(Toggle toggle)
+    public void SetUsePedal(bool enabled)
     {
-        GameSettings.usePedal = toggle.isOn;
+        GameSettings.usePedal = enabled;
+        Debug.Log(GameSettings.usePedal);
+    }
+
+    public void SetVolume(float volume)
+    {
+        SettingsManager.SetVolume(volume);
     }
 }

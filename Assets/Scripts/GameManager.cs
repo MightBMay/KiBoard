@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public bool inEditor;
     public float songTime;
     public bool startTimer;
-    public int beatsToFall = 4;
+    public int beatsBeforeNote = 4;
 
     public int totalNotes;
     float screenHeight;
@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
     public IEnumerator PrepareNotes(float BPM, List<NoteEventInfo> noteEvents, bool isPreview) // TEMP 0.5f, change to 5.4f i think`````````````````````````````````````````````````````````````````````````````````````````````````````````
     {
         if (noteEvents == null) { Debug.Log("gameloop noteEvents null"); yield break; }
-
+        GameType? gameType = GameSettings.gameType;
         
         AssignSongValues();
         songTime = -3f - (130/BPM);
@@ -112,7 +112,7 @@ public class GameManager : MonoBehaviour
         {
             if (!isCurSongPreview) { Replay.recordReplay = true; Replay.StartReplayCapture(); }
             else { Replay.recordReplay = false; }
-            spawnOffset = (beatsToFall * 60f / BPM);
+            spawnOffset = (beatsBeforeNote * 60f / BPM);
             screenHeight = 40.16f;//2f * Camera.main.orthographicSize;
             distanceToFall = screenHeight;
             // Calculate the speed based on the distance and duration
@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour
         IEnumerator ReadyNote(float spawnTime, NoteEventInfo noteEvent)
         {
             yield return new WaitUntil(() => songTime >= spawnTime);
-            switch (GameSettings.gameType)
+            switch (gameType)
             {
 
                 case GameType.Key88:
@@ -134,8 +134,8 @@ public class GameManager : MonoBehaviour
                 case GameType.Key12:
                     SpawnNote12(noteEvent, spawnTime);
                     break;
-                case null:
                 default:
+                    Debug.LogError("GameType Null or Not found.");
                     break;
             }
 
@@ -348,7 +348,8 @@ public class GameManager : MonoBehaviour
             if (newNum <= 0) { Debug.LogWarning("BeatBeforeDrop Setting attempted to be set to <=0"); return; }
             Debug.LogError("Non Int Input into Beats Before Drop Setting"); return;
         }
-        beatsToFall = newNum;
+        beatsBeforeNote = newNum;
+        Debug.Log($"{newNum} Beats before note");
     }
 
 
