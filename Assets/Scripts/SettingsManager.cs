@@ -1,7 +1,11 @@
+using MidiJack;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using System.Text;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 
 public class SettingsManager : MonoBehaviour
 {
@@ -17,15 +21,26 @@ public class SettingsManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else { Destroy(gameObject); }
+
     }
 
+    public static void SetVolumeOnClick(Slider slider)
+    {
+        if (KiboardDebug.overideVolume) { slider.interactable = false;}
+        else { slider.interactable = true; }
+    }
     public static void SetVolume(float volume)
     {
+        if (KiboardDebug.overideVolume) { return; }
         PlayerSettings.musicVolume = volume;
         MP3Handler.instance.SetVolume(volume);
+
     }
 
 }
+
+
+
 
 [System.Serializable]
 public class GameSettings

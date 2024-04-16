@@ -6,19 +6,46 @@ using UnityEngine.UI;
 
 public class GameSettingsMenu : MonoBehaviour
 {
+    [SerializeField] Toggle usePianoToggle;
+    private void Start()
+    {
+        StartCoroutine(MonitorMidiConnections());
+    }
+
+    IEnumerator MonitorMidiConnections()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            CheckMidiDevices(KiboardDebug.isMidiConnected);
+        }
+        void CheckMidiDevices(bool midiConnected)
+        {
+            if (usePianoToggle == null) return;
+            usePianoToggle.interactable = midiConnected;
+            if (!midiConnected) { usePianoToggle.isOn = false; }
+        }
+
+
+    }
+
+
     public void SetUsePiano(bool enabled)
     {
         GameSettings.usePiano = enabled;
-        Debug.Log(GameSettings.usePiano);
     }
     public void SetUsePedal(bool enabled)
     {
         GameSettings.usePedal = enabled;
-        Debug.Log(GameSettings.usePedal);
     }
 
     public void SetVolume(float volume)
     {
         SettingsManager.SetVolume(volume);
+    }
+
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
     }
 }

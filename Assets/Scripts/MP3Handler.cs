@@ -30,6 +30,7 @@ public class MP3Handler : MonoBehaviour
     {
         if (waveOut == null) return;
         waveOut.Volume = newVolume / 100;
+
     }
     public IEnumerator PlaySong(string filePath)
     {
