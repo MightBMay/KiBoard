@@ -1,4 +1,5 @@
 using MidiJack;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -182,7 +183,7 @@ public class MidiInput : MonoBehaviour
     {
         MP3Handler.instance.StopMusic();
         string gameMode;
-        if (KiboardDebug.isMidiConnected) { gameMode = "GameScene88"; } else { gameMode = "GameScene12"; }
+        if (KiboardDebug.isMidiConnected && GameSettings.usePiano) { gameMode = "GameScene88"; } else { gameMode = "GameScene12"; }
 
         if (isPreview)
         {
@@ -202,8 +203,9 @@ public class MidiInput : MonoBehaviour
                 TransitionManager.instance.LoadNewScene(gameMode);
             }
 
-            catch
+            catch(Exception e)
             {
+                Debug.Log(e);
                 SceneManager.LoadScene(gameMode);
             }
 
