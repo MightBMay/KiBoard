@@ -153,7 +153,6 @@ public class GameManager : MonoBehaviour
             {
                 spawnOffset = TempoChange(noteEvent);
                 AssignSongValues(noteEvent.endTime); 
-                Debug.Log($"Tempo Change to: {noteEvent.endTime}");
                 yield break;
                 
             }
@@ -167,7 +166,6 @@ public class GameManager : MonoBehaviour
             {
                 spawnOffset = TempoChange(noteEvent);
                 AssignSongValues(noteEvent.endTime);
-                Debug.Log($"Tempo Change to: {noteEvent.endTime}");
 
             }
             float trueSpawnTime = spawnTime - spawnOffset;

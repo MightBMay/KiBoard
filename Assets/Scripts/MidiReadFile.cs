@@ -103,7 +103,6 @@ public static class MidiReadFile
 
     static NoteEventDataWrapper ReadMidiFile(string midiFilePath)
     {
-        int tempoChanges = 0;
         MidiFile midiFile = new MidiFile(midiFilePath, false);
         float bpm = 0;
         List<NoteEventInfo> noteEvents = new();
@@ -132,7 +131,6 @@ public static class MidiReadFile
                         bpm = 60000000f / microsecondsPerQuarterNote;
                         // Process tempo event as needed
                         ProcessTempoChange(tempoEvent);
-                        tempoChanges++;
                     }
                    
                     // Add more conditions as needed for other meta-event types
@@ -140,7 +138,6 @@ public static class MidiReadFile
             }
         }
         if (bpm == 0) { Debug.LogError("BPM WAS NOT FOUND/ IS 0."); return null; }
-        Debug.Log(tempoChanges);
         return MidiDataHandler.SaveNoteEventData(".json", bpm, noteEvents);
 
 
