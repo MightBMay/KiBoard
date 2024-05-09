@@ -87,6 +87,7 @@ public class SongScore
 
     public void WriteScoreToJson(string filename)
     {
+        Debug.Log(filename);
         try
         {
             // Serialize the object to JSON format

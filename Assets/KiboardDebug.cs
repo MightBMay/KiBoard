@@ -40,6 +40,7 @@ public class KiboardDebug : MonoBehaviour
     [SerializeField] Toggle midiConnectedToggle;
     [SerializeField] Text fpsText;
     [SerializeField] InputField volumeOverrideIF;
+    [SerializeField] GameObject parent;
     #endregion
 
     #region Other
@@ -56,7 +57,7 @@ public class KiboardDebug : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(parent);
             debugCanvas = GetComponent<Canvas>();
         }
         else { Destroy(this); }
@@ -124,13 +125,11 @@ public class KiboardDebug : MonoBehaviour
             {
                 MP3Handler.instance.SetVolume( PlayerSettings.musicVolume = Math.Clamp(newValue, 0, 100) ); 
                 overideVolume = true;
-                Debug.Log("workin");
             }
         }
         else
         {
             overideVolume = false;
-            Debug.Log("hmm");
         }
 
     }

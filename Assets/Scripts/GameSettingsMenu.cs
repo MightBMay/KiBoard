@@ -16,8 +16,9 @@ public class GameSettingsMenu : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1);
+            
             CheckMidiDevices(KiboardDebug.isMidiConnected);
+            yield return new WaitForSeconds(1);
         }
         void CheckMidiDevices(bool midiConnected)
         {

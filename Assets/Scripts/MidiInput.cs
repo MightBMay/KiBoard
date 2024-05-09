@@ -20,7 +20,6 @@ public class MidiInput : MonoBehaviour
     public bool[] enabledKeys = new bool[88];
     public bool takeInput = true;
     public bool inGame = false;
-    public float inputDelay = 0.125f;
 
     public RenderTexture renderTexture;
     [SerializeField] GameObject imagePrefab;
@@ -183,7 +182,7 @@ public class MidiInput : MonoBehaviour
     {
         MP3Handler.instance.StopMusic();
         string gameMode;
-        if (GameSettings.usePiano) { gameMode = "GameScene88"; } else { gameMode = "GameScene12"; }
+        if (KiboardDebug.isMidiConnected) { gameMode = "GameScene88"; } else { gameMode = "GameScene12"; }
 
         if (isPreview)
         {
@@ -259,7 +258,6 @@ public class MidiInput : MonoBehaviour
 
         GameManager.instance.currentSongScore.ClearScore();
         GameManager.instance.combo.ClearCombo();
-        GameSettings.gameType = GameSettings.usePiano ? GameType.Key88 : GameType.Key12;
         yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotes(GameSettings.bpm, storedNoteEvents, isPreview));
         StartCoroutine(MP3Handler.instance.PlaySong(SongSelection.GetUnderscoreSubstring(GameSettings.currentFileGroup.Mp3File)));
     }
@@ -268,7 +266,6 @@ public class MidiInput : MonoBehaviour
 
         GameManager.instance.currentSongScore.ClearScore();
         GameManager.instance.combo.ClearCombo();
-        GameSettings.gameType = GameSettings.usePiano ? GameType.Key88 : GameType.Key12;
         yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotes(GameSettings.bpm, storedNoteEvents, isPreview));
         StartCoroutine(MP3Handler.instance.PlaySong(mp3Path));
     }
@@ -283,8 +280,6 @@ public class MidiInput : MonoBehaviour
         var bpm = GameSettings.bpm;
         loadEvents.ForEach(noteEvent => noteEvent.noteNumber += 20); // i - for the fucking life of me- cannot figure out why directly processing the midi files makes the note numbers
                                                                      // 20 higher, but i have to do this to match that with the song editor.
-
-        GameSettings.gameType = GameSettings.usePiano ? GameType.Key88 : GameType.Key12;
         yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotes(GameSettings.bpm, storedNoteEvents, isPreview));
 
         StartCoroutine(MP3Handler.instance.PlaySong(GameSettings.currentSongPath));
@@ -452,8 +447,8 @@ public class MidiInput : MonoBehaviour
         // float timingThreshold = currentSettings.timeInterval;
 
         // Check if the received timing is within a certain threshold of the stored timing
-
-        return Mathf.Abs(GameManager.instance.songTime - inputDelay - storedTiming);
+        //0.125f leniancy
+        return Mathf.Abs( (GameManager.instance.songTime + PlayerSettings.inputDelay)  - 0.125f - storedTiming);
     }
     /// <summary>
     /// Gets the timing score based on the timing difference.

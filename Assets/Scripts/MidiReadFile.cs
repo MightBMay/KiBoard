@@ -42,7 +42,16 @@ public static class MidiReadFile
         {
             if (Path.GetExtension(GameSettings.currentSongPath)==".json")
             {
-                return GetDataFile(GameSettings.currentSongPath).NoteEvents.Count;
+                int count = 0;
+                foreach (var note in GetDataFile(GameSettings.currentSongPath).NoteEvents)
+                {
+                    if(note.startTime == Mathf.NegativeInfinity||note.noteNumber == int.MinValue)
+                    {
+                       //do nothin
+                    }
+                    else { count = 0;  }
+                }
+                return count;
             }
 
             else if (Path.GetExtension(GameSettings.currentSongPath) == ".mid")
@@ -94,7 +103,7 @@ public static class MidiReadFile
 
     static NoteEventDataWrapper ReadMidiFile(string midiFilePath)
     {
-
+        int tempoChanges = 0;
         MidiFile midiFile = new MidiFile(midiFilePath, false);
         float bpm = 0;
         List<NoteEventInfo> noteEvents = new();
@@ -122,13 +131,24 @@ public static class MidiReadFile
 
                         bpm = 60000000f / microsecondsPerQuarterNote;
                         // Process tempo event as needed
+                        ProcessTempoChange(tempoEvent);
+                        tempoChanges++;
                     }
+                   
                     // Add more conditions as needed for other meta-event types
                 }
             }
         }
         if (bpm == 0) { Debug.LogError("BPM WAS NOT FOUND/ IS 0."); return null; }
+        Debug.Log(tempoChanges);
         return MidiDataHandler.SaveNoteEventData(".json", bpm, noteEvents);
+
+
+        void ProcessTempoChange(TempoEvent tempoChangeEvent)
+        {
+            float bpm = 60000000f / tempoChangeEvent.MicrosecondsPerQuarterNote;
+            noteEvents.Add(new NoteEventInfo(bpm));
+        }
 
         void ProcessNoteOnEvent(NoteEvent noteOnEvent)//```````````````````````````````````````````````````````modify so if you (somehow ) press a note 2 times before you let go of the first note, it marks its end time.
         {

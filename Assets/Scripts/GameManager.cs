@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -75,6 +76,14 @@ public class GameManager : MonoBehaviour
         }
         else { Debug.LogError($"FPS Cap of : {str} is invalid"); }
     }
+    public void SetInputDelay(string delayStr)
+    {
+        if (int.TryParse(delayStr, out int delay))
+        {
+            PlayerSettings.inputDelay = delay;
+        }
+        else { Debug.Log("Error Parsing input delay"); }
+    }
     private void Update()
     {
         if (startTimer)
@@ -94,56 +103,81 @@ public class GameManager : MonoBehaviour
     public IEnumerator PrepareNotes(float BPM, List<NoteEventInfo> noteEvents, bool isPreview) // TEMP 0.5f, change to 5.4f i think`````````````````````````````````````````````````````````````````````````````````````````````````````````
     {
         if (noteEvents == null) { Debug.Log("gameloop noteEvents null"); yield break; }
-        GameType? gameType = GameSettings.gameType;
+        GameType? gameType = GameSettings.gameType = GameSettings.usePiano ? GameType.Key88 : GameType.Key12;
+
+        SetSongTotalNotes(noteEvents.Count);
+        SongScore songScore = new();
+        if (isPreview) { isCurSongPreview = true; } else { isCurSongPreview = false; }
+        songTime = -3f - (130 / BPM);
+        if (!isCurSongPreview) { Replay.recordReplay = true; Replay.StartReplayCapture(); }
+        else { Replay.recordReplay = false; }
+        screenHeight = 40.16f;//2f * Camera.main.orthographicSize;
+        AssignSongValues(BPM);
         
-        AssignSongValues();
-        songTime = -3f - (130/BPM);
-        modifiedNoteScale = baseNoteScalingFactor * (130 / BPM);
         yield return new WaitForSecondsRealtime(1f);
         yield return new WaitUntil(() => (Input.anyKeyDown || MidiInput.instance.GetAnyNoteActive()) || isPreview);
         startTimer = true;
         StopReadiedNotes();
-        noteEvents.ForEach(noteEvent => readiedNotes.Add(StartCoroutine(ReadyNote(noteEvent.startTime - spawnOffset, noteEvent))));
+        if (gameType == GameType.Key88) { noteEvents.ForEach(noteEvent => readiedNotes.Add(StartCoroutine(ReadyNote88(noteEvent.startTime, noteEvent)))); }
+        else if(gameType == GameType.Key12) { noteEvents.ForEach(noteEvent => readiedNotes.Add(StartCoroutine(ReadyNote12(noteEvent.startTime , noteEvent)))); }
+        else
+        {
+            Debug.LogError("Game type not 88 or 12 key mode.");
+        }
 
         // Game loop is finished
         yield return null;
 
-        void AssignSongValues()
+        void AssignSongValues(float BPM)
         {
-            if (!isCurSongPreview) { Replay.recordReplay = true; Replay.StartReplayCapture(); }
-            else { Replay.recordReplay = false; }
+
             spawnOffset = (beatsBeforeNote * 60f / BPM);
-            screenHeight = 40.16f;//2f * Camera.main.orthographicSize;
-            distanceToFall = screenHeight;
             // Calculate the speed based on the distance and duration
-            fallSpeed = (distanceToFall / spawnOffset);
-            SetSongTotalNotes(noteEvents.Count);
-            SongScore songScore = new();
-            if (isPreview) { isCurSongPreview = true; } else { isCurSongPreview = false; }
+            fallSpeed = (screenHeight / spawnOffset);
+
+            modifiedNoteScale = baseNoteScalingFactor * (130 / BPM);
         }
 
-        IEnumerator ReadyNote(float spawnTime, NoteEventInfo noteEvent)
+        float TempoChange(NoteEventInfo note)
         {
-            yield return new WaitUntil(() => songTime >= spawnTime);
-            switch (gameType)
+            BPM = note.endTime;
+            float so = (beatsBeforeNote * 60f / BPM); 
+            fallSpeed = (screenHeight / so);
+            modifiedNoteScale = baseNoteScalingFactor * (130 / BPM);
+            return so;
+        }
+        IEnumerator ReadyNote88(float spawnTime, NoteEventInfo noteEvent)
+        {
+            
+            if (noteEvent.startTime == float.NegativeInfinity && noteEvent.noteNumber == int.MinValue)
             {
-
-                case GameType.Key88:
-                    SpawnNote88(noteEvent, spawnTime);
-                    break;
-                case GameType.Key12:
-                    SpawnNote12(noteEvent, spawnTime);
-                    break;
-                default:
-                    Debug.LogError("GameType Null or Not found.");
-                    break;
+                spawnOffset = TempoChange(noteEvent);
+                AssignSongValues(noteEvent.endTime); 
+                Debug.Log($"Tempo Change to: {noteEvent.endTime}");
+                yield break;
+                
             }
+            float trueSpawnTime = spawnTime - spawnOffset;
+            yield return new WaitUntil(() => songTime >= trueSpawnTime);
+            SpawnNote88(noteEvent);
+        }
+        IEnumerator ReadyNote12(float spawnTime, NoteEventInfo noteEvent)
+        {
+            if (noteEvent.startTime == float.NegativeInfinity && noteEvent.noteNumber == int.MinValue)
+            {
+                spawnOffset = TempoChange(noteEvent);
+                AssignSongValues(noteEvent.endTime);
+                Debug.Log($"Tempo Change to: {noteEvent.endTime}");
 
+            }
+            float trueSpawnTime = spawnTime - spawnOffset;
+            yield return new WaitUntil(() => songTime >= trueSpawnTime);
+            SpawnNote12(noteEvent);
         }
 
-
-        void SpawnNote88(NoteEventInfo noteEvent, float spawnTime)
+        void SpawnNote88(NoteEventInfo noteEvent)
         {
+
             // scale/length of the note deterimned by the note duration, and a scaling factor (~~~~~~~~~~~~~~~~~BASE THIS ON MF BPM)``````````````````````````````````````````````````````````````````````````````````
             float noteScale = (noteEvent.endTime - noteEvent.startTime) * modifiedNoteScale;
             //spawn a note and store a reference.
@@ -167,7 +201,7 @@ public class GameManager : MonoBehaviour
             }
             if (isPreview) AssignToPreviewLayer(noteInstance);
         }
-        void SpawnNote12(NoteEventInfo noteEvent, float spawnTime)
+        void SpawnNote12(NoteEventInfo noteEvent)
         {
             // scale/length of the note deterimned by the note duration, and a scaling factor  (~~~~~~~~~~~~~~~~~BASE THIS ON MF BPM)``````````````````````````````````````````````````````````````````````````````````
             float noteScale = (noteEvent.endTime - noteEvent.startTime) * modifiedNoteScale;
@@ -210,11 +244,12 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void StopReadiedNotes()
     {
-        int count = 0;
         foreach (Coroutine c in readiedNotes)
         {
-            StopCoroutine(c);
-            count++;
+            if (c != null)
+            {
+                StopCoroutine(c);
+            }
         }
         readiedNotes.Clear();
     }

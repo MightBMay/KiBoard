@@ -84,6 +84,7 @@ public class PlayerSettings
 {
     public static PlayerSettings instance;
     public static float musicVolume = 20;
+    public static float inputDelay = 0;
 
     public PlayerSettings()
     {
