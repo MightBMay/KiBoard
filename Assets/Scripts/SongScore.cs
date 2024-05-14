@@ -31,34 +31,34 @@ public class SongScore
     }
     public void AddScore(string Score, float multiplier)
     {
-        int ans = 0;
+        int scoreChange = 0;
         switch (Score)
         {
             case "Perfect":
                 perfect++;
-                ans = (int)(100 * multiplier);
-                score += ans;
+                scoreChange = (250);
                 break;
 
             case "Good":
                 good++;
-                ans = (int)(60 * multiplier);
-                score += ans;
+                scoreChange = (150);
                 break;
 
             case "Okay":
                 okay++;
-                ans = (int)(30 * multiplier);
-                score += ans;
+                scoreChange = (75);
                 break;
             default:
                 extra++;
-                ans = -10;
-                score += ans;
+                scoreChange = -100;
                 CameraShake.ShakeCamera(2.5f, 0.1f);
                 break;
+
+
         }
-        GameUI.instance.CreateTimingText(ans, Score);
+        int finalScoreChange = (int)(scoreChange * multiplier);
+        score += finalScoreChange;
+        GameUI.instance.CreateTimingText(finalScoreChange, Score);
     }
     public void ClearScore()
     {
@@ -92,7 +92,7 @@ public class SongScore
         {
             // Serialize the object to JSON format
             string json = JsonUtility.ToJson(this);
-            string filePath =  filename + ".score";
+            string filePath = filename + ".score";
 
 
             // Write the JSON string to the file
@@ -107,7 +107,7 @@ public class SongScore
 
     public static SongScore ReadFieldsFromJsonFile(string filePath)
     {
-        
+
         try
         {
             // Check if the file exists

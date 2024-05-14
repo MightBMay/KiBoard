@@ -17,7 +17,6 @@ public class TransitionManager : MonoBehaviour
         {
             instance = this;
         }
-        else { Destroy(instance); }
     }
 
     public void LoadNewScene(int sceneID)

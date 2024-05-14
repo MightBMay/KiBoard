@@ -1,6 +1,7 @@
 using System.IO;
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 /// <summary>
 /// Represents a group of files related to a specific song.
@@ -14,7 +15,7 @@ public struct FileGroup
     public string Mp3File;
     public string[] MidiFiles;
     public string[] JsonFiles;
-    public string PngFile;
+    public string[] PngFiles;
     public string ScoreFile;
     public string[] ReplayFiles;
 
@@ -30,7 +31,7 @@ public struct FileGroup
         Mp3File = string.Empty;
         MidiFiles = null;
         JsonFiles = null;
-        PngFile = string.Empty;
+        PngFiles = null;
         ScoreFile = string.Empty;
         ReplayFiles = null;
     }
@@ -55,10 +56,43 @@ public struct FileGroup
                 str += "<color=red> Midi file not found. \n</color>";
             }
         }
-        if (string.IsNullOrEmpty(PngFile)) { str += "<color=red> Song Icon PNG not found. \n</color>"; }
 
 
         return str;
+    }
+
+    public Texture2D GetIcon()
+    {
+        foreach(string path in PngFiles)
+        {
+            string filename = Path.GetFileName(path);
+            if (filename.StartsWith("icon_", StringComparison.InvariantCultureIgnoreCase)){
+                return LoadImageFromFile(path);
+            }
+        }
+        try
+        {
+            Debug.Log("no icon_ file found for song "+FileName+", Icon defaulting to 1st png.");
+            return LoadImageFromFile(PngFiles[0]);
+        }
+        catch {
+            Debug.Log("Song Icon PNG/JPG not found for song "+FileName);
+            return null; 
+        }
+    }
+
+    public Texture2D GetBackground()
+    {
+        foreach (string path in PngFiles)
+        {
+            string filename = Path.GetFileName(path);
+            Debug.Log(filename);
+            if (filename.StartsWith("bg_", StringComparison.InvariantCultureIgnoreCase)){
+                return LoadImageFromFile(path);
+            }
+        }
+            Debug.Log("no bg_ file found for song "+FileName+". Defaulting.");
+            return null;
     }
 
     /// <summary>

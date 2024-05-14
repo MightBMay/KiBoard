@@ -42,7 +42,8 @@ public class SongList : MonoBehaviour
             songItem.gameObject.name = songItem.songName.text = group.FileName;
             //songItem.songDuration.text = "duration";
             songItem.fileGroup = group;
-            songItem.GetComponentInChildren<RawImage>().texture = group.LoadImageFromFile(group.PngFile);
+            Texture2D iconTexture = group.GetIcon();
+            if(iconTexture != null) { songItem.GetComponentInChildren<RawImage>().texture = iconTexture; }
             string str = group.CheckFileGroupContents();
             songItem.songContains.text = str;
             if (str.Contains("Midi AND Json file not found")) { songItem.GetComponent<Button>().interactable = false; }

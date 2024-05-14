@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => (Input.anyKeyDown || MidiInput.instance.GetAnyNoteActive()) || isPreview);
         startTimer = true;
         StopReadiedNotes();
-        if (gameType == GameType.Key88) { noteEvents.ForEach(noteEvent => readiedNotes.Add(StartCoroutine(ReadyNote88(noteEvent.startTime, noteEvent)))); }
+        if (gameType == GameType.Key88) { noteEvents.ForEach(noteEvent => readiedNotes.Add(StartCoroutine(ReadyNote88(noteEvent.startTime, noteEvent))));  }
         else if(gameType == GameType.Key12) { noteEvents.ForEach(noteEvent => readiedNotes.Add(StartCoroutine(ReadyNote12(noteEvent.startTime , noteEvent)))); }
         else
         {
@@ -152,7 +152,6 @@ public class GameManager : MonoBehaviour
             if (noteEvent.startTime == float.NegativeInfinity && noteEvent.noteNumber == int.MinValue)
             {
                 spawnOffset = TempoChange(noteEvent);
-                AssignSongValues(noteEvent.endTime); 
                 yield break;
                 
             }
