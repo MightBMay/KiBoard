@@ -28,10 +28,10 @@ public class Replay : MonoBehaviour
 
     public static void UpdateReplay(int noteNum, float time)
     {
-        if (isPlayingReplay|| !recordReplay) { return; }
+        if (isPlayingReplay|| !recordReplay||time <0) { return; }
         // Check if the note exists with endTime as Mathf.NegativeInfinity
         var existingNote = instance.replayNoteData.NoteEvents.Find(note => note.noteNumber == noteNum && note.endTime == Mathf.NegativeInfinity);
-
+        
         if (existingNote != null)
         {
             // If the note exists, update its endTime
