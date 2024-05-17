@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class SongScore
 {
+    public DateTime timeSet;
     public int score;
     public int perfect;
     public int good;
@@ -76,11 +77,13 @@ public class SongScore
         bool writeScore = false;
         SongScore savedScores = GameManager.instance?.selectedSongHighScore ?? new SongScore();
         int curHighestCombo = GameManager.instance.combo.highestCount;
+        timeSet = System.DateTime.Now;
         noteAccuracy = GetNotePercentage(GameManager.instance.totalNotes);
         if (score > savedScores.score) { writeScore = true; }
         if (savedScores.highestCombo > curHighestCombo) { highestCombo = savedScores.highestCombo; }
         else { highestCombo = curHighestCombo; writeScore = true; }
         if (writeScore) WriteScoreToJson(GameSettings.currentFileGroup.FolderPath);
+        
         return writeScore;
 
     }
@@ -92,7 +95,7 @@ public class SongScore
         {
             // Serialize the object to JSON format
             string json = JsonUtility.ToJson(this);
-            string filePath = filename + ".score";
+            string filePath = filename +"/"+ GameSettings.currentFileGroup.FileName + ".score";
 
 
             // Write the JSON string to the file
