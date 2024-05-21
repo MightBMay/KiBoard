@@ -46,6 +46,6 @@ public class EndSongMessage : MonoBehaviour
 
     public void RetrySong()
     {
-        MidiInput.instance.LoadSongFromCurrentSettings(false);
+        MidiInput.instance.RetryCurrentSong();
     }
 }

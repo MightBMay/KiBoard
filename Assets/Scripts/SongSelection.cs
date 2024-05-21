@@ -151,7 +151,7 @@ public class SongSelection : MonoBehaviour
         string mp3file = "", scorefile = "";
         try { jsonfiles = allFiles.Where(file => Path.GetExtension(file) == ".json").ToArray(); error.json = true; } catch { }
         try { mp3file = allFiles.First(file => Path.GetExtension(file) == ".mp3"); error.mp3 = true; } catch { }
-        try { pngfiles = allFiles.Where(file => Path.GetExtension(file) == ".png").ToArray(); error.png = true; } catch { }
+        try { pngfiles = allFiles.Where(file => Path.GetExtension(file) == ".png"|| Path.GetExtension(file) == ".jpg" ).ToArray(); error.png = true; } catch { }
         try { midifiles = allFiles.Where(file => Path.GetExtension(file) == ".mid").ToArray(); error.midi = true; } catch { }
         try { scorefile = allFiles.First(file => Path.GetExtension(file) == ".score"); error.score = true; } catch { }
         try { replayfiles = allFiles.Where(file => Path.GetExtension(file) == ".replay").ToArray(); error.replay = true; } catch { } // don't need to do anything in catch since the values for the error struct are automatically false.
@@ -162,7 +162,7 @@ public class SongSelection : MonoBehaviour
             FolderPath = directory,
             JsonFiles = jsonfiles,
             Mp3File = mp3file,
-            PngFiles = pngfiles,
+            ImageFiles = pngfiles,
             ScoreFile = scorefile,
             ReplayFiles = replayfiles,
             MidiFiles = midifiles,

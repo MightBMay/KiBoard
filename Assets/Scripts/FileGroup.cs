@@ -15,7 +15,7 @@ public struct FileGroup
     public string Mp3File;
     public string[] MidiFiles;
     public string[] JsonFiles;
-    public string[] PngFiles;
+    public string[] ImageFiles;
     public string ScoreFile;
     public string[] ReplayFiles;
 
@@ -31,7 +31,7 @@ public struct FileGroup
         Mp3File = string.Empty;
         MidiFiles = null;
         JsonFiles = null;
-        PngFiles = null;
+        ImageFiles = null;
         ScoreFile = string.Empty;
         ReplayFiles = null;
     }
@@ -63,7 +63,7 @@ public struct FileGroup
 
     public Texture2D GetIcon()
     {
-        foreach(string path in PngFiles)
+        foreach(string path in ImageFiles)
         {
             string filename = Path.GetFileName(path);
             if (filename.StartsWith("icon_", StringComparison.InvariantCultureIgnoreCase)){
@@ -73,7 +73,7 @@ public struct FileGroup
         try
         {
             Debug.Log("no icon_ file found for song "+FileName+", Icon defaulting to 1st png.");
-            return LoadImageFromFile(PngFiles[0]);
+            return LoadImageFromFile(ImageFiles[0]);
         }
         catch {
             Debug.Log("Song Icon PNG/JPG not found for song "+FileName);
@@ -83,7 +83,7 @@ public struct FileGroup
 
     public Texture2D GetBackground()
     {
-        foreach (string path in PngFiles)
+        foreach (string path in ImageFiles)
         {
             string filename = Path.GetFileName(path);
             Debug.Log(filename);

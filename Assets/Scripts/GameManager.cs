@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -57,8 +56,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         if (instance == null)
-        {
-            SetFPS("60");
+        { 
             instance = this;
         }
         else { Destroy(gameObject); }

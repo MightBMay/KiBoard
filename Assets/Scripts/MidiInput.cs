@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static Cinemachine.CinemachineTriggerAction.ActionSettings;
@@ -21,6 +22,8 @@ public class MidiInput : MonoBehaviour
     public bool[] enabledKeys = new bool[88];
     public bool takeInput = true;
     public bool inGame = false;
+
+    public bool isMidiHooked;
 
     public RenderTexture renderTexture;
     [SerializeField] GameObject imagePrefab;
@@ -227,15 +230,35 @@ public class MidiInput : MonoBehaviour
 
     public void HookMidiDevice()
     {
-        MidiMaster.noteOnDelegate += NoteOn;
-        MidiMaster.noteOffDelegate += NoteOff;
-        MidiMaster.knobDelegate += PedalStateChanged;
+        try
+        {
+            if (isMidiHooked) { Debug.Log("Midi Already Hooked"); return; }
+            MidiMaster.noteOnDelegate += NoteOn;
+            MidiMaster.noteOffDelegate += NoteOff;
+            MidiMaster.knobDelegate += PedalStateChanged;
+            isMidiHooked = true;
+        }
+        catch
+        {
+            isMidiHooked = false;
+            Debug.Log("Error Hooking midi device");
+        }
     }
     public void UnHookMidiDevice()
     {
-        MidiMaster.noteOnDelegate -= NoteOn;
-        MidiMaster.noteOffDelegate -= NoteOff;
-        MidiMaster.knobDelegate -= PedalStateChanged;
+        
+        try
+        {
+            MidiMaster.noteOnDelegate -= NoteOn;
+            MidiMaster.noteOffDelegate -= NoteOff;
+            MidiMaster.knobDelegate -= PedalStateChanged;
+            isMidiHooked = false;
+        }
+        catch
+        {
+            isMidiHooked = false;
+            Debug.Log("Error Unhooking midi device");
+        }
     }
 
 
@@ -391,6 +414,11 @@ public class MidiInput : MonoBehaviour
         }
         enabledKeys[note - 21] = false;
 
+    }
+    public void RetryCurrentSong()
+    {
+        UnHookMidiDevice();
+        LoadSongFromCurrentSettings(false);
     }
 
     /// <summary>
