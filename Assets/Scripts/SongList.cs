@@ -42,7 +42,7 @@ public class SongList : MonoBehaviour
             songItem.gameObject.name = songItem.songName.text = group.FileName;
             //songItem.songDuration.text = "duration";
             songItem.fileGroup = group;
-            Texture2D iconTexture = group.GetIcon();
+            Texture2D iconTexture = group.GetImage("icon_");
             if(iconTexture != null) { songItem.GetComponentInChildren<RawImage>().texture = iconTexture; }
             string str = group.CheckFileGroupContents();
             songItem.songContains.text = str;

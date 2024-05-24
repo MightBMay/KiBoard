@@ -1,3 +1,4 @@
+using NAudio.Midi;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -98,6 +99,18 @@ public class GameManager : MonoBehaviour
         totalNotes = noteCount;
     }
 
+    /// <summary>
+    /// Used to check if a noteevent is storing Tempo Data or Note Data
+    /// Because i assign tempo changes by setting the noteevent.starttime to negative infinity and the note num to min value, with the tempo as the end time.
+    /// 
+    /// </summary>
+    /// <param name="note"></param>
+    /// <returns>True = note data, false = tempo data.</returns>
+    public static bool CheckSpawnNote(NoteEventInfo note)
+    {
+        return !(note.startTime == float.NegativeInfinity && note.noteNumber == int.MinValue);
+    }
+
     public IEnumerator PrepareNotes(float BPM, List<NoteEventInfo> noteEvents, bool isPreview) // TEMP 0.5f, change to 5.4f i think`````````````````````````````````````````````````````````````````````````````````````````````````````````
     {
         if (noteEvents == null) { Debug.Log("gameloop noteEvents null"); yield break; }
@@ -147,7 +160,7 @@ public class GameManager : MonoBehaviour
         IEnumerator ReadyNote88(float spawnTime, NoteEventInfo noteEvent)
         {
             
-            if (noteEvent.startTime == float.NegativeInfinity && noteEvent.noteNumber == int.MinValue)
+            if (CheckSpawnNote(noteEvent))
             {
                 spawnOffset = TempoChange(noteEvent);
                 yield break;
@@ -159,7 +172,7 @@ public class GameManager : MonoBehaviour
         }
         IEnumerator ReadyNote12(float spawnTime, NoteEventInfo noteEvent)
         {
-            if (noteEvent.startTime == float.NegativeInfinity && noteEvent.noteNumber == int.MinValue)
+            if (CheckSpawnNote(noteEvent))
             {
                 spawnOffset = TempoChange(noteEvent);
                 AssignSongValues(noteEvent.endTime);

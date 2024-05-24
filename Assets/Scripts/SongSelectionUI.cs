@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEngine.Rendering.DebugUI;
 
 public class SongSelectionUI : MonoBehaviour
@@ -11,11 +12,12 @@ public class SongSelectionUI : MonoBehaviour
     [SerializeField] GameObject songSelectorUI;
     [SerializeField] GameObject gameSettingsUI;
     [SerializeField] GameObject songVersionUI;
+    [SerializeField] Image backgroundImage;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     public void OpenGameSettings(GameObject disable)
@@ -56,6 +58,11 @@ public class SongSelectionUI : MonoBehaviour
         {
             
         }
+    }
+
+    public void SetBackground(Texture2D image)
+    {
+
     }
 
 

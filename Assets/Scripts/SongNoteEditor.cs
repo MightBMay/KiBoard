@@ -170,7 +170,7 @@ public class SongNoteEditor : MonoBehaviour
         {
             DeselectAllNotes();
             int noteNumber = 1 + SpawnPiano.instance.GetIndexOfSpriteRenderer(hit.transform.parent.GetComponent<SpriteRenderer>());
-            SongEditor.instance.CreateNote(noteNumber, mousePosition1.y, mousePosition1.y + 0.5f, mousePosition1.y);
+            //SongEditor.instance.CreateNote(noteNumber, mousePosition1.y, mousePosition1.y + 0.5f, mousePosition1.y);
             RescaleNotesFromBPM();
         }
     }

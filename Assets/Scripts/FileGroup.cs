@@ -61,64 +61,33 @@ public struct FileGroup
         return str;
     }
 
-    public Texture2D GetIcon()
+    public Texture2D GetImage(string prefix)
     {
         foreach(string path in ImageFiles)
         {
             string filename = Path.GetFileName(path);
-            if (filename.StartsWith("icon_", StringComparison.InvariantCultureIgnoreCase)){
-                return LoadImageFromFile(path);
+            if (filename.StartsWith(prefix, StringComparison.InvariantCultureIgnoreCase)){
+                return Utility.LoadImageFromFile(path);
             }
         }
         try
         {
-            Debug.Log("no icon_ file found for song "+FileName+", Icon defaulting to 1st png.");
-            return LoadImageFromFile(ImageFiles[0]);
+            Debug.Log("no "+ prefix +" file found for song "+FileName+". defaulting to 1st png.");
+            return Utility.LoadImageFromFile(ImageFiles[0]);
         }
         catch {
-            Debug.Log("Song Icon PNG/JPG not found for song "+FileName);
+            Debug.Log("\"+ prefix +\" Image not found for song " + FileName);
             return null; 
         }
     }
 
-    public Texture2D GetBackground()
-    {
-        foreach (string path in ImageFiles)
-        {
-            string filename = Path.GetFileName(path);
-            Debug.Log(filename);
-            if (filename.StartsWith("bg_", StringComparison.InvariantCultureIgnoreCase)){
-                return LoadImageFromFile(path);
-            }
-        }
-            Debug.Log("no bg_ file found for song "+FileName+". Defaulting.");
-            return null;
-    }
 
     /// <summary>
     /// Loads an image from the specified file path and returns it as a Texture2D.
     /// </summary>
     /// <param name="path">The file path of the image.</param>
     /// <returns>The loaded image as a Texture2D.</returns>
-    public Texture2D LoadImageFromFile(string path)
-    {
-        if (File.Exists(path))
-        {
-            // Step 1: Read PNG file
-            byte[] fileData = File.ReadAllBytes(path);
 
-            // Step 2: Create Texture2D
-            Texture2D texture = new Texture2D(128, 128); // You can adjust the size if needed
-            texture.LoadImage(fileData); // This automatically resizes the texture
-
-            // Step 3: Assign to RawImage
-            return texture;
-        }
-        else
-        {
-            return null;
-        }
-    }
  
 }
 [System.Serializable]

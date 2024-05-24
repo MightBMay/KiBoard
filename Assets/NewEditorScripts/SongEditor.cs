@@ -2,6 +2,7 @@ using NAudio.Midi;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 using UnityEngine;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
@@ -20,6 +21,8 @@ public class SongEditor : MonoBehaviour
     /// </summary>
     public GameObject editorNotePrefab;
 
+    public GameObject[] keyLanes = new GameObject[88];
+
     /// <summary>
     /// List of note objects in the editor.
     /// </summary>
@@ -34,11 +37,6 @@ public class SongEditor : MonoBehaviour
     /// Transform to hold instantiated notes.
     /// </summary>
     public Transform noteHolder;
-
-    /// <summary>
-    /// Transform representing the origin of the keys.
-    /// </summary>
-    public Transform keyOrigin;
 
     public bool isTesting;
     public Coroutine SongTestCoroutine;
@@ -66,8 +64,7 @@ public class SongEditor : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        // Debugging functionality
-        DebugStuff();
+
     }
 
     /// <summary>
@@ -78,13 +75,56 @@ public class SongEditor : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.L))
         {
             // Start testing the song
-           SongTestCoroutine=  StartCoroutine(StartSongTest());
+           //SongTestCoroutine=  StartCoroutine(StartSongTest());
         }
     }
 
+    #region Mouse inputs
+
+    public void HandleMouseInput() 
+    {
+        RightMouse();
+        MiddleMouse();
+        LeftMouse();
+    }
+    public void RightMouse()
+    {
+        // Create New note
+        GameObject collider = RaycastFromMouse(out RaycastHit hit); // raycast for position and key lane hit.
+        if (collider.CompareTag("KeyLane"))
+        {
+            int noteNum;
+            try { noteNum =Array.IndexOf(keyLanes, collider.gameObject)+1; } // get the x position that is equal to the index+1.
+            catch (Exception e){ Debug.Log("Error Finding index of key lane. Exception:\n"+e); return; }
+            CreateNote(noteNum,hit.point.y);
+        }
+        
+    }
+
+    public void MiddleMouse()
+    {
+
+    }
+
+    public void LeftMouse()
+    {
+
+    }
+
+    public GameObject RaycastFromMouse(out RaycastHit hit)
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hit))
+        {
+            return hit.collider.gameObject;
+        }
+        return null;
+    }
+
+    #endregion
 
 
-
+    #region Other
     void LoadSongAsEditorNotes()
     {
         NoteEventDataWrapper notes = MidiInput.instance.GetNoteEventWrapperFromSelectedSong();
@@ -95,7 +135,7 @@ public class SongEditor : MonoBehaviour
         }
         foreach (var note in notes.NoteEvents)
         {
-            CreateNote(note.noteNumber, note.startTime, note.endTime, (note.startTime+note.endTime)/2 );
+          //  if(GameManager.CheckSpawnNote(note))CreateNote(note.noteNumber, note.startTime, note.endTime, (note.startTime+note.endTime)/2 );
         }
     }
 
@@ -128,14 +168,15 @@ public class SongEditor : MonoBehaviour
     /// <param name="endTime">The end time of the note event.</param>
     /// <param name="mouseHeight">The height of the mouse.</param>
     /// <returns>The created note event.</returns>
-    public NoteEventInfo CreateNote(int noteNumber, float startTime, float endTime, float mouseHeight)
+    public NoteEventInfo CreateNote(int noteNumber, float mouseHeight)
     {
+        float startTime= 0, endTime = 0; // FIGURE OUT HOW TO TRANSLATE NOTE HEIGHT TO TIME BASED OFF BPM.
         GameObject note = Instantiate(editorNotePrefab, noteHolder);
         noteObjects.Add(note);
         var noteEvent = new NoteEventInfo(noteNumber, startTime, endTime);
         var editorNote = note.GetComponent<EditorNote>();
         editorNote.noteEvent = noteEvent;
-        editorNote.SetNotePosition(mouseHeight, keyOrigin.position.x);
+        editorNote.SetNotePosition(mouseHeight);
         noteEvents.Add(noteEvent);
         
 
@@ -173,4 +214,6 @@ public class SongEditor : MonoBehaviour
 
         return result;
     }
+
+    #endregion Other
 }

@@ -60,11 +60,11 @@ public class EditorNote : MonoBehaviour
     /// </summary>
     /// <param name="mouseHeight">The height of the mouse.</param>
     /// <param name="keyOriginX">The origin X position of the key.</param>
-    public void SetNotePosition(float mouseHeight, float keyOriginX)
+    public void SetNotePosition(float mouseHeight)
     {
         float height = mouseHeight >= Mathf.NegativeInfinity ? mouseHeight : 1;
-        Vector2 gridSnap = GridSnapNote(new Vector2(keyOriginX  + (0.20505f * (noteEvent.noteNumber - 1)), height));
-        transform.position = new Vector3(gridSnap.x-.095f , gridSnap.y, -0.5f);
+        //Vector2 gridSnap = GridSnapNote();
+        transform.position = new Vector2(noteEvent.noteNumber, height);
     }
 
     /// <summary>

@@ -15,7 +15,7 @@ public class BackgroundImage : MonoBehaviour
     public void SetBackgroundImage()
     {
 
-        Texture2D bgTexture = GameSettings.currentFileGroup.GetBackground();
+        Texture2D bgTexture = GameSettings.currentFileGroup.GetImage("bg_");
         image.texture = bgTexture;
     }
 }

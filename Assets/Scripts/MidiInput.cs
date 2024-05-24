@@ -266,6 +266,7 @@ public class MidiInput : MonoBehaviour
     public NoteEventDataWrapper GetNoteEventWrapperFromSelectedSong()
     {
         NoteEventDataWrapper data = MidiReadFile.GetNoteEventsFromFilePath(GameSettings.currentSongPath);
+        if (data == null) { Debug.Log("Error Reading data from path: " + GameSettings.currentSongPath); return null; }
         storedNoteEvents = data.NoteEvents;
         return data;
     }

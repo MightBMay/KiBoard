@@ -147,27 +147,68 @@ public class SongSelection : MonoBehaviour
     {
         string[] allFiles = Directory.GetFiles(directory);
         FileGroupError error = new FileGroupError();
-        string[] jsonfiles = null, pngfiles = null, midifiles = null, replayfiles = null;
-        string mp3file = "", scorefile = "";
-        try { jsonfiles = allFiles.Where(file => Path.GetExtension(file) == ".json").ToArray(); error.json = true; } catch { }
-        try { mp3file = allFiles.First(file => Path.GetExtension(file) == ".mp3"); error.mp3 = true; } catch { }
-        try { pngfiles = allFiles.Where(file => Path.GetExtension(file) == ".png"|| Path.GetExtension(file) == ".jpg" ).ToArray(); error.png = true; } catch { }
-        try { midifiles = allFiles.Where(file => Path.GetExtension(file) == ".mid").ToArray(); error.midi = true; } catch { }
-        try { scorefile = allFiles.First(file => Path.GetExtension(file) == ".score"); error.score = true; } catch { }
-        try { replayfiles = allFiles.Where(file => Path.GetExtension(file) == ".replay").ToArray(); error.replay = true; } catch { } // don't need to do anything in catch since the values for the error struct are automatically false.
+
+        List<string> jsonFiles = new List<string>();
+        List<string> imageFiles = new List<string>();
+        List<string> midiFiles = new List<string>();
+        List<string> replayFiles = new List<string>();
+        string mp3File = null;
+        string scoreFile = null;
+
+        foreach (var file in allFiles)
+        {
+            string extension = Path.GetExtension(file).ToLower();
+            switch (extension)
+            {
+                case ".json":
+                    jsonFiles.Add(file);
+                    error.json = true;
+                    break;
+                case ".mp3":
+                    if (mp3File == null)
+                    {
+                        mp3File = file;
+                        error.mp3 = true;
+                    }
+                    break;
+                case ".mid":
+                    midiFiles.Add(file);
+                    error.midi = true;
+                    break;
+                case ".score":
+                    if (scoreFile == null)
+                    {
+                        scoreFile = file;
+                        error.score = true;
+                    }
+                    break;
+                case ".replay":
+                    replayFiles.Add(file);
+                    error.replay = true;
+                    break;
+                default:
+                    if (Utility.SupportedImageTypes.Contains(extension))
+                    {
+                        imageFiles.Add(file);
+                        error.png = true;
+                    }
+                    break;
+            }
+        }
+
+        // Create and return the FileGroup object
         return new FileGroup()
         {
             errors = error,
             FileName = Path.GetFileNameWithoutExtension(directory),
             FolderPath = directory,
-            JsonFiles = jsonfiles,
-            Mp3File = mp3file,
-            ImageFiles = pngfiles,
-            ScoreFile = scorefile,
-            ReplayFiles = replayfiles,
-            MidiFiles = midifiles,
-
-        };
+            JsonFiles = jsonFiles.ToArray(),
+            Mp3File = mp3File,
+            ImageFiles = imageFiles.ToArray(),
+            ScoreFile = scoreFile,
+            ReplayFiles = replayFiles.ToArray(),
+            MidiFiles = midiFiles.ToArray()
+    };
     }
 
     /// <summary>

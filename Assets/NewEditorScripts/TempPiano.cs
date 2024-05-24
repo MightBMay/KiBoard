@@ -22,6 +22,9 @@ public class TempPiano : MonoBehaviour
             lane.GetComponent<SpriteRenderer>().color = i % 2 == 0 ? col1 : col2;
             lane.localScale = noteLaneScale;
             lane.position += new Vector3(0f, (noteLaneScale.y *baseNoteScale.y/ 2) - 2.5f, 1f);
+            lane.AddComponent<BoxCollider2D>();
+            lane.gameObject.tag = "KeyLane";
+            SongEditor.instance.keyLanes[i] = trans.gameObject;
         }
     }
 
