@@ -19,6 +19,6 @@ var searchData=
   ['resethighlightcolour_16',['ResetHighlightColour',['../class_editor_note.html#a2726253d93691f8644d937bb7d13c683',1,'EditorNote']]],
   ['retrycurrentsong_17',['RetryCurrentSong',['../class_midi_input.html#a1ef5e834cfe6cdac6b09db8c5d3fccaa',1,'MidiInput']]],
   ['returntosongselection_18',['ReturnToSongSelection',['../class_game_manager.html#a088bb12a26add1a57b027b46aced6863',1,'GameManager']]],
-  ['roll_20a_19',['Piano Roll&lt;a id=&quot;piano-roll&quot;&gt;&lt;/a&gt;',['../md__assets_2_documentation_2_markdown_2_g_d_d.html#autotoc_md10',1,'']]],
-  ['roll_20a_20id_20piano_20roll_20a_20',['Piano Roll&lt;a id=&quot;piano-roll&quot;&gt;&lt;/a&gt;',['../md__assets_2_documentation_2_markdown_2_g_d_d.html#autotoc_md10',1,'']]]
+  ['roll_20a_19',['Piano Roll&lt;a id=&quot;piano-roll&quot;&gt;&lt;/a&gt;',['../md__assets_2_documentation_2html_2_markdown_2_g_d_d.html#autotoc_md10',1,'']]],
+  ['roll_20a_20id_20piano_20roll_20a_20',['Piano Roll&lt;a id=&quot;piano-roll&quot;&gt;&lt;/a&gt;',['../md__assets_2_documentation_2html_2_markdown_2_g_d_d.html#autotoc_md10',1,'']]]
 ];

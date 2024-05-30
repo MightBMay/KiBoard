@@ -101,8 +101,53 @@ $(function(){initNavTree('md__assets_2_documentation_2_markdown_2_modding_01_6_0
   <div class="headertitle"><div class="title">Modding</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md21"></a> Custom Song Image Tags are used to assign images to varying parts of the song. Remember that the file name must also be the same as the custom song's folder name. For example, to change the icon of the song FurElise, you would name your file <code>icon_FurElise.png</code>.</p>
-<table class="markdownTable">
+<div class="textblock"><p><a class="anchor" id="autotoc_md21"></a> MAKE HTML ANCHORS FOR THESE SO I CAN REFERENCE THEM LATER.</p>
+<h1><a class="anchor" id="autotoc_md22"></a>
+Useful terms &amp; Info</h1>
+<h2><a class="anchor" id="autotoc_md23"></a>
+<b>Piano vs Keyboard</b></h2>
+<div style="margin-left: 40px;"> While the name of the game -KiBoard- is in reference to a musical electronic keyboard. For the sake of simplicity throughout this document, all instances of the word keyboard in this document will be in reference to a computer keyboard unless specified elsewise. Any reference to a musical keyboard will be referred to as a piano </div> <h2><a class="anchor" id="autotoc_md24"></a>
+General Modding Tips</h2>
+<div style="margin-left: 40px;"> Files are found in <b>AppData%/LocalLow/MightBMay/KiBoard</b>.<br  />
+<br  />
+</div><div style="margin-left: 40px;"> To get to the appdata folder, press Windows key + R, and type <b>AppData%</b> ( with the % signs). This will open <b>AppData%/Roaming/</b>. Go up one folder and navigate to <b>AppData%/LocalLow/MightBMay/KiBoard</b>.<br  />
+<br  />
+</div><div style="margin-left: 40px;"> Anywhere you see it in the document, replace words surrounded by { } with your input, whether it be the name of your song or anything else.<br  />
+<br  />
+</div><div style="margin-left: 40px;"> Some files are song specific- for example a songs icon- and some are not, like the background for the song selection screen.<br  />
+<br  />
+</div><div style="margin-left: 40px;"> Anything song specific will go in that specific songs folder in <b>“.../KiBoard/Songs/”</b>. Anything else must go in the <b>“.../KiBoard/Images“</b> folder.<br  />
+<br  />
+ </div> <h1><a class="anchor" id="autotoc_md25"></a>
+Custom Songs</h1>
+<h2><a class="anchor" id="autotoc_md26"></a>
+Creating a custom song</h2>
+<div style="margin-left: 40px;"> Go to appdata%/LocalLow/MightBMay/KiBoard/Songs. Create a folder with the name of your song.<br  />
+<br  />
+</div><div style="margin-left: 40px;"> You must name files in this folder with the same name as the folder. Capitals do not matter, but check your spelling.<br  />
+<br  />
+</div><div style="margin-left: 40px;"> Place your .mid file and .mp3 file in the created folder. <br  />
+ You can now open the game or reload the song selection screen and play your song.<br  />
+<br  />
+</div><div style="margin-left: 40px;"> The game automatically reads the midi file and extracts the notes from it, and saves it to a compressed JSON file in that path.<br  />
+<br  />
+</div><div style="margin-left: 40px;"> </div> <h2><a class="anchor" id="autotoc_md27"></a>
+Dressing a custom song</h2>
+<div style="margin-left: 40px;"> Songs have a few customization options.  ** FINISH LATER: MAKE LINK TO SUPPORTED FILE TYPES AND CUSTOM SONG IMAGE TAGS.**</div><div style="margin-left: 40px;">You can add images to your song by adding a <b>supported image file type</b> to the custom song folder with one of the listed <b>Custom Song Image Tags</b> </div> <h2><a class="anchor" id="autotoc_md28"></a>
+Other additions</h2>
+<div style="margin-left: 40px;"> </div><h3><a class="anchor" id="autotoc_md29"></a>
+<div style="margin-left: 40px;">Multiple Versions of Songs:</div></h3>
+<div style="margin-left: 40px;"> <div style="margin-left: 40px;"> You can add multiple difficulties or versions to a song by adding multiple Midi files. <br  />
+ Differentiate from the versions by adding a version name to the file name. If you want  to use a different audio file, you must make a separate custom song.<br  />
+<br  />
+</div></div><div style="margin-left: 40px;"><div style="margin-left: 40px;"> Add  {version name} after the name of the song. For example with the song FurElise, <br  />
+ you could name the more difficult version FurElise_Hard.mid.<br  />
+<br  />
+ </div> </div><h1><a class="anchor" id="autotoc_md30"></a>
+Customization</h1>
+<h2><a class="anchor" id="autotoc_md31"></a>
+Custom Song Image Tags</h2>
+<p>Custom Song Image Tags are used to assign images to varying parts of the song. Remember that the file name must also be the same as the custom song's folder name. For example, to change the icon of the song FurElise, you would name your file <code>icon_FurElise.png</code>. </p><div style="margin-left: 40px;"> <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Tag   </th><th class="markdownTableHeadNone">Description    </th></tr>
 <tr class="markdownTableRowOdd">
@@ -110,19 +155,24 @@ $(function(){initNavTree('md__assets_2_documentation_2_markdown_2_modding_01_6_0
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">icon_   </td><td class="markdownTableBodyNone">Changes the song icon in song selection.   </td></tr>
 </table>
-<h1><a class="anchor" id="autotoc_md22"></a>
-UI Image Tags</h1>
-<p>UI Image Tags are used to assign images to certain elements of the players UI in many scenes of the game. Each of the following names are split by their in-game scene, which must prefix their desired UI Element. For example, the background of the song selection screen must be named <code>SongSelection_Background.png</code>.</p>
-<h2><a class="anchor" id="autotoc_md23"></a>
-SongSelection_</h2>
-<ul>
-<li><b>Background</b>: The background of the song selection screen.</li>
+</div><p><br  />
+<br  />
+ </p>
+<h2><a class="anchor" id="autotoc_md32"></a>
+UI Image Tags</h2>
+<p>UI Image Tags are used to assign images to certain elements of the players UI in many scenes of the game. Each of the following names are split by their in-game scene, which must prefix their desired UI Element. For example, the background of the song selection screen must be named <code>SongSelection_Background.png</code>. </p><div style="margin-left: 40px;"></div><div style="margin-left: 40px;"></div><h3><a class="anchor" id="autotoc_md33"></a>
+<div style="margin-left: 40px;"><b>SongSelection_</b></div></h3>
+<div style="margin-left: 40px;"><ul>
+<li>Background: The background of the song selection screen.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md24"></a>
-OtherScene</h2>
-<ul>
-<li><b>Background</b>: The background of the other scene. </li>
+</div><div style="margin-left: 40px;"></div><h3><a class="anchor" id="autotoc_md34"></a>
+<div style="margin-left: 40px;"><b>blank_</b></div></h3>
+<div style="margin-left: 40px;"><ul>
+<li>tag: Description.</li>
 </ul>
+</div><div style="margin-left: 40px;"></div><p><br  />
+<br  />
+ </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

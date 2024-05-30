@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['tagsss_0',['Custom Song Image Tagsss',['../md__assets_2_documentation_2_markdown_2_custom_01_song_01_image_01_tags.html',1,'']]]
+  ['design_20document_0',['Game Design Document',['../md__assets_2_documentation_2_markdown_2_g_d_d.html',1,'']]],
+  ['document_1',['Game Design Document',['../md__assets_2_documentation_2_markdown_2_g_d_d.html',1,'']]]
 ];
