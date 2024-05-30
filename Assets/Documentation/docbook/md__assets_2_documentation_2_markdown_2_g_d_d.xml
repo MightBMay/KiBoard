@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_md__assets_2_documentation_2_markdown_2_g_d_d" xml:lang="en-US">
+<title>Game Design Document</title>
+<indexterm><primary>Game Design Document</primary></indexterm>
+<section xml:id="_md__assets_2_documentation_2_markdown_2_g_d_d_1autotoc_md0">
+<title>Concept<anchor xml:id="__1concept"/></title>
+<para> Kiboard is a rhythm game designed to be played with an actual piano through a MIDI cable connected to your computer.  </para>
+</section>
+<section xml:id="_md__assets_2_documentation_2_markdown_2_g_d_d_1autotoc_md1">
+<title>Game Structure, Loop &amp; Objective<anchor xml:id="__1game-structure-loop--objective"/></title>
+<para> Players will first select a song to play, then notes of that song will begin to fall on a Piano Roll- a visual representation of a piano- in front of them.</para>
+
+<para>There will be a variety of songs you can listen to and learn to play through the piano roll-like display. Players will be able to slow down the speed of these songs to learn them slowly over time. </para>
+
+<para>The objective is for players to press the correctly indicated note at the correct timing of the note to earn points. </para>
+
+<para>The goal of the game is to make learning songs on the piano a more entertaining experience for the player, as well as providing tools to help them in learning songs. </para>
+</section>
+<section xml:id="_md__assets_2_documentation_2_markdown_2_g_d_d_1autotoc_md2">
+<title>Players<anchor xml:id="__1players"/></title>
+<para> Players will be able to play the game on Windows PC’s using an 88 key Midi Piano, OR using 8/12 Keys on their computer Keyboard. </para>
+</section>
+<section xml:id="_md__assets_2_documentation_2_markdown_2_g_d_d_1autotoc_md3">
+<title>Graphics &amp; Display<anchor xml:id="__1graphics--display"/></title>
+<para> KiBoard is split into two main scenes:</para>
+
+<para></para>
+<section xml:id="_md__assets_2_documentation_2_markdown_2_g_d_d_1autotoc_md4">
+<title><emphasis role="bold">Song Selection</emphasis><anchor xml:id="__1song-selection"/></title>
+<para>  The song selection screen will be the main UI menu for the game, consisting of 4 panels, and some buttons.   </para>
+<section xml:id="_md__assets_2_documentation_2_markdown_2_g_d_d_1autotoc_md5">
+<title>Song Selector<anchor xml:id="__1song-selector"/></title>
+<para>  The center will be the song selector, Allowing for the player to select from a list of songs. Clicking on one of these songs will open the other 3 panels.    </para>
+</section>
+<section xml:id="_md__assets_2_documentation_2_markdown_2_g_d_d_1autotoc_md6">
+<title>High Score<anchor xml:id="__1high-score"/></title>
+<para>  The high score panel will appear to the top left, displaying your previously achieved best score. It will show the date and time it was done, the achieved total score, the amount of “Perfect, good, Okay, Missed,” and </para>
+
+<para> “Extra” notes played, as well as show the ratio of notes correctly played to the total number of notes.   </para>
+</section>
+<section xml:id="_md__assets_2_documentation_2_markdown_2_g_d_d_1autotoc_md7">
+<title>Song Version<anchor xml:id="__1song-version"/></title>
+<para>  Song Version relates to how the File system for the game is structured. An example would be if you wanted to add different difficulties to the same song, and is elaborated on Link to Concept</para>
+
+<para> This panel will be a list of all the versions of a song listed in that songs folder, allowing you to select from them before hitting play.   </para>
+</section>
+<section xml:id="_md__assets_2_documentation_2_markdown_2_g_d_d_1autotoc_md8">
+<title>Song Settings &amp; Preview<anchor xml:id="__1song-settings--preview"/></title>
+<para>  The song setting window will allow you to set song-specific settings before you hit play.</para>
+
+<para> Some examples of these settings are:</para>
+
+<para><itemizedlist>
+<listitem>
+<para>Whether the player is using a Midi Piano or a computer keyboard.</para>
+</listitem><listitem>
+<para>Whether or not the player wants to use a sustain Pedal.</para>
+</listitem><listitem>
+<para>The BPM they want to play the song at (left blank will default to the Midi Files bpm).</para>
+</listitem><listitem>
+<para>Beats Before Drop (how long in advance notes should spawn before they cross the Hit Indicator Bar. Changing this can drastically increase/decrease the amount of time you have to react to a note, as well as modifying the scale of notes).</para>
+</listitem></itemizedlist>
+</para>
+
+<para> The song preview window shows the player a scaled-down exact copy of what the selected song looks like to play before clicking play. </para>
+
+<para></para>
+</section>
+</section>
+<section xml:id="_md__assets_2_documentation_2_markdown_2_g_d_d_1autotoc_md9">
+<title><emphasis role="bold">In Game</emphasis><anchor xml:id="__1in-game"/></title>
+<para>  The In Game Scenes ( split into GameScene88 and GameScene12) are where players go after selecting a song, and is where the game loop is played.   </para>
+<section xml:id="_md__assets_2_documentation_2_markdown_2_g_d_d_1autotoc_md10">
+<title>Piano Roll<anchor xml:id="__1piano-roll"/></title>
+<para></para>
+
+<para>  </para>
+<section xml:id="_md__assets_2_documentation_2_markdown_2_g_d_d_1autotoc_md11">
+<title>Piano <anchor xml:id="__1piano"/></title>
+<para>  The Piano is laid out like an 88 key piano in the bottom of the screen. It displays what notes the player is currently pressing. </para>
+
+<para></para>
+</section>
+<section xml:id="_md__assets_2_documentation_2_markdown_2_g_d_d_1autotoc_md12">
+<title>Key Lane<anchor xml:id="__1key-lane"/></title>
+<para>  Light and dark gray strips extend vertically from each key in the Piano. These are the Key Lanes that notes can fall on. They are coloured differently to help differentiate between two nearby notes.   </para>
+
+<para></para>
+</section>
+<section xml:id="_md__assets_2_documentation_2_markdown_2_g_d_d_1autotoc_md13">
+<title>Hit Indicator Bar<anchor xml:id="__1hit-indicator-bar"/></title>
+<para>  A coloured bar slightly above the Piano acts as a visual indicator for when you should play a note. When the bottom of the note touches the hit indicator bar, it is the ideal time. </para>
+
+<para></para>
+</section>
+<section xml:id="_md__assets_2_documentation_2_markdown_2_g_d_d_1autotoc_md14">
+<title>Note<anchor xml:id="__1note"/></title>
+<para>  Notes display what notes the player must react and play in sync to the song with. </para>
+
+<para></para>
+</section>
+<section xml:id="_md__assets_2_documentation_2_markdown_2_g_d_d_1autotoc_md15">
+<title>Beat Indicators<anchor xml:id="__1beat-indicators"/></title>
+<para>  Horizontally across the key lanes are beat indicators. These are a visual representation of how far away a note is from the correct timing to hit it. One beat indicator represents the note being </para>
+
+<para> one beat away.   </para>
+</section>
+</section>
+<section xml:id="_md__assets_2_documentation_2_markdown_2_g_d_d_1autotoc_md16">
+<title>Combo bar<anchor xml:id="__1combo-bar"/></title>
+<para>  On the left of the Piano Roll is the <link linkend="_class_combo">Combo</link> bar. The bar extends vertically, parallel to the piano roll.</para>
+
+<para>The score gained by each correct note hit is multiplied by the combo multiplier, ranging from 1-3x the </para>
+
+<para>base value, and increasing based on the amount of correct notes the player plays. </para>
+
+<para>This multiplier&apos;s value is shown slightly to the left of the combo bar.</para>
+
+<para></para>
+
+<para></para>
+</section>
+<section xml:id="_md__assets_2_documentation_2_markdown_2_g_d_d_1autotoc_md17">
+<title>Score<anchor xml:id="__1score"/></title>
+<para></para>
+
+<para> </para>
+<section xml:id="_md__assets_2_documentation_2_markdown_2_g_d_d_1autotoc_md18">
+<title>Total Score<anchor xml:id="__1total-score"/></title>
+<para>  To the right of the piano roll, your total score is shown. </para>
+
+<para></para>
+</section>
+<section xml:id="_md__assets_2_documentation_2_markdown_2_g_d_d_1autotoc_md19">
+<title>Score Text<anchor xml:id="__1score-text"/></title>
+<para>  Each time you play a note, the value of it is displayed in a stacking history of score changes. These are also coloured according to the timing of the note, pink being perfect, green good, blue okay, and red incorrect. </para>
+
+<para></para>
+</section>
+</section>
+<section xml:id="_md__assets_2_documentation_2_markdown_2_g_d_d_1autotoc_md20">
+<title>Progress Bar<anchor xml:id="__1progress-bar"/></title>
+<para>  Along the top of the screen is a green bar. Going from left to right, this bar displays how far the player is into the song&apos;s duration. </para>
+
+<para>  </para>
+</section>
+</section>
+</section>
+</section>

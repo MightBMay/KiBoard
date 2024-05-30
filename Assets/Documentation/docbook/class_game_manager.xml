@@ -1,0 +1,1160 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_game_manager" xml:lang="en-US">
+<title>GameManager Class Reference</title>
+<indexterm><primary>GameManager</primary></indexterm>
+<para>Inheritance diagram for GameManager:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_game_manager.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_class_game_manager_1af4e440d43057c39b34693f0a6b254305">AssignFpsText</link> (TMP_InputField text)</para>
+
+<para>Assigns text parameter&apos;s .text feild to the current target FPS. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_game_manager_1a03c5a21dd10403a8bc58568867e2c9ba">SetFPS</link> (string str)</para>
+
+<para>Sets Application.targetFrameRate to &quot;str&quot; parsed. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_game_manager_1aff115afc0904347a885dfb7911156023">SetInputDelay</link> (string delayStr)</para>
+
+<para>Sets PlayerSettings.inputDelay to &quot;delayStr&quot; parsed. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_game_manager_1aa7cfe2c35d8218c1905fd49755f18ba6">UpdateSongTime</link> ()</para>
+
+<para>Updates <link linkend="_class_game_manager_1ad381fb8bceb8932bf6808ed3a2f71079">songTime</link> variable with Time.deltaTime. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_game_manager_1a50d8dbeefbac282d863dce4ad5850a30">SetSongTotalNotes</link> (int noteCount)</para>
+
+<para>Sets <link linkend="_class_game_manager_1a5461b0a96727024f79b540b520263021">totalNotes</link> to the total number of notes in the song. </para>
+</listitem>
+            <listitem><para>IEnumerator <link linkend="_class_game_manager_1a53d0c42e8760b846fd39a6b9b1115566">PrepareNotes</link> (float BPM, List&lt; <link linkend="_class_note_event_info">NoteEventInfo</link> &gt; noteEvents, bool isPreview)</para>
+
+<para>Prepares notes for a song to be played. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_game_manager_1a16e37ca62e4a61a405d08a0ff762cfb0">StopReadiedNotes</link> ()</para>
+
+<para>Stops all coroutines for preparing notes. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_game_manager_1ab6189abe4c7230a024dbf48645ce1d1c">UpdatePlayerScore</link> (string score)</para>
+
+<para>Updates the player&apos;s score based on the hit timing. </para>
+</listitem>
+            <listitem><para>string <link linkend="_class_game_manager_1af2b61b305c4b0b48b6dea78162472aef">ConvertNoteNumberToName</link> (int noteNumber)</para>
+
+<para>Converts a MIDI note number to its corresponding name. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_game_manager_1ad109ae0452de271ad4ea6f05e7a7d74b">OnSongEnd</link> ()</para>
+
+<para>Coroutine for handling song end actions. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_game_manager_1a088bb12a26add1a57b027b46aced6863">ReturnToSongSelection</link> ()</para>
+
+<para>Returns to the song selection scene. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_game_manager_1a2a236f013f07c814c142d103c08708e4">StopSong</link> ()</para>
+
+<para>Stops all prepared notes and stops updating of songTime. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_game_manager_1a4138c16110d65a2c6abdafa36fb0d99a">RefreshJsonFiles</link> ()</para>
+
+<para>Reloads all json file versions of the currently selected song. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_game_manager_1a1b07555e4d959dfc5afe2ea33b1cc614">SetBeatsBeforeDrop</link> (string num)</para>
+
+<para>Sets <link linkend="_class_game_manager_1afa92e7ec92714a03a1bc716b6b4cd0fc">beatsBeforeNote</link>. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>static bool <link linkend="_class_game_manager_1a750548d06231926291304fc3b5ebb0d5">CheckSpawnNote</link> (<link linkend="_class_note_event_info">NoteEventInfo</link> note)</para>
+
+<para>Used to check if a noteEvent is storing Tempo Data or Note Data. i assign tempo changes by setting the <link linkend="_class_note_event_info_1aaeaec089312cf881c719b2b56680fbff">NoteEventInfo.startTime</link> to negative infinity and the <link linkend="_class_note_event_info_1a9435e829c3bd157528c83c87c7a481df">NoteEventInfo.noteNumber</link> to min value, with the tempo as the end time. </para>
+</listitem>
+            <listitem><para>static int <link linkend="_class_game_manager_1a131c1f0873da6899dc644060748a8b99">ConvertNoteNameToNumber</link> (string noteName)</para>
+
+<para>Converts a note name to its corresponding MIDI note number. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>GameObject <link linkend="_class_game_manager_1a85f3738c9e3c68307429d0b530b29c4f">notePrefab</link></para>
+
+<para>prefab used for instantiating notes. </para>
+</listitem>
+            <listitem><para><link linkend="_class_song_score">SongScore</link> <link linkend="_class_game_manager_1aaefc3ab73c34dacf4b1940eb4edfff73">currentSongScore</link></para>
+
+<para><link linkend="_class_song_score">SongScore</link> for currently playing song. </para>
+</listitem>
+            <listitem><para><link linkend="_class_song_score">SongScore</link> <link linkend="_class_game_manager_1ac43fa88c15f544b23fac9d169c1ebd27">selectedSongHighScore</link></para>
+
+<para><link linkend="_class_song_score">SongScore</link> storing the High score for the currently selected song. </para>
+</listitem>
+            <listitem><para><link linkend="_class_combo">Combo</link> <link linkend="_class_game_manager_1ae2252fc1555317f10bf2a933c471caff">combo</link> = new()</para>
+
+<para>Current <link linkend="_class_combo">Combo</link> for the song. </para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_game_manager_1a20ce3361f6e4711d209dc90a52e56756">inEditor</link></para>
+
+<para>Is the game in the SongEditor State? </para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_game_manager_1a8ab732083d9e8cf62d2ae0166b80fb8d">startTimer</link></para>
+
+<para>Should <link linkend="_class_game_manager_1ad381fb8bceb8932bf6808ed3a2f71079">songTime</link> be updated? </para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_game_manager_1a4dbb614ef4ff0a6e6437137de4b39993">isCurSongPreview</link></para>
+
+<para>Is the currently playing song appearing in the preview window in the Song Selection scene. </para>
+</listitem>
+            <listitem><para>float <link linkend="_class_game_manager_1ad381fb8bceb8932bf6808ed3a2f71079">songTime</link></para>
+
+<para>Elapsed duration (seconds) into the currently playing song. </para>
+</listitem>
+            <listitem><para>float <link linkend="_class_game_manager_1a1c6cbb2c55728fd5cdae29b101fca9b8">modifiedNoteScale</link></para>
+
+<para>Note scaling factor calculated by the song BPM at the time of the notes appearence in the song.<?linebreak?> See also <formalpara><title>See also</title>
+
+<para><link linkend="_class_game_manager_1ae1aef8693fa79d2002b39d161530b692">baseNoteScalingFactor</link></para>
+</formalpara>
+</para>
+</listitem>
+            <listitem><para>int <link linkend="_class_game_manager_1afa92e7ec92714a03a1bc716b6b4cd0fc">beatsBeforeNote</link> = 4</para>
+
+<para>Number of beats a note should spawn before being visible on screen. <?linebreak?> Modification changes the speed notes fall, and changes the amount of time players have to react to notes. </para>
+</listitem>
+            <listitem><para>int <link linkend="_class_game_manager_1a5461b0a96727024f79b540b520263021">totalNotes</link></para>
+
+<para>Total number of notes in the currently playing song. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>static <link linkend="_class_game_manager">GameManager</link> <link linkend="_class_game_manager_1a7666e8468dac197b9eb32dd32128524f">instance</link></para>
+
+<para>singleton reference. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_class_game_manager_1a2959177ee51ac31badbf8b1bc8f7f637">Awake</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_game_manager_1a44c79b205dec16bfe650e21259860c5b">Update</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_game_manager_1a2b01e6fd64224a2caad8ff75dd9ca4d2">AssignToPreviewLayer</link> (GameObject obj)</para>
+
+<para>Assigns &quot;obk&quot; to the layer &quot;PreviewLayer&quot;, then moves it and all children objects to the song preview scene. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>float <link linkend="_class_game_manager_1a8c01bb8a5b3a7d0db057bc1c35a86f3d">screenHeight</link></para>
+
+<para>Height of the viewport in Units, as viewed from an angle in the game view. </para>
+</listitem>
+            <listitem><para>float <link linkend="_class_game_manager_1a6345514a81dbb13e368104d9c0f8e840">fallSpeed</link></para>
+</listitem>
+            <listitem><para>float <link linkend="_class_game_manager_1a60200875de30ed6fe5a45c9de6b92d2c">spawnOffset</link> = 2f</para>
+</listitem>
+            <listitem><para>float <link linkend="_class_game_manager_1ae1aef8693fa79d2002b39d161530b692">baseNoteScalingFactor</link> = 5.4f</para>
+
+<para>Base scaling factor for notes to be modified by BPM of the song.<?linebreak?> do not ask me where the 5.4 came from i do not know. </para>
+</listitem>
+            <listitem><para>Transform <link linkend="_class_game_manager_1a20265d8c977bdee9e61f21ea07063673">noteHolder</link></para>
+</listitem>
+            <listitem><para>List&lt; Coroutine &gt; <link linkend="_class_game_manager_1a64a3b44248545c9414c2446d21f00103">readiedNotes</link> = new()</para>
+
+<para>List holding all note prepared but not yet spawned. </para>
+</listitem>
+            <listitem><para>string[] <link linkend="_class_game_manager_1afd80eb99362175b5af23a86196a07e32">noteNames</link> = { &quot;C&quot;, &quot;C#&quot;, &quot;D&quot;, &quot;D#&quot;, &quot;E&quot;, &quot;F&quot;, &quot;F#&quot;, &quot;G&quot;, &quot;G#&quot;, &quot;A&quot;, &quot;A#&quot;, &quot;B&quot;, }</para>
+
+<para>String array containing the names of notes accoring to their indecies, 0 being C. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>static Dictionary&lt; string, int &gt; <link linkend="_class_game_manager_1ae3ba6b6cd15beeddec9c637ecc9dca5f">nameToNoteMap</link></para>
+
+<para>Dictionary mapping of note names to note numbers. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_game_manager_1af4e440d43057c39b34693f0a6b254305"/><section>
+    <title>AssignFpsText()</title>
+<indexterm><primary>AssignFpsText</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>AssignFpsText</secondary></indexterm>
+<para><computeroutput>void GameManager.AssignFpsText (TMP_InputField text)</computeroutput></para><para>
+
+<para>Assigns text parameter&apos;s .text feild to the current target FPS. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>text</entry><entry>
+<para>TextMeshPro to have string assigned to.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<programlisting linenumbering="unnumbered">124 &#32;&#32;&#32;&#32;{
+125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;text.text&#32;=&#32;Application.targetFrameRate.ToString();
+126 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_game_manager_1a2b01e6fd64224a2caad8ff75dd9ca4d2"/><section>
+    <title>AssignToPreviewLayer()</title>
+<indexterm><primary>AssignToPreviewLayer</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>AssignToPreviewLayer</secondary></indexterm>
+<para><computeroutput>void GameManager.AssignToPreviewLayer (GameObject obj)<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>Assigns &quot;obk&quot; to the layer &quot;PreviewLayer&quot;, then moves it and all children objects to the song preview scene. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>obj</entry><entry>
+<para>object to have layer assigned.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<programlisting linenumbering="unnumbered">322 &#32;&#32;&#32;&#32;{
+323 
+324 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Assign&#32;the&#32;object&#32;to&#32;the&#32;&quot;PreviewLayer&quot;</emphasis>
+325 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;LayerMask&#32;layer&#32;=&#32;LayerMask.NameToLayer(<emphasis role="stringliteral">&quot;PreviewLayer&quot;</emphasis>);
+326 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">try</emphasis>&#32;{&#32;SceneManager.MoveGameObjectToScene(obj,&#32;<link linkend="_class_midi_input">MidiInput</link>.<link linkend="_class_midi_input_1a7a0aa3fc42bdb7cba08848c7d93d1934">instance</link>.currentPreview);&#32;}&#32;<emphasis role="keywordflow">catch</emphasis>&#32;{&#32;}
+327 
+328 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(Transform&#32;child&#32;<emphasis role="keywordflow">in</emphasis>&#32;obj.GetComponentsInChildren&lt;Transform&gt;(<emphasis role="keyword">true</emphasis>))
+329 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+330 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;child.gameObject.layer&#32;=&#32;layer;
+331 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+332 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+Referenced by <link linkend="_class_game_manager_1a53d0c42e8760b846fd39a6b9b1115566">PrepareNotes()</link>.</para>
+</section>
+<anchor xml:id="_class_game_manager_1a2959177ee51ac31badbf8b1bc8f7f637"/><section>
+    <title>Awake()</title>
+<indexterm><primary>Awake</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>Awake</secondary></indexterm>
+<para><computeroutput>void GameManager.Awake ( )<computeroutput>[private]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">112 &#32;&#32;&#32;&#32;{
+113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_game_manager_1a7666e8468dac197b9eb32dd32128524f">instance</link>&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_manager_1a7666e8468dac197b9eb32dd32128524f">instance</link>&#32;=&#32;<emphasis role="keyword">this</emphasis>;
+116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;{&#32;Destroy(gameObject);&#32;}
+118 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_game_manager_1a750548d06231926291304fc3b5ebb0d5"/><section>
+    <title>CheckSpawnNote()</title>
+<indexterm><primary>CheckSpawnNote</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>CheckSpawnNote</secondary></indexterm>
+<para><computeroutput>static bool GameManager.CheckSpawnNote (<link linkend="_class_note_event_info">NoteEventInfo</link> note)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Used to check if a noteEvent is storing Tempo Data or Note Data. i assign tempo changes by setting the <link linkend="_class_note_event_info_1aaeaec089312cf881c719b2b56680fbff">NoteEventInfo.startTime</link> to negative infinity and the <link linkend="_class_note_event_info_1a9435e829c3bd157528c83c87c7a481df">NoteEventInfo.noteNumber</link> to min value, with the tempo as the end time. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>note</entry><entry>
+<para>note to check for tempo data.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>True = note data, false = tempo data.</para>
+</formalpara>
+</para>
+<programlisting linenumbering="unnumbered">184 &#32;&#32;&#32;&#32;{
+185 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(note.<link linkend="_class_note_event_info_1aaeaec089312cf881c719b2b56680fbff">startTime</link>&#32;==&#32;<emphasis role="keywordtype">float</emphasis>.NegativeInfinity&#32;&amp;&amp;&#32;note.<link linkend="_class_note_event_info_1a9435e829c3bd157528c83c87c7a481df">noteNumber</link>&#32;==&#32;<emphasis role="keywordtype">int</emphasis>.MinValue);
+186 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+Referenced by <link linkend="_class_game_manager_1a53d0c42e8760b846fd39a6b9b1115566">PrepareNotes()</link>.</para>
+</section>
+<anchor xml:id="_class_game_manager_1a131c1f0873da6899dc644060748a8b99"/><section>
+    <title>ConvertNoteNameToNumber()</title>
+<indexterm><primary>ConvertNoteNameToNumber</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>ConvertNoteNameToNumber</secondary></indexterm>
+<para><computeroutput>static int GameManager.ConvertNoteNameToNumber (string noteName)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Converts a note name to its corresponding MIDI note number. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>noteName</entry><entry>
+<para>The note name (e.g., C, C#, D).</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>The MIDI note number.</para>
+</formalpara>
+</para>
+<programlisting linenumbering="unnumbered">381 &#32;&#32;&#32;&#32;{
+382 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<emphasis role="keywordtype">char</emphasis>.IsDigit(noteName[0]))
+383 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+384 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;octave&#32;=&#32;0;
+385 
+386 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;noteName.Length;&#32;i++)
+387 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+388 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<emphasis role="keywordtype">char</emphasis>.IsDigit(noteName[i]))
+389 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+390 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;octave&#32;=&#32;noteName[i];
+391 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+392 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+393 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_manager_1ae3ba6b6cd15beeddec9c637ecc9dca5f">nameToNoteMap</link>.TryGetValue(noteName.ToLower(),&#32;out&#32;<emphasis role="keywordtype">int</emphasis>&#32;value);
+394 
+395 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;value&#32;+&#32;(12&#32;*&#32;octave);
+396 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+397 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>.Parse(noteName);
+398 
+399 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_game_manager_1af2b61b305c4b0b48b6dea78162472aef"/><section>
+    <title>ConvertNoteNumberToName()</title>
+<indexterm><primary>ConvertNoteNumberToName</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>ConvertNoteNumberToName</secondary></indexterm>
+<para><computeroutput>string GameManager.ConvertNoteNumberToName (int noteNumber)</computeroutput></para><para>
+
+<para>Converts a MIDI note number to its corresponding name. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>noteNumber</entry><entry>
+<para>The MIDI note number.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>The note name (e.g., C, C#, D).</para>
+</formalpara>
+</para>
+<programlisting linenumbering="unnumbered">363 &#32;&#32;&#32;&#32;{
+364 
+365 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;octave&#32;=&#32;(noteNumber&#32;/&#32;12)&#32;-&#32;1;
+366 
+367 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;noteIndex&#32;=&#32;(noteNumber)&#32;%&#32;12;
+368 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;noteName&#32;=&#32;<link linkend="_class_game_manager_1afd80eb99362175b5af23a86196a07e32">noteNames</link>[noteIndex];
+369 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(GameSettings.usePiano)
+370 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+371 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$<emphasis role="stringliteral">&quot;{noteName}&#32;{octave}&quot;</emphasis>;
+372 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+373 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$<emphasis role="stringliteral">&quot;{noteName}&quot;</emphasis>;
+374 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_game_manager_1ad109ae0452de271ad4ea6f05e7a7d74b"/><section>
+    <title>OnSongEnd()</title>
+<indexterm><primary>OnSongEnd</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>OnSongEnd</secondary></indexterm>
+<para><computeroutput>void GameManager.OnSongEnd ( )</computeroutput></para><para>
+
+<para>Coroutine for handling song end actions. </para>
+</para>
+<programlisting linenumbering="unnumbered">405 &#32;&#32;&#32;&#32;{
+406 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_manager_1a8ab732083d9e8cf62d2ae0166b80fb8d">startTimer</link>&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+407 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;MidiInput.instance.takeInput&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+408 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>[]&#32;score&#32;=&#32;<link linkend="_class_game_manager_1aaefc3ab73c34dacf4b1940eb4edfff73">currentSongScore</link>.<link linkend="_class_song_score_1a248a3e361b5a456adcfbfc18c380911a">GetScoreArray</link>(<link linkend="_class_game_manager_1a5461b0a96727024f79b540b520263021">totalNotes</link>);
+409 
+410 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_game_manager_1a4dbb614ef4ff0a6e6437137de4b39993">isCurSongPreview</link>)&#32;{&#32;EndSongMessage.instance?.ShowScore($<emphasis role="stringliteral">&quot;Total&#32;Score:&#32;{score[0]}\nPerfect:&#32;{score[1]}\nGood:&#32;{score[2]}\nOkay:&#32;{score[3]}\nExtra:&#32;{score[4]}\nMissed:&#32;{score[5]}\nLongest&#32;Combo:&#32;{combo.highestCount}&quot;</emphasis>,&#32;<link linkend="_class_game_manager_1aaefc3ab73c34dacf4b1940eb4edfff73">currentSongScore</link>.<link linkend="_class_song_score_1ae1193eae22aae7d34664e29ff44d27a7">FinalizeScore</link>());&#32;}
+411 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;{&#32;FindObjectOfType&lt;EndPreview&gt;()?.EndPreviewFade();&#32;}
+412 
+413 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_replay">Replay</link>.<link linkend="_class_replay_1a557710a107d231bd78824337a7264a20">isPlayingReplay</link>)&#32;{&#32;<link linkend="_class_midi_data_handler">MidiDataHandler</link>.<link linkend="_class_midi_data_handler_1a2f657c39727c406846f224d4175f62b2">SaveNoteEventData</link>(<emphasis role="stringliteral">&quot;.replay&quot;</emphasis>,&#32;<link linkend="_class_replay">Replay</link>.<link linkend="_class_replay_1a4fd76e76a6bdd4efb0f59151167b8746">instance</link>.replayNoteData);&#32;}&#32;<emphasis role="comment">//&#32;only&#32;record&#32;replays&#32;if&#32;you&#32;arent&#32;playing&#32;back&#32;a&#32;replay.</emphasis>
+414 
+415 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_game_manager_1a53d0c42e8760b846fd39a6b9b1115566"/><section>
+    <title>PrepareNotes()</title>
+<indexterm><primary>PrepareNotes</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>PrepareNotes</secondary></indexterm>
+<para><computeroutput>IEnumerator GameManager.PrepareNotes (float BPM, List&lt; <link linkend="_class_note_event_info">NoteEventInfo</link> &gt; noteEvents, bool isPreview)</computeroutput></para><para>
+
+<para>Prepares notes for a song to be played. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>BPM</entry><entry>
+<para>Starting BPM of selected song</para>
+</entry>
+                            </row>
+                            <row>
+<entry>noteEvents</entry><entry>
+<para>List of <link linkend="_class_note_event_info">NoteEventInfo</link>&apos;s to be played.</para>
+</entry>
+                            </row>
+                            <row>
+<entry>isPreview</entry><entry>
+<para>Is the song in the Song Selection Preview Window?</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+<programlisting linenumbering="unnumbered">195 &#32;&#32;&#32;&#32;{
+196 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(noteEvents&#32;==&#32;<emphasis role="keyword">null</emphasis>)&#32;{&#32;Debug.Log(<emphasis role="stringliteral">&quot;gameloop&#32;noteEvents&#32;null&quot;</emphasis>);&#32;yield&#32;<emphasis role="keywordflow">break</emphasis>;&#32;}
+197 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GameType?&#32;gameType&#32;=&#32;GameSettings.gameType&#32;=&#32;GameSettings.usePiano&#32;?&#32;GameType.Key88&#32;:&#32;GameType.Key12;
+198 
+199 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_manager_1a50d8dbeefbac282d863dce4ad5850a30">SetSongTotalNotes</link>(noteEvents.Count);
+200 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_song_score">SongScore</link>&#32;songScore&#32;=&#32;<emphasis role="keyword">new</emphasis>();
+201 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(isPreview)&#32;{&#32;<link linkend="_class_game_manager_1a4dbb614ef4ff0a6e6437137de4b39993">isCurSongPreview</link>&#32;=&#32;<emphasis role="keyword">true</emphasis>;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{&#32;<link linkend="_class_game_manager_1a4dbb614ef4ff0a6e6437137de4b39993">isCurSongPreview</link>&#32;=&#32;<emphasis role="keyword">false</emphasis>;&#32;}
+202 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_manager_1ad381fb8bceb8932bf6808ed3a2f71079">songTime</link>&#32;=&#32;-3f&#32;-&#32;(130&#32;/&#32;BPM);
+203 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_game_manager_1a4dbb614ef4ff0a6e6437137de4b39993">isCurSongPreview</link>)&#32;{&#32;Replay.recordReplay&#32;=&#32;<emphasis role="keyword">true</emphasis>;&#32;<link linkend="_class_replay">Replay</link>.<link linkend="_class_replay_1a6ca2e428e3f2cd09fdb0ad7ac149612d">StartReplayCapture</link>();&#32;}
+204 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;{&#32;Replay.recordReplay&#32;=&#32;<emphasis role="keyword">false</emphasis>;&#32;}
+205 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_manager_1a8c01bb8a5b3a7d0db057bc1c35a86f3d">screenHeight</link>&#32;=&#32;40.16f;<emphasis role="comment">//2f&#32;*&#32;Camera.main.orthographicSize;</emphasis>
+206 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;AssignSongValues(BPM);
+207 
+208 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;yield&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;WaitForSecondsRealtime(1f);
+209 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;yield&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;WaitUntil(()&#32;=&gt;&#32;(Input.anyKeyDown&#32;||&#32;<link linkend="_class_midi_input">MidiInput</link>.<link linkend="_class_midi_input_1a7a0aa3fc42bdb7cba08848c7d93d1934">instance</link>.GetAnyNoteActive())&#32;||&#32;isPreview);
+210 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_manager_1a8ab732083d9e8cf62d2ae0166b80fb8d">startTimer</link>&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+211 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_manager_1a16e37ca62e4a61a405d08a0ff762cfb0">StopReadiedNotes</link>();
+212 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(gameType&#32;==&#32;GameType.Key88)&#32;{&#32;noteEvents.ForEach(noteEvent&#32;=&gt;&#32;<link linkend="_class_game_manager_1a64a3b44248545c9414c2446d21f00103">readiedNotes</link>.Add(StartCoroutine(ReadyNote88(noteEvent.startTime,&#32;noteEvent))));&#32;}
+213 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(gameType&#32;==&#32;GameType.Key12)&#32;{&#32;noteEvents.ForEach(noteEvent&#32;=&gt;&#32;<link linkend="_class_game_manager_1a64a3b44248545c9414c2446d21f00103">readiedNotes</link>.Add(StartCoroutine(ReadyNote12(noteEvent.startTime,&#32;noteEvent))));&#32;}
+214 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+215 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+216 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Debug.LogError(<emphasis role="stringliteral">&quot;Game&#32;type&#32;not&#32;88&#32;or&#32;12&#32;key&#32;mode.&quot;</emphasis>);
+217 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+218 
+219 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Game&#32;loop&#32;is&#32;finished</emphasis>
+220 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;yield&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">null</emphasis>;
+221 
+222 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AssignSongValues(<emphasis role="keywordtype">float</emphasis>&#32;BPM)&#x240D;
+223 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+224 
+225 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_manager_1a60200875de30ed6fe5a45c9de6b92d2c">spawnOffset</link>&#32;=&#32;(<link linkend="_class_game_manager_1afa92e7ec92714a03a1bc716b6b4cd0fc">beatsBeforeNote</link>&#32;*&#32;60f&#32;/&#32;BPM);
+226 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Calculate&#32;the&#32;speed&#32;based&#32;on&#32;the&#32;distance&#32;and&#32;duration</emphasis>
+227 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_manager_1a6345514a81dbb13e368104d9c0f8e840">fallSpeed</link>&#32;=&#32;(<link linkend="_class_game_manager_1a8c01bb8a5b3a7d0db057bc1c35a86f3d">screenHeight</link>&#32;/&#32;<link linkend="_class_game_manager_1a60200875de30ed6fe5a45c9de6b92d2c">spawnOffset</link>);
+228 
+229 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_manager_1a1c6cbb2c55728fd5cdae29b101fca9b8">modifiedNoteScale</link>&#32;=&#32;<link linkend="_class_game_manager_1ae1aef8693fa79d2002b39d161530b692">baseNoteScalingFactor</link>&#32;*&#32;(130&#32;/&#32;BPM);
+230 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+231 
+232 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;TempoChange(<link linkend="_class_note_event_info">NoteEventInfo</link>&#32;note)&#x240D;
+233 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+234 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;BPM&#32;=&#32;note.<link linkend="_class_note_event_info_1a76b4dce9953ce2bce508fa5a35ef7f7c">endTime</link>;
+235 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;so&#32;=&#32;(<link linkend="_class_game_manager_1afa92e7ec92714a03a1bc716b6b4cd0fc">beatsBeforeNote</link>&#32;*&#32;60f&#32;/&#32;BPM);
+236 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_manager_1a6345514a81dbb13e368104d9c0f8e840">fallSpeed</link>&#32;=&#32;(<link linkend="_class_game_manager_1a8c01bb8a5b3a7d0db057bc1c35a86f3d">screenHeight</link>&#32;/&#32;so);
+237 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_manager_1a1c6cbb2c55728fd5cdae29b101fca9b8">modifiedNoteScale</link>&#32;=&#32;<link linkend="_class_game_manager_1ae1aef8693fa79d2002b39d161530b692">baseNoteScalingFactor</link>&#32;*&#32;(130&#32;/&#32;BPM);
+238 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;so;
+239 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+240 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;IEnumerator&#32;ReadyNote88(<emphasis role="keywordtype">float</emphasis>&#32;spawnTime,&#32;<link linkend="_class_note_event_info">NoteEventInfo</link>&#32;noteEvent)&#x240D;
+241 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+242 
+243 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_game_manager_1a750548d06231926291304fc3b5ebb0d5">CheckSpawnNote</link>(noteEvent))
+244 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+245 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_manager_1a60200875de30ed6fe5a45c9de6b92d2c">spawnOffset</link>&#32;=&#32;TempoChange(noteEvent);
+246 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;yield&#32;<emphasis role="keywordflow">break</emphasis>;
+247 
+248 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+249 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;trueSpawnTime&#32;=&#32;spawnTime&#32;-&#32;<link linkend="_class_game_manager_1a60200875de30ed6fe5a45c9de6b92d2c">spawnOffset</link>;
+250 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;yield&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;WaitUntil(()&#32;=&gt;&#32;<link linkend="_class_game_manager_1ad381fb8bceb8932bf6808ed3a2f71079">songTime</link>&#32;&gt;=&#32;trueSpawnTime);
+251 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SpawnNote88(noteEvent);
+252 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+253 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;IEnumerator&#32;ReadyNote12(<emphasis role="keywordtype">float</emphasis>&#32;spawnTime,&#32;<link linkend="_class_note_event_info">NoteEventInfo</link>&#32;noteEvent)&#x240D;
+254 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+255 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_game_manager_1a750548d06231926291304fc3b5ebb0d5">CheckSpawnNote</link>(noteEvent))
+256 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+257 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_manager_1a60200875de30ed6fe5a45c9de6b92d2c">spawnOffset</link>&#32;=&#32;TempoChange(noteEvent);
+258 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;AssignSongValues(noteEvent.<link linkend="_class_note_event_info_1a76b4dce9953ce2bce508fa5a35ef7f7c">endTime</link>);
+259 
+260 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+261 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;trueSpawnTime&#32;=&#32;spawnTime&#32;-&#32;<link linkend="_class_game_manager_1a60200875de30ed6fe5a45c9de6b92d2c">spawnOffset</link>;
+262 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;yield&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;WaitUntil(()&#32;=&gt;&#32;<link linkend="_class_game_manager_1ad381fb8bceb8932bf6808ed3a2f71079">songTime</link>&#32;&gt;=&#32;trueSpawnTime);
+263 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SpawnNote12(noteEvent);
+264 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+265 
+266 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;SpawnNote88(<link linkend="_class_note_event_info">NoteEventInfo</link>&#32;noteEvent)&#x240D;
+267 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+268 
+269 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;scale/length&#32;of&#32;the&#32;note&#32;deterimned&#32;by&#32;the&#32;note&#32;duration,&#32;and&#32;a&#32;scaling&#32;factor&#32;(~~~~~~~~~~~~~~~~~BASE&#32;THIS&#32;ON&#32;MF&#32;BPM)``````````````````````````````````````````````````````````````````````````````````</emphasis>
+270 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;noteScale&#32;=&#32;(noteEvent.endTime&#32;-&#32;noteEvent.<link linkend="_class_note_event_info_1aaeaec089312cf881c719b2b56680fbff">startTime</link>)&#32;*&#32;<link linkend="_class_game_manager_1a1c6cbb2c55728fd5cdae29b101fca9b8">modifiedNoteScale</link>;
+271 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//spawn&#32;a&#32;note&#32;and&#32;store&#32;a&#32;reference.</emphasis>
+272 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GameObject&#32;noteInstance&#32;=&#32;Instantiate(<link linkend="_class_game_manager_1a85f3738c9e3c68307429d0b530b29c4f">notePrefab</link>,&#32;<emphasis role="keyword">new</emphasis>&#32;Vector3(-13.2f&#32;+&#32;(0.20505f&#32;*&#32;(noteEvent.<link linkend="_class_note_event_info_1a9435e829c3bd157528c83c87c7a481df">noteNumber</link>)),&#32;(<link linkend="_class_game_manager_1a8c01bb8a5b3a7d0db057bc1c35a86f3d">screenHeight</link>)&#32;+&#32;(noteScale&#32;/&#32;2)&#32;-&#32;2.5f,&#32;0f),&#32;Quaternion.identity);
+273 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_falling_note">FallingNote</link>&#32;fallingNote&#32;=&#32;noteInstance.GetComponent&lt;<link linkend="_class_falling_note">FallingNote</link>&gt;();
+274 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SpriteRenderer&#32;spriteRenderer&#32;=&#32;noteInstance.GetComponent&lt;SpriteRenderer&gt;();
+275 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fallingNote.velocity&#32;=&#32;<link linkend="_class_game_manager_1a6345514a81dbb13e368104d9c0f8e840">fallSpeed</link>;&#32;<emphasis role="comment">//&#32;set&#32;falling&#32;speed&#32;of&#32;the&#32;note&#32;to&#32;the&#32;value&#32;calculated&#32;in&#32;AssignSongValues()</emphasis>
+276 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fallingNote.maxYBound&#32;=&#32;spriteRenderer.bounds.max.y;&#32;<emphasis role="comment">//Used&#32;to&#32;determine&#32;when&#32;a&#32;note&#32;is&#32;far&#32;enough&#32;off&#32;screen&#32;to&#32;be&#32;destroyed.</emphasis>
+277 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fallingNote.GetComponentInChildren&lt;<link linkend="_class_note_shadow">NoteShadow</link>&gt;().SetShadowSize(noteScale&#32;+&#32;0.075f);
+278 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_game_manager_1a20265d8c977bdee9e61f21ea07063673">noteHolder</link>&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+279 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+280 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;noteInstance.transform.SetParent(<link linkend="_class_game_manager_1a20265d8c977bdee9e61f21ea07063673">noteHolder</link>.transform,&#32;<emphasis role="keyword">false</emphasis>);
+281 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+282 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;spriteRenderer.size&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;Vector2(spriteRenderer.size.x,&#32;noteScale);
+283 
+284 
+285 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(noteEvent&#32;==&#32;noteEvents[noteEvents.Count&#32;-&#32;1])&#32;<emphasis role="comment">//&#32;check&#32;if&#32;note&#32;is&#32;the&#32;final&#32;note.</emphasis>
+286 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+287 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fallingNote.isLast&#32;=&#32;<emphasis role="keyword">true</emphasis>;<emphasis role="comment">//&#32;set&#32;flag&#32;to&#32;end&#32;song&#32;after&#32;the&#32;last&#32;note&#32;is&#32;destroyed.</emphasis>
+288 
+289 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+290 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(isPreview)&#32;<link linkend="_class_game_manager_1a2b01e6fd64224a2caad8ff75dd9ca4d2">AssignToPreviewLayer</link>(noteInstance);
+291 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+292 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;SpawnNote12(<link linkend="_class_note_event_info">NoteEventInfo</link>&#32;noteEvent)&#x240D;
+293 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+294 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;scale/length&#32;of&#32;the&#32;note&#32;deterimned&#32;by&#32;the&#32;note&#32;duration,&#32;and&#32;a&#32;scaling&#32;factor&#32;&#32;(~~~~~~~~~~~~~~~~~BASE&#32;THIS&#32;ON&#32;MF&#32;BPM)``````````````````````````````````````````````````````````````````````````````````</emphasis>
+295 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;noteScale&#32;=&#32;(noteEvent.endTime&#32;-&#32;noteEvent.<link linkend="_class_note_event_info_1aaeaec089312cf881c719b2b56680fbff">startTime</link>)&#32;*&#32;<link linkend="_class_game_manager_1a1c6cbb2c55728fd5cdae29b101fca9b8">modifiedNoteScale</link>;
+296 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//spawn&#32;a&#32;note&#32;and&#32;store&#32;a&#32;reference.</emphasis>
+297 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GameObject&#32;noteInstance&#32;=&#32;Instantiate(<link linkend="_class_game_manager_1a85f3738c9e3c68307429d0b530b29c4f">notePrefab</link>,&#32;<emphasis role="keyword">new</emphasis>&#32;Vector3(-5.6f&#32;+&#32;(1&#32;*&#32;(noteEvent.<link linkend="_class_note_event_info_1a9435e829c3bd157528c83c87c7a481df">noteNumber</link>&#32;%&#32;12)),&#32;(<link linkend="_class_game_manager_1a8c01bb8a5b3a7d0db057bc1c35a86f3d">screenHeight</link>)&#32;+&#32;(noteScale&#32;/&#32;2)&#32;-&#32;2.5f,&#32;0f),&#32;Quaternion.identity);
+298 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_falling_note">FallingNote</link>&#32;fallingNote&#32;=&#32;noteInstance.GetComponent&lt;<link linkend="_class_falling_note">FallingNote</link>&gt;();
+299 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SpriteRenderer&#32;spriteRenderer&#32;=&#32;noteInstance.GetComponent&lt;SpriteRenderer&gt;();
+300 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fallingNote.velocity&#32;=&#32;<link linkend="_class_game_manager_1a6345514a81dbb13e368104d9c0f8e840">fallSpeed</link>;&#32;<emphasis role="comment">//&#32;set&#32;falling&#32;speed&#32;of&#32;the&#32;note&#32;to&#32;the&#32;value&#32;calculated&#32;in&#32;AssignSongValues()</emphasis>
+301 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fallingNote.maxYBound&#32;=&#32;spriteRenderer.bounds.max.y;&#32;<emphasis role="comment">//Used&#32;to&#32;determine&#32;when&#32;a&#32;note&#32;is&#32;far&#32;enough&#32;off&#32;screen&#32;to&#32;be&#32;destroyed.</emphasis>
+302 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fallingNote.GetComponentInChildren&lt;<link linkend="_class_note_shadow">NoteShadow</link>&gt;().SetShadowSize(noteScale&#32;+&#32;0.075f);
+303 
+304 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;spriteRenderer.size&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;Vector2(4.5f,&#32;noteScale);
+305 
+306 
+307 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(noteEvent&#32;==&#32;noteEvents[noteEvents.Count&#32;-&#32;1])&#32;<emphasis role="comment">//&#32;check&#32;if&#32;note&#32;is&#32;the&#32;final&#32;note.</emphasis>
+308 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+309 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fallingNote.isLast&#32;=&#32;<emphasis role="keyword">true</emphasis>;<emphasis role="comment">//&#32;set&#32;flag&#32;to&#32;end&#32;song&#32;after&#32;the&#32;last&#32;note&#32;is&#32;destroyed.</emphasis>
+310 
+311 
+312 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+313 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(isPreview)&#32;<link linkend="_class_game_manager_1a2b01e6fd64224a2caad8ff75dd9ca4d2">AssignToPreviewLayer</link>(noteInstance);
+314 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+315 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_game_manager_1a4138c16110d65a2c6abdafa36fb0d99a"/><section>
+    <title>RefreshJsonFiles()</title>
+<indexterm><primary>RefreshJsonFiles</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>RefreshJsonFiles</secondary></indexterm>
+<para><computeroutput>void GameManager.RefreshJsonFiles ( )</computeroutput></para><para>
+
+<para>Reloads all json file versions of the currently selected song. </para>
+</para>
+<programlisting linenumbering="unnumbered">461 &#32;&#32;&#32;&#32;{
+462 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_note_event_data_wrapper">NoteEventDataWrapper</link>&#32;temp&#32;=&#32;<link linkend="_class_midi_read_file">MidiReadFile</link>.<link linkend="_class_midi_read_file_1ae92e1f0a1a7c5b7219fe5d8647951219">GetNoteEventsFromFilePath</link>(GameSettings.currentSongPath);
+463 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_midi_data_handler">MidiDataHandler</link>.<link linkend="_class_midi_data_handler_1a2f657c39727c406846f224d4175f62b2">SaveNoteEventData</link>(<emphasis role="stringliteral">&quot;.json&quot;</emphasis>,&#32;temp.<link linkend="_class_note_event_data_wrapper_1a2da8d226562bac9e8f6888deec995a55">BPM</link>,&#32;temp.<link linkend="_class_note_event_data_wrapper_1ab50d1b38b07efe975e0abefafea94e4b">NoteEvents</link>);
+464 
+465 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_game_manager_1a088bb12a26add1a57b027b46aced6863"/><section>
+    <title>ReturnToSongSelection()</title>
+<indexterm><primary>ReturnToSongSelection</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>ReturnToSongSelection</secondary></indexterm>
+<para><computeroutput>void GameManager.ReturnToSongSelection ( )</computeroutput></para><para>
+
+<para>Returns to the song selection scene. </para>
+</para>
+<programlisting linenumbering="unnumbered">423 &#32;&#32;&#32;&#32;{
+424 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_manager_1a8ab732083d9e8cf62d2ae0166b80fb8d">startTimer</link>&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+425 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_manager_1a20ce3361f6e4711d209dc90a52e56756">inEditor</link>&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+426 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_manager_1a16e37ca62e4a61a405d08a0ff762cfb0">StopReadiedNotes</link>();
+427 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;MidiInput.instance.inGame&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+428 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GameSettings.ResetSettings(<emphasis role="keyword">false</emphasis>);
+429 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_midi_input">MidiInput</link>.<link linkend="_class_midi_input_1a7a0aa3fc42bdb7cba08848c7d93d1934">instance</link>.UnHookMidiDevice();
+430 
+431 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">try</emphasis>&#32;{&#32;TransitionManager.instance.LoadNewScene(<emphasis role="stringliteral">&quot;SongSelect&quot;</emphasis>);&#32;}
+432 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">catch</emphasis>&#32;{&#32;SceneManager.LoadScene(<emphasis role="stringliteral">&quot;SongSelect&quot;</emphasis>);&#32;}
+433 
+434 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_game_manager_1a1b07555e4d959dfc5afe2ea33b1cc614"/><section>
+    <title>SetBeatsBeforeDrop()</title>
+<indexterm><primary>SetBeatsBeforeDrop</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>SetBeatsBeforeDrop</secondary></indexterm>
+<para><computeroutput>void GameManager.SetBeatsBeforeDrop (string num)</computeroutput></para><para>
+
+<para>Sets <link linkend="_class_game_manager_1afa92e7ec92714a03a1bc716b6b4cd0fc">beatsBeforeNote</link>. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>num</entry><entry>
+<para>new <link linkend="_class_game_manager_1afa92e7ec92714a03a1bc716b6b4cd0fc">beatsBeforeNote</link>beatsBeforeNoteValue</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<programlisting linenumbering="unnumbered">472 &#32;&#32;&#32;&#32;{
+473 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<emphasis role="keywordtype">int</emphasis>.TryParse(num,&#32;out&#32;<emphasis role="keywordtype">int</emphasis>&#32;newNum))
+474 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+475 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(newNum&#32;&lt;=&#32;0)&#32;{&#32;Debug.LogWarning(<emphasis role="stringliteral">&quot;BeatBeforeDrop&#32;Setting&#32;attempted&#32;to&#32;be&#32;set&#32;to&#32;&lt;=0&quot;</emphasis>);&#32;<emphasis role="keywordflow">return</emphasis>;&#32;}
+476 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Debug.LogError(<emphasis role="stringliteral">&quot;Non&#32;Int&#32;Input&#32;into&#32;Beats&#32;Before&#32;Drop&#32;Setting&quot;</emphasis>);&#32;<emphasis role="keywordflow">return</emphasis>;
+477 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+478 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_manager_1afa92e7ec92714a03a1bc716b6b4cd0fc">beatsBeforeNote</link>&#32;=&#32;newNum;
+479 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Debug.Log($<emphasis role="stringliteral">&quot;{newNum}&#32;Beats&#32;before&#32;note&quot;</emphasis>);
+480 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_game_manager_1a03c5a21dd10403a8bc58568867e2c9ba"/><section>
+    <title>SetFPS()</title>
+<indexterm><primary>SetFPS</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>SetFPS</secondary></indexterm>
+<para><computeroutput>void GameManager.SetFPS (string str)</computeroutput></para><para>
+
+<para>Sets Application.targetFrameRate to &quot;str&quot; parsed. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>str</entry><entry>
+<para>Value to set FPS to.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<programlisting linenumbering="unnumbered">132 &#32;&#32;&#32;&#32;{
+133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>.TryParse(str,&#32;out&#32;<emphasis role="keywordtype">int</emphasis>&#32;newFps))
+134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Application.targetFrameRate&#32;=&#32;newFps;
+136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;{&#32;Debug.LogError($<emphasis role="stringliteral">&quot;FPS&#32;Cap&#32;of&#32;:&#32;{str}&#32;is&#32;invalid&quot;</emphasis>);&#32;}
+138 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_game_manager_1aff115afc0904347a885dfb7911156023"/><section>
+    <title>SetInputDelay()</title>
+<indexterm><primary>SetInputDelay</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>SetInputDelay</secondary></indexterm>
+<para><computeroutput>void GameManager.SetInputDelay (string delayStr)</computeroutput></para><para>
+
+<para>Sets PlayerSettings.inputDelay to &quot;delayStr&quot; parsed. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>delayStr</entry><entry></entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<programlisting linenumbering="unnumbered">144 &#32;&#32;&#32;&#32;{
+145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>.TryParse(delayStr,&#32;out&#32;<emphasis role="keywordtype">int</emphasis>&#32;delay))
+146 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+147 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;PlayerSettings.inputDelay&#32;=&#32;delay;
+148 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+149 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;{&#32;Debug.Log(<emphasis role="stringliteral">&quot;Error&#32;Parsing&#32;input&#32;delay&quot;</emphasis>);&#32;}
+150 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_game_manager_1a50d8dbeefbac282d863dce4ad5850a30"/><section>
+    <title>SetSongTotalNotes()</title>
+<indexterm><primary>SetSongTotalNotes</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>SetSongTotalNotes</secondary></indexterm>
+<para><computeroutput>void GameManager.SetSongTotalNotes (int noteCount)</computeroutput></para><para>
+
+<para>Sets <link linkend="_class_game_manager_1a5461b0a96727024f79b540b520263021">totalNotes</link> to the total number of notes in the song. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>noteCount</entry><entry>
+<para>The total number of notes.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<programlisting linenumbering="unnumbered">172 &#32;&#32;&#32;&#32;{
+173 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_manager_1a5461b0a96727024f79b540b520263021">totalNotes</link>&#32;=&#32;noteCount;
+174 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+Referenced by <link linkend="_class_game_manager_1a53d0c42e8760b846fd39a6b9b1115566">PrepareNotes()</link>.</para>
+</section>
+<anchor xml:id="_class_game_manager_1a16e37ca62e4a61a405d08a0ff762cfb0"/><section>
+    <title>StopReadiedNotes()</title>
+<indexterm><primary>StopReadiedNotes</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>StopReadiedNotes</secondary></indexterm>
+<para><computeroutput>void GameManager.StopReadiedNotes ( )</computeroutput></para><para>
+
+<para>Stops all coroutines for preparing notes. </para>
+</para>
+<programlisting linenumbering="unnumbered">337 &#32;&#32;&#32;&#32;{
+338 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(Coroutine&#32;c&#32;<emphasis role="keywordflow">in</emphasis>&#32;<link linkend="_class_game_manager_1a64a3b44248545c9414c2446d21f00103">readiedNotes</link>)
+339 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+340 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(c&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+341 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+342 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;StopCoroutine(c);
+343 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+344 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+345 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_manager_1a64a3b44248545c9414c2446d21f00103">readiedNotes</link>.Clear();
+346 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+Referenced by <link linkend="_class_game_manager_1a53d0c42e8760b846fd39a6b9b1115566">PrepareNotes()</link>, <link linkend="_class_game_manager_1a088bb12a26add1a57b027b46aced6863">ReturnToSongSelection()</link>, and <link linkend="_class_game_manager_1a2a236f013f07c814c142d103c08708e4">StopSong()</link>.</para>
+</section>
+<anchor xml:id="_class_game_manager_1a2a236f013f07c814c142d103c08708e4"/><section>
+    <title>StopSong()</title>
+<indexterm><primary>StopSong</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>StopSong</secondary></indexterm>
+<para><computeroutput>void GameManager.StopSong ( )</computeroutput></para><para>
+
+<para>Stops all prepared notes and stops updating of songTime. </para>
+</para>
+<programlisting linenumbering="unnumbered">440 &#32;&#32;&#32;&#32;{
+441 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_manager_1a8ab732083d9e8cf62d2ae0166b80fb8d">startTimer</link>&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+442 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_manager_1a16e37ca62e4a61a405d08a0ff762cfb0">StopReadiedNotes</link>();
+443 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;MidiInput.instance.inGame&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+444 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_game_manager_1a44c79b205dec16bfe650e21259860c5b"/><section>
+    <title>Update()</title>
+<indexterm><primary>Update</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>Update</secondary></indexterm>
+<para><computeroutput>void GameManager.Update ( )<computeroutput>[private]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">153 &#32;&#32;&#32;&#32;{
+154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_manager_1aa7cfe2c35d8218c1905fd49755f18ba6">UpdateSongTime</link>();
+155 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_game_manager_1ab6189abe4c7230a024dbf48645ce1d1c"/><section>
+    <title>UpdatePlayerScore()</title>
+<indexterm><primary>UpdatePlayerScore</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>UpdatePlayerScore</secondary></indexterm>
+<para><computeroutput>void GameManager.UpdatePlayerScore (string score)</computeroutput></para><para>
+
+<para>Updates the player&apos;s score based on the hit timing. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>score</entry><entry>
+<para>The hit score (Perfect, Good, Okay, Miss).</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<programlisting linenumbering="unnumbered">352 &#32;&#32;&#32;&#32;{
+353 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_manager_1aaefc3ab73c34dacf4b1940eb4edfff73">currentSongScore</link>&#32;??=&#32;<emphasis role="keyword">new</emphasis>();
+354 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_manager_1aaefc3ab73c34dacf4b1940eb4edfff73">currentSongScore</link>.<link linkend="_class_song_score_1a0c456bbd53f343b338285454eaca9619">AddScore</link>(score);
+355 
+356 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_game_manager_1aa7cfe2c35d8218c1905fd49755f18ba6"/><section>
+    <title>UpdateSongTime()</title>
+<indexterm><primary>UpdateSongTime</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>UpdateSongTime</secondary></indexterm>
+<para><computeroutput>void GameManager.UpdateSongTime ( )</computeroutput></para><para>
+
+<para>Updates <link linkend="_class_game_manager_1ad381fb8bceb8932bf6808ed3a2f71079">songTime</link> variable with Time.deltaTime. </para>
+</para>
+<programlisting linenumbering="unnumbered">160 &#32;&#32;&#32;&#32;{
+161 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_game_manager_1a8ab732083d9e8cf62d2ae0166b80fb8d">startTimer</link>)
+162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_manager_1ad381fb8bceb8932bf6808ed3a2f71079">songTime</link>&#32;+=&#32;Time.deltaTime;
+164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+165 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+Referenced by <link linkend="_class_game_manager_1a44c79b205dec16bfe650e21259860c5b">Update()</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_class_game_manager_1ae1aef8693fa79d2002b39d161530b692"/><section>
+    <title>baseNoteScalingFactor</title>
+<indexterm><primary>baseNoteScalingFactor</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>baseNoteScalingFactor</secondary></indexterm>
+<para><computeroutput>float GameManager.baseNoteScalingFactor = 5.4f<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>Base scaling factor for notes to be modified by BPM of the song.<?linebreak?> do not ask me where the 5.4 came from i do not know. </para>
+</para>
+<para>
+Referenced by <link linkend="_class_game_manager_1a53d0c42e8760b846fd39a6b9b1115566">PrepareNotes()</link>.</para>
+</section>
+<anchor xml:id="_class_game_manager_1afa92e7ec92714a03a1bc716b6b4cd0fc"/><section>
+    <title>beatsBeforeNote</title>
+<indexterm><primary>beatsBeforeNote</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>beatsBeforeNote</secondary></indexterm>
+<para><computeroutput>int GameManager.beatsBeforeNote = 4</computeroutput></para><para>
+
+<para>Number of beats a note should spawn before being visible on screen. <?linebreak?> Modification changes the speed notes fall, and changes the amount of time players have to react to notes. </para>
+</para>
+<para>
+Referenced by <link linkend="_class_game_manager_1a53d0c42e8760b846fd39a6b9b1115566">PrepareNotes()</link>, and <link linkend="_class_game_manager_1a1b07555e4d959dfc5afe2ea33b1cc614">SetBeatsBeforeDrop()</link>.</para>
+</section>
+<anchor xml:id="_class_game_manager_1ae2252fc1555317f10bf2a933c471caff"/><section>
+    <title>combo</title>
+<indexterm><primary>combo</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>combo</secondary></indexterm>
+<para><computeroutput><link linkend="_class_combo">Combo</link> GameManager.combo = new()</computeroutput></para><para>
+
+<para>Current <link linkend="_class_combo">Combo</link> for the song. </para>
+</para>
+</section>
+<anchor xml:id="_class_game_manager_1aaefc3ab73c34dacf4b1940eb4edfff73"/><section>
+    <title>currentSongScore</title>
+<indexterm><primary>currentSongScore</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>currentSongScore</secondary></indexterm>
+<para><computeroutput><link linkend="_class_song_score">SongScore</link> GameManager.currentSongScore</computeroutput></para><para>
+
+<para><link linkend="_class_song_score">SongScore</link> for currently playing song. </para>
+</para>
+<para>
+Referenced by <link linkend="_class_game_manager_1ad109ae0452de271ad4ea6f05e7a7d74b">OnSongEnd()</link>, and <link linkend="_class_game_manager_1ab6189abe4c7230a024dbf48645ce1d1c">UpdatePlayerScore()</link>.</para>
+</section>
+<anchor xml:id="_class_game_manager_1a6345514a81dbb13e368104d9c0f8e840"/><section>
+    <title>fallSpeed</title>
+<indexterm><primary>fallSpeed</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>fallSpeed</secondary></indexterm>
+<para><computeroutput>float GameManager.fallSpeed<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Referenced by <link linkend="_class_game_manager_1a53d0c42e8760b846fd39a6b9b1115566">PrepareNotes()</link>.</para>
+</section>
+<anchor xml:id="_class_game_manager_1a20ce3361f6e4711d209dc90a52e56756"/><section>
+    <title>inEditor</title>
+<indexterm><primary>inEditor</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>inEditor</secondary></indexterm>
+<para><computeroutput>bool GameManager.inEditor</computeroutput></para><para>
+
+<para>Is the game in the SongEditor State? </para>
+</para>
+<para>
+Referenced by <link linkend="_class_game_manager_1a088bb12a26add1a57b027b46aced6863">ReturnToSongSelection()</link>.</para>
+</section>
+<anchor xml:id="_class_game_manager_1a7666e8468dac197b9eb32dd32128524f"/><section>
+    <title>instance</title>
+<indexterm><primary>instance</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>instance</secondary></indexterm>
+<para><computeroutput><link linkend="_class_game_manager">GameManager</link> GameManager.instance<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>singleton reference. </para>
+</para>
+<para>
+Referenced by <link linkend="_class_song_score_1a0c456bbd53f343b338285454eaca9619">SongScore.AddScore()</link>, <link linkend="_class_game_manager_1a2959177ee51ac31badbf8b1bc8f7f637">Awake()</link>, <link linkend="_class_game_u_i_1a028174544700e306eaefc533e877b430">GameUI.CreateTimingText()</link>, <link linkend="_class_song_score_1ae1193eae22aae7d34664e29ff44d27a7">SongScore.FinalizeScore()</link>, <link linkend="_class_midi_input_1a2df47888c558fed477b80632013512e1">MidiInput.GetTimeDifference()</link>, <link linkend="_class_midi_input_1a45fbc3ff0c86cf6739b2951fdb831037">MidiInput.LoadSongFromCurrentSettings()</link>, <link linkend="_class_midi_input_1a2e24c8cbdc52507a5c148923c9f65d3f">MidiInput.NoteOff()</link>, <link linkend="_class_midi_input_1a358348cc54a49193003a2788f81b7b4a">MidiInput.NoteOn()</link>, <link linkend="_class_falling_note_1ad10f2dd0e9ab1211e79015a1551a923e">FallingNote.OnDestroy()</link>, <link linkend="_class_m_p3_handler_1acbaa9148733b291e2d960a91a4a7a4c2">MP3Handler.PlaySong()</link>, <link linkend="_class_song_note_editor_1a5957d0008b8759d50607b11cf2d51d5f">SongNoteEditor.RescaleNotesFromBPM()</link>, <link linkend="_class_extra_song_info_menu_1a4efdc42f579093a860f1bcd04c3e78f9">ExtraSongInfoMenu.SetText()</link>, <link linkend="_class_midi_input_1ace45aa85d323c88eb98970e6807bb548">MidiInput.StartSong()</link>, <link linkend="_class_midi_input_1a26a01dc684fded58c22a9124d779ea91">MidiInput.StartSong()</link>, <link linkend="_class_midi_input_1af90d7c9df4cd5549548550897346f923">MidiInput.StartSong()</link>, <link linkend="_class_midi_input_1a622c40a278ed57e97a5c965fb6f73470">MidiInput.StopSong()</link>, and <link linkend="_class_game_u_i_1ae1af03e7079adfabff38492498ea0980">GameUI.Update()</link>.</para>
+</section>
+<anchor xml:id="_class_game_manager_1a4dbb614ef4ff0a6e6437137de4b39993"/><section>
+    <title>isCurSongPreview</title>
+<indexterm><primary>isCurSongPreview</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>isCurSongPreview</secondary></indexterm>
+<para><computeroutput>bool GameManager.isCurSongPreview</computeroutput></para><para>
+
+<para>Is the currently playing song appearing in the preview window in the Song Selection scene. </para>
+</para>
+<para>
+Referenced by <link linkend="_class_game_manager_1ad109ae0452de271ad4ea6f05e7a7d74b">OnSongEnd()</link>, and <link linkend="_class_game_manager_1a53d0c42e8760b846fd39a6b9b1115566">PrepareNotes()</link>.</para>
+</section>
+<anchor xml:id="_class_game_manager_1a1c6cbb2c55728fd5cdae29b101fca9b8"/><section>
+    <title>modifiedNoteScale</title>
+<indexterm><primary>modifiedNoteScale</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>modifiedNoteScale</secondary></indexterm>
+<para><computeroutput>float GameManager.modifiedNoteScale</computeroutput></para><para>
+
+<para>Note scaling factor calculated by the song BPM at the time of the notes appearence in the song.<?linebreak?> See also <formalpara><title>See also</title>
+
+<para><link linkend="_class_game_manager_1ae1aef8693fa79d2002b39d161530b692">baseNoteScalingFactor</link></para>
+</formalpara>
+</para>
+</para>
+<para>
+Referenced by <link linkend="_class_game_manager_1a53d0c42e8760b846fd39a6b9b1115566">PrepareNotes()</link>.</para>
+</section>
+<anchor xml:id="_class_game_manager_1ae3ba6b6cd15beeddec9c637ecc9dca5f"/><section>
+    <title>nameToNoteMap</title>
+<indexterm><primary>nameToNoteMap</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>nameToNoteMap</secondary></indexterm>
+<para><computeroutput>Dictionary&lt;string, int&gt; GameManager.nameToNoteMap<computeroutput>[static]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><emphasis role="strong">Initial value:</emphasis><programlisting linenumbering="unnumbered">=&#32;<emphasis role="keyword">new</emphasis>()
+&#32;&#32;&#32;&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;cb&quot;</emphasis>,&#32;12&#32;},
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;c&quot;</emphasis>,&#32;1&#32;},
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;c#&quot;</emphasis>,&#32;2&#32;},
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;db&quot;</emphasis>,&#32;2&#32;},
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;d&quot;</emphasis>,&#32;3&#32;},
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;d#&quot;</emphasis>,&#32;4&#32;},
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;eb&quot;</emphasis>,&#32;4&#32;},
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;e&quot;</emphasis>,&#32;5&#32;},
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;e#&quot;</emphasis>,&#32;6&#32;},
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;fb&quot;</emphasis>,&#32;5&#32;},
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;f&quot;</emphasis>,&#32;6&#32;},
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;f#&quot;</emphasis>,&#32;7&#32;},
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;gb&quot;</emphasis>,&#32;7&#32;},
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;g&quot;</emphasis>,&#32;8&#32;},
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;g#&quot;</emphasis>,&#32;9&#32;},
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;ab&quot;</emphasis>,&#32;9&#32;},
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;a&quot;</emphasis>,&#32;10&#32;},
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;a#&quot;</emphasis>,&#32;11&#32;},
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;bb&quot;</emphasis>,&#32;11&#32;},
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;b&quot;</emphasis>,&#32;12&#32;},
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;b#&quot;</emphasis>,&#32;1&#32;},
+&#32;&#32;&#32;&#32;}
+</programlisting><para>
+
+<para>Dictionary mapping of note names to note numbers. </para>
+</para>
+<programlisting linenumbering="unnumbered">87 &#32;&#32;&#32;&#32;{
+88 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;cb&quot;</emphasis>,&#32;12&#32;},
+89 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;c&quot;</emphasis>,&#32;1&#32;},
+90 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;c#&quot;</emphasis>,&#32;2&#32;},
+91 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;db&quot;</emphasis>,&#32;2&#32;},
+92 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;d&quot;</emphasis>,&#32;3&#32;},
+93 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;d#&quot;</emphasis>,&#32;4&#32;},
+94 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;eb&quot;</emphasis>,&#32;4&#32;},
+95 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;e&quot;</emphasis>,&#32;5&#32;},
+96 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;e#&quot;</emphasis>,&#32;6&#32;},
+97 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;fb&quot;</emphasis>,&#32;5&#32;},
+98 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;f&quot;</emphasis>,&#32;6&#32;},
+99 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;f#&quot;</emphasis>,&#32;7&#32;},
+100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;gb&quot;</emphasis>,&#32;7&#32;},
+101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;g&quot;</emphasis>,&#32;8&#32;},
+102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;g#&quot;</emphasis>,&#32;9&#32;},
+103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;ab&quot;</emphasis>,&#32;9&#32;},
+104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;a&quot;</emphasis>,&#32;10&#32;},
+105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;a#&quot;</emphasis>,&#32;11&#32;},
+106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;bb&quot;</emphasis>,&#32;11&#32;},
+107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;b&quot;</emphasis>,&#32;12&#32;},
+108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="stringliteral">&quot;b#&quot;</emphasis>,&#32;1&#32;},
+109 &#32;&#32;&#32;&#32;};
+</programlisting><para>
+Referenced by <link linkend="_class_game_manager_1a131c1f0873da6899dc644060748a8b99">ConvertNoteNameToNumber()</link>.</para>
+</section>
+<anchor xml:id="_class_game_manager_1a20265d8c977bdee9e61f21ea07063673"/><section>
+    <title>noteHolder</title>
+<indexterm><primary>noteHolder</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>noteHolder</secondary></indexterm>
+<para><computeroutput>Transform GameManager.noteHolder<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Referenced by <link linkend="_class_game_manager_1a53d0c42e8760b846fd39a6b9b1115566">PrepareNotes()</link>.</para>
+</section>
+<anchor xml:id="_class_game_manager_1afd80eb99362175b5af23a86196a07e32"/><section>
+    <title>noteNames</title>
+<indexterm><primary>noteNames</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>noteNames</secondary></indexterm>
+<para><computeroutput>string [] GameManager.noteNames = { &quot;C&quot;, &quot;C#&quot;, &quot;D&quot;, &quot;D#&quot;, &quot;E&quot;, &quot;F&quot;, &quot;F#&quot;, &quot;G&quot;, &quot;G#&quot;, &quot;A&quot;, &quot;A#&quot;, &quot;B&quot;, }<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>String array containing the names of notes accoring to their indecies, 0 being C. </para>
+</para>
+<programlisting linenumbering="unnumbered">81 {&#32;<emphasis role="stringliteral">&quot;C&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;C#&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;D&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;D#&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;E&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;F&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;F#&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;G&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;G#&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;A&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;A#&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;B&quot;</emphasis>,&#32;};
+</programlisting><para>
+Referenced by <link linkend="_class_game_manager_1af2b61b305c4b0b48b6dea78162472aef">ConvertNoteNumberToName()</link>.</para>
+</section>
+<anchor xml:id="_class_game_manager_1a85f3738c9e3c68307429d0b530b29c4f"/><section>
+    <title>notePrefab</title>
+<indexterm><primary>notePrefab</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>notePrefab</secondary></indexterm>
+<para><computeroutput>GameObject GameManager.notePrefab</computeroutput></para><para>
+
+<para>prefab used for instantiating notes. </para>
+</para>
+<para>
+Referenced by <link linkend="_class_game_manager_1a53d0c42e8760b846fd39a6b9b1115566">PrepareNotes()</link>.</para>
+</section>
+<anchor xml:id="_class_game_manager_1a64a3b44248545c9414c2446d21f00103"/><section>
+    <title>readiedNotes</title>
+<indexterm><primary>readiedNotes</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>readiedNotes</secondary></indexterm>
+<para><computeroutput>List&lt;Coroutine&gt; GameManager.readiedNotes = new()<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>List holding all note prepared but not yet spawned. </para>
+</para>
+<para>
+Referenced by <link linkend="_class_game_manager_1a53d0c42e8760b846fd39a6b9b1115566">PrepareNotes()</link>, and <link linkend="_class_game_manager_1a16e37ca62e4a61a405d08a0ff762cfb0">StopReadiedNotes()</link>.</para>
+</section>
+<anchor xml:id="_class_game_manager_1a8c01bb8a5b3a7d0db057bc1c35a86f3d"/><section>
+    <title>screenHeight</title>
+<indexterm><primary>screenHeight</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>screenHeight</secondary></indexterm>
+<para><computeroutput>float GameManager.screenHeight<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>Height of the viewport in Units, as viewed from an angle in the game view. </para>
+</para>
+<para>
+Referenced by <link linkend="_class_game_manager_1a53d0c42e8760b846fd39a6b9b1115566">PrepareNotes()</link>.</para>
+</section>
+<anchor xml:id="_class_game_manager_1ac43fa88c15f544b23fac9d169c1ebd27"/><section>
+    <title>selectedSongHighScore</title>
+<indexterm><primary>selectedSongHighScore</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>selectedSongHighScore</secondary></indexterm>
+<para><computeroutput><link linkend="_class_song_score">SongScore</link> GameManager.selectedSongHighScore</computeroutput></para><para>
+
+<para><link linkend="_class_song_score">SongScore</link> storing the High score for the currently selected song. </para>
+</para>
+</section>
+<anchor xml:id="_class_game_manager_1ad381fb8bceb8932bf6808ed3a2f71079"/><section>
+    <title>songTime</title>
+<indexterm><primary>songTime</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>songTime</secondary></indexterm>
+<para><computeroutput>float GameManager.songTime</computeroutput></para><para>
+
+<para>Elapsed duration (seconds) into the currently playing song. </para>
+</para>
+<para>
+Referenced by <link linkend="_class_game_manager_1a53d0c42e8760b846fd39a6b9b1115566">PrepareNotes()</link>, and <link linkend="_class_game_manager_1aa7cfe2c35d8218c1905fd49755f18ba6">UpdateSongTime()</link>.</para>
+</section>
+<anchor xml:id="_class_game_manager_1a60200875de30ed6fe5a45c9de6b92d2c"/><section>
+    <title>spawnOffset</title>
+<indexterm><primary>spawnOffset</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>spawnOffset</secondary></indexterm>
+<para><computeroutput>float GameManager.spawnOffset = 2f<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Referenced by <link linkend="_class_game_manager_1a53d0c42e8760b846fd39a6b9b1115566">PrepareNotes()</link>.</para>
+</section>
+<anchor xml:id="_class_game_manager_1a8ab732083d9e8cf62d2ae0166b80fb8d"/><section>
+    <title>startTimer</title>
+<indexterm><primary>startTimer</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>startTimer</secondary></indexterm>
+<para><computeroutput>bool GameManager.startTimer</computeroutput></para><para>
+
+<para>Should <link linkend="_class_game_manager_1ad381fb8bceb8932bf6808ed3a2f71079">songTime</link> be updated? </para>
+</para>
+<para>
+Referenced by <link linkend="_class_game_manager_1ad109ae0452de271ad4ea6f05e7a7d74b">OnSongEnd()</link>, <link linkend="_class_game_manager_1a53d0c42e8760b846fd39a6b9b1115566">PrepareNotes()</link>, <link linkend="_class_game_manager_1a088bb12a26add1a57b027b46aced6863">ReturnToSongSelection()</link>, <link linkend="_class_game_manager_1a2a236f013f07c814c142d103c08708e4">StopSong()</link>, and <link linkend="_class_game_manager_1aa7cfe2c35d8218c1905fd49755f18ba6">UpdateSongTime()</link>.</para>
+</section>
+<anchor xml:id="_class_game_manager_1a5461b0a96727024f79b540b520263021"/><section>
+    <title>totalNotes</title>
+<indexterm><primary>totalNotes</primary><secondary>GameManager</secondary></indexterm>
+<indexterm><primary>GameManager</primary><secondary>totalNotes</secondary></indexterm>
+<para><computeroutput>int GameManager.totalNotes</computeroutput></para><para>
+
+<para>Total number of notes in the currently playing song. </para>
+</para>
+<para>
+Referenced by <link linkend="_class_game_manager_1ad109ae0452de271ad4ea6f05e7a7d74b">OnSongEnd()</link>, and <link linkend="_class_game_manager_1a50d8dbeefbac282d863dce4ad5850a30">SetSongTotalNotes()</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+Assets/Scripts/<link linkend="__game_manager_8cs">GameManager.cs</link></section>
+</section>

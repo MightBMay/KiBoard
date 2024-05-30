@@ -25,6 +25,11 @@ public class GameUI : MonoBehaviour
     {
         SetComboBarValue(GameManager.instance.combo.multiplier);
     }
+    /// <summary>
+    /// spawns timing score text above the score.
+    /// </summary>
+    /// <param name="score">numeric change in score</param>
+    /// <param name="color"> colour of the text</param>
     void SpawnTimingText(string score, Color color)
     {
         TextMeshProUGUI text = Instantiate(textPrefab, transform).GetComponent<TextMeshProUGUI>();
@@ -34,6 +39,11 @@ public class GameUI : MonoBehaviour
         StartCoroutine(FadeoutDestroy(text));
 
     }
+    /// <summary>
+    /// Fades out the alpha of text object and destroys the text's gameObject after a delay.
+    /// </summary>
+    /// <param name="textMesh"></param>
+    /// <returns></returns>
     IEnumerator FadeoutDestroy(TextMeshProUGUI textMesh)
     {
         Color startColor = textMesh.color; // Get the initial color
@@ -57,7 +67,9 @@ public class GameUI : MonoBehaviour
         // Perform any other actions or destroy the TextMeshProUGUI object
         Destroy(textMesh.gameObject);
     }
-
+    /// <summary>
+    /// creates a different timing text based on the timing score.
+    /// </summary>
     public void CreateTimingText(int score, string scoretext)
     {
         switch (scoretext)
@@ -79,7 +91,10 @@ public class GameUI : MonoBehaviour
         }
         scoreText.text = GameManager.instance.currentSongScore.score.ToString();
     }
-
+    /// <summary>
+    /// sets the value of the combo bar slider based off of the current combo's multiplier.
+    /// </summary>
+    /// <param name="value"></param>
     public void SetComboBarValue(float value)
     {
         // Assuming the input value ranges from 1 to 3

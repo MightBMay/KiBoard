@@ -1,0 +1,250 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_combo" xml:lang="en-US">
+<title>Combo Class Reference</title>
+<indexterm><primary>Combo</primary></indexterm>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_class_combo_1a5c1d9c0676b635e234c214d5c5587e9e">ClearCombo</link> ()</para>
+
+<para>Resets combo variables to default values. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_combo_1a51227d52ba67b4042bc2f2aac261dc91">ChangeMultiplier</link> (string score)</para>
+
+<para>Updates the multiplier based on the timing score of the note pressed. </para>
+</listitem>
+            <listitem><para>float <link linkend="_class_combo_1a62c0a1b39cb1aa7f6b39dee71b0ed077">GetIncrease</link> (string score)</para>
+
+<para>Get the Multiplier increase based on note timing score. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>float <link linkend="_class_combo_1af8a5afd66907ed1a576e8f64afa025be">multiplier</link> = 1</para>
+
+<para>Current score multiplier. </para>
+</listitem>
+            <listitem><para>int <link linkend="_class_combo_1adc017bf1d5f6d1e5dc50664a9c55a434">count</link></para>
+
+<para>Current number of consecutive notes without dropping combo. </para>
+</listitem>
+            <listitem><para>float <link linkend="_class_combo_1a50187ef01c2db22fa27b95545e8ab3b7">dropCounter</link></para>
+
+<para>current amount of notes dropped. multiplier is reset to 1 when this reaches -10. </para>
+</listitem>
+            <listitem><para>int <link linkend="_class_combo_1a49b9c527ec345630b86669ffd8e0a52e">highestCount</link> = 0</para>
+
+<para>tracks the highest count reached this song. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>const float <link linkend="_class_combo_1a3c51d34758ab86a8cfb9172a230902b6">maxMultiplier</link> = 3</para>
+
+<para>Maximum multiplier that can be achieved. </para>
+</listitem>
+            <listitem><para>const int <link linkend="_class_combo_1a260a9c9f2afd88de7890c092690d8d78">comboKillThreshold</link> = -10</para>
+
+<para>how many missed notes before multiplier is set to 1. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_combo_1a51227d52ba67b4042bc2f2aac261dc91"/><section>
+    <title>ChangeMultiplier()</title>
+<indexterm><primary>ChangeMultiplier</primary><secondary>Combo</secondary></indexterm>
+<indexterm><primary>Combo</primary><secondary>ChangeMultiplier</secondary></indexterm>
+<para><computeroutput>void Combo.ChangeMultiplier (string score)</computeroutput></para><para>
+
+<para>Updates the multiplier based on the timing score of the note pressed. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>score</entry><entry>
+<para>String containing &quot;Perfect, Good, Okay&quot; used to determine how much to add to the multiplier.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<programlisting linenumbering="unnumbered">49 &#32;&#32;&#32;&#32;{
+50 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;increase&#32;=&#32;<link linkend="_class_combo_1a62c0a1b39cb1aa7f6b39dee71b0ed077">GetIncrease</link>(score);
+51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_combo_1af8a5afd66907ed1a576e8f64afa025be">multiplier</link>&#32;+=&#32;increase;
+52 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(Mathf.Sign(increase)&#32;&gt;=&#32;0)
+53 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+54 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_combo_1adc017bf1d5f6d1e5dc50664a9c55a434">count</link>++;
+55 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_combo_1a49b9c527ec345630b86669ffd8e0a52e">highestCount</link>&#32;&lt;&#32;<link linkend="_class_combo_1adc017bf1d5f6d1e5dc50664a9c55a434">count</link>)&#32;{&#32;<link linkend="_class_combo_1a49b9c527ec345630b86669ffd8e0a52e">highestCount</link>&#32;=&#32;<link linkend="_class_combo_1adc017bf1d5f6d1e5dc50664a9c55a434">count</link>;&#32;}
+56 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_combo_1a50187ef01c2db22fa27b95545e8ab3b7">dropCounter</link>&#32;+=&#32;0.1f;
+57 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+58 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+59 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+60 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_combo_1af8a5afd66907ed1a576e8f64afa025be">multiplier</link>&#32;&gt;&#32;1)&#32;{&#32;<link linkend="_class_combo_1a50187ef01c2db22fa27b95545e8ab3b7">dropCounter</link>&#32;-=&#32;1;&#32;}
+61 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;{&#32;<link linkend="_class_combo_1a50187ef01c2db22fa27b95545e8ab3b7">dropCounter</link>&#32;=&#32;0;&#32;}
+62 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+63 
+64 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_combo_1a50187ef01c2db22fa27b95545e8ab3b7">dropCounter</link>&#32;&lt;=&#32;<link linkend="_class_combo_1a260a9c9f2afd88de7890c092690d8d78">comboKillThreshold</link>)
+65 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+66 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_combo_1af8a5afd66907ed1a576e8f64afa025be">multiplier</link>&#32;=&#32;0;
+67 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_combo_1adc017bf1d5f6d1e5dc50664a9c55a434">count</link>&#32;=&#32;0;
+68 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_combo_1a50187ef01c2db22fa27b95545e8ab3b7">dropCounter</link>&#32;=&#32;0;
+69 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+70 
+71 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_combo_1af8a5afd66907ed1a576e8f64afa025be">multiplier</link>&#32;=&#32;Mathf.Clamp(<link linkend="_class_combo_1af8a5afd66907ed1a576e8f64afa025be">multiplier</link>,&#32;1,&#32;<link linkend="_class_combo_1a3c51d34758ab86a8cfb9172a230902b6">maxMultiplier</link>);
+72 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_combo_1a50187ef01c2db22fa27b95545e8ab3b7">dropCounter</link>&#32;=&#32;Mathf.Clamp(<link linkend="_class_combo_1a50187ef01c2db22fa27b95545e8ab3b7">dropCounter</link>,&#32;<link linkend="_class_combo_1a260a9c9f2afd88de7890c092690d8d78">comboKillThreshold</link>,&#32;0);
+73 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">try</emphasis>&#32;{&#32;<link linkend="_class_game_u_i">GameUI</link>.<link linkend="_class_game_u_i_1a23d5c169ab2afc81f6ee3b94e78bd6fb">instance</link>.SetComboBarValue(<link linkend="_class_combo_1af8a5afd66907ed1a576e8f64afa025be">multiplier</link>);&#32;}&#32;<emphasis role="keywordflow">catch</emphasis>&#32;{&#32;Debug.Log(<emphasis role="stringliteral">&quot;Error&#32;Setting&#32;ComboBarValue&quot;</emphasis>);&#32;}
+74 
+75 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_combo_1a5c1d9c0676b635e234c214d5c5587e9e"/><section>
+    <title>ClearCombo()</title>
+<indexterm><primary>ClearCombo</primary><secondary>Combo</secondary></indexterm>
+<indexterm><primary>Combo</primary><secondary>ClearCombo</secondary></indexterm>
+<para><computeroutput>void Combo.ClearCombo ( )</computeroutput></para><para>
+
+<para>Resets combo variables to default values. </para>
+</para>
+<programlisting linenumbering="unnumbered">37 &#32;&#32;&#32;&#32;{
+38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_combo_1af8a5afd66907ed1a576e8f64afa025be">multiplier</link>&#32;=&#32;1;
+39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_combo_1adc017bf1d5f6d1e5dc50664a9c55a434">count</link>&#32;=&#32;0;
+40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_combo_1a50187ef01c2db22fa27b95545e8ab3b7">dropCounter</link>&#32;=&#32;0;
+41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_combo_1a49b9c527ec345630b86669ffd8e0a52e">highestCount</link>&#32;=&#32;0;
+42 
+43 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_combo_1a62c0a1b39cb1aa7f6b39dee71b0ed077"/><section>
+    <title>GetIncrease()</title>
+<indexterm><primary>GetIncrease</primary><secondary>Combo</secondary></indexterm>
+<indexterm><primary>Combo</primary><secondary>GetIncrease</secondary></indexterm>
+<para><computeroutput>float Combo.GetIncrease (string score)</computeroutput></para><para>
+
+<para>Get the Multiplier increase based on note timing score. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>score</entry><entry>
+<para>string score for note score timing.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>float Change in multiplier based off of note score timing</para>
+</formalpara>
+</para>
+<programlisting linenumbering="unnumbered">83 &#32;&#32;&#32;&#32;{
+84 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">switch</emphasis>&#32;(score)
+85 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+86 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<emphasis role="stringliteral">&quot;Perfect&quot;</emphasis>:&#32;<emphasis role="keywordflow">return</emphasis>&#32;0.05f;
+87 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<emphasis role="stringliteral">&quot;Good&quot;</emphasis>:&#32;<emphasis role="keywordflow">return</emphasis>&#32;0.025f;
+88 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<emphasis role="stringliteral">&quot;Okay&quot;</emphasis>:&#32;<emphasis role="keywordflow">return</emphasis>&#32;0.01f;
+89 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">default</emphasis>:&#32;<emphasis role="keywordflow">return</emphasis>&#32;-0.05f;
+90 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+91 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+Referenced by <link linkend="_class_combo_1a51227d52ba67b4042bc2f2aac261dc91">ChangeMultiplier()</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_class_combo_1a260a9c9f2afd88de7890c092690d8d78"/><section>
+    <title>comboKillThreshold</title>
+<indexterm><primary>comboKillThreshold</primary><secondary>Combo</secondary></indexterm>
+<indexterm><primary>Combo</primary><secondary>comboKillThreshold</secondary></indexterm>
+<para><computeroutput>const int Combo.comboKillThreshold = -10<computeroutput>[static]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>how many missed notes before multiplier is set to 1. </para>
+</para>
+<para>
+Referenced by <link linkend="_class_combo_1a51227d52ba67b4042bc2f2aac261dc91">ChangeMultiplier()</link>.</para>
+</section>
+<anchor xml:id="_class_combo_1adc017bf1d5f6d1e5dc50664a9c55a434"/><section>
+    <title>count</title>
+<indexterm><primary>count</primary><secondary>Combo</secondary></indexterm>
+<indexterm><primary>Combo</primary><secondary>count</secondary></indexterm>
+<para><computeroutput>int Combo.count</computeroutput></para><para>
+
+<para>Current number of consecutive notes without dropping combo. </para>
+</para>
+<para>
+Referenced by <link linkend="_class_combo_1a51227d52ba67b4042bc2f2aac261dc91">ChangeMultiplier()</link>, and <link linkend="_class_combo_1a5c1d9c0676b635e234c214d5c5587e9e">ClearCombo()</link>.</para>
+</section>
+<anchor xml:id="_class_combo_1a50187ef01c2db22fa27b95545e8ab3b7"/><section>
+    <title>dropCounter</title>
+<indexterm><primary>dropCounter</primary><secondary>Combo</secondary></indexterm>
+<indexterm><primary>Combo</primary><secondary>dropCounter</secondary></indexterm>
+<para><computeroutput>float Combo.dropCounter</computeroutput></para><para>
+
+<para>current amount of notes dropped. multiplier is reset to 1 when this reaches -10. </para>
+</para>
+<para>
+Referenced by <link linkend="_class_combo_1a51227d52ba67b4042bc2f2aac261dc91">ChangeMultiplier()</link>, and <link linkend="_class_combo_1a5c1d9c0676b635e234c214d5c5587e9e">ClearCombo()</link>.</para>
+</section>
+<anchor xml:id="_class_combo_1a49b9c527ec345630b86669ffd8e0a52e"/><section>
+    <title>highestCount</title>
+<indexterm><primary>highestCount</primary><secondary>Combo</secondary></indexterm>
+<indexterm><primary>Combo</primary><secondary>highestCount</secondary></indexterm>
+<para><computeroutput>int Combo.highestCount = 0</computeroutput></para><para>
+
+<para>tracks the highest count reached this song. </para>
+</para>
+<para>
+Referenced by <link linkend="_class_combo_1a51227d52ba67b4042bc2f2aac261dc91">ChangeMultiplier()</link>, and <link linkend="_class_combo_1a5c1d9c0676b635e234c214d5c5587e9e">ClearCombo()</link>.</para>
+</section>
+<anchor xml:id="_class_combo_1a3c51d34758ab86a8cfb9172a230902b6"/><section>
+    <title>maxMultiplier</title>
+<indexterm><primary>maxMultiplier</primary><secondary>Combo</secondary></indexterm>
+<indexterm><primary>Combo</primary><secondary>maxMultiplier</secondary></indexterm>
+<para><computeroutput>const float Combo.maxMultiplier = 3<computeroutput>[static]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>Maximum multiplier that can be achieved. </para>
+</para>
+<para>
+Referenced by <link linkend="_class_combo_1a51227d52ba67b4042bc2f2aac261dc91">ChangeMultiplier()</link>.</para>
+</section>
+<anchor xml:id="_class_combo_1af8a5afd66907ed1a576e8f64afa025be"/><section>
+    <title>multiplier</title>
+<indexterm><primary>multiplier</primary><secondary>Combo</secondary></indexterm>
+<indexterm><primary>Combo</primary><secondary>multiplier</secondary></indexterm>
+<para><computeroutput>float Combo.multiplier = 1</computeroutput></para><para>
+
+<para>Current score multiplier. </para>
+</para>
+<para>
+Referenced by <link linkend="_class_combo_1a51227d52ba67b4042bc2f2aac261dc91">ChangeMultiplier()</link>, and <link linkend="_class_combo_1a5c1d9c0676b635e234c214d5c5587e9e">ClearCombo()</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+Assets/Scripts/<link linkend="__combo_8cs">Combo.cs</link></section>
+</section>

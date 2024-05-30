@@ -1,0 +1,92 @@
+.TH "FallingNote" 3 "Version 1.0.0" "KiBoard GDD & Technical Documentation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+FallingNote \- Represents a falling note object in the game\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits MonoBehaviour\&.
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "float \fBvelocity\fP"
+.br
+.RI "Velocity of the falling note\&. "
+.ti -1c
+.RI "float \fBmaxYBound\fP"
+.br
+.RI "Maximum Y bound for the falling note\&. "
+.ti -1c
+.RI "bool \fBisLast\fP = false"
+.br
+.RI "Indicates if this is the last falling note\&. "
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBUpdate\fP ()"
+.br
+.ti -1c
+.RI "void \fBOnDestroy\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents a falling note object in the game\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "void FallingNote\&.OnDestroy ()\fR [private]\fP"
+
+.nf
+38     {
+39         // Start the song end coroutine if this is the last falling note being destroyed
+40         if (isLast)
+41         {
+42             GameManager\&.instance\&.OnSongEnd();
+43         }
+44     }
+.PP
+.fi
+
+.SS "void FallingNote\&.Update ()\fR [private]\fP"
+
+.nf
+29     {
+30         // Move the falling note downwards
+31         transform\&.Translate(Vector2\&.down * velocity * Time\&.deltaTime, Space\&.World);
+32 
+33         // Destroy the falling note if it goes below a certain Y position
+34         if ((transform\&.position + (Vector3\&.up * maxYBound))\&.y < \-10) { Destroy(gameObject); }
+35     }
+.PP
+.fi
+
+.SH "Member Data Documentation"
+.PP 
+.SS "bool FallingNote\&.isLast = false"
+
+.PP
+Indicates if this is the last falling note\&. 
+.PP
+Referenced by \fBOnDestroy()\fP\&.
+.SS "float FallingNote\&.maxYBound"
+
+.PP
+Maximum Y bound for the falling note\&. 
+.PP
+Referenced by \fBUpdate()\fP\&.
+.SS "float FallingNote\&.velocity"
+
+.PP
+Velocity of the falling note\&. 
+.PP
+Referenced by \fBUpdate()\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for KiBoard GDD & Technical Documentation from the source code\&.

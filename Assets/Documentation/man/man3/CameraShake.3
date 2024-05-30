@@ -1,0 +1,116 @@
+.TH "CameraShake" 3 "Version 1.0.0" "KiBoard GDD & Technical Documentation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CameraShake \- Controls camera shake effect using Cinemachine\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits MonoBehaviour\&.
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBShakeCamera\fP (float intensity, float duration)"
+.br
+.RI "Initiates a camera shake effect\&. "
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBStart\fP ()"
+.br
+.ti -1c
+.RI "void \fBUpdate\fP ()"
+.br
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static CinemachineVirtualCamera \fBvirtualCamera\fP"
+.br
+.RI "virtual camera to be shaken\&. "
+.ti -1c
+.RI "static float \fBshakeTimer\fP"
+.br
+.RI "elapsed duration of the camera shake\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Controls camera shake effect using Cinemachine\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "static void CameraShake\&.ShakeCamera (float intensity, float duration)\fR [static]\fP"
+
+.PP
+Initiates a camera shake effect\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIintensity\fP The intensity of the shake\&.
+.br
+\fIduration\fP The duration of the shake\&.
+.RE
+.PP
+
+.nf
+29     {
+30         CinemachineBasicMultiChannelPerlin noise = virtualCamera\&.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+31 
+32         noise\&.m_AmplitudeGain = intensity;
+33         shakeTimer = duration;
+34     }
+.PP
+.fi
+
+.PP
+Referenced by \fBSongScore\&.AddScore()\fP\&.
+.SS "void CameraShake\&.Start ()\fR [private]\fP"
+
+.nf
+19     {
+20         virtualCamera = GetComponent<CinemachineVirtualCamera>();
+21     }
+.PP
+.fi
+
+.SS "void CameraShake\&.Update ()\fR [private]\fP"
+
+.nf
+37     {
+38         if (shakeTimer > 0)
+39         {
+40             shakeTimer \-= Time\&.deltaTime;
+41 
+42             if (shakeTimer <= 0f)
+43             {
+44                 CinemachineBasicMultiChannelPerlin noise = virtualCamera\&.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+45                 noise\&.m_AmplitudeGain = 0f; // Reset the amplitude when the shake is over
+46             }
+47         }
+48     }
+.PP
+.fi
+
+.SH "Member Data Documentation"
+.PP 
+.SS "float CameraShake\&.shakeTimer\fR [static]\fP, \fR [private]\fP"
+
+.PP
+elapsed duration of the camera shake\&. 
+.PP
+Referenced by \fBShakeCamera()\fP, and \fBUpdate()\fP\&.
+.SS "CinemachineVirtualCamera CameraShake\&.virtualCamera\fR [static]\fP, \fR [private]\fP"
+
+.PP
+virtual camera to be shaken\&. 
+.PP
+Referenced by \fBShakeCamera()\fP, \fBStart()\fP, and \fBUpdate()\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for KiBoard GDD & Technical Documentation from the source code\&.

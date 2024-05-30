@@ -1,0 +1,300 @@
+.TH "MidiReadFile" 3 "Version 1.0.0" "KiBoard GDD & Technical Documentation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MidiReadFile
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBNoteEventDataWrapper\fP \fBGetNoteEventsFromFilePath\fP (string filePath)"
+.br
+.RI "Loads \fBNoteEventDataWrapper\fP from a given file path\&. "
+.ti -1c
+.RI "static int \fBCountNotes\fP ()"
+.br
+.RI "Counts total number of notes from the currently selected song, filtering out tempo change events\&. "
+.ti -1c
+.RI "static \fBNoteEventDataWrapper\fP \fBGetDataFile\fP (string jsonFilePath)"
+.br
+.RI "Get \fBNoteEventDataWrapper\fP from Json data with given path\&. "
+.in -1c
+.SS "Static Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBNoteEventDataWrapper\fP \fBReadMidiFile\fP (string midiFilePath)"
+.br
+.RI "Get \fBNoteEventDataWrapper\fP from Midi data with given path\&. "
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static Dictionary< int, \fBNoteEventInfo\fP > \fBactiveNotes\fP = new Dictionary<int, \fBNoteEventInfo\fP>()"
+.br
+.RI "Dictionary storing what notes are active at a given song time\&. Used to make sure you cannot press a note twice without releasing it\&. "
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "static int MidiReadFile\&.CountNotes ()\fR [static]\fP"
+
+.PP
+Counts total number of notes from the currently selected song, filtering out tempo change events\&. 
+.PP
+\fBReturns\fP
+.RS 4
+total number of notes in the currently selected song\&.
+.RE
+.PP
+
+.nf
+45     {
+46 
+47 
+48         
+49         if (File\&.Exists(GameSettings\&.currentSongPath))
+50         {
+51             if (Path\&.GetExtension(GameSettings\&.currentSongPath)=="\&.json")
+52             {
+53                 int count = 0;
+54                 foreach (var note in GetDataFile(GameSettings\&.currentSongPath)\&.NoteEvents)
+55                 {
+56                     if(note\&.startTime == Mathf\&.NegativeInfinity||note\&.noteNumber == int\&.MinValue)
+57                     {
+58                        //do nothin
+59                     }
+60                     else { count = 0;  }
+61                 }
+62                 return count;
+63             }
+64 
+65             else if (Path\&.GetExtension(GameSettings\&.currentSongPath) == "\&.mid")
+66             {
+67                 return CountFromMidi();
+68             }
+69             else
+70             {
+71                 Debug\&.LogError("Current Song Path Not Json or Midi");
+72                 return int\&.MinValue;
+73             }
+74         }
+75         
+76         else
+77         {
+78             Debug\&.LogError("NO \&.JSON/\&.MID FILE FOUND AT PATH: " + GameSettings\&.currentSongPath);
+79             return \-1;
+80         }
+81 
+82         int CountFromMidi()
+83         {
+84             int noteOnCount = 0;
+85             // Load the MIDI file
+86             MidiFile midiFile = new MidiFile(GameSettings\&.currentSongPath, false);
+87 
+88             // Iterate through all track chunks in the MIDI file
+89             foreach (var trackChunk in midiFile\&.Events)
+90             {
+91                 // Iterate through all MIDI events in the track chunk
+92                 foreach (var midiEvent in trackChunk)
+93                 {
+94                     // Check if the MIDI event is a NoteOn event
+95                     if (midiEvent\&.CommandCode == MidiCommandCode\&.NoteOn)
+96                     {
+97                         noteOnCount++;
+98                     }
+99                 }
+100             }
+101 
+102             return noteOnCount;
+103         }
+104     }
+.PP
+.fi
+
+.SS "static \fBNoteEventDataWrapper\fP MidiReadFile\&.GetDataFile (string jsonFilePath)\fR [static]\fP"
+
+.PP
+Get \fBNoteEventDataWrapper\fP from Json data with given path\&. 
+.nf
+111     {
+112         return MidiDataHandler\&.GetJSONData(jsonFilePath);
+113     }
+.PP
+.fi
+
+.PP
+Referenced by \fBCountNotes()\fP, and \fBGetNoteEventsFromFilePath()\fP\&.
+.SS "static \fBNoteEventDataWrapper\fP MidiReadFile\&.GetNoteEventsFromFilePath (string filePath)\fR [static]\fP"
+
+.PP
+Loads \fBNoteEventDataWrapper\fP from a given file path\&. 
+.nf
+18     {
+19         if (File\&.Exists(filePath))
+20         {
+21 
+22             if (Path\&.GetExtension(filePath) == "\&.json" || Path\&.GetExtension(filePath) == "\&.replay")
+23             {
+24                 return GetDataFile(filePath);
+25             }
+26             else if (Path\&.GetExtension(filePath) == "\&.mid")
+27             {
+28                 return ReadMidiFile(filePath);
+29             }
+30             else return null;
+31         }
+32         else
+33         {
+34             Debug\&.LogError("NO \&.JSON/\&.REPLAY/\&.MID FILE FOUND AT PATH: "+ filePath);
+35             return null;
+36         }
+37 
+38     }
+.PP
+.fi
+
+.PP
+Referenced by \fBMidiInput\&.GetNoteEventWrapperFromSelectedSong()\fP, \fBMidiInput\&.LoadSongFromCurrentSettings()\fP, and \fBGameManager\&.RefreshJsonFiles()\fP\&.
+.SS "static \fBNoteEventDataWrapper\fP MidiReadFile\&.ReadMidiFile (string midiFilePath)\fR [static]\fP, \fR [private]\fP"
+
+.PP
+Get \fBNoteEventDataWrapper\fP from Midi data with given path\&. 
+.nf
+119     {
+120         MidiFile midiFile = new MidiFile(midiFilePath, false);
+121         float bpm = 0;
+122         List<NoteEventInfo> noteEvents = new();
+123         foreach (var trackChunk in midiFile\&.Events)
+124         {
+125             foreach (var midiEvent in trackChunk)
+126             {
+127                 if (midiEvent\&.CommandCode == MidiCommandCode\&.NoteOn)
+128                 {
+129                     ProcessNoteOnEvent((NoteEvent)midiEvent);
+130                 }
+131                 else if (midiEvent\&.CommandCode == MidiCommandCode\&.NoteOff)
+132                 {
+133                     ProcessNoteOffEvent((NoteEvent)midiEvent);
+134                 }
+135                 else if (midiEvent\&.CommandCode == MidiCommandCode\&.MetaEvent)
+136                 {
+137                     MetaEvent metaEvent = (MetaEvent)midiEvent;
+138 
+139                     // Check for tempo events
+140                     if (metaEvent\&.MetaEventType == MetaEventType\&.SetTempo)
+141                     {
+142                         TempoEvent tempoEvent = (TempoEvent)metaEvent;
+143                         long microsecondsPerQuarterNote = tempoEvent\&.MicrosecondsPerQuarterNote;
+144 
+145                         bpm = 60000000f / microsecondsPerQuarterNote;
+146                         // Process tempo event as needed
+147                         ProcessTempoChange(tempoEvent);
+148                     }
+149                    
+150                     // Add more conditions as needed for other meta\-event types
+151                 }
+152             }
+153         }
+154         if (bpm == 0) { Debug\&.LogError("BPM WAS NOT FOUND/ IS 0\&."); return null; }
+155         return MidiDataHandler\&.SaveNoteEventData("\&.json", bpm, noteEvents);
+156 
+157 
+158         void ProcessTempoChange(TempoEvent tempoChangeEvent)
+159         {
+160             float bpm = 60000000f / tempoChangeEvent\&.MicrosecondsPerQuarterNote;
+161             noteEvents\&.Add(new NoteEventInfo(bpm));
+162         }
+163 
+164         void ProcessNoteOnEvent(NoteEvent noteOnEvent)//```````````````````````````````````````````````````````modify so if you (somehow ) press a note 2 times before you let go of the first note, it marks its end time\&.
+165         {
+166             int noteNumber = noteOnEvent\&.NoteNumber;
+167 
+168             float ticksPerQuarterNote = 96; // Adjust this based on your DAW
+169             float secondsPerTick = 60\&.0f / (bpm * ticksPerQuarterNote);
+170 
+171             // Then, use secondsPerTick in your timing calculations
+172             float startTime = noteOnEvent\&.AbsoluteTime * secondsPerTick;
+173 
+174             // Convert MIDI note number to note name
+175             string noteName = ConvertNoteNumberToName(noteNumber);
+176 
+177             // Create a new NoteEventInfo or update an existing one
+178             // Create a new NoteEventInfo for the note
+179             NoteEventInfo noteEventInfo = new NoteEventInfo
+180             {
+181                 noteNumber = noteNumber,
+182                 startTime = startTime
+183             };
+184             if (!activeNotes\&.ContainsKey(noteNumber))
+185             {
+186                 activeNotes\&.Add(noteNumber, noteEventInfo);
+187             }
+188             noteEvents\&.Add(noteEventInfo);
+189         }
+190 
+191         void ProcessNoteOffEvent(NoteEvent noteOffEvent)
+192         {
+193             int noteNumber = noteOffEvent\&.NoteNumber;
+194 
+195             float ticksPerQuarterNote = 96; // Adjust this based on your DAW
+196             float secondsPerTick = 60\&.0f / (bpm * ticksPerQuarterNote);
+197 
+198             // Print the value of noteOffEvent\&.AbsoluteTime
+199 
+200             // Calculate end time in seconds
+201             float endTime = noteOffEvent\&.AbsoluteTime * secondsPerTick;
+202 
+203             // Check if the note is in the activeNotes dictionary
+204             if (activeNotes\&.TryGetValue(noteNumber, out NoteEventInfo activeNote))
+205             {
+206                 activeNote\&.endTime = endTime;
+207 
+208                 // Optionally, add the activeNote to your noteEvents list if you want to keep track of all notes
+209 
+210                 // Remove the note from the activeNotes dictionary since it's no longer active
+211                 activeNotes\&.Remove(noteNumber);
+212             }
+213             else
+214             {
+215 
+216             }
+217         }
+218 
+219 
+220 
+221         string ConvertNoteNumberToName(int noteNumber)
+222         {
+223             string[] noteNames = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
+224 
+225             int octave = (noteNumber / 12);
+226 
+227             int noteIndex = noteNumber % 12;
+228             string noteName = noteNames[noteIndex];
+229 
+230             return $"{noteName}{octave}";
+231         }
+232 
+233 
+234 
+235     }
+.PP
+.fi
+
+.PP
+Referenced by \fBGetNoteEventsFromFilePath()\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "Dictionary<int, \fBNoteEventInfo\fP> MidiReadFile\&.activeNotes = new Dictionary<int, \fBNoteEventInfo\fP>()\fR [static]\fP, \fR [private]\fP"
+
+.PP
+Dictionary storing what notes are active at a given song time\&. Used to make sure you cannot press a note twice without releasing it\&. 
+.PP
+Referenced by \fBReadMidiFile()\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for KiBoard GDD & Technical Documentation from the source code\&.

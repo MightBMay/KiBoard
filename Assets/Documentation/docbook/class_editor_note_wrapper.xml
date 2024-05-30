@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_editor_note_wrapper" xml:lang="en-US">
+<title>EditorNoteWrapper Class Reference</title>
+<indexterm><primary>EditorNoteWrapper</primary></indexterm>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_editor_note_wrapper_1a70b71808185bd1c4e4494fcf7085423c">EditorNoteWrapper</link> (Transform transform, Vector2 offset)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>Transform <link linkend="_class_editor_note_wrapper_1ae73636bf82ca2778e70f17b38f49f4a7">noteTransform</link></para>
+</listitem>
+            <listitem><para>Vector2 <link linkend="_class_editor_note_wrapper_1a1edd1ebf3e570f194c2e1c5a5948e086">initialOffset</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_class_editor_note_wrapper_1a70b71808185bd1c4e4494fcf7085423c"/><section>
+    <title>EditorNoteWrapper()</title>
+<indexterm><primary>EditorNoteWrapper</primary><secondary>EditorNoteWrapper</secondary></indexterm>
+<indexterm><primary>EditorNoteWrapper</primary><secondary>EditorNoteWrapper</secondary></indexterm>
+<para><computeroutput>EditorNoteWrapper.EditorNoteWrapper (Transform transform, Vector2 offset)</computeroutput></para><programlisting linenumbering="unnumbered">367 &#32;&#32;&#32;&#32;{
+368 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_editor_note_wrapper_1ae73636bf82ca2778e70f17b38f49f4a7">noteTransform</link>&#32;=&#32;transform;
+369 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_editor_note_wrapper_1a1edd1ebf3e570f194c2e1c5a5948e086">initialOffset</link>&#32;=&#32;offset;
+370 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_class_editor_note_wrapper_1a1edd1ebf3e570f194c2e1c5a5948e086"/><section>
+    <title>initialOffset</title>
+<indexterm><primary>initialOffset</primary><secondary>EditorNoteWrapper</secondary></indexterm>
+<indexterm><primary>EditorNoteWrapper</primary><secondary>initialOffset</secondary></indexterm>
+<para><computeroutput>Vector2 EditorNoteWrapper.initialOffset</computeroutput></para><para>
+Referenced by <link linkend="_class_song_note_editor_1a8665364022802da939ffa6c4d53adc6c">SongNoteEditor.DragNote()</link>, and <link linkend="_class_editor_note_wrapper_1a70b71808185bd1c4e4494fcf7085423c">EditorNoteWrapper()</link>.</para>
+</section>
+<anchor xml:id="_class_editor_note_wrapper_1ae73636bf82ca2778e70f17b38f49f4a7"/><section>
+    <title>noteTransform</title>
+<indexterm><primary>noteTransform</primary><secondary>EditorNoteWrapper</secondary></indexterm>
+<indexterm><primary>EditorNoteWrapper</primary><secondary>noteTransform</secondary></indexterm>
+<para><computeroutput>Transform EditorNoteWrapper.noteTransform</computeroutput></para><para>
+Referenced by <link linkend="_class_song_note_editor_1ad221dc0913d18cbb1c1cc11a1ffa9d4d">SongNoteEditor.DeselectNote()</link>, <link linkend="_class_song_note_editor_1a8665364022802da939ffa6c4d53adc6c">SongNoteEditor.DragNote()</link>, <link linkend="_class_editor_note_wrapper_1a70b71808185bd1c4e4494fcf7085423c">EditorNoteWrapper()</link>, and <link linkend="_class_song_note_editor_1a3ada65ab49d94c986903bc143c2b54d9">SongNoteEditor.UpdateSelectedNoteOffsets()</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+Assets/Scripts/<link linkend="__song_note_editor_8cs">SongNoteEditor.cs</link></section>
+</section>

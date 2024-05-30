@@ -1,0 +1,393 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_kiboard_debug" xml:lang="en-US">
+<title>KiboardDebug Class Reference</title>
+<indexterm><primary>KiboardDebug</primary></indexterm>
+<para>Inheritance diagram for KiboardDebug:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_kiboard_debug.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_class_kiboard_debug_1a3c43e2f01dc7e099c0a9df6df8d50dfc">OnEnable</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kiboard_debug_1ad7bab53c95904fa0774fa0fcaaf3aab3">VolumeOverride</link> (bool enabled)</para>
+
+<para>Override the volume of all music played. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>static void <link linkend="_class_kiboard_debug_1afc066a99310ea24a2ca7cd1b613262b6">ShowDebugMenu</link> ()</para>
+
+<para>show the debug canvas. </para>
+</listitem>
+            <listitem><para>static void <link linkend="_class_kiboard_debug_1a469e9a92176c1037d41c049beb7f18fa">HideDebugMenu</link> ()</para>
+
+<para>hide the debug canvas. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>static <link linkend="_class_kiboard_debug">KiboardDebug</link> <link linkend="_class_kiboard_debug_1a4b931181b7d67f0e5820f6e720d44768">instance</link></para>
+</listitem>
+            <listitem><para>static bool <link linkend="_class_kiboard_debug_1a9e0fba4286c69721430bbf992b6c18f6">overideVolume</link> = false</para>
+
+<para>Is game currently overriding the volume. </para>
+</listitem>
+            <listitem><para>static float <link linkend="_class_kiboard_debug_1a24f9ed97a6c1dcf42452136bb11987fd">overideVolumeValue</link></para>
+
+<para>Volume value at which to override. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Properties    </title>
+        <itemizedlist>
+            <listitem><para>static bool <link linkend="_class_kiboard_debug_1a87c862afc69067077e5f3cd3e5a8ac98">isMidiConnected</link><computeroutput> [get]</computeroutput>
+</para>
+
+<para>Returns true if any midi device is detected. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>static int <link linkend="_class_kiboard_debug_1adb582ee1c015031e2df0cfd9820f62d7">midiInGetNumDevs</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kiboard_debug_1a364997761b9645669aa59d727cf6f798">Awake</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kiboard_debug_1aaf0ba56bc2791683ae0cafbe05796e1c">Update</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kiboard_debug_1af18704c14a91ac3523d39ce61cbb60e9">CheckOpenMenu</link> ()</para>
+
+<para>check if the open/close menu hotkey is set. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kiboard_debug_1acff1f8564fcba2eaaa6cf9d38e0fed86">OnDisable</link> ()</para>
+</listitem>
+            <listitem><para>IEnumerator <link linkend="_class_kiboard_debug_1a9b85e3c68da381f4b5d748c66525f7f4">MonitorMidiDevices</link> ()</para>
+
+<para>begin checking if there is a connected midi device. </para>
+</listitem>
+            <listitem><para>IEnumerator <link linkend="_class_kiboard_debug_1addfdc0d79b7ec2e4918564ba15dac691">CalculateFPS</link> ()</para>
+
+<para>begin calculating Fps. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>Toggle <link linkend="_class_kiboard_debug_1a77a11aadbf65906e4726d6326de9f2c5">midiConnectedToggle</link></para>
+</listitem>
+            <listitem><para>Text <link linkend="_class_kiboard_debug_1acfdc349ec773ce1315e7fbed4f19fe26">fpsText</link></para>
+</listitem>
+            <listitem><para>InputField <link linkend="_class_kiboard_debug_1ac93dcc528e83aee7efd32b13b41d30fc">volumeOverrideIF</link></para>
+</listitem>
+            <listitem><para>GameObject <link linkend="_class_kiboard_debug_1a3ccf90d9abe0ebda8207665188225a5c">parent</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>static Canvas <link linkend="_class_kiboard_debug_1a35ab7e484d243cb188c944ef0546874e">debugCanvas</link></para>
+
+<para>canvas containing Debug UI </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_kiboard_debug_1a364997761b9645669aa59d727cf6f798"/><section>
+    <title>Awake()</title>
+<indexterm><primary>Awake</primary><secondary>KiboardDebug</secondary></indexterm>
+<indexterm><primary>KiboardDebug</primary><secondary>Awake</secondary></indexterm>
+<para><computeroutput>void KiboardDebug.Awake ( )<computeroutput>[private]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">57 &#32;&#32;&#32;&#32;{
+58 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_kiboard_debug_1a4b931181b7d67f0e5820f6e720d44768">instance</link>&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+59 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+60 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kiboard_debug_1a4b931181b7d67f0e5820f6e720d44768">instance</link>&#32;=&#32;<emphasis role="keyword">this</emphasis>;
+61 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;DontDestroyOnLoad(<link linkend="_class_kiboard_debug_1a3ccf90d9abe0ebda8207665188225a5c">parent</link>);
+62 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kiboard_debug_1a35ab7e484d243cb188c944ef0546874e">debugCanvas</link>&#32;=&#32;GetComponent&lt;Canvas&gt;();
+63 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+64 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;{&#32;Destroy(<emphasis role="keyword">this</emphasis>);&#32;}
+65 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+66 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_kiboard_debug_1addfdc0d79b7ec2e4918564ba15dac691"/><section>
+    <title>CalculateFPS()</title>
+<indexterm><primary>CalculateFPS</primary><secondary>KiboardDebug</secondary></indexterm>
+<indexterm><primary>KiboardDebug</primary><secondary>CalculateFPS</secondary></indexterm>
+<para><computeroutput>IEnumerator KiboardDebug.CalculateFPS ( )<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>begin calculating Fps. </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+<programlisting linenumbering="unnumbered">114 &#32;&#32;&#32;&#32;{
+115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(<emphasis role="keyword">true</emphasis>)
+116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;yield&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;WaitForSeconds(0.1f);
+118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">try</emphasis>&#32;{&#32;fpsText.text&#32;=&#32;$<emphasis role="stringliteral">&quot;FPS:&#32;&#32;{Mathf.Round(10&#32;/&#32;Time.deltaTime&#32;)/10}&quot;</emphasis>;&#32;}&#32;<emphasis role="comment">//&#32;calculate&#32;fps&#32;and&#32;assign&#32;to&#32;text.</emphasis>
+120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">catch</emphasis>&#32;{&#32;Debug.LogWarning(<emphasis role="stringliteral">&quot;Assigning&#32;Fps&#32;to&#32;Debug&#32;menu&apos;s&#32;fpsText&#32;encountered&#32;an&#32;error.&quot;</emphasis>);&#32;yield&#32;<emphasis role="keywordflow">break</emphasis>;&#32;}
+121 
+122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+123 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+Referenced by <link linkend="_class_kiboard_debug_1a3c43e2f01dc7e099c0a9df6df8d50dfc">OnEnable()</link>.</para>
+</section>
+<anchor xml:id="_class_kiboard_debug_1af18704c14a91ac3523d39ce61cbb60e9"/><section>
+    <title>CheckOpenMenu()</title>
+<indexterm><primary>CheckOpenMenu</primary><secondary>KiboardDebug</secondary></indexterm>
+<indexterm><primary>KiboardDebug</primary><secondary>CheckOpenMenu</secondary></indexterm>
+<para><computeroutput>void KiboardDebug.CheckOpenMenu ( )<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>check if the open/close menu hotkey is set. </para>
+</para>
+<programlisting linenumbering="unnumbered">76 &#32;&#32;&#32;&#32;{
+77 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(Input.GetKey(KeyCode.LeftAlt)&#32;&#32;&amp;&amp;&#32;Input.GetKeyDown(KeyCode.F1))
+78 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+79 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_kiboard_debug_1a35ab7e484d243cb188c944ef0546874e">debugCanvas</link>.enabled)&#32;{&#32;<link linkend="_class_kiboard_debug_1a469e9a92176c1037d41c049beb7f18fa">HideDebugMenu</link>();&#32;}
+80 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;{&#32;<link linkend="_class_kiboard_debug_1afc066a99310ea24a2ca7cd1b613262b6">ShowDebugMenu</link>();&#32;}
+81 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+82 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+83 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+Referenced by <link linkend="_class_kiboard_debug_1aaf0ba56bc2791683ae0cafbe05796e1c">Update()</link>.</para>
+</section>
+<anchor xml:id="_class_kiboard_debug_1a469e9a92176c1037d41c049beb7f18fa"/><section>
+    <title>HideDebugMenu()</title>
+<indexterm><primary>HideDebugMenu</primary><secondary>KiboardDebug</secondary></indexterm>
+<indexterm><primary>KiboardDebug</primary><secondary>HideDebugMenu</secondary></indexterm>
+<para><computeroutput>static void KiboardDebug.HideDebugMenu ( )<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>hide the debug canvas. </para>
+</para>
+<programlisting linenumbering="unnumbered">160 &#32;&#32;&#32;&#32;{
+161 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;debugCanvas.enabled&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+162 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+Referenced by <link linkend="_class_kiboard_debug_1af18704c14a91ac3523d39ce61cbb60e9">CheckOpenMenu()</link>.</para>
+</section>
+<anchor xml:id="_class_kiboard_debug_1adb582ee1c015031e2df0cfd9820f62d7"/><section>
+    <title>midiInGetNumDevs()</title>
+<indexterm><primary>midiInGetNumDevs</primary><secondary>KiboardDebug</secondary></indexterm>
+<indexterm><primary>KiboardDebug</primary><secondary>midiInGetNumDevs</secondary></indexterm>
+<para><computeroutput>static int KiboardDebug.midiInGetNumDevs ( )<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_kiboard_debug_1a9b85e3c68da381f4b5d748c66525f7f4"/><section>
+    <title>MonitorMidiDevices()</title>
+<indexterm><primary>MonitorMidiDevices</primary><secondary>KiboardDebug</secondary></indexterm>
+<indexterm><primary>KiboardDebug</primary><secondary>MonitorMidiDevices</secondary></indexterm>
+<para><computeroutput>IEnumerator KiboardDebug.MonitorMidiDevices ( )<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>begin checking if there is a connected midi device. </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+<programlisting linenumbering="unnumbered">101 &#32;&#32;&#32;&#32;{
+102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(<emphasis role="keyword">true</emphasis>)
+103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;yield&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;WaitForSeconds(0.1f);
+105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">try</emphasis>&#32;{&#32;midiConnectedToggle.isOn&#32;=&#32;<link linkend="_class_kiboard_debug_1a87c862afc69067077e5f3cd3e5a8ac98">isMidiConnected</link>;&#32;}
+106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">catch</emphasis>&#32;{&#32;Debug.LogWarning(<emphasis role="stringliteral">&quot;MidiConnectedToggle&#32;was&#32;null&quot;</emphasis>);&#32;yield&#32;<emphasis role="keywordflow">break</emphasis>;&#32;}
+107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+108 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+Referenced by <link linkend="_class_kiboard_debug_1a3c43e2f01dc7e099c0a9df6df8d50dfc">OnEnable()</link>.</para>
+</section>
+<anchor xml:id="_class_kiboard_debug_1acff1f8564fcba2eaaa6cf9d38e0fed86"/><section>
+    <title>OnDisable()</title>
+<indexterm><primary>OnDisable</primary><secondary>KiboardDebug</secondary></indexterm>
+<indexterm><primary>KiboardDebug</primary><secondary>OnDisable</secondary></indexterm>
+<para><computeroutput>void KiboardDebug.OnDisable ( )<computeroutput>[private]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">92 &#32;&#32;&#32;&#32;{
+93 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;StopAllCoroutines();
+94 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_kiboard_debug_1a3c43e2f01dc7e099c0a9df6df8d50dfc"/><section>
+    <title>OnEnable()</title>
+<indexterm><primary>OnEnable</primary><secondary>KiboardDebug</secondary></indexterm>
+<indexterm><primary>KiboardDebug</primary><secondary>OnEnable</secondary></indexterm>
+<para><computeroutput>void KiboardDebug.OnEnable ( )</computeroutput></para><programlisting linenumbering="unnumbered">87 &#32;&#32;&#32;&#32;{
+88 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;StartCoroutine(<link linkend="_class_kiboard_debug_1addfdc0d79b7ec2e4918564ba15dac691">CalculateFPS</link>());
+89 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;StartCoroutine(<link linkend="_class_kiboard_debug_1a9b85e3c68da381f4b5d748c66525f7f4">MonitorMidiDevices</link>());
+90 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_kiboard_debug_1afc066a99310ea24a2ca7cd1b613262b6"/><section>
+    <title>ShowDebugMenu()</title>
+<indexterm><primary>ShowDebugMenu</primary><secondary>KiboardDebug</secondary></indexterm>
+<indexterm><primary>KiboardDebug</primary><secondary>ShowDebugMenu</secondary></indexterm>
+<para><computeroutput>static void KiboardDebug.ShowDebugMenu ( )<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>show the debug canvas. </para>
+</para>
+<programlisting linenumbering="unnumbered">153 &#32;&#32;&#32;&#32;{
+154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;debugCanvas.enabled&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+155 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+Referenced by <link linkend="_class_kiboard_debug_1af18704c14a91ac3523d39ce61cbb60e9">CheckOpenMenu()</link>.</para>
+</section>
+<anchor xml:id="_class_kiboard_debug_1aaf0ba56bc2791683ae0cafbe05796e1c"/><section>
+    <title>Update()</title>
+<indexterm><primary>Update</primary><secondary>KiboardDebug</secondary></indexterm>
+<indexterm><primary>KiboardDebug</primary><secondary>Update</secondary></indexterm>
+<para><computeroutput>void KiboardDebug.Update ( )<computeroutput>[private]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">69 &#32;&#32;&#32;&#32;{
+70 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kiboard_debug_1af18704c14a91ac3523d39ce61cbb60e9">CheckOpenMenu</link>();
+71 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_kiboard_debug_1ad7bab53c95904fa0774fa0fcaaf3aab3"/><section>
+    <title>VolumeOverride()</title>
+<indexterm><primary>VolumeOverride</primary><secondary>KiboardDebug</secondary></indexterm>
+<indexterm><primary>KiboardDebug</primary><secondary>VolumeOverride</secondary></indexterm>
+<para><computeroutput>void KiboardDebug.VolumeOverride (bool enabled)</computeroutput></para><para>
+
+<para>Override the volume of all music played. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>enabled</entry><entry>
+<para>is the volume override enabled?</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<programlisting linenumbering="unnumbered">130 &#32;&#32;&#32;&#32;{
+131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(enabled)
+132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<emphasis role="keywordtype">int</emphasis>.TryParse(<link linkend="_class_kiboard_debug_1ac93dcc528e83aee7efd32b13b41d30fc">volumeOverrideIF</link>.text,&#32;out&#32;<emphasis role="keywordtype">int</emphasis>&#32;newValue))
+134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Debug.LogWarning(<emphasis role="stringliteral">&quot;Error&#32;Parsing&#32;Volume&#32;Override&#32;Value&quot;</emphasis>);
+136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_m_p3_handler">MP3Handler</link>.<link linkend="_class_m_p3_handler_1a0fa70fd58f86cdabb3c80f92f45c6ee2">instance</link>.SetVolume(&#32;PlayerSettings.musicVolume&#32;=&#32;Math.Clamp(newValue,&#32;0,&#32;100)&#32;);&#32;
+140 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kiboard_debug_1a9e0fba4286c69721430bbf992b6c18f6">overideVolume</link>&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+141 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+144 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kiboard_debug_1a9e0fba4286c69721430bbf992b6c18f6">overideVolume</link>&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+146 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+147 
+148 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_class_kiboard_debug_1a35ab7e484d243cb188c944ef0546874e"/><section>
+    <title>debugCanvas</title>
+<indexterm><primary>debugCanvas</primary><secondary>KiboardDebug</secondary></indexterm>
+<indexterm><primary>KiboardDebug</primary><secondary>debugCanvas</secondary></indexterm>
+<para><computeroutput>Canvas KiboardDebug.debugCanvas<computeroutput>[static]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>canvas containing Debug UI </para>
+</para>
+<para>
+Referenced by <link linkend="_class_kiboard_debug_1a364997761b9645669aa59d727cf6f798">Awake()</link>, and <link linkend="_class_kiboard_debug_1af18704c14a91ac3523d39ce61cbb60e9">CheckOpenMenu()</link>.</para>
+</section>
+<anchor xml:id="_class_kiboard_debug_1acfdc349ec773ce1315e7fbed4f19fe26"/><section>
+    <title>fpsText</title>
+<indexterm><primary>fpsText</primary><secondary>KiboardDebug</secondary></indexterm>
+<indexterm><primary>KiboardDebug</primary><secondary>fpsText</secondary></indexterm>
+<para><computeroutput>Text KiboardDebug.fpsText<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_kiboard_debug_1a4b931181b7d67f0e5820f6e720d44768"/><section>
+    <title>instance</title>
+<indexterm><primary>instance</primary><secondary>KiboardDebug</secondary></indexterm>
+<indexterm><primary>KiboardDebug</primary><secondary>instance</secondary></indexterm>
+<para><computeroutput><link linkend="_class_kiboard_debug">KiboardDebug</link> KiboardDebug.instance<computeroutput>[static]</computeroutput></computeroutput></para><para>
+Referenced by <link linkend="_class_kiboard_debug_1a364997761b9645669aa59d727cf6f798">Awake()</link>.</para>
+</section>
+<anchor xml:id="_class_kiboard_debug_1a77a11aadbf65906e4726d6326de9f2c5"/><section>
+    <title>midiConnectedToggle</title>
+<indexterm><primary>midiConnectedToggle</primary><secondary>KiboardDebug</secondary></indexterm>
+<indexterm><primary>KiboardDebug</primary><secondary>midiConnectedToggle</secondary></indexterm>
+<para><computeroutput>Toggle KiboardDebug.midiConnectedToggle<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_kiboard_debug_1a9e0fba4286c69721430bbf992b6c18f6"/><section>
+    <title>overideVolume</title>
+<indexterm><primary>overideVolume</primary><secondary>KiboardDebug</secondary></indexterm>
+<indexterm><primary>KiboardDebug</primary><secondary>overideVolume</secondary></indexterm>
+<para><computeroutput>bool KiboardDebug.overideVolume = false<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Is game currently overriding the volume. </para>
+</para>
+<para>
+Referenced by <link linkend="_class_kiboard_debug_1ad7bab53c95904fa0774fa0fcaaf3aab3">VolumeOverride()</link>.</para>
+</section>
+<anchor xml:id="_class_kiboard_debug_1a24f9ed97a6c1dcf42452136bb11987fd"/><section>
+    <title>overideVolumeValue</title>
+<indexterm><primary>overideVolumeValue</primary><secondary>KiboardDebug</secondary></indexterm>
+<indexterm><primary>KiboardDebug</primary><secondary>overideVolumeValue</secondary></indexterm>
+<para><computeroutput>float KiboardDebug.overideVolumeValue<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Volume value at which to override. </para>
+</para>
+</section>
+<anchor xml:id="_class_kiboard_debug_1a3ccf90d9abe0ebda8207665188225a5c"/><section>
+    <title>parent</title>
+<indexterm><primary>parent</primary><secondary>KiboardDebug</secondary></indexterm>
+<indexterm><primary>KiboardDebug</primary><secondary>parent</secondary></indexterm>
+<para><computeroutput>GameObject KiboardDebug.parent<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Referenced by <link linkend="_class_kiboard_debug_1a364997761b9645669aa59d727cf6f798">Awake()</link>.</para>
+</section>
+<anchor xml:id="_class_kiboard_debug_1ac93dcc528e83aee7efd32b13b41d30fc"/><section>
+    <title>volumeOverrideIF</title>
+<indexterm><primary>volumeOverrideIF</primary><secondary>KiboardDebug</secondary></indexterm>
+<indexterm><primary>KiboardDebug</primary><secondary>volumeOverrideIF</secondary></indexterm>
+<para><computeroutput>InputField KiboardDebug.volumeOverrideIF<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Referenced by <link linkend="_class_kiboard_debug_1ad7bab53c95904fa0774fa0fcaaf3aab3">VolumeOverride()</link>.</para>
+</section>
+</section>
+<section>
+<title>Property Documentation</title>
+<anchor xml:id="_class_kiboard_debug_1a87c862afc69067077e5f3cd3e5a8ac98"/><section>
+    <title>isMidiConnected</title>
+<indexterm><primary>isMidiConnected</primary><secondary>KiboardDebug</secondary></indexterm>
+<indexterm><primary>KiboardDebug</primary><secondary>isMidiConnected</secondary></indexterm>
+<para><computeroutput>bool KiboardDebug.isMidiConnected<computeroutput>[static]</computeroutput>, <computeroutput>[get]</computeroutput></computeroutput></para><para>
+
+<para>Returns true if any midi device is detected. </para>
+</para>
+<programlisting linenumbering="unnumbered">30 &#32;&#32;&#32;&#32;{
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_kiboard_debug_1adb582ee1c015031e2df0cfd9820f62d7">midiInGetNumDevs</link>()&#32;&gt;&#32;0;
+34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+35 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+Referenced by <link linkend="_class_midi_input_1a45fbc3ff0c86cf6739b2951fdb831037">MidiInput.LoadSongFromCurrentSettings()</link>, <link linkend="_class_game_settings_menu_1a5dd39dd7f822af50be08f1304d6ebe7b">GameSettingsMenu.MonitorMidiConnections()</link>, and <link linkend="_class_kiboard_debug_1a9b85e3c68da381f4b5d748c66525f7f4">MonitorMidiDevices()</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+Assets/Scripts/<link linkend="__kiboard_debug_8cs">KiboardDebug.cs</link></section>
+</section>

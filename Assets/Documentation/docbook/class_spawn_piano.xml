@@ -1,0 +1,493 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_spawn_piano" xml:lang="en-US">
+<title>SpawnPiano Class Reference</title>
+<indexterm><primary>SpawnPiano</primary></indexterm>
+<para>Inheritance diagram for SpawnPiano:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_spawn_piano.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_class_spawn_piano_1a7c6255b4331dcd33ee8cdcd0dd3906cc">GetIndexOfSpriteRenderer</link> (SpriteRenderer sr)</para>
+
+<para>gets the index of a specific keys sprite renderer. </para>
+</listitem>
+            <listitem><para>Color <link linkend="_class_spawn_piano_1a43e82ab530b06bb231bf6935ca592c53">GetDefaultKeyColour</link> (int i)</para>
+
+<para>gets default colour for a key based on key number. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_spawn_piano_1aa315569c9f65e31f9df8dc0e052f7f97">ClearAllKeyColours</link> ()</para>
+
+<para>resets colours of all keys on the keyboard. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_spawn_piano_1a1484eced385e236027f4b3226285d39e">UpdateKeyColours</link> (int noteNumber, bool enabled, string timingScore=&quot;&quot;)</para>
+
+<para>Updates the colours of keys when notes are pressed based off of the timing score. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_spawn_piano_1a8034a9f2c1574016ce3e1764500afa18">SpawnKeyParticle</link> (int keyNum, string score=&quot;&quot;)</para>
+
+<para>spawn particle effect at pressed key. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>static Color <link linkend="_class_spawn_piano_1a42cd74cae2c05680eb2df7457164f381">GetKeyColour</link> (int keyNum, string timingScore=&quot;&quot;)</para>
+
+<para>Get colour of a key based off of timing score. </para>
+</listitem>
+            <listitem><para>static Color <link linkend="_class_spawn_piano_1aa2c7a65b799c11a662ca9c1d25a931d2">GetKeyColour</link> (int keyNum, bool isKeyEnabled, string timingScore=&quot;&quot;)</para>
+
+<para>Get colour of a key based off of timing score taking in to account notes being released. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>static <link linkend="_class_spawn_piano">SpawnPiano</link> <link linkend="_class_spawn_piano_1a81c1e7fb3b0bccb57b3bba39e581f9f3">instance</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_class_spawn_piano_1a8bfd68b695e0f6fb4a9b16ae2ff0933d">Awake</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Private Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>static bool <link linkend="_class_spawn_piano_1ac81e9adf1fb7d3ea08726933755c55a4">CheckBlackNote</link> (int i)</para>
+
+<para>is the note at index I a black note? </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>GameObject <link linkend="_class_spawn_piano_1a535c7e48919b1030acde254ac60c496a">pianoWhiteTilePrefab</link></para>
+</listitem>
+            <listitem><para>GameObject <link linkend="_class_spawn_piano_1a91aaf7c6c4c62bb2a16c4dab271dbc8d">keyParticlePrefab</link></para>
+</listitem>
+            <listitem><para>SpriteRenderer[] <link linkend="_class_spawn_piano_1a96bfbbb02089373731eb3f8094e4afe9">spriterenderers</link> = new SpriteRenderer[88]</para>
+
+<para>array of sprites for each key of the piano. </para>
+</listitem>
+            <listitem><para>Color <link linkend="_class_spawn_piano_1a8f3f37ba492a071d2559ab109def1d66">lane1</link></para>
+
+<para>Lane colour 1. </para>
+</listitem>
+            <listitem><para>Color <link linkend="_class_spawn_piano_1a8cc3209d4bae78118eddd2e4ff8b40fc">lane2</link></para>
+
+<para>lane colour 2. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>static Color <link linkend="_class_spawn_piano_1ae4761bb59f6113bd0128ad39b7a99fe2">enabledColour</link> = new Color(255, 0, 0, 128)</para>
+
+<para>colour when incorrectly pressed/timed. </para>
+</listitem>
+            <listitem><para>static Color <link linkend="_class_spawn_piano_1a1f8cd516d59e3e0c547a32573274c8f2">perfectColour</link> = new Color(255, 0, 195, 128)</para>
+
+<para>colour when perfectly timed </para>
+</listitem>
+            <listitem><para>static Color <link linkend="_class_spawn_piano_1a2eafa3511f2d0c30af4aeba36257db09">goodColour</link> = new Color(0.15f, 1, .5f, 128)</para>
+
+<para>colour when pressed with good timing. </para>
+</listitem>
+            <listitem><para>static Color <link linkend="_class_spawn_piano_1a384b7e874b0734f8dee407782930211e">okayColour</link> = new Color(0, 9, 255, 128)</para>
+
+<para>colour when pressed with okay timing. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_spawn_piano_1a8bfd68b695e0f6fb4a9b16ae2ff0933d"/><section>
+    <title>Awake()</title>
+<indexterm><primary>Awake</primary><secondary>SpawnPiano</secondary></indexterm>
+<indexterm><primary>SpawnPiano</primary><secondary>Awake</secondary></indexterm>
+<para><computeroutput>void SpawnPiano.Awake ( )<computeroutput>[private]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">42 &#32;&#32;&#32;&#32;{
+43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_spawn_piano_1a81c1e7fb3b0bccb57b3bba39e581f9f3">instance</link>&#32;==&#32;<emphasis role="keyword">null</emphasis>)&#32;{&#32;<link linkend="_class_spawn_piano_1a81c1e7fb3b0bccb57b3bba39e581f9f3">instance</link>&#32;=&#32;<emphasis role="keyword">this</emphasis>;&#32;}
+44 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;{&#32;Destroy(<link linkend="_class_spawn_piano_1a81c1e7fb3b0bccb57b3bba39e581f9f3">instance</link>.gameObject);&#32;}
+45 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_spawn_piano_1ac81e9adf1fb7d3ea08726933755c55a4"/><section>
+    <title>CheckBlackNote()</title>
+<indexterm><primary>CheckBlackNote</primary><secondary>SpawnPiano</secondary></indexterm>
+<indexterm><primary>SpawnPiano</primary><secondary>CheckBlackNote</secondary></indexterm>
+<para><computeroutput>static bool SpawnPiano.CheckBlackNote (int i)<computeroutput>[static]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>is the note at index I a black note? </para>
+</para>
+<programlisting linenumbering="unnumbered">95 &#32;&#32;&#32;&#32;{
+96 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;value&#32;=&#32;i&#32;%&#32;12;&#32;&#32;&#32;
+97 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(GameSettings.usePiano)&#32;<emphasis role="keywordflow">return</emphasis>&#32;value&#32;==&#32;2&#32;||&#32;value&#32;==&#32;5&#32;||&#32;value&#32;==&#32;7&#32;||&#32;value&#32;==&#32;10&#32;||&#32;(value&#32;==&#32;0&#32;&amp;&amp;&#32;i&#32;!=&#32;0);
+98 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;value&#32;==&#32;0&#32;||&#32;value&#32;==&#32;2&#32;||value&#32;==&#32;5&#32;||&#32;value&#32;==&#32;7&#32;||&#32;value&#32;==&#32;10&#32;;
+99 
+100 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+Referenced by <link linkend="_class_spawn_piano_1a43e82ab530b06bb231bf6935ca592c53">GetDefaultKeyColour()</link>, and <link linkend="_class_spawn_piano_1aa2c7a65b799c11a662ca9c1d25a931d2">GetKeyColour()</link>.</para>
+</section>
+<anchor xml:id="_class_spawn_piano_1aa315569c9f65e31f9df8dc0e052f7f97"/><section>
+    <title>ClearAllKeyColours()</title>
+<indexterm><primary>ClearAllKeyColours</primary><secondary>SpawnPiano</secondary></indexterm>
+<indexterm><primary>SpawnPiano</primary><secondary>ClearAllKeyColours</secondary></indexterm>
+<para><computeroutput>void SpawnPiano.ClearAllKeyColours ( )</computeroutput></para><para>
+
+<para>resets colours of all keys on the keyboard. </para>
+</para>
+<programlisting linenumbering="unnumbered">85 &#32;&#32;&#32;&#32;{
+86 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;88;&#32;i++)
+87 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+88 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_spawn_piano_1a96bfbbb02089373731eb3f8094e4afe9">spriterenderers</link>[i].color&#32;=&#32;<link linkend="_class_spawn_piano_1a43e82ab530b06bb231bf6935ca592c53">GetDefaultKeyColour</link>(i);
+89 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+90 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_spawn_piano_1a43e82ab530b06bb231bf6935ca592c53"/><section>
+    <title>GetDefaultKeyColour()</title>
+<indexterm><primary>GetDefaultKeyColour</primary><secondary>SpawnPiano</secondary></indexterm>
+<indexterm><primary>SpawnPiano</primary><secondary>GetDefaultKeyColour</secondary></indexterm>
+<para><computeroutput>Color SpawnPiano.GetDefaultKeyColour (int i)</computeroutput></para><para>
+
+<para>gets default colour for a key based on key number. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>i</entry><entry></entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+<programlisting linenumbering="unnumbered">78 &#32;&#32;&#32;&#32;{
+79 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_spawn_piano_1ac81e9adf1fb7d3ea08726933755c55a4">CheckBlackNote</link>(i&#32;+&#32;1)&#32;?&#32;Color.black&#32;:&#32;Color.white;
+80 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+Referenced by <link linkend="_class_spawn_piano_1aa315569c9f65e31f9df8dc0e052f7f97">ClearAllKeyColours()</link>.</para>
+</section>
+<anchor xml:id="_class_spawn_piano_1a7c6255b4331dcd33ee8cdcd0dd3906cc"/><section>
+    <title>GetIndexOfSpriteRenderer()</title>
+<indexterm><primary>GetIndexOfSpriteRenderer</primary><secondary>SpawnPiano</secondary></indexterm>
+<indexterm><primary>SpawnPiano</primary><secondary>GetIndexOfSpriteRenderer</secondary></indexterm>
+<para><computeroutput>int SpawnPiano.GetIndexOfSpriteRenderer (SpriteRenderer sr)</computeroutput></para><para>
+
+<para>gets the index of a specific keys sprite renderer. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>sr</entry><entry></entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+<programlisting linenumbering="unnumbered">69 &#32;&#32;&#32;&#32;{
+70 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;Array.IndexOf(<link linkend="_class_spawn_piano_1a96bfbbb02089373731eb3f8094e4afe9">spriterenderers</link>,&#32;sr);
+71 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_spawn_piano_1aa2c7a65b799c11a662ca9c1d25a931d2"/><section>
+    <title>GetKeyColour()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>GetKeyColour</primary><secondary>SpawnPiano</secondary></indexterm>
+<indexterm><primary>SpawnPiano</primary><secondary>GetKeyColour</secondary></indexterm>
+<para><computeroutput>static Color SpawnPiano.GetKeyColour (int keyNum, bool isKeyEnabled, string timingScore = <computeroutput>&quot;&quot;</computeroutput>
+)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Get colour of a key based off of timing score taking in to account notes being released. </para>
+</para>
+<programlisting linenumbering="unnumbered">145 &#32;&#32;&#32;&#32;{
+146 
+147 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!isKeyEnabled)
+148 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+149 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_spawn_piano_1ac81e9adf1fb7d3ea08726933755c55a4">CheckBlackNote</link>(keyNum&#32;+&#32;1))&#32;{&#32;<emphasis role="keywordflow">return</emphasis>&#32;Color.black;&#32;}
+150 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;{&#32;<emphasis role="keywordflow">return</emphasis>&#32;Color.white;&#32;}
+151 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+152 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">switch</emphasis>&#32;(timingScore)
+153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<emphasis role="stringliteral">&quot;Perfect&quot;</emphasis>:
+155 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_spawn_piano_1a1f8cd516d59e3e0c547a32573274c8f2">perfectColour</link>;
+156 
+157 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<emphasis role="stringliteral">&quot;Good&quot;</emphasis>:
+158 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_spawn_piano_1a2eafa3511f2d0c30af4aeba36257db09">goodColour</link>;
+159 
+160 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<emphasis role="stringliteral">&quot;Okay&quot;</emphasis>:
+161 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_spawn_piano_1a384b7e874b0734f8dee407782930211e">okayColour</link>;
+162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">default</emphasis>:
+163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_spawn_piano_1ae4761bb59f6113bd0128ad39b7a99fe2">enabledColour</link>;
+164 
+165 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+166 
+167 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_spawn_piano_1a42cd74cae2c05680eb2df7457164f381"/><section>
+    <title>GetKeyColour()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>GetKeyColour</primary><secondary>SpawnPiano</secondary></indexterm>
+<indexterm><primary>SpawnPiano</primary><secondary>GetKeyColour</secondary></indexterm>
+<para><computeroutput>static Color SpawnPiano.GetKeyColour (int keyNum, string timingScore = <computeroutput>&quot;&quot;</computeroutput>
+)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Get colour of a key based off of timing score. </para>
+</para>
+<programlisting linenumbering="unnumbered">122 &#32;&#32;&#32;&#32;{
+123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">switch</emphasis>&#32;(timingScore)
+124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<emphasis role="stringliteral">&quot;Perfect&quot;</emphasis>:
+126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_spawn_piano_1a1f8cd516d59e3e0c547a32573274c8f2">perfectColour</link>;
+127 
+128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<emphasis role="stringliteral">&quot;Good&quot;</emphasis>:
+129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_spawn_piano_1a2eafa3511f2d0c30af4aeba36257db09">goodColour</link>;
+130 
+131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<emphasis role="stringliteral">&quot;Okay&quot;</emphasis>:
+132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_spawn_piano_1a384b7e874b0734f8dee407782930211e">okayColour</link>;
+133 
+134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">default</emphasis>:
+135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_spawn_piano_1ae4761bb59f6113bd0128ad39b7a99fe2">enabledColour</link>;
+136 
+137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+138 
+139 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+Referenced by <link linkend="_class_spawn_piano_1a8034a9f2c1574016ce3e1764500afa18">SpawnKeyParticle()</link>, and <link linkend="_class_spawn_piano_1a1484eced385e236027f4b3226285d39e">UpdateKeyColours()</link>.</para>
+</section>
+<anchor xml:id="_class_spawn_piano_1a8034a9f2c1574016ce3e1764500afa18"/><section>
+    <title>SpawnKeyParticle()</title>
+<indexterm><primary>SpawnKeyParticle</primary><secondary>SpawnPiano</secondary></indexterm>
+<indexterm><primary>SpawnPiano</primary><secondary>SpawnKeyParticle</secondary></indexterm>
+<para><computeroutput>void SpawnPiano.SpawnKeyParticle (int keyNum, string score = <computeroutput>&quot;&quot;</computeroutput>
+)</computeroutput></para><para>
+
+<para>spawn particle effect at pressed key. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>keyNum</entry><entry>
+<para>key number to spawn the particles at.</para>
+</entry>
+                            </row>
+                            <row>
+<entry>score</entry><entry>
+<para>timing score used for colouring the particles.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<programlisting linenumbering="unnumbered">175 &#32;&#32;&#32;&#32;{
+176 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ParticleSystem&#32;particle;
+177 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(GameSettings.usePiano)&#32;{&#32;particle&#32;=&#32;Instantiate(<link linkend="_class_spawn_piano_1a91aaf7c6c4c62bb2a16c4dab271dbc8d">keyParticlePrefab</link>,&#32;<link linkend="_class_spawn_piano_1a96bfbbb02089373731eb3f8094e4afe9">spriterenderers</link>[keyNum].transform).GetComponent&lt;ParticleSystem&gt;();&#32;}
+178 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;{&#32;particle&#32;=&#32;Instantiate(<link linkend="_class_spawn_piano_1a91aaf7c6c4c62bb2a16c4dab271dbc8d">keyParticlePrefab</link>,&#32;<link linkend="_class_spawn_piano_1a96bfbbb02089373731eb3f8094e4afe9">spriterenderers</link>[(keyNum-3&#32;)%12].transform).GetComponent&lt;ParticleSystem&gt;();&#32;}
+179 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;particle.transform.position&#32;+=&#32;Vector3.up&#32;/&#32;2;
+180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ParticleSystem.MainModule&#32;main&#32;=&#32;particle.main;
+181 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;main.startColor&#32;=&#32;<link linkend="_class_spawn_piano_1a42cd74cae2c05680eb2df7457164f381">GetKeyColour</link>(keyNum,&#32;score);
+182 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;particle.Play();
+183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Destroy(particle,&#32;5f);
+184 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_spawn_piano_1a1484eced385e236027f4b3226285d39e"/><section>
+    <title>UpdateKeyColours()</title>
+<indexterm><primary>UpdateKeyColours</primary><secondary>SpawnPiano</secondary></indexterm>
+<indexterm><primary>SpawnPiano</primary><secondary>UpdateKeyColours</secondary></indexterm>
+<para><computeroutput>void SpawnPiano.UpdateKeyColours (int noteNumber, bool enabled, string timingScore = <computeroutput>&quot;&quot;</computeroutput>
+)</computeroutput></para><para>
+
+<para>Updates the colours of keys when notes are pressed based off of the timing score. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>noteNumber</entry><entry>
+<para>note number of the note pressed.</para>
+</entry>
+                            </row>
+                            <row>
+<entry>enabled</entry><entry>
+<para>is the note being enabled or disabled?</para>
+</entry>
+                            </row>
+                            <row>
+<entry>timingScore</entry><entry>
+<para>timing score of the note.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<programlisting linenumbering="unnumbered">108 &#32;&#32;&#32;&#32;{
+109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(GameSettings.usePiano)
+110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_spawn_piano_1a96bfbbb02089373731eb3f8094e4afe9">spriterenderers</link>[noteNumber].color&#32;=&#32;<link linkend="_class_spawn_piano_1a42cd74cae2c05680eb2df7457164f381">GetKeyColour</link>(noteNumber,&#32;enabled,&#32;timingScore);
+112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_spawn_piano_1a96bfbbb02089373731eb3f8094e4afe9">spriterenderers</link>[(noteNumber-3&#32;)%&#32;12].color&#32;=&#32;<link linkend="_class_spawn_piano_1a42cd74cae2c05680eb2df7457164f381">GetKeyColour</link>(noteNumber,&#32;enabled,&#32;timingScore);
+116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+117 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_class_spawn_piano_1ae4761bb59f6113bd0128ad39b7a99fe2"/><section>
+    <title>enabledColour</title>
+<indexterm><primary>enabledColour</primary><secondary>SpawnPiano</secondary></indexterm>
+<indexterm><primary>SpawnPiano</primary><secondary>enabledColour</secondary></indexterm>
+<para><computeroutput>Color SpawnPiano.enabledColour = new Color(255, 0, 0, 128)<computeroutput>[static]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>colour when incorrectly pressed/timed. </para>
+</para>
+<para>
+Referenced by <link linkend="_class_spawn_piano_1aa2c7a65b799c11a662ca9c1d25a931d2">GetKeyColour()</link>, and <link linkend="_class_spawn_piano_1a42cd74cae2c05680eb2df7457164f381">GetKeyColour()</link>.</para>
+</section>
+<anchor xml:id="_class_spawn_piano_1a2eafa3511f2d0c30af4aeba36257db09"/><section>
+    <title>goodColour</title>
+<indexterm><primary>goodColour</primary><secondary>SpawnPiano</secondary></indexterm>
+<indexterm><primary>SpawnPiano</primary><secondary>goodColour</secondary></indexterm>
+<para><computeroutput>Color SpawnPiano.goodColour = new Color(0.15f, 1, .5f, 128)<computeroutput>[static]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>colour when pressed with good timing. </para>
+</para>
+<para>
+Referenced by <link linkend="_class_spawn_piano_1aa2c7a65b799c11a662ca9c1d25a931d2">GetKeyColour()</link>, and <link linkend="_class_spawn_piano_1a42cd74cae2c05680eb2df7457164f381">GetKeyColour()</link>.</para>
+</section>
+<anchor xml:id="_class_spawn_piano_1a81c1e7fb3b0bccb57b3bba39e581f9f3"/><section>
+    <title>instance</title>
+<indexterm><primary>instance</primary><secondary>SpawnPiano</secondary></indexterm>
+<indexterm><primary>SpawnPiano</primary><secondary>instance</secondary></indexterm>
+<para><computeroutput><link linkend="_class_spawn_piano">SpawnPiano</link> SpawnPiano.instance<computeroutput>[static]</computeroutput></computeroutput></para><para>
+Referenced by <link linkend="_class_song_note_editor_1ae621ba2e9e94f07a33e281b65c751b95">SongNoteEditor.AddNote()</link>, <link linkend="_class_spawn_piano_1a8bfd68b695e0f6fb4a9b16ae2ff0933d">Awake()</link>, <link linkend="_class_midi_input_1a2e24c8cbdc52507a5c148923c9f65d3f">MidiInput.NoteOff()</link>, <link linkend="_class_midi_input_1a358348cc54a49193003a2788f81b7b4a">MidiInput.NoteOn()</link>, <link linkend="_class_midi_input_1aa4804a291f0c49c471a9fb0ecd0a6590">MidiInput.OnNoteSuccess()</link>, and <link linkend="_class_midi_input_1a2e30797511f5bd2f7eaf349978ff2680">MidiInput.PedalStateChanged()</link>.</para>
+</section>
+<anchor xml:id="_class_spawn_piano_1a91aaf7c6c4c62bb2a16c4dab271dbc8d"/><section>
+    <title>keyParticlePrefab</title>
+<indexterm><primary>keyParticlePrefab</primary><secondary>SpawnPiano</secondary></indexterm>
+<indexterm><primary>SpawnPiano</primary><secondary>keyParticlePrefab</secondary></indexterm>
+<para><computeroutput>GameObject SpawnPiano.keyParticlePrefab<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Referenced by <link linkend="_class_spawn_piano_1a8034a9f2c1574016ce3e1764500afa18">SpawnKeyParticle()</link>.</para>
+</section>
+<anchor xml:id="_class_spawn_piano_1a8f3f37ba492a071d2559ab109def1d66"/><section>
+    <title>lane1</title>
+<indexterm><primary>lane1</primary><secondary>SpawnPiano</secondary></indexterm>
+<indexterm><primary>SpawnPiano</primary><secondary>lane1</secondary></indexterm>
+<para><computeroutput>Color SpawnPiano.lane1<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>Lane colour 1. </para>
+</para>
+</section>
+<anchor xml:id="_class_spawn_piano_1a8cc3209d4bae78118eddd2e4ff8b40fc"/><section>
+    <title>lane2</title>
+<indexterm><primary>lane2</primary><secondary>SpawnPiano</secondary></indexterm>
+<indexterm><primary>SpawnPiano</primary><secondary>lane2</secondary></indexterm>
+<para><computeroutput>Color SpawnPiano.lane2<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>lane colour 2. </para>
+</para>
+</section>
+<anchor xml:id="_class_spawn_piano_1a384b7e874b0734f8dee407782930211e"/><section>
+    <title>okayColour</title>
+<indexterm><primary>okayColour</primary><secondary>SpawnPiano</secondary></indexterm>
+<indexterm><primary>SpawnPiano</primary><secondary>okayColour</secondary></indexterm>
+<para><computeroutput>Color SpawnPiano.okayColour = new Color(0, 9, 255, 128)<computeroutput>[static]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>colour when pressed with okay timing. </para>
+</para>
+<para>
+Referenced by <link linkend="_class_spawn_piano_1aa2c7a65b799c11a662ca9c1d25a931d2">GetKeyColour()</link>, and <link linkend="_class_spawn_piano_1a42cd74cae2c05680eb2df7457164f381">GetKeyColour()</link>.</para>
+</section>
+<anchor xml:id="_class_spawn_piano_1a1f8cd516d59e3e0c547a32573274c8f2"/><section>
+    <title>perfectColour</title>
+<indexterm><primary>perfectColour</primary><secondary>SpawnPiano</secondary></indexterm>
+<indexterm><primary>SpawnPiano</primary><secondary>perfectColour</secondary></indexterm>
+<para><computeroutput>Color SpawnPiano.perfectColour = new Color(255, 0, 195, 128)<computeroutput>[static]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>colour when perfectly timed </para>
+</para>
+<para>
+Referenced by <link linkend="_class_spawn_piano_1aa2c7a65b799c11a662ca9c1d25a931d2">GetKeyColour()</link>, and <link linkend="_class_spawn_piano_1a42cd74cae2c05680eb2df7457164f381">GetKeyColour()</link>.</para>
+</section>
+<anchor xml:id="_class_spawn_piano_1a535c7e48919b1030acde254ac60c496a"/><section>
+    <title>pianoWhiteTilePrefab</title>
+<indexterm><primary>pianoWhiteTilePrefab</primary><secondary>SpawnPiano</secondary></indexterm>
+<indexterm><primary>SpawnPiano</primary><secondary>pianoWhiteTilePrefab</secondary></indexterm>
+<para><computeroutput>GameObject SpawnPiano.pianoWhiteTilePrefab<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_spawn_piano_1a96bfbbb02089373731eb3f8094e4afe9"/><section>
+    <title>spriterenderers</title>
+<indexterm><primary>spriterenderers</primary><secondary>SpawnPiano</secondary></indexterm>
+<indexterm><primary>SpawnPiano</primary><secondary>spriterenderers</secondary></indexterm>
+<para><computeroutput>SpriteRenderer [] SpawnPiano.spriterenderers = new SpriteRenderer[88]<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>array of sprites for each key of the piano. </para>
+</para>
+<para>
+Referenced by <link linkend="_class_spawn_piano_1aa315569c9f65e31f9df8dc0e052f7f97">ClearAllKeyColours()</link>, <link linkend="_class_spawn_piano_1a7c6255b4331dcd33ee8cdcd0dd3906cc">GetIndexOfSpriteRenderer()</link>, <link linkend="_class_spawn_piano_1a8034a9f2c1574016ce3e1764500afa18">SpawnKeyParticle()</link>, and <link linkend="_class_spawn_piano_1a1484eced385e236027f4b3226285d39e">UpdateKeyColours()</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+Assets/Scripts/<link linkend="__spawn_piano_8cs">SpawnPiano.cs</link></section>
+</section>

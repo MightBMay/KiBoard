@@ -1,0 +1,203 @@
+.TH "FileGroup" 3 "Version 1.0.0" "KiBoard GDD & Technical Documentation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+FileGroup \- Represents a group of files related to a specific song\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFileGroup\fP (string fileName)"
+.br
+.RI "Initializes a new instance of the \fBFileGroup\fP struct with the specified file name\&. "
+.ti -1c
+.RI "string \fBCheckFileGroupContents\fP ()"
+.br
+.RI "Checks the contents of the file group and returns any missing files as a formatted string\&. "
+.ti -1c
+.RI "Texture2D \fBGetImage\fP (string prefix)"
+.br
+.RI "gets an image based on prefix from the \fBImageFiles\fP list\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBFileGroupError\fP? \fBerrors\fP"
+.br
+.ti -1c
+.RI "string \fBFileName\fP"
+.br
+.ti -1c
+.RI "string \fBFolderPath\fP"
+.br
+.ti -1c
+.RI "string \fBMp3File\fP"
+.br
+.ti -1c
+.RI "string[] \fBMidiFiles\fP"
+.br
+.ti -1c
+.RI "string[] \fBJsonFiles\fP"
+.br
+.ti -1c
+.RI "string[] \fBImageFiles\fP"
+.br
+.ti -1c
+.RI "string \fBScoreFile\fP"
+.br
+.ti -1c
+.RI "string[] \fBReplayFiles\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents a group of files related to a specific song\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "FileGroup\&.FileGroup (string fileName)"
+
+.PP
+Initializes a new instance of the \fBFileGroup\fP struct with the specified file name\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIfileName\fP The name of the file group\&.
+.RE
+.PP
+
+.nf
+27     {
+28         errors = null;
+29         FolderPath = string\&.Empty;
+30         FileName = fileName;
+31         Mp3File = string\&.Empty;
+32         MidiFiles = null;
+33         JsonFiles = null;
+34         ImageFiles = null;
+35         ScoreFile = string\&.Empty;
+36         ReplayFiles = null;
+37     }
+.PP
+.fi
+
+.SH "Member Function Documentation"
+.PP 
+.SS "string FileGroup\&.CheckFileGroupContents ()"
+
+.PP
+Checks the contents of the file group and returns any missing files as a formatted string\&. 
+.PP
+\fBReturns\fP
+.RS 4
+A formatted string indicating missing files\&.
+.RE
+.PP
+
+.nf
+44     {
+45         string str = "";
+46         if (string\&.IsNullOrEmpty(Mp3File)) { str += "<color=red> MP3 file not found\&. \\n</color>"; }
+47 
+48         if (MidiFiles\&.Length <= 0)
+49         {
+50             if (JsonFiles\&.Length <= 0)
+51             {
+52                 str += "<color=red> Midi AND Json file not found\&. \\n</color>";
+53             }
+54             else
+55             {
+56                 str += "<color=red> Midi file not found\&. \\n</color>";
+57             }
+58         }
+59 
+60 
+61         return str;
+62     }
+.PP
+.fi
+
+.SS "Texture2D FileGroup\&.GetImage (string prefix)"
+
+.PP
+gets an image based on prefix from the \fBImageFiles\fP list\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIprefix\fP prefix to search for to differentiate from different images for a song ( eg: icon_songName or bg_songName)
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+texture with that image\&.
+.RE
+.PP
+
+.nf
+69     {
+70         foreach(string path in ImageFiles)
+71         {
+72             string filename = Path\&.GetFileName(path);
+73             if (filename\&.StartsWith(prefix, StringComparison\&.InvariantCultureIgnoreCase)){
+74                 return Utility\&.LoadImageFromFile(path);
+75             }
+76         }
+77         try
+78         {
+79             Debug\&.Log("no "+ prefix +" file found for song "+FileName+"\&. defaulting to 1st png\&.");
+80             return Utility\&.LoadImageFromFile(ImageFiles[0]);
+81         }
+82         catch {
+83             Debug\&.Log("\\"+ prefix +\\" Image not found for song " + FileName);
+84             return null; 
+85         }
+86     }
+.PP
+.fi
+
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBFileGroupError\fP? FileGroup\&.errors"
+
+.PP
+Referenced by \fBFileGroup()\fP\&.
+.SS "string FileGroup\&.FileName"
+
+.PP
+Referenced by \fBFileGroup()\fP, and \fBGetImage()\fP\&.
+.SS "string FileGroup\&.FolderPath"
+
+.PP
+Referenced by \fBFileGroup()\fP\&.
+.SS "string [] FileGroup\&.ImageFiles"
+
+.PP
+Referenced by \fBFileGroup()\fP, and \fBGetImage()\fP\&.
+.SS "string [] FileGroup\&.JsonFiles"
+
+.PP
+Referenced by \fBCheckFileGroupContents()\fP, and \fBFileGroup()\fP\&.
+.SS "string [] FileGroup\&.MidiFiles"
+
+.PP
+Referenced by \fBCheckFileGroupContents()\fP, and \fBFileGroup()\fP\&.
+.SS "string FileGroup\&.Mp3File"
+
+.PP
+Referenced by \fBCheckFileGroupContents()\fP, and \fBFileGroup()\fP\&.
+.SS "string [] FileGroup\&.ReplayFiles"
+
+.PP
+Referenced by \fBFileGroup()\fP\&.
+.SS "string FileGroup\&.ScoreFile"
+
+.PP
+Referenced by \fBFileGroup()\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for KiBoard GDD & Technical Documentation from the source code\&.

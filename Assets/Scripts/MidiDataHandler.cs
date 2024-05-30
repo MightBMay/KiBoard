@@ -2,11 +2,10 @@ using UnityEngine;
 using NAudio.Midi;
 using System.Collections.Generic;
 using System.IO;
-using static MidiReadFile;
 using System.Linq;
 using System.IO.Compression;
 
-public static class MidiDataHandler
+public class MidiDataHandler
 {
     /// <summary>
     /// Retrieves stored MIDI data from a JSON file.
@@ -115,6 +114,11 @@ public static class MidiDataHandler
         }
     }
 
+    /// <summary>
+    /// Saves json string "Data" to a compressed json file at "filePath".
+    /// </summary>
+    /// <param name="data"></param>
+    /// <param name="filePath"></param>
     private static void SaveToFileCompressed(string data, string filePath)
     {
         using (FileStream fileStream = new FileStream(filePath, FileMode.Create))
@@ -129,6 +133,11 @@ public static class MidiDataHandler
         }
     }
 
+    /// <summary>
+    /// loads a json string from a compressed json file at "filePath".
+    /// </summary>
+    /// <param name="filePath"></param>
+    /// <returns>decomressed Json String</returns>
     private static string LoadFromFileCompressed(string filePath)
     {
         using (FileStream fileStream = new FileStream(filePath, FileMode.Open))
@@ -160,10 +169,19 @@ public class NoteEventDataWrapper
     /// </summary>
     public List<NoteEventInfo> NoteEvents;
 
+    /// <summary>
+    /// Adds new note to <see cref="NoteEvents"/>.
+    /// </summary>
+    /// <param name="noteNumber">Note number of the note.</param>
+    /// <param name="startTime">Start time of the note.</param>
+    /// <param name="endTime">end time of the note.</param>
     public void AddNewNote(int noteNumber, float startTime, float endTime)
     {
         NoteEvents.Add(new NoteEventInfo(noteNumber, startTime, endTime));
     }
+    /// <summary>
+    /// Clears noteEvents list and sets BPM to negative infinity.
+    /// </summary>
     public void Reset()
     {
         BPM = Mathf.NegativeInfinity;

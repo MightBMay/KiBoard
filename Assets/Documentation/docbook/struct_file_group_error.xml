@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_struct_file_group_error" xml:lang="en-US">
+<title>FileGroupError Struct Reference</title>
+<indexterm><primary>FileGroupError</primary></indexterm>
+<para>
+
+<para>struct containing information on which files are or aren&apos;t located when assembling a file group for a song. </para>
+ 
+</para>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>bool <link linkend="_struct_file_group_error_1a6e7f2b7b9eabf4aa81668ae6566d37cb">json</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_struct_file_group_error_1aeebc43eea11ac001e659c231b09e096c">mp3</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_struct_file_group_error_1a9be1dc796819e7f024583b06a4d74d4c">png</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_struct_file_group_error_1a09998fc7083e87d072e532053fc9fedd">midi</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_struct_file_group_error_1aba3952529a65cc9c9a9eb8fe737bee09">score</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_struct_file_group_error_1a059d820996a3ae3c8cf948a438e36417">replay</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>struct containing information on which files are or aren&apos;t located when assembling a file group for a song. </para>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_struct_file_group_error_1a6e7f2b7b9eabf4aa81668ae6566d37cb"/><section>
+    <title>json</title>
+<indexterm><primary>json</primary><secondary>FileGroupError</secondary></indexterm>
+<indexterm><primary>FileGroupError</primary><secondary>json</secondary></indexterm>
+<para><computeroutput>bool FileGroupError.json</computeroutput></para></section>
+<anchor xml:id="_struct_file_group_error_1a09998fc7083e87d072e532053fc9fedd"/><section>
+    <title>midi</title>
+<indexterm><primary>midi</primary><secondary>FileGroupError</secondary></indexterm>
+<indexterm><primary>FileGroupError</primary><secondary>midi</secondary></indexterm>
+<para><computeroutput>bool FileGroupError.midi</computeroutput></para></section>
+<anchor xml:id="_struct_file_group_error_1aeebc43eea11ac001e659c231b09e096c"/><section>
+    <title>mp3</title>
+<indexterm><primary>mp3</primary><secondary>FileGroupError</secondary></indexterm>
+<indexterm><primary>FileGroupError</primary><secondary>mp3</secondary></indexterm>
+<para><computeroutput>bool FileGroupError.mp3</computeroutput></para></section>
+<anchor xml:id="_struct_file_group_error_1a9be1dc796819e7f024583b06a4d74d4c"/><section>
+    <title>png</title>
+<indexterm><primary>png</primary><secondary>FileGroupError</secondary></indexterm>
+<indexterm><primary>FileGroupError</primary><secondary>png</secondary></indexterm>
+<para><computeroutput>bool FileGroupError.png</computeroutput></para></section>
+<anchor xml:id="_struct_file_group_error_1a059d820996a3ae3c8cf948a438e36417"/><section>
+    <title>replay</title>
+<indexterm><primary>replay</primary><secondary>FileGroupError</secondary></indexterm>
+<indexterm><primary>FileGroupError</primary><secondary>replay</secondary></indexterm>
+<para><computeroutput>bool FileGroupError.replay</computeroutput></para></section>
+<anchor xml:id="_struct_file_group_error_1aba3952529a65cc9c9a9eb8fe737bee09"/><section>
+    <title>score</title>
+<indexterm><primary>score</primary><secondary>FileGroupError</secondary></indexterm>
+<indexterm><primary>FileGroupError</primary><secondary>score</secondary></indexterm>
+<para><computeroutput>bool FileGroupError.score</computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+Assets/Scripts/<link linkend="__file_group_8cs">FileGroup.cs</link></section>
+</section>

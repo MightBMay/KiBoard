@@ -5,13 +5,34 @@ using UnityEngine;
 [System.Serializable]
 public class Combo
 {
+    /// <summary>
+    /// Maximum multiplier that can be achieved.
+    /// </summary>
     const float maxMultiplier = 3;
+    /// <summary>
+    /// how many missed notes before multiplier is set to 1.
+    /// </summary>
     const int comboKillThreshold = -10;
+    /// <summary>
+    /// Current score multiplier.
+    /// </summary>
     public float multiplier = 1;
+    /// <summary>
+    /// Current number of consecutive notes without dropping combo.
+    /// </summary>
     public int count;
+    /// <summary>
+    /// current amount of notes dropped. multiplier is reset to 1 when this reaches -10.
+    /// </summary>
     public float dropCounter;
+    /// <summary>
+    ///  tracks the highest count reached this song.
+    /// </summary>
     public int highestCount = 0;
 
+    /// <summary>
+    /// Resets combo variables to default values.
+    /// </summary>
     public void ClearCombo()
     {
         multiplier = 1;
@@ -20,6 +41,10 @@ public class Combo
         highestCount = 0;
 
     }
+    /// <summary>
+    /// Updates the multiplier based on the timing score of the note pressed.
+    /// </summary>
+    /// <param name="score">String containing "Perfect, Good, Okay" used to determine how much to add to the multiplier.</param>
     public void ChangeMultiplier(string score)
     {
         float increase = GetIncrease(score);
@@ -49,7 +74,11 @@ public class Combo
 
     }
 
-
+    /// <summary>
+    /// Get the Multiplier increase based on note timing score.
+    /// </summary>
+    /// <param name="score">string score for note score timing.</param>
+    /// <returns>float Change in multiplier based off of note score timing</returns>
     public float GetIncrease(string score)
     {
         switch (score)

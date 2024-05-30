@@ -7,8 +7,13 @@ using System.Linq;
 public static class MidiReadFile
 {
 
+    /// <summary>
+    /// Dictionary storing what notes are active at a given song time. Used to make sure you cannot press a note twice without releasing it.
+    /// </summary>
     static Dictionary<int, NoteEventInfo> activeNotes = new Dictionary<int, NoteEventInfo>();
-
+    /// <summary>
+    /// Loads <see cref="NoteEventDataWrapper"/> from a given file path.
+    /// </summary>
     public static NoteEventDataWrapper GetNoteEventsFromFilePath(string filePath)
     {
         if (File.Exists(filePath))
@@ -32,7 +37,10 @@ public static class MidiReadFile
 
     }
 
-
+    /// <summary>
+    /// Counts total number of notes from the currently selected song, filtering out tempo change events.
+    /// </summary>
+    /// <returns> total number of notes in the currently selected song.</returns>
     public static int CountNotes()
     {
 
@@ -95,11 +103,17 @@ public static class MidiReadFile
         }
     }
 
+    /// <summary>
+    /// Get <see cref="NoteEventDataWrapper"/> from Json data with given path.
+    /// </summary>
 
     public static NoteEventDataWrapper GetDataFile(string jsonFilePath)
     {
         return MidiDataHandler.GetJSONData(jsonFilePath);
     }
+    /// <summary>
+    /// Get <see cref="NoteEventDataWrapper"/> from Midi data with given path.
+    /// </summary>
 
     static NoteEventDataWrapper ReadMidiFile(string midiFilePath)
     {

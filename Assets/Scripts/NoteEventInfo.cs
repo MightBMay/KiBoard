@@ -1,4 +1,4 @@
-[System.Serializable]
+
 
 
 
@@ -6,12 +6,27 @@
 
 //IF YOU ARE ENCOUNTERING WEIRD ERRORS WITH NOTES ITS PROBABLY DUE TO THE CONSTRUCTOR OVERRIDE HACK LOL
 
-
+/// <summary>
+/// Class containing all info needed to play a note.
+/// </summary>
+[System.Serializable]
 public class NoteEventInfo
 {
+    /// <summary>
+    /// Number of the note ranging from 0-87 coinciding with the notes on a piano.
+    /// </summary>
     public int noteNumber;
+    /// <summary>
+    /// starting time of the note.
+    /// </summary>
     public float startTime;
+    /// <summary>
+    /// release time of the note.
+    /// </summary>
     public float endTime;
+    /// <summary>
+    /// Has this note been triggered already?
+    /// </summary>
     public bool triggered;
 
     public NoteEventInfo()
@@ -40,11 +55,19 @@ public class NoteEventInfo
         this.triggered = false;
     }
 
-
+    /// <summary>
+    /// Calculate duration of note.
+    /// </summary>
+    /// <returns>Float containing note duration.</returns>
     public float GetDuration()
     {
         return endTime - startTime;
     }
+    /// <summary>
+    /// sets start and end time.
+    /// </summary>
+    /// <param name="start">new start time.</param>
+    /// <param name="end">new end time.</param>
     public void SetStartEndTime(float start, float end)
     {
         startTime = start;

@@ -1,0 +1,105 @@
+.TH "CameraScrollManager" 3 "Version 1.0.0" "KiBoard GDD & Technical Documentation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CameraScrollManager
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits MonoBehaviour\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBScrollCamera\fP ()"
+.br
+.RI "Scrolls the camera up and down while in the Song Editor\&. "
+.ti -1c
+.RI "void \fBResetCamera\fP ()"
+.br
+.RI "reset camera to minimum y position\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBcanScroll\fP = true"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBUpdate\fP ()"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "float \fBscrollSpeed\fP"
+.br
+.ti -1c
+.RI "float \fBminHeight\fP"
+.br
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "void CameraScrollManager\&.ResetCamera ()"
+
+.PP
+reset camera to minimum y position\&. 
+.nf
+32     {
+33         transform\&.position = new(transform\&.position\&.x, minHeight, transform\&.position\&.z);
+34         canScroll = false;
+35 
+36     }
+.PP
+.fi
+
+.SS "void CameraScrollManager\&.ScrollCamera ()"
+
+.PP
+Scrolls the camera up and down while in the Song Editor\&. 
+.nf
+21     {
+22 
+23         float scrollDelta = Input\&.mouseScrollDelta\&.y;
+24         if ( scrollDelta == 0 || Input\&.GetKey(KeyCode\&.LeftShift)|| !canScroll) { return; }
+25         transform\&.position += Mathf\&.Sign(scrollDelta) * scrollSpeed * Vector3\&.up;
+26         if (transform\&.position\&.y <= minHeight) { transform\&.position = new(transform\&.position\&.x, minHeight, transform\&.position\&.z); }
+27     }
+.PP
+.fi
+
+.PP
+Referenced by \fBUpdate()\fP\&.
+.SS "void CameraScrollManager\&.Update ()\fR [private]\fP"
+
+.nf
+13     {
+14         ScrollCamera(); // scroll the camera\&.
+15     }
+.PP
+.fi
+
+.SH "Member Data Documentation"
+.PP 
+.SS "bool CameraScrollManager\&.canScroll = true"
+
+.PP
+Referenced by \fBResetCamera()\fP, and \fBScrollCamera()\fP\&.
+.SS "float CameraScrollManager\&.minHeight\fR [private]\fP"
+
+.PP
+Referenced by \fBResetCamera()\fP, and \fBScrollCamera()\fP\&.
+.SS "float CameraScrollManager\&.scrollSpeed\fR [private]\fP"
+
+.PP
+Referenced by \fBScrollCamera()\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for KiBoard GDD & Technical Documentation from the source code\&.

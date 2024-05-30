@@ -1,0 +1,222 @@
+.TH "EditorNote" 3 "Version 1.0.0" "KiBoard GDD & Technical Documentation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EditorNote \- Represents a note in the editor with associated event information\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits MonoBehaviour\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBUpdateNoteEvent\fP (int noteNumber, float startTime, float endTime)"
+.br
+.RI "Updates the note event information\&. "
+.ti -1c
+.RI "void \fBSetHighlightColour\fP (Color newColour)"
+.br
+.RI "Sets the highlight color of the note\&. "
+.ti -1c
+.RI "void \fBResetHighlightColour\fP ()"
+.br
+.RI "Resets the highlight color of the note to its initial color\&. "
+.ti -1c
+.RI "void \fBSetNotePosition\fP (float mouseHeight)"
+.br
+.RI "Sets the position of the note based on mouse height and key origin X\&. "
+.ti -1c
+.RI "Vector2 \fBGridSnapNote\fP (Vector2 input, float increment=0\&.204545f)"
+.br
+.RI "Snaps the note position to the grid based on the specified increment\&. "
+.ti -1c
+.RI "void \fBSetShadowSize\fP (float ySize)"
+.br
+.RI "Sets the size of the shadow sprite\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBNoteEventInfo\fP \fBnoteEvent\fP"
+.br
+.RI "Information about the note event\&. "
+.ti -1c
+.RI "Color \fBstartColour\fP"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBStart\fP ()"
+.br
+.RI "Initializes the note by retrieving the SpriteRenderer component and storing the initial color\&. "
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "SpriteRenderer \fBspriteRenderer\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents a note in the editor with associated event information\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "Vector2 EditorNote\&.GridSnapNote (Vector2 input, float increment = \fR0::204545f\fP)"
+
+.PP
+Snaps the note position to the grid based on the specified increment\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIinput\fP The input position to snap\&.
+.br
+\fIincrement\fP The grid snap increment\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The snapped position\&.
+.RE
+.PP
+
+.nf
+77     {
+78         float x = Mathf\&.Round(input\&.x / increment) * increment;
+79         return new Vector2(x, input\&.y);
+80     }
+.PP
+.fi
+
+.SS "void EditorNote\&.ResetHighlightColour ()"
+
+.PP
+Resets the highlight color of the note to its initial color\&. 
+.nf
+54     {
+55         spriteRenderer\&.color = startColour;
+56     }
+.PP
+.fi
+
+.SS "void EditorNote\&.SetHighlightColour (Color newColour)"
+
+.PP
+Sets the highlight color of the note\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fInewColour\fP The new highlight color\&.
+.RE
+.PP
+
+.nf
+46     {
+47         spriteRenderer\&.color = newColour;
+48     }
+.PP
+.fi
+
+.SS "void EditorNote\&.SetNotePosition (float mouseHeight)"
+
+.PP
+Sets the position of the note based on mouse height and key origin X\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fImouseHeight\fP The height of the mouse\&.
+.br
+\fIkeyOriginX\fP The origin X position of the key\&.
+.RE
+.PP
+
+.nf
+64     {
+65         float height = mouseHeight >= Mathf\&.NegativeInfinity ? mouseHeight : 1;
+66         //Vector2 gridSnap = GridSnapNote();
+67         transform\&.position = new Vector2(noteEvent\&.noteNumber, height);
+68     }
+.PP
+.fi
+
+.SS "void EditorNote\&.SetShadowSize (float ySize)"
+
+.PP
+Sets the size of the shadow sprite\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIySize\fP The size of the shadow along the Y-axis\&.
+.RE
+.PP
+
+.nf
+87     {
+88         var spriterend = transform\&.GetChild(0)\&.GetComponent<SpriteRenderer>();
+89         spriterend\&.size = new Vector2(1\&.35f, ySize + 0\&.075f);
+90     }
+.PP
+.fi
+
+.SS "void EditorNote\&.Start ()\fR [private]\fP"
+
+.PP
+Initializes the note by retrieving the SpriteRenderer component and storing the initial color\&. 
+.nf
+23     {
+24         spriteRenderer = GetComponent<SpriteRenderer>();
+25         startColour = spriteRenderer\&.color;
+26     }
+.PP
+.fi
+
+.SS "void EditorNote\&.UpdateNoteEvent (int noteNumber, float startTime, float endTime)"
+
+.PP
+Updates the note event information\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fInoteNumber\fP The note number\&.
+.br
+\fIstartTime\fP The start time of the note event\&.
+.br
+\fIendTime\fP The end time of the note event\&.
+.RE
+.PP
+
+.nf
+35     {
+36         noteEvent\&.startTime = startTime;
+37         noteEvent\&.endTime = endTime;
+38         noteEvent\&.noteNumber = noteNumber;
+39     }
+.PP
+.fi
+
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBNoteEventInfo\fP EditorNote\&.noteEvent"
+
+.PP
+Information about the note event\&. 
+.PP
+Referenced by \fBSongNoteEditor\&.DragNote()\fP, \fBSongNoteEditor\&.OnLeftMouseUp()\fP, \fBSongNoteEditor\&.RescaleNotesFromBPM()\fP, and \fBSetNotePosition()\fP\&.
+.SS "SpriteRenderer EditorNote\&.spriteRenderer\fR [private]\fP"
+
+.PP
+Referenced by \fBStart()\fP\&.
+.SS "Color EditorNote\&.startColour"
+
+.PP
+Referenced by \fBResetHighlightColour()\fP, and \fBStart()\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for KiBoard GDD & Technical Documentation from the source code\&.

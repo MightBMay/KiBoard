@@ -1,0 +1,479 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_song_score" xml:lang="en-US">
+<title>SongScore Class Reference</title>
+<indexterm><primary>SongScore</primary></indexterm>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>float <link linkend="_class_song_score_1ae541d72aa5260dd48f581525d2d5bb94">GetNotePercentage</link> (int noteCount)</para>
+
+<para>Calculates percentage of notes hit. </para>
+</listitem>
+            <listitem><para>int[] <link linkend="_class_song_score_1a248a3e361b5a456adcfbfc18c380911a">GetScoreArray</link> (int noteCount)</para>
+
+<para>Combines score quantities of note scores hit into an int array. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_song_score_1a0c456bbd53f343b338285454eaca9619">AddScore</link> (string Score)</para>
+
+<para>add a note to the song score. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_song_score_1a51eee760b1aa969dfbc348c4dfcabbaa">ClearScore</link> ()</para>
+
+<para>resets score values to 0. </para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_song_score_1ae1193eae22aae7d34664e29ff44d27a7">FinalizeScore</link> ()</para>
+
+<para>Finishes processing score values and checks if any high scores are achieved. if so, writes them to a score file. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_song_score_1aaa305803b153e6833f19eca686ac887d">WriteScoreToJson</link> (string filename)</para>
+
+<para>writes score file to Json with given name in the <link linkend="_struct_file_group_1abee499ed2d81accbd18326f83cfae462">FileGroup.FolderPath</link> of the currently selected song. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>static <link linkend="_class_song_score">SongScore</link> <link linkend="_class_song_score_1a324b3e09610f214e78a640137a645271">ReadFieldsFromJsonFile</link> (string filePath)</para>
+
+<para>Reads a .score file from a given path. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>DateTime <link linkend="_class_song_score_1a995b51ac60daf43e36a08fdfd1ac0453">timeSet</link></para>
+
+<para>Time stamp of when score was performed. </para>
+</listitem>
+            <listitem><para>int <link linkend="_class_song_score_1a1e341465fd7e498c74d26777b3059155">score</link></para>
+
+<para>total score. </para>
+</listitem>
+            <listitem><para>int <link linkend="_class_song_score_1aaeae737ba95fee34e29f5a84d7cbbf13">perfect</link></para>
+
+<para>number of perfect notes </para>
+</listitem>
+            <listitem><para>int <link linkend="_class_song_score_1aa154535a6f0616f725465495cf5573bd">good</link></para>
+
+<para>number of good notes </para>
+</listitem>
+            <listitem><para>int <link linkend="_class_song_score_1ae7e3517d74b836d4c8f69636bfcb51b8">okay</link></para>
+
+<para>number of okay notes </para>
+</listitem>
+            <listitem><para>int <link linkend="_class_song_score_1a46b405a87c82ae6a095e7364213ec871">extra</link></para>
+
+<para>number of extra notes </para>
+</listitem>
+            <listitem><para>int <link linkend="_class_song_score_1a1975252c66a628809c09c9ab6e894a22">miss</link></para>
+
+<para>number of missd notes </para>
+</listitem>
+            <listitem><para>float <link linkend="_class_song_score_1a21dd9999a35a0a4f9d9b667717fc1d07">noteAccuracy</link></para>
+
+<para>percentage of notes hit with okay or better scoring. </para>
+</listitem>
+            <listitem><para>int <link linkend="_class_song_score_1ad13007c3b3ee80add50ce9a08c74b01d">highestCombo</link></para>
+
+<para>longest string of notes hit without dropping the combo. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_song_score_1a0c456bbd53f343b338285454eaca9619"/><section>
+    <title>AddScore()</title>
+<indexterm><primary>AddScore</primary><secondary>SongScore</secondary></indexterm>
+<indexterm><primary>SongScore</primary><secondary>AddScore</secondary></indexterm>
+<para><computeroutput>void SongScore.AddScore (string Score)</computeroutput></para><para>
+
+<para>add a note to the song score. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>Score</entry><entry>
+<para>String score for the note</para>
+</entry>
+                            </row>
+                            <row>
+<entry>multiplier</entry><entry>
+<para>Current multiplier</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<programlisting linenumbering="unnumbered">76 &#32;&#32;&#32;&#32;{
+77 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;scoreChange&#32;=&#32;0;
+78 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">switch</emphasis>&#32;(Score)
+79 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+80 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<emphasis role="stringliteral">&quot;Perfect&quot;</emphasis>:
+81 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_song_score_1aaeae737ba95fee34e29f5a84d7cbbf13">perfect</link>++;
+82 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;scoreChange&#32;=&#32;(250);
+83 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+84 
+85 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<emphasis role="stringliteral">&quot;Good&quot;</emphasis>:
+86 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_song_score_1aa154535a6f0616f725465495cf5573bd">good</link>++;
+87 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;scoreChange&#32;=&#32;(150);
+88 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+89 
+90 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<emphasis role="stringliteral">&quot;Okay&quot;</emphasis>:
+91 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_song_score_1ae7e3517d74b836d4c8f69636bfcb51b8">okay</link>++;
+92 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;scoreChange&#32;=&#32;(75);
+93 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+94 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">default</emphasis>:
+95 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_song_score_1a46b405a87c82ae6a095e7364213ec871">extra</link>++;
+96 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;scoreChange&#32;=&#32;-100;
+97 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_camera_shake">CameraShake</link>.<link linkend="_class_camera_shake_1a5abf7ab4f88ad0f6cf5d8f1b4ab7f08b">ShakeCamera</link>(2.5f,&#32;0.1f);
+98 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+99 
+100 
+101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;finalScoreChange&#32;=&#32;(int)(scoreChange&#32;*&#32;<link linkend="_class_game_manager">GameManager</link>.<link linkend="_class_game_manager_1a7666e8468dac197b9eb32dd32128524f">instance</link>.combo.multiplier);
+103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_song_score_1a1e341465fd7e498c74d26777b3059155">score</link>&#32;+=&#32;finalScoreChange;
+104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_u_i">GameUI</link>.<link linkend="_class_game_u_i_1a23d5c169ab2afc81f6ee3b94e78bd6fb">instance</link>.CreateTimingText(finalScoreChange,&#32;Score);
+105 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+Referenced by <link linkend="_class_game_manager_1ab6189abe4c7230a024dbf48645ce1d1c">GameManager.UpdatePlayerScore()</link>.</para>
+</section>
+<anchor xml:id="_class_song_score_1a51eee760b1aa969dfbc348c4dfcabbaa"/><section>
+    <title>ClearScore()</title>
+<indexterm><primary>ClearScore</primary><secondary>SongScore</secondary></indexterm>
+<indexterm><primary>SongScore</primary><secondary>ClearScore</secondary></indexterm>
+<para><computeroutput>void SongScore.ClearScore ( )</computeroutput></para><para>
+
+<para>resets score values to 0. </para>
+</para>
+<programlisting linenumbering="unnumbered">110 &#32;&#32;&#32;&#32;{
+111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_song_score_1a1e341465fd7e498c74d26777b3059155">score</link>&#32;=&#32;0;
+112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_song_score_1aaeae737ba95fee34e29f5a84d7cbbf13">perfect</link>&#32;=&#32;0;
+113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_song_score_1aa154535a6f0616f725465495cf5573bd">good</link>&#32;=&#32;0;
+114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_song_score_1ae7e3517d74b836d4c8f69636bfcb51b8">okay</link>&#32;=&#32;0;
+115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_song_score_1a46b405a87c82ae6a095e7364213ec871">extra</link>&#32;=&#32;0;
+116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_song_score_1a1975252c66a628809c09c9ab6e894a22">miss</link>&#32;=&#32;0;
+117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_song_score_1ad13007c3b3ee80add50ce9a08c74b01d">highestCombo</link>&#32;=&#32;0;
+118 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_song_score_1ae1193eae22aae7d34664e29ff44d27a7"/><section>
+    <title>FinalizeScore()</title>
+<indexterm><primary>FinalizeScore</primary><secondary>SongScore</secondary></indexterm>
+<indexterm><primary>SongScore</primary><secondary>FinalizeScore</secondary></indexterm>
+<para><computeroutput>bool SongScore.FinalizeScore ( )</computeroutput></para><para>
+
+<para>Finishes processing score values and checks if any high scores are achieved. if so, writes them to a score file. </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+<programlisting linenumbering="unnumbered">124 &#32;&#32;&#32;&#32;{
+125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;writeScore&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_song_score">SongScore</link>&#32;savedScores&#32;=&#32;<link linkend="_class_game_manager">GameManager</link>.<link linkend="_class_game_manager_1a7666e8468dac197b9eb32dd32128524f">instance</link>?.selectedSongHighScore&#32;??&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_song_score">SongScore</link>();
+127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;curHighestCombo&#32;=&#32;<link linkend="_class_game_manager">GameManager</link>.<link linkend="_class_game_manager_1a7666e8468dac197b9eb32dd32128524f">instance</link>.combo.highestCount;
+128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_song_score_1a995b51ac60daf43e36a08fdfd1ac0453">timeSet</link>&#32;=&#32;System.DateTime.Now;
+129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_song_score_1a21dd9999a35a0a4f9d9b667717fc1d07">noteAccuracy</link>&#32;=&#32;<link linkend="_class_song_score_1ae541d72aa5260dd48f581525d2d5bb94">GetNotePercentage</link>(<link linkend="_class_game_manager">GameManager</link>.<link linkend="_class_game_manager_1a7666e8468dac197b9eb32dd32128524f">instance</link>.totalNotes);
+130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_song_score_1a1e341465fd7e498c74d26777b3059155">score</link>&#32;&gt;&#32;savedScores.<link linkend="_class_song_score_1a1e341465fd7e498c74d26777b3059155">score</link>)&#32;{&#32;writeScore&#32;=&#32;<emphasis role="keyword">true</emphasis>;&#32;}
+131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(savedScores.<link linkend="_class_song_score_1ad13007c3b3ee80add50ce9a08c74b01d">highestCombo</link>&#32;&gt;&#32;curHighestCombo)&#32;{&#32;<link linkend="_class_song_score_1ad13007c3b3ee80add50ce9a08c74b01d">highestCombo</link>&#32;=&#32;savedScores.<link linkend="_class_song_score_1ad13007c3b3ee80add50ce9a08c74b01d">highestCombo</link>;&#32;}
+132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;{&#32;<link linkend="_class_song_score_1ad13007c3b3ee80add50ce9a08c74b01d">highestCombo</link>&#32;=&#32;curHighestCombo;&#32;writeScore&#32;=&#32;<emphasis role="keyword">true</emphasis>;&#32;}
+133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(writeScore)&#32;<link linkend="_class_song_score_1aaa305803b153e6833f19eca686ac887d">WriteScoreToJson</link>(GameSettings.currentFileGroup.FolderPath);
+134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;writeScore;
+136 
+137 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+Referenced by <link linkend="_class_game_manager_1ad109ae0452de271ad4ea6f05e7a7d74b">GameManager.OnSongEnd()</link>.</para>
+</section>
+<anchor xml:id="_class_song_score_1ae541d72aa5260dd48f581525d2d5bb94"/><section>
+    <title>GetNotePercentage()</title>
+<indexterm><primary>GetNotePercentage</primary><secondary>SongScore</secondary></indexterm>
+<indexterm><primary>SongScore</primary><secondary>GetNotePercentage</secondary></indexterm>
+<para><computeroutput>float SongScore.GetNotePercentage (int noteCount)</computeroutput></para><para>
+
+<para>Calculates percentage of notes hit. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>noteCount</entry><entry>
+<para>total number of notes.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>percent accuracy.</para>
+</formalpara>
+</para>
+<programlisting linenumbering="unnumbered">50 &#32;&#32;&#32;&#32;{
+51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(noteCount&#32;==&#32;0)&#32;{&#32;<emphasis role="keywordflow">return</emphasis>&#32;Mathf.NegativeInfinity;&#32;}
+52 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(<link linkend="_class_song_score_1aaeae737ba95fee34e29f5a84d7cbbf13">perfect</link>&#32;+&#32;<link linkend="_class_song_score_1aa154535a6f0616f725465495cf5573bd">good</link>&#32;+&#32;<link linkend="_class_song_score_1ae7e3517d74b836d4c8f69636bfcb51b8">okay</link>)&#32;/&#32;noteCount&#32;*&#32;100;
+53 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+Referenced by <link linkend="_class_song_score_1ae1193eae22aae7d34664e29ff44d27a7">FinalizeScore()</link>.</para>
+</section>
+<anchor xml:id="_class_song_score_1a248a3e361b5a456adcfbfc18c380911a"/><section>
+    <title>GetScoreArray()</title>
+<indexterm><primary>GetScoreArray</primary><secondary>SongScore</secondary></indexterm>
+<indexterm><primary>SongScore</primary><secondary>GetScoreArray</secondary></indexterm>
+<para><computeroutput>int[] SongScore.GetScoreArray (int noteCount)</computeroutput></para><para>
+
+<para>Combines score quantities of note scores hit into an int array. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>noteCount</entry><entry>
+<para>total number of notes.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>Array containing score, and quantities of note types.</para>
+</formalpara>
+</para>
+<programlisting linenumbering="unnumbered">60 &#32;&#32;&#32;&#32;{
+61 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>[]&#32;scores&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>[6];
+62 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;scores[0]&#32;=&#32;<link linkend="_class_song_score_1a1e341465fd7e498c74d26777b3059155">score</link>;
+63 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;scores[1]&#32;=&#32;<link linkend="_class_song_score_1aaeae737ba95fee34e29f5a84d7cbbf13">perfect</link>;
+64 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;scores[2]&#32;=&#32;<link linkend="_class_song_score_1aa154535a6f0616f725465495cf5573bd">good</link>;
+65 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;scores[3]&#32;=&#32;<link linkend="_class_song_score_1ae7e3517d74b836d4c8f69636bfcb51b8">okay</link>;
+66 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;scores[4]&#32;=&#32;<link linkend="_class_song_score_1a46b405a87c82ae6a095e7364213ec871">extra</link>;
+67 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;scores[5]&#32;=&#32;noteCount&#32;-&#32;(<link linkend="_class_song_score_1aaeae737ba95fee34e29f5a84d7cbbf13">perfect</link>&#32;+&#32;<link linkend="_class_song_score_1aa154535a6f0616f725465495cf5573bd">good</link>&#32;+&#32;<link linkend="_class_song_score_1ae7e3517d74b836d4c8f69636bfcb51b8">okay</link>);
+68 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;scores;
+69 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+Referenced by <link linkend="_class_game_manager_1ad109ae0452de271ad4ea6f05e7a7d74b">GameManager.OnSongEnd()</link>.</para>
+</section>
+<anchor xml:id="_class_song_score_1a324b3e09610f214e78a640137a645271"/><section>
+    <title>ReadFieldsFromJsonFile()</title>
+<indexterm><primary>ReadFieldsFromJsonFile</primary><secondary>SongScore</secondary></indexterm>
+<indexterm><primary>SongScore</primary><secondary>ReadFieldsFromJsonFile</secondary></indexterm>
+<para><computeroutput>static <link linkend="_class_song_score">SongScore</link> SongScore.ReadFieldsFromJsonFile (string filePath)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Reads a .score file from a given path. </para>
+</para>
+<programlisting linenumbering="unnumbered">165 &#32;&#32;&#32;&#32;{
+166 
+167 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">try</emphasis>
+168 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+169 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Check&#32;if&#32;the&#32;file&#32;exists</emphasis>
+170 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(File.Exists(filePath)&#32;&amp;&amp;&#32;!<emphasis role="keywordtype">string</emphasis>.IsNullOrEmpty(filePath))
+171 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+172 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Read&#32;the&#32;JSON&#32;string&#32;from&#32;the&#32;file</emphasis>
+173 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;json&#32;=&#32;File.ReadAllText(filePath);
+174 
+175 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Deserialize&#32;the&#32;JSON&#32;string&#32;into&#32;a&#32;SongScore&#32;object</emphasis>
+176 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;JsonUtility.FromJson&lt;<link linkend="_class_song_score">SongScore</link>&gt;(json);
+177 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+178 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+179 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Debug.Log($<emphasis role="stringliteral">&quot;Score&#32;File&#32;&apos;{filePath}&apos;&#32;does&#32;not&#32;exist.&quot;</emphasis>);
+181 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">null</emphasis>;
+182 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+184 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">catch</emphasis>&#32;(Exception&#32;ex)
+185 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+186 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Debug.LogError($<emphasis role="stringliteral">&quot;Error&#32;reading&#32;fields&#32;from&#32;JSON&#32;file:&#32;{ex.Message}&quot;</emphasis>);
+187 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">null</emphasis>;
+188 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+189 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_song_score_1aaa305803b153e6833f19eca686ac887d"/><section>
+    <title>WriteScoreToJson()</title>
+<indexterm><primary>WriteScoreToJson</primary><secondary>SongScore</secondary></indexterm>
+<indexterm><primary>SongScore</primary><secondary>WriteScoreToJson</secondary></indexterm>
+<para><computeroutput>void SongScore.WriteScoreToJson (string filename)</computeroutput></para><para>
+
+<para>writes score file to Json with given name in the <link linkend="_struct_file_group_1abee499ed2d81accbd18326f83cfae462">FileGroup.FolderPath</link> of the currently selected song. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>filename</entry><entry></entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<programlisting linenumbering="unnumbered">143 &#32;&#32;&#32;&#32;{
+144 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Debug.Log(filename);
+145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">try</emphasis>
+146 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+147 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Serialize&#32;the&#32;object&#32;to&#32;JSON&#32;format</emphasis>
+148 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;json&#32;=&#32;JsonUtility.ToJson(<emphasis role="keyword">this</emphasis>);
+149 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;filePath&#32;=&#32;filename&#32;+<emphasis role="stringliteral">&quot;/&quot;</emphasis>+&#32;GameSettings.currentFileGroup.FileName&#32;+&#32;<emphasis role="stringliteral">&quot;.score&quot;</emphasis>;
+150 
+151 
+152 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Write&#32;the&#32;JSON&#32;string&#32;to&#32;the&#32;file</emphasis>
+153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;File.WriteAllText(filePath,&#32;json);
+154 
+155 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+156 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">catch</emphasis>&#32;(Exception&#32;ex)
+157 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+158 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Debug.LogError($<emphasis role="stringliteral">&quot;Error&#32;writing&#32;fields&#32;to&#32;JSON&#32;file:&#32;{ex.Message}&quot;</emphasis>);
+159 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+160 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+Referenced by <link linkend="_class_song_score_1ae1193eae22aae7d34664e29ff44d27a7">FinalizeScore()</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_class_song_score_1a46b405a87c82ae6a095e7364213ec871"/><section>
+    <title>extra</title>
+<indexterm><primary>extra</primary><secondary>SongScore</secondary></indexterm>
+<indexterm><primary>SongScore</primary><secondary>extra</secondary></indexterm>
+<para><computeroutput>int SongScore.extra</computeroutput></para><para>
+
+<para>number of extra notes </para>
+</para>
+<para>
+Referenced by <link linkend="_class_song_score_1a0c456bbd53f343b338285454eaca9619">AddScore()</link>, <link linkend="_class_song_score_1a51eee760b1aa969dfbc348c4dfcabbaa">ClearScore()</link>, and <link linkend="_class_song_score_1a248a3e361b5a456adcfbfc18c380911a">GetScoreArray()</link>.</para>
+</section>
+<anchor xml:id="_class_song_score_1aa154535a6f0616f725465495cf5573bd"/><section>
+    <title>good</title>
+<indexterm><primary>good</primary><secondary>SongScore</secondary></indexterm>
+<indexterm><primary>SongScore</primary><secondary>good</secondary></indexterm>
+<para><computeroutput>int SongScore.good</computeroutput></para><para>
+
+<para>number of good notes </para>
+</para>
+<para>
+Referenced by <link linkend="_class_song_score_1a0c456bbd53f343b338285454eaca9619">AddScore()</link>, <link linkend="_class_song_score_1a51eee760b1aa969dfbc348c4dfcabbaa">ClearScore()</link>, <link linkend="_class_song_score_1ae541d72aa5260dd48f581525d2d5bb94">GetNotePercentage()</link>, and <link linkend="_class_song_score_1a248a3e361b5a456adcfbfc18c380911a">GetScoreArray()</link>.</para>
+</section>
+<anchor xml:id="_class_song_score_1ad13007c3b3ee80add50ce9a08c74b01d"/><section>
+    <title>highestCombo</title>
+<indexterm><primary>highestCombo</primary><secondary>SongScore</secondary></indexterm>
+<indexterm><primary>SongScore</primary><secondary>highestCombo</secondary></indexterm>
+<para><computeroutput>int SongScore.highestCombo</computeroutput></para><para>
+
+<para>longest string of notes hit without dropping the combo. </para>
+</para>
+<para>
+Referenced by <link linkend="_class_song_score_1a51eee760b1aa969dfbc348c4dfcabbaa">ClearScore()</link>, and <link linkend="_class_song_score_1ae1193eae22aae7d34664e29ff44d27a7">FinalizeScore()</link>.</para>
+</section>
+<anchor xml:id="_class_song_score_1a1975252c66a628809c09c9ab6e894a22"/><section>
+    <title>miss</title>
+<indexterm><primary>miss</primary><secondary>SongScore</secondary></indexterm>
+<indexterm><primary>SongScore</primary><secondary>miss</secondary></indexterm>
+<para><computeroutput>int SongScore.miss</computeroutput></para><para>
+
+<para>number of missd notes </para>
+</para>
+<para>
+Referenced by <link linkend="_class_song_score_1a51eee760b1aa969dfbc348c4dfcabbaa">ClearScore()</link>.</para>
+</section>
+<anchor xml:id="_class_song_score_1a21dd9999a35a0a4f9d9b667717fc1d07"/><section>
+    <title>noteAccuracy</title>
+<indexterm><primary>noteAccuracy</primary><secondary>SongScore</secondary></indexterm>
+<indexterm><primary>SongScore</primary><secondary>noteAccuracy</secondary></indexterm>
+<para><computeroutput>float SongScore.noteAccuracy</computeroutput></para><para>
+
+<para>percentage of notes hit with okay or better scoring. </para>
+</para>
+<para>
+Referenced by <link linkend="_class_song_score_1ae1193eae22aae7d34664e29ff44d27a7">FinalizeScore()</link>.</para>
+</section>
+<anchor xml:id="_class_song_score_1ae7e3517d74b836d4c8f69636bfcb51b8"/><section>
+    <title>okay</title>
+<indexterm><primary>okay</primary><secondary>SongScore</secondary></indexterm>
+<indexterm><primary>SongScore</primary><secondary>okay</secondary></indexterm>
+<para><computeroutput>int SongScore.okay</computeroutput></para><para>
+
+<para>number of okay notes </para>
+</para>
+<para>
+Referenced by <link linkend="_class_song_score_1a0c456bbd53f343b338285454eaca9619">AddScore()</link>, <link linkend="_class_song_score_1a51eee760b1aa969dfbc348c4dfcabbaa">ClearScore()</link>, <link linkend="_class_song_score_1ae541d72aa5260dd48f581525d2d5bb94">GetNotePercentage()</link>, and <link linkend="_class_song_score_1a248a3e361b5a456adcfbfc18c380911a">GetScoreArray()</link>.</para>
+</section>
+<anchor xml:id="_class_song_score_1aaeae737ba95fee34e29f5a84d7cbbf13"/><section>
+    <title>perfect</title>
+<indexterm><primary>perfect</primary><secondary>SongScore</secondary></indexterm>
+<indexterm><primary>SongScore</primary><secondary>perfect</secondary></indexterm>
+<para><computeroutput>int SongScore.perfect</computeroutput></para><para>
+
+<para>number of perfect notes </para>
+</para>
+<para>
+Referenced by <link linkend="_class_song_score_1a0c456bbd53f343b338285454eaca9619">AddScore()</link>, <link linkend="_class_song_score_1a51eee760b1aa969dfbc348c4dfcabbaa">ClearScore()</link>, <link linkend="_class_song_score_1ae541d72aa5260dd48f581525d2d5bb94">GetNotePercentage()</link>, and <link linkend="_class_song_score_1a248a3e361b5a456adcfbfc18c380911a">GetScoreArray()</link>.</para>
+</section>
+<anchor xml:id="_class_song_score_1a1e341465fd7e498c74d26777b3059155"/><section>
+    <title>score</title>
+<indexterm><primary>score</primary><secondary>SongScore</secondary></indexterm>
+<indexterm><primary>SongScore</primary><secondary>score</secondary></indexterm>
+<para><computeroutput>int SongScore.score</computeroutput></para><para>
+
+<para>total score. </para>
+</para>
+<para>
+Referenced by <link linkend="_class_song_score_1a0c456bbd53f343b338285454eaca9619">AddScore()</link>, <link linkend="_class_song_score_1a51eee760b1aa969dfbc348c4dfcabbaa">ClearScore()</link>, <link linkend="_class_song_score_1ae1193eae22aae7d34664e29ff44d27a7">FinalizeScore()</link>, and <link linkend="_class_song_score_1a248a3e361b5a456adcfbfc18c380911a">GetScoreArray()</link>.</para>
+</section>
+<anchor xml:id="_class_song_score_1a995b51ac60daf43e36a08fdfd1ac0453"/><section>
+    <title>timeSet</title>
+<indexterm><primary>timeSet</primary><secondary>SongScore</secondary></indexterm>
+<indexterm><primary>SongScore</primary><secondary>timeSet</secondary></indexterm>
+<para><computeroutput>DateTime SongScore.timeSet</computeroutput></para><para>
+
+<para>Time stamp of when score was performed. </para>
+</para>
+<para>
+Referenced by <link linkend="_class_song_score_1ae1193eae22aae7d34664e29ff44d27a7">FinalizeScore()</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+Assets/Scripts/<link linkend="__song_score_8cs">SongScore.cs</link></section>
+</section>

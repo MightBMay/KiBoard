@@ -1,0 +1,609 @@
+.TH "SongNoteEditor" 3 "Version 1.0.0" "KiBoard GDD & Technical Documentation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SongNoteEditor
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits MonoBehaviour\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBOnRightMouseDown\fP ()"
+.br
+.ti -1c
+.RI "void \fBOnRightMouseHold\fP ()"
+.br
+.ti -1c
+.RI "void \fBOnLeftMouseDown\fP ()"
+.br
+.ti -1c
+.RI "void \fBOnLeftMouseHold\fP ()"
+.br
+.ti -1c
+.RI "void \fBOnLeftMouseUp\fP ()"
+.br
+.ti -1c
+.RI "void \fBScaleNote\fP ()"
+.br
+.ti -1c
+.RI "float \fBConvertYPositionToSongTime\fP (Vector2 position)"
+.br
+.ti -1c
+.RI "Vector2 \fBConvertNoteEventToNotePosition\fP (\fBNoteEventInfo\fP noteEvent)"
+.br
+.ti -1c
+.RI "void \fBRescaleNotesFromBPM\fP ()"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static Vector2 \fBGridSnapNote\fP (Vector2 input, float increment=0\&.204545f)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "HashSet< \fBEditorNoteWrapper\fP > \fBselectedNotes\fP = new HashSet<\fBEditorNoteWrapper\fP>()"
+.br
+.ti -1c
+.RI "float \fBselectCount\fP"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBUpdate\fP ()"
+.br
+.ti -1c
+.RI "void \fBAddNote\fP ()"
+.br
+.ti -1c
+.RI "void \fBSubtractNote\fP ()"
+.br
+.ti -1c
+.RI "void \fBSelectNote\fP ()"
+.br
+.ti -1c
+.RI "void \fBDeselectNote\fP ()"
+.br
+.ti -1c
+.RI "void \fBDeselectAllNotes\fP ()"
+.br
+.ti -1c
+.RI "void \fBDragNote\fP ()"
+.br
+.ti -1c
+.RI "void \fBCopySelection\fP ()"
+.br
+.ti -1c
+.RI "void \fBPasteSelection\fP ()"
+.br
+.ti -1c
+.RI "void \fBUpdateStartEndTimes\fP (\fBNoteEventInfo\fP noteEvent, float snappedYPos)"
+.br
+.ti -1c
+.RI "Vector2 \fBGetOffsetFromTransform\fP (Vector2 point, Transform referenceTransform)"
+.br
+.ti -1c
+.RI "bool \fBIsTransformInSelectedNotes\fP (Transform targetTransform)"
+.br
+.ti -1c
+.RI "void \fBUpdateSelectedNoteOffsets\fP ()"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "Vector2 \fBmousePosition1\fP"
+.br
+.ti -1c
+.RI "Vector2 \fBmousePosition2\fP"
+.br
+.ti -1c
+.RI "LayerMask \fBgroupSelectLayerMask\fP"
+.br
+.ti -1c
+.RI "bool \fBisGroupSelecting\fP"
+.br
+.ti -1c
+.RI "bool \fBisDragging\fP"
+.br
+.ti -1c
+.RI "bool \fBisScaling\fP"
+.br
+.ti -1c
+.RI "RaycastHit2D \fBhit\fP"
+.br
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "void SongNoteEditor\&.AddNote ()\fR [private]\fP"
+
+.nf
+168     {
+169         if (hit\&.collider\&.CompareTag("KeyLane"))
+170         {
+171             DeselectAllNotes();
+172             int noteNumber = 1 + SpawnPiano\&.instance\&.GetIndexOfSpriteRenderer(hit\&.transform\&.parent\&.GetComponent<SpriteRenderer>());
+173             //SongEditor\&.instance\&.CreateNote(noteNumber, mousePosition1\&.y, mousePosition1\&.y + 0\&.5f, mousePosition1\&.y);
+174             RescaleNotesFromBPM();
+175         }
+176     }
+.PP
+.fi
+
+.PP
+Referenced by \fBOnLeftMouseDown()\fP\&.
+.SS "Vector2 SongNoteEditor\&.ConvertNoteEventToNotePosition (\fBNoteEventInfo\fP noteEvent)"
+
+.nf
+303     {
+304         var result = new Vector2(noteEvent\&.noteNumber * 1, noteEvent\&.startTime * (GameSettings\&.bpm / 60));
+305         return result;
+306     }
+.PP
+.fi
+
+.SS "float SongNoteEditor\&.ConvertYPositionToSongTime (Vector2 position)"
+
+.nf
+296     {
+297         // 1 unit = 1 "beat" or bar on the UI
+298         return position\&.y / (GameSettings\&.bpm / 60);
+299         // y position / bpm /60 so it is bpS
+300     }
+.PP
+.fi
+
+.SS "void SongNoteEditor\&.CopySelection ()\fR [private]\fP"
+
+.nf
+281     {
+282 
+283     }
+.PP
+.fi
+
+.SS "void SongNoteEditor\&.DeselectAllNotes ()\fR [private]\fP"
+
+.nf
+214     {
+215         foreach (EditorNoteWrapper note in selectedNotes)
+216         {
+217             note\&.noteTransform\&.GetComponent<EditorNote>()\&.ResetHighlightColour();
+218 
+219         }
+220         selectedNotes\&.Clear();
+221     }
+.PP
+.fi
+
+.PP
+Referenced by \fBAddNote()\fP, and \fBSubtractNote()\fP\&.
+.SS "void SongNoteEditor\&.DeselectNote ()\fR [private]\fP"
+
+.nf
+200     {
+201         if (hit\&.collider\&.CompareTag("EditorNote"))
+202         {
+203             HashSet<EditorNoteWrapper> noteStorage = new();
+204             foreach (EditorNoteWrapper note in selectedNotes)
+205             {
+206                 if (note\&.noteTransform == hit\&.transform) { note\&.noteTransform\&.GetComponent<EditorNote>()\&.ResetHighlightColour(); }
+207                 else { noteStorage\&.Add(note); }
+208             }
+209             selectedNotes\&.Clear();
+210             selectedNotes = noteStorage;
+211         }
+212     }
+.PP
+.fi
+
+.PP
+Referenced by \fBOnLeftMouseDown()\fP, \fBOnLeftMouseHold()\fP, \fBOnRightMouseDown()\fP, and \fBOnRightMouseHold()\fP\&.
+.SS "void SongNoteEditor\&.DragNote ()\fR [private]\fP"
+
+.nf
+247     {
+248         if (hit\&.collider\&.CompareTag("EditorNote") && !isDragging)
+249         {
+250             isDragging = true;
+251             UpdateSelectedNoteOffsets();
+252             if (IsTransformInSelectedNotes(hit\&.transform))
+253             {
+254                 var temp = new EditorNoteWrapper(hit\&.transform, GetOffsetFromTransform(hit\&.point, hit\&.transform));
+255                 selectedNotes\&.Add(temp);
+256                 temp\&.noteTransform\&.GetComponent<EditorNote>()\&.SetHighlightColour(Color\&.red);
+257             }
+258         }
+259         if (selectedNotes\&.Count > 0 && isDragging && !Input\&.GetKeyDown(KeyCode\&.LeftShift))
+260         {
+261 
+262             Vector2 mousePosition2 = Camera\&.main\&.ScreenToWorldPoint(Input\&.mousePosition);
+263             foreach (EditorNoteWrapper dragNote in selectedNotes)
+264             {
+265                 // Calculate the snapped position
+266                 Vector2 snappedPosition = GridSnapNote(mousePosition2 + dragNote\&.initialOffset);
+267 
+268                 // Update the note's position          
+269                 dragNote\&.noteTransform\&.position = new Vector2(snappedPosition\&.x \- 0\&.05f, snappedPosition\&.y);
+270                 UpdateStartEndTimes(dragNote\&.noteTransform\&.GetComponent<EditorNote>()\&.noteEvent, snappedPosition\&.y);
+271                 // idk why i need to realign it with a \-0\&.25f shift but whatever, it works
+272             }
+273         }
+274 
+275     }
+.PP
+.fi
+
+.PP
+Referenced by \fBOnLeftMouseHold()\fP\&.
+.SS "Vector2 SongNoteEditor\&.GetOffsetFromTransform (Vector2 point, Transform referenceTransform)\fR [private]\fP"
+
+.nf
+308     {
+309         return (Vector2)referenceTransform\&.position \- point;
+310     }
+.PP
+.fi
+
+.PP
+Referenced by \fBDragNote()\fP, \fBSelectNote()\fP, and \fBUpdateSelectedNoteOffsets()\fP\&.
+.SS "static Vector2 SongNoteEditor\&.GridSnapNote (Vector2 input, float increment = \fR0::204545f\fP)\fR [static]\fP"
+
+.nf
+347     {
+348         float x = Mathf\&.Round(input\&.x / increment) * increment;
+349 
+350         return new Vector2(x\-0\&.095f, input\&.y);
+351     }
+.PP
+.fi
+
+.PP
+Referenced by \fBDragNote()\fP\&.
+.SS "bool SongNoteEditor\&.IsTransformInSelectedNotes (Transform targetTransform)\fR [private]\fP"
+
+.nf
+312     {
+313         foreach (var noteWrapper in selectedNotes)
+314         {
+315             if (noteWrapper\&.noteTransform == targetTransform)
+316             {
+317                 return true; // Found a match
+318             }
+319         }
+320 
+321         return false; // No match found
+322     }
+.PP
+.fi
+
+.PP
+Referenced by \fBDragNote()\fP\&.
+.SS "void SongNoteEditor\&.OnLeftMouseDown ()"
+
+.nf
+78     {
+79         if (!Input\&.GetMouseButtonDown(0)) return; // only run if LMB down\&.
+80         var mousePositionWorld = Camera\&.main\&.ScreenToWorldPoint(Input\&.mousePosition); // convert mouse position in screen space to world space\&.
+81         hit = Physics2D\&.Raycast(mousePositionWorld, Vector2\&.zero);// shoot ray from mouse position\&.
+82 
+83 
+84         if (hit) { mousePosition1 = hit\&.point; Debug\&.Log(hit\&.collider\&.name); } // set mousepos1 if hit, otherwise return\&.
+85         else { Debug\&.Log("NullHit"); return; }
+86         UpdateSelectedNoteOffsets();
+87 
+88         if (Input\&.GetKey(KeyCode\&.LeftShift))
+89         {
+90             SelectNote();
+91         }
+92         else if (Input\&.GetKey(KeyCode\&.LeftControl))
+93         {
+94             DeselectNote();
+95         }
+96         else if (!isDragging)
+97         {
+98             AddNote();
+99         }
+100 
+101     }
+.PP
+.fi
+
+.PP
+Referenced by \fBUpdate()\fP\&.
+.SS "void SongNoteEditor\&.OnLeftMouseHold ()"
+
+.nf
+103     {
+104         if (!Input\&.GetMouseButton(0)) return; // only run if LMB down\&.
+105         var mousePositionWorld = Camera\&.main\&.ScreenToWorldPoint(Input\&.mousePosition); // convert mouse position in screen space to world space\&.
+106         hit = Physics2D\&.Raycast(mousePositionWorld, Vector2\&.zero);// shoot ray from mouse position\&.
+107 
+108         if (hit) { mousePosition2 = hit\&.point; } // set mousepos1 if hit, otherwise return\&.
+109         else { Debug\&.Log("NullHit"); return; }
+110 
+111 
+112 
+113         if (Input\&.GetKey(KeyCode\&.LeftShift))
+114         {
+115             SelectNote();
+116         }
+117         else if (Input\&.GetKey(KeyCode\&.LeftControl))
+118         {
+119             DeselectNote();
+120         }
+121         else
+122         {
+123             DragNote();
+124         }
+125 
+126     }
+.PP
+.fi
+
+.PP
+Referenced by \fBUpdate()\fP\&.
+.SS "void SongNoteEditor\&.OnLeftMouseUp ()"
+
+.nf
+155     {
+156         if (!Input\&.GetMouseButtonUp(0)) return;
+157 
+158         foreach (GameObject note in SongEditor\&.instance\&.noteObjects)
+159         {
+160             UpdateStartEndTimes(note\&.GetComponent<EditorNote>()\&.noteEvent,note\&.transform\&.position\&.y );
+161         }
+162 
+163         isDragging = false;
+164 
+165 
+166     }
+.PP
+.fi
+
+.PP
+Referenced by \fBUpdate()\fP\&.
+.SS "void SongNoteEditor\&.OnRightMouseDown ()"
+
+.nf
+35     {
+36         if (!Input\&.GetMouseButtonDown(1)) return; // only run if LMB down\&.
+37         var mousePositionWorld = Camera\&.main\&.ScreenToWorldPoint(Input\&.mousePosition); // convert mouse position in screen space to world space\&.
+38         hit = Physics2D\&.Raycast(mousePositionWorld, Vector2\&.zero);// shoot ray from mouse position\&.
+39 
+40         if (hit) { mousePosition1 = hit\&.point; } // set mousepos1 if hit, otherwise return\&.
+41         else { Debug\&.Log("NullHit"); return; }
+42         UpdateSelectedNoteOffsets();
+43 
+44 
+45 
+46         if (Input\&.GetKey(KeyCode\&.LeftShift))
+47         {
+48             SelectNote();
+49         }
+50         else if (Input\&.GetKey(KeyCode\&.LeftControl))
+51         {
+52             DeselectNote();
+53         }
+54         else { SubtractNote(); }
+55 
+56     }
+.PP
+.fi
+
+.PP
+Referenced by \fBUpdate()\fP\&.
+.SS "void SongNoteEditor\&.OnRightMouseHold ()"
+
+.nf
+58     {
+59         if (!Input\&.GetMouseButton(1)) return; // only run if LMB down\&.
+60         var mousePositionWorld = Camera\&.main\&.ScreenToWorldPoint(Input\&.mousePosition); // convert mouse position in screen space to world space\&.
+61         hit = Physics2D\&.Raycast(mousePositionWorld, Vector2\&.zero);// shoot ray from mouse position\&.
+62 
+63         if (hit) { mousePosition1 = hit\&.point; } // set mousepos1 if hit, otherwise return\&.
+64         else { Debug\&.Log("NullHit"); return; }
+65         UpdateSelectedNoteOffsets();
+66         if (Input\&.GetKey(KeyCode\&.LeftShift))
+67         {
+68             SelectNote();
+69         }
+70         else if (Input\&.GetKey(KeyCode\&.LeftControl))
+71         {
+72             DeselectNote();
+73         }
+74 
+75         else { SubtractNote(); }
+76     }
+.PP
+.fi
+
+.PP
+Referenced by \fBUpdate()\fP\&.
+.SS "void SongNoteEditor\&.PasteSelection ()\fR [private]\fP"
+
+.nf
+285     {
+286 
+287     }
+.PP
+.fi
+
+.SS "void SongNoteEditor\&.RescaleNotesFromBPM ()"
+
+.nf
+324     {
+325         float modifiedScale = GameManager\&.instance\&.modifiedNoteScale;
+326         foreach (GameObject g in SongEditor\&.instance\&.noteObjects)
+327         {
+328             var sr = g\&.GetComponent<SpriteRenderer>();
+329             var newSize = new Vector2(sr\&.size\&.x, Mathf\&.Clamp(((
+330                 g\&.GetComponent<EditorNote>()\&.noteEvent\&.endTime \-
+331                 g\&.GetComponent<EditorNote>()\&.noteEvent\&.startTime)), 0\&.5f, Mathf\&.Infinity));
+332 
+333             sr\&.size = newSize;
+334             sr\&.GetComponent<EditorNote>()\&.SetShadowSize(newSize\&.y);
+335         }
+336 
+337     }
+.PP
+.fi
+
+.PP
+Referenced by \fBAddNote()\fP, and \fBScaleNote()\fP\&.
+.SS "void SongNoteEditor\&.ScaleNote ()"
+
+.nf
+223     {
+224         if (selectedNotes\&.Count > 0 && Input\&.GetKey(KeyCode\&.LeftShift))
+225         {
+226             var scroll = Input\&.mouseScrollDelta\&.y;
+227             if (scroll != 0)
+228             {
+229                 foreach (NoteEventInfo noteEvent in SongEditor\&.FindNoteEventInfo(selectedNotes))
+230                 {
+231 
+232                     if (noteEvent\&.endTime <= noteEvent\&.startTime || noteEvent\&.endTime + Mathf\&.Sign(scroll) * 0\&.1f <= noteEvent\&.startTime)
+233                     {
+234                         noteEvent\&.endTime = noteEvent\&.startTime + 0\&.05f;
+235                     }
+236                     else
+237                     {
+238 
+239                         noteEvent\&.endTime += Mathf\&.Sign(scroll) * 0\&.05f;
+240                     }
+241                     RescaleNotesFromBPM();
+242                 }
+243             }
+244         }
+245     }
+.PP
+.fi
+
+.PP
+Referenced by \fBUpdate()\fP\&.
+.SS "void SongNoteEditor\&.SelectNote ()\fR [private]\fP"
+
+.nf
+187     {
+188         if (hit\&.collider\&.CompareTag("EditorNote"))
+189         {
+190             if (!selectedNotes\&.Any(note => note\&.noteTransform == hit\&.transform))
+191             {
+192                 var temp = new EditorNoteWrapper(hit\&.transform, GetOffsetFromTransform(hit\&.point, hit\&.transform));
+193                 selectedNotes\&.Add(temp);
+194                 temp\&.noteTransform\&.GetComponent<EditorNote>()\&.SetHighlightColour(Color\&.red);
+195             }
+196         }
+197 
+198     }
+.PP
+.fi
+
+.PP
+Referenced by \fBOnLeftMouseDown()\fP, \fBOnLeftMouseHold()\fP, \fBOnRightMouseDown()\fP, and \fBOnRightMouseHold()\fP\&.
+.SS "void SongNoteEditor\&.SubtractNote ()\fR [private]\fP"
+
+.nf
+178     {
+179         if (hit\&.collider\&.TryGetComponent<EditorNote>(out var noteEvent))
+180         {
+181             DeselectAllNotes();
+182             selectedNotes\&.RemoveWhere(note => note\&.noteTransform == noteEvent\&.transform);
+183             SongEditor\&.instance\&.RemoveNoteEvent(noteEvent, true);
+184         }
+185     }
+.PP
+.fi
+
+.PP
+Referenced by \fBOnRightMouseDown()\fP, and \fBOnRightMouseHold()\fP\&.
+.SS "void SongNoteEditor\&.Update ()\fR [private]\fP"
+
+.nf
+23     {
+24 
+25         OnLeftMouseDown();
+26         OnLeftMouseHold();
+27         OnLeftMouseUp();
+28 
+29         OnRightMouseDown();
+30         OnRightMouseHold();
+31 
+32         ScaleNote();
+33     }
+.PP
+.fi
+
+.SS "void SongNoteEditor\&.UpdateSelectedNoteOffsets ()\fR [private]\fP"
+
+.nf
+340     {
+341         foreach (EditorNoteWrapper dragNote in selectedNotes)
+342         {
+343             dragNote\&.initialOffset = GetOffsetFromTransform(hit\&.point, dragNote\&.noteTransform); // assign all offset values for clicking and dragging\&.
+344         }
+345     }
+.PP
+.fi
+
+.PP
+Referenced by \fBDragNote()\fP, \fBOnLeftMouseDown()\fP, \fBOnRightMouseDown()\fP, and \fBOnRightMouseHold()\fP\&.
+.SS "void SongNoteEditor\&.UpdateStartEndTimes (\fBNoteEventInfo\fP noteEvent, float snappedYPos)\fR [private]\fP"
+
+.nf
+290     {
+291         float duration = noteEvent\&.GetDuration();
+292         float newStartTime = snappedYPos \- (duration / 2); // ConvertYPositionToSongTime(snappedPosition);
+293         noteEvent\&.SetStartEndTime(newStartTime, newStartTime + duration);
+294     }
+.PP
+.fi
+
+.PP
+Referenced by \fBDragNote()\fP, and \fBOnLeftMouseUp()\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "LayerMask SongNoteEditor\&.groupSelectLayerMask\fR [private]\fP"
+
+.SS "RaycastHit2D SongNoteEditor\&.hit\fR [private]\fP"
+
+.PP
+Referenced by \fBAddNote()\fP, \fBDeselectNote()\fP, \fBDragNote()\fP, \fBOnLeftMouseDown()\fP, \fBOnLeftMouseHold()\fP, \fBOnRightMouseDown()\fP, \fBOnRightMouseHold()\fP, \fBSelectNote()\fP, \fBSubtractNote()\fP, and \fBUpdateSelectedNoteOffsets()\fP\&.
+.SS "bool SongNoteEditor\&.isDragging\fR [private]\fP"
+
+.PP
+Referenced by \fBDragNote()\fP, \fBOnLeftMouseDown()\fP, and \fBOnLeftMouseUp()\fP\&.
+.SS "bool SongNoteEditor\&.isGroupSelecting\fR [private]\fP"
+
+.SS "bool SongNoteEditor\&.isScaling\fR [private]\fP"
+
+.SS "Vector2 SongNoteEditor\&.mousePosition1\fR [private]\fP"
+
+.PP
+Referenced by \fBOnLeftMouseDown()\fP, \fBOnRightMouseDown()\fP, and \fBOnRightMouseHold()\fP\&.
+.SS "Vector2 SongNoteEditor\&.mousePosition2\fR [private]\fP"
+
+.PP
+Referenced by \fBDragNote()\fP, and \fBOnLeftMouseHold()\fP\&.
+.SS "float SongNoteEditor\&.selectCount"
+
+.SS "HashSet<\fBEditorNoteWrapper\fP> SongNoteEditor\&.selectedNotes = new HashSet<\fBEditorNoteWrapper\fP>()"
+
+.PP
+Referenced by \fBDeselectAllNotes()\fP, \fBDeselectNote()\fP, \fBDragNote()\fP, \fBIsTransformInSelectedNotes()\fP, \fBScaleNote()\fP, \fBSelectNote()\fP, \fBSubtractNote()\fP, and \fBUpdateSelectedNoteOffsets()\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for KiBoard GDD & Technical Documentation from the source code\&.

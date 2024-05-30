@@ -60,7 +60,11 @@ public struct FileGroup
 
         return str;
     }
-
+    /// <summary>
+    /// gets an image based on prefix from the <see cref="ImageFiles"/> list.
+    /// </summary>
+    /// <param name="prefix">prefix to search for to differentiate from different images for a song ( eg: icon_songName or bg_songName)</param>
+    /// <returns>texture with that image.</returns>
     public Texture2D GetImage(string prefix)
     {
         foreach(string path in ImageFiles)
@@ -81,15 +85,11 @@ public struct FileGroup
         }
     }
 
-
-    /// <summary>
-    /// Loads an image from the specified file path and returns it as a Texture2D.
-    /// </summary>
-    /// <param name="path">The file path of the image.</param>
-    /// <returns>The loaded image as a Texture2D.</returns>
-
  
 }
+/// <summary>
+/// struct containing information on which files are or aren't located when assembling a file group for a song.
+/// </summary>
 [System.Serializable]
 public struct FileGroupError
 {

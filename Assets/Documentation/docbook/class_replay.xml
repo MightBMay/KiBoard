@@ -1,0 +1,209 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_replay" xml:lang="en-US">
+<title>Replay Class Reference</title>
+<indexterm><primary>Replay</primary></indexterm>
+<para>Inheritance diagram for Replay:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_replay.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Static Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>static void <link linkend="_class_replay_1a6ca2e428e3f2cd09fdb0ad7ac149612d">StartReplayCapture</link> ()</para>
+
+<para>Clears current replay data, Checks if the selected song is a .replay file and assigns isPlaying <link linkend="_class_replay">Replay</link>, then assigns a BPM to the replay. </para>
+</listitem>
+            <listitem><para>static void <link linkend="_class_replay_1af4136be61df5443c033a781242cf9596">UpdateReplay</link> (int noteNum, float time)</para>
+
+<para>Adds player input note to the replay data being stored. </para>
+</listitem>
+            <listitem><para>static void <link linkend="_class_replay_1a0d97ab2056465d34269abb9d08ee54fe">ClearReplay</link> ()</para>
+
+<para>resets replayNoteData to empty values. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_note_event_data_wrapper">NoteEventDataWrapper</link> <link linkend="_class_replay_1a1953d810b80c78e3977a0e2c11c19282">replayNoteData</link></para>
+
+<para>Stores all player input notes to later be saved as a .replay file. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>static <link linkend="_class_replay">Replay</link> <link linkend="_class_replay_1a4fd76e76a6bdd4efb0f59151167b8746">instance</link></para>
+
+<para>singleton reference. </para>
+</listitem>
+            <listitem><para>static bool <link linkend="_class_replay_1a557710a107d231bd78824337a7264a20">isPlayingReplay</link> = false</para>
+
+<para>Is the currently playing song a .replay file? </para>
+</listitem>
+            <listitem><para>static bool <link linkend="_class_replay_1adcab1a68be0e56bb8ac781ea654c587c">recordReplay</link> = false</para>
+
+<para>Should player input be recorded for a .replay file to be made? </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_class_replay_1a61b8c32e4d3ec322444dc1c317c4d02c">Awake</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_replay_1a61b8c32e4d3ec322444dc1c317c4d02c"/><section>
+    <title>Awake()</title>
+<indexterm><primary>Awake</primary><secondary>Replay</secondary></indexterm>
+<indexterm><primary>Replay</primary><secondary>Awake</secondary></indexterm>
+<para><computeroutput>void Replay.Awake ( )<computeroutput>[private]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">26 &#32;&#32;&#32;&#32;{
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_replay_1a4fd76e76a6bdd4efb0f59151167b8746">instance</link>&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_replay_1a4fd76e76a6bdd4efb0f59151167b8746">instance</link>&#32;=&#32;<emphasis role="keyword">this</emphasis>;
+30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;{&#32;Destroy(<emphasis role="keyword">this</emphasis>);&#32;}
+32 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_replay_1a0d97ab2056465d34269abb9d08ee54fe"/><section>
+    <title>ClearReplay()</title>
+<indexterm><primary>ClearReplay</primary><secondary>Replay</secondary></indexterm>
+<indexterm><primary>Replay</primary><secondary>ClearReplay</secondary></indexterm>
+<para><computeroutput>static void Replay.ClearReplay ( )<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>resets replayNoteData to empty values. </para>
+</para>
+<programlisting linenumbering="unnumbered">70 &#32;&#32;&#32;&#32;{
+71 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_replay_1a4fd76e76a6bdd4efb0f59151167b8746">instance</link>.replayNoteData.Reset();
+72 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+Referenced by <link linkend="_class_replay_1a6ca2e428e3f2cd09fdb0ad7ac149612d">StartReplayCapture()</link>.</para>
+</section>
+<anchor xml:id="_class_replay_1a6ca2e428e3f2cd09fdb0ad7ac149612d"/><section>
+    <title>StartReplayCapture()</title>
+<indexterm><primary>StartReplayCapture</primary><secondary>Replay</secondary></indexterm>
+<indexterm><primary>Replay</primary><secondary>StartReplayCapture</secondary></indexterm>
+<para><computeroutput>static void Replay.StartReplayCapture ( )<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Clears current replay data, Checks if the selected song is a .replay file and assigns isPlaying <link linkend="_class_replay">Replay</link>, then assigns a BPM to the replay. </para>
+</para>
+<programlisting linenumbering="unnumbered">37 &#32;&#32;&#32;&#32;{
+38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_replay_1a0d97ab2056465d34269abb9d08ee54fe">ClearReplay</link>();
+39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(Path.GetExtension(GameSettings.currentSongPath).Equals(<emphasis role="stringliteral">&quot;.replay&quot;</emphasis>))&#32;{&#32;<link linkend="_class_replay_1a557710a107d231bd78824337a7264a20">isPlayingReplay</link>&#32;=&#32;<emphasis role="keyword">true</emphasis>;&#32;}
+40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;instance.replayNoteData.BPM&#32;=&#32;GameSettings.bpm;
+41 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+Referenced by <link linkend="_class_game_manager_1a53d0c42e8760b846fd39a6b9b1115566">GameManager.PrepareNotes()</link>.</para>
+</section>
+<anchor xml:id="_class_replay_1af4136be61df5443c033a781242cf9596"/><section>
+    <title>UpdateReplay()</title>
+<indexterm><primary>UpdateReplay</primary><secondary>Replay</secondary></indexterm>
+<indexterm><primary>Replay</primary><secondary>UpdateReplay</secondary></indexterm>
+<para><computeroutput>static void Replay.UpdateReplay (int noteNum, float time)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Adds player input note to the replay data being stored. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>noteNum</entry><entry>
+<para>number of the note pressed ( 0 - 87) </para>
+</entry>
+                            </row>
+                            <row>
+<entry>time</entry><entry>
+<para>what songTime the note was pressed.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<programlisting linenumbering="unnumbered">49 &#32;&#32;&#32;&#32;{
+50 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_replay_1a557710a107d231bd78824337a7264a20">isPlayingReplay</link>||&#32;!<link linkend="_class_replay_1adcab1a68be0e56bb8ac781ea654c587c">recordReplay</link>||time&#32;&lt;0)&#32;{&#32;<emphasis role="keywordflow">return</emphasis>;&#32;}
+51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Check&#32;if&#32;the&#32;note&#32;exists&#32;with&#32;endTime&#32;as&#32;Mathf.NegativeInfinity</emphasis>
+52 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;var&#32;existingNote&#32;=&#32;<link linkend="_class_replay_1a4fd76e76a6bdd4efb0f59151167b8746">instance</link>.replayNoteData.NoteEvents.Find(note&#32;=&gt;&#32;note.noteNumber&#32;==&#32;noteNum&#32;&amp;&amp;&#32;note.endTime&#32;==&#32;Mathf.NegativeInfinity);
+53 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+54 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(existingNote&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+55 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+56 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;If&#32;the&#32;note&#32;exists,&#32;update&#32;its&#32;endTime</emphasis>
+57 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;existingNote.endTime&#32;=&#32;time;
+58 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+59 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+60 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+61 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;If&#32;the&#32;note&#32;doesn&apos;t&#32;exist,&#32;add&#32;a&#32;new&#32;note&#32;with&#32;endTime&#32;as&#32;Mathf.NegativeInfinity</emphasis>
+62 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_replay_1a4fd76e76a6bdd4efb0f59151167b8746">instance</link>.replayNoteData.AddNewNote(noteNum,&#32;time,&#32;Mathf.NegativeInfinity);
+63 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+64 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+Referenced by <link linkend="_class_midi_input_1a2e24c8cbdc52507a5c148923c9f65d3f">MidiInput.NoteOff()</link>, and <link linkend="_class_midi_input_1a358348cc54a49193003a2788f81b7b4a">MidiInput.NoteOn()</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_class_replay_1a4fd76e76a6bdd4efb0f59151167b8746"/><section>
+    <title>instance</title>
+<indexterm><primary>instance</primary><secondary>Replay</secondary></indexterm>
+<indexterm><primary>Replay</primary><secondary>instance</secondary></indexterm>
+<para><computeroutput><link linkend="_class_replay">Replay</link> Replay.instance<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>singleton reference. </para>
+</para>
+<para>
+Referenced by <link linkend="_class_replay_1a61b8c32e4d3ec322444dc1c317c4d02c">Awake()</link>, <link linkend="_class_replay_1a0d97ab2056465d34269abb9d08ee54fe">ClearReplay()</link>, <link linkend="_class_game_manager_1ad109ae0452de271ad4ea6f05e7a7d74b">GameManager.OnSongEnd()</link>, and <link linkend="_class_replay_1af4136be61df5443c033a781242cf9596">UpdateReplay()</link>.</para>
+</section>
+<anchor xml:id="_class_replay_1a557710a107d231bd78824337a7264a20"/><section>
+    <title>isPlayingReplay</title>
+<indexterm><primary>isPlayingReplay</primary><secondary>Replay</secondary></indexterm>
+<indexterm><primary>Replay</primary><secondary>isPlayingReplay</secondary></indexterm>
+<para><computeroutput>bool Replay.isPlayingReplay = false<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Is the currently playing song a .replay file? </para>
+</para>
+<para>
+Referenced by <link linkend="_class_game_manager_1ad109ae0452de271ad4ea6f05e7a7d74b">GameManager.OnSongEnd()</link>, <link linkend="_class_replay_1a6ca2e428e3f2cd09fdb0ad7ac149612d">StartReplayCapture()</link>, and <link linkend="_class_replay_1af4136be61df5443c033a781242cf9596">UpdateReplay()</link>.</para>
+</section>
+<anchor xml:id="_class_replay_1adcab1a68be0e56bb8ac781ea654c587c"/><section>
+    <title>recordReplay</title>
+<indexterm><primary>recordReplay</primary><secondary>Replay</secondary></indexterm>
+<indexterm><primary>Replay</primary><secondary>recordReplay</secondary></indexterm>
+<para><computeroutput>bool Replay.recordReplay = false<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Should player input be recorded for a .replay file to be made? </para>
+</para>
+<para>
+Referenced by <link linkend="_class_replay_1af4136be61df5443c033a781242cf9596">UpdateReplay()</link>.</para>
+</section>
+<anchor xml:id="_class_replay_1a1953d810b80c78e3977a0e2c11c19282"/><section>
+    <title>replayNoteData</title>
+<indexterm><primary>replayNoteData</primary><secondary>Replay</secondary></indexterm>
+<indexterm><primary>Replay</primary><secondary>replayNoteData</secondary></indexterm>
+<para><computeroutput><link linkend="_class_note_event_data_wrapper">NoteEventDataWrapper</link> Replay.replayNoteData</computeroutput></para><para>
+
+<para>Stores all player input notes to later be saved as a .replay file. </para>
+</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+Assets/Scripts/<link linkend="__replay_8cs">Replay.cs</link></section>
+</section>

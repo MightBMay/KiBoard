@@ -5,20 +5,57 @@ using UnityEngine;
 [System.Serializable]
 public class SongScore
 {
+    /// <summary>
+    /// Time stamp of when score was performed.
+    /// </summary>
     public DateTime timeSet;
+    /// <summary>
+    /// total score.
+    /// </summary>
     public int score;
+    /// <summary>
+    ///  number of perfect notes
+    /// </summary>
     public int perfect;
+    /// <summary>
+    ///  number of good notes
+    /// </summary>
     public int good;
+    /// <summary>
+    ///  number of okay notes
+    /// </summary>
     public int okay;
+    /// <summary>
+    ///  number of extra notes
+    /// </summary>
     public int extra;
+    /// <summary>
+    ///  number of missd notes
+    /// </summary>
     public int miss;
+    /// <summary>
+    /// percentage of notes hit with okay or better scoring.
+    /// </summary>
     public float noteAccuracy;
+    /// <summary>
+    /// longest string of notes hit without dropping the combo.
+    /// </summary>
     public int highestCombo;
+    /// <summary>
+    /// Calculates percentage of notes hit.
+    /// </summary>
+    /// <param name="noteCount">total number of notes.</param>
+    /// <returns>percent accuracy.</returns>
     public float GetNotePercentage(int noteCount)
     {
         if (noteCount == 0) { return Mathf.NegativeInfinity; }
         return (perfect + good + okay) / noteCount * 100;
     }
+    /// <summary>
+    /// Combines score quantities of note scores hit into an int array.
+    /// </summary>
+    /// <param name="noteCount">total number of notes.</param>
+    /// <returns> Array containing score, and quantities of note types.</returns>
     public int[] GetScoreArray(int noteCount)
     {
         int[] scores = new int[6];
@@ -30,7 +67,12 @@ public class SongScore
         scores[5] = noteCount - (perfect + good + okay);
         return scores;
     }
-    public void AddScore(string Score, float multiplier)
+    /// <summary>
+    /// add a note to the song score.
+    /// </summary>
+    /// <param name="Score">String score for the note</param>
+    /// <param name="multiplier">Current multiplier</param>
+    public void AddScore(string Score)
     {
         int scoreChange = 0;
         switch (Score)
@@ -57,10 +99,13 @@ public class SongScore
 
 
         }
-        int finalScoreChange = (int)(scoreChange * multiplier);
+        int finalScoreChange = (int)(scoreChange * GameManager.instance.combo.multiplier);
         score += finalScoreChange;
         GameUI.instance.CreateTimingText(finalScoreChange, Score);
     }
+    /// <summary>
+    /// resets score values to 0.
+    /// </summary>
     public void ClearScore()
     {
         score = 0;
@@ -71,7 +116,10 @@ public class SongScore
         miss = 0;
         highestCombo = 0;
     }
-
+    /// <summary>
+    /// Finishes processing score values and checks if any high scores are achieved. if so, writes them to a score file.
+    /// </summary>
+    /// <returns></returns>
     public bool FinalizeScore()
     {
         bool writeScore = false;
@@ -87,7 +135,10 @@ public class SongScore
         return writeScore;
 
     }
-
+    /// <summary>
+    /// writes score file to Json with given name in the <see cref="FileGroup.FolderPath"/> of the currently selected song.
+    /// </summary>
+    /// <param name="filename"></param>
     public void WriteScoreToJson(string filename)
     {
         Debug.Log(filename);
@@ -107,7 +158,9 @@ public class SongScore
             Debug.LogError($"Error writing fields to JSON file: {ex.Message}");
         }
     }
-
+    /// <summary>
+    /// Reads a .score file from a given path
+    /// </summary>
     public static SongScore ReadFieldsFromJsonFile(string filePath)
     {
 

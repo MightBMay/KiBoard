@@ -12,7 +12,10 @@ public class ExtraSongInfoMenu : MonoBehaviour
         if (instance == null) { instance = this; }
         else { Destroy(this); }
     }
-
+    /// <summary>
+    /// sets the text displaying the extra information about the song.
+    /// </summary>
+    /// <param name="songName"></param>
     public void SetText(string songName)
     {
         childObjects.SetActive(true);

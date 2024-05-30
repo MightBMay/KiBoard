@@ -1,0 +1,312 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_game_u_i" xml:lang="en-US">
+<title>GameUI Class Reference</title>
+<indexterm><primary>GameUI</primary></indexterm>
+<para>Inheritance diagram for GameUI:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_game_u_i.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_class_game_u_i_1a028174544700e306eaefc533e877b430">CreateTimingText</link> (int score, string scoretext)</para>
+
+<para>creates a different timing text based on the timing score. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_game_u_i_1a54f29d43da024f545f8060c8ae60dc1f">SetComboBarValue</link> (float value)</para>
+
+<para>sets the value of the combo bar slider based off of the current combo&apos;s multiplier. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>static <link linkend="_class_game_u_i">GameUI</link> <link linkend="_class_game_u_i_1a23d5c169ab2afc81f6ee3b94e78bd6fb">instance</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_class_game_u_i_1a9190be47b8c7c73198429e4833625e25">Awake</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_game_u_i_1ae1af03e7079adfabff38492498ea0980">Update</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_game_u_i_1a1d34f5a1d937e48063bf8ea136772f85">SpawnTimingText</link> (string score, Color color)</para>
+
+<para>spawns timing score text above the score. </para>
+</listitem>
+            <listitem><para>IEnumerator <link linkend="_class_game_u_i_1a4c35cbeece9df9b955e385ab80f22a3d">FadeoutDestroy</link> (TextMeshProUGUI textMesh)</para>
+
+<para>Fades out the alpha of text object and destroys the text&apos;s gameObject after a delay. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>GameObject <link linkend="_class_game_u_i_1a7ade2e77fb1c5c0c94c807618477089e">textPrefab</link></para>
+</listitem>
+            <listitem><para>float <link linkend="_class_game_u_i_1a79fb5b2589978adb3b6bc9f162a278be">fadeoutTimer</link></para>
+</listitem>
+            <listitem><para>TextMeshProUGUI <link linkend="_class_game_u_i_1ac5dfb4e8ba1c3d7c3f645c9df8fcb410">scoreText</link></para>
+</listitem>
+            <listitem><para>TextMeshProUGUI <link linkend="_class_game_u_i_1ac73757d3668ae8743a9b54099d7c608f">comboText</link></para>
+</listitem>
+            <listitem><para>Slider <link linkend="_class_game_u_i_1a87cf702d0c88530569a357b6fb23a799">comboBar</link></para>
+</listitem>
+            <listitem><para>Gradient <link linkend="_class_game_u_i_1ae05bb46d110d4d23bd7bbce5719b601c">comboGradient</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_game_u_i_1a9190be47b8c7c73198429e4833625e25"/><section>
+    <title>Awake()</title>
+<indexterm><primary>Awake</primary><secondary>GameUI</secondary></indexterm>
+<indexterm><primary>GameUI</primary><secondary>Awake</secondary></indexterm>
+<para><computeroutput>void GameUI.Awake ( )<computeroutput>[private]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">17 &#32;&#32;&#32;&#32;{
+18 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_game_u_i_1a23d5c169ab2afc81f6ee3b94e78bd6fb">instance</link>&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+19 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_u_i_1a23d5c169ab2afc81f6ee3b94e78bd6fb">instance</link>&#32;=&#32;<emphasis role="keyword">this</emphasis>;
+21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;{&#32;Destroy(<emphasis role="keyword">this</emphasis>);&#32;}
+23 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_game_u_i_1a028174544700e306eaefc533e877b430"/><section>
+    <title>CreateTimingText()</title>
+<indexterm><primary>CreateTimingText</primary><secondary>GameUI</secondary></indexterm>
+<indexterm><primary>GameUI</primary><secondary>CreateTimingText</secondary></indexterm>
+<para><computeroutput>void GameUI.CreateTimingText (int score, string scoretext)</computeroutput></para><para>
+
+<para>creates a different timing text based on the timing score. </para>
+</para>
+<programlisting linenumbering="unnumbered">74 &#32;&#32;&#32;&#32;{
+75 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">switch</emphasis>&#32;(scoretext)
+76 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+77 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<emphasis role="stringliteral">&quot;Perfect&quot;</emphasis>:
+78 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_u_i_1a1d34f5a1d937e48063bf8ea136772f85">SpawnTimingText</link>(<emphasis role="stringliteral">&quot;+&quot;</emphasis>&#32;+&#32;score.ToString(),&#32;<emphasis role="keyword">new</emphasis>&#32;Color(1,&#32;0,&#32;0.75f,&#32;.5f));
+79 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+80 
+81 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<emphasis role="stringliteral">&quot;Good&quot;</emphasis>:
+82 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_u_i_1a1d34f5a1d937e48063bf8ea136772f85">SpawnTimingText</link>(<emphasis role="stringliteral">&quot;+&quot;</emphasis>&#32;+&#32;score.ToString(),&#32;<emphasis role="keyword">new</emphasis>&#32;Color(0.15f,&#32;1,&#32;.5f,&#32;.5f));
+83 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+84 
+85 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<emphasis role="stringliteral">&quot;Okay&quot;</emphasis>:
+86 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_u_i_1a1d34f5a1d937e48063bf8ea136772f85">SpawnTimingText</link>(<emphasis role="stringliteral">&quot;+&quot;</emphasis>&#32;+&#32;score.ToString(),&#32;<emphasis role="keyword">new</emphasis>&#32;Color(0,&#32;0.04f,&#32;1,&#32;.5f));
+87 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+88 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">default</emphasis>:
+89 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_u_i_1a1d34f5a1d937e48063bf8ea136772f85">SpawnTimingText</link>((-10).ToString(),&#32;<emphasis role="keyword">new</emphasis>&#32;Color(1,&#32;0,&#32;0,&#32;.5f));
+90 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+91 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+92 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;scoreText.text&#32;=&#32;<link linkend="_class_game_manager">GameManager</link>.<link linkend="_class_game_manager_1a7666e8468dac197b9eb32dd32128524f">instance</link>.currentSongScore.score.ToString();
+93 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_game_u_i_1a4c35cbeece9df9b955e385ab80f22a3d"/><section>
+    <title>FadeoutDestroy()</title>
+<indexterm><primary>FadeoutDestroy</primary><secondary>GameUI</secondary></indexterm>
+<indexterm><primary>GameUI</primary><secondary>FadeoutDestroy</secondary></indexterm>
+<para><computeroutput>IEnumerator GameUI.FadeoutDestroy (TextMeshProUGUI textMesh)<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>Fades out the alpha of text object and destroys the text&apos;s gameObject after a delay. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>textMesh</entry><entry></entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+<programlisting linenumbering="unnumbered">48 &#32;&#32;&#32;&#32;{
+49 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Color&#32;startColor&#32;=&#32;textMesh.color;&#32;<emphasis role="comment">//&#32;Get&#32;the&#32;initial&#32;color</emphasis>
+50 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Color&#32;targetColor&#32;=&#32;<emphasis role="keyword">new</emphasis>(startColor.r,&#32;startColor.g,&#32;startColor.b,&#32;0);&#32;<emphasis role="comment">//&#32;Target&#32;color&#32;with&#32;alpha&#32;set&#32;to&#32;0</emphasis>
+51 
+52 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;elapsedTime&#32;=&#32;0f;
+53 
+54 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(elapsedTime&#32;&lt;&#32;<link linkend="_class_game_u_i_1a79fb5b2589978adb3b6bc9f162a278be">fadeoutTimer</link>)
+55 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+56 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Color&#32;temp;
+57 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Assign&#32;the&#32;new&#32;color&#32;back&#32;to&#32;the&#32;TextMeshProUGUI</emphasis>
+58 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;textMesh.color&#32;=&#32;temp&#32;=&#32;Color.Lerp(startColor,&#32;targetColor,&#32;elapsedTime&#32;/&#32;<link linkend="_class_game_u_i_1a79fb5b2589978adb3b6bc9f162a278be">fadeoutTimer</link>);
+59 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;elapsedTime&#32;+=&#32;Time.deltaTime;
+60 
+61 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;yield&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">null</emphasis>;
+62 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+63 
+64 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Ensure&#32;that&#32;the&#32;final&#32;color&#32;is&#32;set&#32;to&#32;the&#32;targetColor</emphasis>
+65 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;textMesh.color&#32;=&#32;targetColor;
+66 
+67 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Perform&#32;any&#32;other&#32;actions&#32;or&#32;destroy&#32;the&#32;TextMeshProUGUI&#32;object</emphasis>
+68 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Destroy(textMesh.gameObject);
+69 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+Referenced by <link linkend="_class_game_u_i_1a1d34f5a1d937e48063bf8ea136772f85">SpawnTimingText()</link>.</para>
+</section>
+<anchor xml:id="_class_game_u_i_1a54f29d43da024f545f8060c8ae60dc1f"/><section>
+    <title>SetComboBarValue()</title>
+<indexterm><primary>SetComboBarValue</primary><secondary>GameUI</secondary></indexterm>
+<indexterm><primary>GameUI</primary><secondary>SetComboBarValue</secondary></indexterm>
+<para><computeroutput>void GameUI.SetComboBarValue (float value)</computeroutput></para><para>
+
+<para>sets the value of the combo bar slider based off of the current combo&apos;s multiplier. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>value</entry><entry></entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<programlisting linenumbering="unnumbered">99 &#32;&#32;&#32;&#32;{
+100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Assuming&#32;the&#32;input&#32;value&#32;ranges&#32;from&#32;1&#32;to&#32;3</emphasis>
+101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;normalizedValue&#32;=&#32;(value&#32;-&#32;1)&#32;/&#32;(3&#32;-&#32;1);
+102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;roundedNormalizedValue&#32;=&#32;Mathf.Round(value&#32;*&#32;10)&#32;/&#32;10;
+103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;comboBar.value&#32;=&#32;normalizedValue;
+104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ColorBlock&#32;newColours&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;ColorBlock();
+105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;newColours.disabledColor&#32;=&#32;<link linkend="_class_game_u_i_1ae05bb46d110d4d23bd7bbce5719b601c">comboGradient</link>.Evaluate(normalizedValue);
+106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;newColours.colorMultiplier&#32;=&#32;1;
+107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;comboBar.colors&#32;=&#32;newColours;
+108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;comboText.text&#32;=&#32;(roundedNormalizedValue).ToString()&#32;+&#32;<emphasis role="stringliteral">&quot;X&quot;</emphasis>;
+109 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+Referenced by <link linkend="_class_game_u_i_1ae1af03e7079adfabff38492498ea0980">Update()</link>.</para>
+</section>
+<anchor xml:id="_class_game_u_i_1a1d34f5a1d937e48063bf8ea136772f85"/><section>
+    <title>SpawnTimingText()</title>
+<indexterm><primary>SpawnTimingText</primary><secondary>GameUI</secondary></indexterm>
+<indexterm><primary>GameUI</primary><secondary>SpawnTimingText</secondary></indexterm>
+<para><computeroutput>void GameUI.SpawnTimingText (string score, Color color)<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>spawns timing score text above the score. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>score</entry><entry>
+<para>numeric change in score</para>
+</entry>
+                            </row>
+                            <row>
+<entry>color</entry><entry>
+<para>colour of the text</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<programlisting linenumbering="unnumbered">34 &#32;&#32;&#32;&#32;{
+35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;TextMeshProUGUI&#32;text&#32;=&#32;Instantiate(<link linkend="_class_game_u_i_1a7ade2e77fb1c5c0c94c807618477089e">textPrefab</link>,&#32;transform).GetComponent&lt;TextMeshProUGUI&gt;();
+36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;text.text&#32;=&#32;score;
+37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;text.color&#32;=&#32;color;
+38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;text.transform.SetAsLastSibling();
+39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;StartCoroutine(<link linkend="_class_game_u_i_1a4c35cbeece9df9b955e385ab80f22a3d">FadeoutDestroy</link>(text));
+40 
+41 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+Referenced by <link linkend="_class_game_u_i_1a028174544700e306eaefc533e877b430">CreateTimingText()</link>.</para>
+</section>
+<anchor xml:id="_class_game_u_i_1ae1af03e7079adfabff38492498ea0980"/><section>
+    <title>Update()</title>
+<indexterm><primary>Update</primary><secondary>GameUI</secondary></indexterm>
+<indexterm><primary>GameUI</primary><secondary>Update</secondary></indexterm>
+<para><computeroutput>void GameUI.Update ( )<computeroutput>[private]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">25 &#32;&#32;&#32;&#32;{
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_u_i_1a54f29d43da024f545f8060c8ae60dc1f">SetComboBarValue</link>(<link linkend="_class_game_manager">GameManager</link>.<link linkend="_class_game_manager_1a7666e8468dac197b9eb32dd32128524f">instance</link>.combo.multiplier);
+27 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_class_game_u_i_1a87cf702d0c88530569a357b6fb23a799"/><section>
+    <title>comboBar</title>
+<indexterm><primary>comboBar</primary><secondary>GameUI</secondary></indexterm>
+<indexterm><primary>GameUI</primary><secondary>comboBar</secondary></indexterm>
+<para><computeroutput>Slider GameUI.comboBar<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_game_u_i_1ae05bb46d110d4d23bd7bbce5719b601c"/><section>
+    <title>comboGradient</title>
+<indexterm><primary>comboGradient</primary><secondary>GameUI</secondary></indexterm>
+<indexterm><primary>GameUI</primary><secondary>comboGradient</secondary></indexterm>
+<para><computeroutput>Gradient GameUI.comboGradient<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Referenced by <link linkend="_class_game_u_i_1a54f29d43da024f545f8060c8ae60dc1f">SetComboBarValue()</link>.</para>
+</section>
+<anchor xml:id="_class_game_u_i_1ac73757d3668ae8743a9b54099d7c608f"/><section>
+    <title>comboText</title>
+<indexterm><primary>comboText</primary><secondary>GameUI</secondary></indexterm>
+<indexterm><primary>GameUI</primary><secondary>comboText</secondary></indexterm>
+<para><computeroutput>TextMeshProUGUI GameUI.comboText<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_game_u_i_1a79fb5b2589978adb3b6bc9f162a278be"/><section>
+    <title>fadeoutTimer</title>
+<indexterm><primary>fadeoutTimer</primary><secondary>GameUI</secondary></indexterm>
+<indexterm><primary>GameUI</primary><secondary>fadeoutTimer</secondary></indexterm>
+<para><computeroutput>float GameUI.fadeoutTimer<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Referenced by <link linkend="_class_game_u_i_1a4c35cbeece9df9b955e385ab80f22a3d">FadeoutDestroy()</link>.</para>
+</section>
+<anchor xml:id="_class_game_u_i_1a23d5c169ab2afc81f6ee3b94e78bd6fb"/><section>
+    <title>instance</title>
+<indexterm><primary>instance</primary><secondary>GameUI</secondary></indexterm>
+<indexterm><primary>GameUI</primary><secondary>instance</secondary></indexterm>
+<para><computeroutput><link linkend="_class_game_u_i">GameUI</link> GameUI.instance<computeroutput>[static]</computeroutput></computeroutput></para><para>
+Referenced by <link linkend="_class_song_score_1a0c456bbd53f343b338285454eaca9619">SongScore.AddScore()</link>, <link linkend="_class_game_u_i_1a9190be47b8c7c73198429e4833625e25">Awake()</link>, and <link linkend="_class_combo_1a51227d52ba67b4042bc2f2aac261dc91">Combo.ChangeMultiplier()</link>.</para>
+</section>
+<anchor xml:id="_class_game_u_i_1ac5dfb4e8ba1c3d7c3f645c9df8fcb410"/><section>
+    <title>scoreText</title>
+<indexterm><primary>scoreText</primary><secondary>GameUI</secondary></indexterm>
+<indexterm><primary>GameUI</primary><secondary>scoreText</secondary></indexterm>
+<para><computeroutput>TextMeshProUGUI GameUI.scoreText<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_game_u_i_1a7ade2e77fb1c5c0c94c807618477089e"/><section>
+    <title>textPrefab</title>
+<indexterm><primary>textPrefab</primary><secondary>GameUI</secondary></indexterm>
+<indexterm><primary>GameUI</primary><secondary>textPrefab</secondary></indexterm>
+<para><computeroutput>GameObject GameUI.textPrefab<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Referenced by <link linkend="_class_game_u_i_1a1d34f5a1d937e48063bf8ea136772f85">SpawnTimingText()</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+Assets/Scripts/<link linkend="__game_u_i_8cs">GameUI.cs</link></section>
+</section>

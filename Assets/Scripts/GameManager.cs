@@ -7,31 +7,85 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    /// <summary>
+    /// singleton reference.
+    /// </summary>
     public static GameManager instance;
-    public bool inEditor;
-    public float songTime;
-    public bool startTimer;
-    public int beatsBeforeNote = 4;
-
-    public int totalNotes;
-    float screenHeight;
-    float fallSpeed;
-    float distanceToFall;
-    [SerializeField] float spawnOffset = 2f;
+    /// <summary>
+    /// prefab used for instantiating notes.
+    /// </summary>
     public GameObject notePrefab;
-    float baseNoteScalingFactor = 5.4f; // do not ask me where this number came from.
-    public float modifiedNoteScale;
-    [SerializeField] Transform noteHolder;
-    List<Coroutine> readiedNotes = new();
-    string[] noteNames = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B", };
+    /// <summary>
+    /// <see cref="SongScore"/> for currently playing song.
+    /// </summary>
     public SongScore currentSongScore;
+    /// <summary>
+    /// <see cref="SongScore"/> storing the High score for the currently selected song.
+    /// </summary>
     public SongScore selectedSongHighScore;
+    /// <summary>
+    /// Current <see cref="Combo"/> for the song.
+    /// </summary>
     public Combo combo = new();
-    [SerializeField] string scoreString;
+    /// <summary>
+    /// Is the game in the SongEditor State?
+    /// </summary>
+    public bool inEditor;
+    /// <summary>
+    /// Should <see cref="songTime"/> be updated?
+    /// </summary>
+    public bool startTimer;
+    /// <summary>
+    /// Is the currently playing song appearing in the preview window in the Song Selection scene.
+    /// </summary>
+    public bool isCurSongPreview;
+    /// <summary>
+    /// Elapsed duration (seconds) into the currently playing song.
+    /// </summary>
+    public float songTime;
+    /// <summary>
+    /// Note scaling factor calculated by the song BPM at the time of the notes appearence in the song.<br/>
+    /// See also <seealso cref="baseNoteScalingFactor"/>
+    /// </summary>
+    public float modifiedNoteScale;
+    /// <summary>
+    /// Number of beats a note should spawn before being visible on screen. <br/>
+    /// Modification changes the speed notes fall, and changes the amount of time players have to react to notes.
+    /// </summary>
+    public int beatsBeforeNote = 4;
+    /// <summary>
+    /// Total number of notes in the currently playing song.
+    /// </summary>
+    public int totalNotes;
 
+    /// <summary>
+    /// Height of the viewport in Units, as viewed from an angle in the game view.
+    /// </summary>
+    float screenHeight;
+
+    float fallSpeed;
+    float spawnOffset = 2f;
+    /// <summary>
+    /// Base scaling factor for notes to be modified by BPM of the song.<br/>
+    /// do not ask me where the 5.4 came from i do not know.
+    /// </summary>
+    float baseNoteScalingFactor = 5.4f;
+    [SerializeField] Transform noteHolder;
+    /// <summary>
+    /// List holding all note prepared but not yet spawned.
+    /// </summary>
+    List<Coroutine> readiedNotes = new();
+    /// <summary>
+    /// String array containing the names of notes accoring to their indecies, 0 being C.
+    /// </summary>
+    string[] noteNames = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B", };
+
+    /// <summary>
+    /// Dictionary mapping of note names to note numbers.
+    /// </summary>
     static Dictionary<string, int> nameToNoteMap = new()
     {
-        { "cb", 1 },
+        { "cb", 12 },
         { "c", 1 },
         { "c#", 2 },
         { "db", 2 },
@@ -57,16 +111,23 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         if (instance == null)
-        { 
+        {
             instance = this;
         }
         else { Destroy(gameObject); }
     }
-
+    /// <summary>
+    /// Assigns text parameter's .text feild to the current target FPS.
+    /// </summary>
+    /// <param name="text">TextMeshPro to have string assigned to.</param>
     public void AssignFpsText(TMP_InputField text)
     {
         text.text = Application.targetFrameRate.ToString();
     }
+    /// <summary>
+    /// Sets <see cref="Application.targetFrameRate"/> to "str" parsed.
+    /// </summary>
+    /// <param name="str">Value to set FPS to.</param>
     public void SetFPS(string str)
     {
         if (int.TryParse(str, out int newFps))
@@ -75,6 +136,10 @@ public class GameManager : MonoBehaviour
         }
         else { Debug.LogError($"FPS Cap of : {str} is invalid"); }
     }
+    /// <summary>
+    /// Sets <see cref="PlayerSettings.inputDelay"/> to "delayStr" parsed.
+    /// </summary>
+    /// <param name="delayStr"></param>
     public void SetInputDelay(string delayStr)
     {
         if (int.TryParse(delayStr, out int delay))
@@ -83,7 +148,15 @@ public class GameManager : MonoBehaviour
         }
         else { Debug.Log("Error Parsing input delay"); }
     }
+
     private void Update()
+    {
+        UpdateSongTime();
+    }
+    /// <summary>
+    /// Updates <see cref="songTime"/> variable with Time.deltaTime.
+    /// </summary>
+    public void UpdateSongTime()
     {
         if (startTimer)
         {
@@ -91,26 +164,33 @@ public class GameManager : MonoBehaviour
         }
     }
     /// <summary>
-    /// Sets the total number of notes in the song.
+    /// Sets <see cref="totalNotes"/> to the total number of notes in the song.
     /// </summary>
     /// <param name="noteCount">The total number of notes.</param>
+
     public void SetSongTotalNotes(int noteCount)
     {
         totalNotes = noteCount;
     }
 
     /// <summary>
-    /// Used to check if a noteevent is storing Tempo Data or Note Data
-    /// Because i assign tempo changes by setting the noteevent.starttime to negative infinity and the note num to min value, with the tempo as the end time.
+    /// Used to check if a noteEvent is storing Tempo Data or Note Data.
+    /// i assign tempo changes by setting the <see cref="NoteEventInfo.startTime"/> to negative infinity and the <see cref="NoteEventInfo.noteNumber"/> to min value, with the tempo as the end time.
     /// 
     /// </summary>
-    /// <param name="note"></param>
+    /// <param name="note">note to check for tempo data.</param>
     /// <returns>True = note data, false = tempo data.</returns>
     public static bool CheckSpawnNote(NoteEventInfo note)
     {
-        return !(note.startTime == float.NegativeInfinity && note.noteNumber == int.MinValue);
+        return (note.startTime == float.NegativeInfinity && note.noteNumber == int.MinValue);
     }
-
+    /// <summary>
+    /// Prepares notes for a song to be played.
+    /// </summary>
+    /// <param name="BPM">Starting BPM of selected song</param>
+    /// <param name="noteEvents">List of <see cref="NoteEventInfo"/>'s to be played.</param>
+    /// <param name="isPreview">Is the song in the Song Selection Preview Window?</param>
+    /// <returns></returns>
     public IEnumerator PrepareNotes(float BPM, List<NoteEventInfo> noteEvents, bool isPreview) // TEMP 0.5f, change to 5.4f i think`````````````````````````````````````````````````````````````````````````````````````````````````````````
     {
         if (noteEvents == null) { Debug.Log("gameloop noteEvents null"); yield break; }
@@ -124,13 +204,13 @@ public class GameManager : MonoBehaviour
         else { Replay.recordReplay = false; }
         screenHeight = 40.16f;//2f * Camera.main.orthographicSize;
         AssignSongValues(BPM);
-        
+
         yield return new WaitForSecondsRealtime(1f);
         yield return new WaitUntil(() => (Input.anyKeyDown || MidiInput.instance.GetAnyNoteActive()) || isPreview);
         startTimer = true;
         StopReadiedNotes();
-        if (gameType == GameType.Key88) { noteEvents.ForEach(noteEvent => readiedNotes.Add(StartCoroutine(ReadyNote88(noteEvent.startTime, noteEvent))));  }
-        else if(gameType == GameType.Key12) { noteEvents.ForEach(noteEvent => readiedNotes.Add(StartCoroutine(ReadyNote12(noteEvent.startTime , noteEvent)))); }
+        if (gameType == GameType.Key88) { noteEvents.ForEach(noteEvent => readiedNotes.Add(StartCoroutine(ReadyNote88(noteEvent.startTime, noteEvent)))); }
+        else if (gameType == GameType.Key12) { noteEvents.ForEach(noteEvent => readiedNotes.Add(StartCoroutine(ReadyNote12(noteEvent.startTime, noteEvent)))); }
         else
         {
             Debug.LogError("Game type not 88 or 12 key mode.");
@@ -152,19 +232,19 @@ public class GameManager : MonoBehaviour
         float TempoChange(NoteEventInfo note)
         {
             BPM = note.endTime;
-            float so = (beatsBeforeNote * 60f / BPM); 
+            float so = (beatsBeforeNote * 60f / BPM);
             fallSpeed = (screenHeight / so);
             modifiedNoteScale = baseNoteScalingFactor * (130 / BPM);
             return so;
         }
         IEnumerator ReadyNote88(float spawnTime, NoteEventInfo noteEvent)
         {
-            
+
             if (CheckSpawnNote(noteEvent))
             {
                 spawnOffset = TempoChange(noteEvent);
                 yield break;
-                
+
             }
             float trueSpawnTime = spawnTime - spawnOffset;
             yield return new WaitUntil(() => songTime >= trueSpawnTime);
@@ -234,7 +314,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public bool isCurSongPreview;
+    /// <summary>
+    /// Assigns "obk" to the layer "PreviewLayer", then moves it and all children objects to the song preview scene.
+    /// </summary>
+    /// <param name="obj">object to have layer assigned.</param>
     void AssignToPreviewLayer(GameObject obj)
     {
 
@@ -265,11 +348,10 @@ public class GameManager : MonoBehaviour
     /// Updates the player's score based on the hit timing.
     /// </summary>
     /// <param name="score">The hit score (Perfect, Good, Okay, Miss).</param>
-
     public void UpdatePlayerScore(string score)
     {
         currentSongScore ??= new();
-        currentSongScore.AddScore(score, combo.multiplier);
+        currentSongScore.AddScore(score);
 
     }
     /// <summary>
@@ -326,7 +408,7 @@ public class GameManager : MonoBehaviour
         int[] score = currentSongScore.GetScoreArray(totalNotes);
 
         if (!isCurSongPreview) { EndSongMessage.instance?.ShowScore($"Total Score: {score[0]}\nPerfect: {score[1]}\nGood: {score[2]}\nOkay: {score[3]}\nExtra: {score[4]}\nMissed: {score[5]}\nLongest Combo: {combo.highestCount}", currentSongScore.FinalizeScore()); }
-        else{ FindObjectOfType<EndPreview>()?.EndPreviewFade(); }
+        else { FindObjectOfType<EndPreview>()?.EndPreviewFade(); }
 
         if (!Replay.isPlayingReplay) { MidiDataHandler.SaveNoteEventData(".replay", Replay.instance.replayNoteData); } // only record replays if you arent playing back a replay.
 
@@ -351,7 +433,9 @@ public class GameManager : MonoBehaviour
 
     }
 
-
+    /// <summary>
+    /// Stops all prepared notes and stops updating of songTime.
+    /// </summary>
     public void StopSong()
     {
         startTimer = false;
@@ -359,9 +443,7 @@ public class GameManager : MonoBehaviour
         MidiInput.instance.inGame = false;
     }
 
-    /// <summary>
-    /// Enters the song editor mode.
-    /// </summary>
+   
     /*public void EnterSongEditor()
     {
         inEditor = true;
@@ -371,12 +453,10 @@ public class GameManager : MonoBehaviour
         catch { SceneManager.LoadScene("SongEditorScene"); }
         MidiInput.instance.GetBPM(songName);
     }*/
-    /// <summary>
-    /// Modifies the note scale based on the BPM (Beats Per Minute).
-    /// </summary>
-    /// <param name="BPM">The BPM of the song.</param>
-    /// <returns>The modified note scale.</returns>
 
+    /// <summary>
+    /// Reloads all json file versions of the currently selected song.
+    /// </summary>
     public void RefreshJsonFiles()
     {
         NoteEventDataWrapper temp = MidiReadFile.GetNoteEventsFromFilePath(GameSettings.currentSongPath);
@@ -384,7 +464,10 @@ public class GameManager : MonoBehaviour
 
     }
 
-
+    /// <summary>
+    /// Sets <see cref="beatsBeforeNote"/>.
+    /// </summary>
+    /// <param name="num">new <see cref="beatsBeforeNote"/>beatsBeforeNoteValue</param>
     public void SetBeatsBeforeDrop(string num)
     {
         if (!int.TryParse(num, out int newNum))

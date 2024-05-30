@@ -1,0 +1,99 @@
+.TH "md__assets_2_documentation_2_markdown_2_g_d_d" 3 "Version 1.0.0" "KiBoard GDD & Technical Documentation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+md__assets_2_documentation_2_markdown_2_g_d_d \- Game Design Document 
+.PP
+
+.SH "Concept"
+.PP
+ Kiboard is a rhythm game designed to be played with an actual piano through a MIDI cable connected to your computer\&.  
+.SH "Game Structure, Loop & Objective"
+.PP
+ Players will first select a song to play, then notes of that song will begin to fall on a Piano Roll- a visual representation of a piano- in front of them\&.
+.PP
+There will be a variety of songs you can listen to and learn to play through the piano roll-like display\&. Players will be able to slow down the speed of these songs to learn them slowly over time\&. 
+.PP
+The objective is for players to press the correctly indicated note at the correct timing of the note to earn points\&. 
+.PP
+The goal of the game is to make learning songs on the piano a more entertaining experience for the player, as well as providing tools to help them in learning songs\&. 
+.SH "Players"
+.PP
+ Players will be able to play the game on Windows PC’s using an 88 key Midi Piano, OR using 8/12 Keys on their computer Keyboard\&. 
+.SH "Graphics & Display"
+.PP
+ KiBoard is split into two main scenes:
+.PP
+.SS "\fB\fISong Selection\fP\fP"
+  The song selection screen will be the main UI menu for the game, consisting of 4 panels, and some buttons\&.   
+.SS "Song Selector"
+  The center will be the song selector, Allowing for the player to select from a list of songs\&. Clicking on one of these songs will open the other 3 panels\&.    
+.SS "High Score"
+  The high score panel will appear to the top left, displaying your previously achieved best score\&. It will show the date and time it was done, the achieved total score, the amount of “Perfect, good, Okay, Missed,” and 
+.PP
+ “Extra” notes played, as well as show the ratio of notes correctly played to the total number of notes\&.   
+.SS "Song Version"
+  Song Version relates to how the File system for the game is structured\&. An example would be if you wanted to add different difficulties to the same song, and is elaborated on \fBLink to Concept\fP
+.PP
+ This panel will be a list of all the versions of a song listed in that songs folder, allowing you to select from them before hitting play\&.   
+.SS "Song Settings & Preview"
+  The song setting window will allow you to set song-specific settings before you hit play\&.
+.PP
+ Some examples of these settings are:
+.PP
+.IP "\(bu" 2
+Whether the player is using a Midi Piano or a computer keyboard\&.
+.IP "\(bu" 2
+Whether or not the player wants to use a sustain Pedal\&.
+.IP "\(bu" 2
+The BPM they want to play the song at (left blank will default to the Midi Files bpm)\&.
+.IP "\(bu" 2
+Beats Before Drop (how long in advance notes should spawn before they cross the Hit Indicator Bar\&. Changing this can drastically increase/decrease the amount of time you have to react to a note, as well as modifying the scale of notes)\&.
+.PP
+.PP
+ The song preview window shows the player a scaled-down exact copy of what the selected song looks like to play before clicking play\&. 
+.PP
+.SS "\fB\fIIn Game\fP\fP"
+  The In Game Scenes ( split into GameScene88 and GameScene12) are where players go after selecting a song, and is where the game loop is played\&.   
+.SS "Piano Roll"
+.PP
+  
+.SS "Piano "
+  The Piano is laid out like an 88 key piano in the bottom of the screen\&. It displays what notes the player is currently pressing\&. 
+.PP
+.SS "Key Lane"
+  Light and dark gray strips extend vertically from each key in the Piano\&. These are the Key Lanes that notes can fall on\&. They are coloured differently to help differentiate between two nearby notes\&.   
+.PP
+.SS "Hit Indicator Bar"
+  A coloured bar slightly above the Piano acts as a visual indicator for when you should play a note\&. When the bottom of the note touches the hit indicator bar, it is the ideal time\&. 
+.PP
+.SS "Note"
+  Notes display what notes the player must react and play in sync to the song with\&. 
+.PP
+.SS "Beat Indicators"
+  Horizontally across the key lanes are beat indicators\&. These are a visual representation of how far away a note is from the correct timing to hit it\&. One beat indicator represents the note being 
+.PP
+ one beat away\&.   
+.SS "Combo bar"
+  On the left of the Piano Roll is the \fBCombo\fP bar\&. The bar extends vertically, parallel to the piano roll\&.
+.PP
+The score gained by each correct note hit is multiplied by the combo multiplier, ranging from 1-3x the 
+.PP
+base value, and increasing based on the amount of correct notes the player plays\&. 
+.PP
+This multiplier's value is shown slightly to the left of the combo bar\&.
+.PP
+.PP
+.SS "Score"
+.PP
+ 
+.SS "Total Score"
+  To the right of the piano roll, your total score is shown\&. 
+.PP
+.SS "Score Text"
+  Each time you play a note, the value of it is displayed in a stacking history of score changes\&. These are also coloured according to the timing of the note, pink being perfect, green good, blue okay, and red incorrect\&. 
+.PP
+.SS "Progress Bar"
+  Along the top of the screen is a green bar\&. Going from left to right, this bar displays how far the player is into the song's duration\&. 
+.PP
+  

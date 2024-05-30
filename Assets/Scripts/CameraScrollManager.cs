@@ -25,7 +25,9 @@ public class CameraScrollManager : MonoBehaviour
         transform.position += Mathf.Sign(scrollDelta) * scrollSpeed * Vector3.up;
         if (transform.position.y <= minHeight) { transform.position = new(transform.position.x, minHeight, transform.position.z); }
     }
-
+    /// <summary>
+    /// reset camera to minimum y position.
+    /// </summary>
     public void ResetCamera()
     {
         transform.position = new(transform.position.x, minHeight, transform.position.z);

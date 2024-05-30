@@ -1,0 +1,43 @@
+.TH "NoteShadow" 3 "Version 1.0.0" "KiBoard GDD & Technical Documentation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NoteShadow
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits MonoBehaviour\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBSetShadowSize\fP (float ySize)"
+.br
+.RI "sets scale of drop shadow of note "
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "void NoteShadow\&.SetShadowSize (float ySize)"
+
+.PP
+sets scale of drop shadow of note 
+.PP
+\fBParameters\fP
+.RS 4
+\fIySize\fP 
+.RE
+.PP
+
+.nf
+13     {
+14         var spriterend = GetComponent<SpriteRenderer>();
+15         spriterend\&.size =  new Vector2(GameSettings\&.usePiano ? 1\&.35f: 4\&.8f, ySize);
+16     }
+.PP
+.fi
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for KiBoard GDD & Technical Documentation from the source code\&.

@@ -1,0 +1,279 @@
+.TH "MidiDataHandler" 3 "Version 1.0.0" "KiBoard GDD & Technical Documentation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MidiDataHandler
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBNoteEventDataWrapper\fP \fBGetJSONData\fP (string fileName)"
+.br
+.RI "Retrieves stored MIDI data from a JSON file\&. "
+.ti -1c
+.RI "static \fBNoteEventDataWrapper\fP \fBSaveNoteEventData\fP (string extension, float bpm, List< \fBNoteEventInfo\fP > dataToSave)"
+.br
+.RI "Saves \fBNoteEventInfo\fP data to a JSON file\&. "
+.ti -1c
+.RI "static \fBNoteEventDataWrapper\fP \fBSaveNoteEventData\fP (string extension, \fBNoteEventDataWrapper\fP wrapper)"
+.br
+.RI "ONLY USE FOR REPLAYS UNLESS MODIFIED\&. "
+.ti -1c
+.RI "static \fBNoteEventDataWrapper\fP \fBLoadNoteEventData\fP (string filePath)"
+.br
+.RI "Loads \fBNoteEventInfo\fP data from a JSON file\&. "
+.in -1c
+.SS "Static Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBSaveToFileCompressed\fP (string data, string filePath)"
+.br
+.RI "Saves json string 'Data' to a compressed json file at 'filePath'\&. "
+.ti -1c
+.RI "static string \fBLoadFromFileCompressed\fP (string filePath)"
+.br
+.RI "loads a json string from a compressed json file at 'filePath'\&. "
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "static \fBNoteEventDataWrapper\fP MidiDataHandler\&.GetJSONData (string fileName)\fR [static]\fP"
+
+.PP
+Retrieves stored MIDI data from a JSON file\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIfileName\fP The name of the JSON file to load\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The loaded MIDI data as a \fBNoteEventDataWrapper\fP\&.
+.RE
+.PP
+
+.nf
+16     {
+17         // Load the previously stored data
+18         // Return the loaded data
+19         return LoadNoteEventData(fileName);
+20     }
+.PP
+.fi
+
+.PP
+Referenced by \fBMidiReadFile\&.GetDataFile()\fP\&.
+.SS "static string MidiDataHandler\&.LoadFromFileCompressed (string filePath)\fR [static]\fP, \fR [private]\fP"
+
+.PP
+loads a json string from a compressed json file at 'filePath'\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIfilePath\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+decomressed Json String
+.RE
+.PP
+
+.nf
+142     {
+143         using (FileStream fileStream = new FileStream(filePath, FileMode\&.Open))
+144         {
+145             using (GZipStream zipStream = new GZipStream(fileStream, CompressionMode\&.Decompress))
+146             {
+147                 using (StreamReader reader = new StreamReader(zipStream))
+148                 {
+149                     return reader\&.ReadToEnd();
+150                 }
+151             }
+152         }
+153     }
+.PP
+.fi
+
+.PP
+Referenced by \fBLoadNoteEventData()\fP\&.
+.SS "static \fBNoteEventDataWrapper\fP MidiDataHandler\&.LoadNoteEventData (string filePath)\fR [static]\fP"
+
+.PP
+Loads \fBNoteEventInfo\fP data from a JSON file\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIfileName\fP The name of the JSON file to load\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The loaded MIDI data as a \fBNoteEventDataWrapper\fP\&.
+.RE
+.PP
+
+.nf
+100     {
+101         // Check if the file exists
+102         if (File\&.Exists(filePath))
+103         {
+104             // Read the JSON string from the file
+105             string json = LoadFromFileCompressed(filePath);
+106 
+107             // Convert the JSON string back to a list of NoteEventInfo
+108             return JsonUtility\&.FromJson<NoteEventDataWrapper>(json);
+109         }
+110         else
+111         {
+112             Debug\&.LogWarning("Note event data file does not exist\&.");
+113             return null;
+114         }
+115     }
+.PP
+.fi
+
+.PP
+Referenced by \fBGetJSONData()\fP\&.
+.SS "static \fBNoteEventDataWrapper\fP MidiDataHandler\&.SaveNoteEventData (string extension, float bpm, List< \fBNoteEventInfo\fP > dataToSave)\fR [static]\fP"
+
+.PP
+Saves \fBNoteEventInfo\fP data to a JSON file\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIfileName\fP The name of the JSON file to save\&.
+.br
+\fIbpm\fP The BPM (Beats Per Minute) of the song\&.
+.br
+\fIdataToSave\fP The list of \fBNoteEventInfo\fP to save\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The wrapper containing BPM and \fBNoteEventInfo\fP\&.
+.RE
+.PP
+
+.nf
+30     {
+31         if (dataToSave == null) { Debug\&.LogError("Data Save Error: NoteEventInfo Null"); return null; }
+32         // Create a wrapper class to hold both BPM and NoteEventInfo
+33         var wrapper = new NoteEventDataWrapper
+34         {
+35             BPM = bpm,
+36             NoteEvents = dataToSave
+37         };
+38 
+39         // Convert the wrapper to a JSON string
+40         string json = JsonUtility\&.ToJson(wrapper);
+41         string folderPath = GameSettings\&.currentFileGroup\&.FolderPath;
+42         string fileName = Path\&.GetFileNameWithoutExtension(GameSettings\&.currentSongPath);
+43         // Define the path where you want to save the JSON file
+44         if (!Directory\&.Exists(folderPath))
+45         {
+46             try { Directory\&.CreateDirectory(folderPath); } catch { }
+47         }
+48 
+49         // Write the JSON string to the file
+50         SaveToFileCompressed(json, folderPath + "/" +fileName+ extension);
+51         return wrapper;
+52     }
+.PP
+.fi
+
+.PP
+Referenced by \fBGameManager\&.OnSongEnd()\fP, \fBMidiReadFile\&.ReadMidiFile()\fP, and \fBGameManager\&.RefreshJsonFiles()\fP\&.
+.SS "static \fBNoteEventDataWrapper\fP MidiDataHandler\&.SaveNoteEventData (string extension, \fBNoteEventDataWrapper\fP wrapper)\fR [static]\fP"
+
+.PP
+ONLY USE FOR REPLAYS UNLESS MODIFIED\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIextension\fP 
+.br
+\fIwrapper\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.nf
+60     {
+61         if (wrapper == null) { Debug\&.LogError("Data Save Error: NoteEventDataWrapper Null"); return null; }
+62         // Create a wrapper class to hold both BPM and NoteEventInfo
+63 
+64 
+65         // Convert the wrapper to a JSON string
+66         string json = JsonUtility\&.ToJson(wrapper);
+67         string folderPath = GameSettings\&.currentFileGroup\&.FolderPath;
+68         string fileName = Path\&.GetFileNameWithoutExtension(GameSettings\&.currentSongPath);
+69         // Define the path where you want to save the JSON file
+70         if (!Directory\&.Exists(folderPath))
+71         {
+72             Directory\&.CreateDirectory(folderPath);
+73         }
+74         int versionCount = 0;
+75         while (true)
+76         {
+77             if (!File\&.Exists($"{folderPath}/{fileName}_{versionCount}{extension}"))
+78             {
+79                 SaveToFileCompressed(json, $"{folderPath}/{fileName}_{versionCount}{extension}");
+80                 return wrapper;
+81             }
+82             else
+83             {
+84 
+85                 versionCount++;
+86             }
+87         }
+88 
+89         // Write the JSON string to the file
+90 
+91 
+92     }
+.PP
+.fi
+
+.SS "static void MidiDataHandler\&.SaveToFileCompressed (string data, string filePath)\fR [static]\fP, \fR [private]\fP"
+
+.PP
+Saves json string 'Data' to a compressed json file at 'filePath'\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIdata\fP 
+.br
+\fIfilePath\fP 
+.RE
+.PP
+
+.nf
+123     {
+124         using (FileStream fileStream = new FileStream(filePath, FileMode\&.Create))
+125         {
+126             using (GZipStream zipStream = new GZipStream(fileStream, CompressionMode\&.Compress))
+127             {
+128                 using (StreamWriter writer = new StreamWriter(zipStream))
+129                 {
+130                     writer\&.Write(data);
+131                 }
+132             }
+133         }
+134     }
+.PP
+.fi
+
+.PP
+Referenced by \fBSaveNoteEventData()\fP, and \fBSaveNoteEventData()\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for KiBoard GDD & Technical Documentation from the source code\&.

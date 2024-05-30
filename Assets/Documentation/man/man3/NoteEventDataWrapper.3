@@ -1,0 +1,90 @@
+.TH "NoteEventDataWrapper" 3 "Version 1.0.0" "KiBoard GDD & Technical Documentation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NoteEventDataWrapper \- Wrapper class for storing BPM and \fBNoteEventInfo\fP data\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBAddNewNote\fP (int noteNumber, float startTime, float endTime)"
+.br
+.RI "Adds new note to \fBNoteEvents\fP\&. "
+.ti -1c
+.RI "void \fBReset\fP ()"
+.br
+.RI "Clears noteEvents list and sets BPM to negative infinity\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "float \fBBPM\fP"
+.br
+.RI "The BPM (Beats Per Minute) of the song\&. "
+.ti -1c
+.RI "List< \fBNoteEventInfo\fP > \fBNoteEvents\fP"
+.br
+.RI "The list of \fBNoteEventInfo\fP representing MIDI notes\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Wrapper class for storing BPM and \fBNoteEventInfo\fP data\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "void NoteEventDataWrapper\&.AddNewNote (int noteNumber, float startTime, float endTime)"
+
+.PP
+Adds new note to \fBNoteEvents\fP\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fInoteNumber\fP Note number of the note\&.
+.br
+\fIstartTime\fP Start time of the note\&.
+.br
+\fIendTime\fP end time of the note\&.
+.RE
+.PP
+
+.nf
+179     {
+180         NoteEvents\&.Add(new NoteEventInfo(noteNumber, startTime, endTime));
+181     }
+.PP
+.fi
+
+.SS "void NoteEventDataWrapper\&.Reset ()"
+
+.PP
+Clears noteEvents list and sets BPM to negative infinity\&. 
+.nf
+186     {
+187         BPM = Mathf\&.NegativeInfinity;
+188         NoteEvents\&.Clear();
+189     }
+.PP
+.fi
+
+.SH "Member Data Documentation"
+.PP 
+.SS "float NoteEventDataWrapper\&.BPM"
+
+.PP
+The BPM (Beats Per Minute) of the song\&. 
+.PP
+Referenced by \fBMidiInput\&.LoadSongFromCurrentSettings()\fP, \fBGameManager\&.RefreshJsonFiles()\fP, and \fBReset()\fP\&.
+.SS "List<\fBNoteEventInfo\fP> NoteEventDataWrapper\&.NoteEvents"
+
+.PP
+The list of \fBNoteEventInfo\fP representing MIDI notes\&. 
+.PP
+Referenced by \fBAddNewNote()\fP, \fBMidiInput\&.GetNoteEventWrapperFromSelectedSong()\fP, \fBMidiInput\&.LoadSongFromCurrentSettings()\fP, \fBGameManager\&.RefreshJsonFiles()\fP, and \fBReset()\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for KiBoard GDD & Technical Documentation from the source code\&.

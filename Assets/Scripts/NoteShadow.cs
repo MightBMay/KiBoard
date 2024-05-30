@@ -5,7 +5,10 @@ using UnityEngine;
 
 public class NoteShadow : MonoBehaviour
 {
-
+    /// <summary>
+    /// sets scale of drop shadow of note
+    /// </summary>
+    /// <param name="ySize"></param>
     public void SetShadowSize(float ySize)
     {
         var spriterend = GetComponent<SpriteRenderer>();

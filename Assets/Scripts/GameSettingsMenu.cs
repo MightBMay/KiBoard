@@ -11,7 +11,10 @@ public class GameSettingsMenu : MonoBehaviour
     {
         StartCoroutine(MonitorMidiConnections());
     }
-
+    /// <summary>
+    /// Checks for active midi connections to the computer every second.
+    /// </summary>
+    /// <returns></returns>
     IEnumerator MonitorMidiConnections()
     {
         while (true)
@@ -29,7 +32,6 @@ public class GameSettingsMenu : MonoBehaviour
 
 
     }
-
 
     public void SetUsePiano(bool enabled)
     {

@@ -1,0 +1,227 @@
+.TH "MP3Handler" 3 "Version 1.0.0" "KiBoard GDD & Technical Documentation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MP3Handler \- Handles reading and playback of \&.MP3 Files\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits MonoBehaviour\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBSetVolume\fP (float newVolume)"
+.br
+.RI "set volume of Mp3 Playback\&. "
+.ti -1c
+.RI "IEnumerator \fBPlaySong\fP (string filePath)"
+.br
+.RI "Start parsing and playing the mp3 file\&. "
+.ti -1c
+.RI "void \fBStopMusic\fP ()"
+.br
+.RI "Stops all music playing from NAudio\&. "
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static \fBMP3Handler\fP \fBinstance\fP"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBAwake\fP ()"
+.br
+.ti -1c
+.RI "void \fBUpdate\fP ()"
+.br
+.ti -1c
+.RI "void \fBReadMP3File\fP (string path)"
+.br
+.RI "read Mp3 file at 'Path' to play back through NAudio\&. "
+.ti -1c
+.RI "void \fBOnDestroy\fP ()"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "Thread \fBaudioThread\fP"
+.br
+.RI "Thread used for audio playback\&. "
+.ti -1c
+.RI "WaveOutEvent \fBwaveOut\fP"
+.br
+.RI "WaveOut used to read and play MP3 Audio\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Handles reading and playback of \&.MP3 Files\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "void MP3Handler\&.Awake ()\fR [private]\fP"
+
+.nf
+21     {
+22         if (instance == null)
+23         {
+24             instance = this;
+25             DontDestroyOnLoad(gameObject);
+26         }
+27         else { Destroy(this); }
+28     }
+.PP
+.fi
+
+.SS "void MP3Handler\&.OnDestroy ()\fR [private]\fP"
+
+.nf
+107     {
+108 
+109         // Stop and dispose of the WaveOutEvent and Mp3FileReader when the script is destroyed
+110         if (waveOut != null)
+111         {
+112             waveOut\&.Stop();
+113             waveOut\&.Dispose();
+114         }
+115 
+116         // Abort the audio playback thread
+117 
+118     }
+.PP
+.fi
+
+.SS "IEnumerator MP3Handler\&.PlaySong (string filePath)"
+
+.PP
+Start parsing and playing the mp3 file\&. 
+.nf
+46     {
+47         StopMusic();
+48         if (!File\&.Exists(filePath)) { Debug\&.LogError($"MP3 File not found at path {filePath}"); yield break; }
+49         audioThread = new Thread(() => ReadMP3File(filePath));
+50         yield return new WaitUntil(() => GameManager\&.instance\&.songTime >= 0);
+51         try { audioThread\&.Start(); } catch { Debug\&.Log("Error Starting thread\&."); }
+52     }
+.PP
+.fi
+
+.SS "void MP3Handler\&.ReadMP3File (string path)\fR [private]\fP"
+
+.PP
+read Mp3 file at 'Path' to play back through NAudio\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpath\fP 
+.RE
+.PP
+
+.nf
+59     {
+60         if (string\&.IsNullOrEmpty(path))
+61         {
+62             Debug\&.LogError("File path is empty or null\&.");
+63             return;
+64         }
+65 
+66         // Create a new WaveFileReader with the provided path
+67         using (var reader = new Mp3FileReader(path))
+68         {
+69 
+70             // Create a WaveOutEvent to play the audio
+71             waveOut = new WaveOutEvent();
+72 
+73             // Set the WaveOutEvent's WaveStream to the Mp3FileReader
+74             waveOut\&.Init(reader);
+75 
+76             // Start playing the audio
+77             waveOut\&.Play();
+78 
+79             // Wait for the audio to finish playing
+80             while (waveOut\&.PlaybackState == PlaybackState\&.Playing)
+81             {
+82                 // You can perform other tasks here while the audio is playing
+83             }
+84         }
+85     }
+.PP
+.fi
+
+.PP
+Referenced by \fBPlaySong()\fP\&.
+.SS "void MP3Handler\&.SetVolume (float newVolume)"
+
+.PP
+set volume of Mp3 Playback\&. 
+.nf
+37     {
+38         if (waveOut == null) return;
+39         waveOut\&.Volume = newVolume / 100;
+40 
+41     }
+.PP
+.fi
+
+.SS "void MP3Handler\&.StopMusic ()"
+
+.PP
+Stops all music playing from NAudio\&. 
+.nf
+91     {
+92         if (audioThread != null)
+93         {
+94             if (waveOut != null)
+95             {
+96                 waveOut\&.Stop();
+97                 waveOut\&.Dispose();
+98             }
+99         }
+100         if (audioThread != null && audioThread\&.IsAlive)
+101         {
+102             audioThread\&.Abort();
+103         }
+104     }
+.PP
+.fi
+
+.PP
+Referenced by \fBPlaySong()\fP\&.
+.SS "void MP3Handler\&.Update ()\fR [private]\fP"
+
+.nf
+30     {
+31         if (waveOut == null) return;
+32     }
+.PP
+.fi
+
+.SH "Member Data Documentation"
+.PP 
+.SS "Thread MP3Handler\&.audioThread\fR [private]\fP"
+
+.PP
+Thread used for audio playback\&. 
+.PP
+Referenced by \fBPlaySong()\fP, and \fBStopMusic()\fP\&.
+.SS "\fBMP3Handler\fP MP3Handler\&.instance\fR [static]\fP"
+
+.PP
+Referenced by \fBAwake()\fP, \fBMidiInput\&.LoadSongFromCurrentSettings()\fP, \fBMidiInput\&.StartSong()\fP, \fBMidiInput\&.StartSong()\fP, \fBMidiInput\&.StartSong()\fP, \fBMidiInput\&.StopSong()\fP, and \fBKiboardDebug\&.VolumeOverride()\fP\&.
+.SS "WaveOutEvent MP3Handler\&.waveOut\fR [private]\fP"
+
+.PP
+WaveOut used to read and play MP3 Audio\&. 
+.PP
+Referenced by \fBOnDestroy()\fP, \fBReadMP3File()\fP, \fBSetVolume()\fP, \fBStopMusic()\fP, and \fBUpdate()\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for KiBoard GDD & Technical Documentation from the source code\&.

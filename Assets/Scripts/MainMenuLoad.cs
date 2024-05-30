@@ -16,11 +16,19 @@ public class MainMenuLoad : MonoBehaviour
         StartCoroutine(LoadToSongSelect());
         
     }
+    /// <summary>
+    /// waits for any player input then loads to song select.
+    /// </summary>
+    /// <returns></returns>
     IEnumerator LoadToSongSelect()
     {
         yield return new WaitUntil(() => Input.anyKeyDown || MidiInput.instance.GetAnyNoteActive());
         SceneManager.LoadScene("SongSelect", LoadSceneMode.Single); // dont use transistion manager because i do not want a fade out.
     }
+    /// <summary>
+    /// flickers the text 
+    /// </summary>
+    /// <returns></returns>
     IEnumerator FlickerText()
     {
         while (true)

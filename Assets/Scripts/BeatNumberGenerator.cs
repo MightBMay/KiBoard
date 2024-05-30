@@ -11,10 +11,16 @@ public class BeatNumberGenerator : MonoBehaviour
     [SerializeField] GameObject prefab;
     [SerializeField] int quantity;
 
+
+    private void Start()
+    {
+        CreateBeatNumbers();
+       
+    }
     /// <summary>
     /// Instantiates beat number TextMeshProUGUI objects.
     /// </summary>
-    private void Start()
+    public void CreateBeatNumbers()
     {
         for (int i = -3; i <= quantity; i++)
         {

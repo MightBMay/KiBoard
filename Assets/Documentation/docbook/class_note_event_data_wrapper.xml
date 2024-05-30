@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_note_event_data_wrapper" xml:lang="en-US">
+<title>NoteEventDataWrapper Class Reference</title>
+<indexterm><primary>NoteEventDataWrapper</primary></indexterm>
+<para>
+
+<para>Wrapper class for storing BPM and <link linkend="_class_note_event_info">NoteEventInfo</link> data. </para>
+ 
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_class_note_event_data_wrapper_1affc719b7b6f4d1aa607f078b9a311d5c">AddNewNote</link> (int noteNumber, float startTime, float endTime)</para>
+
+<para>Adds new note to <link linkend="_class_note_event_data_wrapper_1ab50d1b38b07efe975e0abefafea94e4b">NoteEvents</link>. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_note_event_data_wrapper_1a11675f0de890a36478a9d3d6a08032ad">Reset</link> ()</para>
+
+<para>Clears noteEvents list and sets BPM to negative infinity. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>float <link linkend="_class_note_event_data_wrapper_1a2da8d226562bac9e8f6888deec995a55">BPM</link></para>
+
+<para>The BPM (Beats Per Minute) of the song. </para>
+</listitem>
+            <listitem><para>List&lt; <link linkend="_class_note_event_info">NoteEventInfo</link> &gt; <link linkend="_class_note_event_data_wrapper_1ab50d1b38b07efe975e0abefafea94e4b">NoteEvents</link></para>
+
+<para>The list of <link linkend="_class_note_event_info">NoteEventInfo</link> representing MIDI notes. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Wrapper class for storing BPM and <link linkend="_class_note_event_info">NoteEventInfo</link> data. </para>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_note_event_data_wrapper_1affc719b7b6f4d1aa607f078b9a311d5c"/><section>
+    <title>AddNewNote()</title>
+<indexterm><primary>AddNewNote</primary><secondary>NoteEventDataWrapper</secondary></indexterm>
+<indexterm><primary>NoteEventDataWrapper</primary><secondary>AddNewNote</secondary></indexterm>
+<para><computeroutput>void NoteEventDataWrapper.AddNewNote (int noteNumber, float startTime, float endTime)</computeroutput></para><para>
+
+<para>Adds new note to <link linkend="_class_note_event_data_wrapper_1ab50d1b38b07efe975e0abefafea94e4b">NoteEvents</link>. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>noteNumber</entry><entry>
+<para>Note number of the note.</para>
+</entry>
+                            </row>
+                            <row>
+<entry>startTime</entry><entry>
+<para>Start time of the note.</para>
+</entry>
+                            </row>
+                            <row>
+<entry>endTime</entry><entry>
+<para>end time of the note.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<programlisting linenumbering="unnumbered">179 &#32;&#32;&#32;&#32;{
+180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_note_event_data_wrapper_1ab50d1b38b07efe975e0abefafea94e4b">NoteEvents</link>.Add(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_note_event_info">NoteEventInfo</link>(noteNumber,&#32;startTime,&#32;endTime));
+181 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_note_event_data_wrapper_1a11675f0de890a36478a9d3d6a08032ad"/><section>
+    <title>Reset()</title>
+<indexterm><primary>Reset</primary><secondary>NoteEventDataWrapper</secondary></indexterm>
+<indexterm><primary>NoteEventDataWrapper</primary><secondary>Reset</secondary></indexterm>
+<para><computeroutput>void NoteEventDataWrapper.Reset ( )</computeroutput></para><para>
+
+<para>Clears noteEvents list and sets BPM to negative infinity. </para>
+</para>
+<programlisting linenumbering="unnumbered">186 &#32;&#32;&#32;&#32;{
+187 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_note_event_data_wrapper_1a2da8d226562bac9e8f6888deec995a55">BPM</link>&#32;=&#32;Mathf.NegativeInfinity;
+188 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_note_event_data_wrapper_1ab50d1b38b07efe975e0abefafea94e4b">NoteEvents</link>.Clear();
+189 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_class_note_event_data_wrapper_1a2da8d226562bac9e8f6888deec995a55"/><section>
+    <title>BPM</title>
+<indexterm><primary>BPM</primary><secondary>NoteEventDataWrapper</secondary></indexterm>
+<indexterm><primary>NoteEventDataWrapper</primary><secondary>BPM</secondary></indexterm>
+<para><computeroutput>float NoteEventDataWrapper.BPM</computeroutput></para><para>
+
+<para>The BPM (Beats Per Minute) of the song. </para>
+</para>
+<para>
+Referenced by <link linkend="_class_midi_input_1a45fbc3ff0c86cf6739b2951fdb831037">MidiInput.LoadSongFromCurrentSettings()</link>, <link linkend="_class_game_manager_1a4138c16110d65a2c6abdafa36fb0d99a">GameManager.RefreshJsonFiles()</link>, and <link linkend="_class_note_event_data_wrapper_1a11675f0de890a36478a9d3d6a08032ad">Reset()</link>.</para>
+</section>
+<anchor xml:id="_class_note_event_data_wrapper_1ab50d1b38b07efe975e0abefafea94e4b"/><section>
+    <title>NoteEvents</title>
+<indexterm><primary>NoteEvents</primary><secondary>NoteEventDataWrapper</secondary></indexterm>
+<indexterm><primary>NoteEventDataWrapper</primary><secondary>NoteEvents</secondary></indexterm>
+<para><computeroutput>List&lt;<link linkend="_class_note_event_info">NoteEventInfo</link>&gt; NoteEventDataWrapper.NoteEvents</computeroutput></para><para>
+
+<para>The list of <link linkend="_class_note_event_info">NoteEventInfo</link> representing MIDI notes. </para>
+</para>
+<para>
+Referenced by <link linkend="_class_note_event_data_wrapper_1affc719b7b6f4d1aa607f078b9a311d5c">AddNewNote()</link>, <link linkend="_class_midi_input_1a0e669343713e7dc8eb36f8fdbc5085ef">MidiInput.GetNoteEventWrapperFromSelectedSong()</link>, <link linkend="_class_midi_input_1a45fbc3ff0c86cf6739b2951fdb831037">MidiInput.LoadSongFromCurrentSettings()</link>, <link linkend="_class_game_manager_1a4138c16110d65a2c6abdafa36fb0d99a">GameManager.RefreshJsonFiles()</link>, and <link linkend="_class_note_event_data_wrapper_1a11675f0de890a36478a9d3d6a08032ad">Reset()</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+Assets/Scripts/<link linkend="__midi_data_handler_8cs">MidiDataHandler.cs</link></section>
+</section>

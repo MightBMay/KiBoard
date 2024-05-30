@@ -7,10 +7,36 @@ using UnityEngine;
 public class SpawnPiano : MonoBehaviour
 {
     public static SpawnPiano instance;
-    [SerializeField] GameObject pianoWhiteTilePrefab, keyParticlePrefab;
+    [SerializeField] GameObject pianoWhiteTilePrefab;
+    [SerializeField] GameObject keyParticlePrefab;
+    /// <summary>
+    /// array of sprites for each key of the piano.
+    /// </summary>
     [SerializeField] SpriteRenderer[] spriterenderers = new SpriteRenderer[88];
-    [SerializeField] static Color enabledColour = new Color(255, 0, 0, 128), perfectColour = new Color(255, 0, 195, 128), goodColour = new Color(0.15f, 1, .5f, 128), okayColour = new Color(0, 9, 255, 128);
-    [SerializeField] Color lane1, lane2;
+    /// <summary>
+    /// colour when incorrectly pressed/timed.
+    /// </summary>
+    [SerializeField] static Color enabledColour = new Color(255, 0, 0, 128);
+    /// <summary>
+    /// colour when perfectly timed
+    /// </summary>
+    [SerializeField] static Color perfectColour = new Color(255, 0, 195, 128);
+    /// <summary>
+    /// colour when pressed with good timing.
+    /// </summary>
+    [SerializeField] static Color goodColour = new Color(0.15f, 1, .5f, 128);
+    /// <summary>
+    /// colour when pressed with okay timing.
+    /// </summary>
+    [SerializeField] static Color okayColour = new Color(0, 9, 255, 128);
+    /// <summary>
+    /// Lane colour 1.
+    /// </summary>
+    [SerializeField] Color lane1;
+    /// <summary>
+    /// lane colour 2.
+    /// </summary>
+    [SerializeField] Color lane2;
 
     private void Awake()
     {
@@ -34,15 +60,27 @@ public class SpawnPiano : MonoBehaviour
 
             }
         }*/
-
+    /// <summary>
+    /// gets the index of a specific keys sprite renderer.
+    /// </summary>
+    /// <param name="sr"></param>
+    /// <returns></returns>
     public int GetIndexOfSpriteRenderer(SpriteRenderer sr)
     {
         return Array.IndexOf(spriterenderers, sr);
     }
+    /// <summary>
+    /// gets default colour for a key based on key number.
+    /// </summary>
+    /// <param name="i"></param>
+    /// <returns></returns>
     public Color GetDefaultKeyColour(int i)
     {
         return CheckBlackNote(i + 1) ? Color.black : Color.white;
     }
+    /// <summary>
+    /// resets colours of all keys on the keyboard.
+    /// </summary>
     public void ClearAllKeyColours()
     {
         for (int i = 0; i < 88; i++)
@@ -50,7 +88,9 @@ public class SpawnPiano : MonoBehaviour
             spriterenderers[i].color = GetDefaultKeyColour(i);
         }
     }
-
+    /// <summary>
+    /// is the note at index I a black note?
+    /// </summary>
     static bool CheckBlackNote(int i)
     {
         int value = i % 12;   
@@ -58,7 +98,12 @@ public class SpawnPiano : MonoBehaviour
         return value == 0 || value == 2 ||value == 5 || value == 7 || value == 10 ;
 
     }
-
+    /// <summary>
+    /// Updates the colours of keys when notes are pressed based off of the timing score.
+    /// </summary>
+    /// <param name="noteNumber"> note number of the note pressed.</param>
+    /// <param name="enabled"> is the note being enabled or disabled?</param>
+    /// <param name="timingScore"> timing score of the note.</param>
     public void UpdateKeyColours(int noteNumber, bool enabled, string timingScore = "")
     {
         if (GameSettings.usePiano)
@@ -70,7 +115,9 @@ public class SpawnPiano : MonoBehaviour
             spriterenderers[(noteNumber-3 )% 12].color = GetKeyColour(noteNumber, enabled, timingScore);
         }
     }
-
+    /// <summary>
+    /// Get colour of a key based off of timing score.
+    /// </summary>
     public static Color GetKeyColour(int keyNum, string timingScore = "")
     {
         switch (timingScore)
@@ -90,6 +137,10 @@ public class SpawnPiano : MonoBehaviour
         }
 
     }
+    /// <summary>
+    /// Get colour of a key based off of timing score taking in to account notes being released.
+    /// </summary>
+
     public static Color GetKeyColour(int keyNum, bool isKeyEnabled, string timingScore = "")
     {
 
@@ -115,6 +166,11 @@ public class SpawnPiano : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// spawn particle effect at pressed key.
+    /// </summary>
+    /// <param name="keyNum">key number to spawn the particles at.</param>
+    /// <param name="score"> timing score used for colouring the particles.</param>
     public void SpawnKeyParticle(int keyNum, string score = "")
     {
         ParticleSystem particle;

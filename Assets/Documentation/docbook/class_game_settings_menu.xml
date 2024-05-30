@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_game_settings_menu" xml:lang="en-US">
+<title>GameSettingsMenu Class Reference</title>
+<indexterm><primary>GameSettingsMenu</primary></indexterm>
+<para>Inheritance diagram for GameSettingsMenu:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_game_settings_menu.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_class_game_settings_menu_1ab30044fb549ce82d01817d298a34b646">SetUsePiano</link> (bool enabled)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_game_settings_menu_1ab5244496a95a5ec2dafb65484e13bbb6">SetUsePedal</link> (bool enabled)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_game_settings_menu_1aa9fb572837a769d7aa4698f4e0250ca4">SetVolume</link> (float volume)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_class_game_settings_menu_1aac20a309713acbcf6e0b7bd61282dec9">Start</link> ()</para>
+</listitem>
+            <listitem><para>IEnumerator <link linkend="_class_game_settings_menu_1a5dd39dd7f822af50be08f1304d6ebe7b">MonitorMidiConnections</link> ()</para>
+
+<para>Checks for active midi connections to the computer every second. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_game_settings_menu_1a39153c2aa53a9070600de58d509b4d70">OnDestroy</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>Toggle <link linkend="_class_game_settings_menu_1a3bddbd3ac993af08d3209ec1b4c023ef">usePianoToggle</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_game_settings_menu_1a5dd39dd7f822af50be08f1304d6ebe7b"/><section>
+    <title>MonitorMidiConnections()</title>
+<indexterm><primary>MonitorMidiConnections</primary><secondary>GameSettingsMenu</secondary></indexterm>
+<indexterm><primary>GameSettingsMenu</primary><secondary>MonitorMidiConnections</secondary></indexterm>
+<para><computeroutput>IEnumerator GameSettingsMenu.MonitorMidiConnections ( )<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>Checks for active midi connections to the computer every second. </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+<programlisting linenumbering="unnumbered">19 &#32;&#32;&#32;&#32;{
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(<emphasis role="keyword">true</emphasis>)
+21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;CheckMidiDevices(<link linkend="_class_kiboard_debug">KiboardDebug</link>.<link linkend="_class_kiboard_debug_1a87c862afc69067077e5f3cd3e5a8ac98">isMidiConnected</link>);
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;yield&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;WaitForSeconds(1);
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;CheckMidiDevices(<emphasis role="keywordtype">bool</emphasis>&#32;midiConnected)&#x240D;
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_game_settings_menu_1a3bddbd3ac993af08d3209ec1b4c023ef">usePianoToggle</link>&#32;==&#32;<emphasis role="keyword">null</emphasis>)&#32;<emphasis role="keywordflow">return</emphasis>;
+29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;usePianoToggle.interactable&#32;=&#32;midiConnected;
+30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!midiConnected)&#32;{&#32;usePianoToggle.isOn&#32;=&#32;<emphasis role="keyword">false</emphasis>;&#32;}
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+32 
+33 
+34 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+Referenced by <link linkend="_class_game_settings_menu_1aac20a309713acbcf6e0b7bd61282dec9">Start()</link>.</para>
+</section>
+<anchor xml:id="_class_game_settings_menu_1a39153c2aa53a9070600de58d509b4d70"/><section>
+    <title>OnDestroy()</title>
+<indexterm><primary>OnDestroy</primary><secondary>GameSettingsMenu</secondary></indexterm>
+<indexterm><primary>GameSettingsMenu</primary><secondary>OnDestroy</secondary></indexterm>
+<para><computeroutput>void GameSettingsMenu.OnDestroy ( )<computeroutput>[private]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">51 &#32;&#32;&#32;&#32;{
+52 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;StopAllCoroutines();
+53 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_game_settings_menu_1ab5244496a95a5ec2dafb65484e13bbb6"/><section>
+    <title>SetUsePedal()</title>
+<indexterm><primary>SetUsePedal</primary><secondary>GameSettingsMenu</secondary></indexterm>
+<indexterm><primary>GameSettingsMenu</primary><secondary>SetUsePedal</secondary></indexterm>
+<para><computeroutput>void GameSettingsMenu.SetUsePedal (bool enabled)</computeroutput></para><programlisting linenumbering="unnumbered">41 &#32;&#32;&#32;&#32;{
+42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GameSettings.usePedal&#32;=&#32;enabled;
+43 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_game_settings_menu_1ab30044fb549ce82d01817d298a34b646"/><section>
+    <title>SetUsePiano()</title>
+<indexterm><primary>SetUsePiano</primary><secondary>GameSettingsMenu</secondary></indexterm>
+<indexterm><primary>GameSettingsMenu</primary><secondary>SetUsePiano</secondary></indexterm>
+<para><computeroutput>void GameSettingsMenu.SetUsePiano (bool enabled)</computeroutput></para><programlisting linenumbering="unnumbered">37 &#32;&#32;&#32;&#32;{
+38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GameSettings.usePiano&#32;=&#32;enabled;
+39 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_game_settings_menu_1aa9fb572837a769d7aa4698f4e0250ca4"/><section>
+    <title>SetVolume()</title>
+<indexterm><primary>SetVolume</primary><secondary>GameSettingsMenu</secondary></indexterm>
+<indexterm><primary>GameSettingsMenu</primary><secondary>SetVolume</secondary></indexterm>
+<para><computeroutput>void GameSettingsMenu.SetVolume (float volume)</computeroutput></para><programlisting linenumbering="unnumbered">46 &#32;&#32;&#32;&#32;{
+47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SettingsManager.SetVolume(volume);
+48 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_game_settings_menu_1aac20a309713acbcf6e0b7bd61282dec9"/><section>
+    <title>Start()</title>
+<indexterm><primary>Start</primary><secondary>GameSettingsMenu</secondary></indexterm>
+<indexterm><primary>GameSettingsMenu</primary><secondary>Start</secondary></indexterm>
+<para><computeroutput>void GameSettingsMenu.Start ( )<computeroutput>[private]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">11 &#32;&#32;&#32;&#32;{
+12 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;StartCoroutine(<link linkend="_class_game_settings_menu_1a5dd39dd7f822af50be08f1304d6ebe7b">MonitorMidiConnections</link>());
+13 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_class_game_settings_menu_1a3bddbd3ac993af08d3209ec1b4c023ef"/><section>
+    <title>usePianoToggle</title>
+<indexterm><primary>usePianoToggle</primary><secondary>GameSettingsMenu</secondary></indexterm>
+<indexterm><primary>GameSettingsMenu</primary><secondary>usePianoToggle</secondary></indexterm>
+<para><computeroutput>Toggle GameSettingsMenu.usePianoToggle<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Referenced by <link linkend="_class_game_settings_menu_1a5dd39dd7f822af50be08f1304d6ebe7b">MonitorMidiConnections()</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+Assets/Scripts/<link linkend="__game_settings_menu_8cs">GameSettingsMenu.cs</link></section>
+</section>

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__beat_number_generator_8cs" xml:lang="en-US">
+<title>Assets/Scripts/BeatNumberGenerator.cs File Reference</title>
+<indexterm><primary>Assets/Scripts/BeatNumberGenerator.cs</primary></indexterm>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_class_beat_number_generator">BeatNumberGenerator</link></para>
+
+<para>Generates beat numbers as TextMeshProUGUI objects. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

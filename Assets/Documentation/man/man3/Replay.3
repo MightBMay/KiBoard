@@ -1,0 +1,163 @@
+.TH "Replay" 3 "Version 1.0.0" "KiBoard GDD & Technical Documentation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Replay
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits MonoBehaviour\&.
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBStartReplayCapture\fP ()"
+.br
+.RI "Clears current replay data, Checks if the selected song is a \&.replay file and assigns isPlaying \fBReplay\fP, then assigns a BPM to the replay\&. "
+.ti -1c
+.RI "static void \fBUpdateReplay\fP (int noteNum, float time)"
+.br
+.RI "Adds player input note to the replay data being stored\&. "
+.ti -1c
+.RI "static void \fBClearReplay\fP ()"
+.br
+.RI "resets replayNoteData to empty values\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBNoteEventDataWrapper\fP \fBreplayNoteData\fP"
+.br
+.RI "Stores all player input notes to later be saved as a \&.replay file\&. "
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static \fBReplay\fP \fBinstance\fP"
+.br
+.RI "singleton reference\&. "
+.ti -1c
+.RI "static bool \fBisPlayingReplay\fP = false"
+.br
+.RI "Is the currently playing song a \&.replay file? "
+.ti -1c
+.RI "static bool \fBrecordReplay\fP = false"
+.br
+.RI "Should player input be recorded for a \&.replay file to be made? "
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBAwake\fP ()"
+.br
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "void Replay\&.Awake ()\fR [private]\fP"
+
+.nf
+26     {
+27         if(instance == null)
+28         {
+29             instance = this;
+30         }
+31         else { Destroy(this); }
+32     }
+.PP
+.fi
+
+.SS "static void Replay\&.ClearReplay ()\fR [static]\fP"
+
+.PP
+resets replayNoteData to empty values\&. 
+.nf
+70     {
+71         instance\&.replayNoteData\&.Reset();
+72     }
+.PP
+.fi
+
+.PP
+Referenced by \fBStartReplayCapture()\fP\&.
+.SS "static void Replay\&.StartReplayCapture ()\fR [static]\fP"
+
+.PP
+Clears current replay data, Checks if the selected song is a \&.replay file and assigns isPlaying \fBReplay\fP, then assigns a BPM to the replay\&. 
+.nf
+37     {
+38         ClearReplay();
+39         if (Path\&.GetExtension(GameSettings\&.currentSongPath)\&.Equals("\&.replay")) { isPlayingReplay = true; }
+40         instance\&.replayNoteData\&.BPM = GameSettings\&.bpm;
+41     }
+.PP
+.fi
+
+.PP
+Referenced by \fBGameManager\&.PrepareNotes()\fP\&.
+.SS "static void Replay\&.UpdateReplay (int noteNum, float time)\fR [static]\fP"
+
+.PP
+Adds player input note to the replay data being stored\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fInoteNum\fP number of the note pressed ( 0 - 87) 
+.br
+\fItime\fP what songTime the note was pressed\&.
+.RE
+.PP
+
+.nf
+49     {
+50         if (isPlayingReplay|| !recordReplay||time <0) { return; }
+51         // Check if the note exists with endTime as Mathf\&.NegativeInfinity
+52         var existingNote = instance\&.replayNoteData\&.NoteEvents\&.Find(note => note\&.noteNumber == noteNum && note\&.endTime == Mathf\&.NegativeInfinity);
+53         
+54         if (existingNote != null)
+55         {
+56             // If the note exists, update its endTime
+57             existingNote\&.endTime = time;
+58         }
+59         else
+60         {
+61             // If the note doesn't exist, add a new note with endTime as Mathf\&.NegativeInfinity
+62             instance\&.replayNoteData\&.AddNewNote(noteNum, time, Mathf\&.NegativeInfinity);
+63         }
+64     }
+.PP
+.fi
+
+.PP
+Referenced by \fBMidiInput\&.NoteOff()\fP, and \fBMidiInput\&.NoteOn()\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBReplay\fP Replay\&.instance\fR [static]\fP"
+
+.PP
+singleton reference\&. 
+.PP
+Referenced by \fBAwake()\fP, \fBClearReplay()\fP, \fBGameManager\&.OnSongEnd()\fP, and \fBUpdateReplay()\fP\&.
+.SS "bool Replay\&.isPlayingReplay = false\fR [static]\fP"
+
+.PP
+Is the currently playing song a \&.replay file? 
+.PP
+Referenced by \fBGameManager\&.OnSongEnd()\fP, \fBStartReplayCapture()\fP, and \fBUpdateReplay()\fP\&.
+.SS "bool Replay\&.recordReplay = false\fR [static]\fP"
+
+.PP
+Should player input be recorded for a \&.replay file to be made? 
+.PP
+Referenced by \fBUpdateReplay()\fP\&.
+.SS "\fBNoteEventDataWrapper\fP Replay\&.replayNoteData"
+
+.PP
+Stores all player input notes to later be saved as a \&.replay file\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for KiBoard GDD & Technical Documentation from the source code\&.

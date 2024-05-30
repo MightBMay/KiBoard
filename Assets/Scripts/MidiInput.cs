@@ -13,22 +13,49 @@ using static Cinemachine.CinemachineTriggerAction.ActionSettings;
 public class MidiInput : MonoBehaviour
 {
     public static MidiInput instance;
+    /// <summary>
+    /// Currently loaded notes for the selected song.
+    /// </summary>
     public List<NoteEventInfo> storedNoteEvents;
+    /// <summary>
+    /// Reference to the <see cref="GameManager.PrepareNotes(float, List{NoteEventInfo}, bool)"/> prepareNotes Coroutine 
+    /// </summary>
     public Coroutine PrepareNotesCoroutine;
-    [SerializeField] TextMeshProUGUI warningText;
-
-
+    /// <summary>
+    /// Is the pedal pressed.
+    /// </summary>
     public bool isPedalPressed;
+    /// <summary>
+    /// array of bools corresponding to currently activated keys.
+    /// </summary>
     public bool[] enabledKeys = new bool[88];
+    /// <summary>
+    /// Should the game take piano input.
+    /// </summary>
     public bool takeInput = true;
+    /// <summary>
+    /// Are we in the game scene.
+    /// </summary>
     public bool inGame = false;
 
+    /// <summary>
+    /// are midi devices hooked?<br/>
+    /// <see cref="HookMidiDevice"/> and <see cref="UnHookMidiDevice"/>.
+    /// </summary>
     public bool isMidiHooked;
 
+    /// <summary>
+    /// Render texture used for previewing scenes in Song Selection.
+    /// </summary>
     public RenderTexture renderTexture;
+    /// <summary>
+    /// prefab object with a RawImage component to assign <see cref="renderTexture"/> to.
+    /// </summary>
     [SerializeField] GameObject imagePrefab;
-
-    // Define the mapping between keyboard keys and MIDI note numbers
+    
+    /// <summary>
+    /// Dictionary mapping for Computer keyboard input to note input.
+    /// </summary>
     Dictionary<KeyCode, int> keyboard12 = new Dictionary<KeyCode, int>
     {
         { KeyCode.A, 48 },
@@ -44,6 +71,11 @@ public class MidiInput : MonoBehaviour
         { KeyCode.U, 58 },
         { KeyCode.J, 59 },
     };
+
+    /// <summary>
+    /// Scene used for previewing songs in Song Selection.
+    /// </summary>
+    public Scene currentPreview;
 
 
     private void Awake()
@@ -88,7 +120,10 @@ public class MidiInput : MonoBehaviour
         }
     }
 
-    public Scene currentPreview;
+ /// <summary>
+ /// Loads a preview of selected song into the <see cref="currentPreview"/> Scene variable, and begins playing the songs preview.
+ /// </summary>
+ /// <param name="sceneName"></param>
     public void LoadScenePreview(string sceneName)
     {
 
@@ -227,7 +262,9 @@ public class MidiInput : MonoBehaviour
 
 
     }
-
+    /// <summary>
+    /// Hooks midi devices to be used for input.
+    /// </summary>
     public void HookMidiDevice()
     {
         try
@@ -244,6 +281,9 @@ public class MidiInput : MonoBehaviour
             Debug.Log("Error Hooking midi device");
         }
     }
+    /// <summary>
+    /// unhooks midi devices to remove their input.
+    /// </summary>
     public void UnHookMidiDevice()
     {
         
@@ -262,7 +302,10 @@ public class MidiInput : MonoBehaviour
     }
 
 
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns><see cref="NoteEventDataWrapper"/> loaded from the currently selected song</returns>
     public NoteEventDataWrapper GetNoteEventWrapperFromSelectedSong()
     {
         NoteEventDataWrapper data = MidiReadFile.GetNoteEventsFromFilePath(GameSettings.currentSongPath);
@@ -270,15 +313,17 @@ public class MidiInput : MonoBehaviour
         storedNoteEvents = data.NoteEvents;
         return data;
     }
-
+    /// <summary>
+    /// called to begin playing the song.
+    /// </summary>
     public void StartSongCoroutine()
     {
         StartCoroutine(StartSong());
     }
     /// <summary>
-    /// Starts playing the loaded song.
+    /// Starts playing the loaded song using the current <see cref="FileGroup"/>'s mp3 file field.
     /// </summary>
-    /// <returns>Coroutine for preparing notes and playing the song.</returns>
+    /// <returns></returns>
     public IEnumerator StartSong(bool isPreview = false)
     {
 
@@ -287,6 +332,10 @@ public class MidiInput : MonoBehaviour
         yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotes(GameSettings.bpm, storedNoteEvents, isPreview));
         StartCoroutine(MP3Handler.instance.PlaySong(SongSelection.GetUnderscoreSubstring(GameSettings.currentFileGroup.Mp3File)));
     }
+    /// <summary>
+    /// Starts playing the loaded song from a given file path.
+    /// </summary>
+    /// <returns></returns>
     public IEnumerator StartSong(string mp3Path, bool isPreview = false)
     {
 
@@ -296,10 +345,10 @@ public class MidiInput : MonoBehaviour
         StartCoroutine(MP3Handler.instance.PlaySong(mp3Path));
     }
     /// <summary>
-    /// Starts playing a song with specified note events.
+    /// Starts playing a specified list of <see cref="NoteEventInfo"/>
     /// </summary>
     /// <param name="loadEvents">The list of note events to play.</param>
-    /// <returns>Coroutine for preparing notes and playing the song.</returns>
+    /// <returns></returns>
     public IEnumerator StartSong(List<NoteEventInfo> loadEvents, bool isPreview = false)
     {
         GameManager.instance.currentSongScore.ClearScore();
@@ -369,7 +418,7 @@ public class MidiInput : MonoBehaviour
 
 
 
-
+        
     }
 
     /// <summary>
@@ -416,6 +465,9 @@ public class MidiInput : MonoBehaviour
         enabledKeys[note - 21] = false;
 
     }
+    /// <summary>
+    /// Reloads the currently playing song.
+    /// </summary>
     public void RetryCurrentSong()
     {
         UnHookMidiDevice();
