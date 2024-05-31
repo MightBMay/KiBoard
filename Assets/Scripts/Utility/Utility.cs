@@ -11,13 +11,43 @@ public class Utility : MonoBehaviour
     /// image file extensions supported.
     /// </summary>
     public static string[] SupportedImageTypes = new[] { ".png", ".jpg", ".jpeg" };// ".gif",".bmp",".tif",".tiff",".tga"};
-   /// <summary>
-   /// normalizes number Input to a range min to max.
-   /// </summary>
+
+
+    /// <summary>
+    /// Array of all directories in the ".../Kiboard/Images/" folder.
+    /// </summary>
+    private static string[] ImagesDirectories;
+
+    /// <summary>
+    /// public reference to the array of all directories in the ".../Kiboard/Images/" folder.
+    /// </summary>
+    public static string[] imagesDirectories
+    {
+        get
+        {
+            if (ImagesDirectories == null)
+            {
+                ImagesDirectories = Directory.GetFiles(Application.persistentDataPath + "/Images/");
+            }
+            return ImagesDirectories;
+        }
+        set
+        {
+            ImagesDirectories = value;
+        }
+    }
+
+
+
+    /// <summary>
+    /// normalizes number Input to a range min to max.
+    /// </summary>
     public static float NormalizeNumberToRange(float input, float min, float max)
     {
         return min + (input * (max - min));
     }
+
+    
 
     /// <summary>
     /// loads an image from given path to a Texture2D.
@@ -41,6 +71,7 @@ public class Utility : MonoBehaviour
         else
         {
             Debug.Log("Error loading image file from path " + path);
+            
             return null;
         }
     }
@@ -50,14 +81,22 @@ public class Utility : MonoBehaviour
     /// </summary>
     /// <param name="prefix">prefix to search for to differentiate from different images based on scene.( eg: SceneSelection_bg, GameScene88_bg)</param>
     /// <returns>texture with that image.</returns>
-    public Texture2D GetImageFromImageFolder(string prefix)
+    public static Texture2D GetImageFromImageFolder(string prefix)
     {
+        foreach (string path in imagesDirectories)
+        {
+            if (Path.GetFileName(path).StartsWith(prefix, System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                return LoadImageFromFile(path);
+            }
+        };
 
-        var imagePath = Directory.GetFiles(Application.persistentDataPath + "/Images/").First(file => file.StartsWith(prefix,System.StringComparison.InvariantCultureIgnoreCase));
-        if(imagePath == null) { Debug.LogWarning("no file with prefix " + prefix + " found in Images folder."); return null; }
-        return LoadImageFromFile(imagePath);
+        Debug.LogWarning("no file with prefix " + prefix + " found in Images folder.");
+        return null; 
 
     }
+    
+
 
 
 

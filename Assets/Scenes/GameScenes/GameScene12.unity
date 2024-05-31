@@ -1191,9 +1191,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 344937669}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7efc9ac22caff0f42a18d2ab91214354, type: 3}
+  m_Script: {fileID: 11500000, guid: b2faf05e082844e4a96ad2af4a8a449e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSongSpecific: 1
+  imagePrefix: bg_
 --- !u!222 &344937673
 CanvasRenderer:
   m_ObjectHideFlags: 0

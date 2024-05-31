@@ -8282,7 +8282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.1764706, g: 0.1764706, b: 0.1764706, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8313,9 +8313,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1554901879}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7efc9ac22caff0f42a18d2ab91214354, type: 3}
+  m_Script: {fileID: 11500000, guid: b2faf05e082844e4a96ad2af4a8a449e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSongSpecific: 0
+  imagePrefix: SongSelection_bg
 --- !u!1 &1592894867
 GameObject:
   m_ObjectHideFlags: 0
@@ -12062,7 +12064,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6333892562893241397, guid: c56bdef3b3a7f1146a646e9348326e13, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6816218210824345528, guid: c56bdef3b3a7f1146a646e9348326e13, type: 3}
       propertyPath: m_SizeDelta.y
