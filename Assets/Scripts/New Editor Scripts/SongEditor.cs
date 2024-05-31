@@ -56,7 +56,7 @@ public class SongEditor : MonoBehaviour
 
     private void Start()
     {
-        LoadSongAsEditorNotes();
+//        LoadSongAsEditorNotes();
     }
 
     /// <summary>

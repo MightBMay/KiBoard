@@ -154,8 +154,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1158009439}
-  col1: {r: 0.241, g: 0.241, b: 0.241, a: 1}
-  col2: {r: 0.177, g: 0.177, b: 0.177, a: 1}
+  col1: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+  col2: {r: 0.29411766, g: 0.29411766, b: 0.29411766, a: 1}
+  noteLaneScale: {x: 1, y: 20, z: 1}
+  baseNoteScale: {x: 0.8, y: 5, z: 1}
 --- !u!4 &554137637
 Transform:
   m_ObjectHideFlags: 0

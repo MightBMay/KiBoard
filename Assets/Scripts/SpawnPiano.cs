@@ -16,19 +16,20 @@ public class SpawnPiano : MonoBehaviour
     /// <summary>
     /// colour when incorrectly pressed/timed.
     /// </summary>
-    [SerializeField] static Color enabledColour = new Color(255, 0, 0, 128);
+    [SerializeField] static Color enabledColour = new Color(1f, 0, 0, 1);
+    [SerializeField] static Color enabledColourBlack = new Color(.8f, 0, 0, 1);
     /// <summary>
     /// colour when perfectly timed
     /// </summary>
-    [SerializeField] static Color perfectColour = new Color(255, 0, 195, 128);
+    [SerializeField] static Color perfectColour = new Color(1, 0, .76f, 1);
     /// <summary>
     /// colour when pressed with good timing.
     /// </summary>
-    [SerializeField] static Color goodColour = new Color(0.15f, 1, .5f, 128);
+    [SerializeField] static Color goodColour = new Color(0.15f, 1, .5f, 1);
     /// <summary>
     /// colour when pressed with okay timing.
     /// </summary>
-    [SerializeField] static Color okayColour = new Color(0, 9, 255, 128);
+    [SerializeField] static Color okayColour = new Color(0, .04f, 1, 1);
     /// <summary>
     /// Lane colour 1.
     /// </summary>
@@ -132,6 +133,7 @@ public class SpawnPiano : MonoBehaviour
                 return okayColour;
 
             default:
+                if (CheckBlackNote(keyNum + 1)) { return enabledColourBlack; }
                 return enabledColour;
 
         }
@@ -160,6 +162,7 @@ public class SpawnPiano : MonoBehaviour
             case "Okay":
                 return okayColour;
             default:
+                if (CheckBlackNote(keyNum + 1)) { return enabledColourBlack; }
                 return enabledColour;
 
         }
