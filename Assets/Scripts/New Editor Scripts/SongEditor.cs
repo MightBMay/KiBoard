@@ -1,15 +1,137 @@
-using NAudio.Midi;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System;
 using UnityEngine;
-using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 /// <summary>
 /// Manages the song editor functionality.
 /// </summary>
 public class SongEditor : MonoBehaviour
+{
+    // Start is called before the first frame update
+    public static SongEditor instance;
+    public Dictionary<int, GameObject> keyLanes = new();
+    [SerializeField] Transform noteHolder;
+    [SerializeField] GameObject editorNotePrefab;
+    Camera cam;
+    [SerializeField] GameObject keyPrefab;
+    [SerializeField] Color keyLaneColour1, keyLaneColour2;
+    [SerializeField] Vector3 keyLaneScale = new Vector3(1, 20, 1);
+    [SerializeField] Vector3 baseKeyScale = new Vector3(.8f, 5, 1);
+    [SerializeField] Vector2 defaultNoteScale = new(1, 1);
+
+    public float heightMultiplier = 15;
+
+    private void Awake()
+    {
+        if (instance == null) { instance = this; }
+        else { Destroy(this); }
+    }
+    void Start()
+    {
+        cam = Camera.main;
+
+        InitializePianoRoll();
+    }
+    private void Update()
+    {
+        HandleMouseInput();
+    }
+
+
+    public void HandleMouseInput()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(cam.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+        if (hit.collider == null) return; // change this to account for a isdragging variable when we get there.       
+
+        Right();
+        Left();
+        Middle();
+
+        void Left()
+        {
+            Down();
+            Hold();
+            Up();
+            void Down()
+            {
+
+                if (!Input.GetMouseButtonDown(0)) { return; }
+                AddNote(hit);
+            }
+
+
+            void Hold()
+            {
+                // if you are holding LMB but it isnt the first frame you pressed it:
+                if (Input.GetMouseButton(0) && !Input.GetMouseButtonDown(0)) { return; }
+
+                //hold logic
+            }
+
+
+            void Up()
+            {
+                if (!Input.GetMouseButtonDown(0)) { return; }
+            }
+        }
+
+        void Middle()
+        {
+
+        }
+
+        void Right()
+        {
+
+        }
+
+        // make one for scroll wheel.
+    }
+
+
+    void AddNote(RaycastHit2D hit)
+    {
+        Transform note = Instantiate(editorNotePrefab, noteHolder).transform;
+        int noteNum = Mathf.RoundToInt(hit.point.x);
+        float height = hit.point.y;
+        note.position = new Vector2(noteNum, height);
+        EditorNote editorNote = note.GetComponent<EditorNote>();
+        editorNote.UpdateNoteEvent(noteNum, height - (defaultNoteScale.y / 2), height + (defaultNoteScale.y / 2));
+
+    }
+
+    public void InitializePianoRoll()
+    {
+        for (int i = 0; i < 88; i++)
+        {
+            Transform trans = Instantiate(keyPrefab, transform).transform;
+            trans.position = new(i, 0, 0);
+            trans.localScale = baseKeyScale;
+            trans.GetComponent<SpriteRenderer>().color = GetKeyColour(i);
+            Transform lane = Instantiate(keyPrefab, trans).transform;
+            lane.GetComponent<SpriteRenderer>().color = i % 2 == 0 ? keyLaneColour1 : keyLaneColour2;
+            lane.localScale = keyLaneScale;
+            lane.position += new Vector3(0f, (keyLaneScale.y * baseKeyScale.y / 2) - 2.5f, 1f);
+            lane.gameObject.tag = "KeyLane";
+
+            keyLanes.Add(i, lane.gameObject);
+        }
+    }
+    Color GetKeyColour(int i)
+    {
+        int value = i % 12;
+        if (value == 0 || value == 2 || value == 3 || value == 5 || value == 7 || value == 9 || value == 11) return Color.white;
+        else { return Color.black; }
+    }
+
+}
+
+
+
+/*
+public class oldSongEditor : MonoBehaviour
 {
     /// <summary>
     /// Singleton instance of the SongEditor class.
@@ -56,7 +178,7 @@ public class SongEditor : MonoBehaviour
 
     private void Start()
     {
-//        LoadSongAsEditorNotes();
+        //        LoadSongAsEditorNotes();
     }
 
     /// <summary>
@@ -75,13 +197,13 @@ public class SongEditor : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.L))
         {
             // Start testing the song
-           //SongTestCoroutine=  StartCoroutine(StartSongTest());
+            //SongTestCoroutine=  StartCoroutine(StartSongTest());
         }
     }
 
     #region Mouse inputs
 
-    public void HandleMouseInput() 
+    public void HandleMouseInput()
     {
         RightMouse();
         MiddleMouse();
@@ -94,11 +216,11 @@ public class SongEditor : MonoBehaviour
         if (collider.CompareTag("KeyLane"))
         {
             int noteNum;
-            try { noteNum =Array.IndexOf(keyLanes, collider.gameObject)+1; } // get the x position that is equal to the index+1.
-            catch (Exception e){ Debug.Log("Error Finding index of key lane. Exception:\n"+e); return; }
-            CreateNote(noteNum,hit.point.y);
+            try { noteNum = Array.IndexOf(keyLanes, collider.gameObject) + 1; } // get the x position that is equal to the index+1.
+            catch (Exception e) { Debug.Log("Error Finding index of key lane. Exception:\n" + e); return; }
+            CreateNote(noteNum, hit.point.y);
         }
-        
+
     }
 
     public void MiddleMouse()
@@ -135,7 +257,7 @@ public class SongEditor : MonoBehaviour
         }
         foreach (var note in notes.NoteEvents)
         {
-          //  if(GameManager.CheckSpawnNote(note))CreateNote(note.noteNumber, note.startTime, note.endTime, (note.startTime+note.endTime)/2 );
+            //  if(GameManager.CheckSpawnNote(note))CreateNote(note.noteNumber, note.startTime, note.endTime, (note.startTime+note.endTime)/2 );
         }
     }
 
@@ -149,8 +271,8 @@ public class SongEditor : MonoBehaviour
         FindObjectOfType<SongNoteEditor>().enabled = false;
         StartCoroutine(MidiInput.instance.StartSong(noteEvents));
         var cameraScroll = FindObjectOfType<CameraScrollManager>();
-        cameraScroll.ResetCamera(); 
-        yield return new WaitUntil(() => IsTestDone() );
+        cameraScroll.ResetCamera();
+        yield return new WaitUntil(() => IsTestDone());
         cameraScroll.canScroll = true;
 
 
@@ -170,7 +292,7 @@ public class SongEditor : MonoBehaviour
     /// <returns>The created note event.</returns>
     public NoteEventInfo CreateNote(int noteNumber, float mouseHeight)
     {
-        float startTime= 0, endTime = 0; // FIGURE OUT HOW TO TRANSLATE NOTE HEIGHT TO TIME BASED OFF BPM.
+        float startTime = 0, endTime = 0; // FIGURE OUT HOW TO TRANSLATE NOTE HEIGHT TO TIME BASED OFF BPM.
         GameObject note = Instantiate(editorNotePrefab, noteHolder);
         noteObjects.Add(note);
         var noteEvent = new NoteEventInfo(noteNumber, startTime, endTime);
@@ -178,7 +300,7 @@ public class SongEditor : MonoBehaviour
         editorNote.noteEvent = noteEvent;
         editorNote.SetNotePosition(mouseHeight);
         noteEvents.Add(noteEvent);
-        
+
 
         return noteEvent;
     }
@@ -216,4 +338,6 @@ public class SongEditor : MonoBehaviour
     }
 
     #endregion Other
-}
+
+    
+}*/

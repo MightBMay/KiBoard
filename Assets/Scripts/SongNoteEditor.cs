@@ -9,7 +9,7 @@ using UnityEngine.Video;
 
 public class SongNoteEditor : MonoBehaviour
 {
-    public HashSet<EditorNoteWrapper> selectedNotes = new HashSet<EditorNoteWrapper>();
+   /* public HashSet<EditorNoteWrapper> selectedNotes = new HashSet<EditorNoteWrapper>();
     [SerializeField] Vector2 mousePosition1;
     [SerializeField] Vector2 mousePosition2;
     [SerializeField] LayerMask groupSelectLayerMask;
@@ -124,7 +124,7 @@ public class SongNoteEditor : MonoBehaviour
         }
 
     }
-    /*   switch (operation)                                                                        old operation based system
+    *//*   switch (operation)                                                                        old operation based system
        {
            case EditorOperation.Add:
                // AddNote();
@@ -150,7 +150,7 @@ public class SongNoteEditor : MonoBehaviour
            default:
                break;
        }
-*/
+*//*
     public void OnLeftMouseUp()
     {
         if (!Input.GetMouseButtonUp(0)) return;
@@ -331,7 +331,7 @@ public class SongNoteEditor : MonoBehaviour
                 g.GetComponent<EditorNote>().noteEvent.startTime)), 0.5f, Mathf.Infinity));
 
             sr.size = newSize;
-            sr.GetComponent<EditorNote>().SetShadowSize(newSize.y);
+           //sr.GetComponent<EditorNote>().SetShadowSize(newSize.y);
         }
 
     }
@@ -350,7 +350,7 @@ public class SongNoteEditor : MonoBehaviour
         return new Vector2(x-0.095f, input.y);
     }
 
-
+*/
 }
 
 

@@ -49,7 +49,7 @@ public class MidiInput : MonoBehaviour
     /// </summary>
     public RenderTexture renderTexture;
     /// <summary>
-    /// prefab object with a RawImage component to assign <see cref="renderTexture"/> to.
+    /// keyPrefab object with a RawImage component to assign <see cref="renderTexture"/> to.
     /// </summary>
     [SerializeField] GameObject imagePrefab;
     

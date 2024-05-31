@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public static GameManager instance;
     /// <summary>
-    /// prefab used for instantiating notes.
+    /// keyPrefab used for instantiating notes.
     /// </summary>
     public GameObject notePrefab;
     /// <summary>
