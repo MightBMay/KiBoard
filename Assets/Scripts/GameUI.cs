@@ -72,23 +72,28 @@ public class GameUI : MonoBehaviour
     /// </summary>
     public void CreateTimingText(int score, string scoretext)
     {
+        Color textColor;
+        string scoreString = Mathf.Sign(score) >= 0 ? "+" : "";
+        scoreString += score.ToString();
         switch (scoretext)
         {
             case "Perfect":
-                SpawnTimingText("+" + score.ToString(), new Color(1, 0, 0.75f, .5f));
+                textColor = new Color(1, 0, 0.75f, .5f);
                 break;
 
             case "Good":
-                SpawnTimingText("+" + score.ToString(), new Color(0.15f, 1, .5f, .5f));
+                textColor = new Color(0.15f, 1, .5f, .5f);
                 break;
 
             case "Okay":
-                SpawnTimingText("+" + score.ToString(), new Color(0, 0.04f, 1, .5f));
+                textColor = new Color(0, 0.04f, 1, .5f);
                 break;
             default:
-                SpawnTimingText((-10).ToString(), new Color(1, 0, 0, .5f));
+                textColor= new Color(1, 0, 0, .5f);
                 break;
         }
+
+        SpawnTimingText(scoreString, textColor);
         scoreText.text = GameManager.instance.currentSongScore.score.ToString();
     }
     /// <summary>
