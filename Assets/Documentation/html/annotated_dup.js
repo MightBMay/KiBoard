@@ -23,8 +23,9 @@ var annotated_dup =
     [ "NoteEventDataWrapper", "class_note_event_data_wrapper.html", "class_note_event_data_wrapper" ],
     [ "NoteEventInfo", "class_note_event_info.html", "class_note_event_info" ],
     [ "NoteShadow", "class_note_shadow.html", "class_note_shadow" ],
+    [ "oldEN", "classold_e_n.html", "classold_e_n" ],
     [ "Replay", "class_replay.html", "class_replay" ],
-    [ "SongNoteEditor", "class_song_note_editor.html", "class_song_note_editor" ],
+    [ "SongNoteEditor", "class_song_note_editor.html", null ],
     [ "SongScore", "class_song_score.html", "class_song_score" ],
     [ "SpawnPiano", "class_spawn_piano.html", "class_spawn_piano" ]
 ];

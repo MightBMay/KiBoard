@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['noteeventinfo_0',['NoteEventInfo',['../class_note_event_info.html#a3986c534b859bd61b047941cd3951f49',1,'NoteEventInfo.NoteEventInfo()'],['../class_note_event_info.html#a3b001565b1e72963a9630adbe706842a',1,'NoteEventInfo.NoteEventInfo(int noteNumber, float startTime, float endTime)'],['../class_note_event_info.html#aa8a865f4cafede7bf9253a805304eb76',1,'NoteEventInfo.NoteEventInfo(float bpm)']]],
-  ['noteoff_1',['NoteOff',['../class_midi_input.html#a2e24c8cbdc52507a5c148923c9f65d3f',1,'MidiInput']]],
-  ['noteon_2',['NoteOn',['../class_midi_input.html#a358348cc54a49193003a2788f81b7b4a',1,'MidiInput']]]
+  ['ondestroy_0',['OnDestroy',['../class_falling_note.html#ad10f2dd0e9ab1211e79015a1551a923e',1,'FallingNote.OnDestroy()'],['../class_game_settings_menu.html#a39153c2aa53a9070600de58d509b4d70',1,'GameSettingsMenu.OnDestroy()'],['../class_m_p3_handler.html#a5f75901a9c2b13ed3a4c8a7226ab56f4',1,'MP3Handler.OnDestroy()']]],
+  ['ondisable_1',['OnDisable',['../class_kiboard_debug.html#acff1f8564fcba2eaaa6cf9d38e0fed86',1,'KiboardDebug']]],
+  ['onenable_2',['OnEnable',['../class_kiboard_debug.html#a3c43e2f01dc7e099c0a9df6df8d50dfc',1,'KiboardDebug']]],
+  ['onnotesuccess_3',['OnNoteSuccess',['../class_midi_input.html#aa4804a291f0c49c471a9fb0ecd0a6590',1,'MidiInput']]],
+  ['onsongend_4',['OnSongEnd',['../class_game_manager.html#ad109ae0452de271ad4ea6f05e7a7d74b',1,'GameManager']]]
 ];

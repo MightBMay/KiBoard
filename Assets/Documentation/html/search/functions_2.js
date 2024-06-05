@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['deselectallnotes_0',['DeselectAllNotes',['../class_song_note_editor.html#aa17a3d897f2403136eb7afc95d338af3',1,'SongNoteEditor']]],
-  ['deselectnote_1',['DeselectNote',['../class_song_note_editor.html#ad221dc0913d18cbb1c1cc11a1ffa9d4d',1,'SongNoteEditor']]],
-  ['dragnote_2',['DragNote',['../class_song_note_editor.html#a8665364022802da939ffa6c4d53adc6c',1,'SongNoteEditor']]]
+  ['editornotewrapper_0',['EditorNoteWrapper',['../class_editor_note_wrapper.html#a70b71808185bd1c4e4494fcf7085423c',1,'EditorNoteWrapper']]],
+  ['exittodesktopbutton_1',['ExitToDesktopButton',['../class_exit.html#a91082b191e1712af29316cb8b5d6c33c',1,'Exit']]],
+  ['exittodesktopimmediate_2',['ExitToDesktopImmediate',['../class_exit.html#a3789a962bf9b8fdffc835d9af5f837e0',1,'Exit']]]
 ];

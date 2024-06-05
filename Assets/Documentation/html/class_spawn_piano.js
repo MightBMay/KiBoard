@@ -10,6 +10,7 @@ var class_spawn_piano =
     [ "SpawnKeyParticle", "class_spawn_piano.html#a8034a9f2c1574016ce3e1764500afa18", null ],
     [ "UpdateKeyColours", "class_spawn_piano.html#a1484eced385e236027f4b3226285d39e", null ],
     [ "enabledColour", "class_spawn_piano.html#ae4761bb59f6113bd0128ad39b7a99fe2", null ],
+    [ "enabledColourBlack", "class_spawn_piano.html#af34d3de2622cfd3bcf78f82ab520fdf6", null ],
     [ "goodColour", "class_spawn_piano.html#a2eafa3511f2d0c30af4aeba36257db09", null ],
     [ "instance", "class_spawn_piano.html#a81c1e7fb3b0bccb57b3bba39e581f9f3", null ],
     [ "keyParticlePrefab", "class_spawn_piano.html#a91aaf7c6c4c62bb2a16c4dab271dbc8d", null ],

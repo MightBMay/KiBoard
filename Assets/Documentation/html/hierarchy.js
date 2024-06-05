@@ -24,7 +24,8 @@ var hierarchy =
       [ "NoteShadow", "class_note_shadow.html", null ],
       [ "Replay", "class_replay.html", null ],
       [ "SongNoteEditor", "class_song_note_editor.html", null ],
-      [ "SpawnPiano", "class_spawn_piano.html", null ]
+      [ "SpawnPiano", "class_spawn_piano.html", null ],
+      [ "oldEN", "classold_e_n.html", null ]
     ] ],
     [ "NoteEventDataWrapper", "class_note_event_data_wrapper.html", null ],
     [ "NoteEventInfo", "class_note_event_info.html", null ],

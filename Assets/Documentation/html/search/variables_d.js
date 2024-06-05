@@ -2,7 +2,7 @@ var searchData=
 [
   ['nametonotemap_0',['nameToNoteMap',['../class_game_manager.html#ae3ba6b6cd15beeddec9c637ecc9dca5f',1,'GameManager']]],
   ['noteaccuracy_1',['noteAccuracy',['../class_song_score.html#a21dd9999a35a0a4f9d9b667717fc1d07',1,'SongScore']]],
-  ['noteevent_2',['noteEvent',['../class_editor_note.html#a07a6d3b37f7a7067ecdc79fc29796860',1,'EditorNote']]],
+  ['noteevent_2',['noteEvent',['../class_editor_note.html#a07a6d3b37f7a7067ecdc79fc29796860',1,'EditorNote.noteEvent'],['../classold_e_n.html#a75e47f755ec256128a9d985ea925989d',1,'oldEN.noteEvent']]],
   ['noteevents_3',['NoteEvents',['../class_note_event_data_wrapper.html#ab50d1b38b07efe975e0abefafea94e4b',1,'NoteEventDataWrapper']]],
   ['noteholder_4',['noteHolder',['../class_game_manager.html#a20265d8c977bdee9e61f21ea07063673',1,'GameManager']]],
   ['notenames_5',['noteNames',['../class_game_manager.html#afd80eb99362175b5af23a86196a07e32',1,'GameManager']]],

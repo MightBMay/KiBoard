@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using System.IO;
+using Unity.VisualScripting;
 
 
 public class Utility : MonoBehaviour
@@ -46,8 +47,31 @@ public class Utility : MonoBehaviour
     {
         return min + (input * (max - min));
     }
+    /// <summary>
+    /// rounds a number to a given fractional value. eg: 2.89 to the nearest quarter is 2.75.
+    /// </summary>
+    /// <param name="num">Number to be rounded</param>
+    /// <param name="fraction">Fraction to round it to.</param>
+    /// <returns>rounded value to nearest beatDenominator.</returns>
+    public static double RoundToFraction(double num, double fraction)
+    {
+        double reciprocal = 1.0 / fraction;
+        return System.Math.Round(num * reciprocal) / reciprocal;
+    }
+    /// <summary>
+    /// rounds a number to a given fractional value. eg: 2.89 to the nearest quarter is 2.75.
+    /// </summary>
+    /// <param name="num">Number to be rounded</param>
+    /// <param name="beatDenominator">Fraction of a beat to round to</param>
+    /// <returns>rounded value to nearest beatDenominator.</returns>
+    public static float RoundToFraction(float num, float beatDenominator, float unitsPerBeat = 15f)
+    {
+        
+        float reciprocal = 1.0f / (15 / beatDenominator);
+        return Mathf.Round(num * reciprocal) / reciprocal;
+    }
 
-    
+
 
     /// <summary>
     /// loads an image from given path to a Texture2D.

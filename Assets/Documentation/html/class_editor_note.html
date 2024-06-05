@@ -6,7 +6,6 @@
 <meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>KiBoard GDD &amp; Technical Documentation: EditorNote Class Reference</title>
-<link rel="icon" href="rsz_kiboard.png" type="image/x-icon" />
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -122,7 +121,7 @@ $(function(){initNavTree('class_editor_note.html',''); initResizable(true); });
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a76f02eb912c4861b4ad7d1af121723c7" id="r_a76f02eb912c4861b4ad7d1af121723c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76f02eb912c4861b4ad7d1af121723c7">UpdateNoteEvent</a> (int noteNumber, float startTime, float endTime)</td></tr>
-<tr class="memdesc:a76f02eb912c4861b4ad7d1af121723c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the note event information.  <br /></td></tr>
+<tr class="memdesc:a76f02eb912c4861b4ad7d1af121723c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the note event information. start and end time are based off of height of mouse when adding a note.  <br /></td></tr>
 <tr class="separator:a76f02eb912c4861b4ad7d1af121723c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a917c4c32647149bbcf2f1482f00749cc" id="r_a917c4c32647149bbcf2f1482f00749cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a917c4c32647149bbcf2f1482f00749cc">SetHighlightColour</a> (Color newColour)</td></tr>
 <tr class="memdesc:a917c4c32647149bbcf2f1482f00749cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the highlight color of the note.  <br /></td></tr>
@@ -136,28 +135,23 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a28a60af2e54886e4b0e49da9f85057a8" id="r_a28a60af2e54886e4b0e49da9f85057a8"><td class="memItemLeft" align="right" valign="top">Vector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a28a60af2e54886e4b0e49da9f85057a8">GridSnapNote</a> (Vector2 input, float increment=0.204545f)</td></tr>
 <tr class="memdesc:a28a60af2e54886e4b0e49da9f85057a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Snaps the note position to the grid based on the specified increment.  <br /></td></tr>
 <tr class="separator:a28a60af2e54886e4b0e49da9f85057a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2145048a5b20d6e870bbd3b11653da5" id="r_ad2145048a5b20d6e870bbd3b11653da5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad2145048a5b20d6e870bbd3b11653da5">SetShadowSize</a> (float ySize)</td></tr>
-<tr class="memdesc:ad2145048a5b20d6e870bbd3b11653da5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the size of the shadow sprite.  <br /></td></tr>
-<tr class="separator:ad2145048a5b20d6e870bbd3b11653da5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a07a6d3b37f7a7067ecdc79fc29796860" id="r_a07a6d3b37f7a7067ecdc79fc29796860"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_note_event_info.html">NoteEventInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a07a6d3b37f7a7067ecdc79fc29796860">noteEvent</a></td></tr>
-<tr class="memdesc:a07a6d3b37f7a7067ecdc79fc29796860"><td class="mdescLeft">&#160;</td><td class="mdescRight">Information about the note event.  <br /></td></tr>
 <tr class="separator:a07a6d3b37f7a7067ecdc79fc29796860"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02bec70e8c2e547ef5dd044a4f20816e" id="r_a02bec70e8c2e547ef5dd044a4f20816e"><td class="memItemLeft" align="right" valign="top">Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02bec70e8c2e547ef5dd044a4f20816e">startColour</a></td></tr>
-<tr class="separator:a02bec70e8c2e547ef5dd044a4f20816e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a9c241859fd7ebc6d70cfb14a8d0363f8" id="r_a9c241859fd7ebc6d70cfb14a8d0363f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c241859fd7ebc6d70cfb14a8d0363f8">Start</a> ()</td></tr>
-<tr class="memdesc:a9c241859fd7ebc6d70cfb14a8d0363f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the note by retrieving the SpriteRenderer component and storing the initial color.  <br /></td></tr>
 <tr class="separator:a9c241859fd7ebc6d70cfb14a8d0363f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a10157bff2fb6d4ba54d2dab0c8052a08" id="r_a10157bff2fb6d4ba54d2dab0c8052a08"><td class="memItemLeft" align="right" valign="top">SpriteRenderer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a10157bff2fb6d4ba54d2dab0c8052a08">spriteRenderer</a></td></tr>
-<tr class="separator:a10157bff2fb6d4ba54d2dab0c8052a08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7d3f42388dec9800fd58a0cdcb22707" id="r_af7d3f42388dec9800fd58a0cdcb22707"><td class="memItemLeft" align="right" valign="top">SpriteRenderer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7d3f42388dec9800fd58a0cdcb22707">sprite</a></td></tr>
+<tr class="separator:af7d3f42388dec9800fd58a0cdcb22707"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02bec70e8c2e547ef5dd044a4f20816e" id="r_a02bec70e8c2e547ef5dd044a4f20816e"><td class="memItemLeft" align="right" valign="top">Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02bec70e8c2e547ef5dd044a4f20816e">startColour</a></td></tr>
+<tr class="separator:a02bec70e8c2e547ef5dd044a4f20816e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a note in the editor with associated event information. </p>
@@ -190,10 +184,10 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The snapped position.</dd></dl>
-<div class="fragment"><div class="line"><span class="lineno">   77</span>    {</div>
-<div class="line"><span class="lineno">   78</span>        <span class="keywordtype">float</span> x = Mathf.Round(input.x / increment) * increment;</div>
-<div class="line"><span class="lineno">   79</span>        <span class="keywordflow">return</span> <span class="keyword">new</span> Vector2(x, input.y);</div>
-<div class="line"><span class="lineno">   80</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">   70</span>    {</div>
+<div class="line"><span class="lineno">   71</span>        <span class="keywordtype">float</span> x = Mathf.Round(input.x / increment) * increment;</div>
+<div class="line"><span class="lineno">   72</span>        <span class="keywordflow">return</span> <span class="keyword">new</span> Vector2(x, input.y);</div>
+<div class="line"><span class="lineno">   73</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -213,10 +207,10 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Resets the highlight color of the note to its initial color. </p>
-<div class="fragment"><div class="line"><span class="lineno">   54</span>    {</div>
-<div class="line"><span class="lineno">   55</span>        spriteRenderer.color = <a class="code hl_variable" href="#a02bec70e8c2e547ef5dd044a4f20816e">startColour</a>;</div>
-<div class="line"><span class="lineno">   56</span>    }</div>
-<div class="ttc" id="aclass_editor_note_html_a02bec70e8c2e547ef5dd044a4f20816e"><div class="ttname"><a href="#a02bec70e8c2e547ef5dd044a4f20816e">EditorNote.startColour</a></div><div class="ttdeci">Color startColour</div><div class="ttdef"><b>Definition</b> EditorNote.cs:17</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   47</span>    {</div>
+<div class="line"><span class="lineno">   48</span>        sprite.color = <a class="code hl_variable" href="#a02bec70e8c2e547ef5dd044a4f20816e">startColour</a>;</div>
+<div class="line"><span class="lineno">   49</span>    }</div>
+<div class="ttc" id="aclass_editor_note_html_a02bec70e8c2e547ef5dd044a4f20816e"><div class="ttname"><a href="#a02bec70e8c2e547ef5dd044a4f20816e">EditorNote.startColour</a></div><div class="ttdeci">Color startColour</div><div class="ttdef"><b>Definition</b> EditorNote.cs:14</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -242,9 +236,9 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><span class="lineno">   46</span>    {</div>
-<div class="line"><span class="lineno">   47</span>        spriteRenderer.color = newColour;</div>
-<div class="line"><span class="lineno">   48</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">   39</span>    {</div>
+<div class="line"><span class="lineno">   40</span>        sprite.color = newColour;</div>
+<div class="line"><span class="lineno">   41</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -271,42 +265,13 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><span class="lineno">   64</span>    {</div>
-<div class="line"><span class="lineno">   65</span>        <span class="keywordtype">float</span> height = mouseHeight &gt;= Mathf.NegativeInfinity ? mouseHeight : 1;</div>
-<div class="line"><span class="lineno">   66</span>        <span class="comment">//Vector2 gridSnap = GridSnapNote();</span></div>
-<div class="line"><span class="lineno">   67</span>        transform.position = <span class="keyword">new</span> Vector2(<a class="code hl_variable" href="#a07a6d3b37f7a7067ecdc79fc29796860">noteEvent</a>.<a class="code hl_variable" href="class_note_event_info.html#a9435e829c3bd157528c83c87c7a481df">noteNumber</a>, height);</div>
-<div class="line"><span class="lineno">   68</span>    }</div>
-<div class="ttc" id="aclass_editor_note_html_a07a6d3b37f7a7067ecdc79fc29796860"><div class="ttname"><a href="#a07a6d3b37f7a7067ecdc79fc29796860">EditorNote.noteEvent</a></div><div class="ttdeci">NoteEventInfo noteEvent</div><div class="ttdoc">Information about the note event.</div><div class="ttdef"><b>Definition</b> EditorNote.cs:13</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   57</span>    {</div>
+<div class="line"><span class="lineno">   58</span>        <span class="keywordtype">float</span> height = mouseHeight &gt;= Mathf.NegativeInfinity ? mouseHeight : 1;</div>
+<div class="line"><span class="lineno">   59</span>        <span class="comment">//Vector2 gridSnap = GridSnapNote();</span></div>
+<div class="line"><span class="lineno">   60</span>        transform.position = <span class="keyword">new</span> Vector2(<a class="code hl_variable" href="#a07a6d3b37f7a7067ecdc79fc29796860">noteEvent</a>.<a class="code hl_variable" href="class_note_event_info.html#a9435e829c3bd157528c83c87c7a481df">noteNumber</a>, height);</div>
+<div class="line"><span class="lineno">   61</span>    }</div>
+<div class="ttc" id="aclass_editor_note_html_a07a6d3b37f7a7067ecdc79fc29796860"><div class="ttname"><a href="#a07a6d3b37f7a7067ecdc79fc29796860">EditorNote.noteEvent</a></div><div class="ttdeci">NoteEventInfo noteEvent</div><div class="ttdef"><b>Definition</b> EditorNote.cs:12</div></div>
 <div class="ttc" id="aclass_note_event_info_html_a9435e829c3bd157528c83c87c7a481df"><div class="ttname"><a href="class_note_event_info.html#a9435e829c3bd157528c83c87c7a481df">NoteEventInfo.noteNumber</a></div><div class="ttdeci">int noteNumber</div><div class="ttdoc">Number of the note ranging from 0-87 coinciding with the notes on a piano.</div><div class="ttdef"><b>Definition</b> NoteEventInfo.cs:18</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="ad2145048a5b20d6e870bbd3b11653da5" name="ad2145048a5b20d6e870bbd3b11653da5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad2145048a5b20d6e870bbd3b11653da5">&#9670;&#160;</a></span>SetShadowSize()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void EditorNote.SetShadowSize </td>
-          <td>(</td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>ySize</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sets the size of the shadow sprite. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ySize</td><td>The size of the shadow along the Y-axis.</td></tr>
-  </table>
-  </dd>
-</dl>
-<div class="fragment"><div class="line"><span class="lineno">   87</span>    {</div>
-<div class="line"><span class="lineno">   88</span>        var spriterend = transform.GetChild(0).GetComponent&lt;SpriteRenderer&gt;();</div>
-<div class="line"><span class="lineno">   89</span>        spriterend.size = <span class="keyword">new</span> Vector2(1.35f, ySize + 0.075f);</div>
-<div class="line"><span class="lineno">   90</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -332,13 +297,11 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Initializes the note by retrieving the SpriteRenderer component and storing the initial color. </p>
-<div class="fragment"><div class="line"><span class="lineno">   23</span>    {</div>
-<div class="line"><span class="lineno">   24</span>        <a class="code hl_variable" href="#a10157bff2fb6d4ba54d2dab0c8052a08">spriteRenderer</a> = GetComponent&lt;SpriteRenderer&gt;();</div>
-<div class="line"><span class="lineno">   25</span>        <a class="code hl_variable" href="#a02bec70e8c2e547ef5dd044a4f20816e">startColour</a> = <a class="code hl_variable" href="#a10157bff2fb6d4ba54d2dab0c8052a08">spriteRenderer</a>.color;</div>
-<div class="line"><span class="lineno">   26</span>    }</div>
-<div class="ttc" id="aclass_editor_note_html_a10157bff2fb6d4ba54d2dab0c8052a08"><div class="ttname"><a href="#a10157bff2fb6d4ba54d2dab0c8052a08">EditorNote.spriteRenderer</a></div><div class="ttdeci">SpriteRenderer spriteRenderer</div><div class="ttdef"><b>Definition</b> EditorNote.cs:16</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   16</span>    {</div>
+<div class="line"><span class="lineno">   17</span>        <a class="code hl_variable" href="#af7d3f42388dec9800fd58a0cdcb22707">sprite</a> = GetComponent&lt;SpriteRenderer&gt;();</div>
+<div class="line"><span class="lineno">   18</span>        <a class="code hl_variable" href="#a02bec70e8c2e547ef5dd044a4f20816e">startColour</a> = <a class="code hl_variable" href="#af7d3f42388dec9800fd58a0cdcb22707">sprite</a>.color;</div>
+<div class="line"><span class="lineno">   19</span>    }</div>
+<div class="ttc" id="aclass_editor_note_html_af7d3f42388dec9800fd58a0cdcb22707"><div class="ttname"><a href="#af7d3f42388dec9800fd58a0cdcb22707">EditorNote.sprite</a></div><div class="ttdeci">SpriteRenderer sprite</div><div class="ttdef"><b>Definition</b> EditorNote.cs:13</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -366,7 +329,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Updates the note event information. </p>
+<p>Updates the note event information. start and end time are based off of height of mouse when adding a note. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">noteNumber</td><td>The note number.</td></tr>
@@ -375,11 +338,11 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><span class="lineno">   35</span>    {</div>
-<div class="line"><span class="lineno">   36</span>        noteEvent.startTime = startTime;</div>
-<div class="line"><span class="lineno">   37</span>        noteEvent.endTime = endTime;</div>
-<div class="line"><span class="lineno">   38</span>        noteEvent.noteNumber = noteNumber;</div>
-<div class="line"><span class="lineno">   39</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">   28</span>    {</div>
+<div class="line"><span class="lineno">   29</span>        noteEvent.startTime = startTime/15;</div>
+<div class="line"><span class="lineno">   30</span>        noteEvent.endTime = endTime/15;</div>
+<div class="line"><span class="lineno">   31</span>        noteEvent.noteNumber = noteNumber;</div>
+<div class="line"><span class="lineno">   32</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -396,14 +359,12 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Information about the note event. </p>
-
-<p class="reference">Referenced by <a class="el" href="class_song_note_editor.html#a8665364022802da939ffa6c4d53adc6c">SongNoteEditor.DragNote()</a>, <a class="el" href="class_song_note_editor.html#a10ef8c506080f92b5f6202359d588cbd">SongNoteEditor.OnLeftMouseUp()</a>, <a class="el" href="class_song_note_editor.html#a5957d0008b8759d50607b11cf2d51d5f">SongNoteEditor.RescaleNotesFromBPM()</a>, and <a class="el" href="#a7f841047bd2c4288a13f35d3f9620e2e">SetNotePosition()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#a7f841047bd2c4288a13f35d3f9620e2e">SetNotePosition()</a>.</p>
 
 </div>
 </div>
-<a id="a10157bff2fb6d4ba54d2dab0c8052a08" name="a10157bff2fb6d4ba54d2dab0c8052a08"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a10157bff2fb6d4ba54d2dab0c8052a08">&#9670;&#160;</a></span>spriteRenderer</h2>
+<a id="af7d3f42388dec9800fd58a0cdcb22707" name="af7d3f42388dec9800fd58a0cdcb22707"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7d3f42388dec9800fd58a0cdcb22707">&#9670;&#160;</a></span>sprite</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -412,7 +373,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">SpriteRenderer EditorNote.spriteRenderer</td>
+          <td class="memname">SpriteRenderer EditorNote.sprite</td>
         </tr>
       </table>
   </td>
@@ -431,11 +392,19 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Color EditorNote.startColour</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p class="reference">Referenced by <a class="el" href="#a2726253d93691f8644d937bb7d13c683">ResetHighlightColour()</a>, and <a class="el" href="#a9c241859fd7ebc6d70cfb14a8d0363f8">Start()</a>.</p>

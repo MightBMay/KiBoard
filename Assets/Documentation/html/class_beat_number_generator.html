@@ -6,7 +6,6 @@
 <meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>KiBoard GDD &amp; Technical Documentation: BeatNumberGenerator Class Reference</title>
-<link rel="icon" href="rsz_kiboard.png" type="image/x-icon" />
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -155,14 +154,14 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Instantiates beat number TextMeshProUGUI objects. </p>
-<div class="fragment"><div class="line"><span class="lineno">   24</span>    {</div>
-<div class="line"><span class="lineno">   25</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = -3; i &lt;= <a class="code hl_variable" href="#a2a0145344d1f22601377e7663d5d3e0f">quantity</a>; i++)</div>
-<div class="line"><span class="lineno">   26</span>        {</div>
-<div class="line"><span class="lineno">   27</span>            Transform trans = Instantiate(<a class="code hl_variable" href="#a9963d001803fd89c12a723fe0df6a49e">prefab</a>, transform).transform;</div>
-<div class="line"><span class="lineno">   28</span>            trans.position = <span class="keyword">new</span> Vector2(trans.position.x, i);</div>
-<div class="line"><span class="lineno">   29</span>            trans.GetComponent&lt;TextMeshProUGUI&gt;().text = i.ToString();</div>
-<div class="line"><span class="lineno">   30</span>        }</div>
-<div class="line"><span class="lineno">   31</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">   23</span>    {</div>
+<div class="line"><span class="lineno">   24</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt;= <a class="code hl_variable" href="#a2a0145344d1f22601377e7663d5d3e0f">quantity</a>; i++)</div>
+<div class="line"><span class="lineno">   25</span>        {</div>
+<div class="line"><span class="lineno">   26</span>            Transform trans = Instantiate(<a class="code hl_variable" href="#a9963d001803fd89c12a723fe0df6a49e">prefab</a>, transform).transform;</div>
+<div class="line"><span class="lineno">   27</span>            trans.position = <span class="keyword">new</span> Vector2(trans.position.x, 2.5f+ i* SongEditor.instance.heightMultiplier);</div>
+<div class="line"><span class="lineno">   28</span>            trans.GetComponent&lt;TextMeshProUGUI&gt;().text = i.ToString();</div>
+<div class="line"><span class="lineno">   29</span>        }</div>
+<div class="line"><span class="lineno">   30</span>    }</div>
 <div class="ttc" id="aclass_beat_number_generator_html_a2a0145344d1f22601377e7663d5d3e0f"><div class="ttname"><a href="#a2a0145344d1f22601377e7663d5d3e0f">BeatNumberGenerator.quantity</a></div><div class="ttdeci">int quantity</div><div class="ttdef"><b>Definition</b> BeatNumberGenerator.cs:12</div></div>
 <div class="ttc" id="aclass_beat_number_generator_html_a9963d001803fd89c12a723fe0df6a49e"><div class="ttname"><a href="#a9963d001803fd89c12a723fe0df6a49e">BeatNumberGenerator.prefab</a></div><div class="ttdeci">GameObject prefab</div><div class="ttdef"><b>Definition</b> BeatNumberGenerator.cs:11</div></div>
 </div><!-- fragment -->
@@ -192,11 +191,11 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   16</span>    {</div>
-<div class="line"><span class="lineno">   17</span>        <a class="code hl_function" href="#a3f03ddb9312dbafc05f474c123eee134">CreateBeatNumbers</a>();</div>
-<div class="line"><span class="lineno">   18</span>       </div>
-<div class="line"><span class="lineno">   19</span>    }</div>
-<div class="ttc" id="aclass_beat_number_generator_html_a3f03ddb9312dbafc05f474c123eee134"><div class="ttname"><a href="#a3f03ddb9312dbafc05f474c123eee134">BeatNumberGenerator.CreateBeatNumbers</a></div><div class="ttdeci">void CreateBeatNumbers()</div><div class="ttdoc">Instantiates beat number TextMeshProUGUI objects.</div><div class="ttdef"><b>Definition</b> BeatNumberGenerator.cs:23</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   15</span>    {</div>
+<div class="line"><span class="lineno">   16</span>        <a class="code hl_function" href="#a3f03ddb9312dbafc05f474c123eee134">CreateBeatNumbers</a>();</div>
+<div class="line"><span class="lineno">   17</span>       </div>
+<div class="line"><span class="lineno">   18</span>    }</div>
+<div class="ttc" id="aclass_beat_number_generator_html_a3f03ddb9312dbafc05f474c123eee134"><div class="ttname"><a href="#a3f03ddb9312dbafc05f474c123eee134">BeatNumberGenerator.CreateBeatNumbers</a></div><div class="ttdeci">void CreateBeatNumbers()</div><div class="ttdoc">Instantiates beat number TextMeshProUGUI objects.</div><div class="ttdef"><b>Definition</b> BeatNumberGenerator.cs:22</div></div>
 </div><!-- fragment -->
 </div>
 </div>

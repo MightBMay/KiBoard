@@ -4,7 +4,7 @@ var searchData=
   ['note_20a_1',['Note&lt;a id=&quot;note&quot;&gt;&lt;/a&gt;',['../md__assets_2_documentation_2html_2_markdown_2_g_d_d.html#autotoc_md14',1,'']]],
   ['note_20a_20id_20note_20a_2',['Note&lt;a id=&quot;note&quot;&gt;&lt;/a&gt;',['../md__assets_2_documentation_2html_2_markdown_2_g_d_d.html#autotoc_md14',1,'']]],
   ['noteaccuracy_3',['noteAccuracy',['../class_song_score.html#a21dd9999a35a0a4f9d9b667717fc1d07',1,'SongScore']]],
-  ['noteevent_4',['noteEvent',['../class_editor_note.html#a07a6d3b37f7a7067ecdc79fc29796860',1,'EditorNote']]],
+  ['noteevent_4',['noteEvent',['../class_editor_note.html#a07a6d3b37f7a7067ecdc79fc29796860',1,'EditorNote.noteEvent'],['../classold_e_n.html#a75e47f755ec256128a9d985ea925989d',1,'oldEN.noteEvent']]],
   ['noteeventdatawrapper_5',['NoteEventDataWrapper',['../class_note_event_data_wrapper.html',1,'']]],
   ['noteeventinfo_6',['NoteEventInfo',['../class_note_event_info.html',1,'NoteEventInfo'],['../class_note_event_info.html#a3986c534b859bd61b047941cd3951f49',1,'NoteEventInfo.NoteEventInfo()'],['../class_note_event_info.html#a3b001565b1e72963a9630adbe706842a',1,'NoteEventInfo.NoteEventInfo(int noteNumber, float startTime, float endTime)'],['../class_note_event_info.html#aa8a865f4cafede7bf9253a805304eb76',1,'NoteEventInfo.NoteEventInfo(float bpm)']]],
   ['noteeventinfo_2ecs_7',['NoteEventInfo.cs',['../_note_event_info_8cs.html',1,'']]],

@@ -11,12 +11,9 @@ var searchData=
   ['clearcombo_8',['ClearCombo',['../class_combo.html#a5c1d9c0676b635e234c214d5c5587e9e',1,'Combo']]],
   ['clearreplay_9',['ClearReplay',['../class_replay.html#a0d97ab2056465d34269abb9d08ee54fe',1,'Replay']]],
   ['clearscore_10',['ClearScore',['../class_song_score.html#a51eee760b1aa969dfbc348c4dfcabbaa',1,'SongScore']]],
-  ['convertnoteeventtonoteposition_11',['ConvertNoteEventToNotePosition',['../class_song_note_editor.html#a05ea5d53cf9e8d601a734be1ef97df55',1,'SongNoteEditor']]],
-  ['convertnotenametonumber_12',['ConvertNoteNameToNumber',['../class_game_manager.html#a131c1f0873da6899dc644060748a8b99',1,'GameManager']]],
-  ['convertnotenumbertoname_13',['ConvertNoteNumberToName',['../class_game_manager.html#af2b61b305c4b0b48b6dea78162472aef',1,'GameManager']]],
-  ['convertypositiontosongtime_14',['ConvertYPositionToSongTime',['../class_song_note_editor.html#a28dc32a65d6746937bc9fc1b079c83f0',1,'SongNoteEditor']]],
-  ['copyselection_15',['CopySelection',['../class_song_note_editor.html#a758e1bfc69875491b44c5963208d4e94',1,'SongNoteEditor']]],
-  ['countnotes_16',['CountNotes',['../class_midi_read_file.html#a8e7e3e4784f3f430c338ff138f4b92e3',1,'MidiReadFile']]],
-  ['createbeatnumbers_17',['CreateBeatNumbers',['../class_beat_number_generator.html#a3f03ddb9312dbafc05f474c123eee134',1,'BeatNumberGenerator']]],
-  ['createtimingtext_18',['CreateTimingText',['../class_game_u_i.html#a028174544700e306eaefc533e877b430',1,'GameUI']]]
+  ['convertnotenametonumber_11',['ConvertNoteNameToNumber',['../class_game_manager.html#a131c1f0873da6899dc644060748a8b99',1,'GameManager']]],
+  ['convertnotenumbertoname_12',['ConvertNoteNumberToName',['../class_game_manager.html#af2b61b305c4b0b48b6dea78162472aef',1,'GameManager']]],
+  ['countnotes_13',['CountNotes',['../class_midi_read_file.html#a8e7e3e4784f3f430c338ff138f4b92e3',1,'MidiReadFile']]],
+  ['createbeatnumbers_14',['CreateBeatNumbers',['../class_beat_number_generator.html#a3f03ddb9312dbafc05f474c123eee134',1,'BeatNumberGenerator']]],
+  ['createtimingtext_15',['CreateTimingText',['../class_game_u_i.html#a028174544700e306eaefc533e877b430',1,'GameUI']]]
 ];

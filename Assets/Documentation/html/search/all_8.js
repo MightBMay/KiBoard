@@ -40,14 +40,10 @@ var searchData=
   ['ins_20song_20selection_20ins_20b_20a_20id_20song_20selection_20a_37',['&lt;b&gt;&lt;ins&gt;Song Selection&lt;/ins&gt;&lt;/b&gt;&lt;a id=&quot;song-selection&quot;&gt;&lt;/a&gt;',['../md__assets_2_documentation_2html_2_markdown_2_g_d_d.html#autotoc_md4',1,'']]],
   ['instance_38',['instance',['../class_extra_song_info_menu.html#a7607ff7f368c5051fa9ba6ab84d1e48f',1,'ExtraSongInfoMenu.instance'],['../class_game_manager.html#a7666e8468dac197b9eb32dd32128524f',1,'GameManager.instance'],['../class_game_u_i.html#a23d5c169ab2afc81f6ee3b94e78bd6fb',1,'GameUI.instance'],['../class_kiboard_debug.html#a4b931181b7d67f0e5820f6e720d44768',1,'KiboardDebug.instance'],['../class_midi_input.html#a7a0aa3fc42bdb7cba08848c7d93d1934',1,'MidiInput.instance'],['../class_m_p3_handler.html#a0fa70fd58f86cdabb3c80f92f45c6ee2',1,'MP3Handler.instance'],['../class_replay.html#a4fd76e76a6bdd4efb0f59151167b8746',1,'Replay.instance'],['../class_spawn_piano.html#a81c1e7fb3b0bccb57b3bba39e581f9f3',1,'SpawnPiano.instance']]],
   ['iscursongpreview_39',['isCurSongPreview',['../class_game_manager.html#a4dbb614ef4ff0a6e6437137de4b39993',1,'GameManager']]],
-  ['isdragging_40',['isDragging',['../class_song_note_editor.html#acfdfea7dd30b623aceea259f042db869',1,'SongNoteEditor']]],
-  ['isgroupselecting_41',['isGroupSelecting',['../class_song_note_editor.html#a16d2c1b60739973f10ef20d385435e21',1,'SongNoteEditor']]],
-  ['islast_42',['isLast',['../class_falling_note.html#a78e64d2df1f0836a2e11b6ff76a3d340',1,'FallingNote']]],
-  ['ismidiconnected_43',['isMidiConnected',['../class_kiboard_debug.html#a87c862afc69067077e5f3cd3e5a8ac98',1,'KiboardDebug']]],
-  ['ismidihooked_44',['isMidiHooked',['../class_midi_input.html#a120ba3861326de334e19273612a8dc35',1,'MidiInput']]],
-  ['isnotecorrect_45',['IsNoteCorrect',['../class_midi_input.html#a465d54df5cebc0287e58ab5634de9a84',1,'MidiInput']]],
-  ['ispedalpressed_46',['isPedalPressed',['../class_midi_input.html#af9765dcdbd7d627ae4de116fddd2005d',1,'MidiInput']]],
-  ['isplayingreplay_47',['isPlayingReplay',['../class_replay.html#a557710a107d231bd78824337a7264a20',1,'Replay']]],
-  ['isscaling_48',['isScaling',['../class_song_note_editor.html#ad0191c5dacb3e8a3a6446c196b29428f',1,'SongNoteEditor']]],
-  ['istransforminselectednotes_49',['IsTransformInSelectedNotes',['../class_song_note_editor.html#a3f3980781b2a982a7139ddcc16fac3e9',1,'SongNoteEditor']]]
+  ['islast_40',['isLast',['../class_falling_note.html#a78e64d2df1f0836a2e11b6ff76a3d340',1,'FallingNote']]],
+  ['ismidiconnected_41',['isMidiConnected',['../class_kiboard_debug.html#a87c862afc69067077e5f3cd3e5a8ac98',1,'KiboardDebug']]],
+  ['ismidihooked_42',['isMidiHooked',['../class_midi_input.html#a120ba3861326de334e19273612a8dc35',1,'MidiInput']]],
+  ['isnotecorrect_43',['IsNoteCorrect',['../class_midi_input.html#a465d54df5cebc0287e58ab5634de9a84',1,'MidiInput']]],
+  ['ispedalpressed_44',['isPedalPressed',['../class_midi_input.html#af9765dcdbd7d627ae4de116fddd2005d',1,'MidiInput']]],
+  ['isplayingreplay_45',['isPlayingReplay',['../class_replay.html#a557710a107d231bd78824337a7264a20',1,'Replay']]]
 ];

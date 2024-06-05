@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 using UnityEngine;
+using Unity.VisualScripting;
 
 /// <summary>
 /// Manages the song editor functionality.
@@ -11,18 +12,38 @@ public class SongEditor : MonoBehaviour
 {
     // Start is called before the first frame update
     public static SongEditor instance;
+
+    /// <summary>
+    /// Dictionary of intiger X positions  and key lane objects for easy detection and positioning.
+    /// </summary>
     public Dictionary<int, GameObject> keyLanes = new();
+    /// <summary>
+    /// parent of all notes spawned by player.
+    /// </summary>
     [SerializeField] Transform noteHolder;
     [SerializeField] GameObject editorNotePrefab;
     Camera cam;
     [SerializeField] GameObject keyPrefab;
     [SerializeField] Color keyLaneColour1, keyLaneColour2;
+    /// <summary>
+    /// size of key lanes
+    /// </summary>
     [SerializeField] Vector3 keyLaneScale = new Vector3(1, 20, 1);
+    /// <summary>
+    /// size of piano keys.
+    /// </summary>
     [SerializeField] Vector3 baseKeyScale = new Vector3(.8f, 5, 1);
     [SerializeField] Vector2 defaultNoteScale = new(1, 1);
 
+    /// <summary>
+    /// every 15 units in unity is one beat.
+    /// </summary>
     public float heightMultiplier = 15;
 
+    /// <summary>
+    /// how many subdivisions for vertical note snapping.
+    /// </summary>
+    public float vSnap = 0;
     private void Awake()
     {
         if (instance == null) { instance = this; }
@@ -90,18 +111,24 @@ public class SongEditor : MonoBehaviour
         // make one for scroll wheel.
     }
 
-
+    /// <summary>
+    /// Takes a raycast hit and spawns an editorNorePrefab.
+    /// </summary>
+    /// <param name="hit"> raycast2dhit information.</param>
     void AddNote(RaycastHit2D hit)
     {
-        Transform note = Instantiate(editorNotePrefab, noteHolder).transform;
-        int noteNum = Mathf.RoundToInt(hit.point.x);
-        float height = hit.point.y;
-        note.position = new Vector2(noteNum, height);
+        Transform note = Instantiate(editorNotePrefab, noteHolder).transform;// create note
+        int noteNum = Mathf.RoundToInt(hit.point.x); // round notes position to get the key number.
+        float height = hit.point.y;//get height of the note\
+        Vector2 snappeedPos = SnapNote(new Vector2(noteNum, height));
+        note.position = snappeedPos; // round the notes position to nearest fraction of a beat.
         EditorNote editorNote = note.GetComponent<EditorNote>();
-        editorNote.UpdateNoteEvent(noteNum, height - (defaultNoteScale.y / 2), height + (defaultNoteScale.y / 2));
+        editorNote.UpdateNoteEvent(noteNum, snappeedPos.y-2f - (defaultNoteScale.y / 2), snappeedPos.y-2f + (defaultNoteScale.y / 2));
 
     }
-
+    /// <summary>
+    /// Spawns the piano roll
+    /// </summary>
     public void InitializePianoRoll()
     {
         for (int i = 0; i < 88; i++)
@@ -118,15 +145,27 @@ public class SongEditor : MonoBehaviour
 
             keyLanes.Add(i, lane.gameObject);
         }
+        Color GetKeyColour(int i)
+        {
+            int value = i % 12;
+            if (value == 0 || value == 2 || value == 3 || value == 5 || value == 7 || value == 9 || value == 11) return Color.white;
+            else { return Color.black; }
+        }
     }
-    Color GetKeyColour(int i)
-    {
-        int value = i % 12;
-        if (value == 0 || value == 2 || value == 3 || value == 5 || value == 7 || value == 9 || value == 11) return Color.white;
-        else { return Color.black; }
-    }
+   
 
+    /// <summary>
+    /// Rounds a vector2's values to the nearest fraction of 1/Vsnap
+    /// </summary>
+    /// <param name="pos">Vector to snap</param>
+    /// <returns>vector with fraction-rounded values.</returns>
+    public Vector2 SnapNote(Vector2 pos)
+    {
+        if(vSnap <= 0) { return pos; }
+        else{ return new Vector2(pos.x, Utility.RoundToFraction(pos.y, vSnap) + 2.5f); }
+    }
 }
+
 
 
 
