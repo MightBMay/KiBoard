@@ -17,6 +17,7 @@ public class MidiInput : MonoBehaviour
     /// Currently loaded notes for the selected song.
     /// </summary>
     public List<NoteEventInfo> storedNoteEvents;
+    
     /// <summary>
     /// Reference to the <see cref="GameManager.PrepareNotes(float, List{NoteEventInfo}, bool)"/> prepareNotes Coroutine 
     /// </summary>

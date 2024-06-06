@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['editornotewrapper_0',['EditorNoteWrapper',['../class_editor_note_wrapper.html#a70b71808185bd1c4e4494fcf7085423c',1,'EditorNoteWrapper']]],
-  ['exittodesktopbutton_1',['ExitToDesktopButton',['../class_exit.html#a91082b191e1712af29316cb8b5d6c33c',1,'Exit']]],
-  ['exittodesktopimmediate_2',['ExitToDesktopImmediate',['../class_exit.html#a3789a962bf9b8fdffc835d9af5f837e0',1,'Exit']]]
+  ['down_0',['Down',['../class_editor_action.html#a879f0a78025e356885ad0b4922038c4f',1,'EditorAction.Down()'],['../class_add_note.html#a369ca55e5d4dcc0d15e2d1d2004d067a',1,'AddNote.Down()'],['../class_remove_notes.html#a6a410d8ba693ce8b2d0bcd6aa12e3fcd',1,'RemoveNotes.Down()']]]
 ];

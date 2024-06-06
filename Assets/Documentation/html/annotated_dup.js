@@ -1,9 +1,11 @@
 var annotated_dup =
 [
+    [ "AddNote", "class_add_note.html", "class_add_note" ],
     [ "BeatNumberGenerator", "class_beat_number_generator.html", "class_beat_number_generator" ],
     [ "CameraScrollManager", "class_camera_scroll_manager.html", "class_camera_scroll_manager" ],
     [ "CameraShake", "class_camera_shake.html", "class_camera_shake" ],
     [ "Combo", "class_combo.html", "class_combo" ],
+    [ "EditorAction", "class_editor_action.html", "class_editor_action" ],
     [ "EditorNote", "class_editor_note.html", "class_editor_note" ],
     [ "EditorNoteWrapper", "class_editor_note_wrapper.html", "class_editor_note_wrapper" ],
     [ "Exit", "class_exit.html", "class_exit" ],
@@ -24,7 +26,9 @@ var annotated_dup =
     [ "NoteEventInfo", "class_note_event_info.html", "class_note_event_info" ],
     [ "NoteShadow", "class_note_shadow.html", "class_note_shadow" ],
     [ "oldEN", "classold_e_n.html", "classold_e_n" ],
+    [ "RemoveNotes", "class_remove_notes.html", "class_remove_notes" ],
     [ "Replay", "class_replay.html", "class_replay" ],
+    [ "SongEditor", "class_song_editor.html", "class_song_editor" ],
     [ "SongNoteEditor", "class_song_note_editor.html", null ],
     [ "SongScore", "class_song_score.html", "class_song_score" ],
     [ "SpawnPiano", "class_spawn_piano.html", "class_spawn_piano" ]

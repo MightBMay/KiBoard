@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 using UnityEngine;
-using Unity.VisualScripting;
 using UnityEngine.UI;
 
 /// <summary>
@@ -36,6 +35,9 @@ public class SongEditor : MonoBehaviour
     [SerializeField] Vector3 baseKeyScale = new Vector3(.8f, 5, 1);
     [SerializeField] Vector2 defaultNoteScale = new(1, 1);
 
+    public Color noteColour;
+    public Color selectedNoteColour;
+
     /// <summary>
     /// every 15 units in unity is one beat.
     /// </summary>
@@ -50,10 +52,27 @@ public class SongEditor : MonoBehaviour
     /// </summary>
     public bool scaleNoteToVSnap;
 
+    /// <summary>
+    /// list of editornotes.
+    /// </summary>
+    [SerializeField]List<EditorNote> editorNotes = new();
 
-    #region Ui References
+    internal HashSet<EditorNote> selectedNotes = new();
+
+    /// <summary>
+    /// EditorActions for the left, middle and right mouse buttons respectively.<br/>
+    /// Can be bound by calling <see cref="InitializeAction(string, sbyte)"/> with a string corresponding to the name of the editor action, and a sByte containing the number mouse button.
+    /// </summary>
+    public EditorAction leftAction,middleAction,rightAction;
+
+
+    //Instances of the different editor actions so i don't make a new one every time.
+    AddNote addNote = new();
+    RemoveNotes removeNotes = new();
+
+
+
     Button currentlySelectedButton;
-    #endregion
     private void Awake()
     {
         if (instance == null) { instance = this; }
@@ -67,122 +86,17 @@ public class SongEditor : MonoBehaviour
     }
     private void Update()
     {
-        HandleMouseInput();
+        leftAction?.HandleInput();
+        middleAction?.HandleInput();
+        rightAction?.HandleInput();
     }
 
-
-    public void HandleMouseInput()
-    {
-        RaycastHit2D hit = Physics2D.Raycast(cam.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-        if (hit.collider == null) return; // change this to account for a isdragging variable when we get there.       
-
-        Right();
-        Left();
-        Middle();
-
-        void Left()
-        {
-            Down();
-            Hold();
-            Up();
-            void Down()
-            {
-
-                if (!Input.GetMouseButtonDown(0)) { return; }
-                AddNote(hit);
-            }
-
-
-            void Hold()
-            {
-                // if you are holding LMB but it isnt the first frame you pressed it:
-                if (Input.GetMouseButton(0) && !Input.GetMouseButtonDown(0)) { return; }
-
-                //hold logic
-            }
-
-
-            void Up()
-            {
-                if (!Input.GetMouseButtonDown(0)) { return; }
-            }
-        }
-
-        void Middle()
-        {
-            Down();
-            Hold();
-            Up();
-
-
-            void Down()
-            {
-
-                if (!Input.GetMouseButtonDown(0)) { return; }
-            }
-
-
-            void Hold()
-            {
-                // if you are holding LMB but it isnt the first frame you pressed it:
-                if (Input.GetMouseButton(0) && !Input.GetMouseButtonDown(0)) { return; }
-
-                //hold logic
-            }
-
-
-            void Up()
-            {
-                if (!Input.GetMouseButtonDown(0)) { return; }
-            }
-        }
-
-        void Right()
-        {
-            Down();
-            Hold();
-            Up();
-            
-
-            void Down()
-            {
-
-                if (!Input.GetMouseButtonDown(1)) { return; }
-                test();
-                void test()
-                {
-                    for (int i = 0; i < 10; i++)
-                    {
-                        Debug.Log(Utility.RoundToFraction(i, vSnap));
-                    }
-                }
-
-            }
-
-
-            void Hold()
-            {
-                // if you are holding LMB but it isnt the first frame you pressed it:
-                if (Input.GetMouseButton(1) && !Input.GetMouseButtonDown(1)) { return; }
-
-                //hold logic
-            }
-
-
-            void Up()
-            {
-                if (!Input.GetMouseButtonDown(1)) { return; }
-            }
-        }
-
-        // make one for scroll wheel.
-    }
 
     /// <summary>
     /// Takes a raycast hit and spawns an editorNorePrefab.
     /// </summary>
     /// <param name="hit"> raycast2dhit information.</param>
-    void AddNote(RaycastHit2D hit)
+    public void CreateNote(RaycastHit2D hit)
     {
         Transform note = Instantiate(editorNotePrefab, noteHolder).transform;// create note
         int noteNum = Mathf.RoundToInt(hit.point.x); // round notes position to get the key number.
@@ -196,33 +110,45 @@ public class SongEditor : MonoBehaviour
             }
             else
             {
-                note.localScale = new(defaultNoteScale.y, ScaleToBeat(vSnap, vSnap)) ;
+                note.localScale = new(defaultNoteScale.y, 15/vSnap);
             }
         }
         Vector2 snappeedPos = SnapNote(new Vector2(noteNum, height));
-        snappeedPos.y += (note.localScale.y / 2);
+        float halfNoteHeight = note.localScale.y / 2;
+        snappeedPos.y += halfNoteHeight;
         note.position = snappeedPos; // round the notes position to nearest fraction of a beat.
-        editorNote.UpdateNoteEvent(noteNum, snappeedPos.y - 2f - (defaultNoteScale.y / 2), snappeedPos.y - 2f + (defaultNoteScale.y / 2));
+        editorNote.UpdateNoteEvent(noteNum, snappeedPos.y - 2f - halfNoteHeight, snappeedPos.y - 2f + halfNoteHeight);
+        editorNotes.Add(editorNote);
 
     }
+    /// <summary>
+    /// removes an editornote from the editorNotes list and then destroys the gameObject it is attatched to.
+    /// </summary>
+    /// <param name="note">note to be removed.</param>
+    public void RemoveNote(EditorNote note)
+    {
+        editorNotes.Remove(note);
+        Destroy(note.gameObject);
+    }
+
     /// <summary>
     /// Spawns the piano roll
     /// </summary>
     public void InitializePianoRoll()
     {
-        for (int i = 0; i < 88; i++)
+        for (int i = 0; i < 88; i++) // for each of the 88 keys:
         {
-            Transform trans = Instantiate(keyPrefab, transform).transform;
-            trans.position = new(i, 0, 0);
-            trans.localScale = baseKeyScale;
-            trans.GetComponent<SpriteRenderer>().color = GetKeyColour(i);
-            Transform lane = Instantiate(keyPrefab, trans).transform;
-            lane.GetComponent<SpriteRenderer>().color = i % 2 == 0 ? keyLaneColour1 : keyLaneColour2;
-            lane.localScale = keyLaneScale;
-            lane.position += new Vector3(0f, (keyLaneScale.y * baseKeyScale.y / 2) - 2.5f, 1f);
+            Transform trans = Instantiate(keyPrefab, transform).transform; // spawn key and get position
+            trans.position = new(i, 0, 0); // set key position
+            trans.localScale = baseKeyScale; // set key scale
+            trans.GetComponent<SpriteRenderer>().color = GetKeyColour(i); //set key colour
+            Transform lane = Instantiate(keyPrefab, trans).transform; // create keyLane for key
+            lane.GetComponent<SpriteRenderer>().color = i % 2 == 0 ? keyLaneColour1 : keyLaneColour2; // key lane colour that alternates
+            lane.localScale = keyLaneScale; // set keyLane Scale
+            lane.position += new Vector3(0f, (keyLaneScale.y * baseKeyScale.y / 2) - 2.5f, 1f); // set key lane position.
             lane.gameObject.tag = "KeyLane";
 
-            keyLanes.Add(i, lane.gameObject);
+            keyLanes.Add(i, lane.gameObject); // add keylane to dictionary with X position as the key.
         }
         Color GetKeyColour(int i)
         {
@@ -240,15 +166,15 @@ public class SongEditor : MonoBehaviour
     /// <returns>vector with fraction-rounded values.</returns>
     public Vector2 SnapNote(Vector2 pos)
     {
-        if (vSnap <= 0) { return pos; }
-        else { return new Vector2(pos.x, Utility.RoundToFraction(pos.y-5f, vSnap) + 2.5f); }
-    }
-    public  float ScaleToBeat(float num, float unitsPerBeat = 15f)
-    {
-        return 15/ num;
+        if (vSnap <= 0) { return pos; } // set to 0 for no snapping.
+        else { return new Vector2(pos.x, Utility.RoundToFraction(pos.y-5f, vSnap) + 2.5f); } //otherwise round y to nearest fraction given ( subtraction and addition for some offsets).
     }
 
 
+    /// <summary>
+    /// Called in the editor ui buttons. When clicked it will grey out a selected button and un grey out the previously selected one.
+    /// </summary>
+    /// <param name="button"></param>
     public void SelectButton(Button button)
     {
         if(currentlySelectedButton != null)
@@ -258,10 +184,196 @@ public class SongEditor : MonoBehaviour
 
         button.interactable = false;
         currentlySelectedButton = button;
+        leftAction = InitializeAction(button.gameObject.name,0);
+        rightAction = InitializeAction("remove", 1);
     }
 
+    public EditorAction InitializeAction(string actionName, sbyte mouseNumber)
+    {
+        switch (actionName.ToLower()) // convert actionName to lower and set up the respective action for use with mousebutton # mouseNumber
+        {
+            case "add":
+                return addNote.SetEditorAction(mouseNumber);
+            case "remove":
+                return removeNotes.SetEditorAction(mouseNumber);
+            case "select":
+                return null;
+            default:
+                return null;
+
+        }
+    }
+
+    public void ClearSelectedNotes()
+    {
+        foreach(EditorNote note in selectedNotes)
+        {
+            note.SetColour(noteColour);
+        }
+        selectedNotes.Clear();
+    }
+}
+/// <summary>
+/// Base EditorAction for other more specific actions to inherit from.
+/// </summary>
+public class EditorAction
+{
+    protected sbyte mouseButton;
+    protected RaycastHit2D hit;
+
+    /// <summary>
+    /// Returns a pre existing editoraction and allows you to set the button used to activate it at the same time.
+    /// </summary>
+    /// <param name="mouseNum">new mouse number assigned to the editor action.</param>
+    /// <returns> editor action.</returns>
+    public EditorAction SetEditorAction(sbyte mouseNum)
+    {
+        if (mouseNum < 0 || mouseNum >= 3) { mouseButton = -1; }
+        mouseButton = mouseNum;
+
+        return this;
+    }
+    public virtual void HandleInput()
+    {
+        
+        if (GetMouseRaycast())
+        {
+            Down();
+            Hold();
+            Up();
+        }
+        Other();
+    }
+    /// <summary>
+    /// Called on MouseButtonDown()
+    /// </summary>
+    protected virtual void Down()
+    {
+         
+    }
+    /// <summary>
+    /// Called on MouseButton() (excludes first frame pressed)
+    /// </summary>
+    protected virtual void Hold()
+    {
+    }
+    /// <summary>
+    /// Called on MouseButtonUp()
+    /// </summary>
+    protected virtual void Up()
+    {
+
+    }
+    protected virtual void Other()
+    {
+
+    }
+
+    /// <summary>
+    /// Sends raycast from Camera.main to mouse position and assigns the raycasthit2d to <see cref="hit"/>.
+    /// </summary>
+    /// <returns>Whether or not the raycast hit an object.</returns>
+    protected bool GetMouseRaycast()
+    {
+        hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+        return hit;
+    }
+
+    protected bool CheckDown() { return !Input.GetMouseButtonDown(mouseButton); }// return true if mouse button not down on this frame.
+    protected bool CheckHold() { return !Input.GetMouseButton(mouseButton) && CheckDown(); }// return true if mouse button not held and if checkdown()
+    protected bool CheckUp() { return !Input.GetMouseButtonUp(mouseButton); } //retun true if mouse button not up on this frame.
+}
+/// <summary>
+/// <see cref="EditorAction"/> for creating new notes.
+/// </summary>
+public class AddNote : EditorAction
+{
+    protected override void Down()
+    {
+        // if the mouse button the EditorAction was on was not pressed this frame, and wasn't on a key lane.
+        if (CheckDown()|| (hit&&!hit.collider.CompareTag("KeyLane"))) return;
+        SongEditor.instance?.ClearSelectedNotes();// when other EditorActions are taken, clear the selected notes.
+        SongEditor.instance?.CreateNote(hit); // create note.
+
+    }
 }
 
+/// <summary>
+/// <see cref="EditorAction"/> for removing and destroying notes.
+/// </summary>
+public class RemoveNotes : EditorAction
+{
+    protected override void Down()
+    {
+        if (CheckDown()) return;
+        RemoveNoteIfHit();
+    }
+    protected override void Hold()
+    {
+        if (CheckHold()) return;
+        RemoveNoteIfHit();
+    }
+
+    void RemoveNoteIfHit()
+    {
+        SongEditor.instance?.ClearSelectedNotes();// when other EditorActions are taken, clear the selected notes.
+        if (hit.collider.TryGetComponent(out EditorNote note))
+        {
+            SongEditor.instance.RemoveNote(note);
+        }
+    }
+}
+/// <summary>
+/// <see cref="EditorAction"/> for selecting notes to be modified by other editor actions.
+/// </summary>
+public class SelectNotes : EditorAction
+{
+    public override void HandleInput() {
+        if (GetMouseRaycast())
+        {
+            Down();
+            Hold();
+            Up();
+        }
+        Other();
+    }
+    protected override void Down()
+    {
+        if (CheckDown()) return;
+        SelectNote();
+    }
+    protected override void Hold()
+    {
+        if (CheckHold()) return;
+        SelectNote();
+    }
+    /// <summary>
+    /// Selects notes based on <see cref="EditorAction.GetMouseRaycast"/>'s raycasthit2d.
+    /// </summary>
+    void SelectNote()
+    {
+        if (hit.collider.TryGetComponent(out EditorNote note)) // if editor note is hit
+        {
+            HashSet<EditorNote> editorNotes = SongEditor.instance.selectedNotes; // get hashset of all created notes
+
+            if (Input.GetKey(KeyCode.LeftShift)) //if left shift held remove the note from selectedNotes and reset their colour.
+            {
+                editorNotes.Remove(note);
+                note.SetColour(SongEditor.instance.noteColour);
+            }
+            else // if left shift not held, add notes to selection and change their colour.
+            { 
+                if (editorNotes != null)
+                {
+                    editorNotes.Add(note);
+                    note.SetColour(SongEditor.instance.selectedNoteColour);
+                }
+            }
+
+        }
+        
+    }
+}
 
 
 

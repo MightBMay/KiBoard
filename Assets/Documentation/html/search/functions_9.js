@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['noteeventinfo_0',['NoteEventInfo',['../class_note_event_info.html#a3986c534b859bd61b047941cd3951f49',1,'NoteEventInfo.NoteEventInfo()'],['../class_note_event_info.html#a3b001565b1e72963a9630adbe706842a',1,'NoteEventInfo.NoteEventInfo(int noteNumber, float startTime, float endTime)'],['../class_note_event_info.html#aa8a865f4cafede7bf9253a805304eb76',1,'NoteEventInfo.NoteEventInfo(float bpm)']]],
-  ['noteoff_1',['NoteOff',['../class_midi_input.html#a2e24c8cbdc52507a5c148923c9f65d3f',1,'MidiInput']]],
-  ['noteon_2',['NoteOn',['../class_midi_input.html#a358348cc54a49193003a2788f81b7b4a',1,'MidiInput']]]
+  ['midiingetnumdevs_0',['midiInGetNumDevs',['../class_kiboard_debug.html#adb582ee1c015031e2df0cfd9820f62d7',1,'KiboardDebug']]],
+  ['monitormidiconnections_1',['MonitorMidiConnections',['../class_game_settings_menu.html#a5dd39dd7f822af50be08f1304d6ebe7b',1,'GameSettingsMenu']]],
+  ['monitormididevices_2',['MonitorMidiDevices',['../class_kiboard_debug.html#a9b85e3c68da381f4b5d748c66525f7f4',1,'KiboardDebug']]]
 ];

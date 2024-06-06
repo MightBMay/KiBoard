@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['editornote_0',['EditorNote',['../class_editor_note.html',1,'']]],
-  ['editornotewrapper_1',['EditorNoteWrapper',['../class_editor_note_wrapper.html',1,'']]],
-  ['exit_2',['Exit',['../class_exit.html',1,'']]],
-  ['extrasonginfomenu_3',['ExtraSongInfoMenu',['../class_extra_song_info_menu.html',1,'']]]
+  ['camerascrollmanager_0',['CameraScrollManager',['../class_camera_scroll_manager.html',1,'']]],
+  ['camerashake_1',['CameraShake',['../class_camera_shake.html',1,'']]],
+  ['combo_2',['Combo',['../class_combo.html',1,'']]]
 ];

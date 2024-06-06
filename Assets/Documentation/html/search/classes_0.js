@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['beatnumbergenerator_0',['BeatNumberGenerator',['../class_beat_number_generator.html',1,'']]]
+  ['addnote_0',['AddNote',['../class_add_note.html',1,'']]]
 ];

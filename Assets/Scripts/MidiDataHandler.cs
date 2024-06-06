@@ -104,7 +104,7 @@ public class MidiDataHandler
             // Read the JSON string from the file
             string json = LoadFromFileCompressed(filePath);
 
-            // Convert the JSON string back to a list of NoteEventInfo
+            // Convert the JSON string back to a hashset of NoteEventInfo
             return JsonUtility.FromJson<NoteEventDataWrapper>(json);
         }
         else

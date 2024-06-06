@@ -21,6 +21,7 @@ var dir_f13b41af88cf68434578284aaf699e39 =
     [ "NoteEventInfo.cs", "_note_event_info_8cs.html", "_note_event_info_8cs" ],
     [ "NoteShadow.cs", "_note_shadow_8cs.html", "_note_shadow_8cs" ],
     [ "Replay.cs", "_replay_8cs.html", "_replay_8cs" ],
+    [ "SongEditor.cs", "_song_editor_8cs.html", "_song_editor_8cs" ],
     [ "SongNoteEditor.cs", "_song_note_editor_8cs.html", "_song_note_editor_8cs" ],
     [ "SongScore.cs", "_song_score_8cs.html", "_song_score_8cs" ],
     [ "SpawnPiano.cs", "_spawn_piano_8cs.html", "_spawn_piano_8cs" ]

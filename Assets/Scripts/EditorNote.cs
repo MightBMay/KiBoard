@@ -2,7 +2,7 @@ using NAudio.Midi;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
+
 
 /// <summary>
 /// Represents a note in the editor with associated event information.
@@ -11,11 +11,9 @@ public class EditorNote : MonoBehaviour
 {
     public NoteEventInfo noteEvent;
     SpriteRenderer sprite;
-    Color startColour;
     private void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
-        startColour = sprite.color;
     }
 
     /// <summary>
@@ -35,18 +33,11 @@ public class EditorNote : MonoBehaviour
     /// Sets the highlight color of the note.
     /// </summary>
     /// <param name="newColour">The new highlight color.</param>
-    public void SetHighlightColour(Color newColour)
+    public void SetColour(Color newColour)
     {
         sprite.color = newColour;
     }
 
-    /// <summary>
-    /// Resets the highlight color of the note to its initial color.
-    /// </summary>
-    public void ResetHighlightColour()
-    {
-        sprite.color = startColour;
-    }
 
     /// <summary>
     /// Sets the position of the note based on mouse height and key origin X.

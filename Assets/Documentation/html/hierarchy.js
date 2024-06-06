@@ -1,6 +1,10 @@
 var hierarchy =
 [
     [ "Combo", "class_combo.html", null ],
+    [ "EditorAction", "class_editor_action.html", [
+      [ "AddNote", "class_add_note.html", null ],
+      [ "RemoveNotes", "class_remove_notes.html", null ]
+    ] ],
     [ "EditorNoteWrapper", "class_editor_note_wrapper.html", null ],
     [ "FileGroup", "struct_file_group.html", null ],
     [ "FileGroupError", "struct_file_group_error.html", null ],
@@ -23,6 +27,7 @@ var hierarchy =
       [ "MidiInput", "class_midi_input.html", null ],
       [ "NoteShadow", "class_note_shadow.html", null ],
       [ "Replay", "class_replay.html", null ],
+      [ "SongEditor", "class_song_editor.html", null ],
       [ "SongNoteEditor", "class_song_note_editor.html", null ],
       [ "SpawnPiano", "class_spawn_piano.html", null ],
       [ "oldEN", "classold_e_n.html", null ]
