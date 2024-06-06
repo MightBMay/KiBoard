@@ -64,9 +64,9 @@ public class Utility : MonoBehaviour
     /// <param name="num">Number to be rounded</param>
     /// <param name="beatDenominator">Fraction of a beat to round to</param>
     /// <returns>rounded value to nearest beatDenominator.</returns>
-    public static float RoundToFraction(float num, float beatDenominator, float unitsPerBeat = 15f)
+    public static float RoundToFraction(float num, float beatDenominator)
     {
-        
+
         float reciprocal = 1.0f / (15 / beatDenominator);
         return Mathf.Round(num * reciprocal) / reciprocal;
     }

@@ -15,12 +15,12 @@ TagManager:
   - UI
   - Particles
   - DraggableNote
-  - KeyLane
+  - 
   - Transition
   - PreviewLayer
   - 
-  - 
-  - 
+  - KeyLane
+  - EditorNote
   - 
   - 
   - 

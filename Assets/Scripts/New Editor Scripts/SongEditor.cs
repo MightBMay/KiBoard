@@ -4,6 +4,7 @@ using System.Linq;
 using System;
 using UnityEngine;
 using Unity.VisualScripting;
+using UnityEngine.UI;
 
 /// <summary>
 /// Manages the song editor functionality.
@@ -44,6 +45,15 @@ public class SongEditor : MonoBehaviour
     /// how many subdivisions for vertical note snapping.
     /// </summary>
     public float vSnap = 0;
+    /// <summary>
+    /// should new notes automatically scale to the size indicated by vSnap.
+    /// </summary>
+    public bool scaleNoteToVSnap;
+
+
+    #region Ui References
+    Button currentlySelectedButton;
+    #endregion
     private void Awake()
     {
         if (instance == null) { instance = this; }
@@ -100,12 +110,69 @@ public class SongEditor : MonoBehaviour
 
         void Middle()
         {
+            Down();
+            Hold();
+            Up();
 
+
+            void Down()
+            {
+
+                if (!Input.GetMouseButtonDown(0)) { return; }
+            }
+
+
+            void Hold()
+            {
+                // if you are holding LMB but it isnt the first frame you pressed it:
+                if (Input.GetMouseButton(0) && !Input.GetMouseButtonDown(0)) { return; }
+
+                //hold logic
+            }
+
+
+            void Up()
+            {
+                if (!Input.GetMouseButtonDown(0)) { return; }
+            }
         }
 
         void Right()
         {
+            Down();
+            Hold();
+            Up();
+            
 
+            void Down()
+            {
+
+                if (!Input.GetMouseButtonDown(1)) { return; }
+                test();
+                void test()
+                {
+                    for (int i = 0; i < 10; i++)
+                    {
+                        Debug.Log(Utility.RoundToFraction(i, vSnap));
+                    }
+                }
+
+            }
+
+
+            void Hold()
+            {
+                // if you are holding LMB but it isnt the first frame you pressed it:
+                if (Input.GetMouseButton(1) && !Input.GetMouseButtonDown(1)) { return; }
+
+                //hold logic
+            }
+
+
+            void Up()
+            {
+                if (!Input.GetMouseButtonDown(1)) { return; }
+            }
         }
 
         // make one for scroll wheel.
@@ -120,10 +187,22 @@ public class SongEditor : MonoBehaviour
         Transform note = Instantiate(editorNotePrefab, noteHolder).transform;// create note
         int noteNum = Mathf.RoundToInt(hit.point.x); // round notes position to get the key number.
         float height = hit.point.y;//get height of the note\
-        Vector2 snappeedPos = SnapNote(new Vector2(noteNum, height));
-        note.position = snappeedPos; // round the notes position to nearest fraction of a beat.
         EditorNote editorNote = note.GetComponent<EditorNote>();
-        editorNote.UpdateNoteEvent(noteNum, snappeedPos.y-2f - (defaultNoteScale.y / 2), snappeedPos.y-2f + (defaultNoteScale.y / 2));
+        if (scaleNoteToVSnap)
+        {
+            if (defaultNoteScale.y > vSnap)
+            {
+                note.localScale = new(defaultNoteScale.y, Utility.RoundToFraction(defaultNoteScale.y, vSnap));
+            }
+            else
+            {
+                note.localScale = new(defaultNoteScale.y, ScaleToBeat(vSnap, vSnap)) ;
+            }
+        }
+        Vector2 snappeedPos = SnapNote(new Vector2(noteNum, height));
+        snappeedPos.y += (note.localScale.y / 2);
+        note.position = snappeedPos; // round the notes position to nearest fraction of a beat.
+        editorNote.UpdateNoteEvent(noteNum, snappeedPos.y - 2f - (defaultNoteScale.y / 2), snappeedPos.y - 2f + (defaultNoteScale.y / 2));
 
     }
     /// <summary>
@@ -152,7 +231,7 @@ public class SongEditor : MonoBehaviour
             else { return Color.black; }
         }
     }
-   
+
 
     /// <summary>
     /// Rounds a vector2's values to the nearest fraction of 1/Vsnap
@@ -161,9 +240,26 @@ public class SongEditor : MonoBehaviour
     /// <returns>vector with fraction-rounded values.</returns>
     public Vector2 SnapNote(Vector2 pos)
     {
-        if(vSnap <= 0) { return pos; }
-        else{ return new Vector2(pos.x, Utility.RoundToFraction(pos.y, vSnap) + 2.5f); }
+        if (vSnap <= 0) { return pos; }
+        else { return new Vector2(pos.x, Utility.RoundToFraction(pos.y-5f, vSnap) + 2.5f); }
     }
+    public  float ScaleToBeat(float num, float unitsPerBeat = 15f)
+    {
+        return 15/ num;
+    }
+
+
+    public void SelectButton(Button button)
+    {
+        if(currentlySelectedButton != null)
+        {
+            currentlySelectedButton.interactable = true;
+        }
+
+        button.interactable = false;
+        currentlySelectedButton = button;
+    }
+
 }
 
 
