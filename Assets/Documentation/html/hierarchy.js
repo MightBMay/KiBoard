@@ -3,7 +3,9 @@ var hierarchy =
     [ "Combo", "class_combo.html", null ],
     [ "EditorAction", "class_editor_action.html", [
       [ "AddNote", "class_add_note.html", null ],
+      [ "MoveNotes", "class_move_notes.html", null ],
       [ "RemoveNotes", "class_remove_notes.html", null ],
+      [ "ScaleNotes", "class_scale_notes.html", null ],
       [ "SelectNotes", "class_select_notes.html", null ]
     ] ],
     [ "EditorNoteWrapper", "class_editor_note_wrapper.html", null ],
@@ -35,5 +37,6 @@ var hierarchy =
     ] ],
     [ "NoteEventDataWrapper", "class_note_event_data_wrapper.html", null ],
     [ "NoteEventInfo", "class_note_event_info.html", null ],
+    [ "EditorAction.NoteWrapper", "struct_editor_action_1_1_note_wrapper.html", null ],
     [ "SongScore", "class_song_score.html", null ]
 ];

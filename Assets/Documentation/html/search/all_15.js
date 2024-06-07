@@ -8,5 +8,6 @@ var searchData=
   ['volumeoverride_5',['VolumeOverride',['../class_kiboard_debug.html#ad7bab53c95904fa0774fa0fcaaf3aab3',1,'KiboardDebug']]],
   ['volumeoverrideif_6',['volumeOverrideIF',['../class_kiboard_debug.html#ac93dcc528e83aee7efd32b13b41d30fc',1,'KiboardDebug']]],
   ['vs_20keyboard_20strong_7',['&lt;strong&gt;Piano vs Keyboard&lt;/strong&gt;',['../md__assets_2_documentation_2html_2_markdown_2_modding_01_6_01_customization.html#autotoc_md23',1,'']]],
-  ['vsnap_8',['vSnap',['../class_song_editor.html#a030687a26d02bea951fa8176995f25d4',1,'SongEditor']]]
+  ['vsnap_8',['vSnap',['../class_song_editor.html#a030687a26d02bea951fa8176995f25d4',1,'SongEditor']]],
+  ['vsnapnote_9',['VSnapNote',['../class_song_editor.html#a257d077870774b5bf0fd7f2ec5984fc4',1,'SongEditor']]]
 ];

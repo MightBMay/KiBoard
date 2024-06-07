@@ -19,6 +19,6 @@ var searchData=
   ['convertnotenumbertoname_16',['ConvertNoteNumberToName',['../class_game_manager.html#af2b61b305c4b0b48b6dea78162472aef',1,'GameManager']]],
   ['countnotes_17',['CountNotes',['../class_midi_read_file.html#a8e7e3e4784f3f430c338ff138f4b92e3',1,'MidiReadFile']]],
   ['createbeatnumbers_18',['CreateBeatNumbers',['../class_beat_number_generator.html#a3f03ddb9312dbafc05f474c123eee134',1,'BeatNumberGenerator']]],
-  ['createnote_19',['CreateNote',['../class_song_editor.html#af7e43d1d5adc7550a37790778038d4d6',1,'SongEditor']]],
+  ['createnote_19',['CreateNote',['../class_song_editor.html#af7e43d1d5adc7550a37790778038d4d6',1,'SongEditor.CreateNote()'],['../class_add_note.html#afb7d9ae102a827f8f4e0ae787665c542',1,'AddNote.CreateNote()']]],
   ['createtimingtext_20',['CreateTimingText',['../class_game_u_i.html#a028174544700e306eaefc533e877b430',1,'GameUI']]]
 ];

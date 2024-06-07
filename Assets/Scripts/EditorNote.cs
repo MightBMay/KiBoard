@@ -40,11 +40,16 @@ public class EditorNote : MonoBehaviour
     }
     /// <summary>
     /// Set start and end time of notes based on current y position and scale.
-
-
-    public void UpdateNoteNumber(int newNum)
+    ///</summary>
+    public void UpdateNoteEvent()
     {
-        noteEvent.noteNumber = newNum;
+        float halfScale = transform.localScale.y / 2;
+        noteEvent.startTime = transform.position.y - halfScale;
+        noteEvent.endTime = transform.position.y + halfScale;
+    }
+    public void UpdateNoteNumber()
+    {
+        noteEvent.noteNumber = Mathf.RoundToInt(transform.position.x);
     }
 
     /// <summary>

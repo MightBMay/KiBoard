@@ -24,10 +24,12 @@ var searchData=
   ['monitormidiconnections_21',['MonitorMidiConnections',['../class_game_settings_menu.html#a5dd39dd7f822af50be08f1304d6ebe7b',1,'GameSettingsMenu']]],
   ['monitormididevices_22',['MonitorMidiDevices',['../class_kiboard_debug.html#a9b85e3c68da381f4b5d748c66525f7f4',1,'KiboardDebug']]],
   ['mousebutton_23',['mouseButton',['../class_editor_action.html#a15ef0f4316bba424ccfd8775c230310d',1,'EditorAction']]],
-  ['mp3_24',['mp3',['../struct_file_group_error.html#aeebc43eea11ac001e659c231b09e096c',1,'FileGroupError']]],
-  ['mp3file_25',['Mp3File',['../struct_file_group.html#a2c8b3197671e65d387a6cd16c1d4b661',1,'FileGroup']]],
-  ['mp3handler_26',['MP3Handler',['../class_m_p3_handler.html',1,'']]],
-  ['mp3handler_2ecs_27',['MP3Handler.cs',['../_m_p3_handler_8cs.html',1,'']]],
-  ['multiple_20versions_20of_20songs_3a_28',['Multiple Versions of Songs:',['../md__assets_2_documentation_2html_2_markdown_2_modding_01_6_01_customization.html#autotoc_md29',1,'']]],
-  ['multiplier_29',['multiplier',['../class_combo.html#af8a5afd66907ed1a576e8f64afa025be',1,'Combo']]]
+  ['movenotes_24',['MoveNotes',['../class_move_notes.html',1,'']]],
+  ['movenotes_25',['moveNotes',['../class_song_editor.html#a78e9a6aebc2851a04c2558c076af7c2d',1,'SongEditor.moveNotes'],['../class_move_notes.html#adb3f9d6bb884d37261c7514c0f3bc35b',1,'MoveNotes.moveNotes()']]],
+  ['mp3_26',['mp3',['../struct_file_group_error.html#aeebc43eea11ac001e659c231b09e096c',1,'FileGroupError']]],
+  ['mp3file_27',['Mp3File',['../struct_file_group.html#a2c8b3197671e65d387a6cd16c1d4b661',1,'FileGroup']]],
+  ['mp3handler_28',['MP3Handler',['../class_m_p3_handler.html',1,'']]],
+  ['mp3handler_2ecs_29',['MP3Handler.cs',['../_m_p3_handler_8cs.html',1,'']]],
+  ['multiple_20versions_20of_20songs_3a_30',['Multiple Versions of Songs:',['../md__assets_2_documentation_2html_2_markdown_2_modding_01_6_01_customization.html#autotoc_md29',1,'']]],
+  ['multiplier_31',['multiplier',['../class_combo.html#af8a5afd66907ed1a576e8f64afa025be',1,'Combo']]]
 ];

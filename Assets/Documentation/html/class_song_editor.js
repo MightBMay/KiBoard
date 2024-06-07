@@ -10,6 +10,7 @@ var class_song_editor =
     [ "SnapNote", "class_song_editor.html#a8ea09c65e7c50a6e6b34115da1767e40", null ],
     [ "Start", "class_song_editor.html#aaeb19aa1435183bfea8925967fc4493c", null ],
     [ "Update", "class_song_editor.html#ad9050147a8cc831212833b0f50360534", null ],
+    [ "VSnapNote", "class_song_editor.html#a257d077870774b5bf0fd7f2ec5984fc4", null ],
     [ "addNote", "class_song_editor.html#a86d8b33f2988fdf371b6d2dae09f38d2", null ],
     [ "baseKeyScale", "class_song_editor.html#a31ce4a989ca47d858805e609a5f930b7", null ],
     [ "cam", "class_song_editor.html#a34ef237c23fbef4cf3167e1cca5e61ae", null ],
@@ -26,11 +27,15 @@ var class_song_editor =
     [ "keyPrefab", "class_song_editor.html#ab8c2eaa82ad4fecc1b77678519aa01da", null ],
     [ "leftAction", "class_song_editor.html#ac957ff17bd4bbe159aae6205b90eaf12", null ],
     [ "middleAction", "class_song_editor.html#a97599edd8bd07f2765a2cca235907106", null ],
+    [ "moveNotes", "class_song_editor.html#a78e9a6aebc2851a04c2558c076af7c2d", null ],
     [ "noteColour", "class_song_editor.html#a09a65c17bbe707f634e6aebacb0213af", null ],
     [ "noteHolder", "class_song_editor.html#afc08d97e3b71df6971d0e8e870d5a711", null ],
     [ "removeNotes", "class_song_editor.html#a100049cdf4727d4b20b9d0ffab8bf18c", null ],
     [ "rightAction", "class_song_editor.html#ad1f503815a7caeb3c07eddcac9b490ff", null ],
+    [ "scaleNotes", "class_song_editor.html#a73f6b48aa56cb12c17419d00e9aee662", null ],
     [ "scaleNoteToVSnap", "class_song_editor.html#a6e5a70d2716ccbcd91670662a48b8880", null ],
     [ "selectedNoteColour", "class_song_editor.html#a96e3edb1a1475b70245745ea48540fd3", null ],
+    [ "selectNotes", "class_song_editor.html#a89c04449580334b80a2ffd51844efdb6", null ],
+    [ "smallestAllowedNote", "class_song_editor.html#a2055dca5e03613c31c430ae50ae669f9", null ],
     [ "vSnap", "class_song_editor.html#a030687a26d02bea951fa8176995f25d4", null ]
 ];

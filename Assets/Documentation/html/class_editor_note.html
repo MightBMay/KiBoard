@@ -123,6 +123,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a76f02eb912c4861b4ad7d1af121723c7" id="r_a76f02eb912c4861b4ad7d1af121723c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76f02eb912c4861b4ad7d1af121723c7">UpdateNoteEvent</a> (int noteNumber, float startTime, float endTime)</td></tr>
 <tr class="memdesc:a76f02eb912c4861b4ad7d1af121723c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the note event information. start and end time are based off of height of mouse when adding a note.  <br /></td></tr>
 <tr class="separator:a76f02eb912c4861b4ad7d1af121723c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b35a97a0f7334ba0b2b348cf1f049ba" id="r_a9b35a97a0f7334ba0b2b348cf1f049ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b35a97a0f7334ba0b2b348cf1f049ba">UpdateNoteEvent</a> (float startTime, float endTime)</td></tr>
+<tr class="memdesc:a9b35a97a0f7334ba0b2b348cf1f049ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update only start and end time of note event.  <br /></td></tr>
+<tr class="separator:a9b35a97a0f7334ba0b2b348cf1f049ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1135e32e0b3fd195f0d6898c0a6b2615" id="r_a1135e32e0b3fd195f0d6898c0a6b2615"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1135e32e0b3fd195f0d6898c0a6b2615">UpdateNoteEvent</a> ()</td></tr>
+<tr class="memdesc:a1135e32e0b3fd195f0d6898c0a6b2615"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set start and end time of notes based on current y position and scale. /summary&gt;  <br /></td></tr>
+<tr class="separator:a1135e32e0b3fd195f0d6898c0a6b2615"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71cf8d03007412557a2db75fbf033fb7" id="r_a71cf8d03007412557a2db75fbf033fb7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a71cf8d03007412557a2db75fbf033fb7">UpdateNoteNumber</a> ()</td></tr>
+<tr class="separator:a71cf8d03007412557a2db75fbf033fb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adaf75c93f8744d706ddbef39104ce4f1" id="r_adaf75c93f8744d706ddbef39104ce4f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adaf75c93f8744d706ddbef39104ce4f1">SetColour</a> (Color newColour)</td></tr>
 <tr class="memdesc:adaf75c93f8744d706ddbef39104ce4f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the highlight color of the note.  <br /></td></tr>
 <tr class="separator:adaf75c93f8744d706ddbef39104ce4f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -179,10 +187,10 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The snapped position.</dd></dl>
-<div class="fragment"><div class="line"><span class="lineno">   61</span>    {</div>
-<div class="line"><span class="lineno">   62</span>        <span class="keywordtype">float</span> x = Mathf.Round(input.x / increment) * increment;</div>
-<div class="line"><span class="lineno">   63</span>        <span class="keywordflow">return</span> <span class="keyword">new</span> Vector2(x, input.y);</div>
-<div class="line"><span class="lineno">   64</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">   84</span>    {</div>
+<div class="line"><span class="lineno">   85</span>        <span class="keywordtype">float</span> x = Mathf.Round(input.x / increment) * increment;</div>
+<div class="line"><span class="lineno">   86</span>        <span class="keywordflow">return</span> <span class="keyword">new</span> Vector2(x, input.y);</div>
+<div class="line"><span class="lineno">   87</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -208,9 +216,9 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><span class="lineno">   37</span>    {</div>
-<div class="line"><span class="lineno">   38</span>        sprite.color = newColour;</div>
-<div class="line"><span class="lineno">   39</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">   60</span>    {</div>
+<div class="line"><span class="lineno">   61</span>        sprite.color = newColour;</div>
+<div class="line"><span class="lineno">   62</span>    }</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="class_song_editor.html#af7592a7f7f144baf3f8a21f033d983b7">SongEditor.ClearSelectedNotes()</a>.</p>
 
@@ -239,11 +247,11 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><span class="lineno">   48</span>    {</div>
-<div class="line"><span class="lineno">   49</span>        <span class="keywordtype">float</span> height = mouseHeight &gt;= Mathf.NegativeInfinity ? mouseHeight : 1;</div>
-<div class="line"><span class="lineno">   50</span>        <span class="comment">//Vector2 gridSnap = GridSnapNote();</span></div>
-<div class="line"><span class="lineno">   51</span>        transform.position = <span class="keyword">new</span> Vector2(<a class="code hl_variable" href="#a07a6d3b37f7a7067ecdc79fc29796860">noteEvent</a>.<a class="code hl_variable" href="class_note_event_info.html#a9435e829c3bd157528c83c87c7a481df">noteNumber</a>, height);</div>
-<div class="line"><span class="lineno">   52</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">   71</span>    {</div>
+<div class="line"><span class="lineno">   72</span>        <span class="keywordtype">float</span> height = mouseHeight &gt;= Mathf.NegativeInfinity ? mouseHeight : 1;</div>
+<div class="line"><span class="lineno">   73</span>        <span class="comment">//Vector2 gridSnap = GridSnapNote();</span></div>
+<div class="line"><span class="lineno">   74</span>        transform.position = <span class="keyword">new</span> Vector2(<a class="code hl_variable" href="#a07a6d3b37f7a7067ecdc79fc29796860">noteEvent</a>.<a class="code hl_variable" href="class_note_event_info.html#a9435e829c3bd157528c83c87c7a481df">noteNumber</a>, height);</div>
+<div class="line"><span class="lineno">   75</span>    }</div>
 <div class="ttc" id="aclass_editor_note_html_a07a6d3b37f7a7067ecdc79fc29796860"><div class="ttname"><a href="#a07a6d3b37f7a7067ecdc79fc29796860">EditorNote.noteEvent</a></div><div class="ttdeci">NoteEventInfo noteEvent</div><div class="ttdef"><b>Definition</b> EditorNote.cs:12</div></div>
 <div class="ttc" id="aclass_note_event_info_html_a9435e829c3bd157528c83c87c7a481df"><div class="ttname"><a href="class_note_event_info.html#a9435e829c3bd157528c83c87c7a481df">NoteEventInfo.noteNumber</a></div><div class="ttdeci">int noteNumber</div><div class="ttdoc">Number of the note ranging from 0-87 coinciding with the notes on a piano.</div><div class="ttdef"><b>Definition</b> NoteEventInfo.cs:18</div></div>
 </div><!-- fragment -->
@@ -278,8 +286,66 @@ Private Attributes</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="a1135e32e0b3fd195f0d6898c0a6b2615" name="a1135e32e0b3fd195f0d6898c0a6b2615"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1135e32e0b3fd195f0d6898c0a6b2615">&#9670;&#160;</a></span>UpdateNoteEvent() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EditorNote.UpdateNoteEvent </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set start and end time of notes based on current y position and scale. /summary&gt; </p>
+<div class="fragment"><div class="line"><span class="lineno">   45</span>    {</div>
+<div class="line"><span class="lineno">   46</span>        <span class="keywordtype">float</span> halfScale = transform.localScale.y / 2;</div>
+<div class="line"><span class="lineno">   47</span>        noteEvent.startTime = transform.position.y - halfScale;</div>
+<div class="line"><span class="lineno">   48</span>        noteEvent.endTime = transform.position.y + halfScale;</div>
+<div class="line"><span class="lineno">   49</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a9b35a97a0f7334ba0b2b348cf1f049ba" name="a9b35a97a0f7334ba0b2b348cf1f049ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b35a97a0f7334ba0b2b348cf1f049ba">&#9670;&#160;</a></span>UpdateNoteEvent() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EditorNote.UpdateNoteEvent </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>startTime</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>endTime</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Update only start and end time of note event. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">startTime</td><td></td></tr>
+    <tr><td class="paramname">endTime</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><span class="lineno">   37</span>    {</div>
+<div class="line"><span class="lineno">   38</span>        noteEvent.startTime = startTime / 15;</div>
+<div class="line"><span class="lineno">   39</span>        noteEvent.endTime = endTime / 15;</div>
+<div class="line"><span class="lineno">   40</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a76f02eb912c4861b4ad7d1af121723c7" name="a76f02eb912c4861b4ad7d1af121723c7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a76f02eb912c4861b4ad7d1af121723c7">&#9670;&#160;</a></span>UpdateNoteEvent()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a76f02eb912c4861b4ad7d1af121723c7">&#9670;&#160;</a></span>UpdateNoteEvent() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -317,6 +383,30 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   29</span>        noteEvent.noteNumber = noteNumber;</div>
 <div class="line"><span class="lineno">   30</span>    }</div>
 </div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="class_scale_notes.html#a53bb4d5569bee2788c2b987c98cfbbd3">ScaleNotes.ScaleNote()</a>, and <a class="el" href="class_move_notes.html#a7f42cec95f298a77e5ab05612336a0cb">MoveNotes.UpdateNoteEvents()</a>.</p>
+
+</div>
+</div>
+<a id="a71cf8d03007412557a2db75fbf033fb7" name="a71cf8d03007412557a2db75fbf033fb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71cf8d03007412557a2db75fbf033fb7">&#9670;&#160;</a></span>UpdateNoteNumber()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EditorNote.UpdateNoteNumber </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   51</span>    {</div>
+<div class="line"><span class="lineno">   52</span>        noteEvent.noteNumber = Mathf.RoundToInt(transform.position.x);</div>
+<div class="line"><span class="lineno">   53</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="class_move_notes.html#a7f42cec95f298a77e5ab05612336a0cb">MoveNotes.UpdateNoteEvents()</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>

@@ -16,7 +16,9 @@ var searchData=
   ['noteoff_13',['NoteOff',['../class_midi_input.html#a2e24c8cbdc52507a5c148923c9f65d3f',1,'MidiInput']]],
   ['noteon_14',['NoteOn',['../class_midi_input.html#a358348cc54a49193003a2788f81b7b4a',1,'MidiInput']]],
   ['noteprefab_15',['notePrefab',['../class_game_manager.html#a85f3738c9e3c68307429d0b530b29c4f',1,'GameManager']]],
-  ['noteshadow_16',['NoteShadow',['../class_note_shadow.html',1,'']]],
-  ['noteshadow_2ecs_17',['NoteShadow.cs',['../_note_shadow_8cs.html',1,'']]],
-  ['notetransform_18',['noteTransform',['../class_editor_note_wrapper.html#ae73636bf82ca2778e70f17b38f49f4a7',1,'EditorNoteWrapper']]]
+  ['notes_16',['notes',['../class_move_notes.html#a0973e03af54f26a23ccb7f4be63eaee3',1,'MoveNotes']]],
+  ['noteshadow_17',['NoteShadow',['../class_note_shadow.html',1,'']]],
+  ['noteshadow_2ecs_18',['NoteShadow.cs',['../_note_shadow_8cs.html',1,'']]],
+  ['notetransform_19',['noteTransform',['../class_editor_note_wrapper.html#ae73636bf82ca2778e70f17b38f49f4a7',1,'EditorNoteWrapper']]],
+  ['notewrapper_20',['NoteWrapper',['../struct_editor_action_1_1_note_wrapper.html',1,'EditorAction.NoteWrapper'],['../struct_editor_action_1_1_note_wrapper.html#a2856bcaef18ff70368028938975e8ba1',1,'EditorAction.NoteWrapper.NoteWrapper()']]]
 ];

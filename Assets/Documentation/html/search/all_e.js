@@ -12,8 +12,7 @@ var searchData=
   ['onenable_9',['OnEnable',['../class_kiboard_debug.html#a3c43e2f01dc7e099c0a9df6df8d50dfc',1,'KiboardDebug']]],
   ['onnotesuccess_10',['OnNoteSuccess',['../class_midi_input.html#aa4804a291f0c49c471a9fb0ecd0a6590',1,'MidiInput']]],
   ['onsongend_11',['OnSongEnd',['../class_game_manager.html#ad109ae0452de271ad4ea6f05e7a7d74b',1,'GameManager']]],
-  ['other_12',['Other',['../class_editor_action.html#aac5c5681a6d45f932468e0e9a3a60494',1,'EditorAction']]],
-  ['other_20additions_13',['Other additions',['../md__assets_2_documentation_2html_2_markdown_2_modding_01_6_01_customization.html#autotoc_md28',1,'']]],
-  ['overidevolume_14',['overideVolume',['../class_kiboard_debug.html#a9e0fba4286c69721430bbf992b6c18f6',1,'KiboardDebug']]],
-  ['overidevolumevalue_15',['overideVolumeValue',['../class_kiboard_debug.html#a24f9ed97a6c1dcf42452136bb11987fd',1,'KiboardDebug']]]
+  ['other_20additions_12',['Other additions',['../md__assets_2_documentation_2html_2_markdown_2_modding_01_6_01_customization.html#autotoc_md28',1,'']]],
+  ['overidevolume_13',['overideVolume',['../class_kiboard_debug.html#a9e0fba4286c69721430bbf992b6c18f6',1,'KiboardDebug']]],
+  ['overidevolumevalue_14',['overideVolumeValue',['../class_kiboard_debug.html#a24f9ed97a6c1dcf42452136bb11987fd',1,'KiboardDebug']]]
 ];

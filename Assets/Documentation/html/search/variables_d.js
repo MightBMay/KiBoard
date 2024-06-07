@@ -9,5 +9,6 @@ var searchData=
   ['notenames_6',['noteNames',['../class_game_manager.html#afd80eb99362175b5af23a86196a07e32',1,'GameManager']]],
   ['notenumber_7',['noteNumber',['../class_note_event_info.html#a9435e829c3bd157528c83c87c7a481df',1,'NoteEventInfo']]],
   ['noteprefab_8',['notePrefab',['../class_game_manager.html#a85f3738c9e3c68307429d0b530b29c4f',1,'GameManager']]],
-  ['notetransform_9',['noteTransform',['../class_editor_note_wrapper.html#ae73636bf82ca2778e70f17b38f49f4a7',1,'EditorNoteWrapper']]]
+  ['notes_9',['notes',['../class_move_notes.html#a0973e03af54f26a23ccb7f4be63eaee3',1,'MoveNotes']]],
+  ['notetransform_10',['noteTransform',['../class_editor_note_wrapper.html#ae73636bf82ca2778e70f17b38f49f4a7',1,'EditorNoteWrapper']]]
 ];

@@ -38,7 +38,7 @@ var searchData=
   ['count_35',['count',['../class_combo.html#adc017bf1d5f6d1e5dc50664a9c55a434',1,'Combo']]],
   ['countnotes_36',['CountNotes',['../class_midi_read_file.html#a8e7e3e4784f3f430c338ff138f4b92e3',1,'MidiReadFile']]],
   ['createbeatnumbers_37',['CreateBeatNumbers',['../class_beat_number_generator.html#a3f03ddb9312dbafc05f474c123eee134',1,'BeatNumberGenerator']]],
-  ['createnote_38',['CreateNote',['../class_song_editor.html#af7e43d1d5adc7550a37790778038d4d6',1,'SongEditor']]],
+  ['createnote_38',['CreateNote',['../class_song_editor.html#af7e43d1d5adc7550a37790778038d4d6',1,'SongEditor.CreateNote()'],['../class_add_note.html#afb7d9ae102a827f8f4e0ae787665c542',1,'AddNote.CreateNote()']]],
   ['createtimingtext_39',['CreateTimingText',['../class_game_u_i.html#a028174544700e306eaefc533e877b430',1,'GameUI']]],
   ['creating_20a_20custom_20song_40',['Creating a custom song',['../md__assets_2_documentation_2html_2_markdown_2_modding_01_6_01_customization.html#autotoc_md26',1,'']]],
   ['currentlyselectedbutton_41',['currentlySelectedButton',['../class_song_editor.html#a45639feaf9c6e5176303d6f8ef6ba9e5',1,'SongEditor']]],

@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Runtime.CompilerServices;
+using UnityEditor.Experimental.GraphView;
 
 /// <summary>
 /// Manages the song editor functionality.
@@ -241,7 +242,9 @@ public class EditorAction
 {
     protected sbyte mouseButton;
     protected RaycastHit2D hit;
-
+    /// <summary>
+    /// SongEditor Struct to keep initial position and editornotes easily accessable.
+    /// </summary>
     protected struct NoteWrapper
     {
        public Vector2 initialPosition;
@@ -266,6 +269,9 @@ public class EditorAction
 
         return this;
     }
+    /// <summary>
+    /// calls all other input methods (down,hold,up,scrollwheel).
+    /// </summary>
     public virtual void HandleInput()
     {
 
@@ -282,24 +288,25 @@ public class EditorAction
     /// </summary>
     protected virtual void Down()
     {
-
+        // used for overrides
     }
     /// <summary>
     /// Called on MouseButton() (excludes first frame pressed)
     /// </summary>
     protected virtual void Hold()
     {
+        // used for overrides
     }
     /// <summary>
     /// Called on MouseButtonUp()
     /// </summary>
     protected virtual void Up()
     {
-
+        // used for overrides
     }
     protected virtual void ScrollWheel()
     {
-
+        // used for overrides
     }
 
     /// <summary>
@@ -422,7 +429,9 @@ public class SelectNotes : EditorAction
 
     }
 }
-
+/// <summary>
+/// EditorAction for scaling currently selected notes.
+/// </summary>
 public class ScaleNotes : EditorAction
 {
 
@@ -463,10 +472,12 @@ public class ScaleNotes : EditorAction
         }
     }
 }
-
+/// <summary>
+/// EditorAction for moving currently selected notes.
+/// </summary>
 public class MoveNotes : EditorAction
 {
-    Vector2 downPos, holdpos;
+    Vector2 downPos, holdpos;// stored positions for calculating distance the mouse has moved
     List<NoteWrapper> notes = new();
     float x, y;
 
@@ -500,10 +511,15 @@ public class MoveNotes : EditorAction
     protected override void Up()
     {
         if (CheckUp()) return;
+        UpdateNoteEvents();
         notes.Clear();
 
     }
-
+    /// <summary>
+    /// handles moving currently selected notes.
+    /// </summary>
+    /// <param name="xDist">Distance the mouse has moved on the x axis since button down </param>
+    /// <param name="yDist">Distance the mouse has moved on the y axis since button down</param>
     void moveNotes(float xDist, float yDist)
     {
         Debug.Log(xDist + " " + yDist);
@@ -517,9 +533,19 @@ public class MoveNotes : EditorAction
             Vector3 posChange = (Vector3)note.initialPosition + new Vector3(x,y,0);
 
             note.editorNote.transform.position = new Vector3(Mathf.Clamp(posChange.x, 0, 87), Mathf.Clamp(posChange.y, 0, Mathf.Infinity), posChange.z);
+            
         }
-
-        
+    }
+    /// <summary>
+    /// Updates start/end time and note number after moving notes.
+    /// </summary>
+    void UpdateNoteEvents()
+    {
+        foreach (NoteWrapper note in notes)
+        {
+            note.editorNote.UpdateNoteEvent();
+            note.editorNote.UpdateNoteNumber();
+        }
     }
 }
 

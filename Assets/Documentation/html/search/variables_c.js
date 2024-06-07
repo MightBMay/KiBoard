@@ -10,7 +10,8 @@ var searchData=
   ['miss_7',['miss',['../class_song_score.html#a1975252c66a628809c09c9ab6e894a22',1,'SongScore']]],
   ['modifiednotescale_8',['modifiedNoteScale',['../class_game_manager.html#a1c6cbb2c55728fd5cdae29b101fca9b8',1,'GameManager']]],
   ['mousebutton_9',['mouseButton',['../class_editor_action.html#a15ef0f4316bba424ccfd8775c230310d',1,'EditorAction']]],
-  ['mp3_10',['mp3',['../struct_file_group_error.html#aeebc43eea11ac001e659c231b09e096c',1,'FileGroupError']]],
-  ['mp3file_11',['Mp3File',['../struct_file_group.html#a2c8b3197671e65d387a6cd16c1d4b661',1,'FileGroup']]],
-  ['multiplier_12',['multiplier',['../class_combo.html#af8a5afd66907ed1a576e8f64afa025be',1,'Combo']]]
+  ['movenotes_10',['moveNotes',['../class_song_editor.html#a78e9a6aebc2851a04c2558c076af7c2d',1,'SongEditor']]],
+  ['mp3_11',['mp3',['../struct_file_group_error.html#aeebc43eea11ac001e659c231b09e096c',1,'FileGroupError']]],
+  ['mp3file_12',['Mp3File',['../struct_file_group.html#a2c8b3197671e65d387a6cd16c1d4b661',1,'FileGroup']]],
+  ['multiplier_13',['multiplier',['../class_combo.html#af8a5afd66907ed1a576e8f64afa025be',1,'Combo']]]
 ];
