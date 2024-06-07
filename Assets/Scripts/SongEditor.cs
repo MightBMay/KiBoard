@@ -72,6 +72,7 @@ public class SongEditor : MonoBehaviour
     RemoveNotes removeNotes = new();
     SelectNotes selectNotes = new();
     ScaleNotes scaleNotes = new();
+    MoveNotes moveNotes = new();
 
 
 
@@ -200,7 +201,7 @@ public class SongEditor : MonoBehaviour
         button.interactable = false;
         currentlySelectedButton = button;
         leftAction = InitializeAction(button.gameObject.name, 0);
-        rightAction = InitializeAction("scale", 1);
+        rightAction = InitializeAction("move", 1);
         middleAction = InitializeAction("select", 2);
     }
 
@@ -216,6 +217,8 @@ public class SongEditor : MonoBehaviour
                 return selectNotes.SetEditorAction(mouseNumber);
             case "scale":
                 return scaleNotes.SetEditorAction(mouseNumber);
+            case "move":
+                return moveNotes.SetEditorAction(mouseNumber);
             default:
                 return null;
 
@@ -239,6 +242,18 @@ public class EditorAction
     protected sbyte mouseButton;
     protected RaycastHit2D hit;
 
+    protected struct NoteWrapper
+    {
+       public Vector2 initialPosition;
+       public EditorNote editorNote;
+       public NoteWrapper(EditorNote note)
+        {
+            editorNote = note;
+            initialPosition = note.transform.position;
+        }
+    }
+
+
     /// <summary>
     /// Returns a pre existing editoraction and allows you to set the button used to activate it at the same time.
     /// </summary>
@@ -254,7 +269,7 @@ public class EditorAction
     public virtual void HandleInput()
     {
 
-        if (GetMouseRaycast())
+        if (GetMouseRaycast(out hit))
         {
             Down();
             Hold();
@@ -291,7 +306,7 @@ public class EditorAction
     /// Sends raycast from Camera.main to mouse position and assigns the raycasthit2d to <see cref="hit"/>.
     /// </summary>
     /// <returns>Whether or not the raycast hit an object.</returns>
-    protected bool GetMouseRaycast()
+    protected bool GetMouseRaycast(out RaycastHit2D hit)
     {
         hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
         return hit;
@@ -361,7 +376,7 @@ public class SelectNotes : EditorAction
 {
     public override void HandleInput()
     {
-        if (GetMouseRaycast())
+        if (GetMouseRaycast(out hit))
         {
             Down();
             Hold();
@@ -446,6 +461,65 @@ public class ScaleNotes : EditorAction
             var updatedScale = note.transform.localScale;
             note.UpdateNoteEvent(note.transform.position.y - (updatedScale.y / 2), note.transform.position.y + (updatedScale.y / 2)); // update timings.
         }
+    }
+}
+
+public class MoveNotes : EditorAction
+{
+    Vector2 downPos, holdpos;
+    List<NoteWrapper> notes = new();
+    float x, y;
+
+    protected override void Down()
+    {
+        if (CheckDown()) return;
+        downPos = hit.point;
+        foreach(EditorNote note in SongEditor.instance.selectedNotes)
+        {
+            notes.Add(new(note));
+        }
+    }
+
+    protected override void Hold()
+    {
+        if (CheckHold()) return;
+        if (GetMouseRaycast(out RaycastHit2D holdHit))
+        {
+            holdpos = holdHit.point;
+            moveNotes(downPos.x - holdpos.x, downPos.y - holdpos.y);
+        }
+        
+
+
+
+
+
+
+    }
+
+    protected override void Up()
+    {
+        if (CheckUp()) return;
+        notes.Clear();
+
+    }
+
+    void moveNotes(float xDist, float yDist)
+    {
+        Debug.Log(xDist + " " + yDist);
+        // detect if mouse has moved multiples of 1 unit on the x axis, or vsnap units on the y axis and shift note positions accordingly. 
+        foreach(NoteWrapper note in notes)
+        {
+            x = Mathf.RoundToInt(-xDist);
+            y = Utility.RoundToFraction(-yDist, SongEditor.instance.vSnap);
+
+
+            Vector3 posChange = (Vector3)note.initialPosition + new Vector3(x,y,0);
+
+            note.editorNote.transform.position = new Vector3(Mathf.Clamp(posChange.x, 0, 87), Mathf.Clamp(posChange.y, 0, Mathf.Infinity), posChange.z);
+        }
+
+        
     }
 }
 

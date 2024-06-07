@@ -70,8 +70,16 @@ public class Utility : MonoBehaviour
         float reciprocal = 1.0f / (15 / beatDenominator);
         return Mathf.Round(num * reciprocal) / reciprocal;
     }
-
-
+    /// <summary>
+    /// Get the number with the larger Magnitue, maintaining the sign of the number.
+    /// </summary>
+    /// <param name="a">number A</param>
+    /// <param name="b">number B</param>
+    /// <returns>Number A or B with largest magnitude.</returns>
+    public static float MaxMagnitude(float a, float b)
+    {
+        return Mathf.Abs(a) > Mathf.Abs(b) ? a : b;
+    }
 
     /// <summary>
     /// loads an image from given path to a Texture2D.

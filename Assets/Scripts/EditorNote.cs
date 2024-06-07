@@ -40,14 +40,13 @@ public class EditorNote : MonoBehaviour
     }
     /// <summary>
     /// Set start and end time of notes based on current y position and scale.
-    /// </summary>
-    public void UpdateNoteEvent()
+
+
+    public void UpdateNoteNumber(int newNum)
     {
-        float y = transform.position.y, halfHeight = transform.localScale.y/2;
-        noteEvent.startTime = y - halfHeight;
-        noteEvent.endTime = y + halfHeight;
-        
+        noteEvent.noteNumber = newNum;
     }
+
     /// <summary>
     /// Sets the highlight color of the note.
     /// </summary>

@@ -399,8 +399,8 @@ MonoBehaviour:
   keyLaneScale: {x: 1, y: 20, z: 1}
   baseKeyScale: {x: 0.8, y: 5, z: 1}
   defaultNoteScale: {x: 1, y: 1}
-  noteColour: {r: 0, g: 0, b: 0, a: 0}
-  selectedNoteColour: {r: 0, g: 0, b: 0, a: 0}
+  noteColour: {r: 1, g: 1, b: 1, a: 1}
+  selectedNoteColour: {r: 1, g: 0, b: 0, a: 1}
   heightMultiplier: 15
   vSnap: 2
   scaleNoteToVSnap: 1
