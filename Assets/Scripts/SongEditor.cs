@@ -67,6 +67,9 @@ public class SongEditor : MonoBehaviour
     /// </summary>
     public EditorAction leftAction, middleAction, rightAction;
 
+   
+   public Color[] mouseButtonColours = new Color[3];
+
 
     //Instances of the different editor actions so i don't make a new one every time.
     AddNote addNote = new();
@@ -201,13 +204,13 @@ public class SongEditor : MonoBehaviour
 
         button.interactable = false;
         currentlySelectedButton = button;
-        leftAction = InitializeAction(button.gameObject.name, 0);
-        rightAction = InitializeAction("move", 1);
-        middleAction = InitializeAction("select", 2);
+
+
     }
 
     public EditorAction InitializeAction(string actionName, sbyte mouseNumber)
     {
+        Debug.Log(actionName + " " + mouseNumber);
         switch (actionName.ToLower()) // convert actionName to lower and set up the respective action for use with mousebutton # mouseNumber
         {
             case "add":
@@ -235,9 +238,12 @@ public class SongEditor : MonoBehaviour
         selectedNotes.Clear();
     }
 }
+
+#region Editor Actions
 /// <summary>
 /// Base EditorAction for other more specific actions to inherit from.
 /// </summary>
+[System.Serializable]
 public class EditorAction
 {
     protected sbyte mouseButton;
@@ -548,7 +554,7 @@ public class MoveNotes : EditorAction
         }
     }
 }
-
+#endregion
 
 
 /*
