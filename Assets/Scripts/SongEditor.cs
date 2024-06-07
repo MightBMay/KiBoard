@@ -413,6 +413,13 @@ public class ScaleNotes : EditorAction
 
     protected override void ScrollWheel()
     {
+        ScaleNote();
+    }
+    /// <summary>
+    /// Scales note based off of mouseScrollDelta. smallest size is <see cref="SongEditor.vSnap"/>.
+    /// </summary>
+    void ScaleNote()
+    {
         sbyte scrollDir = (sbyte)(Input.mouseScrollDelta.y == 0 ? 0 : Mathf.Sign(Input.mouseScrollDelta.y)); // if scrolldelta not zero, get the sign.
         float minSize = (15 / SongEditor.instance.vSnap);
         float scaleStep = scrollDir * minSize;
@@ -420,22 +427,24 @@ public class ScaleNotes : EditorAction
 
         foreach (EditorNote note in SongEditor.instance.selectedNotes)
         {
-           
 
 
-            float newY = note.transform.localScale.y +scaleStep; // calculate new y position
-            
+
+            float newY = note.transform.localScale.y + scaleStep; // calculate new y position
+
             float clampedY = Mathf.Clamp(newY, minSize, Mathf.Infinity);// clamp y 
-            if (clampedY >minSize||scrollDir<0)
+
+            if (note.transform.localScale.y > minSize || scrollDir >= 0)
             {
                 note.transform.position += Vector3.up * scaleStep / 2;
             }
+
 
             note.transform.localScale = new Vector3(note.transform.localScale.x, clampedY, note.transform.localScale.z); // assign new scale
 
 
             var updatedScale = note.transform.localScale;
-            note.UpdateNoteEvent(note.transform.position.y - (updatedScale.y/2), note.transform.position.y + (updatedScale.y / 2) ); // update timings.
+            note.UpdateNoteEvent(note.transform.position.y - (updatedScale.y / 2), note.transform.position.y + (updatedScale.y / 2)); // update timings.
         }
     }
 }
