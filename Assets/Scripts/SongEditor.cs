@@ -416,7 +416,6 @@ public class ScaleNotes : EditorAction
         sbyte scrollDir = (sbyte)(Input.mouseScrollDelta.y == 0 ? 0 : Mathf.Sign(Input.mouseScrollDelta.y)); // if scrolldelta not zero, get the sign.
         float minSize = (15 / SongEditor.instance.vSnap);
         float scaleStep = scrollDir * minSize;
-        Debug.Log(minSize);
         if (scrollDir == 0) return; // return if not scrolling.
 
         foreach (EditorNote note in SongEditor.instance.selectedNotes)
@@ -424,11 +423,17 @@ public class ScaleNotes : EditorAction
            
 
 
-            float newY = note.transform.localScale.y +scaleStep;
-            float clampedY = Mathf.Clamp(newY, minSize, Mathf.Infinity);
-            if (clampedY-minSize > minSize) { note.transform.position += Vector3.up * scaleStep / 2; Debug.Log(clampedY); }
+            float newY = note.transform.localScale.y +scaleStep; // calculate new y position
+            
+            float clampedY = Mathf.Clamp(newY, minSize, Mathf.Infinity);// clamp y 
+            if (clampedY >minSize||scrollDir<0)
+            {
+                note.transform.position += Vector3.up * scaleStep / 2;
+            }
 
             note.transform.localScale = new Vector3(note.transform.localScale.x, clampedY, note.transform.localScale.z); // assign new scale
+
+
             var updatedScale = note.transform.localScale;
             note.UpdateNoteEvent(note.transform.position.y - (updatedScale.y/2), note.transform.position.y + (updatedScale.y / 2) ); // update timings.
         }
