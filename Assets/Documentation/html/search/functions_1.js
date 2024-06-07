@@ -14,10 +14,11 @@ var searchData=
   ['clearcombo_11',['ClearCombo',['../class_combo.html#a5c1d9c0676b635e234c214d5c5587e9e',1,'Combo']]],
   ['clearreplay_12',['ClearReplay',['../class_replay.html#a0d97ab2056465d34269abb9d08ee54fe',1,'Replay']]],
   ['clearscore_13',['ClearScore',['../class_song_score.html#a51eee760b1aa969dfbc348c4dfcabbaa',1,'SongScore']]],
-  ['convertnotenametonumber_14',['ConvertNoteNameToNumber',['../class_game_manager.html#a131c1f0873da6899dc644060748a8b99',1,'GameManager']]],
-  ['convertnotenumbertoname_15',['ConvertNoteNumberToName',['../class_game_manager.html#af2b61b305c4b0b48b6dea78162472aef',1,'GameManager']]],
-  ['countnotes_16',['CountNotes',['../class_midi_read_file.html#a8e7e3e4784f3f430c338ff138f4b92e3',1,'MidiReadFile']]],
-  ['createbeatnumbers_17',['CreateBeatNumbers',['../class_beat_number_generator.html#a3f03ddb9312dbafc05f474c123eee134',1,'BeatNumberGenerator']]],
-  ['createnote_18',['CreateNote',['../class_song_editor.html#af7e43d1d5adc7550a37790778038d4d6',1,'SongEditor']]],
-  ['createtimingtext_19',['CreateTimingText',['../class_game_u_i.html#a028174544700e306eaefc533e877b430',1,'GameUI']]]
+  ['clearselectednotes_14',['ClearSelectedNotes',['../class_song_editor.html#af7592a7f7f144baf3f8a21f033d983b7',1,'SongEditor']]],
+  ['convertnotenametonumber_15',['ConvertNoteNameToNumber',['../class_game_manager.html#a131c1f0873da6899dc644060748a8b99',1,'GameManager']]],
+  ['convertnotenumbertoname_16',['ConvertNoteNumberToName',['../class_game_manager.html#af2b61b305c4b0b48b6dea78162472aef',1,'GameManager']]],
+  ['countnotes_17',['CountNotes',['../class_midi_read_file.html#a8e7e3e4784f3f430c338ff138f4b92e3',1,'MidiReadFile']]],
+  ['createbeatnumbers_18',['CreateBeatNumbers',['../class_beat_number_generator.html#a3f03ddb9312dbafc05f474c123eee134',1,'BeatNumberGenerator']]],
+  ['createnote_19',['CreateNote',['../class_song_editor.html#af7e43d1d5adc7550a37790778038d4d6',1,'SongEditor']]],
+  ['createtimingtext_20',['CreateTimingText',['../class_game_u_i.html#a028174544700e306eaefc533e877b430',1,'GameUI']]]
 ];

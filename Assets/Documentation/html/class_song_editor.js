@@ -1,11 +1,11 @@
 var class_song_editor =
 [
     [ "Awake", "class_song_editor.html#a02bbbe63cf34578b9ec45ce66bcbca07", null ],
+    [ "ClearSelectedNotes", "class_song_editor.html#af7592a7f7f144baf3f8a21f033d983b7", null ],
     [ "CreateNote", "class_song_editor.html#af7e43d1d5adc7550a37790778038d4d6", null ],
     [ "InitializeAction", "class_song_editor.html#a8ca58215d5918ff8659f7f70b44fd49b", null ],
     [ "InitializePianoRoll", "class_song_editor.html#a6935913f57e6938c26504d31940bd101", null ],
     [ "RemoveNote", "class_song_editor.html#a867db3b2c9d922e28900e85bde9844c9", null ],
-    [ "ScaleToBeat", "class_song_editor.html#a69aa32257d856d0273445393553039e3", null ],
     [ "SelectButton", "class_song_editor.html#a1b355596bbfdd8b8c115d11647fbc135", null ],
     [ "SnapNote", "class_song_editor.html#a8ea09c65e7c50a6e6b34115da1767e40", null ],
     [ "Start", "class_song_editor.html#aaeb19aa1435183bfea8925967fc4493c", null ],
@@ -31,5 +31,6 @@ var class_song_editor =
     [ "removeNotes", "class_song_editor.html#a100049cdf4727d4b20b9d0ffab8bf18c", null ],
     [ "rightAction", "class_song_editor.html#ad1f503815a7caeb3c07eddcac9b490ff", null ],
     [ "scaleNoteToVSnap", "class_song_editor.html#a6e5a70d2716ccbcd91670662a48b8880", null ],
+    [ "selectedNoteColour", "class_song_editor.html#a96e3edb1a1475b70245745ea48540fd3", null ],
     [ "vSnap", "class_song_editor.html#a030687a26d02bea951fa8176995f25d4", null ]
 ];

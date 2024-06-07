@@ -28,6 +28,7 @@ var annotated_dup =
     [ "oldEN", "classold_e_n.html", "classold_e_n" ],
     [ "RemoveNotes", "class_remove_notes.html", "class_remove_notes" ],
     [ "Replay", "class_replay.html", "class_replay" ],
+    [ "SelectNotes", "class_select_notes.html", "class_select_notes" ],
     [ "SongEditor", "class_song_editor.html", "class_song_editor" ],
     [ "SongNoteEditor", "class_song_note_editor.html", null ],
     [ "SongScore", "class_song_score.html", "class_song_score" ],

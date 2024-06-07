@@ -28,7 +28,26 @@ public class EditorNote : MonoBehaviour
         noteEvent.endTime = endTime/15;
         noteEvent.noteNumber = noteNumber;
     }
-
+    /// <summary>
+    /// Update only start and end time of note event.
+    /// </summary>
+    /// <param name="startTime"></param>
+    /// <param name="endTime"></param>
+    public void UpdateNoteEvent(float startTime, float endTime)
+    {
+        noteEvent.startTime = startTime / 15;
+        noteEvent.endTime = endTime / 15;
+    }
+    /// <summary>
+    /// Set start and end time of notes based on current y position and scale.
+    /// </summary>
+    public void UpdateNoteEvent()
+    {
+        float y = transform.position.y, halfHeight = transform.localScale.y/2;
+        noteEvent.startTime = y - halfHeight;
+        noteEvent.endTime = y + halfHeight;
+        
+    }
     /// <summary>
     /// Sets the highlight color of the note.
     /// </summary>

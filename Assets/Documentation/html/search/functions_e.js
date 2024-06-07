@@ -2,9 +2,9 @@ var searchData=
 [
   ['savenoteeventdata_0',['SaveNoteEventData',['../class_midi_data_handler.html#a2f657c39727c406846f224d4175f62b2',1,'MidiDataHandler.SaveNoteEventData(string extension, float bpm, List&lt; NoteEventInfo &gt; dataToSave)'],['../class_midi_data_handler.html#aa987cf5e013d593eacef15c209a6ddf4',1,'MidiDataHandler.SaveNoteEventData(string extension, NoteEventDataWrapper wrapper)']]],
   ['savetofilecompressed_1',['SaveToFileCompressed',['../class_midi_data_handler.html#a41c5630a1a4ef4b89a1e14f7474a57ca',1,'MidiDataHandler']]],
-  ['scaletobeat_2',['ScaleToBeat',['../class_song_editor.html#a69aa32257d856d0273445393553039e3',1,'SongEditor']]],
-  ['scrollcamera_3',['ScrollCamera',['../class_camera_scroll_manager.html#a732753794a6b87a751407c602100701b',1,'CameraScrollManager']]],
-  ['selectbutton_4',['SelectButton',['../class_song_editor.html#a1b355596bbfdd8b8c115d11647fbc135',1,'SongEditor']]],
+  ['scrollcamera_2',['ScrollCamera',['../class_camera_scroll_manager.html#a732753794a6b87a751407c602100701b',1,'CameraScrollManager']]],
+  ['selectbutton_3',['SelectButton',['../class_song_editor.html#a1b355596bbfdd8b8c115d11647fbc135',1,'SongEditor']]],
+  ['selectnote_4',['SelectNote',['../class_select_notes.html#ab17c5f8d45f50ce275c476a3a6e2b091',1,'SelectNotes']]],
   ['setbeatsbeforedrop_5',['SetBeatsBeforeDrop',['../class_game_manager.html#a1b07555e4d959dfc5afe2ea33b1cc614',1,'GameManager']]],
   ['setcolour_6',['SetColour',['../class_editor_note.html#adaf75c93f8744d706ddbef39104ce4f1',1,'EditorNote']]],
   ['setcombobarvalue_7',['SetComboBarValue',['../class_game_u_i.html#a54f29d43da024f545f8060c8ae60dc1f',1,'GameUI']]],

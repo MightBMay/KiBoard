@@ -3,7 +3,8 @@ var hierarchy =
     [ "Combo", "class_combo.html", null ],
     [ "EditorAction", "class_editor_action.html", [
       [ "AddNote", "class_add_note.html", null ],
-      [ "RemoveNotes", "class_remove_notes.html", null ]
+      [ "RemoveNotes", "class_remove_notes.html", null ],
+      [ "SelectNotes", "class_select_notes.html", null ]
     ] ],
     [ "EditorNoteWrapper", "class_editor_note_wrapper.html", null ],
     [ "FileGroup", "struct_file_group.html", null ],

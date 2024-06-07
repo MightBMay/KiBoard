@@ -1,9 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Runtime.CompilerServices;
 
 /// <summary>
 /// Manages the song editor functionality.
@@ -52,10 +51,12 @@ public class SongEditor : MonoBehaviour
     /// </summary>
     public bool scaleNoteToVSnap;
 
+    public readonly float smallestAllowedNote = 1 / 16f;
+
     /// <summary>
     /// list of editornotes.
     /// </summary>
-    [SerializeField]List<EditorNote> editorNotes = new();
+    [SerializeField] List<EditorNote> editorNotes = new();
 
     internal HashSet<EditorNote> selectedNotes = new();
 
@@ -63,12 +64,14 @@ public class SongEditor : MonoBehaviour
     /// EditorActions for the left, middle and right mouse buttons respectively.<br/>
     /// Can be bound by calling <see cref="InitializeAction(string, sbyte)"/> with a string corresponding to the name of the editor action, and a sByte containing the number mouse button.
     /// </summary>
-    public EditorAction leftAction,middleAction,rightAction;
+    public EditorAction leftAction, middleAction, rightAction;
 
 
     //Instances of the different editor actions so i don't make a new one every time.
     AddNote addNote = new();
     RemoveNotes removeNotes = new();
+    SelectNotes selectNotes = new();
+    ScaleNotes scaleNotes = new();
 
 
 
@@ -102,6 +105,22 @@ public class SongEditor : MonoBehaviour
         int noteNum = Mathf.RoundToInt(hit.point.x); // round notes position to get the key number.
         float height = hit.point.y;//get height of the note\
         EditorNote editorNote = note.GetComponent<EditorNote>();
+        Vector2 snappeedPos = SnapNote(new Vector2(noteNum, height));
+        VSnapNote(note);// scale note based on VSnap.
+        float halfNoteHeight = note.localScale.y / 2;
+        snappeedPos.y += halfNoteHeight;
+        note.position = snappeedPos; // round the notes position to nearest fraction of a beat.
+        editorNote.UpdateNoteEvent(noteNum, snappeedPos.y - 2f - halfNoteHeight, snappeedPos.y - 2f + halfNoteHeight); // set noteEvent data.
+
+        editorNotes.Add(editorNote); // add to list of noteEvents.
+
+    }
+    /// <summary>
+    /// scales a note based on vsnap 
+    /// </summary>
+    /// <param name="note"> transform to have scale snapped.</param>
+    public void VSnapNote(Transform note)
+    {
         if (scaleNoteToVSnap)
         {
             if (defaultNoteScale.y > vSnap)
@@ -110,17 +129,13 @@ public class SongEditor : MonoBehaviour
             }
             else
             {
-                note.localScale = new(defaultNoteScale.y, 15/vSnap);
+                note.localScale = new(defaultNoteScale.y, 15 / vSnap);
             }
         }
-        Vector2 snappeedPos = SnapNote(new Vector2(noteNum, height));
-        float halfNoteHeight = note.localScale.y / 2;
-        snappeedPos.y += halfNoteHeight;
-        note.position = snappeedPos; // round the notes position to nearest fraction of a beat.
-        editorNote.UpdateNoteEvent(noteNum, snappeedPos.y - 2f - halfNoteHeight, snappeedPos.y - 2f + halfNoteHeight);
-        editorNotes.Add(editorNote);
 
     }
+
+
     /// <summary>
     /// removes an editornote from the editorNotes list and then destroys the gameObject it is attatched to.
     /// </summary>
@@ -164,10 +179,10 @@ public class SongEditor : MonoBehaviour
     /// </summary>
     /// <param name="pos">Vector to snap</param>
     /// <returns>vector with fraction-rounded values.</returns>
-    public Vector2 SnapNote(Vector2 pos)
+    Vector2 SnapNote(Vector2 pos)
     {
         if (vSnap <= 0) { return pos; } // set to 0 for no snapping.
-        else { return new Vector2(pos.x, Utility.RoundToFraction(pos.y-5f, vSnap) + 2.5f); } //otherwise round y to nearest fraction given ( subtraction and addition for some offsets).
+        else { return new Vector2(pos.x, Utility.RoundToFraction(pos.y - 5f, vSnap) + 2.5f); } //otherwise round y to nearest fraction given ( subtraction and addition for some offsets).
     }
 
 
@@ -177,15 +192,16 @@ public class SongEditor : MonoBehaviour
     /// <param name="button"></param>
     public void SelectButton(Button button)
     {
-        if(currentlySelectedButton != null)
+        if (currentlySelectedButton != null)
         {
             currentlySelectedButton.interactable = true;
         }
 
         button.interactable = false;
         currentlySelectedButton = button;
-        leftAction = InitializeAction(button.gameObject.name,0);
-        rightAction = InitializeAction("remove", 1);
+        leftAction = InitializeAction(button.gameObject.name, 0);
+        rightAction = InitializeAction("scale", 1);
+        middleAction = InitializeAction("select", 2);
     }
 
     public EditorAction InitializeAction(string actionName, sbyte mouseNumber)
@@ -197,7 +213,9 @@ public class SongEditor : MonoBehaviour
             case "remove":
                 return removeNotes.SetEditorAction(mouseNumber);
             case "select":
-                return null;
+                return selectNotes.SetEditorAction(mouseNumber);
+            case "scale":
+                return scaleNotes.SetEditorAction(mouseNumber);
             default:
                 return null;
 
@@ -206,7 +224,7 @@ public class SongEditor : MonoBehaviour
 
     public void ClearSelectedNotes()
     {
-        foreach(EditorNote note in selectedNotes)
+        foreach (EditorNote note in selectedNotes)
         {
             note.SetColour(noteColour);
         }
@@ -235,21 +253,21 @@ public class EditorAction
     }
     public virtual void HandleInput()
     {
-        
+
         if (GetMouseRaycast())
         {
             Down();
             Hold();
             Up();
         }
-        Other();
+        ScrollWheel();
     }
     /// <summary>
     /// Called on MouseButtonDown()
     /// </summary>
     protected virtual void Down()
     {
-         
+
     }
     /// <summary>
     /// Called on MouseButton() (excludes first frame pressed)
@@ -264,7 +282,7 @@ public class EditorAction
     {
 
     }
-    protected virtual void Other()
+    protected virtual void ScrollWheel()
     {
 
     }
@@ -291,10 +309,23 @@ public class AddNote : EditorAction
     protected override void Down()
     {
         // if the mouse button the EditorAction was on was not pressed this frame, and wasn't on a key lane.
-        if (CheckDown()|| (hit&&!hit.collider.CompareTag("KeyLane"))) return;
+        if (CheckDown() || (hit && !hit.collider.CompareTag("KeyLane"))) return;
+        CreateNote();
+
+    }
+    protected override void Hold()
+    {
+        // works fine, but if ur mouse ends up placing a note while not on a note it makes one every single frame.
+        //if (CheckHold()) return;
+        //CreateNote();
+    }
+    /// <summary>
+    /// Clear selected notes, then create a note at the hit point.
+    /// </summary>
+    void CreateNote()
+    {
         SongEditor.instance?.ClearSelectedNotes();// when other EditorActions are taken, clear the selected notes.
         SongEditor.instance?.CreateNote(hit); // create note.
-
     }
 }
 
@@ -328,14 +359,15 @@ public class RemoveNotes : EditorAction
 /// </summary>
 public class SelectNotes : EditorAction
 {
-    public override void HandleInput() {
+    public override void HandleInput()
+    {
         if (GetMouseRaycast())
         {
             Down();
             Hold();
             Up();
         }
-        Other();
+        ScrollWheel();
     }
     protected override void Down()
     {
@@ -358,11 +390,12 @@ public class SelectNotes : EditorAction
 
             if (Input.GetKey(KeyCode.LeftShift)) //if left shift held remove the note from selectedNotes and reset their colour.
             {
-                editorNotes.Remove(note);
+
                 note.SetColour(SongEditor.instance.noteColour);
+                editorNotes.Remove(note);
             }
             else // if left shift not held, add notes to selection and change their colour.
-            { 
+            {
                 if (editorNotes != null)
                 {
                     editorNotes.Add(note);
@@ -371,7 +404,34 @@ public class SelectNotes : EditorAction
             }
 
         }
-        
+
+    }
+}
+
+public class ScaleNotes : EditorAction
+{
+
+    protected override void ScrollWheel()
+    {
+        sbyte scrollDir = (sbyte)(Input.mouseScrollDelta.y == 0 ? 0 : Mathf.Sign(Input.mouseScrollDelta.y)); // if scrolldelta not zero, get the sign.
+        float minSize = (15 / SongEditor.instance.vSnap);
+        float scaleStep = scrollDir * minSize;
+        Debug.Log(minSize);
+        if (scrollDir == 0) return; // return if not scrolling.
+
+        foreach (EditorNote note in SongEditor.instance.selectedNotes)
+        {
+           
+
+
+            float newY = note.transform.localScale.y +scaleStep;
+            float clampedY = Mathf.Clamp(newY, minSize, Mathf.Infinity);
+            if (clampedY-minSize > minSize) { note.transform.position += Vector3.up * scaleStep / 2; Debug.Log(clampedY); }
+
+            note.transform.localScale = new Vector3(note.transform.localScale.x, clampedY, note.transform.localScale.z); // assign new scale
+            var updatedScale = note.transform.localScale;
+            note.UpdateNoteEvent(note.transform.position.y - (updatedScale.y/2), note.transform.position.y + (updatedScale.y / 2) ); // update timings.
+        }
     }
 }
 
