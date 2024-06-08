@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Runtime.CompilerServices;
 using UnityEditor.Experimental.GraphView;
+using System.Linq;
 
 /// <summary>
 /// Manages the song editor functionality.
@@ -66,9 +67,12 @@ public class SongEditor : MonoBehaviour
     /// Can be bound by calling <see cref="InitializeAction(string, sbyte)"/> with a string corresponding to the name of the editor action, and a sByte containing the number mouse button.
     /// </summary>
     public EditorAction leftAction, middleAction, rightAction;
+    /// <summary>
+    /// list of all custom 3 mouse button ui buttons i can use to iterate and reset their colours.
+    /// </summary>
+    public TriMouseButton[] triMouseButtons;
 
-   
-   public Color[] mouseButtonColours = new Color[3];
+    public Color[] mouseButtonColours = new Color[3];
 
 
     //Instances of the different editor actions so i don't make a new one every time.
@@ -91,6 +95,7 @@ public class SongEditor : MonoBehaviour
         cam = Camera.main;
 
         InitializePianoRoll();
+        triMouseButtons = FindObjectsOfType<TriMouseButton>(true);
     }
     private void Update()
     {
@@ -253,9 +258,9 @@ public class EditorAction
     /// </summary>
     protected struct NoteWrapper
     {
-       public Vector2 initialPosition;
-       public EditorNote editorNote;
-       public NoteWrapper(EditorNote note)
+        public Vector2 initialPosition;
+        public EditorNote editorNote;
+        public NoteWrapper(EditorNote note)
         {
             editorNote = note;
             initialPosition = note.transform.position;
@@ -323,6 +328,11 @@ public class EditorAction
     {
         hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
         return hit;
+    }
+
+    public virtual void Reset()
+    {
+
     }
 
     protected bool CheckDown() { return !Input.GetMouseButtonDown(mouseButton); }// return true if mouse button not down on this frame.
@@ -491,7 +501,7 @@ public class MoveNotes : EditorAction
     {
         if (CheckDown()) return;
         downPos = hit.point;
-        foreach(EditorNote note in SongEditor.instance.selectedNotes)
+        foreach (EditorNote note in SongEditor.instance.selectedNotes)
         {
             notes.Add(new(note));
         }
@@ -505,7 +515,7 @@ public class MoveNotes : EditorAction
             holdpos = holdHit.point;
             moveNotes(downPos.x - holdpos.x, downPos.y - holdpos.y);
         }
-        
+
 
 
 
@@ -530,16 +540,16 @@ public class MoveNotes : EditorAction
     {
         Debug.Log(xDist + " " + yDist);
         // detect if mouse has moved multiples of 1 unit on the x axis, or vsnap units on the y axis and shift note positions accordingly. 
-        foreach(NoteWrapper note in notes)
+        foreach (NoteWrapper note in notes)
         {
             x = Mathf.RoundToInt(-xDist);
             y = Utility.RoundToFraction(-yDist, SongEditor.instance.vSnap);
 
 
-            Vector3 posChange = (Vector3)note.initialPosition + new Vector3(x,y,0);
+            Vector3 posChange = (Vector3)note.initialPosition + new Vector3(x, y, 0);
 
             note.editorNote.transform.position = new Vector3(Mathf.Clamp(posChange.x, 0, 87), Mathf.Clamp(posChange.y, 0, Mathf.Infinity), posChange.z);
-            
+
         }
     }
     /// <summary>
