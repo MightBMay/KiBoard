@@ -9,6 +9,7 @@ using UnityEngine;
 /// </summary>
 public class EditorNote : MonoBehaviour
 {
+    const float noteTimingOffset = 1 / 30f;
     public NoteEventInfo noteEvent;
     SpriteRenderer sprite;
     private void Start()
@@ -24,8 +25,8 @@ public class EditorNote : MonoBehaviour
     /// <param name="endTime">The end time of the note event.</param>
     public void UpdateNoteEvent(int noteNumber, float startTime, float endTime)
     {
-        noteEvent.startTime = startTime/15;
-        noteEvent.endTime = endTime/15;
+        noteEvent.startTime = (startTime / 15) -noteTimingOffset;
+        noteEvent.endTime = (endTime / 15) - noteTimingOffset;
         noteEvent.noteNumber = noteNumber;
     }
     /// <summary>
@@ -35,8 +36,8 @@ public class EditorNote : MonoBehaviour
     /// <param name="endTime"></param>
     public void UpdateNoteEvent(float startTime, float endTime)
     {
-        noteEvent.startTime = startTime / 15;
-        noteEvent.endTime = endTime / 15;
+        noteEvent.startTime = (startTime / 15) - noteTimingOffset;
+        noteEvent.endTime = (endTime / 15 )- noteTimingOffset;
     }
     /// <summary>
     /// Set start and end time of notes based on current y position and scale.
@@ -44,8 +45,8 @@ public class EditorNote : MonoBehaviour
     public void UpdateNoteEvent()
     {
         float halfScale = transform.localScale.y / 2;
-        noteEvent.startTime = transform.position.y - halfScale;
-        noteEvent.endTime = transform.position.y + halfScale;
+        noteEvent.startTime = transform.position.y - halfScale - noteTimingOffset;
+        noteEvent.endTime = transform.position.y + halfScale - noteTimingOffset;
     }
     public void UpdateNoteNumber()
     {
