@@ -5,10 +5,14 @@ var class_song_editor =
     [ "CreateNote", "class_song_editor.html#af7e43d1d5adc7550a37790778038d4d6", null ],
     [ "InitializeAction", "class_song_editor.html#a8ca58215d5918ff8659f7f70b44fd49b", null ],
     [ "InitializePianoRoll", "class_song_editor.html#a6935913f57e6938c26504d31940bd101", null ],
+    [ "PlayTest", "class_song_editor.html#ab2eed0148b0fa5d85cf6fad9852cb095", null ],
     [ "RemoveNote", "class_song_editor.html#a867db3b2c9d922e28900e85bde9844c9", null ],
     [ "SelectButton", "class_song_editor.html#a1b355596bbfdd8b8c115d11647fbc135", null ],
+    [ "SetVSnap", "class_song_editor.html#a40ebf7bb90ab44ff9cce447b505d9ce1", null ],
+    [ "SetVSnap", "class_song_editor.html#a541f6ff1e930f7d45d95124c80066c21", null ],
     [ "SnapNote", "class_song_editor.html#a8ea09c65e7c50a6e6b34115da1767e40", null ],
     [ "Start", "class_song_editor.html#aaeb19aa1435183bfea8925967fc4493c", null ],
+    [ "ToggleVSnapMenu", "class_song_editor.html#a4972a406653861a1daed3e8f97259a8f", null ],
     [ "Update", "class_song_editor.html#ad9050147a8cc831212833b0f50360534", null ],
     [ "VSnapNote", "class_song_editor.html#a257d077870774b5bf0fd7f2ec5984fc4", null ],
     [ "addNote", "class_song_editor.html#a86d8b33f2988fdf371b6d2dae09f38d2", null ],
@@ -39,5 +43,6 @@ var class_song_editor =
     [ "selectNotes", "class_song_editor.html#a89c04449580334b80a2ffd51844efdb6", null ],
     [ "smallestAllowedNote", "class_song_editor.html#a2055dca5e03613c31c430ae50ae669f9", null ],
     [ "triMouseButtons", "class_song_editor.html#a2ff7acd9bbc5ca6ea3fc49e6502f94e1", null ],
-    [ "vSnap", "class_song_editor.html#a030687a26d02bea951fa8176995f25d4", null ]
+    [ "vSnap", "class_song_editor.html#a030687a26d02bea951fa8176995f25d4", null ],
+    [ "vSnapMenu", "class_song_editor.html#a4b76317a35fc08bc1afdd2421e8f8515", null ]
 ];

@@ -102,6 +102,7 @@ $(function(){initNavTree('class_editor_note.html',''); initResizable(true); });
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_editor_note-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">EditorNote Class Reference</div></div>
 </div><!--header-->
@@ -155,6 +156,11 @@ Private Member Functions</h2></td></tr>
 Private Attributes</h2></td></tr>
 <tr class="memitem:af7d3f42388dec9800fd58a0cdcb22707" id="r_af7d3f42388dec9800fd58a0cdcb22707"><td class="memItemLeft" align="right" valign="top">SpriteRenderer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7d3f42388dec9800fd58a0cdcb22707">sprite</a></td></tr>
 <tr class="separator:af7d3f42388dec9800fd58a0cdcb22707"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:a588643dc004fb31aa7ad2f4044001657" id="r_a588643dc004fb31aa7ad2f4044001657"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a588643dc004fb31aa7ad2f4044001657">noteTimingOffset</a> = 1 / 30f</td></tr>
+<tr class="separator:a588643dc004fb31aa7ad2f4044001657"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a note in the editor with associated event information. </p>
@@ -187,10 +193,10 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The snapped position.</dd></dl>
-<div class="fragment"><div class="line"><span class="lineno">   84</span>    {</div>
-<div class="line"><span class="lineno">   85</span>        <span class="keywordtype">float</span> x = Mathf.Round(input.x / increment) * increment;</div>
-<div class="line"><span class="lineno">   86</span>        <span class="keywordflow">return</span> <span class="keyword">new</span> Vector2(x, input.y);</div>
-<div class="line"><span class="lineno">   87</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">   85</span>    {</div>
+<div class="line"><span class="lineno">   86</span>        <span class="keywordtype">float</span> x = Mathf.Round(input.x / increment) * increment;</div>
+<div class="line"><span class="lineno">   87</span>        <span class="keywordflow">return</span> <span class="keyword">new</span> Vector2(x, input.y);</div>
+<div class="line"><span class="lineno">   88</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -216,9 +222,9 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><span class="lineno">   60</span>    {</div>
-<div class="line"><span class="lineno">   61</span>        sprite.color = newColour;</div>
-<div class="line"><span class="lineno">   62</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">   61</span>    {</div>
+<div class="line"><span class="lineno">   62</span>        sprite.color = newColour;</div>
+<div class="line"><span class="lineno">   63</span>    }</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="class_song_editor.html#af7592a7f7f144baf3f8a21f033d983b7">SongEditor.ClearSelectedNotes()</a>.</p>
 
@@ -247,12 +253,12 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><span class="lineno">   71</span>    {</div>
-<div class="line"><span class="lineno">   72</span>        <span class="keywordtype">float</span> height = mouseHeight &gt;= Mathf.NegativeInfinity ? mouseHeight : 1;</div>
-<div class="line"><span class="lineno">   73</span>        <span class="comment">//Vector2 gridSnap = GridSnapNote();</span></div>
-<div class="line"><span class="lineno">   74</span>        transform.position = <span class="keyword">new</span> Vector2(<a class="code hl_variable" href="#a07a6d3b37f7a7067ecdc79fc29796860">noteEvent</a>.<a class="code hl_variable" href="class_note_event_info.html#a9435e829c3bd157528c83c87c7a481df">noteNumber</a>, height);</div>
-<div class="line"><span class="lineno">   75</span>    }</div>
-<div class="ttc" id="aclass_editor_note_html_a07a6d3b37f7a7067ecdc79fc29796860"><div class="ttname"><a href="#a07a6d3b37f7a7067ecdc79fc29796860">EditorNote.noteEvent</a></div><div class="ttdeci">NoteEventInfo noteEvent</div><div class="ttdef"><b>Definition</b> EditorNote.cs:12</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   72</span>    {</div>
+<div class="line"><span class="lineno">   73</span>        <span class="keywordtype">float</span> height = mouseHeight &gt;= Mathf.NegativeInfinity ? mouseHeight : 1;</div>
+<div class="line"><span class="lineno">   74</span>        <span class="comment">//Vector2 gridSnap = GridSnapNote();</span></div>
+<div class="line"><span class="lineno">   75</span>        transform.position = <span class="keyword">new</span> Vector2(<a class="code hl_variable" href="#a07a6d3b37f7a7067ecdc79fc29796860">noteEvent</a>.<a class="code hl_variable" href="class_note_event_info.html#a9435e829c3bd157528c83c87c7a481df">noteNumber</a>, height);</div>
+<div class="line"><span class="lineno">   76</span>    }</div>
+<div class="ttc" id="aclass_editor_note_html_a07a6d3b37f7a7067ecdc79fc29796860"><div class="ttname"><a href="#a07a6d3b37f7a7067ecdc79fc29796860">EditorNote.noteEvent</a></div><div class="ttdeci">NoteEventInfo noteEvent</div><div class="ttdef"><b>Definition</b> EditorNote.cs:13</div></div>
 <div class="ttc" id="aclass_note_event_info_html_a9435e829c3bd157528c83c87c7a481df"><div class="ttname"><a href="class_note_event_info.html#a9435e829c3bd157528c83c87c7a481df">NoteEventInfo.noteNumber</a></div><div class="ttdeci">int noteNumber</div><div class="ttdoc">Number of the note ranging from 0-87 coinciding with the notes on a piano.</div><div class="ttdef"><b>Definition</b> NoteEventInfo.cs:18</div></div>
 </div><!-- fragment -->
 </div>
@@ -279,10 +285,10 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   15</span>    {</div>
-<div class="line"><span class="lineno">   16</span>        <a class="code hl_variable" href="#af7d3f42388dec9800fd58a0cdcb22707">sprite</a> = GetComponent&lt;SpriteRenderer&gt;();</div>
-<div class="line"><span class="lineno">   17</span>    }</div>
-<div class="ttc" id="aclass_editor_note_html_af7d3f42388dec9800fd58a0cdcb22707"><div class="ttname"><a href="#af7d3f42388dec9800fd58a0cdcb22707">EditorNote.sprite</a></div><div class="ttdeci">SpriteRenderer sprite</div><div class="ttdef"><b>Definition</b> EditorNote.cs:13</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   16</span>    {</div>
+<div class="line"><span class="lineno">   17</span>        <a class="code hl_variable" href="#af7d3f42388dec9800fd58a0cdcb22707">sprite</a> = GetComponent&lt;SpriteRenderer&gt;();</div>
+<div class="line"><span class="lineno">   18</span>    }</div>
+<div class="ttc" id="aclass_editor_note_html_af7d3f42388dec9800fd58a0cdcb22707"><div class="ttname"><a href="#af7d3f42388dec9800fd58a0cdcb22707">EditorNote.sprite</a></div><div class="ttdeci">SpriteRenderer sprite</div><div class="ttdef"><b>Definition</b> EditorNote.cs:14</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -302,11 +308,12 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Set start and end time of notes based on current y position and scale. /summary&gt; </p>
-<div class="fragment"><div class="line"><span class="lineno">   45</span>    {</div>
-<div class="line"><span class="lineno">   46</span>        <span class="keywordtype">float</span> halfScale = transform.localScale.y / 2;</div>
-<div class="line"><span class="lineno">   47</span>        noteEvent.startTime = transform.position.y - halfScale;</div>
-<div class="line"><span class="lineno">   48</span>        noteEvent.endTime = transform.position.y + halfScale;</div>
-<div class="line"><span class="lineno">   49</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">   46</span>    {</div>
+<div class="line"><span class="lineno">   47</span>        <span class="keywordtype">float</span> halfScale = transform.localScale.y / 2;</div>
+<div class="line"><span class="lineno">   48</span>        noteEvent.startTime = transform.position.y - halfScale - <a class="code hl_variable" href="#a588643dc004fb31aa7ad2f4044001657">noteTimingOffset</a>;</div>
+<div class="line"><span class="lineno">   49</span>        noteEvent.endTime = transform.position.y + halfScale - <a class="code hl_variable" href="#a588643dc004fb31aa7ad2f4044001657">noteTimingOffset</a>;</div>
+<div class="line"><span class="lineno">   50</span>    }</div>
+<div class="ttc" id="aclass_editor_note_html_a588643dc004fb31aa7ad2f4044001657"><div class="ttname"><a href="#a588643dc004fb31aa7ad2f4044001657">EditorNote.noteTimingOffset</a></div><div class="ttdeci">const float noteTimingOffset</div><div class="ttdef"><b>Definition</b> EditorNote.cs:12</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -337,10 +344,10 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><span class="lineno">   37</span>    {</div>
-<div class="line"><span class="lineno">   38</span>        noteEvent.startTime = startTime / 15;</div>
-<div class="line"><span class="lineno">   39</span>        noteEvent.endTime = endTime / 15;</div>
-<div class="line"><span class="lineno">   40</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">   38</span>    {</div>
+<div class="line"><span class="lineno">   39</span>        noteEvent.startTime = (startTime / 15) - <a class="code hl_variable" href="#a588643dc004fb31aa7ad2f4044001657">noteTimingOffset</a>;</div>
+<div class="line"><span class="lineno">   40</span>        noteEvent.endTime = (endTime / 15 )- <a class="code hl_variable" href="#a588643dc004fb31aa7ad2f4044001657">noteTimingOffset</a>;</div>
+<div class="line"><span class="lineno">   41</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -377,11 +384,11 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><span class="lineno">   26</span>    {</div>
-<div class="line"><span class="lineno">   27</span>        noteEvent.startTime = startTime/15;</div>
-<div class="line"><span class="lineno">   28</span>        noteEvent.endTime = endTime/15;</div>
-<div class="line"><span class="lineno">   29</span>        noteEvent.noteNumber = noteNumber;</div>
-<div class="line"><span class="lineno">   30</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">   27</span>    {</div>
+<div class="line"><span class="lineno">   28</span>        noteEvent.startTime = (startTime / 15) -<a class="code hl_variable" href="#a588643dc004fb31aa7ad2f4044001657">noteTimingOffset</a>;</div>
+<div class="line"><span class="lineno">   29</span>        noteEvent.endTime = (endTime / 15) - <a class="code hl_variable" href="#a588643dc004fb31aa7ad2f4044001657">noteTimingOffset</a>;</div>
+<div class="line"><span class="lineno">   30</span>        noteEvent.noteNumber = noteNumber;</div>
+<div class="line"><span class="lineno">   31</span>    }</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="class_scale_notes.html#a53bb4d5569bee2788c2b987c98cfbbd3">ScaleNotes.ScaleNote()</a>, and <a class="el" href="class_move_notes.html#a7f42cec95f298a77e5ab05612336a0cb">MoveNotes.UpdateNoteEvents()</a>.</p>
 
@@ -401,9 +408,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   51</span>    {</div>
-<div class="line"><span class="lineno">   52</span>        noteEvent.noteNumber = Mathf.RoundToInt(transform.position.x);</div>
-<div class="line"><span class="lineno">   53</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">   52</span>    {</div>
+<div class="line"><span class="lineno">   53</span>        noteEvent.noteNumber = Mathf.RoundToInt(transform.position.x);</div>
+<div class="line"><span class="lineno">   54</span>    }</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="class_move_notes.html#a7f42cec95f298a77e5ab05612336a0cb">MoveNotes.UpdateNoteEvents()</a>.</p>
 
@@ -423,6 +430,30 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="reference">Referenced by <a class="el" href="#a7f841047bd2c4288a13f35d3f9620e2e">SetNotePosition()</a>.</p>
+
+</div>
+</div>
+<a id="a588643dc004fb31aa7ad2f4044001657" name="a588643dc004fb31aa7ad2f4044001657"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a588643dc004fb31aa7ad2f4044001657">&#9670;&#160;</a></span>noteTimingOffset</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const float EditorNote.noteTimingOffset = 1 / 30f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="#a1135e32e0b3fd195f0d6898c0a6b2615">UpdateNoteEvent()</a>, <a class="el" href="#a9b35a97a0f7334ba0b2b348cf1f049ba">UpdateNoteEvent()</a>, and <a class="el" href="#a76f02eb912c4861b4ad7d1af121723c7">UpdateNoteEvent()</a>.</p>
 
 </div>
 </div>

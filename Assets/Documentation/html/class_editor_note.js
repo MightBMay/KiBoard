@@ -9,5 +9,6 @@ var class_editor_note =
     [ "UpdateNoteEvent", "class_editor_note.html#a76f02eb912c4861b4ad7d1af121723c7", null ],
     [ "UpdateNoteNumber", "class_editor_note.html#a71cf8d03007412557a2db75fbf033fb7", null ],
     [ "noteEvent", "class_editor_note.html#a07a6d3b37f7a7067ecdc79fc29796860", null ],
+    [ "noteTimingOffset", "class_editor_note.html#a588643dc004fb31aa7ad2f4044001657", null ],
     [ "sprite", "class_editor_note.html#af7d3f42388dec9800fd58a0cdcb22707", null ]
 ];

@@ -194,36 +194,36 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Scales note based off of mouseScrollDelta. smallest size is <a class="el" href="class_song_editor.html#a030687a26d02bea951fa8176995f25d4" title="how many subdivisions for vertical note snapping.">SongEditor.vSnap</a>. </p>
-<div class="fragment"><div class="line"><span class="lineno">  473</span>    {</div>
-<div class="line"><span class="lineno">  474</span>        sbyte scrollDir = (sbyte)(Input.mouseScrollDelta.y == 0 ? 0 : Mathf.Sign(Input.mouseScrollDelta.y)); <span class="comment">// if scrolldelta not zero, get the sign.</span></div>
-<div class="line"><span class="lineno">  475</span>        <span class="keywordtype">float</span> minSize = (15 / <a class="code hl_class" href="class_song_editor.html">SongEditor</a>.<a class="code hl_variable" href="class_song_editor.html#a230315399a7c29c6ecb86e72d263c1db">instance</a>.vSnap);</div>
-<div class="line"><span class="lineno">  476</span>        <span class="keywordtype">float</span> scaleStep = scrollDir * minSize;</div>
-<div class="line"><span class="lineno">  477</span>        <span class="keywordflow">if</span> (scrollDir == 0) <span class="keywordflow">return</span>; <span class="comment">// return if not scrolling.</span></div>
-<div class="line"><span class="lineno">  478</span> </div>
-<div class="line"><span class="lineno">  479</span>        <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_editor_note.html">EditorNote</a> note <span class="keywordflow">in</span> <a class="code hl_class" href="class_song_editor.html">SongEditor</a>.<a class="code hl_variable" href="class_song_editor.html#a230315399a7c29c6ecb86e72d263c1db">instance</a>.selectedNotes)</div>
-<div class="line"><span class="lineno">  480</span>        {</div>
-<div class="line"><span class="lineno">  481</span> </div>
-<div class="line"><span class="lineno">  482</span> </div>
-<div class="line"><span class="lineno">  483</span> </div>
-<div class="line"><span class="lineno">  484</span>            <span class="keywordtype">float</span> newY = note.transform.localScale.y + scaleStep; <span class="comment">// calculate new y position</span></div>
-<div class="line"><span class="lineno">  485</span> </div>
-<div class="line"><span class="lineno">  486</span>            <span class="keywordtype">float</span> clampedY = Mathf.Clamp(newY, minSize, Mathf.Infinity);<span class="comment">// clamp y </span></div>
-<div class="line"><span class="lineno">  487</span> </div>
-<div class="line"><span class="lineno">  488</span>            <span class="keywordflow">if</span> (note.transform.localScale.y &gt; minSize || scrollDir &gt;= 0)</div>
-<div class="line"><span class="lineno">  489</span>            {</div>
-<div class="line"><span class="lineno">  490</span>                note.transform.position += Vector3.up * scaleStep / 2;</div>
-<div class="line"><span class="lineno">  491</span>            }</div>
-<div class="line"><span class="lineno">  492</span> </div>
-<div class="line"><span class="lineno">  493</span> </div>
-<div class="line"><span class="lineno">  494</span>            note.transform.localScale = <span class="keyword">new</span> Vector3(note.transform.localScale.x, clampedY, note.transform.localScale.z); <span class="comment">// assign new scale</span></div>
-<div class="line"><span class="lineno">  495</span> </div>
-<div class="line"><span class="lineno">  496</span> </div>
-<div class="line"><span class="lineno">  497</span>            var updatedScale = note.transform.localScale;</div>
-<div class="line"><span class="lineno">  498</span>            note.<a class="code hl_function" href="class_editor_note.html#a76f02eb912c4861b4ad7d1af121723c7">UpdateNoteEvent</a>(note.transform.position.y - (updatedScale.y / 2), note.transform.position.y + (updatedScale.y / 2)); <span class="comment">// update timings.</span></div>
-<div class="line"><span class="lineno">  499</span>        }</div>
-<div class="line"><span class="lineno">  500</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">  508</span>    {</div>
+<div class="line"><span class="lineno">  509</span>        sbyte scrollDir = (sbyte)(Input.mouseScrollDelta.y == 0 ? 0 : Mathf.Sign(Input.mouseScrollDelta.y)); <span class="comment">// if scrolldelta not zero, get the sign.</span></div>
+<div class="line"><span class="lineno">  510</span>        <span class="keywordtype">float</span> minSize = (15 / <a class="code hl_class" href="class_song_editor.html">SongEditor</a>.<a class="code hl_variable" href="class_song_editor.html#a230315399a7c29c6ecb86e72d263c1db">instance</a>.vSnap);</div>
+<div class="line"><span class="lineno">  511</span>        <span class="keywordtype">float</span> scaleStep = scrollDir * minSize;</div>
+<div class="line"><span class="lineno">  512</span>        <span class="keywordflow">if</span> (scrollDir == 0) <span class="keywordflow">return</span>; <span class="comment">// return if not scrolling.</span></div>
+<div class="line"><span class="lineno">  513</span> </div>
+<div class="line"><span class="lineno">  514</span>        <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_editor_note.html">EditorNote</a> note <span class="keywordflow">in</span> <a class="code hl_class" href="class_song_editor.html">SongEditor</a>.<a class="code hl_variable" href="class_song_editor.html#a230315399a7c29c6ecb86e72d263c1db">instance</a>.selectedNotes)</div>
+<div class="line"><span class="lineno">  515</span>        {</div>
+<div class="line"><span class="lineno">  516</span> </div>
+<div class="line"><span class="lineno">  517</span> </div>
+<div class="line"><span class="lineno">  518</span> </div>
+<div class="line"><span class="lineno">  519</span>            <span class="keywordtype">float</span> newY = note.transform.localScale.y + scaleStep; <span class="comment">// calculate new y position</span></div>
+<div class="line"><span class="lineno">  520</span> </div>
+<div class="line"><span class="lineno">  521</span>            <span class="keywordtype">float</span> clampedY = Mathf.Clamp(newY, minSize, Mathf.Infinity);<span class="comment">// clamp y </span></div>
+<div class="line"><span class="lineno">  522</span> </div>
+<div class="line"><span class="lineno">  523</span>            <span class="keywordflow">if</span> (note.transform.localScale.y &gt; minSize || scrollDir &gt;= 0)</div>
+<div class="line"><span class="lineno">  524</span>            {</div>
+<div class="line"><span class="lineno">  525</span>                note.transform.position += Vector3.up * scaleStep / 2;</div>
+<div class="line"><span class="lineno">  526</span>            }</div>
+<div class="line"><span class="lineno">  527</span> </div>
+<div class="line"><span class="lineno">  528</span> </div>
+<div class="line"><span class="lineno">  529</span>            note.transform.localScale = <span class="keyword">new</span> Vector3(note.transform.localScale.x, clampedY, note.transform.localScale.z); <span class="comment">// assign new scale</span></div>
+<div class="line"><span class="lineno">  530</span> </div>
+<div class="line"><span class="lineno">  531</span> </div>
+<div class="line"><span class="lineno">  532</span>            var updatedScale = note.transform.localScale;</div>
+<div class="line"><span class="lineno">  533</span>            note.<a class="code hl_function" href="class_editor_note.html#a76f02eb912c4861b4ad7d1af121723c7">UpdateNoteEvent</a>(note.transform.position.y - (updatedScale.y / 2), note.transform.position.y + (updatedScale.y / 2)); <span class="comment">// update timings.</span></div>
+<div class="line"><span class="lineno">  534</span>        }</div>
+<div class="line"><span class="lineno">  535</span>    }</div>
 <div class="ttc" id="aclass_editor_note_html"><div class="ttname"><a href="class_editor_note.html">EditorNote</a></div><div class="ttdoc">Represents a note in the editor with associated event information.</div><div class="ttdef"><b>Definition</b> EditorNote.cs:11</div></div>
-<div class="ttc" id="aclass_editor_note_html_a76f02eb912c4861b4ad7d1af121723c7"><div class="ttname"><a href="class_editor_note.html#a76f02eb912c4861b4ad7d1af121723c7">EditorNote.UpdateNoteEvent</a></div><div class="ttdeci">void UpdateNoteEvent(int noteNumber, float startTime, float endTime)</div><div class="ttdoc">Updates the note event information. start and end time are based off of height of mouse when adding a...</div><div class="ttdef"><b>Definition</b> EditorNote.cs:25</div></div>
+<div class="ttc" id="aclass_editor_note_html_a76f02eb912c4861b4ad7d1af121723c7"><div class="ttname"><a href="class_editor_note.html#a76f02eb912c4861b4ad7d1af121723c7">EditorNote.UpdateNoteEvent</a></div><div class="ttdeci">void UpdateNoteEvent(int noteNumber, float startTime, float endTime)</div><div class="ttdoc">Updates the note event information. start and end time are based off of height of mouse when adding a...</div><div class="ttdef"><b>Definition</b> EditorNote.cs:26</div></div>
 <div class="ttc" id="aclass_song_editor_html"><div class="ttname"><a href="class_song_editor.html">SongEditor</a></div><div class="ttdoc">Manages the song editor functionality.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:13</div></div>
 <div class="ttc" id="aclass_song_editor_html_a230315399a7c29c6ecb86e72d263c1db"><div class="ttname"><a href="class_song_editor.html#a230315399a7c29c6ecb86e72d263c1db">SongEditor.instance</a></div><div class="ttdeci">static SongEditor instance</div><div class="ttdef"><b>Definition</b> SongEditor.cs:15</div></div>
 </div><!-- fragment -->
@@ -257,10 +257,10 @@ Additional Inherited Members</h2></td></tr>
 <p>Scale all selected notes (SongEditor.selectedNotes) with scroll delta based on the current <a class="el" href="class_song_editor.html#a030687a26d02bea951fa8176995f25d4" title="how many subdivisions for vertical note snapping.">SongEditor.vSnap</a> value. </p>
 
 <p>Reimplemented from <a class="el" href="class_editor_action.html#a13fcb0a0a9ad90cd43648120a9bde18e">EditorAction</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  466</span>    {</div>
-<div class="line"><span class="lineno">  467</span>        <a class="code hl_function" href="#a53bb4d5569bee2788c2b987c98cfbbd3">ScaleNote</a>();</div>
-<div class="line"><span class="lineno">  468</span>    }</div>
-<div class="ttc" id="aclass_scale_notes_html_a53bb4d5569bee2788c2b987c98cfbbd3"><div class="ttname"><a href="#a53bb4d5569bee2788c2b987c98cfbbd3">ScaleNotes.ScaleNote</a></div><div class="ttdeci">void ScaleNote()</div><div class="ttdoc">Scales note based off of mouseScrollDelta. smallest size is SongEditor.vSnap.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:472</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  501</span>    {</div>
+<div class="line"><span class="lineno">  502</span>        <a class="code hl_function" href="#a53bb4d5569bee2788c2b987c98cfbbd3">ScaleNote</a>();</div>
+<div class="line"><span class="lineno">  503</span>    }</div>
+<div class="ttc" id="aclass_scale_notes_html_a53bb4d5569bee2788c2b987c98cfbbd3"><div class="ttname"><a href="#a53bb4d5569bee2788c2b987c98cfbbd3">ScaleNotes.ScaleNote</a></div><div class="ttdeci">void ScaleNote()</div><div class="ttdoc">Scales note based off of mouseScrollDelta. smallest size is SongEditor.vSnap.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:507</div></div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -106,6 +106,11 @@ public class SongEditor : MonoBehaviour
     }
 
 
+    public void PlayTest()
+    {
+
+    }
+
     /// <summary>
     /// Takes a raycast hit and spawns an editorNorePrefab.
     /// </summary>
@@ -209,7 +214,7 @@ public class SongEditor : MonoBehaviour
         Color GetKeyColour(int i)
         {
             int value = i % 12;
-            if (value == 0 || value == 2 || value == 3 || value == 5 || value == 7 || value == 9 || value == 11) return Color.white;
+            if (value == 0 || value == 2 || value == 3 || value == 5 || value == 7 || value == 8 || value == 10) return Color.white;
             else { return Color.black; }
         }
     }
@@ -289,8 +294,8 @@ public class EditorAction
     protected struct NoteWrapper
     {
         public Vector2 initialPosition;
-        public EditorNote editorNote;
-        public NoteWrapper(EditorNote note)
+        public readonly EditorNote editorNote;
+        public  NoteWrapper(EditorNote note)
         {
             editorNote = note;
             initialPosition = note.transform.position;
@@ -521,10 +526,8 @@ public class ScaleNotes : EditorAction
             }
 
 
-            note.transform.localScale = new Vector3(note.transform.localScale.x, clampedY, note.transform.localScale.z); // assign new scale
+            var updatedScale = note.transform.localScale = new Vector3(note.transform.localScale.x, clampedY, note.transform.localScale.z); // assign new scale
 
-
-            var updatedScale = note.transform.localScale;
             note.UpdateNoteEvent(note.transform.position.y - (updatedScale.y / 2), note.transform.position.y + (updatedScale.y / 2)); // update timings.
         }
     }
@@ -603,6 +606,8 @@ public class MoveNotes : EditorAction
             note.editorNote.UpdateNoteNumber();
         }
     }
+
+
 }
 #endregion
 

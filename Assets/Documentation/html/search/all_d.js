@@ -19,6 +19,7 @@ var searchData=
   ['notes_16',['notes',['../class_move_notes.html#a0973e03af54f26a23ccb7f4be63eaee3',1,'MoveNotes']]],
   ['noteshadow_17',['NoteShadow',['../class_note_shadow.html',1,'']]],
   ['noteshadow_2ecs_18',['NoteShadow.cs',['../_note_shadow_8cs.html',1,'']]],
-  ['notetransform_19',['noteTransform',['../class_editor_note_wrapper.html#ae73636bf82ca2778e70f17b38f49f4a7',1,'EditorNoteWrapper']]],
-  ['notewrapper_20',['NoteWrapper',['../struct_editor_action_1_1_note_wrapper.html',1,'EditorAction.NoteWrapper'],['../struct_editor_action_1_1_note_wrapper.html#a2856bcaef18ff70368028938975e8ba1',1,'EditorAction.NoteWrapper.NoteWrapper()']]]
+  ['notetimingoffset_19',['noteTimingOffset',['../class_editor_note.html#a588643dc004fb31aa7ad2f4044001657',1,'EditorNote']]],
+  ['notetransform_20',['noteTransform',['../class_editor_note_wrapper.html#ae73636bf82ca2778e70f17b38f49f4a7',1,'EditorNoteWrapper']]],
+  ['notewrapper_21',['NoteWrapper',['../struct_editor_action_1_1_note_wrapper.html',1,'EditorAction.NoteWrapper'],['../struct_editor_action_1_1_note_wrapper.html#a2856bcaef18ff70368028938975e8ba1',1,'EditorAction.NoteWrapper.NoteWrapper()']]]
 ];

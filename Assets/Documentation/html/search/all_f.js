@@ -13,12 +13,13 @@ var searchData=
   ['players_20a_10',['Players&lt;a id=&quot;players&quot;&gt;&lt;/a&gt;',['../md__assets_2_documentation_2html_2_markdown_2_g_d_d.html#autotoc_md2',1,'']]],
   ['players_20a_20id_20players_20a_11',['Players&lt;a id=&quot;players&quot;&gt;&lt;/a&gt;',['../md__assets_2_documentation_2html_2_markdown_2_g_d_d.html#autotoc_md2',1,'']]],
   ['playsong_12',['PlaySong',['../class_m_p3_handler.html#acbaa9148733b291e2d960a91a4a7a4c2',1,'MP3Handler']]],
-  ['png_13',['png',['../struct_file_group_error.html#a9be1dc796819e7f024583b06a4d74d4c',1,'FileGroupError']]],
-  ['prefab_14',['prefab',['../class_beat_number_generator.html#a9963d001803fd89c12a723fe0df6a49e',1,'BeatNumberGenerator']]],
-  ['preparenotes_15',['PrepareNotes',['../class_game_manager.html#a53d0c42e8760b846fd39a6b9b1115566',1,'GameManager']]],
-  ['preparenotescoroutine_16',['PrepareNotesCoroutine',['../class_midi_input.html#a475cd7d525520e4fa04703595c850906',1,'MidiInput']]],
-  ['preview_20a_17',['Song Settings &amp; Preview&lt;a id=&quot;song-settings--preview&quot;&gt;&lt;/a&gt;',['../md__assets_2_documentation_2html_2_markdown_2_g_d_d.html#autotoc_md8',1,'']]],
-  ['preview_20a_20id_20song_20settings_20preview_20a_18',['Song Settings &amp; Preview&lt;a id=&quot;song-settings--preview&quot;&gt;&lt;/a&gt;',['../md__assets_2_documentation_2html_2_markdown_2_g_d_d.html#autotoc_md8',1,'']]],
-  ['progress_20bar_20a_19',['Progress Bar&lt;a id=&quot;progress-bar&quot;&gt;&lt;/a&gt;',['../md__assets_2_documentation_2html_2_markdown_2_g_d_d.html#autotoc_md20',1,'']]],
-  ['progress_20bar_20a_20id_20progress_20bar_20a_20',['Progress Bar&lt;a id=&quot;progress-bar&quot;&gt;&lt;/a&gt;',['../md__assets_2_documentation_2html_2_markdown_2_g_d_d.html#autotoc_md20',1,'']]]
+  ['playtest_13',['PlayTest',['../class_song_editor.html#ab2eed0148b0fa5d85cf6fad9852cb095',1,'SongEditor']]],
+  ['png_14',['png',['../struct_file_group_error.html#a9be1dc796819e7f024583b06a4d74d4c',1,'FileGroupError']]],
+  ['prefab_15',['prefab',['../class_beat_number_generator.html#a9963d001803fd89c12a723fe0df6a49e',1,'BeatNumberGenerator']]],
+  ['preparenotes_16',['PrepareNotes',['../class_game_manager.html#a53d0c42e8760b846fd39a6b9b1115566',1,'GameManager']]],
+  ['preparenotescoroutine_17',['PrepareNotesCoroutine',['../class_midi_input.html#a475cd7d525520e4fa04703595c850906',1,'MidiInput']]],
+  ['preview_20a_18',['Song Settings &amp; Preview&lt;a id=&quot;song-settings--preview&quot;&gt;&lt;/a&gt;',['../md__assets_2_documentation_2html_2_markdown_2_g_d_d.html#autotoc_md8',1,'']]],
+  ['preview_20a_20id_20song_20settings_20preview_20a_19',['Song Settings &amp; Preview&lt;a id=&quot;song-settings--preview&quot;&gt;&lt;/a&gt;',['../md__assets_2_documentation_2html_2_markdown_2_g_d_d.html#autotoc_md8',1,'']]],
+  ['progress_20bar_20a_20',['Progress Bar&lt;a id=&quot;progress-bar&quot;&gt;&lt;/a&gt;',['../md__assets_2_documentation_2html_2_markdown_2_g_d_d.html#autotoc_md20',1,'']]],
+  ['progress_20bar_20a_20id_20progress_20bar_20a_21',['Progress Bar&lt;a id=&quot;progress-bar&quot;&gt;&lt;/a&gt;',['../md__assets_2_documentation_2html_2_markdown_2_g_d_d.html#autotoc_md20',1,'']]]
 ];

@@ -193,11 +193,11 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Clear selected notes, then create a note at the hit point. </p>
-<div class="fragment"><div class="line"><span class="lineno">  367</span>    {</div>
-<div class="line"><span class="lineno">  368</span>        <a class="code hl_class" href="class_song_editor.html">SongEditor</a>.<a class="code hl_variable" href="class_song_editor.html#a230315399a7c29c6ecb86e72d263c1db">instance</a>?.ClearSelectedNotes();<span class="comment">// when other EditorActions are taken, clear the selected notes.</span></div>
-<div class="line"><span class="lineno">  369</span>        <a class="code hl_class" href="class_song_editor.html">SongEditor</a>.<a class="code hl_variable" href="class_song_editor.html#a230315399a7c29c6ecb86e72d263c1db">instance</a>?.CreateNote(<a class="code hl_variable" href="class_editor_action.html#a7cf82aae24fbec19f1851ae8db628115">hit</a>); <span class="comment">// create note.</span></div>
-<div class="line"><span class="lineno">  370</span>    }</div>
-<div class="ttc" id="aclass_editor_action_html_a7cf82aae24fbec19f1851ae8db628115"><div class="ttname"><a href="class_editor_action.html#a7cf82aae24fbec19f1851ae8db628115">EditorAction.hit</a></div><div class="ttdeci">RaycastHit2D hit</div><div class="ttdef"><b>Definition</b> SongEditor.cs:255</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  402</span>    {</div>
+<div class="line"><span class="lineno">  403</span>        <a class="code hl_class" href="class_song_editor.html">SongEditor</a>.<a class="code hl_variable" href="class_song_editor.html#a230315399a7c29c6ecb86e72d263c1db">instance</a>?.ClearSelectedNotes();<span class="comment">// when other EditorActions are taken, clear the selected notes.</span></div>
+<div class="line"><span class="lineno">  404</span>        <a class="code hl_class" href="class_song_editor.html">SongEditor</a>.<a class="code hl_variable" href="class_song_editor.html#a230315399a7c29c6ecb86e72d263c1db">instance</a>?.CreateNote(<a class="code hl_variable" href="class_editor_action.html#a7cf82aae24fbec19f1851ae8db628115">hit</a>); <span class="comment">// create note.</span></div>
+<div class="line"><span class="lineno">  405</span>    }</div>
+<div class="ttc" id="aclass_editor_action_html_a7cf82aae24fbec19f1851ae8db628115"><div class="ttname"><a href="class_editor_action.html#a7cf82aae24fbec19f1851ae8db628115">EditorAction.hit</a></div><div class="ttdeci">RaycastHit2D hit</div><div class="ttdef"><b>Definition</b> SongEditor.cs:290</div></div>
 <div class="ttc" id="aclass_song_editor_html"><div class="ttname"><a href="class_song_editor.html">SongEditor</a></div><div class="ttdoc">Manages the song editor functionality.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:13</div></div>
 <div class="ttc" id="aclass_song_editor_html_a230315399a7c29c6ecb86e72d263c1db"><div class="ttname"><a href="class_song_editor.html#a230315399a7c29c6ecb86e72d263c1db">SongEditor.instance</a></div><div class="ttdeci">static SongEditor instance</div><div class="ttdef"><b>Definition</b> SongEditor.cs:15</div></div>
 </div><!-- fragment -->
@@ -231,14 +231,14 @@ Additional Inherited Members</h2></td></tr>
 <p>on mouse button down, create a note at the mouses position if GetMouseRaycast hits an object tagged "KeyLane". </p>
 
 <p>Reimplemented from <a class="el" href="class_editor_action.html#a879f0a78025e356885ad0b4922038c4f">EditorAction</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  351</span>    {</div>
-<div class="line"><span class="lineno">  352</span>        <span class="comment">// if the mouse button the EditorAction was on was not pressed this frame, and wasn&#39;t on a key lane.</span></div>
-<div class="line"><span class="lineno">  353</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="class_editor_action.html#ad4c1a80e07df7f4311b2cf73a44d9323">CheckDown</a>() || (<a class="code hl_variable" href="class_editor_action.html#a7cf82aae24fbec19f1851ae8db628115">hit</a> &amp;&amp; !<a class="code hl_variable" href="class_editor_action.html#a7cf82aae24fbec19f1851ae8db628115">hit</a>.collider.CompareTag(<span class="stringliteral">&quot;KeyLane&quot;</span>))) <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  354</span>        <a class="code hl_function" href="#afb7d9ae102a827f8f4e0ae787665c542">CreateNote</a>();</div>
-<div class="line"><span class="lineno">  355</span> </div>
-<div class="line"><span class="lineno">  356</span>    }</div>
-<div class="ttc" id="aclass_add_note_html_afb7d9ae102a827f8f4e0ae787665c542"><div class="ttname"><a href="#afb7d9ae102a827f8f4e0ae787665c542">AddNote.CreateNote</a></div><div class="ttdeci">void CreateNote()</div><div class="ttdoc">Clear selected notes, then create a note at the hit point.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:366</div></div>
-<div class="ttc" id="aclass_editor_action_html_ad4c1a80e07df7f4311b2cf73a44d9323"><div class="ttname"><a href="class_editor_action.html#ad4c1a80e07df7f4311b2cf73a44d9323">EditorAction.CheckDown</a></div><div class="ttdeci">bool CheckDown()</div><div class="ttdef"><b>Definition</b> SongEditor.cs:338</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  386</span>    {</div>
+<div class="line"><span class="lineno">  387</span>        <span class="comment">// if the mouse button the EditorAction was on was not pressed this frame, and wasn&#39;t on a key lane.</span></div>
+<div class="line"><span class="lineno">  388</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="class_editor_action.html#ad4c1a80e07df7f4311b2cf73a44d9323">CheckDown</a>() || (<a class="code hl_variable" href="class_editor_action.html#a7cf82aae24fbec19f1851ae8db628115">hit</a> &amp;&amp; !<a class="code hl_variable" href="class_editor_action.html#a7cf82aae24fbec19f1851ae8db628115">hit</a>.collider.CompareTag(<span class="stringliteral">&quot;KeyLane&quot;</span>))) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  389</span>        <a class="code hl_function" href="#afb7d9ae102a827f8f4e0ae787665c542">CreateNote</a>();</div>
+<div class="line"><span class="lineno">  390</span> </div>
+<div class="line"><span class="lineno">  391</span>    }</div>
+<div class="ttc" id="aclass_add_note_html_afb7d9ae102a827f8f4e0ae787665c542"><div class="ttname"><a href="#afb7d9ae102a827f8f4e0ae787665c542">AddNote.CreateNote</a></div><div class="ttdeci">void CreateNote()</div><div class="ttdoc">Clear selected notes, then create a note at the hit point.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:401</div></div>
+<div class="ttc" id="aclass_editor_action_html_ad4c1a80e07df7f4311b2cf73a44d9323"><div class="ttname"><a href="class_editor_action.html#ad4c1a80e07df7f4311b2cf73a44d9323">EditorAction.CheckDown</a></div><div class="ttdeci">bool CheckDown()</div><div class="ttdef"><b>Definition</b> SongEditor.cs:373</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -268,11 +268,11 @@ Additional Inherited Members</h2></td></tr>
 <p>Called on MouseButton() (excludes first frame pressed) </p>
 
 <p>Reimplemented from <a class="el" href="class_editor_action.html#a612c3627e7ae235d2ea115f859ed79b5">EditorAction</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  358</span>    {</div>
-<div class="line"><span class="lineno">  359</span>        <span class="comment">// works fine, but if ur mouse ends up placing a note while not on a note it makes one every single frame.</span></div>
-<div class="line"><span class="lineno">  360</span>        <span class="comment">//if (CheckHold()) return;</span></div>
-<div class="line"><span class="lineno">  361</span>        <span class="comment">//CreateNote();</span></div>
-<div class="line"><span class="lineno">  362</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">  393</span>    {</div>
+<div class="line"><span class="lineno">  394</span>        <span class="comment">// works fine, but if ur mouse ends up placing a note while not on a note it makes one every single frame.</span></div>
+<div class="line"><span class="lineno">  395</span>        <span class="comment">//if (CheckHold()) return;</span></div>
+<div class="line"><span class="lineno">  396</span>        <span class="comment">//CreateNote();</span></div>
+<div class="line"><span class="lineno">  397</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -93,8 +93,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_beat_number_generator_8cs.html",
-"class_midi_read_file.html#a35980f4407241b68d3ec79bbd87cc153",
-"struct_file_group_error.html#a09998fc7083e87d072e532053fc9fedd"
+"class_midi_read_file.html",
+"struct_file_group.html#abee499ed2d81accbd18326f83cfae462"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

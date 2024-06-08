@@ -9,11 +9,12 @@ var searchData=
   ['textprefab_6',['textPrefab',['../class_game_u_i.html#a7ade2e77fb1c5c0c94c807618477089e',1,'GameUI']]],
   ['timeset_7',['timeSet',['../class_song_score.html#a995b51ac60daf43e36a08fdfd1ac0453',1,'SongScore']]],
   ['tips_8',['General Modding Tips',['../md__assets_2_documentation_2html_2_markdown_2_modding_01_6_01_customization.html#autotoc_md24',1,'']]],
-  ['total_20score_20a_9',['Total Score&lt;a id=&quot;total-score&quot;&gt;&lt;/a&gt;',['../md__assets_2_documentation_2html_2_markdown_2_g_d_d.html#autotoc_md18',1,'']]],
-  ['total_20score_20a_20id_20total_20score_20a_10',['Total Score&lt;a id=&quot;total-score&quot;&gt;&lt;/a&gt;',['../md__assets_2_documentation_2html_2_markdown_2_g_d_d.html#autotoc_md18',1,'']]],
-  ['totalnotes_11',['totalNotes',['../class_game_manager.html#a5461b0a96727024f79b540b520263021',1,'GameManager']]],
-  ['triggered_12',['triggered',['../class_note_event_info.html#a1e1aaa2a68e745c6854e4a4daa7da1ff',1,'NoteEventInfo']]],
-  ['trimousebutton_13',['TriMouseButton',['../class_tri_mouse_button.html',1,'']]],
-  ['trimousebutton_2ecs_14',['TriMouseButton.cs',['../_tri_mouse_button_8cs.html',1,'']]],
-  ['trimousebuttons_15',['triMouseButtons',['../class_song_editor.html#a2ff7acd9bbc5ca6ea3fc49e6502f94e1',1,'SongEditor']]]
+  ['togglevsnapmenu_9',['ToggleVSnapMenu',['../class_song_editor.html#a4972a406653861a1daed3e8f97259a8f',1,'SongEditor']]],
+  ['total_20score_20a_10',['Total Score&lt;a id=&quot;total-score&quot;&gt;&lt;/a&gt;',['../md__assets_2_documentation_2html_2_markdown_2_g_d_d.html#autotoc_md18',1,'']]],
+  ['total_20score_20a_20id_20total_20score_20a_11',['Total Score&lt;a id=&quot;total-score&quot;&gt;&lt;/a&gt;',['../md__assets_2_documentation_2html_2_markdown_2_g_d_d.html#autotoc_md18',1,'']]],
+  ['totalnotes_12',['totalNotes',['../class_game_manager.html#a5461b0a96727024f79b540b520263021',1,'GameManager']]],
+  ['triggered_13',['triggered',['../class_note_event_info.html#a1e1aaa2a68e745c6854e4a4daa7da1ff',1,'NoteEventInfo']]],
+  ['trimousebutton_14',['TriMouseButton',['../class_tri_mouse_button.html',1,'']]],
+  ['trimousebutton_2ecs_15',['TriMouseButton.cs',['../_tri_mouse_button_8cs.html',1,'']]],
+  ['trimousebuttons_16',['triMouseButtons',['../class_song_editor.html#a2ff7acd9bbc5ca6ea3fc49e6502f94e1',1,'SongEditor']]]
 ];
