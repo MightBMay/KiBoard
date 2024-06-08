@@ -85,6 +85,7 @@ public class SongEditor : MonoBehaviour
 
 
     Button currentlySelectedButton;
+    [SerializeField] GameObject vSnapMenu;
     private void Awake()
     {
         if (instance == null) { instance = this; }
@@ -144,7 +145,37 @@ public class SongEditor : MonoBehaviour
         }
 
     }
+    /// <summary>
+    /// Set vSnap value from buttons in the UI.
+    /// </summary>
+    /// <param name="value">new value for vSnap</param>
+    public void SetVSnap(int value)
+    {
+        if (value <= 0) { return; }
+        vSnap = value;
+    }
+    /// <summary>
+    /// Set vSnap value from buttons in the UI.
+    /// </summary>
+    /// <param name="value">new value for vSnap</param>
+    public void SetVSnap(string value)
+    {
 
+        if(!float.TryParse(value, out float valueF))
+        {
+            Debug.LogError("Issue parsing new vSnap Value: " + value);
+        }
+        if(valueF<=0) { return; }
+        vSnap = valueF;
+    }
+    /// <summary>
+    /// called to toggle showing the inputfield for players to type their vsnap value.
+    /// </summary>
+    /// <param name="enabled"> is the menu showign or not.</param>
+    public void ToggleVSnapMenu(bool enabled)
+    {
+        vSnapMenu.SetActive(enabled);
+    }
 
     /// <summary>
     /// removes an editornote from the editorNotes list and then destroys the gameObject it is attatched to.
@@ -215,7 +246,6 @@ public class SongEditor : MonoBehaviour
 
     public EditorAction InitializeAction(string actionName, sbyte mouseNumber)
     {
-        Debug.Log(actionName + " " + mouseNumber);
         switch (actionName.ToLower()) // convert actionName to lower and set up the respective action for use with mousebutton # mouseNumber
         {
             case "add":
