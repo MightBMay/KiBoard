@@ -106,6 +106,11 @@ public class SongEditor : MonoBehaviour
     }
 
 
+    public void PlayTest()
+    {
+
+    }
+
     /// <summary>
     /// Takes a raycast hit and spawns an editorNorePrefab.
     /// </summary>
@@ -209,7 +214,7 @@ public class SongEditor : MonoBehaviour
         Color GetKeyColour(int i)
         {
             int value = i % 12;
-            if (value == 0 || value == 2 || value == 3 || value == 5 || value == 7 || value == 9 || value == 11) return Color.white;
+            if (value == 0 || value == 2 || value == 3 || value == 5 || value == 7 || value == 8 || value == 10) return Color.white;
             else { return Color.black; }
         }
     }
