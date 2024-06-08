@@ -5,5 +5,6 @@ var searchData=
   ['textprefab_2',['textPrefab',['../class_game_u_i.html#a7ade2e77fb1c5c0c94c807618477089e',1,'GameUI']]],
   ['timeset_3',['timeSet',['../class_song_score.html#a995b51ac60daf43e36a08fdfd1ac0453',1,'SongScore']]],
   ['totalnotes_4',['totalNotes',['../class_game_manager.html#a5461b0a96727024f79b540b520263021',1,'GameManager']]],
-  ['triggered_5',['triggered',['../class_note_event_info.html#a1e1aaa2a68e745c6854e4a4daa7da1ff',1,'NoteEventInfo']]]
+  ['triggered_5',['triggered',['../class_note_event_info.html#a1e1aaa2a68e745c6854e4a4daa7da1ff',1,'NoteEventInfo']]],
+  ['trimousebuttons_6',['triMouseButtons',['../class_song_editor.html#a2ff7acd9bbc5ca6ea3fc49e6502f94e1',1,'SongEditor']]]
 ];

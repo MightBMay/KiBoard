@@ -16,13 +16,15 @@ var searchData=
   ['replay_2ecs_13',['Replay.cs',['../_replay_8cs.html',1,'']]],
   ['replayfiles_14',['ReplayFiles',['../struct_file_group.html#a564d8d109be0057ae5b97e12186310b3',1,'FileGroup']]],
   ['replaynotedata_15',['replayNoteData',['../class_replay.html#a1953d810b80c78e3977a0e2c11c19282',1,'Replay']]],
-  ['reset_16',['Reset',['../class_note_event_data_wrapper.html#a11675f0de890a36478a9d3d6a08032ad',1,'NoteEventDataWrapper']]],
+  ['reset_16',['Reset',['../class_note_event_data_wrapper.html#a11675f0de890a36478a9d3d6a08032ad',1,'NoteEventDataWrapper.Reset()'],['../class_editor_action.html#a2c5b662078c485bbec4babb0c4179651',1,'EditorAction.Reset()']]],
   ['resetcamera_17',['ResetCamera',['../class_camera_scroll_manager.html#a8d3443374ce7f4b7c8cfd30d55b5705e',1,'CameraScrollManager']]],
-  ['resetexitbutton_18',['ResetExitButton',['../class_exit.html#af0d711ff25afb6db180d73a7a823e94f',1,'Exit']]],
-  ['resethighlightcolour_19',['ResetHighlightColour',['../classold_e_n.html#a61b98e1d7a87dcea64bc9ef341145a21',1,'oldEN']]],
-  ['retrycurrentsong_20',['RetryCurrentSong',['../class_midi_input.html#a1ef5e834cfe6cdac6b09db8c5d3fccaa',1,'MidiInput']]],
-  ['returntosongselection_21',['ReturnToSongSelection',['../class_game_manager.html#a088bb12a26add1a57b027b46aced6863',1,'GameManager']]],
-  ['rightaction_22',['rightAction',['../class_song_editor.html#ad1f503815a7caeb3c07eddcac9b490ff',1,'SongEditor']]],
-  ['roll_20a_23',['Piano Roll&lt;a id=&quot;piano-roll&quot;&gt;&lt;/a&gt;',['../md__assets_2_documentation_2html_2_markdown_2_g_d_d.html#autotoc_md10',1,'']]],
-  ['roll_20a_20id_20piano_20roll_20a_24',['Piano Roll&lt;a id=&quot;piano-roll&quot;&gt;&lt;/a&gt;',['../md__assets_2_documentation_2html_2_markdown_2_g_d_d.html#autotoc_md10',1,'']]]
+  ['resetcolour_18',['ResetColour',['../class_tri_mouse_button.html#a87d276ea8ef3429e318466971399d344',1,'TriMouseButton']]],
+  ['resetexitbutton_19',['ResetExitButton',['../class_exit.html#af0d711ff25afb6db180d73a7a823e94f',1,'Exit']]],
+  ['resethighlightcolour_20',['ResetHighlightColour',['../classold_e_n.html#a61b98e1d7a87dcea64bc9ef341145a21',1,'oldEN']]],
+  ['retrycurrentsong_21',['RetryCurrentSong',['../class_midi_input.html#a1ef5e834cfe6cdac6b09db8c5d3fccaa',1,'MidiInput']]],
+  ['returntosongselection_22',['ReturnToSongSelection',['../class_game_manager.html#a088bb12a26add1a57b027b46aced6863',1,'GameManager']]],
+  ['rightaction_23',['rightAction',['../class_song_editor.html#ad1f503815a7caeb3c07eddcac9b490ff',1,'SongEditor']]],
+  ['rightclick_24',['RightClick',['../class_tri_mouse_button.html#a3ed09abe4d3c5d750e39db0d1e1bb2f0',1,'TriMouseButton']]],
+  ['roll_20a_25',['Piano Roll&lt;a id=&quot;piano-roll&quot;&gt;&lt;/a&gt;',['../md__assets_2_documentation_2html_2_markdown_2_g_d_d.html#autotoc_md10',1,'']]],
+  ['roll_20a_20id_20piano_20roll_20a_26',['Piano Roll&lt;a id=&quot;piano-roll&quot;&gt;&lt;/a&gt;',['../md__assets_2_documentation_2html_2_markdown_2_g_d_d.html#autotoc_md10',1,'']]]
 ];

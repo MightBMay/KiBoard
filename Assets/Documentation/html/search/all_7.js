@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['handleinput_0',['HandleInput',['../class_editor_action.html#ac4d2773e9cbecfe862c60e338d55d9df',1,'EditorAction.HandleInput()'],['../class_select_notes.html#a2c2b0e53b8e66c6262c691d2cfd9d7a9',1,'SelectNotes.HandleInput()']]],
+  ['handleinput_0',['HandleInput',['../class_editor_action.html#ac4d2773e9cbecfe862c60e338d55d9df',1,'EditorAction']]],
   ['heightmultiplier_1',['heightMultiplier',['../class_song_editor.html#ae70db344352910b1a091f0735a576bbe',1,'SongEditor']]],
   ['hidedebugmenu_2',['HideDebugMenu',['../class_kiboard_debug.html#a469e9a92176c1037d41c049beb7f18fa',1,'KiboardDebug']]],
   ['high_20score_20a_3',['High Score&lt;a id=&quot;high-score&quot;&gt;&lt;/a&gt;',['../md__assets_2_documentation_2html_2_markdown_2_g_d_d.html#autotoc_md6',1,'']]],

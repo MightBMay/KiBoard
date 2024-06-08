@@ -4,5 +4,6 @@ var searchData=
   ['ondisable_1',['OnDisable',['../class_kiboard_debug.html#acff1f8564fcba2eaaa6cf9d38e0fed86',1,'KiboardDebug']]],
   ['onenable_2',['OnEnable',['../class_kiboard_debug.html#a3c43e2f01dc7e099c0a9df6df8d50dfc',1,'KiboardDebug']]],
   ['onnotesuccess_3',['OnNoteSuccess',['../class_midi_input.html#aa4804a291f0c49c471a9fb0ecd0a6590',1,'MidiInput']]],
-  ['onsongend_4',['OnSongEnd',['../class_game_manager.html#ad109ae0452de271ad4ea6f05e7a7d74b',1,'GameManager']]]
+  ['onpointerclick_4',['OnPointerClick',['../class_tri_mouse_button.html#aa71a2b7ad1df9ea292eebed0c01d8054',1,'TriMouseButton']]],
+  ['onsongend_5',['OnSongEnd',['../class_game_manager.html#ad109ae0452de271ad4ea6f05e7a7d74b',1,'GameManager']]]
 ];

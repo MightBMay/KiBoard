@@ -12,5 +12,8 @@ var searchData=
   ['total_20score_20a_9',['Total Score&lt;a id=&quot;total-score&quot;&gt;&lt;/a&gt;',['../md__assets_2_documentation_2html_2_markdown_2_g_d_d.html#autotoc_md18',1,'']]],
   ['total_20score_20a_20id_20total_20score_20a_10',['Total Score&lt;a id=&quot;total-score&quot;&gt;&lt;/a&gt;',['../md__assets_2_documentation_2html_2_markdown_2_g_d_d.html#autotoc_md18',1,'']]],
   ['totalnotes_11',['totalNotes',['../class_game_manager.html#a5461b0a96727024f79b540b520263021',1,'GameManager']]],
-  ['triggered_12',['triggered',['../class_note_event_info.html#a1e1aaa2a68e745c6854e4a4daa7da1ff',1,'NoteEventInfo']]]
+  ['triggered_12',['triggered',['../class_note_event_info.html#a1e1aaa2a68e745c6854e4a4daa7da1ff',1,'NoteEventInfo']]],
+  ['trimousebutton_13',['TriMouseButton',['../class_tri_mouse_button.html',1,'']]],
+  ['trimousebutton_2ecs_14',['TriMouseButton.cs',['../_tri_mouse_button_8cs.html',1,'']]],
+  ['trimousebuttons_15',['triMouseButtons',['../class_song_editor.html#a2ff7acd9bbc5ca6ea3fc49e6502f94e1',1,'SongEditor']]]
 ];

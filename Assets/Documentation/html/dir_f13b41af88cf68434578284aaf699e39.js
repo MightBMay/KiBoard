@@ -24,5 +24,6 @@ var dir_f13b41af88cf68434578284aaf699e39 =
     [ "SongEditor.cs", "_song_editor_8cs.html", "_song_editor_8cs" ],
     [ "SongNoteEditor.cs", "_song_note_editor_8cs.html", "_song_note_editor_8cs" ],
     [ "SongScore.cs", "_song_score_8cs.html", "_song_score_8cs" ],
-    [ "SpawnPiano.cs", "_spawn_piano_8cs.html", "_spawn_piano_8cs" ]
+    [ "SpawnPiano.cs", "_spawn_piano_8cs.html", "_spawn_piano_8cs" ],
+    [ "TriMouseButton.cs", "_tri_mouse_button_8cs.html", "_tri_mouse_button_8cs" ]
 ];

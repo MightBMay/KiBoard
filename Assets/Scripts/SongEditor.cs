@@ -344,6 +344,9 @@ public class EditorAction
 /// </summary>
 public class AddNote : EditorAction
 {
+    /// <summary>
+    /// on mouse button down, create a note at the mouses position if GetMouseRaycast hits an object tagged "KeyLane".
+    /// </summary>
     protected override void Down()
     {
         // if the mouse button the EditorAction was on was not pressed this frame, and wasn't on a key lane.
@@ -372,17 +375,27 @@ public class AddNote : EditorAction
 /// </summary>
 public class RemoveNotes : EditorAction
 {
+    /// <summary>
+    /// remove note hit by GetMouseRaycast on mouse down.
+    /// </summary>
     protected override void Down()
     {
         if (CheckDown()) return;
         RemoveNoteIfHit();
     }
+    /// <summary>
+    /// remove note hit by GetMouseRaycast on mouse hold.
+    /// </summary>
     protected override void Hold()
     {
         if (CheckHold()) return;
         RemoveNoteIfHit();
     }
 
+
+    /// <summary>
+    /// removes a note from selected notes and list of editorNotes and then destroys it.
+    /// </summary>
     void RemoveNoteIfHit()
     {
         SongEditor.instance?.ClearSelectedNotes();// when other EditorActions are taken, clear the selected notes.
@@ -397,21 +410,17 @@ public class RemoveNotes : EditorAction
 /// </summary>
 public class SelectNotes : EditorAction
 {
-    public override void HandleInput()
-    {
-        if (GetMouseRaycast(out hit))
-        {
-            Down();
-            Hold();
-            Up();
-        }
-        ScrollWheel();
-    }
+    /// <summary>
+    /// select note hit by GetMouseRaycast on mouse down
+    /// </summary>
     protected override void Down()
     {
         if (CheckDown()) return;
         SelectNote();
     }
+    /// <summary>
+    /// select note hit by GetMouseRaycast on mouse hold.
+    /// </summary>
     protected override void Hold()
     {
         if (CheckHold()) return;
@@ -450,7 +459,9 @@ public class SelectNotes : EditorAction
 /// </summary>
 public class ScaleNotes : EditorAction
 {
-
+    /// <summary>
+    /// Scale all selected notes (<see cref="SongEditor.selectedNotes"/>) with scroll delta based on the current <see cref="SongEditor.vSnap"/> value.
+    /// </summary>
     protected override void ScrollWheel()
     {
         ScaleNote();
@@ -496,7 +507,9 @@ public class MoveNotes : EditorAction
     Vector2 downPos, holdpos;// stored positions for calculating distance the mouse has moved
     List<NoteWrapper> notes = new();
     float x, y;
-
+    /// <summary>
+    /// mark initial mouse position and initial note positions for all <see cref="SongEditor.selectedNotes"/>.
+    /// </summary>
     protected override void Down()
     {
         if (CheckDown()) return;
@@ -506,7 +519,9 @@ public class MoveNotes : EditorAction
             notes.Add(new(note));
         }
     }
-
+    /// <summary>
+    /// Move notes based on distance mouse is dragged from the initial mouse position (<see cref="downPos"/>).
+    /// </summary>
     protected override void Hold()
     {
         if (CheckHold()) return;
@@ -515,15 +530,10 @@ public class MoveNotes : EditorAction
             holdpos = holdHit.point;
             moveNotes(downPos.x - holdpos.x, downPos.y - holdpos.y);
         }
-
-
-
-
-
-
-
     }
-
+    /// <summary>
+    /// Update note values and clear list of NoteWrappers.
+    /// </summary>
     protected override void Up()
     {
         if (CheckUp()) return;

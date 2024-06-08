@@ -10,9 +10,12 @@ var searchData=
   ['ondestroy_7',['OnDestroy',['../class_falling_note.html#ad10f2dd0e9ab1211e79015a1551a923e',1,'FallingNote.OnDestroy()'],['../class_game_settings_menu.html#a39153c2aa53a9070600de58d509b4d70',1,'GameSettingsMenu.OnDestroy()'],['../class_m_p3_handler.html#a5f75901a9c2b13ed3a4c8a7226ab56f4',1,'MP3Handler.OnDestroy()']]],
   ['ondisable_8',['OnDisable',['../class_kiboard_debug.html#acff1f8564fcba2eaaa6cf9d38e0fed86',1,'KiboardDebug']]],
   ['onenable_9',['OnEnable',['../class_kiboard_debug.html#a3c43e2f01dc7e099c0a9df6df8d50dfc',1,'KiboardDebug']]],
-  ['onnotesuccess_10',['OnNoteSuccess',['../class_midi_input.html#aa4804a291f0c49c471a9fb0ecd0a6590',1,'MidiInput']]],
-  ['onsongend_11',['OnSongEnd',['../class_game_manager.html#ad109ae0452de271ad4ea6f05e7a7d74b',1,'GameManager']]],
-  ['other_20additions_12',['Other additions',['../md__assets_2_documentation_2html_2_markdown_2_modding_01_6_01_customization.html#autotoc_md28',1,'']]],
-  ['overidevolume_13',['overideVolume',['../class_kiboard_debug.html#a9e0fba4286c69721430bbf992b6c18f6',1,'KiboardDebug']]],
-  ['overidevolumevalue_14',['overideVolumeValue',['../class_kiboard_debug.html#a24f9ed97a6c1dcf42452136bb11987fd',1,'KiboardDebug']]]
+  ['onmiddleclick_10',['onMiddleClick',['../class_tri_mouse_button.html#aed2c5830199817f631940bcc92acfd39',1,'TriMouseButton']]],
+  ['onnotesuccess_11',['OnNoteSuccess',['../class_midi_input.html#aa4804a291f0c49c471a9fb0ecd0a6590',1,'MidiInput']]],
+  ['onpointerclick_12',['OnPointerClick',['../class_tri_mouse_button.html#aa71a2b7ad1df9ea292eebed0c01d8054',1,'TriMouseButton']]],
+  ['onrightclick_13',['onRightClick',['../class_tri_mouse_button.html#a8af52a54af60f3623f7f82f957f94250',1,'TriMouseButton']]],
+  ['onsongend_14',['OnSongEnd',['../class_game_manager.html#ad109ae0452de271ad4ea6f05e7a7d74b',1,'GameManager']]],
+  ['other_20additions_15',['Other additions',['../md__assets_2_documentation_2html_2_markdown_2_modding_01_6_01_customization.html#autotoc_md28',1,'']]],
+  ['overidevolume_16',['overideVolume',['../class_kiboard_debug.html#a9e0fba4286c69721430bbf992b6c18f6',1,'KiboardDebug']]],
+  ['overidevolumevalue_17',['overideVolumeValue',['../class_kiboard_debug.html#a24f9ed97a6c1dcf42452136bb11987fd',1,'KiboardDebug']]]
 ];

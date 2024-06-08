@@ -34,5 +34,6 @@ var annotated_dup =
     [ "SongEditor", "class_song_editor.html", "class_song_editor" ],
     [ "SongNoteEditor", "class_song_note_editor.html", null ],
     [ "SongScore", "class_song_score.html", "class_song_score" ],
-    [ "SpawnPiano", "class_spawn_piano.html", "class_spawn_piano" ]
+    [ "SpawnPiano", "class_spawn_piano.html", "class_spawn_piano" ],
+    [ "TriMouseButton", "class_tri_mouse_button.html", "class_tri_mouse_button" ]
 ];

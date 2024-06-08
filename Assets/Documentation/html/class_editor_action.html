@@ -139,6 +139,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac4d2773e9cbecfe862c60e338d55d9df" id="r_ac4d2773e9cbecfe862c60e338d55d9df"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac4d2773e9cbecfe862c60e338d55d9df">HandleInput</a> ()</td></tr>
 <tr class="memdesc:ac4d2773e9cbecfe862c60e338d55d9df"><td class="mdescLeft">&#160;</td><td class="mdescRight">calls all other input methods (down,hold,up,scrollwheel).  <br /></td></tr>
 <tr class="separator:ac4d2773e9cbecfe862c60e338d55d9df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c5b662078c485bbec4babb0c4179651" id="r_a2c5b662078c485bbec4babb0c4179651"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c5b662078c485bbec4babb0c4179651">Reset</a> ()</td></tr>
+<tr class="separator:a2c5b662078c485bbec4babb0c4179651"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -195,8 +197,8 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  322</span>{ <span class="keywordflow">return</span> !Input.GetMouseButtonDown(<a class="code hl_variable" href="#a15ef0f4316bba424ccfd8775c230310d">mouseButton</a>); }<span class="comment">// return true if mouse button not down on this frame.</span></div>
-<div class="ttc" id="aclass_editor_action_html_a15ef0f4316bba424ccfd8775c230310d"><div class="ttname"><a href="#a15ef0f4316bba424ccfd8775c230310d">EditorAction.mouseButton</a></div><div class="ttdeci">sbyte mouseButton</div><div class="ttdef"><b>Definition</b> SongEditor.cs:243</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  338</span>{ <span class="keywordflow">return</span> !Input.GetMouseButtonDown(<a class="code hl_variable" href="#a15ef0f4316bba424ccfd8775c230310d">mouseButton</a>); }<span class="comment">// return true if mouse button not down on this frame.</span></div>
+<div class="ttc" id="aclass_editor_action_html_a15ef0f4316bba424ccfd8775c230310d"><div class="ttname"><a href="#a15ef0f4316bba424ccfd8775c230310d">EditorAction.mouseButton</a></div><div class="ttdeci">sbyte mouseButton</div><div class="ttdef"><b>Definition</b> SongEditor.cs:254</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="#af2e919270d825c132c96c4e00bd37665">CheckHold()</a>, <a class="el" href="class_add_note.html#a369ca55e5d4dcc0d15e2d1d2004d067a">AddNote.Down()</a>, <a class="el" href="class_move_notes.html#a70eb23b543a0def5bce33cb9324cc76b">MoveNotes.Down()</a>, <a class="el" href="class_remove_notes.html#a6a410d8ba693ce8b2d0bcd6aa12e3fcd">RemoveNotes.Down()</a>, and <a class="el" href="class_select_notes.html#aa7ba96e4a17846166e959ccb4deb03f8">SelectNotes.Down()</a>.</p>
 
@@ -224,8 +226,8 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  323</span>{ <span class="keywordflow">return</span> !Input.GetMouseButton(<a class="code hl_variable" href="#a15ef0f4316bba424ccfd8775c230310d">mouseButton</a>) &amp;&amp; <a class="code hl_function" href="#ad4c1a80e07df7f4311b2cf73a44d9323">CheckDown</a>(); }<span class="comment">// return true if mouse button not held and if checkdown()</span></div>
-<div class="ttc" id="aclass_editor_action_html_ad4c1a80e07df7f4311b2cf73a44d9323"><div class="ttname"><a href="#ad4c1a80e07df7f4311b2cf73a44d9323">EditorAction.CheckDown</a></div><div class="ttdeci">bool CheckDown()</div><div class="ttdef"><b>Definition</b> SongEditor.cs:322</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  339</span>{ <span class="keywordflow">return</span> !Input.GetMouseButton(<a class="code hl_variable" href="#a15ef0f4316bba424ccfd8775c230310d">mouseButton</a>) &amp;&amp; <a class="code hl_function" href="#ad4c1a80e07df7f4311b2cf73a44d9323">CheckDown</a>(); }<span class="comment">// return true if mouse button not held and if checkdown()</span></div>
+<div class="ttc" id="aclass_editor_action_html_ad4c1a80e07df7f4311b2cf73a44d9323"><div class="ttname"><a href="#ad4c1a80e07df7f4311b2cf73a44d9323">EditorAction.CheckDown</a></div><div class="ttdeci">bool CheckDown()</div><div class="ttdef"><b>Definition</b> SongEditor.cs:338</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="class_move_notes.html#a5bc615597ad7a7d90af258af5c550aa3">MoveNotes.Hold()</a>, <a class="el" href="class_remove_notes.html#ac9357912d83c6eaa2ccda5bf50bd5d6a">RemoveNotes.Hold()</a>, and <a class="el" href="class_select_notes.html#a5cf9fd94eecfc67c7caf62c7a27898b4">SelectNotes.Hold()</a>.</p>
 
@@ -253,7 +255,7 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  324</span>{ <span class="keywordflow">return</span> !Input.GetMouseButtonUp(<a class="code hl_variable" href="#a15ef0f4316bba424ccfd8775c230310d">mouseButton</a>); } <span class="comment">//retun true if mouse button not up on this frame.</span></div>
+<div class="fragment"><div class="line"><span class="lineno">  340</span>{ <span class="keywordflow">return</span> !Input.GetMouseButtonUp(<a class="code hl_variable" href="#a15ef0f4316bba424ccfd8775c230310d">mouseButton</a>); } <span class="comment">//retun true if mouse button not up on this frame.</span></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="class_move_notes.html#a38eda5774cf7a92f58cd28b44534b775">MoveNotes.Up()</a>.</p>
 
@@ -285,9 +287,9 @@ Protected Attributes</h2></td></tr>
 <p>Called on MouseButtonDown() </p>
 
 <p>Reimplemented in <a class="el" href="class_add_note.html#a369ca55e5d4dcc0d15e2d1d2004d067a">AddNote</a>, <a class="el" href="class_move_notes.html#a70eb23b543a0def5bce33cb9324cc76b">MoveNotes</a>, <a class="el" href="class_remove_notes.html#a6a410d8ba693ce8b2d0bcd6aa12e3fcd">RemoveNotes</a>, and <a class="el" href="class_select_notes.html#aa7ba96e4a17846166e959ccb4deb03f8">SelectNotes</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  290</span>    {</div>
-<div class="line"><span class="lineno">  291</span>        <span class="comment">// used for overrides</span></div>
-<div class="line"><span class="lineno">  292</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">  301</span>    {</div>
+<div class="line"><span class="lineno">  302</span>        <span class="comment">// used for overrides</span></div>
+<div class="line"><span class="lineno">  303</span>    }</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="#ac4d2773e9cbecfe862c60e338d55d9df">HandleInput()</a>.</p>
 
@@ -318,13 +320,13 @@ Protected Attributes</h2></td></tr>
 
 <p>Sends raycast from Camera.main to mouse position and assigns the raycasthit2d to <a class="el" href="#a7cf82aae24fbec19f1851ae8db628115">hit</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>Whether or not the raycast hit an object.</dd></dl>
-<div class="fragment"><div class="line"><span class="lineno">  317</span>    {</div>
-<div class="line"><span class="lineno">  318</span>        <a class="code hl_variable" href="#a7cf82aae24fbec19f1851ae8db628115">hit</a> = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);</div>
-<div class="line"><span class="lineno">  319</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="#a7cf82aae24fbec19f1851ae8db628115">hit</a>;</div>
-<div class="line"><span class="lineno">  320</span>    }</div>
-<div class="ttc" id="aclass_editor_action_html_a7cf82aae24fbec19f1851ae8db628115"><div class="ttname"><a href="#a7cf82aae24fbec19f1851ae8db628115">EditorAction.hit</a></div><div class="ttdeci">RaycastHit2D hit</div><div class="ttdef"><b>Definition</b> SongEditor.cs:244</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  328</span>    {</div>
+<div class="line"><span class="lineno">  329</span>        <a class="code hl_variable" href="#a7cf82aae24fbec19f1851ae8db628115">hit</a> = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);</div>
+<div class="line"><span class="lineno">  330</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="#a7cf82aae24fbec19f1851ae8db628115">hit</a>;</div>
+<div class="line"><span class="lineno">  331</span>    }</div>
+<div class="ttc" id="aclass_editor_action_html_a7cf82aae24fbec19f1851ae8db628115"><div class="ttname"><a href="#a7cf82aae24fbec19f1851ae8db628115">EditorAction.hit</a></div><div class="ttdeci">RaycastHit2D hit</div><div class="ttdef"><b>Definition</b> SongEditor.cs:255</div></div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="#ac4d2773e9cbecfe862c60e338d55d9df">HandleInput()</a>, <a class="el" href="class_select_notes.html#a2c2b0e53b8e66c6262c691d2cfd9d7a9">SelectNotes.HandleInput()</a>, and <a class="el" href="class_move_notes.html#a5bc615597ad7a7d90af258af5c550aa3">MoveNotes.Hold()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#ac4d2773e9cbecfe862c60e338d55d9df">HandleInput()</a>, and <a class="el" href="class_move_notes.html#a5bc615597ad7a7d90af258af5c550aa3">MoveNotes.Hold()</a>.</p>
 
 </div>
 </div>
@@ -352,23 +354,21 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>calls all other input methods (down,hold,up,scrollwheel). </p>
-
-<p>Reimplemented in <a class="el" href="class_select_notes.html#a2c2b0e53b8e66c6262c691d2cfd9d7a9">SelectNotes</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  276</span>    {</div>
-<div class="line"><span class="lineno">  277</span> </div>
-<div class="line"><span class="lineno">  278</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="#a5cf9f7cb95413158ed1f7c7ecb570676">GetMouseRaycast</a>(out <a class="code hl_variable" href="#a7cf82aae24fbec19f1851ae8db628115">hit</a>))</div>
-<div class="line"><span class="lineno">  279</span>        {</div>
-<div class="line"><span class="lineno">  280</span>            <a class="code hl_function" href="#a879f0a78025e356885ad0b4922038c4f">Down</a>();</div>
-<div class="line"><span class="lineno">  281</span>            <a class="code hl_function" href="#a612c3627e7ae235d2ea115f859ed79b5">Hold</a>();</div>
-<div class="line"><span class="lineno">  282</span>            <a class="code hl_function" href="#ac737c102a3dc37a245e8302c9c84a838">Up</a>();</div>
-<div class="line"><span class="lineno">  283</span>        }</div>
-<div class="line"><span class="lineno">  284</span>        <a class="code hl_function" href="#a13fcb0a0a9ad90cd43648120a9bde18e">ScrollWheel</a>();</div>
-<div class="line"><span class="lineno">  285</span>    }</div>
-<div class="ttc" id="aclass_editor_action_html_a13fcb0a0a9ad90cd43648120a9bde18e"><div class="ttname"><a href="#a13fcb0a0a9ad90cd43648120a9bde18e">EditorAction.ScrollWheel</a></div><div class="ttdeci">virtual void ScrollWheel()</div><div class="ttdef"><b>Definition</b> SongEditor.cs:307</div></div>
-<div class="ttc" id="aclass_editor_action_html_a5cf9f7cb95413158ed1f7c7ecb570676"><div class="ttname"><a href="#a5cf9f7cb95413158ed1f7c7ecb570676">EditorAction.GetMouseRaycast</a></div><div class="ttdeci">bool GetMouseRaycast(out RaycastHit2D hit)</div><div class="ttdoc">Sends raycast from Camera.main to mouse position and assigns the raycasthit2d to hit.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:316</div></div>
-<div class="ttc" id="aclass_editor_action_html_a612c3627e7ae235d2ea115f859ed79b5"><div class="ttname"><a href="#a612c3627e7ae235d2ea115f859ed79b5">EditorAction.Hold</a></div><div class="ttdeci">virtual void Hold()</div><div class="ttdoc">Called on MouseButton() (excludes first frame pressed)</div><div class="ttdef"><b>Definition</b> SongEditor.cs:296</div></div>
-<div class="ttc" id="aclass_editor_action_html_a879f0a78025e356885ad0b4922038c4f"><div class="ttname"><a href="#a879f0a78025e356885ad0b4922038c4f">EditorAction.Down</a></div><div class="ttdeci">virtual void Down()</div><div class="ttdoc">Called on MouseButtonDown()</div><div class="ttdef"><b>Definition</b> SongEditor.cs:289</div></div>
-<div class="ttc" id="aclass_editor_action_html_ac737c102a3dc37a245e8302c9c84a838"><div class="ttname"><a href="#ac737c102a3dc37a245e8302c9c84a838">EditorAction.Up</a></div><div class="ttdeci">virtual void Up()</div><div class="ttdoc">Called on MouseButtonUp()</div><div class="ttdef"><b>Definition</b> SongEditor.cs:303</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  287</span>    {</div>
+<div class="line"><span class="lineno">  288</span> </div>
+<div class="line"><span class="lineno">  289</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="#a5cf9f7cb95413158ed1f7c7ecb570676">GetMouseRaycast</a>(out <a class="code hl_variable" href="#a7cf82aae24fbec19f1851ae8db628115">hit</a>))</div>
+<div class="line"><span class="lineno">  290</span>        {</div>
+<div class="line"><span class="lineno">  291</span>            <a class="code hl_function" href="#a879f0a78025e356885ad0b4922038c4f">Down</a>();</div>
+<div class="line"><span class="lineno">  292</span>            <a class="code hl_function" href="#a612c3627e7ae235d2ea115f859ed79b5">Hold</a>();</div>
+<div class="line"><span class="lineno">  293</span>            <a class="code hl_function" href="#ac737c102a3dc37a245e8302c9c84a838">Up</a>();</div>
+<div class="line"><span class="lineno">  294</span>        }</div>
+<div class="line"><span class="lineno">  295</span>        <a class="code hl_function" href="#a13fcb0a0a9ad90cd43648120a9bde18e">ScrollWheel</a>();</div>
+<div class="line"><span class="lineno">  296</span>    }</div>
+<div class="ttc" id="aclass_editor_action_html_a13fcb0a0a9ad90cd43648120a9bde18e"><div class="ttname"><a href="#a13fcb0a0a9ad90cd43648120a9bde18e">EditorAction.ScrollWheel</a></div><div class="ttdeci">virtual void ScrollWheel()</div><div class="ttdef"><b>Definition</b> SongEditor.cs:318</div></div>
+<div class="ttc" id="aclass_editor_action_html_a5cf9f7cb95413158ed1f7c7ecb570676"><div class="ttname"><a href="#a5cf9f7cb95413158ed1f7c7ecb570676">EditorAction.GetMouseRaycast</a></div><div class="ttdeci">bool GetMouseRaycast(out RaycastHit2D hit)</div><div class="ttdoc">Sends raycast from Camera.main to mouse position and assigns the raycasthit2d to hit.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:327</div></div>
+<div class="ttc" id="aclass_editor_action_html_a612c3627e7ae235d2ea115f859ed79b5"><div class="ttname"><a href="#a612c3627e7ae235d2ea115f859ed79b5">EditorAction.Hold</a></div><div class="ttdeci">virtual void Hold()</div><div class="ttdoc">Called on MouseButton() (excludes first frame pressed)</div><div class="ttdef"><b>Definition</b> SongEditor.cs:307</div></div>
+<div class="ttc" id="aclass_editor_action_html_a879f0a78025e356885ad0b4922038c4f"><div class="ttname"><a href="#a879f0a78025e356885ad0b4922038c4f">EditorAction.Down</a></div><div class="ttdeci">virtual void Down()</div><div class="ttdoc">Called on MouseButtonDown()</div><div class="ttdef"><b>Definition</b> SongEditor.cs:300</div></div>
+<div class="ttc" id="aclass_editor_action_html_ac737c102a3dc37a245e8302c9c84a838"><div class="ttname"><a href="#ac737c102a3dc37a245e8302c9c84a838">EditorAction.Up</a></div><div class="ttdeci">virtual void Up()</div><div class="ttdoc">Called on MouseButtonUp()</div><div class="ttdef"><b>Definition</b> SongEditor.cs:314</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="class_song_editor.html#ad9050147a8cc831212833b0f50360534">SongEditor.Update()</a>.</p>
 
@@ -400,12 +400,40 @@ Protected Attributes</h2></td></tr>
 <p>Called on MouseButton() (excludes first frame pressed) </p>
 
 <p>Reimplemented in <a class="el" href="class_add_note.html#ac95ab7ef175b587c8ce10c3f93d488c2">AddNote</a>, <a class="el" href="class_move_notes.html#a5bc615597ad7a7d90af258af5c550aa3">MoveNotes</a>, <a class="el" href="class_remove_notes.html#ac9357912d83c6eaa2ccda5bf50bd5d6a">RemoveNotes</a>, and <a class="el" href="class_select_notes.html#a5cf9fd94eecfc67c7caf62c7a27898b4">SelectNotes</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  297</span>    {</div>
-<div class="line"><span class="lineno">  298</span>        <span class="comment">// used for overrides</span></div>
-<div class="line"><span class="lineno">  299</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">  308</span>    {</div>
+<div class="line"><span class="lineno">  309</span>        <span class="comment">// used for overrides</span></div>
+<div class="line"><span class="lineno">  310</span>    }</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="#ac4d2773e9cbecfe862c60e338d55d9df">HandleInput()</a>.</p>
 
+</div>
+</div>
+<a id="a2c5b662078c485bbec4babb0c4179651" name="a2c5b662078c485bbec4babb0c4179651"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c5b662078c485bbec4babb0c4179651">&#9670;&#160;</a></span>Reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void EditorAction.Reset </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">  334</span>    {</div>
+<div class="line"><span class="lineno">  335</span> </div>
+<div class="line"><span class="lineno">  336</span>    }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a13fcb0a0a9ad90cd43648120a9bde18e" name="a13fcb0a0a9ad90cd43648120a9bde18e"></a>
@@ -432,11 +460,11 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented in <a class="el" href="class_scale_notes.html#a31ac3fef150d471d2b3b0d2f0c3a2fa4">ScaleNotes</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  308</span>    {</div>
-<div class="line"><span class="lineno">  309</span>        <span class="comment">// used for overrides</span></div>
-<div class="line"><span class="lineno">  310</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">  319</span>    {</div>
+<div class="line"><span class="lineno">  320</span>        <span class="comment">// used for overrides</span></div>
+<div class="line"><span class="lineno">  321</span>    }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="#ac4d2773e9cbecfe862c60e338d55d9df">HandleInput()</a>, and <a class="el" href="class_select_notes.html#a2c2b0e53b8e66c6262c691d2cfd9d7a9">SelectNotes.HandleInput()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#ac4d2773e9cbecfe862c60e338d55d9df">HandleInput()</a>.</p>
 
 </div>
 </div>
@@ -463,12 +491,12 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>editor action.</dd></dl>
-<div class="fragment"><div class="line"><span class="lineno">  266</span>    {</div>
-<div class="line"><span class="lineno">  267</span>        <span class="keywordflow">if</span> (mouseNum &lt; 0 || mouseNum &gt;= 3) { <a class="code hl_variable" href="#a15ef0f4316bba424ccfd8775c230310d">mouseButton</a> = -1; }</div>
-<div class="line"><span class="lineno">  268</span>        <a class="code hl_variable" href="#a15ef0f4316bba424ccfd8775c230310d">mouseButton</a> = mouseNum;</div>
-<div class="line"><span class="lineno">  269</span> </div>
-<div class="line"><span class="lineno">  270</span>        <span class="keywordflow">return</span> <span class="keyword">this</span>;</div>
-<div class="line"><span class="lineno">  271</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">  277</span>    {</div>
+<div class="line"><span class="lineno">  278</span>        <span class="keywordflow">if</span> (mouseNum &lt; 0 || mouseNum &gt;= 3) { <a class="code hl_variable" href="#a15ef0f4316bba424ccfd8775c230310d">mouseButton</a> = -1; }</div>
+<div class="line"><span class="lineno">  279</span>        <a class="code hl_variable" href="#a15ef0f4316bba424ccfd8775c230310d">mouseButton</a> = mouseNum;</div>
+<div class="line"><span class="lineno">  280</span> </div>
+<div class="line"><span class="lineno">  281</span>        <span class="keywordflow">return</span> <span class="keyword">this</span>;</div>
+<div class="line"><span class="lineno">  282</span>    }</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="class_song_editor.html#a8ca58215d5918ff8659f7f70b44fd49b">SongEditor.InitializeAction()</a>.</p>
 
@@ -500,11 +528,11 @@ Protected Attributes</h2></td></tr>
 <p>Called on MouseButtonUp() </p>
 
 <p>Reimplemented in <a class="el" href="class_move_notes.html#a38eda5774cf7a92f58cd28b44534b775">MoveNotes</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  304</span>    {</div>
-<div class="line"><span class="lineno">  305</span>        <span class="comment">// used for overrides</span></div>
-<div class="line"><span class="lineno">  306</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">  315</span>    {</div>
+<div class="line"><span class="lineno">  316</span>        <span class="comment">// used for overrides</span></div>
+<div class="line"><span class="lineno">  317</span>    }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="#ac4d2773e9cbecfe862c60e338d55d9df">HandleInput()</a>, and <a class="el" href="class_select_notes.html#a2c2b0e53b8e66c6262c691d2cfd9d7a9">SelectNotes.HandleInput()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#ac4d2773e9cbecfe862c60e338d55d9df">HandleInput()</a>.</p>
 
 </div>
 </div>
@@ -529,7 +557,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="class_add_note.html#afb7d9ae102a827f8f4e0ae787665c542">AddNote.CreateNote()</a>, <a class="el" href="class_add_note.html#a369ca55e5d4dcc0d15e2d1d2004d067a">AddNote.Down()</a>, <a class="el" href="class_move_notes.html#a70eb23b543a0def5bce33cb9324cc76b">MoveNotes.Down()</a>, <a class="el" href="#a5cf9f7cb95413158ed1f7c7ecb570676">GetMouseRaycast()</a>, <a class="el" href="#ac4d2773e9cbecfe862c60e338d55d9df">HandleInput()</a>, <a class="el" href="class_select_notes.html#a2c2b0e53b8e66c6262c691d2cfd9d7a9">SelectNotes.HandleInput()</a>, <a class="el" href="class_remove_notes.html#a2efa7ef5130fe35bc12db837d515a59f">RemoveNotes.RemoveNoteIfHit()</a>, and <a class="el" href="class_select_notes.html#ab17c5f8d45f50ce275c476a3a6e2b091">SelectNotes.SelectNote()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="class_add_note.html#afb7d9ae102a827f8f4e0ae787665c542">AddNote.CreateNote()</a>, <a class="el" href="class_add_note.html#a369ca55e5d4dcc0d15e2d1d2004d067a">AddNote.Down()</a>, <a class="el" href="class_move_notes.html#a70eb23b543a0def5bce33cb9324cc76b">MoveNotes.Down()</a>, <a class="el" href="#a5cf9f7cb95413158ed1f7c7ecb570676">GetMouseRaycast()</a>, <a class="el" href="#ac4d2773e9cbecfe862c60e338d55d9df">HandleInput()</a>, <a class="el" href="class_remove_notes.html#a2efa7ef5130fe35bc12db837d515a59f">RemoveNotes.RemoveNoteIfHit()</a>, and <a class="el" href="class_select_notes.html#ab17c5f8d45f50ce275c476a3a6e2b091">SelectNotes.SelectNote()</a>.</p>
 
 </div>
 </div>

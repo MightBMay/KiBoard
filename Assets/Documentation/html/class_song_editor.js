@@ -27,6 +27,7 @@ var class_song_editor =
     [ "keyPrefab", "class_song_editor.html#ab8c2eaa82ad4fecc1b77678519aa01da", null ],
     [ "leftAction", "class_song_editor.html#ac957ff17bd4bbe159aae6205b90eaf12", null ],
     [ "middleAction", "class_song_editor.html#a97599edd8bd07f2765a2cca235907106", null ],
+    [ "mouseButtonColours", "class_song_editor.html#a40555d373067ef7ceb46b2223f4a43e4", null ],
     [ "moveNotes", "class_song_editor.html#a78e9a6aebc2851a04c2558c076af7c2d", null ],
     [ "noteColour", "class_song_editor.html#a09a65c17bbe707f634e6aebacb0213af", null ],
     [ "noteHolder", "class_song_editor.html#afc08d97e3b71df6971d0e8e870d5a711", null ],
@@ -37,5 +38,6 @@ var class_song_editor =
     [ "selectedNoteColour", "class_song_editor.html#a96e3edb1a1475b70245745ea48540fd3", null ],
     [ "selectNotes", "class_song_editor.html#a89c04449580334b80a2ffd51844efdb6", null ],
     [ "smallestAllowedNote", "class_song_editor.html#a2055dca5e03613c31c430ae50ae669f9", null ],
+    [ "triMouseButtons", "class_song_editor.html#a2ff7acd9bbc5ca6ea3fc49e6502f94e1", null ],
     [ "vSnap", "class_song_editor.html#a030687a26d02bea951fa8176995f25d4", null ]
 ];

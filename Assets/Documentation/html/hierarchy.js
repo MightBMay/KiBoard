@@ -1,5 +1,8 @@
 var hierarchy =
 [
+    [ "Button", null, [
+      [ "TriMouseButton", "class_tri_mouse_button.html", null ]
+    ] ],
     [ "Combo", "class_combo.html", null ],
     [ "EditorAction", "class_editor_action.html", [
       [ "AddNote", "class_add_note.html", null ],

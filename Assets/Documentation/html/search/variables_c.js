@@ -9,9 +9,10 @@ var searchData=
   ['minheight_6',['minHeight',['../class_camera_scroll_manager.html#ace8d17025ff9c68a3ead8bbd74f16a00',1,'CameraScrollManager']]],
   ['miss_7',['miss',['../class_song_score.html#a1975252c66a628809c09c9ab6e894a22',1,'SongScore']]],
   ['modifiednotescale_8',['modifiedNoteScale',['../class_game_manager.html#a1c6cbb2c55728fd5cdae29b101fca9b8',1,'GameManager']]],
-  ['mousebutton_9',['mouseButton',['../class_editor_action.html#a15ef0f4316bba424ccfd8775c230310d',1,'EditorAction']]],
-  ['movenotes_10',['moveNotes',['../class_song_editor.html#a78e9a6aebc2851a04c2558c076af7c2d',1,'SongEditor']]],
-  ['mp3_11',['mp3',['../struct_file_group_error.html#aeebc43eea11ac001e659c231b09e096c',1,'FileGroupError']]],
-  ['mp3file_12',['Mp3File',['../struct_file_group.html#a2c8b3197671e65d387a6cd16c1d4b661',1,'FileGroup']]],
-  ['multiplier_13',['multiplier',['../class_combo.html#af8a5afd66907ed1a576e8f64afa025be',1,'Combo']]]
+  ['mousebutton_9',['mouseButton',['../class_editor_action.html#a15ef0f4316bba424ccfd8775c230310d',1,'EditorAction.mouseButton'],['../class_tri_mouse_button.html#af7834f10a01fa34ff7702dcfaa8e5d94',1,'TriMouseButton.mouseButton']]],
+  ['mousebuttoncolours_10',['mouseButtonColours',['../class_song_editor.html#a40555d373067ef7ceb46b2223f4a43e4',1,'SongEditor']]],
+  ['movenotes_11',['moveNotes',['../class_song_editor.html#a78e9a6aebc2851a04c2558c076af7c2d',1,'SongEditor']]],
+  ['mp3_12',['mp3',['../struct_file_group_error.html#aeebc43eea11ac001e659c231b09e096c',1,'FileGroupError']]],
+  ['mp3file_13',['Mp3File',['../struct_file_group.html#a2c8b3197671e65d387a6cd16c1d4b661',1,'FileGroup']]],
+  ['multiplier_14',['multiplier',['../class_combo.html#af8a5afd66907ed1a576e8f64afa025be',1,'Combo']]]
 ];
