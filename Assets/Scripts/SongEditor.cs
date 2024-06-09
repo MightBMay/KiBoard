@@ -135,6 +135,11 @@ public class SongEditor : MonoBehaviour
 
     }
 
+    public void PlayTest()
+    {
+
+    }
+
     /// <summary>
     /// Takes a raycast hit and spawns an editorNorePrefab.
     /// </summary>
