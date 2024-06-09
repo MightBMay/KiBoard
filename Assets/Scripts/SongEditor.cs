@@ -1,10 +1,8 @@
 using System.Collections.Generic;
-using System;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Runtime.CompilerServices;
-using UnityEditor.Experimental.GraphView;
-using System.Linq;
+
+
 
 /// <summary>
 /// Manages the song editor functionality.
@@ -74,6 +72,7 @@ public class SongEditor : MonoBehaviour
 
     public Color[] mouseButtonColours = new Color[3];
 
+    [SerializeField] readonly float cameraScrollSpeed = 1;
 
     //Instances of the different editor actions so i don't make a new one every time.
     AddNote addNote = new();
@@ -97,15 +96,40 @@ public class SongEditor : MonoBehaviour
 
         InitializePianoRoll();
         triMouseButtons = FindObjectsOfType<TriMouseButton>(true);
+        CamToBeat(1073);
     }
     private void Update()
     {
         leftAction?.HandleInput();
         middleAction?.HandleInput();
         rightAction?.HandleInput();
+        ScrollCamera();
     }
+    /// <summary>
+    /// Scroll the camera with the mouse wheel when cursor is not over the piano roll.
+    /// </summary>
+    void ScrollCamera()
+    {
+        if (Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero)) return; // if mouse over piano roll cancel scroll.
+        sbyte scrollDir = (sbyte)(Input.mouseScrollDelta.y == 0 ? 0 : Mathf.Sign(Input.mouseScrollDelta.y)); // get scroll direction.
+        cam.transform.position = new Vector3(
+            cam.transform.position.x,
+            Mathf.Clamp(cam.transform.position.y + (scrollDir * cameraScrollSpeed * 15), 27.5f, Mathf.Infinity), // calculate new y value and clamp it.
+            cam.transform.position.z); // add to camera position.
 
-
+    }
+    /// <summary>
+    /// Set camera to view specific beat number.
+    /// </summary>
+    /// <param name="beatNum">beat number to view</param>
+    public void CamToBeat(int beatNum)
+    {
+        if(beatNum <0) return;
+        cam.transform.position = new(
+            cam.transform.position.x,
+            27.5f + (15*beatNum), // calculate new y value and clamp it.
+            cam.transform.position.z);
+    }
     public void PlayTest()
     {
 
@@ -506,6 +530,7 @@ public class ScaleNotes : EditorAction
     /// </summary>
     void ScaleNote()
     {
+        if (!hit) return; // return if mouse is not over any object ( piano roll only currently). allows for scrolling camera with the mouse whenever it is off of the piano roll.
         sbyte scrollDir = (sbyte)(Input.mouseScrollDelta.y == 0 ? 0 : Mathf.Sign(Input.mouseScrollDelta.y)); // if scrolldelta not zero, get the sign.
         float minSize = (15 / SongEditor.instance.vSnap);
         float scaleStep = scrollDir * minSize;
