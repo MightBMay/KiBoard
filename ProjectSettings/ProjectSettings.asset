@@ -11,7 +11,7 @@ PlayerSettings:
   defaultScreenOrientation: 4
   targetDevice: 2
   useOnDemandResources: 0
-  accelerometerFrequency: 60
+  accelerometerFrequency: 0
   companyName: MightBMay
   productName: KiBoard
   defaultCursor: {fileID: 0}
@@ -646,14 +646,14 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: MidiTesting
+  metroPackageName: KiBoard
   metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: MidiTesting
+  metroApplicationDescription: KiBoard
   wsaImages: {}
   metroTileShortName: MidiTesting
   metroTileShowName: 0
