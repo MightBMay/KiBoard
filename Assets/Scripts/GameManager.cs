@@ -209,13 +209,14 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => (Input.anyKeyDown || MidiInput.instance.GetAnyNoteActive()) || isPreview);
         startTimer = true;
         StopReadiedNotes();
+        int noteCount = 0;
         if (gameType == GameType.Key88) { noteEvents.ForEach(noteEvent => readiedNotes.Add(StartCoroutine(ReadyNote88(noteEvent.startTime, noteEvent)))); }
         else if (gameType == GameType.Key12) { noteEvents.ForEach(noteEvent => readiedNotes.Add(StartCoroutine(ReadyNote12(noteEvent.startTime, noteEvent)))); }
         else
         {
             Debug.LogError("Game type not 88 or 12 key mode.");
         }
-
+        Debug.Log(noteCount);
         // Game loop is finished
         yield return null;
 
@@ -249,6 +250,7 @@ public class GameManager : MonoBehaviour
             float trueSpawnTime = spawnTime - spawnOffset;
             yield return new WaitUntil(() => songTime >= trueSpawnTime);
             SpawnNote88(noteEvent);
+            noteCount++;
         }
         IEnumerator ReadyNote12(float spawnTime, NoteEventInfo noteEvent)
         {
@@ -261,6 +263,7 @@ public class GameManager : MonoBehaviour
             float trueSpawnTime = spawnTime - spawnOffset;
             yield return new WaitUntil(() => songTime >= trueSpawnTime);
             SpawnNote12(noteEvent);
+            noteCount++;
         }
 
         void SpawnNote88(NoteEventInfo noteEvent)

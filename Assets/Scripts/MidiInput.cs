@@ -328,8 +328,8 @@ public class MidiInput : MonoBehaviour
     public IEnumerator StartSong(bool isPreview = false)
     {
 
-        GameManager.instance.currentSongScore.ClearScore();
-        GameManager.instance.combo.ClearCombo();
+        GameManager.instance.currentSongScore?.ClearScore();
+        GameManager.instance.combo?.ClearCombo();
         yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotes(GameSettings.bpm, storedNoteEvents, isPreview));
         StartCoroutine(MP3Handler.instance.PlaySong(SongSelection.GetUnderscoreSubstring(GameSettings.currentFileGroup.Mp3File)));
     }
@@ -340,8 +340,8 @@ public class MidiInput : MonoBehaviour
     public IEnumerator StartSong(string mp3Path, bool isPreview = false)
     {
 
-        GameManager.instance.currentSongScore.ClearScore();
-        GameManager.instance.combo.ClearCombo();
+        GameManager.instance.currentSongScore?.ClearScore();
+        GameManager.instance.combo?.ClearCombo();
         yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotes(GameSettings.bpm, storedNoteEvents, isPreview));
         StartCoroutine(MP3Handler.instance.PlaySong(mp3Path));
     }
@@ -352,13 +352,25 @@ public class MidiInput : MonoBehaviour
     /// <returns></returns>
     public IEnumerator StartSong(List<NoteEventInfo> loadEvents, bool isPreview = false)
     {
-        GameManager.instance.currentSongScore.ClearScore();
+        GameManager.instance.currentSongScore?.ClearScore();
         var bpm = GameSettings.bpm;
         loadEvents.ForEach(noteEvent => noteEvent.noteNumber += 20); // i - for the fucking life of me- cannot figure out why directly processing the midi files makes the note numbers
                                                                      // 20 higher, but i have to do this to match that with the song editor.
         yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotes(GameSettings.bpm, storedNoteEvents, isPreview));
 
         StartCoroutine(MP3Handler.instance.PlaySong(GameSettings.currentSongPath));
+
+    }
+
+    public IEnumerator StartSong(List<NoteEventInfo> loadEvents,string mp3Path, bool isPreview = false)
+    {
+        GameManager.instance.currentSongScore?.ClearScore();
+        var bpm = 130; //   GameSettings.bpm;
+        loadEvents.ForEach(noteEvent => noteEvent.noteNumber += 20); // i - for the fucking life of me- cannot figure out why directly processing the midi files makes the note numbers
+                                                                     // 20 higher, but i have to do this to match that with the song editor.
+        yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotes(bpm, loadEvents, isPreview));
+
+        StartCoroutine(MP3Handler.instance.PlaySong(mp3Path));
 
     }
 

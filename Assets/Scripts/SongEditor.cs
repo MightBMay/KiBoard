@@ -11,7 +11,7 @@ public class SongEditor : MonoBehaviour
 {
     // Start is called before the first frame update
     public static SongEditor instance;
-
+    public FileGroup songFileGroup;
     /// <summary>
     /// Dictionary of intiger X positions  and key lane objects for easy detection and positioning.
     /// </summary>
@@ -56,7 +56,7 @@ public class SongEditor : MonoBehaviour
     /// <summary>
     /// list of editornotes.
     /// </summary>
-    [SerializeField] List<EditorNote> editorNotes = new();
+    public List<EditorNote> editorNotes = new();
 
     internal HashSet<EditorNote> selectedNotes = new();
 
@@ -96,7 +96,6 @@ public class SongEditor : MonoBehaviour
 
         InitializePianoRoll();
         triMouseButtons = FindObjectsOfType<TriMouseButton>(true);
-        CamToBeat(1073);
     }
     private void Update()
     {
