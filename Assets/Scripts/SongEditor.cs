@@ -85,6 +85,9 @@ public class SongEditor : MonoBehaviour
 
     Button currentlySelectedButton;
     [SerializeField] GameObject vSnapMenu;
+
+
+
     private void Awake()
     {
         if (instance == null) { instance = this; }
@@ -301,6 +304,30 @@ public class SongEditor : MonoBehaviour
         selectedNotes.Clear();
     }
 }
+
+/// <summary>
+/// Stores current state of the editor to be later saved or reloaded.
+/// </summary>
+public class EditorState
+{
+    public EditorAction left, middle, right;
+    public float cameraHeight;
+    List<NoteEventInfo> noteEvents;
+
+    public EditorState(List<EditorNote> editorNotes)
+    {
+        left = SongEditor.instance.leftAction;
+        middle = SongEditor.instance.middleAction;
+        right = SongEditor.instance.rightAction;
+        List<NoteEventInfo> NoteEvents = new();
+        foreach (EditorNote noteEvent in editorNotes)
+        {
+            noteEvents.Add(noteEvent.noteEvent);
+        }
+        noteEvents = NoteEvents;
+    }
+}
+
 
 #region Editor Actions
 /// <summary>

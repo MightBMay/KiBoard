@@ -193,9 +193,9 @@ public class GameManager : MonoBehaviour
     /// <returns></returns>
     public IEnumerator PrepareNotes(float BPM, List<NoteEventInfo> noteEvents, bool isPreview) // TEMP 0.5f, change to 5.4f i think`````````````````````````````````````````````````````````````````````````````````````````````````````````
     {
+        Debug.Log("prep notes");
         if (noteEvents == null) { Debug.Log("gameloop noteEvents null"); yield break; }
         GameType? gameType = GameSettings.gameType = GameSettings.usePiano ? GameType.Key88 : GameType.Key12;
-
         SetSongTotalNotes(noteEvents.Count);
         SongScore songScore = new();
         if (isPreview) { isCurSongPreview = true; } else { isCurSongPreview = false; }

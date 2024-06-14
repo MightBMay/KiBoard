@@ -44,6 +44,8 @@ public class MP3Handler : MonoBehaviour
     /// </summary>
     public IEnumerator PlaySong(string filePath)
     {
+        Debug.Log("play song mp3" +
+            "");
         StopMusic();
         if (!File.Exists(filePath)) { Debug.LogError($"MP3 File not found at path {filePath}"); yield break; }
         audioThread = new Thread(() => ReadMP3File(filePath));

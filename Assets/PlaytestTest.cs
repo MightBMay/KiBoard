@@ -8,6 +8,12 @@ public class PlaytestTest : MonoBehaviour
     private string songEditorSceneName = "SongEditorScene";
     private string gameSceneName = "GameScene88";
 
+    GameObject editorScene;
+
+    private void Start()
+    {
+
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
@@ -29,21 +35,15 @@ public class PlaytestTest : MonoBehaviour
     // Coroutine to wait for the scene to load, then call the method
     private IEnumerator CallPlaytestInGameScene()
     {
-        yield return new WaitUntil(() => SceneManager.GetSceneByName(gameSceneName).isLoaded);
 
-        // Find an object in the loaded scene and call the playtest method
-        var gameMan = FindObjectOfType<GameManager>();
-        gameMan.inEditor = true;
-        var mInput = FindObjectOfType<MidiInput>();
-        List<NoteEventInfo> noteEvents = new();
-        foreach (var note in SongEditor.instance.editorNotes) {
-            noteEvents.Add(note.noteEvent);
-        }
-        GameSettings.currentSongPath = $"{Application.persistentDataPath}/Songs/FurElise";
-        GameSettings.bpm = 130;
-        mInput.StartSong(noteEvents, $"{Application.persistentDataPath}/Songs/FurElise/FurElise.mp3");
-  
+        yield return null;
+        //make this just load gamemanager as a scene and close editor scene. make a class that stores all the neccessary information to reload the editor tho.
+
+
     }
+
+
+
 
     // Unload the game scene and return to the song editor
     public void UnloadGameScene()
@@ -51,3 +51,5 @@ public class PlaytestTest : MonoBehaviour
         SceneManager.UnloadSceneAsync(gameSceneName);
     }
 }
+
+

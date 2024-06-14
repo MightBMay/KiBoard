@@ -360,6 +360,50 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &70208841
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 70208843}
+  - component: {fileID: 70208842}
+  m_Layer: 0
+  m_Name: Playtest testing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &70208842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70208841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d20b91f9bb208f847a62cbb69e861ddb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &70208843
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70208841}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 49.966557, y: 1.2387259, z: -0.059226587}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &84587323
 GameObject:
   m_ObjectHideFlags: 0
@@ -1206,6 +1250,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e5f7674fef9e604eba445ec9025bf7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  songFileGroup:
+    FileName: 
+    FolderPath: 
+    Mp3File: 
+    MidiFiles: []
+    JsonFiles: []
+    ImageFiles: []
+    ScoreFile: 
+    ReplayFiles: []
   noteHolder: {fileID: 905541874}
   editorNotePrefab: {fileID: 418324185}
   keyPrefab: {fileID: 8191326372447478301, guid: c15c9105a11c34c48b42ef1cd0947720, type: 3}
@@ -6578,3 +6631,4 @@ SceneRoots:
   - {fileID: 1106437346}
   - {fileID: 418324188}
   - {fileID: 62306116}
+  - {fileID: 70208843}

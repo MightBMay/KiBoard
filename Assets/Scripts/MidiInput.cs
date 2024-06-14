@@ -352,11 +352,13 @@ public class MidiInput : MonoBehaviour
     /// <returns></returns>
     public IEnumerator StartSong(List<NoteEventInfo> loadEvents, bool isPreview = false)
     {
+        Debug.Log("start song");
         GameManager.instance.currentSongScore?.ClearScore();
         var bpm = GameSettings.bpm;
         loadEvents.ForEach(noteEvent => noteEvent.noteNumber += 20); // i - for the fucking life of me- cannot figure out why directly processing the midi files makes the note numbers
                                                                      // 20 higher, but i have to do this to match that with the song editor.
         yield return PrepareNotesCoroutine = StartCoroutine(GameManager.instance.PrepareNotes(GameSettings.bpm, storedNoteEvents, isPreview));
+        Debug.Log("past prep notes");
 
         StartCoroutine(MP3Handler.instance.PlaySong(GameSettings.currentSongPath));
 
