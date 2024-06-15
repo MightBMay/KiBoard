@@ -141,7 +141,6 @@ public class SongScore
     /// <param name="filename"></param>
     public void WriteScoreToJson(string filename)
     {
-        Debug.Log(filename);
         try
         {
             // Serialize the object to JSON format

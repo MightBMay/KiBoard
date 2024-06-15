@@ -76,6 +76,8 @@ public class SongEditor : MonoBehaviour
 
     [SerializeField] readonly float cameraScrollSpeed = 1;
 
+    public float bpm = 136f;
+
     //Instances of the different editor actions so i don't make a new one every time.
     AddNote addNote = new();
     RemoveNotes removeNotes = new();
@@ -88,11 +90,12 @@ public class SongEditor : MonoBehaviour
     Button currentlySelectedButton;
     [SerializeField] GameObject vSnapMenu;
 
-
+    [SerializeField] string songFolderPath;
+    [SerializeField] FileGroup group;
 
     private void Awake()
     {
-        if (instance == null) { DontDestroyOnLoad(gameObject); instance = this; }
+        if (instance == null) { instance = this; }
         else { Destroy(this); }
     }
     void Start()
@@ -101,6 +104,7 @@ public class SongEditor : MonoBehaviour
 
         InitializePianoRoll();
         triMouseButtons = FindObjectsOfType<TriMouseButton>(true);
+        songFolderPath = Application.persistentDataPath + "/Songs/FurElise";
     }
     private void Update()
     {
@@ -108,6 +112,8 @@ public class SongEditor : MonoBehaviour
         middleAction?.HandleInput();
         rightAction?.HandleInput();
         ScrollCamera();
+
+        PlayTest();
     }
     /// <summary>
     /// Scroll the camera with the mouse wheel when cursor is not over the piano roll.
@@ -136,6 +142,11 @@ public class SongEditor : MonoBehaviour
     }
     public void PlayTest()
     {
+
+        if (!Input.GetKeyDown(KeyCode.P)) return;
+        if (string.IsNullOrEmpty(GameSettings.currentSongPath)) { group = SongSelection.AssembleFileGroup(songFolderPath); }
+        else { group = GameSettings.currentFileGroup; }
+        GameManager.instance.LoadSongToGameSettingsAndStart(group, GetNoteEventInfos(), instance.bpm);
 
     }
 
@@ -349,7 +360,7 @@ public class EditorAction
     {
         public Vector2 initialPosition;
         public readonly EditorNote editorNote;
-        public  NoteWrapper(EditorNote note)
+        public NoteWrapper(EditorNote note)
         {
             editorNote = note;
             initialPosition = note.transform.position;

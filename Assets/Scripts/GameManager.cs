@@ -193,7 +193,6 @@ public class GameManager : MonoBehaviour
     /// <returns></returns>
     public IEnumerator PrepareNotes(float BPM, List<NoteEventInfo> noteEvents, bool isPreview) // TEMP 0.5f, change to 5.4f i think`````````````````````````````````````````````````````````````````````````````````````````````````````````
     {
-        Debug.Log("prep notes");
         if (noteEvents == null) { Debug.Log("gameloop noteEvents null"); yield break; }
         GameType? gameType = GameSettings.gameType = GameSettings.usePiano ? GameType.Key88 : GameType.Key12;
         SetSongTotalNotes(noteEvents.Count);
@@ -216,7 +215,6 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("Game type not 88 or 12 key mode.");
         }
-        Debug.Log(noteCount);
         // Game loop is finished
         yield return null;
 
@@ -436,14 +434,21 @@ public class GameManager : MonoBehaviour
     public void ReturnToSongSelection()
     {
         startTimer = false;
-        inEditor = false;
         StopReadiedNotes();
         MidiInput.instance.inGame = false;
         GameSettings.ResetSettings(false);
         MidiInput.instance.UnHookMidiDevice();
-
-        try { TransitionManager.instance.LoadNewScene("SongSelect"); }
-        catch { SceneManager.LoadScene("SongSelect"); }
+        MP3Handler.instance.StopMusic();
+        if (inEditor)
+        {
+            try { TransitionManager.instance.LoadNewScene("SongEditor88"); }
+            catch { SceneManager.LoadScene("SongEditor88"); }
+        }
+        else
+        {
+            try { TransitionManager.instance.LoadNewScene("SongSelect"); }
+            catch { SceneManager.LoadScene("SongSelect"); }
+        }
 
     }
 

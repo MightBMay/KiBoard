@@ -301,6 +301,7 @@ public class MidiInput : MonoBehaviour
             inGame = true;
             if (PrepareNotesCoroutine != null) StopCoroutine(PrepareNotesCoroutine);
             GameManager.instance.StopReadiedNotes();
+            Replay.recordReplay = false;
             StartCoroutine(StartSong());
         }
 
