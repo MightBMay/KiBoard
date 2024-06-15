@@ -2,6 +2,7 @@ using System.IO;
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using System.Text;
 
 /// <summary>
 /// Represents a group of files related to a specific song.
@@ -85,7 +86,56 @@ public struct FileGroup
         }
     }
 
- 
+
+
+
+    public override string ToString()
+    {
+        StringBuilder sb = new StringBuilder();
+
+        sb.AppendLine("File Manager Details:");
+        sb.AppendLine($"FileName: {FileName}");
+        sb.AppendLine($"FolderPath: {FolderPath}");
+        sb.AppendLine($"Mp3File: {Mp3File}");
+
+        sb.AppendLine("MidiFiles:");
+        AppendArrayDetails(sb, MidiFiles);
+
+        sb.AppendLine("JsonFiles:");
+        AppendArrayDetails(sb, JsonFiles);
+
+        sb.AppendLine("ImageFiles:");
+        AppendArrayDetails(sb, ImageFiles);
+
+        sb.AppendLine($"ScoreFile: {ScoreFile}");
+
+        sb.AppendLine("ReplayFiles:");
+        AppendArrayDetails(sb, ReplayFiles);
+
+        return sb.ToString();
+    }
+
+    /// <summary>
+    /// Uses StringBUilder to append elements of an array to the <see cref="ToString"/> string.
+    /// </summary>
+    /// <param name="sb"></param>
+    /// <param name="array"></param>
+    void AppendArrayDetails(StringBuilder sb, string[] array)
+    {
+        if (array != null && array.Length > 0)
+        {
+            for (int i = 0; i < array.Length; i++)
+            {
+                sb.AppendLine($"  [{i}]: {array[i]}");
+            }
+        }
+        else
+        {
+            sb.AppendLine("  None");
+        }
+    }
+
+
 }
 /// <summary>
 /// struct containing information on which files are or aren't located when assembling a file group for a song.

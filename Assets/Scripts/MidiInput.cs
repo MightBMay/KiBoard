@@ -222,7 +222,7 @@ public class MidiInput : MonoBehaviour
     {
         MP3Handler.instance.StopMusic();
         string gameMode;
-        if (KiboardDebug.isMidiConnected && GameSettings.usePiano) { gameMode = "GameScene88"; } else { gameMode = "GameScene12"; }
+        if (KiboardDebug.isMidiConnected && GameSettings.usePiano) { gameMode = "GameScene88"; } else { gameMode = "GameScene12"; }// determine if player should load into 88 oor 12 key game scene based on if they have a midi device.
 
         if (isPreview)
         {
@@ -242,7 +242,7 @@ public class MidiInput : MonoBehaviour
                 TransitionManager.instance.LoadNewScene(gameMode);
             }
 
-            catch(Exception e)
+            catch (Exception e)
             {
                 Debug.Log(e);
                 SceneManager.LoadScene(gameMode);
@@ -253,6 +253,50 @@ public class MidiInput : MonoBehaviour
             GameSettings.bpm = GameSettings.bpm == 0 ? data.BPM : GameSettings.bpm;
 
             storedNoteEvents = data.NoteEvents;
+            takeInput = true;
+            inGame = true;
+            if (PrepareNotesCoroutine != null) StopCoroutine(PrepareNotesCoroutine);
+            GameManager.instance.StopReadiedNotes();
+            StartCoroutine(StartSong());
+        }
+
+
+
+    }
+
+    public void LoadSongFromNoteEvents(List<NoteEventInfo> noteEvents, float bpm,bool isPreview = false)
+    {
+        MP3Handler.instance.StopMusic();
+        string gameMode;
+        if (KiboardDebug.isMidiConnected && GameSettings.usePiano) { gameMode = "GameScene88"; } else { gameMode = "GameScene12"; }// determine if player should load into 88 oor 12 key game scene based on if they have a midi device.
+
+        if (isPreview)
+        {
+            LoadScenePreview(gameMode);
+            NoteEventDataWrapper data = MidiReadFile.GetNoteEventsFromFilePath(GameSettings.currentSongPath);
+            GameSettings.bpm = data.BPM;
+            storedNoteEvents = data.NoteEvents;
+            takeInput = false;
+            inGame = false;
+            StartCoroutine(StartSong(true));
+        }
+        else
+        {
+
+            try
+            {
+                TransitionManager.instance.LoadNewScene(gameMode);
+            }
+
+            catch (Exception e)
+            {
+                Debug.Log(e);
+                SceneManager.LoadScene(gameMode);
+            }
+
+            if (GameSettings.usePiano) { HookMidiDevice(); } else { UnHookMidiDevice(); }
+            storedNoteEvents = noteEvents;
+            GameSettings.bpm = GameSettings.bpm == 0 ? bpm: GameSettings.bpm;
             takeInput = true;
             inGame = true;
             if (PrepareNotesCoroutine != null) StopCoroutine(PrepareNotesCoroutine);

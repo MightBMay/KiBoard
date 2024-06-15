@@ -143,7 +143,7 @@ public class SongSelection : MonoBehaviour
     /// Assembles a FileGroup object based on the given file name.
     /// </summary>
 
-    public FileGroup AssembleFileGroup(string directory)
+    public static FileGroup AssembleFileGroup(string directory)
     {
         string[] allFiles = Directory.GetFiles(directory);
         FileGroupError error = new FileGroupError();

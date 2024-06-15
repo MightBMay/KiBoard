@@ -278,10 +278,7 @@ public class GameManager : MonoBehaviour
             fallingNote.velocity = fallSpeed; // set falling speed of the note to the value calculated in AssignSongValues()
             fallingNote.maxYBound = spriteRenderer.bounds.max.y; //Used to determine when a note is far enough off screen to be destroyed.
             fallingNote.GetComponentInChildren<NoteShadow>().SetShadowSize(noteScale + 0.075f);
-            if (noteHolder != null)
-            {
-                noteInstance.transform.SetParent(noteHolder.transform, false);
-            }
+
             spriteRenderer.size = new Vector2(spriteRenderer.size.x, noteScale);
 
 
@@ -303,7 +300,10 @@ public class GameManager : MonoBehaviour
             fallingNote.velocity = fallSpeed; // set falling speed of the note to the value calculated in AssignSongValues()
             fallingNote.maxYBound = spriteRenderer.bounds.max.y; //Used to determine when a note is far enough off screen to be destroyed.
             fallingNote.GetComponentInChildren<NoteShadow>().SetShadowSize(noteScale + 0.075f);
-
+            if (noteHolder != null)
+            {
+                noteInstance.transform.SetParent(noteHolder.transform, false);
+            }
             spriteRenderer.size = new Vector2(4.5f, noteScale);
 
 
@@ -316,6 +316,17 @@ public class GameManager : MonoBehaviour
             if (isPreview) AssignToPreviewLayer(noteInstance);
         }
     }
+
+
+    public void LoadSongToGameSettingsAndStart(FileGroup fileGroup, List<NoteEventInfo> noteEvents, float bpm)
+    {
+
+        GameSettings.currentFileGroup = fileGroup;
+        GameSettings.currentSongPath = fileGroup.JsonFiles.Length > 0 ? fileGroup.JsonFiles[0] : fileGroup.MidiFiles[0];
+        GameManager.instance.selectedSongHighScore = null; SongScore.ReadFieldsFromJsonFile(fileGroup.ScoreFile);   // dont check high scores
+        MidiInput.instance.LoadSongFromNoteEvents(noteEvents,bpm);
+    }
+
 
     /// <summary>
     /// Assigns "obk" to the layer "PreviewLayer", then moves it and all children objects to the song preview scene.

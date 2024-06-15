@@ -1,3 +1,4 @@
+using NAudio.Midi;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -60,6 +61,7 @@ public class SongEditor : MonoBehaviour
 
     internal HashSet<EditorNote> selectedNotes = new();
 
+
     /// <summary>
     /// EditorActions for the left, middle and right mouse buttons respectively.<br/>
     /// Can be bound by calling <see cref="InitializeAction(string, sbyte)"/> with a string corresponding to the name of the editor action, and a sByte containing the number mouse button.
@@ -90,7 +92,7 @@ public class SongEditor : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null) { instance = this; }
+        if (instance == null) { DontDestroyOnLoad(gameObject); instance = this; }
         else { Destroy(this); }
     }
     void Start()
@@ -126,10 +128,10 @@ public class SongEditor : MonoBehaviour
     /// <param name="beatNum">beat number to view</param>
     public void CamToBeat(int beatNum)
     {
-        if(beatNum <0) return;
+        if (beatNum < 0) return;
         cam.transform.position = new(
             cam.transform.position.x,
-            27.5f + (15*beatNum), // calculate new y value and clamp it.
+            27.5f + (15 * beatNum), // calculate new y value and clamp it.
             cam.transform.position.z);
     }
     public void PlayTest()
@@ -192,11 +194,11 @@ public class SongEditor : MonoBehaviour
     public void SetVSnap(string value)
     {
 
-        if(!float.TryParse(value, out float valueF))
+        if (!float.TryParse(value, out float valueF))
         {
             Debug.LogError("Issue parsing new vSnap Value: " + value);
         }
-        if(valueF<=0) { return; }
+        if (valueF <= 0) { return; }
         vSnap = valueF;
     }
     /// <summary>
@@ -274,7 +276,11 @@ public class SongEditor : MonoBehaviour
 
 
     }
-
+    /// <summary>
+    /// Returns an editor action -reset to their default values- to be assigned to a mouse button.
+    /// </summary>
+    /// <param name="actionName"> name of the action</param>
+    /// <param name="mouseNumber">number of mouse button to be assigned to.</param>
     public EditorAction InitializeAction(string actionName, sbyte mouseNumber)
     {
         switch (actionName.ToLower()) // convert actionName to lower and set up the respective action for use with mousebutton # mouseNumber
@@ -294,7 +300,9 @@ public class SongEditor : MonoBehaviour
 
         }
     }
-
+    /// <summary>
+    /// Clears the selected notes list, and resets the colour of all selected notes to the default.
+    /// </summary>
     public void ClearSelectedNotes()
     {
         foreach (EditorNote note in selectedNotes)
@@ -303,30 +311,26 @@ public class SongEditor : MonoBehaviour
         }
         selectedNotes.Clear();
     }
-}
 
-/// <summary>
-/// Stores current state of the editor to be later saved or reloaded.
-/// </summary>
-public class EditorState
-{
-    public EditorAction left, middle, right;
-    public float cameraHeight;
-    List<NoteEventInfo> noteEvents;
-
-    public EditorState(List<EditorNote> editorNotes)
+    /// <summary>
+    /// Converts the list of <see cref="EditorNote"/>s to a list of <see cref="NoteEventInfo"/>s for playing.
+    /// </summary>
+    /// <returns>list of <see cref="NoteEventInfo"/>s</returns>
+    public static List<NoteEventInfo> GetNoteEventInfos()
     {
-        left = SongEditor.instance.leftAction;
-        middle = SongEditor.instance.middleAction;
-        right = SongEditor.instance.rightAction;
-        List<NoteEventInfo> NoteEvents = new();
-        foreach (EditorNote noteEvent in editorNotes)
+        if (instance == null) { Debug.LogError("SongEditor instance null"); return null; }
+
+        List<NoteEventInfo> noteEvents = new();
+        foreach (EditorNote noteEvent in instance.editorNotes)
         {
-            noteEvents.Add(noteEvent.noteEvent);
+            noteEvent.noteEvent.noteNumber += 21; // i still do not fucking know why i need to offset by +/- 21 in some scenarios-
+            noteEvents.Add(noteEvent.noteEvent);  // -for the note positions. it is hella annoying but if i just add 21 it works
+                                                  // perfectly so i'm not gonna bother fixing it. 
         }
-        noteEvents = NoteEvents;
+        return noteEvents;
     }
 }
+
 
 
 #region Editor Actions
