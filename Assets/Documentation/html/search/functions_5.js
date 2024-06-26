@@ -10,11 +10,12 @@ var searchData=
   ['getjsondata_7',['GetJSONData',['../class_midi_data_handler.html#a1a86dcda7551933ae1bad4ed606bc88a',1,'MidiDataHandler']]],
   ['getkeycolour_8',['GetKeyColour',['../class_spawn_piano.html#a42cd74cae2c05680eb2df7457164f381',1,'SpawnPiano.GetKeyColour(int keyNum, string timingScore=&quot;&quot;)'],['../class_spawn_piano.html#aa2c7a65b799c11a662ca9c1d25a931d2',1,'SpawnPiano.GetKeyColour(int keyNum, bool isKeyEnabled, string timingScore=&quot;&quot;)']]],
   ['getmouseraycast_9',['GetMouseRaycast',['../class_editor_action.html#a5cf9f7cb95413158ed1f7c7ecb570676',1,'EditorAction']]],
-  ['getnoteeventsfromfilepath_10',['GetNoteEventsFromFilePath',['../class_midi_read_file.html#ae92e1f0a1a7c5b7219fe5d8647951219',1,'MidiReadFile']]],
-  ['getnoteeventwrapperfromselectedsong_11',['GetNoteEventWrapperFromSelectedSong',['../class_midi_input.html#a0e669343713e7dc8eb36f8fdbc5085ef',1,'MidiInput']]],
-  ['getnotepercentage_12',['GetNotePercentage',['../class_song_score.html#ae541d72aa5260dd48f581525d2d5bb94',1,'SongScore']]],
-  ['getscorearray_13',['GetScoreArray',['../class_song_score.html#a248a3e361b5a456adcfbfc18c380911a',1,'SongScore']]],
-  ['gettimedifference_14',['GetTimeDifference',['../class_midi_input.html#a2df47888c558fed477b80632013512e1',1,'MidiInput']]],
-  ['gettimingscore_15',['GetTimingScore',['../class_midi_input.html#ab06b15e5c2299d4099decb4a5d88e467',1,'MidiInput']]],
-  ['gridsnapnote_16',['GridSnapNote',['../class_editor_note.html#a28a60af2e54886e4b0e49da9f85057a8',1,'EditorNote.GridSnapNote()'],['../classold_e_n.html#a2c33956e4e1cee88559289c83b29d66e',1,'oldEN.GridSnapNote()']]]
+  ['getnoteeventinfos_10',['GetNoteEventInfos',['../class_song_editor.html#acbe7c01d92285e90a34c26e47f128e6c',1,'SongEditor']]],
+  ['getnoteeventsfromfilepath_11',['GetNoteEventsFromFilePath',['../class_midi_read_file.html#ae92e1f0a1a7c5b7219fe5d8647951219',1,'MidiReadFile']]],
+  ['getnoteeventwrapperfromselectedsong_12',['GetNoteEventWrapperFromSelectedSong',['../class_midi_input.html#a0e669343713e7dc8eb36f8fdbc5085ef',1,'MidiInput']]],
+  ['getnotepercentage_13',['GetNotePercentage',['../class_song_score.html#ae541d72aa5260dd48f581525d2d5bb94',1,'SongScore']]],
+  ['getscorearray_14',['GetScoreArray',['../class_song_score.html#a248a3e361b5a456adcfbfc18c380911a',1,'SongScore']]],
+  ['gettimedifference_15',['GetTimeDifference',['../class_midi_input.html#a2df47888c558fed477b80632013512e1',1,'MidiInput']]],
+  ['gettimingscore_16',['GetTimingScore',['../class_midi_input.html#ab06b15e5c2299d4099decb4a5d88e467',1,'MidiInput']]],
+  ['gridsnapnote_17',['GridSnapNote',['../class_editor_note.html#a28a60af2e54886e4b0e49da9f85057a8',1,'EditorNote.GridSnapNote()'],['../classold_e_n.html#a2c33956e4e1cee88559289c83b29d66e',1,'oldEN.GridSnapNote()']]]
 ];

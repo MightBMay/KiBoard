@@ -195,12 +195,12 @@ Additional Inherited Members</h2></td></tr>
 <p>remove note hit by GetMouseRaycast on mouse down. </p>
 
 <p>Reimplemented from <a class="el" href="class_editor_action.html#a879f0a78025e356885ad0b4922038c4f">EditorAction</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  417</span>    {</div>
-<div class="line"><span class="lineno">  418</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="class_editor_action.html#ad4c1a80e07df7f4311b2cf73a44d9323">CheckDown</a>()) <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  419</span>        <a class="code hl_function" href="#a2efa7ef5130fe35bc12db837d515a59f">RemoveNoteIfHit</a>();</div>
-<div class="line"><span class="lineno">  420</span>    }</div>
-<div class="ttc" id="aclass_editor_action_html_ad4c1a80e07df7f4311b2cf73a44d9323"><div class="ttname"><a href="class_editor_action.html#ad4c1a80e07df7f4311b2cf73a44d9323">EditorAction.CheckDown</a></div><div class="ttdeci">bool CheckDown()</div><div class="ttdef"><b>Definition</b> SongEditor.cs:373</div></div>
-<div class="ttc" id="aclass_remove_notes_html_a2efa7ef5130fe35bc12db837d515a59f"><div class="ttname"><a href="#a2efa7ef5130fe35bc12db837d515a59f">RemoveNotes.RemoveNoteIfHit</a></div><div class="ttdeci">void RemoveNoteIfHit()</div><div class="ttdoc">removes a note from selected notes and list of editorNotes and then destroys it.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:434</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  482</span>    {</div>
+<div class="line"><span class="lineno">  483</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="class_editor_action.html#ad4c1a80e07df7f4311b2cf73a44d9323">CheckDown</a>()) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  484</span>        <a class="code hl_function" href="#a2efa7ef5130fe35bc12db837d515a59f">RemoveNoteIfHit</a>();</div>
+<div class="line"><span class="lineno">  485</span>    }</div>
+<div class="ttc" id="aclass_editor_action_html_ad4c1a80e07df7f4311b2cf73a44d9323"><div class="ttname"><a href="class_editor_action.html#ad4c1a80e07df7f4311b2cf73a44d9323">EditorAction.CheckDown</a></div><div class="ttdeci">bool CheckDown()</div><div class="ttdef"><b>Definition</b> SongEditor.cs:438</div></div>
+<div class="ttc" id="aclass_remove_notes_html_a2efa7ef5130fe35bc12db837d515a59f"><div class="ttname"><a href="#a2efa7ef5130fe35bc12db837d515a59f">RemoveNotes.RemoveNoteIfHit</a></div><div class="ttdeci">void RemoveNoteIfHit()</div><div class="ttdoc">removes a note from selected notes and list of editorNotes and then destroys it.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:499</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -230,11 +230,11 @@ Additional Inherited Members</h2></td></tr>
 <p>remove note hit by GetMouseRaycast on mouse hold. </p>
 
 <p>Reimplemented from <a class="el" href="class_editor_action.html#a612c3627e7ae235d2ea115f859ed79b5">EditorAction</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  425</span>    {</div>
-<div class="line"><span class="lineno">  426</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="class_editor_action.html#af2e919270d825c132c96c4e00bd37665">CheckHold</a>()) <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  427</span>        <a class="code hl_function" href="#a2efa7ef5130fe35bc12db837d515a59f">RemoveNoteIfHit</a>();</div>
-<div class="line"><span class="lineno">  428</span>    }</div>
-<div class="ttc" id="aclass_editor_action_html_af2e919270d825c132c96c4e00bd37665"><div class="ttname"><a href="class_editor_action.html#af2e919270d825c132c96c4e00bd37665">EditorAction.CheckHold</a></div><div class="ttdeci">bool CheckHold()</div><div class="ttdef"><b>Definition</b> SongEditor.cs:374</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  490</span>    {</div>
+<div class="line"><span class="lineno">  491</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="class_editor_action.html#af2e919270d825c132c96c4e00bd37665">CheckHold</a>()) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  492</span>        <a class="code hl_function" href="#a2efa7ef5130fe35bc12db837d515a59f">RemoveNoteIfHit</a>();</div>
+<div class="line"><span class="lineno">  493</span>    }</div>
+<div class="ttc" id="aclass_editor_action_html_af2e919270d825c132c96c4e00bd37665"><div class="ttname"><a href="class_editor_action.html#af2e919270d825c132c96c4e00bd37665">EditorAction.CheckHold</a></div><div class="ttdeci">bool CheckHold()</div><div class="ttdef"><b>Definition</b> SongEditor.cs:439</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -262,17 +262,17 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>removes a note from selected notes and list of editorNotes and then destroys it. </p>
-<div class="fragment"><div class="line"><span class="lineno">  435</span>    {</div>
-<div class="line"><span class="lineno">  436</span>        <a class="code hl_class" href="class_song_editor.html">SongEditor</a>.<a class="code hl_variable" href="class_song_editor.html#a230315399a7c29c6ecb86e72d263c1db">instance</a>?.ClearSelectedNotes();<span class="comment">// when other EditorActions are taken, clear the selected notes.</span></div>
-<div class="line"><span class="lineno">  437</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_editor_action.html#a7cf82aae24fbec19f1851ae8db628115">hit</a>.collider.TryGetComponent(out <a class="code hl_class" href="class_editor_note.html">EditorNote</a> note))</div>
-<div class="line"><span class="lineno">  438</span>        {</div>
-<div class="line"><span class="lineno">  439</span>            <a class="code hl_class" href="class_song_editor.html">SongEditor</a>.<a class="code hl_variable" href="class_song_editor.html#a230315399a7c29c6ecb86e72d263c1db">instance</a>.RemoveNote(note);</div>
-<div class="line"><span class="lineno">  440</span>        }</div>
-<div class="line"><span class="lineno">  441</span>    }</div>
-<div class="ttc" id="aclass_editor_action_html_a7cf82aae24fbec19f1851ae8db628115"><div class="ttname"><a href="class_editor_action.html#a7cf82aae24fbec19f1851ae8db628115">EditorAction.hit</a></div><div class="ttdeci">RaycastHit2D hit</div><div class="ttdef"><b>Definition</b> SongEditor.cs:290</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  500</span>    {</div>
+<div class="line"><span class="lineno">  501</span>        <a class="code hl_class" href="class_song_editor.html">SongEditor</a>.<a class="code hl_variable" href="class_song_editor.html#a230315399a7c29c6ecb86e72d263c1db">instance</a>?.ClearSelectedNotes();<span class="comment">// when other EditorActions are taken, clear the selected notes.</span></div>
+<div class="line"><span class="lineno">  502</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_editor_action.html#a7cf82aae24fbec19f1851ae8db628115">hit</a>.collider.TryGetComponent(out <a class="code hl_class" href="class_editor_note.html">EditorNote</a> note))</div>
+<div class="line"><span class="lineno">  503</span>        {</div>
+<div class="line"><span class="lineno">  504</span>            <a class="code hl_class" href="class_song_editor.html">SongEditor</a>.<a class="code hl_variable" href="class_song_editor.html#a230315399a7c29c6ecb86e72d263c1db">instance</a>.RemoveNote(note);</div>
+<div class="line"><span class="lineno">  505</span>        }</div>
+<div class="line"><span class="lineno">  506</span>    }</div>
+<div class="ttc" id="aclass_editor_action_html_a7cf82aae24fbec19f1851ae8db628115"><div class="ttname"><a href="class_editor_action.html#a7cf82aae24fbec19f1851ae8db628115">EditorAction.hit</a></div><div class="ttdeci">RaycastHit2D hit</div><div class="ttdef"><b>Definition</b> SongEditor.cs:355</div></div>
 <div class="ttc" id="aclass_editor_note_html"><div class="ttname"><a href="class_editor_note.html">EditorNote</a></div><div class="ttdoc">Represents a note in the editor with associated event information.</div><div class="ttdef"><b>Definition</b> EditorNote.cs:11</div></div>
-<div class="ttc" id="aclass_song_editor_html"><div class="ttname"><a href="class_song_editor.html">SongEditor</a></div><div class="ttdoc">Manages the song editor functionality.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:13</div></div>
-<div class="ttc" id="aclass_song_editor_html_a230315399a7c29c6ecb86e72d263c1db"><div class="ttname"><a href="class_song_editor.html#a230315399a7c29c6ecb86e72d263c1db">SongEditor.instance</a></div><div class="ttdeci">static SongEditor instance</div><div class="ttdef"><b>Definition</b> SongEditor.cs:15</div></div>
+<div class="ttc" id="aclass_song_editor_html"><div class="ttname"><a href="class_song_editor.html">SongEditor</a></div><div class="ttdoc">Manages the song editor functionality.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:12</div></div>
+<div class="ttc" id="aclass_song_editor_html_a230315399a7c29c6ecb86e72d263c1db"><div class="ttname"><a href="class_song_editor.html#a230315399a7c29c6ecb86e72d263c1db">SongEditor.instance</a></div><div class="ttdeci">static SongEditor instance</div><div class="ttdef"><b>Definition</b> SongEditor.cs:14</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="#a6a410d8ba693ce8b2d0bcd6aa12e3fcd">Down()</a>, and <a class="el" href="#ac9357912d83c6eaa2ccda5bf50bd5d6a">Hold()</a>.</p>
 

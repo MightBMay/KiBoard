@@ -179,7 +179,7 @@ public class GameManager : MonoBehaviour
     /// 
     /// </summary>
     /// <param name="note">note to check for tempo data.</param>
-    /// <returns>True = note data, false = tempo data.</returns>
+    /// <returns>True = Tempo data, false = Note data.</returns>
     public static bool CheckSpawnNote(NoteEventInfo note)
     {
         return (note.startTime == float.NegativeInfinity && note.noteNumber == int.MinValue);
@@ -236,7 +236,7 @@ public class GameManager : MonoBehaviour
             modifiedNoteScale = baseNoteScalingFactor * (130 / BPM);
             return so;
         }
-        IEnumerator ReadyNote88(float spawnTime, NoteEventInfo noteEvent)
+        IEnumerator ReadyNote88(float spawnTime, NoteEventInfo noteEvent) 
         {
 
             if (CheckSpawnNote(noteEvent))
@@ -497,7 +497,20 @@ public class GameManager : MonoBehaviour
         beatsBeforeNote = newNum;
         Debug.Log($"{newNum} Beats before note");
     }
-
+    /// <summary>
+    /// enters the song editor with the currently selected song notes.
+    /// </summary>
+    public void EnterSongEditor()
+    {
+        readiedNotes.Clear();
+        StopAllCoroutines();
+        startTimer = false;
+        songTime = 0;
+        StopSong();
+        MP3Handler.instance.StopMusic();
+        TransitionManager.instance.LoadNewScene("SongEditor88");       
+        Debug.Log("huh");
+    }
 
 
 }

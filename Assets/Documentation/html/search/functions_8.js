@@ -5,5 +5,7 @@ var searchData=
   ['loadnoteeventdata_2',['LoadNoteEventData',['../class_midi_data_handler.html#aaadc48d0f8cf053388f813d8624d696d',1,'MidiDataHandler']]],
   ['loadscenepreview_3',['LoadScenePreview',['../class_midi_input.html#a8d1cc24ea62cc6532a214c7dd056ad1f',1,'MidiInput']]],
   ['loadsongfromcurrentsettings_4',['LoadSongFromCurrentSettings',['../class_midi_input.html#a45fbc3ff0c86cf6739b2951fdb831037',1,'MidiInput']]],
-  ['loadtosongselect_5',['LoadToSongSelect',['../class_main_menu_load.html#a326703887ad372e974b12a454c60332d',1,'MainMenuLoad']]]
+  ['loadsongfromnoteevents_5',['LoadSongFromNoteEvents',['../class_midi_input.html#a856f990e560ce05c44e43133820aa62e',1,'MidiInput']]],
+  ['loadsongtogamesettingsandstart_6',['LoadSongToGameSettingsAndStart',['../class_game_manager.html#acabc4ea98f21525d9070855917065a9d',1,'GameManager']]],
+  ['loadtosongselect_7',['LoadToSongSelect',['../class_main_menu_load.html#a326703887ad372e974b12a454c60332d',1,'MainMenuLoad']]]
 ];

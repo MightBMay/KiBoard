@@ -19,5 +19,6 @@ var searchData=
   ['beatnumbergenerator_2ecs_16',['BeatNumberGenerator.cs',['../_beat_number_generator_8cs.html',1,'']]],
   ['beatsbeforenote_17',['beatsBeforeNote',['../class_game_manager.html#afa92e7ec92714a03a1bc716b6b4cd0fc',1,'GameManager']]],
   ['blank_5f_20b_18',['&lt;b&gt;blank_&lt;/b&gt;',['../md__assets_2_documentation_2html_2_markdown_2_modding_01_6_01_customization.html#autotoc_md34',1,'']]],
-  ['bpm_19',['BPM',['../class_note_event_data_wrapper.html#a2da8d226562bac9e8f6888deec995a55',1,'NoteEventDataWrapper']]]
+  ['bpm_19',['BPM',['../class_note_event_data_wrapper.html#a2da8d226562bac9e8f6888deec995a55',1,'NoteEventDataWrapper']]],
+  ['bpm_20',['bpm',['../class_song_editor.html#a72ed8ee0e8675d889d330758c0b9570d',1,'SongEditor']]]
 ];

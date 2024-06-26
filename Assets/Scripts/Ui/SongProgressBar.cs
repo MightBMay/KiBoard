@@ -13,7 +13,7 @@ public class SongProgressBar : MonoBehaviour
         bar = GetComponent<Slider>();
         try
         {
-            bar.minValue = MidiInput.instance.storedNoteEvents[0].startTime;
+            bar.minValue = 0;
             bar.maxValue = MidiInput.instance.storedNoteEvents.Last().startTime;
         }
         catch { Debug.Log("fucky wucky in the progress bar :)"); }

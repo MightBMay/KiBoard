@@ -6,6 +6,7 @@ var class_game_manager =
     [ "CheckSpawnNote", "class_game_manager.html#a750548d06231926291304fc3b5ebb0d5", null ],
     [ "ConvertNoteNameToNumber", "class_game_manager.html#a131c1f0873da6899dc644060748a8b99", null ],
     [ "ConvertNoteNumberToName", "class_game_manager.html#af2b61b305c4b0b48b6dea78162472aef", null ],
+    [ "LoadSongToGameSettingsAndStart", "class_game_manager.html#acabc4ea98f21525d9070855917065a9d", null ],
     [ "OnSongEnd", "class_game_manager.html#ad109ae0452de271ad4ea6f05e7a7d74b", null ],
     [ "PrepareNotes", "class_game_manager.html#a53d0c42e8760b846fd39a6b9b1115566", null ],
     [ "RefreshJsonFiles", "class_game_manager.html#a4138c16110d65a2c6abdafa36fb0d99a", null ],

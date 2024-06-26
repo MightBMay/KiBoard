@@ -99,6 +99,7 @@ $(function(){initNavTree('class_song_editor.html',''); initResizable(true); });
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
@@ -121,6 +122,9 @@ $(function(){initNavTree('class_song_editor.html',''); initResizable(true); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:ac0742d5852e146689b9afc8f0c3a2ba2" id="r_ac0742d5852e146689b9afc8f0c3a2ba2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac0742d5852e146689b9afc8f0c3a2ba2">CamToBeat</a> (int beatNum)</td></tr>
+<tr class="memdesc:ac0742d5852e146689b9afc8f0c3a2ba2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set camera to view specific beat number.  <br /></td></tr>
+<tr class="separator:ac0742d5852e146689b9afc8f0c3a2ba2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2eed0148b0fa5d85cf6fad9852cb095" id="r_ab2eed0148b0fa5d85cf6fad9852cb095"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2eed0148b0fa5d85cf6fad9852cb095">PlayTest</a> ()</td></tr>
 <tr class="separator:ab2eed0148b0fa5d85cf6fad9852cb095"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7e43d1d5adc7550a37790778038d4d6" id="r_af7e43d1d5adc7550a37790778038d4d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7e43d1d5adc7550a37790778038d4d6">CreateNote</a> (RaycastHit2D hit)</td></tr>
@@ -148,12 +152,22 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a1b355596bbfdd8b8c115d11647fbc135"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called in the editor ui buttons. When clicked it will grey out a selected button and un grey out the previously selected one.  <br /></td></tr>
 <tr class="separator:a1b355596bbfdd8b8c115d11647fbc135"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ca58215d5918ff8659f7f70b44fd49b" id="r_a8ca58215d5918ff8659f7f70b44fd49b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_editor_action.html">EditorAction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ca58215d5918ff8659f7f70b44fd49b">InitializeAction</a> (string actionName, sbyte mouseNumber)</td></tr>
+<tr class="memdesc:a8ca58215d5918ff8659f7f70b44fd49b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an editor action -reset to their default values- to be assigned to a mouse button.  <br /></td></tr>
 <tr class="separator:a8ca58215d5918ff8659f7f70b44fd49b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7592a7f7f144baf3f8a21f033d983b7" id="r_af7592a7f7f144baf3f8a21f033d983b7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7592a7f7f144baf3f8a21f033d983b7">ClearSelectedNotes</a> ()</td></tr>
+<tr class="memdesc:af7592a7f7f144baf3f8a21f033d983b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears the selected notes list, and resets the colour of all selected notes to the default.  <br /></td></tr>
 <tr class="separator:af7592a7f7f144baf3f8a21f033d983b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:acbe7c01d92285e90a34c26e47f128e6c" id="r_acbe7c01d92285e90a34c26e47f128e6c"><td class="memItemLeft" align="right" valign="top">static List&lt; <a class="el" href="class_note_event_info.html">NoteEventInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acbe7c01d92285e90a34c26e47f128e6c">GetNoteEventInfos</a> ()</td></tr>
+<tr class="memdesc:acbe7c01d92285e90a34c26e47f128e6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the list of <a class="el" href="class_editor_note.html" title="Represents a note in the editor with associated event information.">EditorNote</a>s to a list of <a class="el" href="class_note_event_info.html" title="Class containing all info needed to play a note.">NoteEventInfo</a>s for playing.  <br /></td></tr>
+<tr class="separator:acbe7c01d92285e90a34c26e47f128e6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr class="memitem:a83fc61663c1542a13f970c5636939f0f" id="r_a83fc61663c1542a13f970c5636939f0f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_file_group.html">FileGroup</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83fc61663c1542a13f970c5636939f0f">songFileGroup</a></td></tr>
+<tr class="separator:a83fc61663c1542a13f970c5636939f0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f68797697beccabe834ad603ad1c035" id="r_a5f68797697beccabe834ad603ad1c035"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; int, GameObject &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f68797697beccabe834ad603ad1c035">keyLanes</a> = new()</td></tr>
 <tr class="memdesc:a5f68797697beccabe834ad603ad1c035"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dictionary of intiger X positions and key lane objects for easy detection and positioning.  <br /></td></tr>
 <tr class="separator:a5f68797697beccabe834ad603ad1c035"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -172,9 +186,12 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a6e5a70d2716ccbcd91670662a48b8880"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2055dca5e03613c31c430ae50ae669f9" id="r_a2055dca5e03613c31c430ae50ae669f9"><td class="memItemLeft" align="right" valign="top">readonly float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2055dca5e03613c31c430ae50ae669f9">smallestAllowedNote</a> = 1 / 16f</td></tr>
 <tr class="separator:a2055dca5e03613c31c430ae50ae669f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6aeb37620b3499d08d3364b2cb4b3c8" id="r_af6aeb37620b3499d08d3364b2cb4b3c8"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_editor_note.html">EditorNote</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af6aeb37620b3499d08d3364b2cb4b3c8">editorNotes</a> = new()</td></tr>
+<tr class="memdesc:af6aeb37620b3499d08d3364b2cb4b3c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">list of editornotes.  <br /></td></tr>
+<tr class="separator:af6aeb37620b3499d08d3364b2cb4b3c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac957ff17bd4bbe159aae6205b90eaf12" id="r_ac957ff17bd4bbe159aae6205b90eaf12"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_editor_action.html">EditorAction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac957ff17bd4bbe159aae6205b90eaf12">leftAction</a></td></tr>
 <tr class="memdesc:ac957ff17bd4bbe159aae6205b90eaf12"><td class="mdescLeft">&#160;</td><td class="mdescRight">EditorActions for the left, middle and right mouse buttons respectively.<br  />
- Can be bound by calling <a class="el" href="#a8ca58215d5918ff8659f7f70b44fd49b">InitializeAction(string, sbyte)</a> with a string corresponding to the name of the editor action, and a sByte containing the number mouse button.  <br /></td></tr>
+ Can be bound by calling <a class="el" href="#a8ca58215d5918ff8659f7f70b44fd49b" title="Returns an editor action -reset to their default values- to be assigned to a mouse button.">InitializeAction(string, sbyte)</a> with a string corresponding to the name of the editor action, and a sByte containing the number mouse button.  <br /></td></tr>
 <tr class="separator:ac957ff17bd4bbe159aae6205b90eaf12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97599edd8bd07f2765a2cca235907106" id="r_a97599edd8bd07f2765a2cca235907106"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_editor_action.html">EditorAction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a97599edd8bd07f2765a2cca235907106">middleAction</a></td></tr>
 <tr class="separator:a97599edd8bd07f2765a2cca235907106"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -185,6 +202,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a2ff7acd9bbc5ca6ea3fc49e6502f94e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40555d373067ef7ceb46b2223f4a43e4" id="r_a40555d373067ef7ceb46b2223f4a43e4"><td class="memItemLeft" align="right" valign="top">Color[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a40555d373067ef7ceb46b2223f4a43e4">mouseButtonColours</a> = new Color[3]</td></tr>
 <tr class="separator:a40555d373067ef7ceb46b2223f4a43e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72ed8ee0e8675d889d330758c0b9570d" id="r_a72ed8ee0e8675d889d330758c0b9570d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72ed8ee0e8675d889d330758c0b9570d">bpm</a> = 136f</td></tr>
+<tr class="separator:a72ed8ee0e8675d889d330758c0b9570d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -199,6 +218,9 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:aaeb19aa1435183bfea8925967fc4493c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9050147a8cc831212833b0f50360534" id="r_ad9050147a8cc831212833b0f50360534"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad9050147a8cc831212833b0f50360534">Update</a> ()</td></tr>
 <tr class="separator:ad9050147a8cc831212833b0f50360534"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66e89487a0a5d844e10e3ecb2b4b9425" id="r_a66e89487a0a5d844e10e3ecb2b4b9425"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a66e89487a0a5d844e10e3ecb2b4b9425">ScrollCamera</a> ()</td></tr>
+<tr class="memdesc:a66e89487a0a5d844e10e3ecb2b4b9425"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scroll the camera with the mouse wheel when cursor is not over the piano roll.  <br /></td></tr>
+<tr class="separator:a66e89487a0a5d844e10e3ecb2b4b9425"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ea09c65e7c50a6e6b34115da1767e40" id="r_a8ea09c65e7c50a6e6b34115da1767e40"><td class="memItemLeft" align="right" valign="top">Vector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ea09c65e7c50a6e6b34115da1767e40">SnapNote</a> (Vector2 pos)</td></tr>
 <tr class="memdesc:a8ea09c65e7c50a6e6b34115da1767e40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rounds a vector2's values to the nearest fraction of 1/Vsnap.  <br /></td></tr>
 <tr class="separator:a8ea09c65e7c50a6e6b34115da1767e40"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -226,9 +248,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a31ce4a989ca47d858805e609a5f930b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c63d62d37b3f6fb8371aa6ee59755ef" id="r_a4c63d62d37b3f6fb8371aa6ee59755ef"><td class="memItemLeft" align="right" valign="top">Vector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c63d62d37b3f6fb8371aa6ee59755ef">defaultNoteScale</a> = new(1, 1)</td></tr>
 <tr class="separator:a4c63d62d37b3f6fb8371aa6ee59755ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6aeb37620b3499d08d3364b2cb4b3c8" id="r_af6aeb37620b3499d08d3364b2cb4b3c8"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_editor_note.html">EditorNote</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af6aeb37620b3499d08d3364b2cb4b3c8">editorNotes</a> = new()</td></tr>
-<tr class="memdesc:af6aeb37620b3499d08d3364b2cb4b3c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">list of editornotes.  <br /></td></tr>
-<tr class="separator:af6aeb37620b3499d08d3364b2cb4b3c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95a06bb02f2e3b52a24b375120dab166" id="r_a95a06bb02f2e3b52a24b375120dab166"><td class="memItemLeft" align="right" valign="top">readonly float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a95a06bb02f2e3b52a24b375120dab166">cameraScrollSpeed</a> = 1</td></tr>
+<tr class="separator:a95a06bb02f2e3b52a24b375120dab166"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86d8b33f2988fdf371b6d2dae09f38d2" id="r_a86d8b33f2988fdf371b6d2dae09f38d2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_add_note.html">AddNote</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86d8b33f2988fdf371b6d2dae09f38d2">addNote</a> = new()</td></tr>
 <tr class="separator:a86d8b33f2988fdf371b6d2dae09f38d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a100049cdf4727d4b20b9d0ffab8bf18c" id="r_a100049cdf4727d4b20b9d0ffab8bf18c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_remove_notes.html">RemoveNotes</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a100049cdf4727d4b20b9d0ffab8bf18c">removeNotes</a> = new()</td></tr>
@@ -243,6 +264,10 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a45639feaf9c6e5176303d6f8ef6ba9e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b76317a35fc08bc1afdd2421e8f8515" id="r_a4b76317a35fc08bc1afdd2421e8f8515"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b76317a35fc08bc1afdd2421e8f8515">vSnapMenu</a></td></tr>
 <tr class="separator:a4b76317a35fc08bc1afdd2421e8f8515"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56a180432eb3e79e7821ad310b11e3a7" id="r_a56a180432eb3e79e7821ad310b11e3a7"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a56a180432eb3e79e7821ad310b11e3a7">songFolderPath</a></td></tr>
+<tr class="separator:a56a180432eb3e79e7821ad310b11e3a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa136cf274681908e55057683d3e4299e" id="r_aa136cf274681908e55057683d3e4299e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_file_group.html">FileGroup</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa136cf274681908e55057683d3e4299e">group</a></td></tr>
+<tr class="separator:aa136cf274681908e55057683d3e4299e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Manages the song editor functionality. </p>
@@ -269,11 +294,44 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   90</span>    {</div>
-<div class="line"><span class="lineno">   91</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a230315399a7c29c6ecb86e72d263c1db">instance</a> == <span class="keyword">null</span>) { <a class="code hl_variable" href="#a230315399a7c29c6ecb86e72d263c1db">instance</a> = <span class="keyword">this</span>; }</div>
-<div class="line"><span class="lineno">   92</span>        <span class="keywordflow">else</span> { Destroy(<span class="keyword">this</span>); }</div>
-<div class="line"><span class="lineno">   93</span>    }</div>
-<div class="ttc" id="aclass_song_editor_html_a230315399a7c29c6ecb86e72d263c1db"><div class="ttname"><a href="#a230315399a7c29c6ecb86e72d263c1db">SongEditor.instance</a></div><div class="ttdeci">static SongEditor instance</div><div class="ttdef"><b>Definition</b> SongEditor.cs:15</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   97</span>    {</div>
+<div class="line"><span class="lineno">   98</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a230315399a7c29c6ecb86e72d263c1db">instance</a> == <span class="keyword">null</span>) { <a class="code hl_variable" href="#a230315399a7c29c6ecb86e72d263c1db">instance</a> = <span class="keyword">this</span>; }</div>
+<div class="line"><span class="lineno">   99</span>        <span class="keywordflow">else</span> { Destroy(<span class="keyword">this</span>); }</div>
+<div class="line"><span class="lineno">  100</span>    }</div>
+<div class="ttc" id="aclass_song_editor_html_a230315399a7c29c6ecb86e72d263c1db"><div class="ttname"><a href="#a230315399a7c29c6ecb86e72d263c1db">SongEditor.instance</a></div><div class="ttdeci">static SongEditor instance</div><div class="ttdef"><b>Definition</b> SongEditor.cs:14</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac0742d5852e146689b9afc8f0c3a2ba2" name="ac0742d5852e146689b9afc8f0c3a2ba2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0742d5852e146689b9afc8f0c3a2ba2">&#9670;&#160;</a></span>CamToBeat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SongEditor.CamToBeat </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>beatNum</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set camera to view specific beat number. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">beatNum</td><td>beat number to view</td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><span class="lineno">  136</span>    {</div>
+<div class="line"><span class="lineno">  137</span>        <span class="keywordflow">if</span> (beatNum &lt; 0) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  138</span>        cam.transform.position = <span class="keyword">new</span>(</div>
+<div class="line"><span class="lineno">  139</span>            <a class="code hl_variable" href="#a34ef237c23fbef4cf3167e1cca5e61ae">cam</a>.transform.position.x,</div>
+<div class="line"><span class="lineno">  140</span>            27.5f + (15 * beatNum), <span class="comment">// calculate new y value and clamp it.</span></div>
+<div class="line"><span class="lineno">  141</span>            <a class="code hl_variable" href="#a34ef237c23fbef4cf3167e1cca5e61ae">cam</a>.transform.position.z);</div>
+<div class="line"><span class="lineno">  142</span>    }</div>
+<div class="ttc" id="aclass_song_editor_html_a34ef237c23fbef4cf3167e1cca5e61ae"><div class="ttname"><a href="#a34ef237c23fbef4cf3167e1cca5e61ae">SongEditor.cam</a></div><div class="ttdeci">Camera cam</div><div class="ttdef"><b>Definition</b> SongEditor.cs:25</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -291,16 +349,18 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  273</span>    {</div>
-<div class="line"><span class="lineno">  274</span>        <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_editor_note.html">EditorNote</a> note <span class="keywordflow">in</span> selectedNotes)</div>
-<div class="line"><span class="lineno">  275</span>        {</div>
-<div class="line"><span class="lineno">  276</span>            note.<a class="code hl_function" href="class_editor_note.html#adaf75c93f8744d706ddbef39104ce4f1">SetColour</a>(<a class="code hl_variable" href="#a09a65c17bbe707f634e6aebacb0213af">noteColour</a>);</div>
-<div class="line"><span class="lineno">  277</span>        }</div>
-<div class="line"><span class="lineno">  278</span>        selectedNotes.Clear();</div>
-<div class="line"><span class="lineno">  279</span>    }</div>
+
+<p>Clears the selected notes list, and resets the colour of all selected notes to the default. </p>
+<div class="fragment"><div class="line"><span class="lineno">  318</span>    {</div>
+<div class="line"><span class="lineno">  319</span>        <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_editor_note.html">EditorNote</a> note <span class="keywordflow">in</span> selectedNotes)</div>
+<div class="line"><span class="lineno">  320</span>        {</div>
+<div class="line"><span class="lineno">  321</span>            note.<a class="code hl_function" href="class_editor_note.html#adaf75c93f8744d706ddbef39104ce4f1">SetColour</a>(<a class="code hl_variable" href="#a09a65c17bbe707f634e6aebacb0213af">noteColour</a>);</div>
+<div class="line"><span class="lineno">  322</span>        }</div>
+<div class="line"><span class="lineno">  323</span>        selectedNotes.Clear();</div>
+<div class="line"><span class="lineno">  324</span>    }</div>
 <div class="ttc" id="aclass_editor_note_html"><div class="ttname"><a href="class_editor_note.html">EditorNote</a></div><div class="ttdoc">Represents a note in the editor with associated event information.</div><div class="ttdef"><b>Definition</b> EditorNote.cs:11</div></div>
 <div class="ttc" id="aclass_editor_note_html_adaf75c93f8744d706ddbef39104ce4f1"><div class="ttname"><a href="class_editor_note.html#adaf75c93f8744d706ddbef39104ce4f1">EditorNote.SetColour</a></div><div class="ttdeci">void SetColour(Color newColour)</div><div class="ttdoc">Sets the highlight color of the note.</div><div class="ttdef"><b>Definition</b> EditorNote.cs:60</div></div>
-<div class="ttc" id="aclass_song_editor_html_a09a65c17bbe707f634e6aebacb0213af"><div class="ttname"><a href="#a09a65c17bbe707f634e6aebacb0213af">SongEditor.noteColour</a></div><div class="ttdeci">Color noteColour</div><div class="ttdef"><b>Definition</b> SongEditor.cs:39</div></div>
+<div class="ttc" id="aclass_song_editor_html_a09a65c17bbe707f634e6aebacb0213af"><div class="ttname"><a href="#a09a65c17bbe707f634e6aebacb0213af">SongEditor.noteColour</a></div><div class="ttdeci">Color noteColour</div><div class="ttdef"><b>Definition</b> SongEditor.cs:38</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -326,27 +386,70 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><span class="lineno">  119</span>    {</div>
-<div class="line"><span class="lineno">  120</span>        Transform note = Instantiate(<a class="code hl_variable" href="#ac0337735e94299c740b898dbe628db16">editorNotePrefab</a>, <a class="code hl_variable" href="#afc08d97e3b71df6971d0e8e870d5a711">noteHolder</a>).transform;<span class="comment">// create note</span></div>
-<div class="line"><span class="lineno">  121</span>        <span class="keywordtype">int</span> noteNum = Mathf.RoundToInt(hit.point.x); <span class="comment">// round notes position to get the key number.</span></div>
-<div class="line"><span class="lineno">  122</span>        <span class="keywordtype">float</span> height = hit.point.y;<span class="comment">//get height of the note\</span></div>
-<div class="line"><span class="lineno">  123</span><span class="comment">        EditorNote editorNote = note.GetComponent&lt;EditorNote&gt;();</span></div>
-<div class="line"><span class="lineno">  124</span>        Vector2 snappeedPos = <a class="code hl_function" href="#a8ea09c65e7c50a6e6b34115da1767e40">SnapNote</a>(<span class="keyword">new</span> Vector2(noteNum, height));</div>
-<div class="line"><span class="lineno">  125</span>        <a class="code hl_function" href="#a257d077870774b5bf0fd7f2ec5984fc4">VSnapNote</a>(note);<span class="comment">// scale note based on VSnap.</span></div>
-<div class="line"><span class="lineno">  126</span>        <span class="keywordtype">float</span> halfNoteHeight = note.localScale.y / 2;</div>
-<div class="line"><span class="lineno">  127</span>        snappeedPos.y += halfNoteHeight;</div>
-<div class="line"><span class="lineno">  128</span>        note.position = snappeedPos; <span class="comment">// round the notes position to nearest fraction of a beat.</span></div>
-<div class="line"><span class="lineno">  129</span>        editorNote.UpdateNoteEvent(noteNum, snappeedPos.y - 2f - halfNoteHeight, snappeedPos.y - 2f + halfNoteHeight); <span class="comment">// set noteEvent data.</span></div>
-<div class="line"><span class="lineno">  130</span> </div>
-<div class="line"><span class="lineno">  131</span>        <a class="code hl_variable" href="#af6aeb37620b3499d08d3364b2cb4b3c8">editorNotes</a>.Add(editorNote); <span class="comment">// add to list of noteEvents.</span></div>
-<div class="line"><span class="lineno">  132</span> </div>
-<div class="line"><span class="lineno">  133</span>    }</div>
-<div class="ttc" id="aclass_song_editor_html_a257d077870774b5bf0fd7f2ec5984fc4"><div class="ttname"><a href="#a257d077870774b5bf0fd7f2ec5984fc4">SongEditor.VSnapNote</a></div><div class="ttdeci">void VSnapNote(Transform note)</div><div class="ttdoc">scales a note based on vsnap</div><div class="ttdef"><b>Definition</b> SongEditor.cs:138</div></div>
-<div class="ttc" id="aclass_song_editor_html_a8ea09c65e7c50a6e6b34115da1767e40"><div class="ttname"><a href="#a8ea09c65e7c50a6e6b34115da1767e40">SongEditor.SnapNote</a></div><div class="ttdeci">Vector2 SnapNote(Vector2 pos)</div><div class="ttdoc">Rounds a vector2's values to the nearest fraction of 1/Vsnap.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:228</div></div>
-<div class="ttc" id="aclass_song_editor_html_ac0337735e94299c740b898dbe628db16"><div class="ttname"><a href="#ac0337735e94299c740b898dbe628db16">SongEditor.editorNotePrefab</a></div><div class="ttdeci">GameObject editorNotePrefab</div><div class="ttdef"><b>Definition</b> SongEditor.cs:25</div></div>
-<div class="ttc" id="aclass_song_editor_html_af6aeb37620b3499d08d3364b2cb4b3c8"><div class="ttname"><a href="#af6aeb37620b3499d08d3364b2cb4b3c8">SongEditor.editorNotes</a></div><div class="ttdeci">List&lt; EditorNote &gt; editorNotes</div><div class="ttdoc">list of editornotes.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:61</div></div>
-<div class="ttc" id="aclass_song_editor_html_afc08d97e3b71df6971d0e8e870d5a711"><div class="ttname"><a href="#afc08d97e3b71df6971d0e8e870d5a711">SongEditor.noteHolder</a></div><div class="ttdeci">Transform noteHolder</div><div class="ttdoc">parent of all notes spawned by player.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:24</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  158</span>    {</div>
+<div class="line"><span class="lineno">  159</span>        Transform note = Instantiate(<a class="code hl_variable" href="#ac0337735e94299c740b898dbe628db16">editorNotePrefab</a>, <a class="code hl_variable" href="#afc08d97e3b71df6971d0e8e870d5a711">noteHolder</a>).transform;<span class="comment">// create note</span></div>
+<div class="line"><span class="lineno">  160</span>        <span class="keywordtype">int</span> noteNum = Mathf.RoundToInt(hit.point.x); <span class="comment">// round notes position to get the key number.</span></div>
+<div class="line"><span class="lineno">  161</span>        <span class="keywordtype">float</span> height = hit.point.y;<span class="comment">//get height of the note\</span></div>
+<div class="line"><span class="lineno">  162</span><span class="comment">        EditorNote editorNote = note.GetComponent&lt;EditorNote&gt;();</span></div>
+<div class="line"><span class="lineno">  163</span>        Vector2 snappeedPos = <a class="code hl_function" href="#a8ea09c65e7c50a6e6b34115da1767e40">SnapNote</a>(<span class="keyword">new</span> Vector2(noteNum, height));</div>
+<div class="line"><span class="lineno">  164</span>        <a class="code hl_function" href="#a257d077870774b5bf0fd7f2ec5984fc4">VSnapNote</a>(note);<span class="comment">// scale note based on VSnap.</span></div>
+<div class="line"><span class="lineno">  165</span>        <span class="keywordtype">float</span> halfNoteHeight = note.localScale.y / 2;</div>
+<div class="line"><span class="lineno">  166</span>        snappeedPos.y += halfNoteHeight;</div>
+<div class="line"><span class="lineno">  167</span>        note.position = snappeedPos; <span class="comment">// round the notes position to nearest fraction of a beat.</span></div>
+<div class="line"><span class="lineno">  168</span>        editorNote.UpdateNoteEvent(noteNum, snappeedPos.y - 2f - halfNoteHeight, snappeedPos.y - 2f + halfNoteHeight); <span class="comment">// set noteEvent data.</span></div>
+<div class="line"><span class="lineno">  169</span> </div>
+<div class="line"><span class="lineno">  170</span>        <a class="code hl_variable" href="#af6aeb37620b3499d08d3364b2cb4b3c8">editorNotes</a>.Add(editorNote); <span class="comment">// add to list of noteEvents.</span></div>
+<div class="line"><span class="lineno">  171</span> </div>
+<div class="line"><span class="lineno">  172</span>    }</div>
+<div class="ttc" id="aclass_song_editor_html_a257d077870774b5bf0fd7f2ec5984fc4"><div class="ttname"><a href="#a257d077870774b5bf0fd7f2ec5984fc4">SongEditor.VSnapNote</a></div><div class="ttdeci">void VSnapNote(Transform note)</div><div class="ttdoc">scales a note based on vsnap</div><div class="ttdef"><b>Definition</b> SongEditor.cs:177</div></div>
+<div class="ttc" id="aclass_song_editor_html_a8ea09c65e7c50a6e6b34115da1767e40"><div class="ttname"><a href="#a8ea09c65e7c50a6e6b34115da1767e40">SongEditor.SnapNote</a></div><div class="ttdeci">Vector2 SnapNote(Vector2 pos)</div><div class="ttdoc">Rounds a vector2's values to the nearest fraction of 1/Vsnap.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:267</div></div>
+<div class="ttc" id="aclass_song_editor_html_ac0337735e94299c740b898dbe628db16"><div class="ttname"><a href="#ac0337735e94299c740b898dbe628db16">SongEditor.editorNotePrefab</a></div><div class="ttdeci">GameObject editorNotePrefab</div><div class="ttdef"><b>Definition</b> SongEditor.cs:24</div></div>
+<div class="ttc" id="aclass_song_editor_html_af6aeb37620b3499d08d3364b2cb4b3c8"><div class="ttname"><a href="#af6aeb37620b3499d08d3364b2cb4b3c8">SongEditor.editorNotes</a></div><div class="ttdeci">List&lt; EditorNote &gt; editorNotes</div><div class="ttdoc">list of editornotes.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:60</div></div>
+<div class="ttc" id="aclass_song_editor_html_afc08d97e3b71df6971d0e8e870d5a711"><div class="ttname"><a href="#afc08d97e3b71df6971d0e8e870d5a711">SongEditor.noteHolder</a></div><div class="ttdeci">Transform noteHolder</div><div class="ttdoc">parent of all notes spawned by player.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:23</div></div>
 </div><!-- fragment -->
+</div>
+</div>
+<a id="acbe7c01d92285e90a34c26e47f128e6c" name="acbe7c01d92285e90a34c26e47f128e6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbe7c01d92285e90a34c26e47f128e6c">&#9670;&#160;</a></span>GetNoteEventInfos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static List&lt; <a class="el" href="class_note_event_info.html">NoteEventInfo</a> &gt; SongEditor.GetNoteEventInfos </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Converts the list of <a class="el" href="class_editor_note.html" title="Represents a note in the editor with associated event information.">EditorNote</a>s to a list of <a class="el" href="class_note_event_info.html" title="Class containing all info needed to play a note.">NoteEventInfo</a>s for playing. </p>
+<dl class="section return"><dt>Returns</dt><dd>list of <a class="el" href="class_note_event_info.html" title="Class containing all info needed to play a note.">NoteEventInfo</a>s</dd></dl>
+<div class="fragment"><div class="line"><span class="lineno">  331</span>    {</div>
+<div class="line"><span class="lineno">  332</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a230315399a7c29c6ecb86e72d263c1db">instance</a> == <span class="keyword">null</span>) { Debug.LogError(<span class="stringliteral">&quot;SongEditor instance null&quot;</span>); <span class="keywordflow">return</span> <span class="keyword">null</span>; }</div>
+<div class="line"><span class="lineno">  333</span> </div>
+<div class="line"><span class="lineno">  334</span>        List&lt;NoteEventInfo&gt; noteEvents = <span class="keyword">new</span>();</div>
+<div class="line"><span class="lineno">  335</span>        <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_editor_note.html">EditorNote</a> noteEvent <span class="keywordflow">in</span> <a class="code hl_variable" href="#a230315399a7c29c6ecb86e72d263c1db">instance</a>.editorNotes)</div>
+<div class="line"><span class="lineno">  336</span>        {</div>
+<div class="line"><span class="lineno">  337</span>            noteEvent.noteEvent.noteNumber += 21; <span class="comment">// i still do not fucking know why i need to offset by +/- 21 in some scenarios-</span></div>
+<div class="line"><span class="lineno">  338</span>            noteEvents.Add(noteEvent.<a class="code hl_variable" href="class_editor_note.html#a07a6d3b37f7a7067ecdc79fc29796860">noteEvent</a>);  <span class="comment">// -for the note positions. it is hella annoying but if i just add 21 it works</span></div>
+<div class="line"><span class="lineno">  339</span>                                                  <span class="comment">// perfectly so i&#39;m not gonna bother fixing it. </span></div>
+<div class="line"><span class="lineno">  340</span>        }</div>
+<div class="line"><span class="lineno">  341</span>        <span class="keywordflow">return</span> noteEvents;</div>
+<div class="line"><span class="lineno">  342</span>    }</div>
+<div class="ttc" id="aclass_editor_note_html_a07a6d3b37f7a7067ecdc79fc29796860"><div class="ttname"><a href="class_editor_note.html#a07a6d3b37f7a7067ecdc79fc29796860">EditorNote.noteEvent</a></div><div class="ttdeci">NoteEventInfo noteEvent</div><div class="ttdef"><b>Definition</b> EditorNote.cs:13</div></div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="#ab2eed0148b0fa5d85cf6fad9852cb095">PlayTest()</a>.</p>
+
 </div>
 </div>
 <a id="a8ca58215d5918ff8659f7f70b44fd49b" name="a8ca58215d5918ff8659f7f70b44fd49b"></a>
@@ -367,30 +470,39 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  253</span>    {</div>
-<div class="line"><span class="lineno">  254</span>        <span class="keywordflow">switch</span> (actionName.ToLower()) <span class="comment">// convert actionName to lower and set up the respective action for use with mousebutton # mouseNumber</span></div>
-<div class="line"><span class="lineno">  255</span>        {</div>
-<div class="line"><span class="lineno">  256</span>            <span class="keywordflow">case</span> <span class="stringliteral">&quot;add&quot;</span>:</div>
-<div class="line"><span class="lineno">  257</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="#a86d8b33f2988fdf371b6d2dae09f38d2">addNote</a>.<a class="code hl_function" href="class_editor_action.html#a8b905041ae28db7905fe7b45aec7bdc8">SetEditorAction</a>(mouseNumber);</div>
-<div class="line"><span class="lineno">  258</span>            <span class="keywordflow">case</span> <span class="stringliteral">&quot;remove&quot;</span>:</div>
-<div class="line"><span class="lineno">  259</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="#a100049cdf4727d4b20b9d0ffab8bf18c">removeNotes</a>.<a class="code hl_function" href="class_editor_action.html#a8b905041ae28db7905fe7b45aec7bdc8">SetEditorAction</a>(mouseNumber);</div>
-<div class="line"><span class="lineno">  260</span>            <span class="keywordflow">case</span> <span class="stringliteral">&quot;select&quot;</span>:</div>
-<div class="line"><span class="lineno">  261</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="#a89c04449580334b80a2ffd51844efdb6">selectNotes</a>.<a class="code hl_function" href="class_editor_action.html#a8b905041ae28db7905fe7b45aec7bdc8">SetEditorAction</a>(mouseNumber);</div>
-<div class="line"><span class="lineno">  262</span>            <span class="keywordflow">case</span> <span class="stringliteral">&quot;scale&quot;</span>:</div>
-<div class="line"><span class="lineno">  263</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="#a73f6b48aa56cb12c17419d00e9aee662">scaleNotes</a>.<a class="code hl_function" href="class_editor_action.html#a8b905041ae28db7905fe7b45aec7bdc8">SetEditorAction</a>(mouseNumber);</div>
-<div class="line"><span class="lineno">  264</span>            <span class="keywordflow">case</span> <span class="stringliteral">&quot;move&quot;</span>:</div>
-<div class="line"><span class="lineno">  265</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="#a78e9a6aebc2851a04c2558c076af7c2d">moveNotes</a>.<a class="code hl_function" href="class_editor_action.html#a8b905041ae28db7905fe7b45aec7bdc8">SetEditorAction</a>(mouseNumber);</div>
-<div class="line"><span class="lineno">  266</span>            <span class="keywordflow">default</span>:</div>
-<div class="line"><span class="lineno">  267</span>                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">  268</span> </div>
-<div class="line"><span class="lineno">  269</span>        }</div>
-<div class="line"><span class="lineno">  270</span>    }</div>
-<div class="ttc" id="aclass_editor_action_html_a8b905041ae28db7905fe7b45aec7bdc8"><div class="ttname"><a href="class_editor_action.html#a8b905041ae28db7905fe7b45aec7bdc8">EditorAction.SetEditorAction</a></div><div class="ttdeci">EditorAction SetEditorAction(sbyte mouseNum)</div><div class="ttdoc">Returns a pre existing editoraction and allows you to set the button used to activate it at the same ...</div><div class="ttdef"><b>Definition</b> SongEditor.cs:311</div></div>
-<div class="ttc" id="aclass_song_editor_html_a100049cdf4727d4b20b9d0ffab8bf18c"><div class="ttname"><a href="#a100049cdf4727d4b20b9d0ffab8bf18c">SongEditor.removeNotes</a></div><div class="ttdeci">RemoveNotes removeNotes</div><div class="ttdef"><b>Definition</b> SongEditor.cs:80</div></div>
-<div class="ttc" id="aclass_song_editor_html_a73f6b48aa56cb12c17419d00e9aee662"><div class="ttname"><a href="#a73f6b48aa56cb12c17419d00e9aee662">SongEditor.scaleNotes</a></div><div class="ttdeci">ScaleNotes scaleNotes</div><div class="ttdef"><b>Definition</b> SongEditor.cs:82</div></div>
-<div class="ttc" id="aclass_song_editor_html_a78e9a6aebc2851a04c2558c076af7c2d"><div class="ttname"><a href="#a78e9a6aebc2851a04c2558c076af7c2d">SongEditor.moveNotes</a></div><div class="ttdeci">MoveNotes moveNotes</div><div class="ttdef"><b>Definition</b> SongEditor.cs:83</div></div>
-<div class="ttc" id="aclass_song_editor_html_a86d8b33f2988fdf371b6d2dae09f38d2"><div class="ttname"><a href="#a86d8b33f2988fdf371b6d2dae09f38d2">SongEditor.addNote</a></div><div class="ttdeci">AddNote addNote</div><div class="ttdef"><b>Definition</b> SongEditor.cs:79</div></div>
-<div class="ttc" id="aclass_song_editor_html_a89c04449580334b80a2ffd51844efdb6"><div class="ttname"><a href="#a89c04449580334b80a2ffd51844efdb6">SongEditor.selectNotes</a></div><div class="ttdeci">SelectNotes selectNotes</div><div class="ttdef"><b>Definition</b> SongEditor.cs:81</div></div>
+
+<p>Returns an editor action -reset to their default values- to be assigned to a mouse button. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">actionName</td><td>name of the action</td></tr>
+    <tr><td class="paramname">mouseNumber</td><td>number of mouse button to be assigned to.</td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><span class="lineno">  296</span>    {</div>
+<div class="line"><span class="lineno">  297</span>        <span class="keywordflow">switch</span> (actionName.ToLower()) <span class="comment">// convert actionName to lower and set up the respective action for use with mousebutton # mouseNumber</span></div>
+<div class="line"><span class="lineno">  298</span>        {</div>
+<div class="line"><span class="lineno">  299</span>            <span class="keywordflow">case</span> <span class="stringliteral">&quot;add&quot;</span>:</div>
+<div class="line"><span class="lineno">  300</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="#a86d8b33f2988fdf371b6d2dae09f38d2">addNote</a>.<a class="code hl_function" href="class_editor_action.html#a8b905041ae28db7905fe7b45aec7bdc8">SetEditorAction</a>(mouseNumber);</div>
+<div class="line"><span class="lineno">  301</span>            <span class="keywordflow">case</span> <span class="stringliteral">&quot;remove&quot;</span>:</div>
+<div class="line"><span class="lineno">  302</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="#a100049cdf4727d4b20b9d0ffab8bf18c">removeNotes</a>.<a class="code hl_function" href="class_editor_action.html#a8b905041ae28db7905fe7b45aec7bdc8">SetEditorAction</a>(mouseNumber);</div>
+<div class="line"><span class="lineno">  303</span>            <span class="keywordflow">case</span> <span class="stringliteral">&quot;select&quot;</span>:</div>
+<div class="line"><span class="lineno">  304</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="#a89c04449580334b80a2ffd51844efdb6">selectNotes</a>.<a class="code hl_function" href="class_editor_action.html#a8b905041ae28db7905fe7b45aec7bdc8">SetEditorAction</a>(mouseNumber);</div>
+<div class="line"><span class="lineno">  305</span>            <span class="keywordflow">case</span> <span class="stringliteral">&quot;scale&quot;</span>:</div>
+<div class="line"><span class="lineno">  306</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="#a73f6b48aa56cb12c17419d00e9aee662">scaleNotes</a>.<a class="code hl_function" href="class_editor_action.html#a8b905041ae28db7905fe7b45aec7bdc8">SetEditorAction</a>(mouseNumber);</div>
+<div class="line"><span class="lineno">  307</span>            <span class="keywordflow">case</span> <span class="stringliteral">&quot;move&quot;</span>:</div>
+<div class="line"><span class="lineno">  308</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="#a78e9a6aebc2851a04c2558c076af7c2d">moveNotes</a>.<a class="code hl_function" href="class_editor_action.html#a8b905041ae28db7905fe7b45aec7bdc8">SetEditorAction</a>(mouseNumber);</div>
+<div class="line"><span class="lineno">  309</span>            <span class="keywordflow">default</span>:</div>
+<div class="line"><span class="lineno">  310</span>                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">  311</span> </div>
+<div class="line"><span class="lineno">  312</span>        }</div>
+<div class="line"><span class="lineno">  313</span>    }</div>
+<div class="ttc" id="aclass_editor_action_html_a8b905041ae28db7905fe7b45aec7bdc8"><div class="ttname"><a href="class_editor_action.html#a8b905041ae28db7905fe7b45aec7bdc8">EditorAction.SetEditorAction</a></div><div class="ttdeci">EditorAction SetEditorAction(sbyte mouseNum)</div><div class="ttdoc">Returns a pre existing editoraction and allows you to set the button used to activate it at the same ...</div><div class="ttdef"><b>Definition</b> SongEditor.cs:376</div></div>
+<div class="ttc" id="aclass_song_editor_html_a100049cdf4727d4b20b9d0ffab8bf18c"><div class="ttname"><a href="#a100049cdf4727d4b20b9d0ffab8bf18c">SongEditor.removeNotes</a></div><div class="ttdeci">RemoveNotes removeNotes</div><div class="ttdef"><b>Definition</b> SongEditor.cs:83</div></div>
+<div class="ttc" id="aclass_song_editor_html_a73f6b48aa56cb12c17419d00e9aee662"><div class="ttname"><a href="#a73f6b48aa56cb12c17419d00e9aee662">SongEditor.scaleNotes</a></div><div class="ttdeci">ScaleNotes scaleNotes</div><div class="ttdef"><b>Definition</b> SongEditor.cs:85</div></div>
+<div class="ttc" id="aclass_song_editor_html_a78e9a6aebc2851a04c2558c076af7c2d"><div class="ttname"><a href="#a78e9a6aebc2851a04c2558c076af7c2d">SongEditor.moveNotes</a></div><div class="ttdeci">MoveNotes moveNotes</div><div class="ttdef"><b>Definition</b> SongEditor.cs:86</div></div>
+<div class="ttc" id="aclass_song_editor_html_a86d8b33f2988fdf371b6d2dae09f38d2"><div class="ttname"><a href="#a86d8b33f2988fdf371b6d2dae09f38d2">SongEditor.addNote</a></div><div class="ttdeci">AddNote addNote</div><div class="ttdef"><b>Definition</b> SongEditor.cs:82</div></div>
+<div class="ttc" id="aclass_song_editor_html_a89c04449580334b80a2ffd51844efdb6"><div class="ttname"><a href="#a89c04449580334b80a2ffd51844efdb6">SongEditor.selectNotes</a></div><div class="ttdeci">SelectNotes selectNotes</div><div class="ttdef"><b>Definition</b> SongEditor.cs:84</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -410,34 +522,34 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Spawns the piano roll. </p>
-<div class="fragment"><div class="line"><span class="lineno">  199</span>    {</div>
-<div class="line"><span class="lineno">  200</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 88; i++) <span class="comment">// for each of the 88 keys:</span></div>
-<div class="line"><span class="lineno">  201</span>        {</div>
-<div class="line"><span class="lineno">  202</span>            Transform trans = Instantiate(<a class="code hl_variable" href="#ab8c2eaa82ad4fecc1b77678519aa01da">keyPrefab</a>, transform).transform; <span class="comment">// spawn key and get position</span></div>
-<div class="line"><span class="lineno">  203</span>            trans.position = <span class="keyword">new</span>(i, 0, 0); <span class="comment">// set key position</span></div>
-<div class="line"><span class="lineno">  204</span>            trans.localScale = <a class="code hl_variable" href="#a31ce4a989ca47d858805e609a5f930b7">baseKeyScale</a>; <span class="comment">// set key scale</span></div>
-<div class="line"><span class="lineno">  205</span>            trans.GetComponent&lt;SpriteRenderer&gt;().color = GetKeyColour(i); <span class="comment">//set key colour</span></div>
-<div class="line"><span class="lineno">  206</span>            Transform lane = Instantiate(<a class="code hl_variable" href="#ab8c2eaa82ad4fecc1b77678519aa01da">keyPrefab</a>, trans).transform; <span class="comment">// create keyLane for key</span></div>
-<div class="line"><span class="lineno">  207</span>            lane.GetComponent&lt;SpriteRenderer&gt;().color = i % 2 == 0 ? <a class="code hl_variable" href="#acbefe01fcae46b270231350f7b253b85">keyLaneColour1</a> : <a class="code hl_variable" href="#a04f5dd5c95e9f86f341340fb542e8187">keyLaneColour2</a>; <span class="comment">// key lane colour that alternates</span></div>
-<div class="line"><span class="lineno">  208</span>            lane.localScale = <a class="code hl_variable" href="#aa8b1784297c4ab5d6c04309fcb211b70">keyLaneScale</a>; <span class="comment">// set keyLane Scale</span></div>
-<div class="line"><span class="lineno">  209</span>            lane.position += <span class="keyword">new</span> Vector3(0f, (<a class="code hl_variable" href="#aa8b1784297c4ab5d6c04309fcb211b70">keyLaneScale</a>.y * <a class="code hl_variable" href="#a31ce4a989ca47d858805e609a5f930b7">baseKeyScale</a>.y / 2) - 2.5f, 1f); <span class="comment">// set key lane position.</span></div>
-<div class="line"><span class="lineno">  210</span>            lane.gameObject.tag = <span class="stringliteral">&quot;KeyLane&quot;</span>;</div>
-<div class="line"><span class="lineno">  211</span> </div>
-<div class="line"><span class="lineno">  212</span>            <a class="code hl_variable" href="#a5f68797697beccabe834ad603ad1c035">keyLanes</a>.Add(i, lane.gameObject); <span class="comment">// add keylane to dictionary with X position as the key.</span></div>
-<div class="line"><span class="lineno">  213</span>        }</div>
-<div class="line"><span class="lineno">  214</span>        Color GetKeyColour(<span class="keywordtype">int</span> i)</div>
-<div class="line"><span class="lineno">  215</span>        {</div>
-<div class="line"><span class="lineno">  216</span>            <span class="keywordtype">int</span> value = i % 12;</div>
-<div class="line"><span class="lineno">  217</span>            <span class="keywordflow">if</span> (value == 0 || value == 2 || value == 3 || value == 5 || value == 7 || value == 8 || value == 10) <span class="keywordflow">return</span> Color.white;</div>
-<div class="line"><span class="lineno">  218</span>            <span class="keywordflow">else</span> { <span class="keywordflow">return</span> Color.black; }</div>
-<div class="line"><span class="lineno">  219</span>        }</div>
-<div class="line"><span class="lineno">  220</span>    }</div>
-<div class="ttc" id="aclass_song_editor_html_a04f5dd5c95e9f86f341340fb542e8187"><div class="ttname"><a href="#a04f5dd5c95e9f86f341340fb542e8187">SongEditor.keyLaneColour2</a></div><div class="ttdeci">Color keyLaneColour2</div><div class="ttdef"><b>Definition</b> SongEditor.cs:28</div></div>
-<div class="ttc" id="aclass_song_editor_html_a31ce4a989ca47d858805e609a5f930b7"><div class="ttname"><a href="#a31ce4a989ca47d858805e609a5f930b7">SongEditor.baseKeyScale</a></div><div class="ttdeci">Vector3 baseKeyScale</div><div class="ttdoc">size of piano keys.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:36</div></div>
-<div class="ttc" id="aclass_song_editor_html_a5f68797697beccabe834ad603ad1c035"><div class="ttname"><a href="#a5f68797697beccabe834ad603ad1c035">SongEditor.keyLanes</a></div><div class="ttdeci">Dictionary&lt; int, GameObject &gt; keyLanes</div><div class="ttdoc">Dictionary of intiger X positions and key lane objects for easy detection and positioning.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:20</div></div>
-<div class="ttc" id="aclass_song_editor_html_aa8b1784297c4ab5d6c04309fcb211b70"><div class="ttname"><a href="#aa8b1784297c4ab5d6c04309fcb211b70">SongEditor.keyLaneScale</a></div><div class="ttdeci">Vector3 keyLaneScale</div><div class="ttdoc">size of key lanes</div><div class="ttdef"><b>Definition</b> SongEditor.cs:32</div></div>
-<div class="ttc" id="aclass_song_editor_html_ab8c2eaa82ad4fecc1b77678519aa01da"><div class="ttname"><a href="#ab8c2eaa82ad4fecc1b77678519aa01da">SongEditor.keyPrefab</a></div><div class="ttdeci">GameObject keyPrefab</div><div class="ttdef"><b>Definition</b> SongEditor.cs:27</div></div>
-<div class="ttc" id="aclass_song_editor_html_acbefe01fcae46b270231350f7b253b85"><div class="ttname"><a href="#acbefe01fcae46b270231350f7b253b85">SongEditor.keyLaneColour1</a></div><div class="ttdeci">Color keyLaneColour1</div><div class="ttdef"><b>Definition</b> SongEditor.cs:28</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  238</span>    {</div>
+<div class="line"><span class="lineno">  239</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 88; i++) <span class="comment">// for each of the 88 keys:</span></div>
+<div class="line"><span class="lineno">  240</span>        {</div>
+<div class="line"><span class="lineno">  241</span>            Transform trans = Instantiate(<a class="code hl_variable" href="#ab8c2eaa82ad4fecc1b77678519aa01da">keyPrefab</a>, transform).transform; <span class="comment">// spawn key and get position</span></div>
+<div class="line"><span class="lineno">  242</span>            trans.position = <span class="keyword">new</span>(i, 0, 0); <span class="comment">// set key position</span></div>
+<div class="line"><span class="lineno">  243</span>            trans.localScale = <a class="code hl_variable" href="#a31ce4a989ca47d858805e609a5f930b7">baseKeyScale</a>; <span class="comment">// set key scale</span></div>
+<div class="line"><span class="lineno">  244</span>            trans.GetComponent&lt;SpriteRenderer&gt;().color = GetKeyColour(i); <span class="comment">//set key colour</span></div>
+<div class="line"><span class="lineno">  245</span>            Transform lane = Instantiate(<a class="code hl_variable" href="#ab8c2eaa82ad4fecc1b77678519aa01da">keyPrefab</a>, trans).transform; <span class="comment">// create keyLane for key</span></div>
+<div class="line"><span class="lineno">  246</span>            lane.GetComponent&lt;SpriteRenderer&gt;().color = i % 2 == 0 ? <a class="code hl_variable" href="#acbefe01fcae46b270231350f7b253b85">keyLaneColour1</a> : <a class="code hl_variable" href="#a04f5dd5c95e9f86f341340fb542e8187">keyLaneColour2</a>; <span class="comment">// key lane colour that alternates</span></div>
+<div class="line"><span class="lineno">  247</span>            lane.localScale = <a class="code hl_variable" href="#aa8b1784297c4ab5d6c04309fcb211b70">keyLaneScale</a>; <span class="comment">// set keyLane Scale</span></div>
+<div class="line"><span class="lineno">  248</span>            lane.position += <span class="keyword">new</span> Vector3(0f, (<a class="code hl_variable" href="#aa8b1784297c4ab5d6c04309fcb211b70">keyLaneScale</a>.y * <a class="code hl_variable" href="#a31ce4a989ca47d858805e609a5f930b7">baseKeyScale</a>.y / 2) - 2.5f, 1f); <span class="comment">// set key lane position.</span></div>
+<div class="line"><span class="lineno">  249</span>            lane.gameObject.tag = <span class="stringliteral">&quot;KeyLane&quot;</span>;</div>
+<div class="line"><span class="lineno">  250</span> </div>
+<div class="line"><span class="lineno">  251</span>            <a class="code hl_variable" href="#a5f68797697beccabe834ad603ad1c035">keyLanes</a>.Add(i, lane.gameObject); <span class="comment">// add keylane to dictionary with X position as the key.</span></div>
+<div class="line"><span class="lineno">  252</span>        }</div>
+<div class="line"><span class="lineno">  253</span>        Color GetKeyColour(<span class="keywordtype">int</span> i)</div>
+<div class="line"><span class="lineno">  254</span>        {</div>
+<div class="line"><span class="lineno">  255</span>            <span class="keywordtype">int</span> value = i % 12;</div>
+<div class="line"><span class="lineno">  256</span>            <span class="keywordflow">if</span> (value == 0 || value == 2 || value == 3 || value == 5 || value == 7 || value == 8 || value == 10) <span class="keywordflow">return</span> Color.white;</div>
+<div class="line"><span class="lineno">  257</span>            <span class="keywordflow">else</span> { <span class="keywordflow">return</span> Color.black; }</div>
+<div class="line"><span class="lineno">  258</span>        }</div>
+<div class="line"><span class="lineno">  259</span>    }</div>
+<div class="ttc" id="aclass_song_editor_html_a04f5dd5c95e9f86f341340fb542e8187"><div class="ttname"><a href="#a04f5dd5c95e9f86f341340fb542e8187">SongEditor.keyLaneColour2</a></div><div class="ttdeci">Color keyLaneColour2</div><div class="ttdef"><b>Definition</b> SongEditor.cs:27</div></div>
+<div class="ttc" id="aclass_song_editor_html_a31ce4a989ca47d858805e609a5f930b7"><div class="ttname"><a href="#a31ce4a989ca47d858805e609a5f930b7">SongEditor.baseKeyScale</a></div><div class="ttdeci">Vector3 baseKeyScale</div><div class="ttdoc">size of piano keys.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:35</div></div>
+<div class="ttc" id="aclass_song_editor_html_a5f68797697beccabe834ad603ad1c035"><div class="ttname"><a href="#a5f68797697beccabe834ad603ad1c035">SongEditor.keyLanes</a></div><div class="ttdeci">Dictionary&lt; int, GameObject &gt; keyLanes</div><div class="ttdoc">Dictionary of intiger X positions and key lane objects for easy detection and positioning.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:19</div></div>
+<div class="ttc" id="aclass_song_editor_html_aa8b1784297c4ab5d6c04309fcb211b70"><div class="ttname"><a href="#aa8b1784297c4ab5d6c04309fcb211b70">SongEditor.keyLaneScale</a></div><div class="ttdeci">Vector3 keyLaneScale</div><div class="ttdoc">size of key lanes</div><div class="ttdef"><b>Definition</b> SongEditor.cs:31</div></div>
+<div class="ttc" id="aclass_song_editor_html_ab8c2eaa82ad4fecc1b77678519aa01da"><div class="ttname"><a href="#ab8c2eaa82ad4fecc1b77678519aa01da">SongEditor.keyPrefab</a></div><div class="ttdeci">GameObject keyPrefab</div><div class="ttdef"><b>Definition</b> SongEditor.cs:26</div></div>
+<div class="ttc" id="aclass_song_editor_html_acbefe01fcae46b270231350f7b253b85"><div class="ttname"><a href="#acbefe01fcae46b270231350f7b253b85">SongEditor.keyLaneColour1</a></div><div class="ttdeci">Color keyLaneColour1</div><div class="ttdef"><b>Definition</b> SongEditor.cs:27</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="#aaeb19aa1435183bfea8925967fc4493c">Start()</a>.</p>
 
@@ -457,10 +569,22 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  110</span>    {</div>
-<div class="line"><span class="lineno">  111</span> </div>
-<div class="line"><span class="lineno">  112</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">  144</span>    {</div>
+<div class="line"><span class="lineno">  145</span> </div>
+<div class="line"><span class="lineno">  146</span>        <span class="keywordflow">if</span> (!Input.GetKeyDown(KeyCode.P)) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  147</span>        <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrEmpty(GameSettings.currentSongPath)) { <a class="code hl_variable" href="#aa136cf274681908e55057683d3e4299e">group</a> = SongSelection.AssembleFileGroup(<a class="code hl_variable" href="#a56a180432eb3e79e7821ad310b11e3a7">songFolderPath</a>); }</div>
+<div class="line"><span class="lineno">  148</span>        <span class="keywordflow">else</span> { <a class="code hl_variable" href="#aa136cf274681908e55057683d3e4299e">group</a> = GameSettings.currentFileGroup; }</div>
+<div class="line"><span class="lineno">  149</span>        <a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.LoadSongToGameSettingsAndStart(<a class="code hl_variable" href="#aa136cf274681908e55057683d3e4299e">group</a>, <a class="code hl_function" href="#acbe7c01d92285e90a34c26e47f128e6c">GetNoteEventInfos</a>(), <a class="code hl_variable" href="#a230315399a7c29c6ecb86e72d263c1db">instance</a>.bpm);</div>
+<div class="line"><span class="lineno">  150</span> </div>
+<div class="line"><span class="lineno">  151</span>    }</div>
+<div class="ttc" id="aclass_game_manager_html"><div class="ttname"><a href="class_game_manager.html">GameManager</a></div><div class="ttdef"><b>Definition</b> GameManager.cs:9</div></div>
+<div class="ttc" id="aclass_game_manager_html_a7666e8468dac197b9eb32dd32128524f"><div class="ttname"><a href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">GameManager.instance</a></div><div class="ttdeci">static GameManager instance</div><div class="ttdoc">singleton reference.</div><div class="ttdef"><b>Definition</b> GameManager.cs:13</div></div>
+<div class="ttc" id="aclass_song_editor_html_a56a180432eb3e79e7821ad310b11e3a7"><div class="ttname"><a href="#a56a180432eb3e79e7821ad310b11e3a7">SongEditor.songFolderPath</a></div><div class="ttdeci">string songFolderPath</div><div class="ttdef"><b>Definition</b> SongEditor.cs:93</div></div>
+<div class="ttc" id="aclass_song_editor_html_aa136cf274681908e55057683d3e4299e"><div class="ttname"><a href="#aa136cf274681908e55057683d3e4299e">SongEditor.group</a></div><div class="ttdeci">FileGroup group</div><div class="ttdef"><b>Definition</b> SongEditor.cs:94</div></div>
+<div class="ttc" id="aclass_song_editor_html_acbe7c01d92285e90a34c26e47f128e6c"><div class="ttname"><a href="#acbe7c01d92285e90a34c26e47f128e6c">SongEditor.GetNoteEventInfos</a></div><div class="ttdeci">static List&lt; NoteEventInfo &gt; GetNoteEventInfos()</div><div class="ttdoc">Converts the list of EditorNotes to a list of NoteEventInfos for playing.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:330</div></div>
 </div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="#ad9050147a8cc831212833b0f50360534">Update()</a>.</p>
+
 </div>
 </div>
 <a id="a867db3b2c9d922e28900e85bde9844c9" name="a867db3b2c9d922e28900e85bde9844c9"></a>
@@ -485,11 +609,50 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><span class="lineno">  190</span>    {</div>
-<div class="line"><span class="lineno">  191</span>        <a class="code hl_variable" href="#af6aeb37620b3499d08d3364b2cb4b3c8">editorNotes</a>.Remove(note);</div>
-<div class="line"><span class="lineno">  192</span>        Destroy(note.gameObject);</div>
-<div class="line"><span class="lineno">  193</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">  229</span>    {</div>
+<div class="line"><span class="lineno">  230</span>        <a class="code hl_variable" href="#af6aeb37620b3499d08d3364b2cb4b3c8">editorNotes</a>.Remove(note);</div>
+<div class="line"><span class="lineno">  231</span>        Destroy(note.gameObject);</div>
+<div class="line"><span class="lineno">  232</span>    }</div>
 </div><!-- fragment -->
+</div>
+</div>
+<a id="a66e89487a0a5d844e10e3ecb2b4b9425" name="a66e89487a0a5d844e10e3ecb2b4b9425"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66e89487a0a5d844e10e3ecb2b4b9425">&#9670;&#160;</a></span>ScrollCamera()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SongEditor.ScrollCamera </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Scroll the camera with the mouse wheel when cursor is not over the piano roll. </p>
+<div class="fragment"><div class="line"><span class="lineno">  122</span>    {</div>
+<div class="line"><span class="lineno">  123</span>        <span class="keywordflow">if</span> (Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero)) <span class="keywordflow">return</span>; <span class="comment">// if mouse over piano roll cancel scroll.</span></div>
+<div class="line"><span class="lineno">  124</span>        sbyte scrollDir = (sbyte)(Input.mouseScrollDelta.y == 0 ? 0 : Mathf.Sign(Input.mouseScrollDelta.y)); <span class="comment">// get scroll direction.</span></div>
+<div class="line"><span class="lineno">  125</span>        cam.transform.position = <span class="keyword">new</span> Vector3(</div>
+<div class="line"><span class="lineno">  126</span>            <a class="code hl_variable" href="#a34ef237c23fbef4cf3167e1cca5e61ae">cam</a>.transform.position.x,</div>
+<div class="line"><span class="lineno">  127</span>            Mathf.Clamp(<a class="code hl_variable" href="#a34ef237c23fbef4cf3167e1cca5e61ae">cam</a>.transform.position.y + (scrollDir * <a class="code hl_variable" href="#a95a06bb02f2e3b52a24b375120dab166">cameraScrollSpeed</a> * 15), 27.5f, Mathf.Infinity), <span class="comment">// calculate new y value and clamp it.</span></div>
+<div class="line"><span class="lineno">  128</span>            <a class="code hl_variable" href="#a34ef237c23fbef4cf3167e1cca5e61ae">cam</a>.transform.position.z); <span class="comment">// add to camera position.</span></div>
+<div class="line"><span class="lineno">  129</span> </div>
+<div class="line"><span class="lineno">  130</span>    }</div>
+<div class="ttc" id="aclass_song_editor_html_a95a06bb02f2e3b52a24b375120dab166"><div class="ttname"><a href="#a95a06bb02f2e3b52a24b375120dab166">SongEditor.cameraScrollSpeed</a></div><div class="ttdeci">readonly float cameraScrollSpeed</div><div class="ttdef"><b>Definition</b> SongEditor.cs:77</div></div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="#ad9050147a8cc831212833b0f50360534">Update()</a>.</p>
+
 </div>
 </div>
 <a id="a1b355596bbfdd8b8c115d11647fbc135" name="a1b355596bbfdd8b8c115d11647fbc135"></a>
@@ -514,18 +677,18 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><span class="lineno">  240</span>    {</div>
-<div class="line"><span class="lineno">  241</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a45639feaf9c6e5176303d6f8ef6ba9e5">currentlySelectedButton</a> != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  242</span>        {</div>
-<div class="line"><span class="lineno">  243</span>            currentlySelectedButton.interactable = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  244</span>        }</div>
-<div class="line"><span class="lineno">  245</span> </div>
-<div class="line"><span class="lineno">  246</span>        button.interactable = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  247</span>        <a class="code hl_variable" href="#a45639feaf9c6e5176303d6f8ef6ba9e5">currentlySelectedButton</a> = button;</div>
-<div class="line"><span class="lineno">  248</span> </div>
-<div class="line"><span class="lineno">  249</span> </div>
-<div class="line"><span class="lineno">  250</span>    }</div>
-<div class="ttc" id="aclass_song_editor_html_a45639feaf9c6e5176303d6f8ef6ba9e5"><div class="ttname"><a href="#a45639feaf9c6e5176303d6f8ef6ba9e5">SongEditor.currentlySelectedButton</a></div><div class="ttdeci">Button currentlySelectedButton</div><div class="ttdef"><b>Definition</b> SongEditor.cs:87</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  279</span>    {</div>
+<div class="line"><span class="lineno">  280</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a45639feaf9c6e5176303d6f8ef6ba9e5">currentlySelectedButton</a> != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  281</span>        {</div>
+<div class="line"><span class="lineno">  282</span>            currentlySelectedButton.interactable = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  283</span>        }</div>
+<div class="line"><span class="lineno">  284</span> </div>
+<div class="line"><span class="lineno">  285</span>        button.interactable = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  286</span>        <a class="code hl_variable" href="#a45639feaf9c6e5176303d6f8ef6ba9e5">currentlySelectedButton</a> = button;</div>
+<div class="line"><span class="lineno">  287</span> </div>
+<div class="line"><span class="lineno">  288</span> </div>
+<div class="line"><span class="lineno">  289</span>    }</div>
+<div class="ttc" id="aclass_song_editor_html_a45639feaf9c6e5176303d6f8ef6ba9e5"><div class="ttname"><a href="#a45639feaf9c6e5176303d6f8ef6ba9e5">SongEditor.currentlySelectedButton</a></div><div class="ttdeci">Button currentlySelectedButton</div><div class="ttdef"><b>Definition</b> SongEditor.cs:90</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -551,11 +714,11 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><span class="lineno">  158</span>    {</div>
-<div class="line"><span class="lineno">  159</span>        <span class="keywordflow">if</span> (value &lt;= 0) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><span class="lineno">  160</span>        <a class="code hl_variable" href="#a030687a26d02bea951fa8176995f25d4">vSnap</a> = value;</div>
-<div class="line"><span class="lineno">  161</span>    }</div>
-<div class="ttc" id="aclass_song_editor_html_a030687a26d02bea951fa8176995f25d4"><div class="ttname"><a href="#a030687a26d02bea951fa8176995f25d4">SongEditor.vSnap</a></div><div class="ttdeci">float vSnap</div><div class="ttdoc">how many subdivisions for vertical note snapping.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:50</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  197</span>    {</div>
+<div class="line"><span class="lineno">  198</span>        <span class="keywordflow">if</span> (value &lt;= 0) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><span class="lineno">  199</span>        <a class="code hl_variable" href="#a030687a26d02bea951fa8176995f25d4">vSnap</a> = value;</div>
+<div class="line"><span class="lineno">  200</span>    }</div>
+<div class="ttc" id="aclass_song_editor_html_a030687a26d02bea951fa8176995f25d4"><div class="ttname"><a href="#a030687a26d02bea951fa8176995f25d4">SongEditor.vSnap</a></div><div class="ttdeci">float vSnap</div><div class="ttdoc">how many subdivisions for vertical note snapping.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:49</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -581,15 +744,15 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><span class="lineno">  167</span>    {</div>
-<div class="line"><span class="lineno">  168</span> </div>
-<div class="line"><span class="lineno">  169</span>        <span class="keywordflow">if</span>(!<span class="keywordtype">float</span>.TryParse(value, out <span class="keywordtype">float</span> valueF))</div>
-<div class="line"><span class="lineno">  170</span>        {</div>
-<div class="line"><span class="lineno">  171</span>            Debug.LogError(<span class="stringliteral">&quot;Issue parsing new vSnap Value: &quot;</span> + value);</div>
-<div class="line"><span class="lineno">  172</span>        }</div>
-<div class="line"><span class="lineno">  173</span>        <span class="keywordflow">if</span>(valueF&lt;=0) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><span class="lineno">  174</span>        <a class="code hl_variable" href="#a030687a26d02bea951fa8176995f25d4">vSnap</a> = valueF;</div>
-<div class="line"><span class="lineno">  175</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">  206</span>    {</div>
+<div class="line"><span class="lineno">  207</span> </div>
+<div class="line"><span class="lineno">  208</span>        <span class="keywordflow">if</span> (!<span class="keywordtype">float</span>.TryParse(value, out <span class="keywordtype">float</span> valueF))</div>
+<div class="line"><span class="lineno">  209</span>        {</div>
+<div class="line"><span class="lineno">  210</span>            Debug.LogError(<span class="stringliteral">&quot;Issue parsing new vSnap Value: &quot;</span> + value);</div>
+<div class="line"><span class="lineno">  211</span>        }</div>
+<div class="line"><span class="lineno">  212</span>        <span class="keywordflow">if</span> (valueF &lt;= 0) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><span class="lineno">  213</span>        <a class="code hl_variable" href="#a030687a26d02bea951fa8176995f25d4">vSnap</a> = valueF;</div>
+<div class="line"><span class="lineno">  214</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -624,10 +787,10 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>vector with fraction-rounded values.</dd></dl>
-<div class="fragment"><div class="line"><span class="lineno">  229</span>    {</div>
-<div class="line"><span class="lineno">  230</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a030687a26d02bea951fa8176995f25d4">vSnap</a> &lt;= 0) { <span class="keywordflow">return</span> pos; } <span class="comment">// set to 0 for no snapping.</span></div>
-<div class="line"><span class="lineno">  231</span>        <span class="keywordflow">else</span> { <span class="keywordflow">return</span> <span class="keyword">new</span> Vector2(pos.x, Utility.RoundToFraction(pos.y - 5f, <a class="code hl_variable" href="#a030687a26d02bea951fa8176995f25d4">vSnap</a>) + 2.5f); } <span class="comment">//otherwise round y to nearest fraction given ( subtraction and addition for some offsets).</span></div>
-<div class="line"><span class="lineno">  232</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">  268</span>    {</div>
+<div class="line"><span class="lineno">  269</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a030687a26d02bea951fa8176995f25d4">vSnap</a> &lt;= 0) { <span class="keywordflow">return</span> pos; } <span class="comment">// set to 0 for no snapping.</span></div>
+<div class="line"><span class="lineno">  270</span>        <span class="keywordflow">else</span> { <span class="keywordflow">return</span> <span class="keyword">new</span> Vector2(pos.x, Utility.RoundToFraction(pos.y - 5f, <a class="code hl_variable" href="#a030687a26d02bea951fa8176995f25d4">vSnap</a>) + 2.5f); } <span class="comment">//otherwise round y to nearest fraction given ( subtraction and addition for some offsets).</span></div>
+<div class="line"><span class="lineno">  271</span>    }</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="#af7e43d1d5adc7550a37790778038d4d6">CreateNote()</a>.</p>
 
@@ -655,15 +818,15 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   95</span>    {</div>
-<div class="line"><span class="lineno">   96</span>        <a class="code hl_variable" href="#a34ef237c23fbef4cf3167e1cca5e61ae">cam</a> = Camera.main;</div>
-<div class="line"><span class="lineno">   97</span> </div>
-<div class="line"><span class="lineno">   98</span>        <a class="code hl_function" href="#a6935913f57e6938c26504d31940bd101">InitializePianoRoll</a>();</div>
-<div class="line"><span class="lineno">   99</span>        <a class="code hl_variable" href="#a2ff7acd9bbc5ca6ea3fc49e6502f94e1">triMouseButtons</a> = FindObjectsOfType&lt;TriMouseButton&gt;(<span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">  100</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">  102</span>    {</div>
+<div class="line"><span class="lineno">  103</span>        <a class="code hl_variable" href="#a34ef237c23fbef4cf3167e1cca5e61ae">cam</a> = Camera.main;</div>
+<div class="line"><span class="lineno">  104</span> </div>
+<div class="line"><span class="lineno">  105</span>        <a class="code hl_function" href="#a6935913f57e6938c26504d31940bd101">InitializePianoRoll</a>();</div>
+<div class="line"><span class="lineno">  106</span>        <a class="code hl_variable" href="#a2ff7acd9bbc5ca6ea3fc49e6502f94e1">triMouseButtons</a> = FindObjectsOfType&lt;TriMouseButton&gt;(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  107</span>        <a class="code hl_variable" href="#a56a180432eb3e79e7821ad310b11e3a7">songFolderPath</a> = Application.persistentDataPath + <span class="stringliteral">&quot;/Songs/FurElise&quot;</span>;</div>
+<div class="line"><span class="lineno">  108</span>    }</div>
 <div class="ttc" id="aclass_song_editor_html_a2ff7acd9bbc5ca6ea3fc49e6502f94e1"><div class="ttname"><a href="#a2ff7acd9bbc5ca6ea3fc49e6502f94e1">SongEditor.triMouseButtons</a></div><div class="ttdeci">TriMouseButton[] triMouseButtons</div><div class="ttdoc">list of all custom 3 mouse button ui buttons i can use to iterate and reset their colours.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:73</div></div>
-<div class="ttc" id="aclass_song_editor_html_a34ef237c23fbef4cf3167e1cca5e61ae"><div class="ttname"><a href="#a34ef237c23fbef4cf3167e1cca5e61ae">SongEditor.cam</a></div><div class="ttdeci">Camera cam</div><div class="ttdef"><b>Definition</b> SongEditor.cs:26</div></div>
-<div class="ttc" id="aclass_song_editor_html_a6935913f57e6938c26504d31940bd101"><div class="ttname"><a href="#a6935913f57e6938c26504d31940bd101">SongEditor.InitializePianoRoll</a></div><div class="ttdeci">void InitializePianoRoll()</div><div class="ttdoc">Spawns the piano roll.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:198</div></div>
+<div class="ttc" id="aclass_song_editor_html_a6935913f57e6938c26504d31940bd101"><div class="ttname"><a href="#a6935913f57e6938c26504d31940bd101">SongEditor.InitializePianoRoll</a></div><div class="ttdeci">void InitializePianoRoll()</div><div class="ttdoc">Spawns the piano roll.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:237</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -689,10 +852,10 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><span class="lineno">  181</span>    {</div>
-<div class="line"><span class="lineno">  182</span>        <a class="code hl_variable" href="#a4b76317a35fc08bc1afdd2421e8f8515">vSnapMenu</a>.SetActive(enabled);</div>
-<div class="line"><span class="lineno">  183</span>    }</div>
-<div class="ttc" id="aclass_song_editor_html_a4b76317a35fc08bc1afdd2421e8f8515"><div class="ttname"><a href="#a4b76317a35fc08bc1afdd2421e8f8515">SongEditor.vSnapMenu</a></div><div class="ttdeci">GameObject vSnapMenu</div><div class="ttdef"><b>Definition</b> SongEditor.cs:88</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  220</span>    {</div>
+<div class="line"><span class="lineno">  221</span>        <a class="code hl_variable" href="#a4b76317a35fc08bc1afdd2421e8f8515">vSnapMenu</a>.SetActive(enabled);</div>
+<div class="line"><span class="lineno">  222</span>    }</div>
+<div class="ttc" id="aclass_song_editor_html_a4b76317a35fc08bc1afdd2421e8f8515"><div class="ttname"><a href="#a4b76317a35fc08bc1afdd2421e8f8515">SongEditor.vSnapMenu</a></div><div class="ttdeci">GameObject vSnapMenu</div><div class="ttdef"><b>Definition</b> SongEditor.cs:91</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -718,13 +881,18 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  102</span>    {</div>
-<div class="line"><span class="lineno">  103</span>        <a class="code hl_variable" href="#ac957ff17bd4bbe159aae6205b90eaf12">leftAction</a>?.<a class="code hl_function" href="class_editor_action.html#ac4d2773e9cbecfe862c60e338d55d9df">HandleInput</a>();</div>
-<div class="line"><span class="lineno">  104</span>        <a class="code hl_variable" href="#a97599edd8bd07f2765a2cca235907106">middleAction</a>?.<a class="code hl_function" href="class_editor_action.html#ac4d2773e9cbecfe862c60e338d55d9df">HandleInput</a>();</div>
-<div class="line"><span class="lineno">  105</span>        <a class="code hl_variable" href="#ad1f503815a7caeb3c07eddcac9b490ff">rightAction</a>?.<a class="code hl_function" href="class_editor_action.html#ac4d2773e9cbecfe862c60e338d55d9df">HandleInput</a>();</div>
-<div class="line"><span class="lineno">  106</span>    }</div>
-<div class="ttc" id="aclass_editor_action_html_ac4d2773e9cbecfe862c60e338d55d9df"><div class="ttname"><a href="class_editor_action.html#ac4d2773e9cbecfe862c60e338d55d9df">EditorAction.HandleInput</a></div><div class="ttdeci">virtual void HandleInput()</div><div class="ttdoc">calls all other input methods (down,hold,up,scrollwheel).</div><div class="ttdef"><b>Definition</b> SongEditor.cs:321</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  110</span>    {</div>
+<div class="line"><span class="lineno">  111</span>        <a class="code hl_variable" href="#ac957ff17bd4bbe159aae6205b90eaf12">leftAction</a>?.<a class="code hl_function" href="class_editor_action.html#ac4d2773e9cbecfe862c60e338d55d9df">HandleInput</a>();</div>
+<div class="line"><span class="lineno">  112</span>        <a class="code hl_variable" href="#a97599edd8bd07f2765a2cca235907106">middleAction</a>?.<a class="code hl_function" href="class_editor_action.html#ac4d2773e9cbecfe862c60e338d55d9df">HandleInput</a>();</div>
+<div class="line"><span class="lineno">  113</span>        <a class="code hl_variable" href="#ad1f503815a7caeb3c07eddcac9b490ff">rightAction</a>?.<a class="code hl_function" href="class_editor_action.html#ac4d2773e9cbecfe862c60e338d55d9df">HandleInput</a>();</div>
+<div class="line"><span class="lineno">  114</span>        <a class="code hl_function" href="#a66e89487a0a5d844e10e3ecb2b4b9425">ScrollCamera</a>();</div>
+<div class="line"><span class="lineno">  115</span> </div>
+<div class="line"><span class="lineno">  116</span>        <a class="code hl_function" href="#ab2eed0148b0fa5d85cf6fad9852cb095">PlayTest</a>();</div>
+<div class="line"><span class="lineno">  117</span>    }</div>
+<div class="ttc" id="aclass_editor_action_html_ac4d2773e9cbecfe862c60e338d55d9df"><div class="ttname"><a href="class_editor_action.html#ac4d2773e9cbecfe862c60e338d55d9df">EditorAction.HandleInput</a></div><div class="ttdeci">virtual void HandleInput()</div><div class="ttdoc">calls all other input methods (down,hold,up,scrollwheel).</div><div class="ttdef"><b>Definition</b> SongEditor.cs:386</div></div>
+<div class="ttc" id="aclass_song_editor_html_a66e89487a0a5d844e10e3ecb2b4b9425"><div class="ttname"><a href="#a66e89487a0a5d844e10e3ecb2b4b9425">SongEditor.ScrollCamera</a></div><div class="ttdeci">void ScrollCamera()</div><div class="ttdoc">Scroll the camera with the mouse wheel when cursor is not over the piano roll.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:121</div></div>
 <div class="ttc" id="aclass_song_editor_html_a97599edd8bd07f2765a2cca235907106"><div class="ttname"><a href="#a97599edd8bd07f2765a2cca235907106">SongEditor.middleAction</a></div><div class="ttdeci">EditorAction middleAction</div><div class="ttdef"><b>Definition</b> SongEditor.cs:69</div></div>
+<div class="ttc" id="aclass_song_editor_html_ab2eed0148b0fa5d85cf6fad9852cb095"><div class="ttname"><a href="#ab2eed0148b0fa5d85cf6fad9852cb095">SongEditor.PlayTest</a></div><div class="ttdeci">void PlayTest()</div><div class="ttdef"><b>Definition</b> SongEditor.cs:143</div></div>
 <div class="ttc" id="aclass_song_editor_html_ac957ff17bd4bbe159aae6205b90eaf12"><div class="ttname"><a href="#ac957ff17bd4bbe159aae6205b90eaf12">SongEditor.leftAction</a></div><div class="ttdeci">EditorAction leftAction</div><div class="ttdoc">EditorActions for the left, middle and right mouse buttons respectively.  Can be bound by calling Ini...</div><div class="ttdef"><b>Definition</b> SongEditor.cs:69</div></div>
 <div class="ttc" id="aclass_song_editor_html_ad1f503815a7caeb3c07eddcac9b490ff"><div class="ttname"><a href="#ad1f503815a7caeb3c07eddcac9b490ff">SongEditor.rightAction</a></div><div class="ttdeci">EditorAction rightAction</div><div class="ttdef"><b>Definition</b> SongEditor.cs:69</div></div>
 </div><!-- fragment -->
@@ -752,22 +920,22 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><span class="lineno">  139</span>    {</div>
-<div class="line"><span class="lineno">  140</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a6e5a70d2716ccbcd91670662a48b8880">scaleNoteToVSnap</a>)</div>
-<div class="line"><span class="lineno">  141</span>        {</div>
-<div class="line"><span class="lineno">  142</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a4c63d62d37b3f6fb8371aa6ee59755ef">defaultNoteScale</a>.y &gt; <a class="code hl_variable" href="#a030687a26d02bea951fa8176995f25d4">vSnap</a>)</div>
-<div class="line"><span class="lineno">  143</span>            {</div>
-<div class="line"><span class="lineno">  144</span>                note.localScale = <span class="keyword">new</span>(<a class="code hl_variable" href="#a4c63d62d37b3f6fb8371aa6ee59755ef">defaultNoteScale</a>.y, Utility.RoundToFraction(<a class="code hl_variable" href="#a4c63d62d37b3f6fb8371aa6ee59755ef">defaultNoteScale</a>.y, <a class="code hl_variable" href="#a030687a26d02bea951fa8176995f25d4">vSnap</a>));</div>
-<div class="line"><span class="lineno">  145</span>            }</div>
-<div class="line"><span class="lineno">  146</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  147</span>            {</div>
-<div class="line"><span class="lineno">  148</span>                note.localScale = <span class="keyword">new</span>(<a class="code hl_variable" href="#a4c63d62d37b3f6fb8371aa6ee59755ef">defaultNoteScale</a>.y, 15 / <a class="code hl_variable" href="#a030687a26d02bea951fa8176995f25d4">vSnap</a>);</div>
-<div class="line"><span class="lineno">  149</span>            }</div>
-<div class="line"><span class="lineno">  150</span>        }</div>
-<div class="line"><span class="lineno">  151</span> </div>
-<div class="line"><span class="lineno">  152</span>    }</div>
-<div class="ttc" id="aclass_song_editor_html_a4c63d62d37b3f6fb8371aa6ee59755ef"><div class="ttname"><a href="#a4c63d62d37b3f6fb8371aa6ee59755ef">SongEditor.defaultNoteScale</a></div><div class="ttdeci">Vector2 defaultNoteScale</div><div class="ttdef"><b>Definition</b> SongEditor.cs:37</div></div>
-<div class="ttc" id="aclass_song_editor_html_a6e5a70d2716ccbcd91670662a48b8880"><div class="ttname"><a href="#a6e5a70d2716ccbcd91670662a48b8880">SongEditor.scaleNoteToVSnap</a></div><div class="ttdeci">bool scaleNoteToVSnap</div><div class="ttdoc">should new notes automatically scale to the size indicated by vSnap.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:54</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  178</span>    {</div>
+<div class="line"><span class="lineno">  179</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a6e5a70d2716ccbcd91670662a48b8880">scaleNoteToVSnap</a>)</div>
+<div class="line"><span class="lineno">  180</span>        {</div>
+<div class="line"><span class="lineno">  181</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a4c63d62d37b3f6fb8371aa6ee59755ef">defaultNoteScale</a>.y &gt; <a class="code hl_variable" href="#a030687a26d02bea951fa8176995f25d4">vSnap</a>)</div>
+<div class="line"><span class="lineno">  182</span>            {</div>
+<div class="line"><span class="lineno">  183</span>                note.localScale = <span class="keyword">new</span>(<a class="code hl_variable" href="#a4c63d62d37b3f6fb8371aa6ee59755ef">defaultNoteScale</a>.y, Utility.RoundToFraction(<a class="code hl_variable" href="#a4c63d62d37b3f6fb8371aa6ee59755ef">defaultNoteScale</a>.y, <a class="code hl_variable" href="#a030687a26d02bea951fa8176995f25d4">vSnap</a>));</div>
+<div class="line"><span class="lineno">  184</span>            }</div>
+<div class="line"><span class="lineno">  185</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  186</span>            {</div>
+<div class="line"><span class="lineno">  187</span>                note.localScale = <span class="keyword">new</span>(<a class="code hl_variable" href="#a4c63d62d37b3f6fb8371aa6ee59755ef">defaultNoteScale</a>.y, 15 / <a class="code hl_variable" href="#a030687a26d02bea951fa8176995f25d4">vSnap</a>);</div>
+<div class="line"><span class="lineno">  188</span>            }</div>
+<div class="line"><span class="lineno">  189</span>        }</div>
+<div class="line"><span class="lineno">  190</span> </div>
+<div class="line"><span class="lineno">  191</span>    }</div>
+<div class="ttc" id="aclass_song_editor_html_a4c63d62d37b3f6fb8371aa6ee59755ef"><div class="ttname"><a href="#a4c63d62d37b3f6fb8371aa6ee59755ef">SongEditor.defaultNoteScale</a></div><div class="ttdeci">Vector2 defaultNoteScale</div><div class="ttdef"><b>Definition</b> SongEditor.cs:36</div></div>
+<div class="ttc" id="aclass_song_editor_html_a6e5a70d2716ccbcd91670662a48b8880"><div class="ttname"><a href="#a6e5a70d2716ccbcd91670662a48b8880">SongEditor.scaleNoteToVSnap</a></div><div class="ttdeci">bool scaleNoteToVSnap</div><div class="ttdoc">should new notes automatically scale to the size indicated by vSnap.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:53</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="#af7e43d1d5adc7550a37790778038d4d6">CreateNote()</a>.</p>
 
@@ -824,6 +992,20 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a72ed8ee0e8675d889d330758c0b9570d" name="a72ed8ee0e8675d889d330758c0b9570d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72ed8ee0e8675d889d330758c0b9570d">&#9670;&#160;</a></span>bpm</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float SongEditor.bpm = 136f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a34ef237c23fbef4cf3167e1cca5e61ae" name="a34ef237c23fbef4cf3167e1cca5e61ae"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a34ef237c23fbef4cf3167e1cca5e61ae">&#9670;&#160;</a></span>cam</h2>
 
@@ -844,7 +1026,31 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="#aaeb19aa1435183bfea8925967fc4493c">Start()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#ac0742d5852e146689b9afc8f0c3a2ba2">CamToBeat()</a>, <a class="el" href="#a66e89487a0a5d844e10e3ecb2b4b9425">ScrollCamera()</a>, and <a class="el" href="#aaeb19aa1435183bfea8925967fc4493c">Start()</a>.</p>
+
+</div>
+</div>
+<a id="a95a06bb02f2e3b52a24b375120dab166" name="a95a06bb02f2e3b52a24b375120dab166"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95a06bb02f2e3b52a24b375120dab166">&#9670;&#160;</a></span>cameraScrollSpeed</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly float SongEditor.cameraScrollSpeed = 1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="#a66e89487a0a5d844e10e3ecb2b4b9425">ScrollCamera()</a>.</p>
 
 </div>
 </div>
@@ -925,12 +1131,30 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;<a class="el" href="class_editor_note.html">EditorNote</a>&gt; SongEditor.editorNotes = new()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>list of editornotes. </p>
+
+<p class="reference">Referenced by <a class="el" href="#af7e43d1d5adc7550a37790778038d4d6">CreateNote()</a>, and <a class="el" href="#a867db3b2c9d922e28900e85bde9844c9">RemoveNote()</a>.</p>
+
+</div>
+</div>
+<a id="aa136cf274681908e55057683d3e4299e" name="aa136cf274681908e55057683d3e4299e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa136cf274681908e55057683d3e4299e">&#9670;&#160;</a></span>group</h2>
+
+<div class="memitem">
+<div class="memproto">
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">List&lt;<a class="el" href="class_editor_note.html">EditorNote</a>&gt; SongEditor.editorNotes = new()</td>
+          <td class="memname"><a class="el" href="struct_file_group.html">FileGroup</a> SongEditor.group</td>
         </tr>
       </table>
   </td>
@@ -940,9 +1164,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>list of editornotes. </p>
-
-<p class="reference">Referenced by <a class="el" href="#af7e43d1d5adc7550a37790778038d4d6">CreateNote()</a>, and <a class="el" href="#a867db3b2c9d922e28900e85bde9844c9">RemoveNote()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#ab2eed0148b0fa5d85cf6fad9852cb095">PlayTest()</a>.</p>
 
 </div>
 </div>
@@ -982,7 +1204,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="#a02bbbe63cf34578b9ec45ce66bcbca07">Awake()</a>, <a class="el" href="class_beat_number_generator.html#a3f03ddb9312dbafc05f474c123eee134">BeatNumberGenerator.CreateBeatNumbers()</a>, <a class="el" href="class_add_note.html#afb7d9ae102a827f8f4e0ae787665c542">AddNote.CreateNote()</a>, <a class="el" href="class_move_notes.html#a70eb23b543a0def5bce33cb9324cc76b">MoveNotes.Down()</a>, <a class="el" href="class_tri_mouse_button.html#acf478a1428fb9dc93f9980269b07f57f">TriMouseButton.LeftClick()</a>, <a class="el" href="class_tri_mouse_button.html#a89317290458f0b2565bb63e4e0eac354">TriMouseButton.MiddleClick()</a>, <a class="el" href="class_move_notes.html#adb3f9d6bb884d37261c7514c0f3bc35b">MoveNotes.moveNotes()</a>, <a class="el" href="class_remove_notes.html#a2efa7ef5130fe35bc12db837d515a59f">RemoveNotes.RemoveNoteIfHit()</a>, <a class="el" href="class_tri_mouse_button.html#a3ed09abe4d3c5d750e39db0d1e1bb2f0">TriMouseButton.RightClick()</a>, <a class="el" href="class_scale_notes.html#a53bb4d5569bee2788c2b987c98cfbbd3">ScaleNotes.ScaleNote()</a>, <a class="el" href="class_select_notes.html#ab17c5f8d45f50ce275c476a3a6e2b091">SelectNotes.SelectNote()</a>, and <a class="el" href="class_tri_mouse_button.html#a33a0d5638c52f12f0da5b07b4b0da605">TriMouseButton.SetAction()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#a02bbbe63cf34578b9ec45ce66bcbca07">Awake()</a>, <a class="el" href="class_beat_number_generator.html#a3f03ddb9312dbafc05f474c123eee134">BeatNumberGenerator.CreateBeatNumbers()</a>, <a class="el" href="class_add_note.html#afb7d9ae102a827f8f4e0ae787665c542">AddNote.CreateNote()</a>, <a class="el" href="class_move_notes.html#a70eb23b543a0def5bce33cb9324cc76b">MoveNotes.Down()</a>, <a class="el" href="#acbe7c01d92285e90a34c26e47f128e6c">GetNoteEventInfos()</a>, <a class="el" href="class_tri_mouse_button.html#acf478a1428fb9dc93f9980269b07f57f">TriMouseButton.LeftClick()</a>, <a class="el" href="class_tri_mouse_button.html#a89317290458f0b2565bb63e4e0eac354">TriMouseButton.MiddleClick()</a>, <a class="el" href="class_move_notes.html#adb3f9d6bb884d37261c7514c0f3bc35b">MoveNotes.moveNotes()</a>, <a class="el" href="#ab2eed0148b0fa5d85cf6fad9852cb095">PlayTest()</a>, <a class="el" href="class_remove_notes.html#a2efa7ef5130fe35bc12db837d515a59f">RemoveNotes.RemoveNoteIfHit()</a>, <a class="el" href="class_tri_mouse_button.html#a3ed09abe4d3c5d750e39db0d1e1bb2f0">TriMouseButton.RightClick()</a>, <a class="el" href="class_scale_notes.html#a53bb4d5569bee2788c2b987c98cfbbd3">ScaleNotes.ScaleNote()</a>, <a class="el" href="class_select_notes.html#ab17c5f8d45f50ce275c476a3a6e2b091">SelectNotes.SelectNote()</a>, and <a class="el" href="class_tri_mouse_button.html#a33a0d5638c52f12f0da5b07b4b0da605">TriMouseButton.SetAction()</a>.</p>
 
 </div>
 </div>
@@ -1115,7 +1337,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>EditorActions for the left, middle and right mouse buttons respectively.<br  />
- Can be bound by calling <a class="el" href="#a8ca58215d5918ff8659f7f70b44fd49b">InitializeAction(string, sbyte)</a> with a string corresponding to the name of the editor action, and a sByte containing the number mouse button. </p>
+ Can be bound by calling <a class="el" href="#a8ca58215d5918ff8659f7f70b44fd49b" title="Returns an editor action -reset to their default values- to be assigned to a mouse button.">InitializeAction(string, sbyte)</a> with a string corresponding to the name of the editor action, and a sByte containing the number mouse button. </p>
 
 <p class="reference">Referenced by <a class="el" href="#ad9050147a8cc831212833b0f50360534">Update()</a>.</p>
 
@@ -1348,6 +1570,44 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a83fc61663c1542a13f970c5636939f0f" name="a83fc61663c1542a13f970c5636939f0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83fc61663c1542a13f970c5636939f0f">&#9670;&#160;</a></span>songFileGroup</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_file_group.html">FileGroup</a> SongEditor.songFileGroup</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a56a180432eb3e79e7821ad310b11e3a7" name="a56a180432eb3e79e7821ad310b11e3a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56a180432eb3e79e7821ad310b11e3a7">&#9670;&#160;</a></span>songFolderPath</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string SongEditor.songFolderPath</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="#ab2eed0148b0fa5d85cf6fad9852cb095">PlayTest()</a>, and <a class="el" href="#aaeb19aa1435183bfea8925967fc4493c">Start()</a>.</p>
 
 </div>
 </div>

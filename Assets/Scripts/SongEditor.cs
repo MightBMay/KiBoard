@@ -1,4 +1,5 @@
 using NAudio.Midi;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -97,15 +98,36 @@ public class SongEditor : MonoBehaviour
     {
         if (instance == null) { instance = this; }
         else { Destroy(this); }
+
+        NoteEventDataWrapper noteWrapper = MidiReadFile.GetNoteEventsFromFilePath(GameSettings.currentSongPath);
+        bpm = noteWrapper.BPM;
+        Debug.Log(bpm);
+        noteWrapper.NoteEvents.ForEach(note => SpawnNote(note) );
+
+        void SpawnNote(NoteEventInfo noteInfo)
+        {
+            try
+            {
+                Transform note = Instantiate(editorNotePrefab, noteHolder).transform;
+                float noteSize = noteInfo.endTime - noteInfo.startTime / 2;
+                float ypos = noteInfo.startTime * 15 + noteSize + 2;
+                note.position = new Vector2(noteInfo.noteNumber-21, ypos);// STILL DONT KNOW WHY 21 lmao
+            }
+            catch(Exception e) { Debug.Log(e); }
+        }
     }
+
+
     void Start()
     {
         cam = Camera.main;
 
         InitializePianoRoll();
         triMouseButtons = FindObjectsOfType<TriMouseButton>(true);
-        songFolderPath = Application.persistentDataPath + "/Songs/FurElise";
+        
     }
+
+
     private void Update()
     {
         leftAction?.HandleInput();
@@ -170,6 +192,8 @@ public class SongEditor : MonoBehaviour
         editorNotes.Add(editorNote); // add to list of noteEvents.
 
     }
+
+
     /// <summary>
     /// scales a note based on vsnap 
     /// </summary>

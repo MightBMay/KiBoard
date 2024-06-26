@@ -124,6 +124,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a45fbc3ff0c86cf6739b2951fdb831037" id="r_a45fbc3ff0c86cf6739b2951fdb831037"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a45fbc3ff0c86cf6739b2951fdb831037">LoadSongFromCurrentSettings</a> (bool isPreview=false)</td></tr>
 <tr class="memdesc:a45fbc3ff0c86cf6739b2951fdb831037"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the selected song for gameplay.  <br /></td></tr>
 <tr class="separator:a45fbc3ff0c86cf6739b2951fdb831037"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a856f990e560ce05c44e43133820aa62e" id="r_a856f990e560ce05c44e43133820aa62e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a856f990e560ce05c44e43133820aa62e">LoadSongFromNoteEvents</a> (List&lt; <a class="el" href="class_note_event_info.html">NoteEventInfo</a> &gt; noteEvents, float bpm, bool isPreview=false)</td></tr>
+<tr class="separator:a856f990e560ce05c44e43133820aa62e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed66bdb11ffd9ceffc086c4d27e30019" id="r_aed66bdb11ffd9ceffc086c4d27e30019"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed66bdb11ffd9ceffc086c4d27e30019">HookMidiDevice</a> ()</td></tr>
 <tr class="memdesc:aed66bdb11ffd9ceffc086c4d27e30019"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hooks midi devices to be used for input.  <br /></td></tr>
 <tr class="separator:aed66bdb11ffd9ceffc086c4d27e30019"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -144,6 +146,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a26a01dc684fded58c22a9124d779ea91" id="r_a26a01dc684fded58c22a9124d779ea91"><td class="memItemLeft" align="right" valign="top">IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a26a01dc684fded58c22a9124d779ea91">StartSong</a> (List&lt; <a class="el" href="class_note_event_info.html">NoteEventInfo</a> &gt; loadEvents, bool isPreview=false)</td></tr>
 <tr class="memdesc:a26a01dc684fded58c22a9124d779ea91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts playing a specified list of <a class="el" href="class_note_event_info.html" title="Class containing all info needed to play a note.">NoteEventInfo</a>  <br /></td></tr>
 <tr class="separator:a26a01dc684fded58c22a9124d779ea91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed74dcf6124c30e79c836f2a5468d7ab" id="r_aed74dcf6124c30e79c836f2a5468d7ab"><td class="memItemLeft" align="right" valign="top">IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed74dcf6124c30e79c836f2a5468d7ab">StartSong</a> (List&lt; <a class="el" href="class_note_event_info.html">NoteEventInfo</a> &gt; loadEvents, string mp3Path, bool isPreview=false)</td></tr>
+<tr class="separator:aed74dcf6124c30e79c836f2a5468d7ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a622c40a278ed57e97a5c965fb6f73470" id="r_a622c40a278ed57e97a5c965fb6f73470"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a622c40a278ed57e97a5c965fb6f73470">StopSong</a> ()</td></tr>
 <tr class="memdesc:a622c40a278ed57e97a5c965fb6f73470"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the currently playing song.  <br /></td></tr>
 <tr class="separator:a622c40a278ed57e97a5c965fb6f73470"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -214,6 +218,8 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a2e24c8cbdc52507a5c148923c9f65d3f" id="r_a2e24c8cbdc52507a5c148923c9f65d3f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e24c8cbdc52507a5c148923c9f65d3f">NoteOff</a> (MidiChannel channel, int note)</td></tr>
 <tr class="memdesc:a2e24c8cbdc52507a5c148923c9f65d3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles MIDI note off events.  <br /></td></tr>
 <tr class="separator:a2e24c8cbdc52507a5c148923c9f65d3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2495b97dd515ad128452784a2e9aeff" id="r_af2495b97dd515ad128452784a2e9aeff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af2495b97dd515ad128452784a2e9aeff">ReloadSong</a> ()</td></tr>
+<tr class="separator:af2495b97dd515ad128452784a2e9aeff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8ec16c57a8b0e8b30bb38331dafd265" id="r_af8ec16c57a8b0e8b30bb38331dafd265"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af8ec16c57a8b0e8b30bb38331dafd265">CheckNotesKeyboard12</a> ()</td></tr>
 <tr class="memdesc:af8ec16c57a8b0e8b30bb38331dafd265"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks for pressed keys in the 12-key keyboard layout.  <br /></td></tr>
 <tr class="separator:af8ec16c57a8b0e8b30bb38331dafd265"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -253,15 +259,15 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   83</span>    {</div>
-<div class="line"><span class="lineno">   84</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a7a0aa3fc42bdb7cba08848c7d93d1934">instance</a> == <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">   85</span>        {</div>
-<div class="line"><span class="lineno">   86</span>            <a class="code hl_variable" href="#a7a0aa3fc42bdb7cba08848c7d93d1934">instance</a> = <span class="keyword">this</span>;</div>
-<div class="line"><span class="lineno">   87</span>            DontDestroyOnLoad(gameObject);</div>
-<div class="line"><span class="lineno">   88</span>        }</div>
-<div class="line"><span class="lineno">   89</span>        <span class="keywordflow">else</span> { Destroy(gameObject); }</div>
-<div class="line"><span class="lineno">   90</span>    }</div>
-<div class="ttc" id="aclass_midi_input_html_a7a0aa3fc42bdb7cba08848c7d93d1934"><div class="ttname"><a href="#a7a0aa3fc42bdb7cba08848c7d93d1934">MidiInput.instance</a></div><div class="ttdeci">static MidiInput instance</div><div class="ttdef"><b>Definition</b> MidiInput.cs:15</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   84</span>    {</div>
+<div class="line"><span class="lineno">   85</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a7a0aa3fc42bdb7cba08848c7d93d1934">instance</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   86</span>        {</div>
+<div class="line"><span class="lineno">   87</span>            <a class="code hl_variable" href="#a7a0aa3fc42bdb7cba08848c7d93d1934">instance</a> = <span class="keyword">this</span>;</div>
+<div class="line"><span class="lineno">   88</span>            DontDestroyOnLoad(gameObject);</div>
+<div class="line"><span class="lineno">   89</span>        }</div>
+<div class="line"><span class="lineno">   90</span>        <span class="keywordflow">else</span> { Destroy(gameObject); }</div>
+<div class="line"><span class="lineno">   91</span>    }</div>
+<div class="ttc" id="aclass_midi_input_html_a7a0aa3fc42bdb7cba08848c7d93d1934"><div class="ttname"><a href="#a7a0aa3fc42bdb7cba08848c7d93d1934">MidiInput.instance</a></div><div class="ttdeci">static MidiInput instance</div><div class="ttdef"><b>Definition</b> MidiInput.cs:16</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -289,29 +295,29 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Checks for pressed keys in the 12-key keyboard layout. </p>
-<div class="fragment"><div class="line"><span class="lineno">  482</span>    {</div>
-<div class="line"><span class="lineno">  483</span>        <span class="comment">// Check for computer keyboard key presses and releases</span></div>
-<div class="line"><span class="lineno">  484</span>        <span class="keywordflow">foreach</span> (var keyValuePair <span class="keywordflow">in</span> <a class="code hl_variable" href="#a8186284f3ba17fa0e39ffb53249aae6f">keyboard12</a>)</div>
-<div class="line"><span class="lineno">  485</span>        {</div>
-<div class="line"><span class="lineno">  486</span>            KeyCode key = keyValuePair.Key;</div>
-<div class="line"><span class="lineno">  487</span>            <span class="keywordtype">int</span> noteNumber = keyValuePair.Value;</div>
-<div class="line"><span class="lineno">  488</span> </div>
-<div class="line"><span class="lineno">  489</span>            <span class="keywordflow">if</span> (Input.GetKeyDown(key))</div>
-<div class="line"><span class="lineno">  490</span>            {</div>
-<div class="line"><span class="lineno">  491</span>                <span class="comment">// Simulate Note On event for the pressed key</span></div>
-<div class="line"><span class="lineno">  492</span>                <a class="code hl_function" href="#a358348cc54a49193003a2788f81b7b4a">NoteOn</a>(MidiChannel.All, noteNumber, 1.0f);</div>
-<div class="line"><span class="lineno">  493</span>            }</div>
-<div class="line"><span class="lineno">  494</span> </div>
-<div class="line"><span class="lineno">  495</span>            <span class="keywordflow">if</span> (Input.GetKeyUp(key))</div>
-<div class="line"><span class="lineno">  496</span>            {</div>
-<div class="line"><span class="lineno">  497</span>                <span class="comment">// Simulate Note Off event for the released key</span></div>
-<div class="line"><span class="lineno">  498</span>                <a class="code hl_function" href="#a2e24c8cbdc52507a5c148923c9f65d3f">NoteOff</a>(MidiChannel.All, noteNumber);</div>
-<div class="line"><span class="lineno">  499</span>            }</div>
-<div class="line"><span class="lineno">  500</span>        }</div>
-<div class="line"><span class="lineno">  501</span>    }</div>
-<div class="ttc" id="aclass_midi_input_html_a2e24c8cbdc52507a5c148923c9f65d3f"><div class="ttname"><a href="#a2e24c8cbdc52507a5c148923c9f65d3f">MidiInput.NoteOff</a></div><div class="ttdeci">void NoteOff(MidiChannel channel, int note)</div><div class="ttdoc">Handles MIDI note off events.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:458</div></div>
-<div class="ttc" id="aclass_midi_input_html_a358348cc54a49193003a2788f81b7b4a"><div class="ttname"><a href="#a358348cc54a49193003a2788f81b7b4a">MidiInput.NoteOn</a></div><div class="ttdeci">void NoteOn(MidiChannel channel, int note, float velocity)</div><div class="ttdoc">Handles MIDI note on events.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:387</div></div>
-<div class="ttc" id="aclass_midi_input_html_a8186284f3ba17fa0e39ffb53249aae6f"><div class="ttname"><a href="#a8186284f3ba17fa0e39ffb53249aae6f">MidiInput.keyboard12</a></div><div class="ttdeci">Dictionary&lt; KeyCode, int &gt; keyboard12</div><div class="ttdoc">Dictionary mapping for Computer keyboard input to note input.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:60</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  568</span>    {</div>
+<div class="line"><span class="lineno">  569</span>        <span class="comment">// Check for computer keyboard key presses and releases</span></div>
+<div class="line"><span class="lineno">  570</span>        <span class="keywordflow">foreach</span> (var keyValuePair <span class="keywordflow">in</span> <a class="code hl_variable" href="#a8186284f3ba17fa0e39ffb53249aae6f">keyboard12</a>)</div>
+<div class="line"><span class="lineno">  571</span>        {</div>
+<div class="line"><span class="lineno">  572</span>            KeyCode key = keyValuePair.Key;</div>
+<div class="line"><span class="lineno">  573</span>            <span class="keywordtype">int</span> noteNumber = keyValuePair.Value;</div>
+<div class="line"><span class="lineno">  574</span> </div>
+<div class="line"><span class="lineno">  575</span>            <span class="keywordflow">if</span> (Input.GetKeyDown(key))</div>
+<div class="line"><span class="lineno">  576</span>            {</div>
+<div class="line"><span class="lineno">  577</span>                <span class="comment">// Simulate Note On event for the pressed key</span></div>
+<div class="line"><span class="lineno">  578</span>                <a class="code hl_function" href="#a358348cc54a49193003a2788f81b7b4a">NoteOn</a>(MidiChannel.All, noteNumber, 1.0f);</div>
+<div class="line"><span class="lineno">  579</span>            }</div>
+<div class="line"><span class="lineno">  580</span> </div>
+<div class="line"><span class="lineno">  581</span>            <span class="keywordflow">if</span> (Input.GetKeyUp(key))</div>
+<div class="line"><span class="lineno">  582</span>            {</div>
+<div class="line"><span class="lineno">  583</span>                <span class="comment">// Simulate Note Off event for the released key</span></div>
+<div class="line"><span class="lineno">  584</span>                <a class="code hl_function" href="#a2e24c8cbdc52507a5c148923c9f65d3f">NoteOff</a>(MidiChannel.All, noteNumber);</div>
+<div class="line"><span class="lineno">  585</span>            }</div>
+<div class="line"><span class="lineno">  586</span>        }</div>
+<div class="line"><span class="lineno">  587</span>    }</div>
+<div class="ttc" id="aclass_midi_input_html_a2e24c8cbdc52507a5c148923c9f65d3f"><div class="ttname"><a href="#a2e24c8cbdc52507a5c148923c9f65d3f">MidiInput.NoteOff</a></div><div class="ttdeci">void NoteOff(MidiChannel channel, int note)</div><div class="ttdoc">Handles MIDI note off events.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:518</div></div>
+<div class="ttc" id="aclass_midi_input_html_a358348cc54a49193003a2788f81b7b4a"><div class="ttname"><a href="#a358348cc54a49193003a2788f81b7b4a">MidiInput.NoteOn</a></div><div class="ttdeci">void NoteOn(MidiChannel channel, int note, float velocity)</div><div class="ttdoc">Handles MIDI note on events.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:447</div></div>
+<div class="ttc" id="aclass_midi_input_html_a8186284f3ba17fa0e39ffb53249aae6f"><div class="ttname"><a href="#a8186284f3ba17fa0e39ffb53249aae6f">MidiInput.keyboard12</a></div><div class="ttdeci">Dictionary&lt; KeyCode, int &gt; keyboard12</div><div class="ttdoc">Dictionary mapping for Computer keyboard input to note input.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:61</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="#abbd1de688b3c04809af8267e5f9dc57f">Update()</a>.</p>
 
@@ -335,17 +341,17 @@ Private Attributes</h2></td></tr>
 <p>Checks for pressed keys in the 8-key keyboard layout. </p>
 <p>Checks if any note is currently active (pressed).</p>
 <dl class="section return"><dt>Returns</dt><dd>True if any note is active, otherwise false.</dd></dl>
-<div class="fragment"><div class="line"><span class="lineno">  512</span>    {</div>
-<div class="line"><span class="lineno">  513</span>        <span class="keywordflow">foreach</span> (<span class="keywordtype">bool</span> b <span class="keywordflow">in</span> <a class="code hl_variable" href="#a37a3c0da56cdc8bb099ed5c4a2313dc1">enabledKeys</a>)</div>
-<div class="line"><span class="lineno">  514</span>        {</div>
-<div class="line"><span class="lineno">  515</span>            <span class="keywordflow">if</span> (b)</div>
-<div class="line"><span class="lineno">  516</span>            {</div>
-<div class="line"><span class="lineno">  517</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  518</span>            }</div>
-<div class="line"><span class="lineno">  519</span>        }</div>
-<div class="line"><span class="lineno">  520</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  521</span>    }</div>
-<div class="ttc" id="aclass_midi_input_html_a37a3c0da56cdc8bb099ed5c4a2313dc1"><div class="ttname"><a href="#a37a3c0da56cdc8bb099ed5c4a2313dc1">MidiInput.enabledKeys</a></div><div class="ttdeci">bool[] enabledKeys</div><div class="ttdoc">array of bools corresponding to currently activated keys.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:32</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  598</span>    {</div>
+<div class="line"><span class="lineno">  599</span>        <span class="keywordflow">foreach</span> (<span class="keywordtype">bool</span> b <span class="keywordflow">in</span> <a class="code hl_variable" href="#a37a3c0da56cdc8bb099ed5c4a2313dc1">enabledKeys</a>)</div>
+<div class="line"><span class="lineno">  600</span>        {</div>
+<div class="line"><span class="lineno">  601</span>            <span class="keywordflow">if</span> (b)</div>
+<div class="line"><span class="lineno">  602</span>            {</div>
+<div class="line"><span class="lineno">  603</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  604</span>            }</div>
+<div class="line"><span class="lineno">  605</span>        }</div>
+<div class="line"><span class="lineno">  606</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  607</span>    }</div>
+<div class="ttc" id="aclass_midi_input_html_a37a3c0da56cdc8bb099ed5c4a2313dc1"><div class="ttname"><a href="#a37a3c0da56cdc8bb099ed5c4a2313dc1">MidiInput.enabledKeys</a></div><div class="ttdeci">bool[] enabledKeys</div><div class="ttdoc">array of bools corresponding to currently activated keys.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:33</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -364,13 +370,13 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_note_event_data_wrapper.html" title="Wrapper class for storing BPM and NoteEventInfo data.">NoteEventDataWrapper</a> loaded from the currently selected song</dd></dl>
-<div class="fragment"><div class="line"><span class="lineno">  311</span>    {</div>
-<div class="line"><span class="lineno">  312</span>        <a class="code hl_class" href="class_note_event_data_wrapper.html">NoteEventDataWrapper</a> data = <a class="code hl_class" href="class_midi_read_file.html">MidiReadFile</a>.<a class="code hl_function" href="class_midi_read_file.html#ae92e1f0a1a7c5b7219fe5d8647951219">GetNoteEventsFromFilePath</a>(GameSettings.currentSongPath);</div>
-<div class="line"><span class="lineno">  313</span>        <span class="keywordflow">if</span> (data == <span class="keyword">null</span>) { Debug.Log(<span class="stringliteral">&quot;Error Reading data from path: &quot;</span> + GameSettings.currentSongPath); <span class="keywordflow">return</span> <span class="keyword">null</span>; }</div>
-<div class="line"><span class="lineno">  314</span>        <a class="code hl_variable" href="#a3a26bb867212d9ca4acc6138c7076d1f">storedNoteEvents</a> = data.<a class="code hl_variable" href="class_note_event_data_wrapper.html#ab50d1b38b07efe975e0abefafea94e4b">NoteEvents</a>;</div>
-<div class="line"><span class="lineno">  315</span>        <span class="keywordflow">return</span> data;</div>
-<div class="line"><span class="lineno">  316</span>    }</div>
-<div class="ttc" id="aclass_midi_input_html_a3a26bb867212d9ca4acc6138c7076d1f"><div class="ttname"><a href="#a3a26bb867212d9ca4acc6138c7076d1f">MidiInput.storedNoteEvents</a></div><div class="ttdeci">List&lt; NoteEventInfo &gt; storedNoteEvents</div><div class="ttdoc">Currently loaded notes for the selected song.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:19</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  357</span>    {</div>
+<div class="line"><span class="lineno">  358</span>        <a class="code hl_class" href="class_note_event_data_wrapper.html">NoteEventDataWrapper</a> data = <a class="code hl_class" href="class_midi_read_file.html">MidiReadFile</a>.<a class="code hl_function" href="class_midi_read_file.html#ae92e1f0a1a7c5b7219fe5d8647951219">GetNoteEventsFromFilePath</a>(GameSettings.currentSongPath);</div>
+<div class="line"><span class="lineno">  359</span>        <span class="keywordflow">if</span> (data == <span class="keyword">null</span>) { Debug.Log(<span class="stringliteral">&quot;Error Reading data from path: &quot;</span> + GameSettings.currentSongPath); <span class="keywordflow">return</span> <span class="keyword">null</span>; }</div>
+<div class="line"><span class="lineno">  360</span>        <a class="code hl_variable" href="#a3a26bb867212d9ca4acc6138c7076d1f">storedNoteEvents</a> = data.<a class="code hl_variable" href="class_note_event_data_wrapper.html#ab50d1b38b07efe975e0abefafea94e4b">NoteEvents</a>;</div>
+<div class="line"><span class="lineno">  361</span>        <span class="keywordflow">return</span> data;</div>
+<div class="line"><span class="lineno">  362</span>    }</div>
+<div class="ttc" id="aclass_midi_input_html_a3a26bb867212d9ca4acc6138c7076d1f"><div class="ttname"><a href="#a3a26bb867212d9ca4acc6138c7076d1f">MidiInput.storedNoteEvents</a></div><div class="ttdeci">List&lt; NoteEventInfo &gt; storedNoteEvents</div><div class="ttdoc">Currently loaded notes for the selected song.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:20</div></div>
 <div class="ttc" id="aclass_midi_read_file_html"><div class="ttname"><a href="class_midi_read_file.html">MidiReadFile</a></div><div class="ttdef"><b>Definition</b> MidiReadFile.cs:8</div></div>
 <div class="ttc" id="aclass_midi_read_file_html_ae92e1f0a1a7c5b7219fe5d8647951219"><div class="ttname"><a href="class_midi_read_file.html#ae92e1f0a1a7c5b7219fe5d8647951219">MidiReadFile.GetNoteEventsFromFilePath</a></div><div class="ttdeci">static NoteEventDataWrapper GetNoteEventsFromFilePath(string filePath)</div><div class="ttdoc">Loads NoteEventDataWrapper from a given file path.</div><div class="ttdef"><b>Definition</b> MidiReadFile.cs:17</div></div>
 <div class="ttc" id="aclass_note_event_data_wrapper_html"><div class="ttname"><a href="class_note_event_data_wrapper.html">NoteEventDataWrapper</a></div><div class="ttdoc">Wrapper class for storing BPM and NoteEventInfo data.</div><div class="ttdef"><b>Definition</b> MidiDataHandler.cs:161</div></div>
@@ -409,14 +415,14 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The time difference.</dd></dl>
-<div class="fragment"><div class="line"><span class="lineno">  529</span>    {</div>
-<div class="line"><span class="lineno">  530</span>        <span class="comment">// Adjust this threshold based on your timing accuracy requirements</span></div>
-<div class="line"><span class="lineno">  531</span>        <span class="comment">// float timingThreshold = currentSettings.timeInterval;</span></div>
-<div class="line"><span class="lineno">  532</span> </div>
-<div class="line"><span class="lineno">  533</span>        <span class="comment">// Check if the received timing is within a certain threshold of the stored timing</span></div>
-<div class="line"><span class="lineno">  534</span>        <span class="comment">//0.125f leniancy</span></div>
-<div class="line"><span class="lineno">  535</span>        <span class="keywordflow">return</span> Mathf.Abs( (<a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.songTime + PlayerSettings.inputDelay)  - 0.125f - storedTiming);</div>
-<div class="line"><span class="lineno">  536</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">  615</span>    {</div>
+<div class="line"><span class="lineno">  616</span>        <span class="comment">// Adjust this threshold based on your timing accuracy requirements</span></div>
+<div class="line"><span class="lineno">  617</span>        <span class="comment">// float timingThreshold = currentSettings.timeInterval;</span></div>
+<div class="line"><span class="lineno">  618</span> </div>
+<div class="line"><span class="lineno">  619</span>        <span class="comment">// Check if the received timing is within a certain threshold of the stored timing</span></div>
+<div class="line"><span class="lineno">  620</span>        <span class="comment">//0.125f leniancy</span></div>
+<div class="line"><span class="lineno">  621</span>        <span class="keywordflow">return</span> Mathf.Abs((<a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.songTime + PlayerSettings.inputDelay) - 0.125f - storedTiming);</div>
+<div class="line"><span class="lineno">  622</span>    }</div>
 <div class="ttc" id="aclass_game_manager_html"><div class="ttname"><a href="class_game_manager.html">GameManager</a></div><div class="ttdef"><b>Definition</b> GameManager.cs:9</div></div>
 <div class="ttc" id="aclass_game_manager_html_a7666e8468dac197b9eb32dd32128524f"><div class="ttname"><a href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">GameManager.instance</a></div><div class="ttdeci">static GameManager instance</div><div class="ttdoc">singleton reference.</div><div class="ttdef"><b>Definition</b> GameManager.cs:13</div></div>
 </div><!-- fragment -->
@@ -447,12 +453,12 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The timing score (e.g., "Perfect", "Good", "Okay", "Miss").</dd></dl>
-<div class="fragment"><div class="line"><span class="lineno">  543</span>    {</div>
-<div class="line"><span class="lineno">  544</span>        <span class="keywordflow">if</span> (timing &lt; 0.1f) { <span class="keywordflow">return</span> <span class="stringliteral">&quot;Perfect&quot;</span>; }</div>
-<div class="line"><span class="lineno">  545</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (timing &lt; 0.175f) { <span class="keywordflow">return</span> <span class="stringliteral">&quot;Good&quot;</span>; }</div>
-<div class="line"><span class="lineno">  546</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (timing &lt; 0.275f) { <span class="keywordflow">return</span> <span class="stringliteral">&quot;Okay&quot;</span>; }</div>
-<div class="line"><span class="lineno">  547</span>        <span class="keywordflow">else</span> { <span class="keywordflow">return</span> <span class="stringliteral">&quot;Miss&quot;</span>; }</div>
-<div class="line"><span class="lineno">  548</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">  629</span>    {</div>
+<div class="line"><span class="lineno">  630</span>        <span class="keywordflow">if</span> (timing &lt; 0.1f) { <span class="keywordflow">return</span> <span class="stringliteral">&quot;Perfect&quot;</span>; }</div>
+<div class="line"><span class="lineno">  631</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (timing &lt; 0.175f) { <span class="keywordflow">return</span> <span class="stringliteral">&quot;Good&quot;</span>; }</div>
+<div class="line"><span class="lineno">  632</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (timing &lt; 0.275f) { <span class="keywordflow">return</span> <span class="stringliteral">&quot;Okay&quot;</span>; }</div>
+<div class="line"><span class="lineno">  633</span>        <span class="keywordflow">else</span> { <span class="keywordflow">return</span> <span class="stringliteral">&quot;Miss&quot;</span>; }</div>
+<div class="line"><span class="lineno">  634</span>    }</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="#a358348cc54a49193003a2788f81b7b4a">NoteOn()</a>, and <a class="el" href="#aa4804a291f0c49c471a9fb0ecd0a6590">OnNoteSuccess()</a>.</p>
 
@@ -474,25 +480,25 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Hooks midi devices to be used for input. </p>
-<div class="fragment"><div class="line"><span class="lineno">  270</span>    {</div>
-<div class="line"><span class="lineno">  271</span>        <span class="keywordflow">try</span></div>
-<div class="line"><span class="lineno">  272</span>        {</div>
-<div class="line"><span class="lineno">  273</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a120ba3861326de334e19273612a8dc35">isMidiHooked</a>) { Debug.Log(<span class="stringliteral">&quot;Midi Already Hooked&quot;</span>); <span class="keywordflow">return</span>; }</div>
-<div class="line"><span class="lineno">  274</span>            MidiMaster.noteOnDelegate += <a class="code hl_function" href="#a358348cc54a49193003a2788f81b7b4a">NoteOn</a>;</div>
-<div class="line"><span class="lineno">  275</span>            MidiMaster.noteOffDelegate += <a class="code hl_function" href="#a2e24c8cbdc52507a5c148923c9f65d3f">NoteOff</a>;</div>
-<div class="line"><span class="lineno">  276</span>            MidiMaster.knobDelegate += <a class="code hl_function" href="#a2e30797511f5bd2f7eaf349978ff2680">PedalStateChanged</a>;</div>
-<div class="line"><span class="lineno">  277</span>            <a class="code hl_variable" href="#a120ba3861326de334e19273612a8dc35">isMidiHooked</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  278</span>        }</div>
-<div class="line"><span class="lineno">  279</span>        <span class="keywordflow">catch</span></div>
-<div class="line"><span class="lineno">  280</span>        {</div>
-<div class="line"><span class="lineno">  281</span>            <a class="code hl_variable" href="#a120ba3861326de334e19273612a8dc35">isMidiHooked</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  282</span>            Debug.Log(<span class="stringliteral">&quot;Error Hooking midi device&quot;</span>);</div>
-<div class="line"><span class="lineno">  283</span>        }</div>
-<div class="line"><span class="lineno">  284</span>    }</div>
-<div class="ttc" id="aclass_midi_input_html_a120ba3861326de334e19273612a8dc35"><div class="ttname"><a href="#a120ba3861326de334e19273612a8dc35">MidiInput.isMidiHooked</a></div><div class="ttdeci">bool isMidiHooked</div><div class="ttdoc">are midi devices hooked?  HookMidiDevice and UnHookMidiDevice.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:46</div></div>
-<div class="ttc" id="aclass_midi_input_html_a2e30797511f5bd2f7eaf349978ff2680"><div class="ttname"><a href="#a2e30797511f5bd2f7eaf349978ff2680">MidiInput.PedalStateChanged</a></div><div class="ttdeci">void PedalStateChanged(MidiChannel channel, int knobNumber, float knobValue)</div><div class="ttdoc">Handles MIDI sustain pedal state changes.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:109</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  316</span>    {</div>
+<div class="line"><span class="lineno">  317</span>        <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">  318</span>        {</div>
+<div class="line"><span class="lineno">  319</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a120ba3861326de334e19273612a8dc35">isMidiHooked</a>) { Debug.Log(<span class="stringliteral">&quot;Midi Already Hooked&quot;</span>); <span class="keywordflow">return</span>; }</div>
+<div class="line"><span class="lineno">  320</span>            MidiMaster.noteOnDelegate += <a class="code hl_function" href="#a358348cc54a49193003a2788f81b7b4a">NoteOn</a>;</div>
+<div class="line"><span class="lineno">  321</span>            MidiMaster.noteOffDelegate += <a class="code hl_function" href="#a2e24c8cbdc52507a5c148923c9f65d3f">NoteOff</a>;</div>
+<div class="line"><span class="lineno">  322</span>            MidiMaster.knobDelegate += <a class="code hl_function" href="#a2e30797511f5bd2f7eaf349978ff2680">PedalStateChanged</a>;</div>
+<div class="line"><span class="lineno">  323</span>            <a class="code hl_variable" href="#a120ba3861326de334e19273612a8dc35">isMidiHooked</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  324</span>        }</div>
+<div class="line"><span class="lineno">  325</span>        <span class="keywordflow">catch</span></div>
+<div class="line"><span class="lineno">  326</span>        {</div>
+<div class="line"><span class="lineno">  327</span>            <a class="code hl_variable" href="#a120ba3861326de334e19273612a8dc35">isMidiHooked</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  328</span>            Debug.Log(<span class="stringliteral">&quot;Error Hooking midi device&quot;</span>);</div>
+<div class="line"><span class="lineno">  329</span>        }</div>
+<div class="line"><span class="lineno">  330</span>    }</div>
+<div class="ttc" id="aclass_midi_input_html_a120ba3861326de334e19273612a8dc35"><div class="ttname"><a href="#a120ba3861326de334e19273612a8dc35">MidiInput.isMidiHooked</a></div><div class="ttdeci">bool isMidiHooked</div><div class="ttdoc">are midi devices hooked?  HookMidiDevice and UnHookMidiDevice.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:47</div></div>
+<div class="ttc" id="aclass_midi_input_html_a2e30797511f5bd2f7eaf349978ff2680"><div class="ttname"><a href="#a2e30797511f5bd2f7eaf349978ff2680">MidiInput.PedalStateChanged</a></div><div class="ttdeci">void PedalStateChanged(MidiChannel channel, int knobNumber, float knobValue)</div><div class="ttdoc">Handles MIDI sustain pedal state changes.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:110</div></div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="#a45fbc3ff0c86cf6739b2951fdb831037">LoadSongFromCurrentSettings()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#a45fbc3ff0c86cf6739b2951fdb831037">LoadSongFromCurrentSettings()</a>, <a class="el" href="#a856f990e560ce05c44e43133820aa62e">LoadSongFromNoteEvents()</a>, and <a class="el" href="#af2495b97dd515ad128452784a2e9aeff">ReloadSong()</a>.</p>
 
 </div>
 </div>
@@ -530,11 +536,11 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
-<div class="fragment"><div class="line"><span class="lineno">  446</span>    {</div>
-<div class="line"><span class="lineno">  447</span>        <span class="keywordflow">if</span> (GameSettings.usePiano) { <span class="keywordflow">return</span> noteNumber == storedNote.noteNumber &amp;&amp; !storedNote.triggered &amp;&amp; timing &lt; 0.5f; }</div>
-<div class="line"><span class="lineno">  448</span>        <span class="keywordflow">return</span> noteNumber % 12 == storedNote.noteNumber % 12 &amp;&amp; !storedNote.triggered &amp;&amp; timing &lt; 0.5f;</div>
-<div class="line"><span class="lineno">  449</span> </div>
-<div class="line"><span class="lineno">  450</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">  506</span>    {</div>
+<div class="line"><span class="lineno">  507</span>        <span class="keywordflow">if</span> (GameSettings.usePiano) { <span class="keywordflow">return</span> noteNumber == storedNote.noteNumber &amp;&amp; !storedNote.triggered &amp;&amp; timing &lt; 0.5f; }</div>
+<div class="line"><span class="lineno">  508</span>        <span class="keywordflow">return</span> noteNumber % 12 == storedNote.noteNumber % 12 &amp;&amp; !storedNote.triggered &amp;&amp; timing &lt; 0.5f;</div>
+<div class="line"><span class="lineno">  509</span> </div>
+<div class="line"><span class="lineno">  510</span>    }</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="#a358348cc54a49193003a2788f81b7b4a">NoteOn()</a>.</p>
 
@@ -562,96 +568,96 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><span class="lineno">  129</span>    {</div>
-<div class="line"><span class="lineno">  130</span> </div>
-<div class="line"><span class="lineno">  131</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a92402a4627bdb2c6dbf1b7a0ab7c0c86">currentPreview</a>.isLoaded)</div>
-<div class="line"><span class="lineno">  132</span>        {</div>
-<div class="line"><span class="lineno">  133</span>            SceneManager.UnloadSceneAsync(<a class="code hl_variable" href="#a92402a4627bdb2c6dbf1b7a0ab7c0c86">currentPreview</a>);</div>
-<div class="line"><span class="lineno">  134</span>        }</div>
-<div class="line"><span class="lineno">  135</span>        AsyncOperation loadOperation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);</div>
-<div class="line"><span class="lineno">  136</span>        loadOperation.completed += (operation) =&gt;</div>
-<div class="line"><span class="lineno">  137</span>        {</div>
-<div class="line"><span class="lineno">  138</span>            <a class="code hl_variable" href="#a92402a4627bdb2c6dbf1b7a0ab7c0c86">currentPreview</a> = SceneManager.GetSceneByName(sceneName); <span class="comment">// Assign the loaded scene to currentPreview</span></div>
-<div class="line"><span class="lineno">  139</span>            OnSceneLoaded(operation);</div>
-<div class="line"><span class="lineno">  140</span>        };</div>
-<div class="line"><span class="lineno">  141</span> </div>
+<div class="fragment"><div class="line"><span class="lineno">  130</span>    {</div>
+<div class="line"><span class="lineno">  131</span> </div>
+<div class="line"><span class="lineno">  132</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a92402a4627bdb2c6dbf1b7a0ab7c0c86">currentPreview</a>.isLoaded)</div>
+<div class="line"><span class="lineno">  133</span>        {</div>
+<div class="line"><span class="lineno">  134</span>            SceneManager.UnloadSceneAsync(<a class="code hl_variable" href="#a92402a4627bdb2c6dbf1b7a0ab7c0c86">currentPreview</a>);</div>
+<div class="line"><span class="lineno">  135</span>        }</div>
+<div class="line"><span class="lineno">  136</span>        AsyncOperation loadOperation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);</div>
+<div class="line"><span class="lineno">  137</span>        loadOperation.completed += (operation) =&gt;</div>
+<div class="line"><span class="lineno">  138</span>        {</div>
+<div class="line"><span class="lineno">  139</span>            <a class="code hl_variable" href="#a92402a4627bdb2c6dbf1b7a0ab7c0c86">currentPreview</a> = SceneManager.GetSceneByName(sceneName); <span class="comment">// Assign the loaded scene to currentPreview</span></div>
+<div class="line"><span class="lineno">  140</span>            OnSceneLoaded(operation);</div>
+<div class="line"><span class="lineno">  141</span>        };</div>
 <div class="line"><span class="lineno">  142</span> </div>
-<div class="line"><span class="lineno">  143</span>        <span class="keywordtype">void</span> OnSceneLoaded(AsyncOperation asyncOperation)</div>
-<div class="line"><span class="lineno">  144</span>        {</div>
-<div class="line"><span class="lineno">  145</span> </div>
-<div class="line"><span class="lineno">  146</span>            Scene previewScene = SceneManager.GetSceneByName(sceneName);</div>
-<div class="line"><span class="lineno">  147</span> </div>
+<div class="line"><span class="lineno">  143</span> </div>
+<div class="line"><span class="lineno">  144</span>        <span class="keywordtype">void</span> OnSceneLoaded(AsyncOperation asyncOperation)</div>
+<div class="line"><span class="lineno">  145</span>        {</div>
+<div class="line"><span class="lineno">  146</span> </div>
+<div class="line"><span class="lineno">  147</span>            Scene previewScene = SceneManager.GetSceneByName(sceneName);</div>
 <div class="line"><span class="lineno">  148</span> </div>
-<div class="line"><span class="lineno">  149</span>            <span class="comment">// Iterate through the root game objects of the scene</span></div>
-<div class="line"><span class="lineno">  150</span>            <span class="keywordflow">foreach</span> (GameObject rootObject <span class="keywordflow">in</span> previewScene.GetRootGameObjects())</div>
-<div class="line"><span class="lineno">  151</span>            {</div>
-<div class="line"><span class="lineno">  152</span>                <span class="keywordflow">if</span> (rootObject.TryGetComponent(out TransitionManager transition))</div>
-<div class="line"><span class="lineno">  153</span>                {</div>
-<div class="line"><span class="lineno">  154</span>                    transition.GetComponent&lt;Canvas&gt;().enabled = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  155</span>                }</div>
-<div class="line"><span class="lineno">  156</span>                <span class="keywordflow">if</span> (rootObject.TryGetComponent(out Canvas canvas))</div>
-<div class="line"><span class="lineno">  157</span>                {</div>
-<div class="line"><span class="lineno">  158</span>                    canvas.enabled = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  159</span>                }</div>
-<div class="line"><span class="lineno">  160</span>                <span class="comment">// Assign the object to the &quot;PreviewLayer&quot;</span></div>
-<div class="line"><span class="lineno">  161</span>                AssignToPreviewLayer(rootObject);</div>
-<div class="line"><span class="lineno">  162</span> </div>
-<div class="line"><span class="lineno">  163</span>                <span class="comment">// Check if the object has an EventSystem component and destroy it</span></div>
-<div class="line"><span class="lineno">  164</span>                <span class="keywordflow">if</span> (rootObject.TryGetComponent(out EventSystem eventSystem))</div>
-<div class="line"><span class="lineno">  165</span>                {</div>
-<div class="line"><span class="lineno">  166</span>                    Destroy(eventSystem.gameObject);</div>
-<div class="line"><span class="lineno">  167</span>                }</div>
-<div class="line"><span class="lineno">  168</span> </div>
-<div class="line"><span class="lineno">  169</span>                <span class="comment">// Find the camera in the preview scene</span></div>
-<div class="line"><span class="lineno">  170</span>                Camera camera = rootObject.GetComponentInChildren&lt;Camera&gt;();</div>
-<div class="line"><span class="lineno">  171</span>                <span class="keywordflow">if</span> (camera != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  172</span>                {</div>
-<div class="line"><span class="lineno">  173</span> </div>
-<div class="line"><span class="lineno">  174</span>                    <span class="comment">// Set the camera to render to the specified RenderTexture</span></div>
-<div class="line"><span class="lineno">  175</span>                    camera.cullingMask = 1 &lt;&lt; LayerMask.NameToLayer(<span class="stringliteral">&quot;PreviewLayer&quot;</span>);</div>
-<div class="line"><span class="lineno">  176</span>                    camera.targetTexture = <a class="code hl_variable" href="#a67f187359e66af0cc732d3674895c59f">renderTexture</a>;</div>
-<div class="line"><span class="lineno">  177</span>                }</div>
-<div class="line"><span class="lineno">  178</span>            }</div>
-<div class="line"><span class="lineno">  179</span> </div>
-<div class="line"><span class="lineno">  180</span>            <span class="comment">// Create a new UI Image object</span></div>
-<div class="line"><span class="lineno">  181</span>            GameObject imageObject = Instantiate(<a class="code hl_variable" href="#a86e5b71354e8ab093a1bb860c7419e5e">imagePrefab</a>, UiHolder.instance.transform);</div>
-<div class="line"><span class="lineno">  182</span>            RawImage image = imageObject.GetComponentInChildren&lt;RawImage&gt;(); <span class="comment">// CAN ONLY DO THIS BECAUSE IT IS RAWIMAGE, SINCE I USE MANY NORMAL IMAGE TYPES.</span></div>
-<div class="line"><span class="lineno">  183</span> </div>
+<div class="line"><span class="lineno">  149</span> </div>
+<div class="line"><span class="lineno">  150</span>            <span class="comment">// Iterate through the root game objects of the scene</span></div>
+<div class="line"><span class="lineno">  151</span>            <span class="keywordflow">foreach</span> (GameObject rootObject <span class="keywordflow">in</span> previewScene.GetRootGameObjects())</div>
+<div class="line"><span class="lineno">  152</span>            {</div>
+<div class="line"><span class="lineno">  153</span>                <span class="keywordflow">if</span> (rootObject.TryGetComponent(out TransitionManager transition))</div>
+<div class="line"><span class="lineno">  154</span>                {</div>
+<div class="line"><span class="lineno">  155</span>                    transition.GetComponent&lt;Canvas&gt;().enabled = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  156</span>                }</div>
+<div class="line"><span class="lineno">  157</span>                <span class="keywordflow">if</span> (rootObject.TryGetComponent(out Canvas canvas))</div>
+<div class="line"><span class="lineno">  158</span>                {</div>
+<div class="line"><span class="lineno">  159</span>                    canvas.enabled = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  160</span>                }</div>
+<div class="line"><span class="lineno">  161</span>                <span class="comment">// Assign the object to the &quot;PreviewLayer&quot;</span></div>
+<div class="line"><span class="lineno">  162</span>                AssignToPreviewLayer(rootObject);</div>
+<div class="line"><span class="lineno">  163</span> </div>
+<div class="line"><span class="lineno">  164</span>                <span class="comment">// Check if the object has an EventSystem component and destroy it</span></div>
+<div class="line"><span class="lineno">  165</span>                <span class="keywordflow">if</span> (rootObject.TryGetComponent(out EventSystem eventSystem))</div>
+<div class="line"><span class="lineno">  166</span>                {</div>
+<div class="line"><span class="lineno">  167</span>                    Destroy(eventSystem.gameObject);</div>
+<div class="line"><span class="lineno">  168</span>                }</div>
+<div class="line"><span class="lineno">  169</span> </div>
+<div class="line"><span class="lineno">  170</span>                <span class="comment">// Find the camera in the preview scene</span></div>
+<div class="line"><span class="lineno">  171</span>                Camera camera = rootObject.GetComponentInChildren&lt;Camera&gt;();</div>
+<div class="line"><span class="lineno">  172</span>                <span class="keywordflow">if</span> (camera != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  173</span>                {</div>
+<div class="line"><span class="lineno">  174</span> </div>
+<div class="line"><span class="lineno">  175</span>                    <span class="comment">// Set the camera to render to the specified RenderTexture</span></div>
+<div class="line"><span class="lineno">  176</span>                    camera.cullingMask = 1 &lt;&lt; LayerMask.NameToLayer(<span class="stringliteral">&quot;PreviewLayer&quot;</span>);</div>
+<div class="line"><span class="lineno">  177</span>                    camera.targetTexture = <a class="code hl_variable" href="#a67f187359e66af0cc732d3674895c59f">renderTexture</a>;</div>
+<div class="line"><span class="lineno">  178</span>                }</div>
+<div class="line"><span class="lineno">  179</span>            }</div>
+<div class="line"><span class="lineno">  180</span> </div>
+<div class="line"><span class="lineno">  181</span>            <span class="comment">// Create a new UI Image object</span></div>
+<div class="line"><span class="lineno">  182</span>            GameObject imageObject = Instantiate(<a class="code hl_variable" href="#a86e5b71354e8ab093a1bb860c7419e5e">imagePrefab</a>, UiHolder.instance.transform);</div>
+<div class="line"><span class="lineno">  183</span>            RawImage image = imageObject.GetComponentInChildren&lt;RawImage&gt;(); <span class="comment">// CAN ONLY DO THIS BECAUSE IT IS RAWIMAGE, SINCE I USE MANY NORMAL IMAGE TYPES.</span></div>
 <div class="line"><span class="lineno">  184</span> </div>
-<div class="line"><span class="lineno">  185</span>            <span class="comment">// Check if RawImage component exists</span></div>
-<div class="line"><span class="lineno">  186</span>            <span class="keywordflow">if</span> (image != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  187</span>            {</div>
-<div class="line"><span class="lineno">  188</span>                <span class="comment">// Assign the RenderTexture to the RawImage component&#39;s texture</span></div>
-<div class="line"><span class="lineno">  189</span>                image.texture = <a class="code hl_variable" href="#a67f187359e66af0cc732d3674895c59f">renderTexture</a>;</div>
-<div class="line"><span class="lineno">  190</span>                <span class="keywordflow">if</span> (UiHolder.instance.scenePreview != <span class="keyword">null</span>) { Destroy(UiHolder.instance.scenePreview); }</div>
-<div class="line"><span class="lineno">  191</span>                UiHolder.instance.scenePreview = imageObject;</div>
-<div class="line"><span class="lineno">  192</span>            }</div>
-<div class="line"><span class="lineno">  193</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  194</span>            {</div>
-<div class="line"><span class="lineno">  195</span>                Debug.LogError(<span class="stringliteral">&quot;RawImage component not found on the instantiated image prefab.&quot;</span>);</div>
-<div class="line"><span class="lineno">  196</span>            }</div>
-<div class="line"><span class="lineno">  197</span>            asyncOperation.completed -= OnSceneLoaded;</div>
-<div class="line"><span class="lineno">  198</span> </div>
-<div class="line"><span class="lineno">  199</span>        }</div>
-<div class="line"><span class="lineno">  200</span> </div>
-<div class="line"><span class="lineno">  201</span>        <span class="comment">// Method to assign an object and its children to the &quot;PreviewLayer&quot;</span></div>
-<div class="line"><span class="lineno">  202</span>        <span class="keywordtype">void</span> AssignToPreviewLayer(GameObject obj)</div>
-<div class="line"><span class="lineno">  203</span>        {</div>
-<div class="line"><span class="lineno">  204</span>            <span class="comment">// Assign the object to the &quot;PreviewLayer&quot;</span></div>
-<div class="line"><span class="lineno">  205</span>            obj.layer = LayerMask.NameToLayer(<span class="stringliteral">&quot;PreviewLayer&quot;</span>);</div>
-<div class="line"><span class="lineno">  206</span> </div>
-<div class="line"><span class="lineno">  207</span>            <span class="comment">// Recursively assign children to the &quot;PreviewLayer&quot;</span></div>
-<div class="line"><span class="lineno">  208</span>            <span class="keywordflow">foreach</span> (Transform child <span class="keywordflow">in</span> obj.transform)</div>
-<div class="line"><span class="lineno">  209</span>            {</div>
-<div class="line"><span class="lineno">  210</span>                AssignToPreviewLayer(child.gameObject);</div>
-<div class="line"><span class="lineno">  211</span>            }</div>
-<div class="line"><span class="lineno">  212</span>        }</div>
-<div class="line"><span class="lineno">  213</span>    }</div>
-<div class="ttc" id="aclass_midi_input_html_a67f187359e66af0cc732d3674895c59f"><div class="ttname"><a href="#a67f187359e66af0cc732d3674895c59f">MidiInput.renderTexture</a></div><div class="ttdeci">RenderTexture renderTexture</div><div class="ttdoc">Render texture used for previewing scenes in Song Selection.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:51</div></div>
-<div class="ttc" id="aclass_midi_input_html_a86e5b71354e8ab093a1bb860c7419e5e"><div class="ttname"><a href="#a86e5b71354e8ab093a1bb860c7419e5e">MidiInput.imagePrefab</a></div><div class="ttdeci">GameObject imagePrefab</div><div class="ttdoc">keyPrefab object with a RawImage component to assign renderTexture to.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:55</div></div>
-<div class="ttc" id="aclass_midi_input_html_a92402a4627bdb2c6dbf1b7a0ab7c0c86"><div class="ttname"><a href="#a92402a4627bdb2c6dbf1b7a0ab7c0c86">MidiInput.currentPreview</a></div><div class="ttdeci">Scene currentPreview</div><div class="ttdoc">Scene used for previewing songs in Song Selection.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:79</div></div>
+<div class="line"><span class="lineno">  185</span> </div>
+<div class="line"><span class="lineno">  186</span>            <span class="comment">// Check if RawImage component exists</span></div>
+<div class="line"><span class="lineno">  187</span>            <span class="keywordflow">if</span> (image != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  188</span>            {</div>
+<div class="line"><span class="lineno">  189</span>                <span class="comment">// Assign the RenderTexture to the RawImage component&#39;s texture</span></div>
+<div class="line"><span class="lineno">  190</span>                image.texture = <a class="code hl_variable" href="#a67f187359e66af0cc732d3674895c59f">renderTexture</a>;</div>
+<div class="line"><span class="lineno">  191</span>                <span class="keywordflow">if</span> (UiHolder.instance.scenePreview != <span class="keyword">null</span>) { Destroy(UiHolder.instance.scenePreview); }</div>
+<div class="line"><span class="lineno">  192</span>                UiHolder.instance.scenePreview = imageObject;</div>
+<div class="line"><span class="lineno">  193</span>            }</div>
+<div class="line"><span class="lineno">  194</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  195</span>            {</div>
+<div class="line"><span class="lineno">  196</span>                Debug.LogError(<span class="stringliteral">&quot;RawImage component not found on the instantiated image prefab.&quot;</span>);</div>
+<div class="line"><span class="lineno">  197</span>            }</div>
+<div class="line"><span class="lineno">  198</span>            asyncOperation.completed -= OnSceneLoaded;</div>
+<div class="line"><span class="lineno">  199</span> </div>
+<div class="line"><span class="lineno">  200</span>        }</div>
+<div class="line"><span class="lineno">  201</span> </div>
+<div class="line"><span class="lineno">  202</span>        <span class="comment">// Method to assign an object and its children to the &quot;PreviewLayer&quot;</span></div>
+<div class="line"><span class="lineno">  203</span>        <span class="keywordtype">void</span> AssignToPreviewLayer(GameObject obj)</div>
+<div class="line"><span class="lineno">  204</span>        {</div>
+<div class="line"><span class="lineno">  205</span>            <span class="comment">// Assign the object to the &quot;PreviewLayer&quot;</span></div>
+<div class="line"><span class="lineno">  206</span>            obj.layer = LayerMask.NameToLayer(<span class="stringliteral">&quot;PreviewLayer&quot;</span>);</div>
+<div class="line"><span class="lineno">  207</span> </div>
+<div class="line"><span class="lineno">  208</span>            <span class="comment">// Recursively assign children to the &quot;PreviewLayer&quot;</span></div>
+<div class="line"><span class="lineno">  209</span>            <span class="keywordflow">foreach</span> (Transform child <span class="keywordflow">in</span> obj.transform)</div>
+<div class="line"><span class="lineno">  210</span>            {</div>
+<div class="line"><span class="lineno">  211</span>                AssignToPreviewLayer(child.gameObject);</div>
+<div class="line"><span class="lineno">  212</span>            }</div>
+<div class="line"><span class="lineno">  213</span>        }</div>
+<div class="line"><span class="lineno">  214</span>    }</div>
+<div class="ttc" id="aclass_midi_input_html_a67f187359e66af0cc732d3674895c59f"><div class="ttname"><a href="#a67f187359e66af0cc732d3674895c59f">MidiInput.renderTexture</a></div><div class="ttdeci">RenderTexture renderTexture</div><div class="ttdoc">Render texture used for previewing scenes in Song Selection.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:52</div></div>
+<div class="ttc" id="aclass_midi_input_html_a86e5b71354e8ab093a1bb860c7419e5e"><div class="ttname"><a href="#a86e5b71354e8ab093a1bb860c7419e5e">MidiInput.imagePrefab</a></div><div class="ttdeci">GameObject imagePrefab</div><div class="ttdoc">keyPrefab object with a RawImage component to assign renderTexture to.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:56</div></div>
+<div class="ttc" id="aclass_midi_input_html_a92402a4627bdb2c6dbf1b7a0ab7c0c86"><div class="ttname"><a href="#a92402a4627bdb2c6dbf1b7a0ab7c0c86">MidiInput.currentPreview</a></div><div class="ttdeci">Scene currentPreview</div><div class="ttdoc">Scene used for previewing songs in Song Selection.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:80</div></div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="#a45fbc3ff0c86cf6739b2951fdb831037">LoadSongFromCurrentSettings()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#a45fbc3ff0c86cf6739b2951fdb831037">LoadSongFromCurrentSettings()</a>, and <a class="el" href="#a856f990e560ce05c44e43133820aa62e">LoadSongFromNoteEvents()</a>.</p>
 
 </div>
 </div>
@@ -671,65 +677,132 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Loads the selected song for gameplay. </p>
-<div class="fragment"><div class="line"><span class="lineno">  222</span>    {</div>
-<div class="line"><span class="lineno">  223</span>        <a class="code hl_class" href="class_m_p3_handler.html">MP3Handler</a>.<a class="code hl_variable" href="class_m_p3_handler.html#a0fa70fd58f86cdabb3c80f92f45c6ee2">instance</a>.StopMusic();</div>
-<div class="line"><span class="lineno">  224</span>        <span class="keywordtype">string</span> gameMode;</div>
-<div class="line"><span class="lineno">  225</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="class_kiboard_debug.html">KiboardDebug</a>.<a class="code hl_property" href="class_kiboard_debug.html#a87c862afc69067077e5f3cd3e5a8ac98">isMidiConnected</a> &amp;&amp; GameSettings.usePiano) { gameMode = <span class="stringliteral">&quot;GameScene88&quot;</span>; } <span class="keywordflow">else</span> { gameMode = <span class="stringliteral">&quot;GameScene12&quot;</span>; }</div>
-<div class="line"><span class="lineno">  226</span> </div>
-<div class="line"><span class="lineno">  227</span>        <span class="keywordflow">if</span> (isPreview)</div>
-<div class="line"><span class="lineno">  228</span>        {</div>
-<div class="line"><span class="lineno">  229</span>            <a class="code hl_function" href="#a8d1cc24ea62cc6532a214c7dd056ad1f">LoadScenePreview</a>(gameMode);</div>
-<div class="line"><span class="lineno">  230</span>            <a class="code hl_class" href="class_note_event_data_wrapper.html">NoteEventDataWrapper</a> data = <a class="code hl_class" href="class_midi_read_file.html">MidiReadFile</a>.<a class="code hl_function" href="class_midi_read_file.html#ae92e1f0a1a7c5b7219fe5d8647951219">GetNoteEventsFromFilePath</a>(GameSettings.currentSongPath);</div>
-<div class="line"><span class="lineno">  231</span>            GameSettings.bpm = data.<a class="code hl_variable" href="class_note_event_data_wrapper.html#a2da8d226562bac9e8f6888deec995a55">BPM</a>;</div>
-<div class="line"><span class="lineno">  232</span>            <a class="code hl_variable" href="#a3a26bb867212d9ca4acc6138c7076d1f">storedNoteEvents</a> = data.<a class="code hl_variable" href="class_note_event_data_wrapper.html#ab50d1b38b07efe975e0abefafea94e4b">NoteEvents</a>;</div>
-<div class="line"><span class="lineno">  233</span>            <a class="code hl_variable" href="#a9e26bd0e9c890690a633f2fd78731d69">takeInput</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  234</span>            <a class="code hl_variable" href="#a1ddd47ee58668127ad36428b9433824f">inGame</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  235</span>            StartCoroutine(<a class="code hl_function" href="#ace45aa85d323c88eb98970e6807bb548">StartSong</a>(<span class="keyword">true</span>));</div>
-<div class="line"><span class="lineno">  236</span>        }</div>
-<div class="line"><span class="lineno">  237</span>        <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  238</span>        {</div>
-<div class="line"><span class="lineno">  239</span> </div>
-<div class="line"><span class="lineno">  240</span>            <span class="keywordflow">try</span></div>
-<div class="line"><span class="lineno">  241</span>            {</div>
-<div class="line"><span class="lineno">  242</span>                TransitionManager.instance.LoadNewScene(gameMode);</div>
-<div class="line"><span class="lineno">  243</span>            }</div>
-<div class="line"><span class="lineno">  244</span> </div>
-<div class="line"><span class="lineno">  245</span>            <span class="keywordflow">catch</span>(Exception e)</div>
-<div class="line"><span class="lineno">  246</span>            {</div>
-<div class="line"><span class="lineno">  247</span>                Debug.Log(e);</div>
-<div class="line"><span class="lineno">  248</span>                SceneManager.LoadScene(gameMode);</div>
-<div class="line"><span class="lineno">  249</span>            }</div>
-<div class="line"><span class="lineno">  250</span> </div>
-<div class="line"><span class="lineno">  251</span>            <span class="keywordflow">if</span> (GameSettings.usePiano) { <a class="code hl_function" href="#aed66bdb11ffd9ceffc086c4d27e30019">HookMidiDevice</a>(); } <span class="keywordflow">else</span> { <a class="code hl_function" href="#aa8f3a281641bffc5cb6f864eaba93f8a">UnHookMidiDevice</a>(); }</div>
-<div class="line"><span class="lineno">  252</span>            <a class="code hl_class" href="class_note_event_data_wrapper.html">NoteEventDataWrapper</a> data = <a class="code hl_class" href="class_midi_read_file.html">MidiReadFile</a>.<a class="code hl_function" href="class_midi_read_file.html#ae92e1f0a1a7c5b7219fe5d8647951219">GetNoteEventsFromFilePath</a>(GameSettings.currentSongPath);</div>
-<div class="line"><span class="lineno">  253</span>            GameSettings.bpm = GameSettings.bpm == 0 ? data.BPM : GameSettings.bpm;</div>
-<div class="line"><span class="lineno">  254</span> </div>
-<div class="line"><span class="lineno">  255</span>            <a class="code hl_variable" href="#a3a26bb867212d9ca4acc6138c7076d1f">storedNoteEvents</a> = data.<a class="code hl_variable" href="class_note_event_data_wrapper.html#ab50d1b38b07efe975e0abefafea94e4b">NoteEvents</a>;</div>
-<div class="line"><span class="lineno">  256</span>            <a class="code hl_variable" href="#a9e26bd0e9c890690a633f2fd78731d69">takeInput</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  257</span>            <a class="code hl_variable" href="#a1ddd47ee58668127ad36428b9433824f">inGame</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  258</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a475cd7d525520e4fa04703595c850906">PrepareNotesCoroutine</a> != <span class="keyword">null</span>) StopCoroutine(<a class="code hl_variable" href="#a475cd7d525520e4fa04703595c850906">PrepareNotesCoroutine</a>);</div>
-<div class="line"><span class="lineno">  259</span>            <a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.StopReadiedNotes();</div>
-<div class="line"><span class="lineno">  260</span>            StartCoroutine(<a class="code hl_function" href="#ace45aa85d323c88eb98970e6807bb548">StartSong</a>());</div>
-<div class="line"><span class="lineno">  261</span>        }</div>
-<div class="line"><span class="lineno">  262</span> </div>
+<div class="fragment"><div class="line"><span class="lineno">  223</span>    {</div>
+<div class="line"><span class="lineno">  224</span>        <a class="code hl_class" href="class_m_p3_handler.html">MP3Handler</a>.<a class="code hl_variable" href="class_m_p3_handler.html#a0fa70fd58f86cdabb3c80f92f45c6ee2">instance</a>.StopMusic();</div>
+<div class="line"><span class="lineno">  225</span>        <span class="keywordtype">string</span> gameMode;</div>
+<div class="line"><span class="lineno">  226</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="class_kiboard_debug.html">KiboardDebug</a>.<a class="code hl_property" href="class_kiboard_debug.html#a87c862afc69067077e5f3cd3e5a8ac98">isMidiConnected</a> &amp;&amp; GameSettings.usePiano) { gameMode = <span class="stringliteral">&quot;GameScene88&quot;</span>; } <span class="keywordflow">else</span> { gameMode = <span class="stringliteral">&quot;GameScene12&quot;</span>; }<span class="comment">// determine if player should load into 88 oor 12 key game scene based on if they have a midi device.</span></div>
+<div class="line"><span class="lineno">  227</span> </div>
+<div class="line"><span class="lineno">  228</span>        <span class="keywordflow">if</span> (isPreview)</div>
+<div class="line"><span class="lineno">  229</span>        {</div>
+<div class="line"><span class="lineno">  230</span>            <a class="code hl_function" href="#a8d1cc24ea62cc6532a214c7dd056ad1f">LoadScenePreview</a>(gameMode);</div>
+<div class="line"><span class="lineno">  231</span>            <a class="code hl_class" href="class_note_event_data_wrapper.html">NoteEventDataWrapper</a> data = <a class="code hl_class" href="class_midi_read_file.html">MidiReadFile</a>.<a class="code hl_function" href="class_midi_read_file.html#ae92e1f0a1a7c5b7219fe5d8647951219">GetNoteEventsFromFilePath</a>(GameSettings.currentSongPath);</div>
+<div class="line"><span class="lineno">  232</span>            GameSettings.bpm = data.<a class="code hl_variable" href="class_note_event_data_wrapper.html#a2da8d226562bac9e8f6888deec995a55">BPM</a>;</div>
+<div class="line"><span class="lineno">  233</span>            <a class="code hl_variable" href="#a3a26bb867212d9ca4acc6138c7076d1f">storedNoteEvents</a> = data.<a class="code hl_variable" href="class_note_event_data_wrapper.html#ab50d1b38b07efe975e0abefafea94e4b">NoteEvents</a>;</div>
+<div class="line"><span class="lineno">  234</span>            <a class="code hl_variable" href="#a9e26bd0e9c890690a633f2fd78731d69">takeInput</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  235</span>            <a class="code hl_variable" href="#a1ddd47ee58668127ad36428b9433824f">inGame</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  236</span>            StartCoroutine(<a class="code hl_function" href="#ace45aa85d323c88eb98970e6807bb548">StartSong</a>(<span class="keyword">true</span>));</div>
+<div class="line"><span class="lineno">  237</span>        }</div>
+<div class="line"><span class="lineno">  238</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  239</span>        {</div>
+<div class="line"><span class="lineno">  240</span> </div>
+<div class="line"><span class="lineno">  241</span>            <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">  242</span>            {</div>
+<div class="line"><span class="lineno">  243</span>                TransitionManager.instance.LoadNewScene(gameMode);</div>
+<div class="line"><span class="lineno">  244</span>            }</div>
+<div class="line"><span class="lineno">  245</span> </div>
+<div class="line"><span class="lineno">  246</span>            <span class="keywordflow">catch</span> (Exception e)</div>
+<div class="line"><span class="lineno">  247</span>            {</div>
+<div class="line"><span class="lineno">  248</span>                Debug.Log(e);</div>
+<div class="line"><span class="lineno">  249</span>                SceneManager.LoadScene(gameMode);</div>
+<div class="line"><span class="lineno">  250</span>            }</div>
+<div class="line"><span class="lineno">  251</span> </div>
+<div class="line"><span class="lineno">  252</span>            <span class="keywordflow">if</span> (GameSettings.usePiano) { <a class="code hl_function" href="#aed66bdb11ffd9ceffc086c4d27e30019">HookMidiDevice</a>(); } <span class="keywordflow">else</span> { <a class="code hl_function" href="#aa8f3a281641bffc5cb6f864eaba93f8a">UnHookMidiDevice</a>(); }</div>
+<div class="line"><span class="lineno">  253</span>            <a class="code hl_class" href="class_note_event_data_wrapper.html">NoteEventDataWrapper</a> data = <a class="code hl_class" href="class_midi_read_file.html">MidiReadFile</a>.<a class="code hl_function" href="class_midi_read_file.html#ae92e1f0a1a7c5b7219fe5d8647951219">GetNoteEventsFromFilePath</a>(GameSettings.currentSongPath);</div>
+<div class="line"><span class="lineno">  254</span>            GameSettings.bpm = GameSettings.bpm == 0 ? data.BPM : GameSettings.bpm;</div>
+<div class="line"><span class="lineno">  255</span> </div>
+<div class="line"><span class="lineno">  256</span>            <a class="code hl_variable" href="#a3a26bb867212d9ca4acc6138c7076d1f">storedNoteEvents</a> = data.<a class="code hl_variable" href="class_note_event_data_wrapper.html#ab50d1b38b07efe975e0abefafea94e4b">NoteEvents</a>;</div>
+<div class="line"><span class="lineno">  257</span>            <a class="code hl_variable" href="#a9e26bd0e9c890690a633f2fd78731d69">takeInput</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  258</span>            <a class="code hl_variable" href="#a1ddd47ee58668127ad36428b9433824f">inGame</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  259</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a475cd7d525520e4fa04703595c850906">PrepareNotesCoroutine</a> != <span class="keyword">null</span>) StopCoroutine(<a class="code hl_variable" href="#a475cd7d525520e4fa04703595c850906">PrepareNotesCoroutine</a>);</div>
+<div class="line"><span class="lineno">  260</span>            <a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.StopReadiedNotes();</div>
+<div class="line"><span class="lineno">  261</span>            StartCoroutine(<a class="code hl_function" href="#ace45aa85d323c88eb98970e6807bb548">StartSong</a>());</div>
+<div class="line"><span class="lineno">  262</span>        }</div>
 <div class="line"><span class="lineno">  263</span> </div>
 <div class="line"><span class="lineno">  264</span> </div>
-<div class="line"><span class="lineno">  265</span>    }</div>
+<div class="line"><span class="lineno">  265</span> </div>
+<div class="line"><span class="lineno">  266</span>    }</div>
 <div class="ttc" id="aclass_kiboard_debug_html"><div class="ttname"><a href="class_kiboard_debug.html">KiboardDebug</a></div><div class="ttdef"><b>Definition</b> KiboardDebug.cs:13</div></div>
 <div class="ttc" id="aclass_kiboard_debug_html_a87c862afc69067077e5f3cd3e5a8ac98"><div class="ttname"><a href="class_kiboard_debug.html#a87c862afc69067077e5f3cd3e5a8ac98">KiboardDebug.isMidiConnected</a></div><div class="ttdeci">static bool isMidiConnected</div><div class="ttdoc">Returns true if any midi device is detected.</div><div class="ttdef"><b>Definition</b> KiboardDebug.cs:30</div></div>
 <div class="ttc" id="aclass_m_p3_handler_html"><div class="ttname"><a href="class_m_p3_handler.html">MP3Handler</a></div><div class="ttdoc">Handles reading and playback of .MP3 Files.</div><div class="ttdef"><b>Definition</b> MP3Handler.cs:10</div></div>
 <div class="ttc" id="aclass_m_p3_handler_html_a0fa70fd58f86cdabb3c80f92f45c6ee2"><div class="ttname"><a href="class_m_p3_handler.html#a0fa70fd58f86cdabb3c80f92f45c6ee2">MP3Handler.instance</a></div><div class="ttdeci">static MP3Handler instance</div><div class="ttdef"><b>Definition</b> MP3Handler.cs:11</div></div>
-<div class="ttc" id="aclass_midi_input_html_a1ddd47ee58668127ad36428b9433824f"><div class="ttname"><a href="#a1ddd47ee58668127ad36428b9433824f">MidiInput.inGame</a></div><div class="ttdeci">bool inGame</div><div class="ttdoc">Are we in the game scene.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:40</div></div>
-<div class="ttc" id="aclass_midi_input_html_a475cd7d525520e4fa04703595c850906"><div class="ttname"><a href="#a475cd7d525520e4fa04703595c850906">MidiInput.PrepareNotesCoroutine</a></div><div class="ttdeci">Coroutine PrepareNotesCoroutine</div><div class="ttdoc">Reference to the GameManager.PrepareNotes(float, List&lt;NoteEventInfo&gt;, bool) prepareNotes Coroutine.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:24</div></div>
-<div class="ttc" id="aclass_midi_input_html_a8d1cc24ea62cc6532a214c7dd056ad1f"><div class="ttname"><a href="#a8d1cc24ea62cc6532a214c7dd056ad1f">MidiInput.LoadScenePreview</a></div><div class="ttdeci">void LoadScenePreview(string sceneName)</div><div class="ttdoc">Loads a preview of selected song into the currentPreview Scene variable, and begins playing the songs...</div><div class="ttdef"><b>Definition</b> MidiInput.cs:128</div></div>
-<div class="ttc" id="aclass_midi_input_html_a9e26bd0e9c890690a633f2fd78731d69"><div class="ttname"><a href="#a9e26bd0e9c890690a633f2fd78731d69">MidiInput.takeInput</a></div><div class="ttdeci">bool takeInput</div><div class="ttdoc">Should the game take piano input.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:36</div></div>
-<div class="ttc" id="aclass_midi_input_html_aa8f3a281641bffc5cb6f864eaba93f8a"><div class="ttname"><a href="#aa8f3a281641bffc5cb6f864eaba93f8a">MidiInput.UnHookMidiDevice</a></div><div class="ttdeci">void UnHookMidiDevice()</div><div class="ttdoc">unhooks midi devices to remove their input.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:288</div></div>
-<div class="ttc" id="aclass_midi_input_html_ace45aa85d323c88eb98970e6807bb548"><div class="ttname"><a href="#ace45aa85d323c88eb98970e6807bb548">MidiInput.StartSong</a></div><div class="ttdeci">IEnumerator StartSong(bool isPreview=false)</div><div class="ttdoc">Starts playing the loaded song using the current FileGroup's mp3 file field.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:328</div></div>
-<div class="ttc" id="aclass_midi_input_html_aed66bdb11ffd9ceffc086c4d27e30019"><div class="ttname"><a href="#aed66bdb11ffd9ceffc086c4d27e30019">MidiInput.HookMidiDevice</a></div><div class="ttdeci">void HookMidiDevice()</div><div class="ttdoc">Hooks midi devices to be used for input.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:269</div></div>
+<div class="ttc" id="aclass_midi_input_html_a1ddd47ee58668127ad36428b9433824f"><div class="ttname"><a href="#a1ddd47ee58668127ad36428b9433824f">MidiInput.inGame</a></div><div class="ttdeci">bool inGame</div><div class="ttdoc">Are we in the game scene.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:41</div></div>
+<div class="ttc" id="aclass_midi_input_html_a475cd7d525520e4fa04703595c850906"><div class="ttname"><a href="#a475cd7d525520e4fa04703595c850906">MidiInput.PrepareNotesCoroutine</a></div><div class="ttdeci">Coroutine PrepareNotesCoroutine</div><div class="ttdoc">Reference to the GameManager.PrepareNotes(float, List&lt;NoteEventInfo&gt;, bool) prepareNotes Coroutine.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:25</div></div>
+<div class="ttc" id="aclass_midi_input_html_a8d1cc24ea62cc6532a214c7dd056ad1f"><div class="ttname"><a href="#a8d1cc24ea62cc6532a214c7dd056ad1f">MidiInput.LoadScenePreview</a></div><div class="ttdeci">void LoadScenePreview(string sceneName)</div><div class="ttdoc">Loads a preview of selected song into the currentPreview Scene variable, and begins playing the songs...</div><div class="ttdef"><b>Definition</b> MidiInput.cs:129</div></div>
+<div class="ttc" id="aclass_midi_input_html_a9e26bd0e9c890690a633f2fd78731d69"><div class="ttname"><a href="#a9e26bd0e9c890690a633f2fd78731d69">MidiInput.takeInput</a></div><div class="ttdeci">bool takeInput</div><div class="ttdoc">Should the game take piano input.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:37</div></div>
+<div class="ttc" id="aclass_midi_input_html_aa8f3a281641bffc5cb6f864eaba93f8a"><div class="ttname"><a href="#aa8f3a281641bffc5cb6f864eaba93f8a">MidiInput.UnHookMidiDevice</a></div><div class="ttdeci">void UnHookMidiDevice()</div><div class="ttdoc">unhooks midi devices to remove their input.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:334</div></div>
+<div class="ttc" id="aclass_midi_input_html_ace45aa85d323c88eb98970e6807bb548"><div class="ttname"><a href="#ace45aa85d323c88eb98970e6807bb548">MidiInput.StartSong</a></div><div class="ttdeci">IEnumerator StartSong(bool isPreview=false)</div><div class="ttdoc">Starts playing the loaded song using the current FileGroup's mp3 file field.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:374</div></div>
+<div class="ttc" id="aclass_midi_input_html_aed66bdb11ffd9ceffc086c4d27e30019"><div class="ttname"><a href="#aed66bdb11ffd9ceffc086c4d27e30019">MidiInput.HookMidiDevice</a></div><div class="ttdeci">void HookMidiDevice()</div><div class="ttdoc">Hooks midi devices to be used for input.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:315</div></div>
 <div class="ttc" id="aclass_note_event_data_wrapper_html_a2da8d226562bac9e8f6888deec995a55"><div class="ttname"><a href="class_note_event_data_wrapper.html#a2da8d226562bac9e8f6888deec995a55">NoteEventDataWrapper.BPM</a></div><div class="ttdeci">float BPM</div><div class="ttdoc">The BPM (Beats Per Minute) of the song.</div><div class="ttdef"><b>Definition</b> MidiDataHandler.cs:165</div></div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="#a1ef5e834cfe6cdac6b09db8c5d3fccaa">RetryCurrentSong()</a>.</p>
+</div>
+</div>
+<a id="a856f990e560ce05c44e43133820aa62e" name="a856f990e560ce05c44e43133820aa62e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a856f990e560ce05c44e43133820aa62e">&#9670;&#160;</a></span>LoadSongFromNoteEvents()</h2>
 
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MidiInput.LoadSongFromNoteEvents </td>
+          <td>(</td>
+          <td class="paramtype">List&lt; <a class="el" href="class_note_event_info.html">NoteEventInfo</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>noteEvents</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>bpm</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>isPreview</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">  269</span>    {</div>
+<div class="line"><span class="lineno">  270</span>        <a class="code hl_class" href="class_m_p3_handler.html">MP3Handler</a>.<a class="code hl_variable" href="class_m_p3_handler.html#a0fa70fd58f86cdabb3c80f92f45c6ee2">instance</a>.StopMusic();</div>
+<div class="line"><span class="lineno">  271</span>        <span class="keywordtype">string</span> gameMode;</div>
+<div class="line"><span class="lineno">  272</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="class_kiboard_debug.html">KiboardDebug</a>.<a class="code hl_property" href="class_kiboard_debug.html#a87c862afc69067077e5f3cd3e5a8ac98">isMidiConnected</a> &amp;&amp; GameSettings.usePiano) { gameMode = <span class="stringliteral">&quot;GameScene88&quot;</span>; } <span class="keywordflow">else</span> { gameMode = <span class="stringliteral">&quot;GameScene12&quot;</span>; }<span class="comment">// determine if player should load into 88 oor 12 key game scene based on if they have a midi device.</span></div>
+<div class="line"><span class="lineno">  273</span> </div>
+<div class="line"><span class="lineno">  274</span>        <span class="keywordflow">if</span> (isPreview)</div>
+<div class="line"><span class="lineno">  275</span>        {</div>
+<div class="line"><span class="lineno">  276</span>            <a class="code hl_function" href="#a8d1cc24ea62cc6532a214c7dd056ad1f">LoadScenePreview</a>(gameMode);</div>
+<div class="line"><span class="lineno">  277</span>            <a class="code hl_class" href="class_note_event_data_wrapper.html">NoteEventDataWrapper</a> data = <a class="code hl_class" href="class_midi_read_file.html">MidiReadFile</a>.<a class="code hl_function" href="class_midi_read_file.html#ae92e1f0a1a7c5b7219fe5d8647951219">GetNoteEventsFromFilePath</a>(GameSettings.currentSongPath);</div>
+<div class="line"><span class="lineno">  278</span>            GameSettings.bpm = data.<a class="code hl_variable" href="class_note_event_data_wrapper.html#a2da8d226562bac9e8f6888deec995a55">BPM</a>;</div>
+<div class="line"><span class="lineno">  279</span>            <a class="code hl_variable" href="#a3a26bb867212d9ca4acc6138c7076d1f">storedNoteEvents</a> = data.<a class="code hl_variable" href="class_note_event_data_wrapper.html#ab50d1b38b07efe975e0abefafea94e4b">NoteEvents</a>;</div>
+<div class="line"><span class="lineno">  280</span>            <a class="code hl_variable" href="#a9e26bd0e9c890690a633f2fd78731d69">takeInput</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  281</span>            <a class="code hl_variable" href="#a1ddd47ee58668127ad36428b9433824f">inGame</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  282</span>            StartCoroutine(<a class="code hl_function" href="#ace45aa85d323c88eb98970e6807bb548">StartSong</a>(<span class="keyword">true</span>));</div>
+<div class="line"><span class="lineno">  283</span>        }</div>
+<div class="line"><span class="lineno">  284</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  285</span>        {</div>
+<div class="line"><span class="lineno">  286</span> </div>
+<div class="line"><span class="lineno">  287</span>            <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">  288</span>            {</div>
+<div class="line"><span class="lineno">  289</span>                TransitionManager.instance.LoadNewScene(gameMode);</div>
+<div class="line"><span class="lineno">  290</span>            }</div>
+<div class="line"><span class="lineno">  291</span> </div>
+<div class="line"><span class="lineno">  292</span>            <span class="keywordflow">catch</span> (Exception e)</div>
+<div class="line"><span class="lineno">  293</span>            {</div>
+<div class="line"><span class="lineno">  294</span>                Debug.Log(e);</div>
+<div class="line"><span class="lineno">  295</span>                SceneManager.LoadScene(gameMode);</div>
+<div class="line"><span class="lineno">  296</span>            }</div>
+<div class="line"><span class="lineno">  297</span> </div>
+<div class="line"><span class="lineno">  298</span>            <span class="keywordflow">if</span> (GameSettings.usePiano) { <a class="code hl_function" href="#aed66bdb11ffd9ceffc086c4d27e30019">HookMidiDevice</a>(); } <span class="keywordflow">else</span> { <a class="code hl_function" href="#aa8f3a281641bffc5cb6f864eaba93f8a">UnHookMidiDevice</a>(); }</div>
+<div class="line"><span class="lineno">  299</span>            <a class="code hl_variable" href="#a3a26bb867212d9ca4acc6138c7076d1f">storedNoteEvents</a> = noteEvents;</div>
+<div class="line"><span class="lineno">  300</span>            GameSettings.bpm = GameSettings.bpm == 0 ? bpm : GameSettings.bpm;</div>
+<div class="line"><span class="lineno">  301</span>            <a class="code hl_variable" href="#a9e26bd0e9c890690a633f2fd78731d69">takeInput</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  302</span>            <a class="code hl_variable" href="#a1ddd47ee58668127ad36428b9433824f">inGame</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  303</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a475cd7d525520e4fa04703595c850906">PrepareNotesCoroutine</a> != <span class="keyword">null</span>) StopCoroutine(<a class="code hl_variable" href="#a475cd7d525520e4fa04703595c850906">PrepareNotesCoroutine</a>);</div>
+<div class="line"><span class="lineno">  304</span>            <a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.StopReadiedNotes();</div>
+<div class="line"><span class="lineno">  305</span>            Replay.recordReplay = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  306</span>            StartCoroutine(<a class="code hl_function" href="#ace45aa85d323c88eb98970e6807bb548">StartSong</a>());</div>
+<div class="line"><span class="lineno">  307</span>        }</div>
+<div class="line"><span class="lineno">  308</span> </div>
+<div class="line"><span class="lineno">  309</span> </div>
+<div class="line"><span class="lineno">  310</span> </div>
+<div class="line"><span class="lineno">  311</span>    }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a2e24c8cbdc52507a5c148923c9f65d3f" name="a2e24c8cbdc52507a5c148923c9f65d3f"></a>
@@ -767,17 +840,17 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><span class="lineno">  459</span>    {</div>
-<div class="line"><span class="lineno">  460</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="#a9e26bd0e9c890690a633f2fd78731d69">takeInput</a> || <a class="code hl_variable" href="#af9765dcdbd7d627ae4de116fddd2005d">isPedalPressed</a>) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><span class="lineno">  461</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a1ddd47ee58668127ad36428b9433824f">inGame</a>)</div>
-<div class="line"><span class="lineno">  462</span>        {</div>
-<div class="line"><span class="lineno">  463</span>            <a class="code hl_class" href="class_spawn_piano.html">SpawnPiano</a>.<a class="code hl_variable" href="class_spawn_piano.html#a81c1e7fb3b0bccb57b3bba39e581f9f3">instance</a>.UpdateKeyColours(note - 21, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  464</span>            <a class="code hl_class" href="class_replay.html">Replay</a>.<a class="code hl_function" href="class_replay.html#af4136be61df5443c033a781242cf9596">UpdateReplay</a>(note, <a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.songTime);</div>
-<div class="line"><span class="lineno">  465</span>        }</div>
-<div class="line"><span class="lineno">  466</span>        <a class="code hl_variable" href="#a37a3c0da56cdc8bb099ed5c4a2313dc1">enabledKeys</a>[note - 21] = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  467</span> </div>
-<div class="line"><span class="lineno">  468</span>    }</div>
-<div class="ttc" id="aclass_midi_input_html_af9765dcdbd7d627ae4de116fddd2005d"><div class="ttname"><a href="#af9765dcdbd7d627ae4de116fddd2005d">MidiInput.isPedalPressed</a></div><div class="ttdeci">bool isPedalPressed</div><div class="ttdoc">Is the pedal pressed.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:28</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  519</span>    {</div>
+<div class="line"><span class="lineno">  520</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="#a9e26bd0e9c890690a633f2fd78731d69">takeInput</a> || <a class="code hl_variable" href="#af9765dcdbd7d627ae4de116fddd2005d">isPedalPressed</a>) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><span class="lineno">  521</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a1ddd47ee58668127ad36428b9433824f">inGame</a>)</div>
+<div class="line"><span class="lineno">  522</span>        {</div>
+<div class="line"><span class="lineno">  523</span>            <a class="code hl_class" href="class_spawn_piano.html">SpawnPiano</a>.<a class="code hl_variable" href="class_spawn_piano.html#a81c1e7fb3b0bccb57b3bba39e581f9f3">instance</a>.UpdateKeyColours(note - 21, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  524</span>            <a class="code hl_class" href="class_replay.html">Replay</a>.<a class="code hl_function" href="class_replay.html#af4136be61df5443c033a781242cf9596">UpdateReplay</a>(note, <a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.songTime);</div>
+<div class="line"><span class="lineno">  525</span>        }</div>
+<div class="line"><span class="lineno">  526</span>        <a class="code hl_variable" href="#a37a3c0da56cdc8bb099ed5c4a2313dc1">enabledKeys</a>[note - 21] = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  527</span> </div>
+<div class="line"><span class="lineno">  528</span>    }</div>
+<div class="ttc" id="aclass_midi_input_html_af9765dcdbd7d627ae4de116fddd2005d"><div class="ttname"><a href="#af9765dcdbd7d627ae4de116fddd2005d">MidiInput.isPedalPressed</a></div><div class="ttdeci">bool isPedalPressed</div><div class="ttdoc">Is the pedal pressed.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:29</div></div>
 <div class="ttc" id="aclass_replay_html"><div class="ttname"><a href="class_replay.html">Replay</a></div><div class="ttdef"><b>Definition</b> Replay.cs:8</div></div>
 <div class="ttc" id="aclass_replay_html_af4136be61df5443c033a781242cf9596"><div class="ttname"><a href="class_replay.html#af4136be61df5443c033a781242cf9596">Replay.UpdateReplay</a></div><div class="ttdeci">static void UpdateReplay(int noteNum, float time)</div><div class="ttdoc">Adds player input note to the replay data being stored.</div><div class="ttdef"><b>Definition</b> Replay.cs:48</div></div>
 <div class="ttc" id="aclass_spawn_piano_html"><div class="ttname"><a href="class_spawn_piano.html">SpawnPiano</a></div><div class="ttdef"><b>Definition</b> SpawnPiano.cs:8</div></div>
@@ -828,46 +901,46 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><span class="lineno">  388</span>    {</div>
-<div class="line"><span class="lineno">  389</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="#a9e26bd0e9c890690a633f2fd78731d69">takeInput</a>) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><span class="lineno">  390</span>        <span class="comment">// Check if the received note and timing match any stored events</span></div>
-<div class="line"><span class="lineno">  391</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a1ddd47ee58668127ad36428b9433824f">inGame</a>)</div>
-<div class="line"><span class="lineno">  392</span>        {</div>
-<div class="line"><span class="lineno">  393</span>            <span class="keywordtype">string</span> score = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><span class="lineno">  394</span>            <span class="keywordtype">float</span> timing = Mathf.Infinity;</div>
-<div class="line"><span class="lineno">  395</span>            <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_note_event_info.html">NoteEventInfo</a> storedNote <span class="keywordflow">in</span> <a class="code hl_variable" href="#a3a26bb867212d9ca4acc6138c7076d1f">storedNoteEvents</a>)</div>
-<div class="line"><span class="lineno">  396</span>            {</div>
-<div class="line"><span class="lineno">  397</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a3a26bb867212d9ca4acc6138c7076d1f">storedNoteEvents</a> == <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><span class="lineno">  398</span>                timing = <a class="code hl_function" href="#a2df47888c558fed477b80632013512e1">GetTimeDifference</a>(storedNote.<a class="code hl_variable" href="class_note_event_info.html#aaeaec089312cf881c719b2b56680fbff">startTime</a>);</div>
-<div class="line"><span class="lineno">  399</span>                <span class="keywordflow">if</span> (<a class="code hl_function" href="#a465d54df5cebc0287e58ab5634de9a84">IsNoteCorrect</a>(note, timing, storedNote))</div>
-<div class="line"><span class="lineno">  400</span>                {</div>
-<div class="line"><span class="lineno">  401</span>                    <a class="code hl_function" href="#aa4804a291f0c49c471a9fb0ecd0a6590">OnNoteSuccess</a>(ref score, note, timing, storedNote);</div>
-<div class="line"><span class="lineno">  402</span>                    <span class="keywordflow">break</span>;  <span class="comment">// Exit the loop after the first match</span></div>
-<div class="line"><span class="lineno">  403</span> </div>
-<div class="line"><span class="lineno">  404</span>                }</div>
-<div class="line"><span class="lineno">  405</span> </div>
-<div class="line"><span class="lineno">  406</span>            }</div>
-<div class="line"><span class="lineno">  407</span> </div>
-<div class="line"><span class="lineno">  408</span>            score ??= <a class="code hl_function" href="#ab06b15e5c2299d4099decb4a5d88e467">GetTimingScore</a>(timing);</div>
-<div class="line"><span class="lineno">  409</span>            <a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.combo.ChangeMultiplier(score);</div>
-<div class="line"><span class="lineno">  410</span> </div>
-<div class="line"><span class="lineno">  411</span>            <a class="code hl_class" href="class_spawn_piano.html">SpawnPiano</a>.<a class="code hl_variable" href="class_spawn_piano.html#a81c1e7fb3b0bccb57b3bba39e581f9f3">instance</a>.UpdateKeyColours(note - 21, <span class="keyword">true</span>, score);</div>
-<div class="line"><span class="lineno">  412</span>            <span class="keywordflow">if</span> (<a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.songTime &gt;= 0)</div>
-<div class="line"><span class="lineno">  413</span>            {</div>
-<div class="line"><span class="lineno">  414</span>                <a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.UpdatePlayerScore(score);</div>
-<div class="line"><span class="lineno">  415</span>            }</div>
-<div class="line"><span class="lineno">  416</span>            <a class="code hl_class" href="class_replay.html">Replay</a>.<a class="code hl_function" href="class_replay.html#af4136be61df5443c033a781242cf9596">UpdateReplay</a>(note, <a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.songTime);</div>
-<div class="line"><span class="lineno">  417</span>        }</div>
-<div class="line"><span class="lineno">  418</span>        <a class="code hl_variable" href="#a37a3c0da56cdc8bb099ed5c4a2313dc1">enabledKeys</a>[note - 21] = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  419</span> </div>
-<div class="line"><span class="lineno">  420</span> </div>
-<div class="line"><span class="lineno">  421</span> </div>
-<div class="line"><span class="lineno">  422</span>        </div>
-<div class="line"><span class="lineno">  423</span>    }</div>
-<div class="ttc" id="aclass_midi_input_html_a2df47888c558fed477b80632013512e1"><div class="ttname"><a href="#a2df47888c558fed477b80632013512e1">MidiInput.GetTimeDifference</a></div><div class="ttdeci">float GetTimeDifference(float storedTiming)</div><div class="ttdoc">Calculates the time difference between the stored timing and the current song time.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:528</div></div>
-<div class="ttc" id="aclass_midi_input_html_a465d54df5cebc0287e58ab5634de9a84"><div class="ttname"><a href="#a465d54df5cebc0287e58ab5634de9a84">MidiInput.IsNoteCorrect</a></div><div class="ttdeci">bool IsNoteCorrect(int noteNumber, float timing, NoteEventInfo storedNote)</div><div class="ttdoc">Check if note is was played at a correct timing.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:445</div></div>
-<div class="ttc" id="aclass_midi_input_html_aa4804a291f0c49c471a9fb0ecd0a6590"><div class="ttname"><a href="#aa4804a291f0c49c471a9fb0ecd0a6590">MidiInput.OnNoteSuccess</a></div><div class="ttdeci">void OnNoteSuccess(ref string score, int note, float timing, NoteEventInfo storedNote)</div><div class="ttdoc">Handles successful note presses.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:432</div></div>
-<div class="ttc" id="aclass_midi_input_html_ab06b15e5c2299d4099decb4a5d88e467"><div class="ttname"><a href="#ab06b15e5c2299d4099decb4a5d88e467">MidiInput.GetTimingScore</a></div><div class="ttdeci">string GetTimingScore(float timing)</div><div class="ttdoc">Gets the timing score based on the timing difference.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:542</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  448</span>    {</div>
+<div class="line"><span class="lineno">  449</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="#a9e26bd0e9c890690a633f2fd78731d69">takeInput</a>) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><span class="lineno">  450</span>        <span class="comment">// Check if the received note and timing match any stored events</span></div>
+<div class="line"><span class="lineno">  451</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a1ddd47ee58668127ad36428b9433824f">inGame</a>)</div>
+<div class="line"><span class="lineno">  452</span>        {</div>
+<div class="line"><span class="lineno">  453</span>            <span class="keywordtype">string</span> score = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><span class="lineno">  454</span>            <span class="keywordtype">float</span> timing = Mathf.Infinity;</div>
+<div class="line"><span class="lineno">  455</span>            <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_note_event_info.html">NoteEventInfo</a> storedNote <span class="keywordflow">in</span> <a class="code hl_variable" href="#a3a26bb867212d9ca4acc6138c7076d1f">storedNoteEvents</a>)</div>
+<div class="line"><span class="lineno">  456</span>            {</div>
+<div class="line"><span class="lineno">  457</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a3a26bb867212d9ca4acc6138c7076d1f">storedNoteEvents</a> == <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><span class="lineno">  458</span>                timing = <a class="code hl_function" href="#a2df47888c558fed477b80632013512e1">GetTimeDifference</a>(storedNote.<a class="code hl_variable" href="class_note_event_info.html#aaeaec089312cf881c719b2b56680fbff">startTime</a>);</div>
+<div class="line"><span class="lineno">  459</span>                <span class="keywordflow">if</span> (<a class="code hl_function" href="#a465d54df5cebc0287e58ab5634de9a84">IsNoteCorrect</a>(note, timing, storedNote))</div>
+<div class="line"><span class="lineno">  460</span>                {</div>
+<div class="line"><span class="lineno">  461</span>                    <a class="code hl_function" href="#aa4804a291f0c49c471a9fb0ecd0a6590">OnNoteSuccess</a>(ref score, note, timing, storedNote);</div>
+<div class="line"><span class="lineno">  462</span>                    <span class="keywordflow">break</span>;  <span class="comment">// Exit the loop after the first match</span></div>
+<div class="line"><span class="lineno">  463</span> </div>
+<div class="line"><span class="lineno">  464</span>                }</div>
+<div class="line"><span class="lineno">  465</span> </div>
+<div class="line"><span class="lineno">  466</span>            }</div>
+<div class="line"><span class="lineno">  467</span> </div>
+<div class="line"><span class="lineno">  468</span>            score ??= <a class="code hl_function" href="#ab06b15e5c2299d4099decb4a5d88e467">GetTimingScore</a>(timing);</div>
+<div class="line"><span class="lineno">  469</span>            <a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.combo.ChangeMultiplier(score);</div>
+<div class="line"><span class="lineno">  470</span> </div>
+<div class="line"><span class="lineno">  471</span>            <a class="code hl_class" href="class_spawn_piano.html">SpawnPiano</a>.<a class="code hl_variable" href="class_spawn_piano.html#a81c1e7fb3b0bccb57b3bba39e581f9f3">instance</a>.UpdateKeyColours(note - 21, <span class="keyword">true</span>, score);</div>
+<div class="line"><span class="lineno">  472</span>            <span class="keywordflow">if</span> (<a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.songTime &gt;= 0)</div>
+<div class="line"><span class="lineno">  473</span>            {</div>
+<div class="line"><span class="lineno">  474</span>                <a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.UpdatePlayerScore(score);</div>
+<div class="line"><span class="lineno">  475</span>            }</div>
+<div class="line"><span class="lineno">  476</span>            <a class="code hl_class" href="class_replay.html">Replay</a>.<a class="code hl_function" href="class_replay.html#af4136be61df5443c033a781242cf9596">UpdateReplay</a>(note, <a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.songTime);</div>
+<div class="line"><span class="lineno">  477</span>        }</div>
+<div class="line"><span class="lineno">  478</span>        <a class="code hl_variable" href="#a37a3c0da56cdc8bb099ed5c4a2313dc1">enabledKeys</a>[note - 21] = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  479</span> </div>
+<div class="line"><span class="lineno">  480</span> </div>
+<div class="line"><span class="lineno">  481</span> </div>
+<div class="line"><span class="lineno">  482</span> </div>
+<div class="line"><span class="lineno">  483</span>    }</div>
+<div class="ttc" id="aclass_midi_input_html_a2df47888c558fed477b80632013512e1"><div class="ttname"><a href="#a2df47888c558fed477b80632013512e1">MidiInput.GetTimeDifference</a></div><div class="ttdeci">float GetTimeDifference(float storedTiming)</div><div class="ttdoc">Calculates the time difference between the stored timing and the current song time.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:614</div></div>
+<div class="ttc" id="aclass_midi_input_html_a465d54df5cebc0287e58ab5634de9a84"><div class="ttname"><a href="#a465d54df5cebc0287e58ab5634de9a84">MidiInput.IsNoteCorrect</a></div><div class="ttdeci">bool IsNoteCorrect(int noteNumber, float timing, NoteEventInfo storedNote)</div><div class="ttdoc">Check if note is was played at a correct timing.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:505</div></div>
+<div class="ttc" id="aclass_midi_input_html_aa4804a291f0c49c471a9fb0ecd0a6590"><div class="ttname"><a href="#aa4804a291f0c49c471a9fb0ecd0a6590">MidiInput.OnNoteSuccess</a></div><div class="ttdeci">void OnNoteSuccess(ref string score, int note, float timing, NoteEventInfo storedNote)</div><div class="ttdoc">Handles successful note presses.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:492</div></div>
+<div class="ttc" id="aclass_midi_input_html_ab06b15e5c2299d4099decb4a5d88e467"><div class="ttname"><a href="#ab06b15e5c2299d4099decb4a5d88e467">MidiInput.GetTimingScore</a></div><div class="ttdeci">string GetTimingScore(float timing)</div><div class="ttdoc">Gets the timing score based on the timing difference.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:628</div></div>
 <div class="ttc" id="aclass_note_event_info_html"><div class="ttname"><a href="class_note_event_info.html">NoteEventInfo</a></div><div class="ttdoc">Class containing all info needed to play a note.</div><div class="ttdef"><b>Definition</b> NoteEventInfo.cs:14</div></div>
 <div class="ttc" id="aclass_note_event_info_html_aaeaec089312cf881c719b2b56680fbff"><div class="ttname"><a href="class_note_event_info.html#aaeaec089312cf881c719b2b56680fbff">NoteEventInfo.startTime</a></div><div class="ttdeci">float startTime</div><div class="ttdoc">starting time of the note.</div><div class="ttdef"><b>Definition</b> NoteEventInfo.cs:22</div></div>
 </div><!-- fragment -->
@@ -914,11 +987,11 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><span class="lineno">  433</span>    {</div>
-<div class="line"><span class="lineno">  434</span>        score = <a class="code hl_function" href="#ab06b15e5c2299d4099decb4a5d88e467">GetTimingScore</a>(timing);</div>
-<div class="line"><span class="lineno">  435</span>        <a class="code hl_class" href="class_spawn_piano.html">SpawnPiano</a>.<a class="code hl_variable" href="class_spawn_piano.html#a81c1e7fb3b0bccb57b3bba39e581f9f3">instance</a>.SpawnKeyParticle(note - 21, score);</div>
-<div class="line"><span class="lineno">  436</span>        storedNote.triggered = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  437</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">  493</span>    {</div>
+<div class="line"><span class="lineno">  494</span>        score = <a class="code hl_function" href="#ab06b15e5c2299d4099decb4a5d88e467">GetTimingScore</a>(timing);</div>
+<div class="line"><span class="lineno">  495</span>        <a class="code hl_class" href="class_spawn_piano.html">SpawnPiano</a>.<a class="code hl_variable" href="class_spawn_piano.html#a81c1e7fb3b0bccb57b3bba39e581f9f3">instance</a>.SpawnKeyParticle(note - 21, score);</div>
+<div class="line"><span class="lineno">  496</span>        storedNote.triggered = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  497</span>    }</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="#a358348cc54a49193003a2788f81b7b4a">NoteOn()</a>.</p>
 
@@ -965,21 +1038,74 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><span class="lineno">  110</span>    {</div>
-<div class="line"><span class="lineno">  111</span>        <span class="keywordflow">if</span> (knobNumber == 64 &amp;&amp; knobValue &gt; 0.5f)</div>
-<div class="line"><span class="lineno">  112</span>        {</div>
-<div class="line"><span class="lineno">  113</span>            <a class="code hl_variable" href="#af9765dcdbd7d627ae4de116fddd2005d">isPedalPressed</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  114</span> </div>
-<div class="line"><span class="lineno">  115</span>        }</div>
-<div class="line"><span class="lineno">  116</span>        <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  117</span>        {</div>
-<div class="line"><span class="lineno">  118</span>            <a class="code hl_variable" href="#af9765dcdbd7d627ae4de116fddd2005d">isPedalPressed</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  119</span>            <span class="keywordflow">try</span> { <a class="code hl_class" href="class_spawn_piano.html">SpawnPiano</a>.<a class="code hl_variable" href="class_spawn_piano.html#a81c1e7fb3b0bccb57b3bba39e581f9f3">instance</a>.ClearAllKeyColours(); }</div>
-<div class="line"><span class="lineno">  120</span>            <span class="keywordflow">catch</span> { }</div>
-<div class="line"><span class="lineno">  121</span>        }</div>
-<div class="line"><span class="lineno">  122</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">  111</span>    {</div>
+<div class="line"><span class="lineno">  112</span>        <span class="keywordflow">if</span> (knobNumber == 64 &amp;&amp; knobValue &gt; 0.5f)</div>
+<div class="line"><span class="lineno">  113</span>        {</div>
+<div class="line"><span class="lineno">  114</span>            <a class="code hl_variable" href="#af9765dcdbd7d627ae4de116fddd2005d">isPedalPressed</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  115</span> </div>
+<div class="line"><span class="lineno">  116</span>        }</div>
+<div class="line"><span class="lineno">  117</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  118</span>        {</div>
+<div class="line"><span class="lineno">  119</span>            <a class="code hl_variable" href="#af9765dcdbd7d627ae4de116fddd2005d">isPedalPressed</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  120</span>            <span class="keywordflow">try</span> { <a class="code hl_class" href="class_spawn_piano.html">SpawnPiano</a>.<a class="code hl_variable" href="class_spawn_piano.html#a81c1e7fb3b0bccb57b3bba39e581f9f3">instance</a>.ClearAllKeyColours(); }</div>
+<div class="line"><span class="lineno">  121</span>            <span class="keywordflow">catch</span> { }</div>
+<div class="line"><span class="lineno">  122</span>        }</div>
+<div class="line"><span class="lineno">  123</span>    }</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="#aed66bdb11ffd9ceffc086c4d27e30019">HookMidiDevice()</a>, and <a class="el" href="#aa8f3a281641bffc5cb6f864eaba93f8a">UnHookMidiDevice()</a>.</p>
+
+</div>
+</div>
+<a id="af2495b97dd515ad128452784a2e9aeff" name="af2495b97dd515ad128452784a2e9aeff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2495b97dd515ad128452784a2e9aeff">&#9670;&#160;</a></span>ReloadSong()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MidiInput.ReloadSong </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">  538</span>    {</div>
+<div class="line"><span class="lineno">  539</span>        <a class="code hl_class" href="class_m_p3_handler.html">MP3Handler</a>.<a class="code hl_variable" href="class_m_p3_handler.html#a0fa70fd58f86cdabb3c80f92f45c6ee2">instance</a>.StopMusic();</div>
+<div class="line"><span class="lineno">  540</span>        <span class="keywordtype">string</span> gameMode;</div>
+<div class="line"><span class="lineno">  541</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="class_kiboard_debug.html">KiboardDebug</a>.<a class="code hl_property" href="class_kiboard_debug.html#a87c862afc69067077e5f3cd3e5a8ac98">isMidiConnected</a> &amp;&amp; GameSettings.usePiano) { gameMode = <span class="stringliteral">&quot;GameScene88&quot;</span>; } <span class="keywordflow">else</span> { gameMode = <span class="stringliteral">&quot;GameScene12&quot;</span>; }<span class="comment">// determine if player should load into 88 oor 12 key game scene based on if they have a midi device.</span></div>
+<div class="line"><span class="lineno">  542</span>        <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">  543</span>        {</div>
+<div class="line"><span class="lineno">  544</span>            TransitionManager.instance.LoadNewScene(gameMode);</div>
+<div class="line"><span class="lineno">  545</span>        }</div>
+<div class="line"><span class="lineno">  546</span> </div>
+<div class="line"><span class="lineno">  547</span>        <span class="keywordflow">catch</span> (Exception e)</div>
+<div class="line"><span class="lineno">  548</span>        {</div>
+<div class="line"><span class="lineno">  549</span>            Debug.Log(e);</div>
+<div class="line"><span class="lineno">  550</span>            SceneManager.LoadScene(gameMode);</div>
+<div class="line"><span class="lineno">  551</span>        }</div>
+<div class="line"><span class="lineno">  552</span> </div>
+<div class="line"><span class="lineno">  553</span>        <span class="keywordflow">if</span> (GameSettings.usePiano) { <a class="code hl_function" href="#aed66bdb11ffd9ceffc086c4d27e30019">HookMidiDevice</a>(); } <span class="keywordflow">else</span> { <a class="code hl_function" href="#aa8f3a281641bffc5cb6f864eaba93f8a">UnHookMidiDevice</a>(); }</div>
+<div class="line"><span class="lineno">  554</span>        <a class="code hl_variable" href="#a9e26bd0e9c890690a633f2fd78731d69">takeInput</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  555</span>        <a class="code hl_variable" href="#a1ddd47ee58668127ad36428b9433824f">inGame</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  556</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a475cd7d525520e4fa04703595c850906">PrepareNotesCoroutine</a> != <span class="keyword">null</span>) StopCoroutine(<a class="code hl_variable" href="#a475cd7d525520e4fa04703595c850906">PrepareNotesCoroutine</a>);</div>
+<div class="line"><span class="lineno">  557</span>        <a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.StopSong();</div>
+<div class="line"><span class="lineno">  558</span>        <a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.StopReadiedNotes();</div>
+<div class="line"><span class="lineno">  559</span>        Replay.recordReplay = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  560</span>        StartCoroutine(<a class="code hl_function" href="#ace45aa85d323c88eb98970e6807bb548">StartSong</a>());</div>
+<div class="line"><span class="lineno">  561</span> </div>
+<div class="line"><span class="lineno">  562</span> </div>
+<div class="line"><span class="lineno">  563</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="#a1ef5e834cfe6cdac6b09db8c5d3fccaa">RetryCurrentSong()</a>.</p>
 
 </div>
 </div>
@@ -999,16 +1125,16 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reloads the currently playing song. </p>
-<div class="fragment"><div class="line"><span class="lineno">  473</span>    {</div>
-<div class="line"><span class="lineno">  474</span>        <a class="code hl_function" href="#aa8f3a281641bffc5cb6f864eaba93f8a">UnHookMidiDevice</a>();</div>
-<div class="line"><span class="lineno">  475</span>        <a class="code hl_function" href="#a45fbc3ff0c86cf6739b2951fdb831037">LoadSongFromCurrentSettings</a>(<span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  476</span>    }</div>
-<div class="ttc" id="aclass_midi_input_html_a45fbc3ff0c86cf6739b2951fdb831037"><div class="ttname"><a href="#a45fbc3ff0c86cf6739b2951fdb831037">MidiInput.LoadSongFromCurrentSettings</a></div><div class="ttdeci">void LoadSongFromCurrentSettings(bool isPreview=false)</div><div class="ttdoc">Loads the selected song for gameplay.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:221</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  533</span>    {</div>
+<div class="line"><span class="lineno">  534</span>        <a class="code hl_function" href="#aa8f3a281641bffc5cb6f864eaba93f8a">UnHookMidiDevice</a>();</div>
+<div class="line"><span class="lineno">  535</span>        <a class="code hl_function" href="#af2495b97dd515ad128452784a2e9aeff">ReloadSong</a>();</div>
+<div class="line"><span class="lineno">  536</span>    }</div>
+<div class="ttc" id="aclass_midi_input_html_af2495b97dd515ad128452784a2e9aeff"><div class="ttname"><a href="#af2495b97dd515ad128452784a2e9aeff">MidiInput.ReloadSong</a></div><div class="ttdeci">void ReloadSong()</div><div class="ttdef"><b>Definition</b> MidiInput.cs:537</div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="ace45aa85d323c88eb98970e6807bb548" name="ace45aa85d323c88eb98970e6807bb548"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ace45aa85d323c88eb98970e6807bb548">&#9670;&#160;</a></span>StartSong() <span class="overload">[1/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ace45aa85d323c88eb98970e6807bb548">&#9670;&#160;</a></span>StartSong() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1024,20 +1150,20 @@ Private Attributes</h2></td></tr>
 
 <p>Starts playing the loaded song using the current <a class="el" href="struct_file_group.html" title="Represents a group of files related to a specific song.">FileGroup</a>'s mp3 file field. </p>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
-<div class="fragment"><div class="line"><span class="lineno">  329</span>    {</div>
-<div class="line"><span class="lineno">  330</span> </div>
-<div class="line"><span class="lineno">  331</span>        <a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.currentSongScore.ClearScore();</div>
-<div class="line"><span class="lineno">  332</span>        <a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.combo.ClearCombo();</div>
-<div class="line"><span class="lineno">  333</span>        yield <span class="keywordflow">return</span> <a class="code hl_variable" href="#a475cd7d525520e4fa04703595c850906">PrepareNotesCoroutine</a> = StartCoroutine(<a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.PrepareNotes(GameSettings.bpm, <a class="code hl_variable" href="#a3a26bb867212d9ca4acc6138c7076d1f">storedNoteEvents</a>, isPreview));</div>
-<div class="line"><span class="lineno">  334</span>        StartCoroutine(<a class="code hl_class" href="class_m_p3_handler.html">MP3Handler</a>.<a class="code hl_variable" href="class_m_p3_handler.html#a0fa70fd58f86cdabb3c80f92f45c6ee2">instance</a>.PlaySong(SongSelection.GetUnderscoreSubstring(GameSettings.currentFileGroup.Mp3File)));</div>
-<div class="line"><span class="lineno">  335</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">  375</span>    {</div>
+<div class="line"><span class="lineno">  376</span> </div>
+<div class="line"><span class="lineno">  377</span>        <a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.currentSongScore?.ClearScore();</div>
+<div class="line"><span class="lineno">  378</span>        <a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.combo?.ClearCombo();</div>
+<div class="line"><span class="lineno">  379</span>        yield <span class="keywordflow">return</span> <a class="code hl_variable" href="#a475cd7d525520e4fa04703595c850906">PrepareNotesCoroutine</a> = StartCoroutine(<a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.PrepareNotes(GameSettings.bpm, <a class="code hl_variable" href="#a3a26bb867212d9ca4acc6138c7076d1f">storedNoteEvents</a>, isPreview));</div>
+<div class="line"><span class="lineno">  380</span>        StartCoroutine(<a class="code hl_class" href="class_m_p3_handler.html">MP3Handler</a>.<a class="code hl_variable" href="class_m_p3_handler.html#a0fa70fd58f86cdabb3c80f92f45c6ee2">instance</a>.PlaySong(SongSelection.GetUnderscoreSubstring(GameSettings.currentFileGroup.Mp3File)));</div>
+<div class="line"><span class="lineno">  381</span>    }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="#a45fbc3ff0c86cf6739b2951fdb831037">LoadSongFromCurrentSettings()</a>, and <a class="el" href="#a0e4e05b7b1dad73b1c57a2bc40dce15b">StartSongCoroutine()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#a45fbc3ff0c86cf6739b2951fdb831037">LoadSongFromCurrentSettings()</a>, <a class="el" href="#a856f990e560ce05c44e43133820aa62e">LoadSongFromNoteEvents()</a>, <a class="el" href="#af2495b97dd515ad128452784a2e9aeff">ReloadSong()</a>, and <a class="el" href="#a0e4e05b7b1dad73b1c57a2bc40dce15b">StartSongCoroutine()</a>.</p>
 
 </div>
 </div>
 <a id="a26a01dc684fded58c22a9124d779ea91" name="a26a01dc684fded58c22a9124d779ea91"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a26a01dc684fded58c22a9124d779ea91">&#9670;&#160;</a></span>StartSong() <span class="overload">[2/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a26a01dc684fded58c22a9124d779ea91">&#9670;&#160;</a></span>StartSong() <span class="overload">[2/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1063,21 +1189,59 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
-<div class="fragment"><div class="line"><span class="lineno">  354</span>    {</div>
-<div class="line"><span class="lineno">  355</span>        <a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.currentSongScore.ClearScore();</div>
-<div class="line"><span class="lineno">  356</span>        var bpm = GameSettings.bpm;</div>
-<div class="line"><span class="lineno">  357</span>        loadEvents.ForEach(noteEvent =&gt; noteEvent.noteNumber += 20); <span class="comment">// i - for the fucking life of me- cannot figure out why directly processing the midi files makes the note numbers</span></div>
-<div class="line"><span class="lineno">  358</span>                                                                     <span class="comment">// 20 higher, but i have to do this to match that with the song editor.</span></div>
-<div class="line"><span class="lineno">  359</span>        yield <span class="keywordflow">return</span> <a class="code hl_variable" href="#a475cd7d525520e4fa04703595c850906">PrepareNotesCoroutine</a> = StartCoroutine(<a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.PrepareNotes(GameSettings.bpm, <a class="code hl_variable" href="#a3a26bb867212d9ca4acc6138c7076d1f">storedNoteEvents</a>, isPreview));</div>
-<div class="line"><span class="lineno">  360</span> </div>
-<div class="line"><span class="lineno">  361</span>        StartCoroutine(<a class="code hl_class" href="class_m_p3_handler.html">MP3Handler</a>.<a class="code hl_variable" href="class_m_p3_handler.html#a0fa70fd58f86cdabb3c80f92f45c6ee2">instance</a>.PlaySong(GameSettings.currentSongPath));</div>
-<div class="line"><span class="lineno">  362</span> </div>
-<div class="line"><span class="lineno">  363</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">  400</span>    {</div>
+<div class="line"><span class="lineno">  401</span>        Debug.Log(<span class="stringliteral">&quot;start song&quot;</span>);</div>
+<div class="line"><span class="lineno">  402</span>        <a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.currentSongScore?.ClearScore();</div>
+<div class="line"><span class="lineno">  403</span>        var bpm = GameSettings.bpm;</div>
+<div class="line"><span class="lineno">  404</span>        loadEvents.ForEach(noteEvent =&gt; noteEvent.noteNumber += 20); <span class="comment">// i - for the fucking life of me- cannot figure out why directly processing the midi files makes the note numbers</span></div>
+<div class="line"><span class="lineno">  405</span>                                                                     <span class="comment">// 20 higher, but i have to do this to match that with the song editor.</span></div>
+<div class="line"><span class="lineno">  406</span>        yield <span class="keywordflow">return</span> <a class="code hl_variable" href="#a475cd7d525520e4fa04703595c850906">PrepareNotesCoroutine</a> = StartCoroutine(<a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.PrepareNotes(GameSettings.bpm, <a class="code hl_variable" href="#a3a26bb867212d9ca4acc6138c7076d1f">storedNoteEvents</a>, isPreview));</div>
+<div class="line"><span class="lineno">  407</span>        Debug.Log(<span class="stringliteral">&quot;past prep notes&quot;</span>);</div>
+<div class="line"><span class="lineno">  408</span> </div>
+<div class="line"><span class="lineno">  409</span>        StartCoroutine(<a class="code hl_class" href="class_m_p3_handler.html">MP3Handler</a>.<a class="code hl_variable" href="class_m_p3_handler.html#a0fa70fd58f86cdabb3c80f92f45c6ee2">instance</a>.PlaySong(GameSettings.currentSongPath));</div>
+<div class="line"><span class="lineno">  410</span> </div>
+<div class="line"><span class="lineno">  411</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aed74dcf6124c30e79c836f2a5468d7ab" name="aed74dcf6124c30e79c836f2a5468d7ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed74dcf6124c30e79c836f2a5468d7ab">&#9670;&#160;</a></span>StartSong() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">IEnumerator MidiInput.StartSong </td>
+          <td>(</td>
+          <td class="paramtype">List&lt; <a class="el" href="class_note_event_info.html">NoteEventInfo</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>loadEvents</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>mp3Path</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>isPreview</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">  414</span>    {</div>
+<div class="line"><span class="lineno">  415</span>        <a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.currentSongScore?.ClearScore();</div>
+<div class="line"><span class="lineno">  416</span>        var bpm = 130; <span class="comment">//   GameSettings.bpm;</span></div>
+<div class="line"><span class="lineno">  417</span>        loadEvents.ForEach(noteEvent =&gt; noteEvent.noteNumber += 20); <span class="comment">// i - for the fucking life of me- cannot figure out why directly processing the midi files makes the note numbers</span></div>
+<div class="line"><span class="lineno">  418</span>                                                                     <span class="comment">// 20 higher, but i have to do this to match that with the song editor.</span></div>
+<div class="line"><span class="lineno">  419</span>        yield <span class="keywordflow">return</span> <a class="code hl_variable" href="#a475cd7d525520e4fa04703595c850906">PrepareNotesCoroutine</a> = StartCoroutine(<a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.PrepareNotes(bpm, loadEvents, isPreview));</div>
+<div class="line"><span class="lineno">  420</span> </div>
+<div class="line"><span class="lineno">  421</span>        StartCoroutine(<a class="code hl_class" href="class_m_p3_handler.html">MP3Handler</a>.<a class="code hl_variable" href="class_m_p3_handler.html#a0fa70fd58f86cdabb3c80f92f45c6ee2">instance</a>.PlaySong(mp3Path));</div>
+<div class="line"><span class="lineno">  422</span> </div>
+<div class="line"><span class="lineno">  423</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="af90d7c9df4cd5549548550897346f923" name="af90d7c9df4cd5549548550897346f923"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af90d7c9df4cd5549548550897346f923">&#9670;&#160;</a></span>StartSong() <span class="overload">[3/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af90d7c9df4cd5549548550897346f923">&#9670;&#160;</a></span>StartSong() <span class="overload">[4/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1097,13 +1261,13 @@ Private Attributes</h2></td></tr>
 
 <p>Starts playing the loaded song from a given file path. </p>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
-<div class="fragment"><div class="line"><span class="lineno">  341</span>    {</div>
-<div class="line"><span class="lineno">  342</span> </div>
-<div class="line"><span class="lineno">  343</span>        <a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.currentSongScore.ClearScore();</div>
-<div class="line"><span class="lineno">  344</span>        <a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.combo.ClearCombo();</div>
-<div class="line"><span class="lineno">  345</span>        yield <span class="keywordflow">return</span> <a class="code hl_variable" href="#a475cd7d525520e4fa04703595c850906">PrepareNotesCoroutine</a> = StartCoroutine(<a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.PrepareNotes(GameSettings.bpm, <a class="code hl_variable" href="#a3a26bb867212d9ca4acc6138c7076d1f">storedNoteEvents</a>, isPreview));</div>
-<div class="line"><span class="lineno">  346</span>        StartCoroutine(<a class="code hl_class" href="class_m_p3_handler.html">MP3Handler</a>.<a class="code hl_variable" href="class_m_p3_handler.html#a0fa70fd58f86cdabb3c80f92f45c6ee2">instance</a>.PlaySong(mp3Path));</div>
-<div class="line"><span class="lineno">  347</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">  387</span>    {</div>
+<div class="line"><span class="lineno">  388</span> </div>
+<div class="line"><span class="lineno">  389</span>        <a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.currentSongScore?.ClearScore();</div>
+<div class="line"><span class="lineno">  390</span>        <a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.combo?.ClearCombo();</div>
+<div class="line"><span class="lineno">  391</span>        yield <span class="keywordflow">return</span> <a class="code hl_variable" href="#a475cd7d525520e4fa04703595c850906">PrepareNotesCoroutine</a> = StartCoroutine(<a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.PrepareNotes(GameSettings.bpm, <a class="code hl_variable" href="#a3a26bb867212d9ca4acc6138c7076d1f">storedNoteEvents</a>, isPreview));</div>
+<div class="line"><span class="lineno">  392</span>        StartCoroutine(<a class="code hl_class" href="class_m_p3_handler.html">MP3Handler</a>.<a class="code hl_variable" href="class_m_p3_handler.html#a0fa70fd58f86cdabb3c80f92f45c6ee2">instance</a>.PlaySong(mp3Path));</div>
+<div class="line"><span class="lineno">  393</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1123,9 +1287,9 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>called to begin playing the song. </p>
-<div class="fragment"><div class="line"><span class="lineno">  321</span>    {</div>
-<div class="line"><span class="lineno">  322</span>        StartCoroutine(<a class="code hl_function" href="#ace45aa85d323c88eb98970e6807bb548">StartSong</a>());</div>
-<div class="line"><span class="lineno">  323</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">  367</span>    {</div>
+<div class="line"><span class="lineno">  368</span>        StartCoroutine(<a class="code hl_function" href="#ace45aa85d323c88eb98970e6807bb548">StartSong</a>());</div>
+<div class="line"><span class="lineno">  369</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1145,17 +1309,17 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Stops the currently playing song. </p>
-<div class="fragment"><div class="line"><span class="lineno">  369</span>    {</div>
-<div class="line"><span class="lineno">  370</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.isCurSongPreview) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><span class="lineno">  371</span>        <a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.StopSong();</div>
-<div class="line"><span class="lineno">  372</span>        StopCoroutine(<a class="code hl_variable" href="#a475cd7d525520e4fa04703595c850906">PrepareNotesCoroutine</a>);</div>
-<div class="line"><span class="lineno">  373</span>        <a class="code hl_class" href="class_m_p3_handler.html">MP3Handler</a>.<a class="code hl_variable" href="class_m_p3_handler.html#a0fa70fd58f86cdabb3c80f92f45c6ee2">instance</a>.StopMusic();</div>
-<div class="line"><span class="lineno">  374</span> </div>
-<div class="line"><span class="lineno">  375</span>        GameSettings.ResetSettings(<span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  376</span>        <a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.ReturnToSongSelection();</div>
-<div class="line"><span class="lineno">  377</span> </div>
-<div class="line"><span class="lineno">  378</span> </div>
-<div class="line"><span class="lineno">  379</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">  429</span>    {</div>
+<div class="line"><span class="lineno">  430</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.isCurSongPreview) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><span class="lineno">  431</span>        <a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.StopSong();</div>
+<div class="line"><span class="lineno">  432</span>        StopCoroutine(<a class="code hl_variable" href="#a475cd7d525520e4fa04703595c850906">PrepareNotesCoroutine</a>);</div>
+<div class="line"><span class="lineno">  433</span>        <a class="code hl_class" href="class_m_p3_handler.html">MP3Handler</a>.<a class="code hl_variable" href="class_m_p3_handler.html#a0fa70fd58f86cdabb3c80f92f45c6ee2">instance</a>.StopMusic();</div>
+<div class="line"><span class="lineno">  434</span> </div>
+<div class="line"><span class="lineno">  435</span>        GameSettings.ResetSettings(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  436</span>        <a class="code hl_class" href="class_game_manager.html">GameManager</a>.<a class="code hl_variable" href="class_game_manager.html#a7666e8468dac197b9eb32dd32128524f">instance</a>.ReturnToSongSelection();</div>
+<div class="line"><span class="lineno">  437</span> </div>
+<div class="line"><span class="lineno">  438</span> </div>
+<div class="line"><span class="lineno">  439</span>    }</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="#abbd1de688b3c04809af8267e5f9dc57f">Update()</a>.</p>
 
@@ -1177,23 +1341,23 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>unhooks midi devices to remove their input. </p>
-<div class="fragment"><div class="line"><span class="lineno">  289</span>    {</div>
-<div class="line"><span class="lineno">  290</span>        </div>
-<div class="line"><span class="lineno">  291</span>        <span class="keywordflow">try</span></div>
-<div class="line"><span class="lineno">  292</span>        {</div>
-<div class="line"><span class="lineno">  293</span>            MidiMaster.noteOnDelegate -= <a class="code hl_function" href="#a358348cc54a49193003a2788f81b7b4a">NoteOn</a>;</div>
-<div class="line"><span class="lineno">  294</span>            MidiMaster.noteOffDelegate -= <a class="code hl_function" href="#a2e24c8cbdc52507a5c148923c9f65d3f">NoteOff</a>;</div>
-<div class="line"><span class="lineno">  295</span>            MidiMaster.knobDelegate -= <a class="code hl_function" href="#a2e30797511f5bd2f7eaf349978ff2680">PedalStateChanged</a>;</div>
-<div class="line"><span class="lineno">  296</span>            <a class="code hl_variable" href="#a120ba3861326de334e19273612a8dc35">isMidiHooked</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  297</span>        }</div>
-<div class="line"><span class="lineno">  298</span>        <span class="keywordflow">catch</span></div>
-<div class="line"><span class="lineno">  299</span>        {</div>
-<div class="line"><span class="lineno">  300</span>            <a class="code hl_variable" href="#a120ba3861326de334e19273612a8dc35">isMidiHooked</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  301</span>            Debug.Log(<span class="stringliteral">&quot;Error Unhooking midi device&quot;</span>);</div>
-<div class="line"><span class="lineno">  302</span>        }</div>
-<div class="line"><span class="lineno">  303</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">  335</span>    {</div>
+<div class="line"><span class="lineno">  336</span> </div>
+<div class="line"><span class="lineno">  337</span>        <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">  338</span>        {</div>
+<div class="line"><span class="lineno">  339</span>            MidiMaster.noteOnDelegate -= <a class="code hl_function" href="#a358348cc54a49193003a2788f81b7b4a">NoteOn</a>;</div>
+<div class="line"><span class="lineno">  340</span>            MidiMaster.noteOffDelegate -= <a class="code hl_function" href="#a2e24c8cbdc52507a5c148923c9f65d3f">NoteOff</a>;</div>
+<div class="line"><span class="lineno">  341</span>            MidiMaster.knobDelegate -= <a class="code hl_function" href="#a2e30797511f5bd2f7eaf349978ff2680">PedalStateChanged</a>;</div>
+<div class="line"><span class="lineno">  342</span>            <a class="code hl_variable" href="#a120ba3861326de334e19273612a8dc35">isMidiHooked</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  343</span>        }</div>
+<div class="line"><span class="lineno">  344</span>        <span class="keywordflow">catch</span></div>
+<div class="line"><span class="lineno">  345</span>        {</div>
+<div class="line"><span class="lineno">  346</span>            <a class="code hl_variable" href="#a120ba3861326de334e19273612a8dc35">isMidiHooked</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  347</span>            Debug.Log(<span class="stringliteral">&quot;Error Unhooking midi device&quot;</span>);</div>
+<div class="line"><span class="lineno">  348</span>        }</div>
+<div class="line"><span class="lineno">  349</span>    }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="#a45fbc3ff0c86cf6739b2951fdb831037">LoadSongFromCurrentSettings()</a>, and <a class="el" href="#a1ef5e834cfe6cdac6b09db8c5d3fccaa">RetryCurrentSong()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#a45fbc3ff0c86cf6739b2951fdb831037">LoadSongFromCurrentSettings()</a>, <a class="el" href="#a856f990e560ce05c44e43133820aa62e">LoadSongFromNoteEvents()</a>, <a class="el" href="#af2495b97dd515ad128452784a2e9aeff">ReloadSong()</a>, and <a class="el" href="#a1ef5e834cfe6cdac6b09db8c5d3fccaa">RetryCurrentSong()</a>.</p>
 
 </div>
 </div>
@@ -1219,17 +1383,17 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   93</span>    {</div>
-<div class="line"><span class="lineno">   94</span>        <span class="keywordflow">if</span> (Input.GetKeyDown(KeyCode.Escape))</div>
-<div class="line"><span class="lineno">   95</span>        {</div>
-<div class="line"><span class="lineno">   96</span>            <a class="code hl_function" href="#a622c40a278ed57e97a5c965fb6f73470">StopSong</a>();</div>
-<div class="line"><span class="lineno">   97</span>        }</div>
-<div class="line"><span class="lineno">   98</span>        <a class="code hl_function" href="#af8ec16c57a8b0e8b30bb38331dafd265">CheckNotesKeyboard12</a>();</div>
-<div class="line"><span class="lineno">   99</span>        <span class="comment">//CheckNotesKeyboard8();</span></div>
-<div class="line"><span class="lineno">  100</span> </div>
-<div class="line"><span class="lineno">  101</span>    }</div>
-<div class="ttc" id="aclass_midi_input_html_a622c40a278ed57e97a5c965fb6f73470"><div class="ttname"><a href="#a622c40a278ed57e97a5c965fb6f73470">MidiInput.StopSong</a></div><div class="ttdeci">void StopSong()</div><div class="ttdoc">Stops the currently playing song.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:368</div></div>
-<div class="ttc" id="aclass_midi_input_html_af8ec16c57a8b0e8b30bb38331dafd265"><div class="ttname"><a href="#af8ec16c57a8b0e8b30bb38331dafd265">MidiInput.CheckNotesKeyboard12</a></div><div class="ttdeci">void CheckNotesKeyboard12()</div><div class="ttdoc">Checks for pressed keys in the 12-key keyboard layout.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:481</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   94</span>    {</div>
+<div class="line"><span class="lineno">   95</span>        <span class="keywordflow">if</span> (Input.GetKeyDown(KeyCode.Escape))</div>
+<div class="line"><span class="lineno">   96</span>        {</div>
+<div class="line"><span class="lineno">   97</span>            <a class="code hl_function" href="#a622c40a278ed57e97a5c965fb6f73470">StopSong</a>();</div>
+<div class="line"><span class="lineno">   98</span>        }</div>
+<div class="line"><span class="lineno">   99</span>        <a class="code hl_function" href="#af8ec16c57a8b0e8b30bb38331dafd265">CheckNotesKeyboard12</a>();</div>
+<div class="line"><span class="lineno">  100</span>        <span class="comment">//CheckNotesKeyboard8();</span></div>
+<div class="line"><span class="lineno">  101</span> </div>
+<div class="line"><span class="lineno">  102</span>    }</div>
+<div class="ttc" id="aclass_midi_input_html_a622c40a278ed57e97a5c965fb6f73470"><div class="ttname"><a href="#a622c40a278ed57e97a5c965fb6f73470">MidiInput.StopSong</a></div><div class="ttdeci">void StopSong()</div><div class="ttdoc">Stops the currently playing song.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:428</div></div>
+<div class="ttc" id="aclass_midi_input_html_af8ec16c57a8b0e8b30bb38331dafd265"><div class="ttname"><a href="#af8ec16c57a8b0e8b30bb38331dafd265">MidiInput.CheckNotesKeyboard12</a></div><div class="ttdeci">void CheckNotesKeyboard12()</div><div class="ttdoc">Checks for pressed keys in the 12-key keyboard layout.</div><div class="ttdef"><b>Definition</b> MidiInput.cs:567</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1310,7 +1474,7 @@ Private Attributes</h2></td></tr>
 
 <p>Are we in the game scene. </p>
 
-<p class="reference">Referenced by <a class="el" href="#a45fbc3ff0c86cf6739b2951fdb831037">LoadSongFromCurrentSettings()</a>, <a class="el" href="#a2e24c8cbdc52507a5c148923c9f65d3f">NoteOff()</a>, and <a class="el" href="#a358348cc54a49193003a2788f81b7b4a">NoteOn()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#a45fbc3ff0c86cf6739b2951fdb831037">LoadSongFromCurrentSettings()</a>, <a class="el" href="#a856f990e560ce05c44e43133820aa62e">LoadSongFromNoteEvents()</a>, <a class="el" href="#a2e24c8cbdc52507a5c148923c9f65d3f">NoteOff()</a>, <a class="el" href="#a358348cc54a49193003a2788f81b7b4a">NoteOn()</a>, and <a class="el" href="#af2495b97dd515ad128452784a2e9aeff">ReloadSong()</a>.</p>
 
 </div>
 </div>
@@ -1334,7 +1498,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="class_game_manager.html#a2b01e6fd64224a2caad8ff75dd9ca4d2">GameManager.AssignToPreviewLayer()</a>, <a class="el" href="#a8ae785208729a631af7ff1c02af19d91">Awake()</a>, <a class="el" href="class_main_menu_load.html#a326703887ad372e974b12a454c60332d">MainMenuLoad.LoadToSongSelect()</a>, <a class="el" href="class_game_manager.html#a53d0c42e8760b846fd39a6b9b1115566">GameManager.PrepareNotes()</a>, and <a class="el" href="class_game_manager.html#a088bb12a26add1a57b027b46aced6863">GameManager.ReturnToSongSelection()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="class_game_manager.html#a2b01e6fd64224a2caad8ff75dd9ca4d2">GameManager.AssignToPreviewLayer()</a>, <a class="el" href="#a8ae785208729a631af7ff1c02af19d91">Awake()</a>, <a class="el" href="class_game_manager.html#acabc4ea98f21525d9070855917065a9d">GameManager.LoadSongToGameSettingsAndStart()</a>, <a class="el" href="class_main_menu_load.html#a326703887ad372e974b12a454c60332d">MainMenuLoad.LoadToSongSelect()</a>, <a class="el" href="class_game_manager.html#a53d0c42e8760b846fd39a6b9b1115566">GameManager.PrepareNotes()</a>, and <a class="el" href="class_game_manager.html#a088bb12a26add1a57b027b46aced6863">GameManager.ReturnToSongSelection()</a>.</p>
 
 </div>
 </div>
@@ -1411,20 +1575,20 @@ Private Attributes</h2></td></tr>
 <div class="line">    }</div>
 </div><!-- fragment -->
 <p>Dictionary mapping for Computer keyboard input to note input. </p>
-<div class="fragment"><div class="line"><span class="lineno">   61</span>    {</div>
-<div class="line"><span class="lineno">   62</span>        { KeyCode.A, 48 },</div>
-<div class="line"><span class="lineno">   63</span>        { KeyCode.W, 49 },</div>
-<div class="line"><span class="lineno">   64</span>        { KeyCode.S, 50 },</div>
-<div class="line"><span class="lineno">   65</span>        { KeyCode.E, 51 },</div>
-<div class="line"><span class="lineno">   66</span>        { KeyCode.D, 52 },</div>
-<div class="line"><span class="lineno">   67</span>        { KeyCode.F, 53 },</div>
-<div class="line"><span class="lineno">   68</span>        { KeyCode.T, 54 },</div>
-<div class="line"><span class="lineno">   69</span>        { KeyCode.G, 55 },</div>
-<div class="line"><span class="lineno">   70</span>        { KeyCode.Y, 56 },</div>
-<div class="line"><span class="lineno">   71</span>        { KeyCode.H, 57 },</div>
-<div class="line"><span class="lineno">   72</span>        { KeyCode.U, 58 },</div>
-<div class="line"><span class="lineno">   73</span>        { KeyCode.J, 59 },</div>
-<div class="line"><span class="lineno">   74</span>    };</div>
+<div class="fragment"><div class="line"><span class="lineno">   62</span>    {</div>
+<div class="line"><span class="lineno">   63</span>        { KeyCode.A, 48 },</div>
+<div class="line"><span class="lineno">   64</span>        { KeyCode.W, 49 },</div>
+<div class="line"><span class="lineno">   65</span>        { KeyCode.S, 50 },</div>
+<div class="line"><span class="lineno">   66</span>        { KeyCode.E, 51 },</div>
+<div class="line"><span class="lineno">   67</span>        { KeyCode.D, 52 },</div>
+<div class="line"><span class="lineno">   68</span>        { KeyCode.F, 53 },</div>
+<div class="line"><span class="lineno">   69</span>        { KeyCode.T, 54 },</div>
+<div class="line"><span class="lineno">   70</span>        { KeyCode.G, 55 },</div>
+<div class="line"><span class="lineno">   71</span>        { KeyCode.Y, 56 },</div>
+<div class="line"><span class="lineno">   72</span>        { KeyCode.H, 57 },</div>
+<div class="line"><span class="lineno">   73</span>        { KeyCode.U, 58 },</div>
+<div class="line"><span class="lineno">   74</span>        { KeyCode.J, 59 },</div>
+<div class="line"><span class="lineno">   75</span>    };</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="#af8ec16c57a8b0e8b30bb38331dafd265">CheckNotesKeyboard12()</a>.</p>
 
@@ -1444,7 +1608,7 @@ Private Attributes</h2></td></tr>
 
 <p>Reference to the <a class="el" href="class_game_manager.html#a53d0c42e8760b846fd39a6b9b1115566" title="Prepares notes for a song to be played.">GameManager.PrepareNotes(float, List&lt;NoteEventInfo&gt;, bool)</a> prepareNotes Coroutine. </p>
 
-<p class="reference">Referenced by <a class="el" href="#a45fbc3ff0c86cf6739b2951fdb831037">LoadSongFromCurrentSettings()</a>, <a class="el" href="#ace45aa85d323c88eb98970e6807bb548">StartSong()</a>, <a class="el" href="#a26a01dc684fded58c22a9124d779ea91">StartSong()</a>, <a class="el" href="#af90d7c9df4cd5549548550897346f923">StartSong()</a>, and <a class="el" href="#a622c40a278ed57e97a5c965fb6f73470">StopSong()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#a45fbc3ff0c86cf6739b2951fdb831037">LoadSongFromCurrentSettings()</a>, <a class="el" href="#a856f990e560ce05c44e43133820aa62e">LoadSongFromNoteEvents()</a>, <a class="el" href="#af2495b97dd515ad128452784a2e9aeff">ReloadSong()</a>, <a class="el" href="#ace45aa85d323c88eb98970e6807bb548">StartSong()</a>, <a class="el" href="#a26a01dc684fded58c22a9124d779ea91">StartSong()</a>, <a class="el" href="#aed74dcf6124c30e79c836f2a5468d7ab">StartSong()</a>, <a class="el" href="#af90d7c9df4cd5549548550897346f923">StartSong()</a>, and <a class="el" href="#a622c40a278ed57e97a5c965fb6f73470">StopSong()</a>.</p>
 
 </div>
 </div>
@@ -1480,7 +1644,7 @@ Private Attributes</h2></td></tr>
 
 <p>Currently loaded notes for the selected song. </p>
 
-<p class="reference">Referenced by <a class="el" href="#a0e669343713e7dc8eb36f8fdbc5085ef">GetNoteEventWrapperFromSelectedSong()</a>, <a class="el" href="#a45fbc3ff0c86cf6739b2951fdb831037">LoadSongFromCurrentSettings()</a>, <a class="el" href="#a358348cc54a49193003a2788f81b7b4a">NoteOn()</a>, <a class="el" href="#ace45aa85d323c88eb98970e6807bb548">StartSong()</a>, <a class="el" href="#a26a01dc684fded58c22a9124d779ea91">StartSong()</a>, and <a class="el" href="#af90d7c9df4cd5549548550897346f923">StartSong()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#a0e669343713e7dc8eb36f8fdbc5085ef">GetNoteEventWrapperFromSelectedSong()</a>, <a class="el" href="#a45fbc3ff0c86cf6739b2951fdb831037">LoadSongFromCurrentSettings()</a>, <a class="el" href="#a856f990e560ce05c44e43133820aa62e">LoadSongFromNoteEvents()</a>, <a class="el" href="#a358348cc54a49193003a2788f81b7b4a">NoteOn()</a>, <a class="el" href="#ace45aa85d323c88eb98970e6807bb548">StartSong()</a>, <a class="el" href="#a26a01dc684fded58c22a9124d779ea91">StartSong()</a>, and <a class="el" href="#af90d7c9df4cd5549548550897346f923">StartSong()</a>.</p>
 
 </div>
 </div>
@@ -1498,7 +1662,7 @@ Private Attributes</h2></td></tr>
 
 <p>Should the game take piano input. </p>
 
-<p class="reference">Referenced by <a class="el" href="#a45fbc3ff0c86cf6739b2951fdb831037">LoadSongFromCurrentSettings()</a>, <a class="el" href="#a2e24c8cbdc52507a5c148923c9f65d3f">NoteOff()</a>, and <a class="el" href="#a358348cc54a49193003a2788f81b7b4a">NoteOn()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#a45fbc3ff0c86cf6739b2951fdb831037">LoadSongFromCurrentSettings()</a>, <a class="el" href="#a856f990e560ce05c44e43133820aa62e">LoadSongFromNoteEvents()</a>, <a class="el" href="#a2e24c8cbdc52507a5c148923c9f65d3f">NoteOff()</a>, <a class="el" href="#a358348cc54a49193003a2788f81b7b4a">NoteOn()</a>, and <a class="el" href="#af2495b97dd515ad128452784a2e9aeff">ReloadSong()</a>.</p>
 
 </div>
 </div>

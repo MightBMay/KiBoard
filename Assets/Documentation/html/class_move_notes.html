@@ -212,21 +212,21 @@ Additional Inherited Members</h2></td></tr>
 <p>mark initial mouse position and initial note positions for all SongEditor.selectedNotes. </p>
 
 <p>Reimplemented from <a class="el" href="class_editor_action.html#a879f0a78025e356885ad0b4922038c4f">EditorAction</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  549</span>    {</div>
-<div class="line"><span class="lineno">  550</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="class_editor_action.html#ad4c1a80e07df7f4311b2cf73a44d9323">CheckDown</a>()) <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  551</span>        <a class="code hl_variable" href="#a408d9598fd299c36674d15d5c5ec7f2c">downPos</a> = <a class="code hl_variable" href="class_editor_action.html#a7cf82aae24fbec19f1851ae8db628115">hit</a>.point;</div>
-<div class="line"><span class="lineno">  552</span>        <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_editor_note.html">EditorNote</a> note <span class="keywordflow">in</span> <a class="code hl_class" href="class_song_editor.html">SongEditor</a>.<a class="code hl_variable" href="class_song_editor.html#a230315399a7c29c6ecb86e72d263c1db">instance</a>.selectedNotes)</div>
-<div class="line"><span class="lineno">  553</span>        {</div>
-<div class="line"><span class="lineno">  554</span>            <a class="code hl_variable" href="#a0973e03af54f26a23ccb7f4be63eaee3">notes</a>.Add(<span class="keyword">new</span>(note));</div>
-<div class="line"><span class="lineno">  555</span>        }</div>
-<div class="line"><span class="lineno">  556</span>    }</div>
-<div class="ttc" id="aclass_editor_action_html_a7cf82aae24fbec19f1851ae8db628115"><div class="ttname"><a href="class_editor_action.html#a7cf82aae24fbec19f1851ae8db628115">EditorAction.hit</a></div><div class="ttdeci">RaycastHit2D hit</div><div class="ttdef"><b>Definition</b> SongEditor.cs:290</div></div>
-<div class="ttc" id="aclass_editor_action_html_ad4c1a80e07df7f4311b2cf73a44d9323"><div class="ttname"><a href="class_editor_action.html#ad4c1a80e07df7f4311b2cf73a44d9323">EditorAction.CheckDown</a></div><div class="ttdeci">bool CheckDown()</div><div class="ttdef"><b>Definition</b> SongEditor.cs:373</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  613</span>    {</div>
+<div class="line"><span class="lineno">  614</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="class_editor_action.html#ad4c1a80e07df7f4311b2cf73a44d9323">CheckDown</a>()) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  615</span>        <a class="code hl_variable" href="#a408d9598fd299c36674d15d5c5ec7f2c">downPos</a> = <a class="code hl_variable" href="class_editor_action.html#a7cf82aae24fbec19f1851ae8db628115">hit</a>.point;</div>
+<div class="line"><span class="lineno">  616</span>        <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_editor_note.html">EditorNote</a> note <span class="keywordflow">in</span> <a class="code hl_class" href="class_song_editor.html">SongEditor</a>.<a class="code hl_variable" href="class_song_editor.html#a230315399a7c29c6ecb86e72d263c1db">instance</a>.selectedNotes)</div>
+<div class="line"><span class="lineno">  617</span>        {</div>
+<div class="line"><span class="lineno">  618</span>            <a class="code hl_variable" href="#a0973e03af54f26a23ccb7f4be63eaee3">notes</a>.Add(<span class="keyword">new</span>(note));</div>
+<div class="line"><span class="lineno">  619</span>        }</div>
+<div class="line"><span class="lineno">  620</span>    }</div>
+<div class="ttc" id="aclass_editor_action_html_a7cf82aae24fbec19f1851ae8db628115"><div class="ttname"><a href="class_editor_action.html#a7cf82aae24fbec19f1851ae8db628115">EditorAction.hit</a></div><div class="ttdeci">RaycastHit2D hit</div><div class="ttdef"><b>Definition</b> SongEditor.cs:355</div></div>
+<div class="ttc" id="aclass_editor_action_html_ad4c1a80e07df7f4311b2cf73a44d9323"><div class="ttname"><a href="class_editor_action.html#ad4c1a80e07df7f4311b2cf73a44d9323">EditorAction.CheckDown</a></div><div class="ttdeci">bool CheckDown()</div><div class="ttdef"><b>Definition</b> SongEditor.cs:438</div></div>
 <div class="ttc" id="aclass_editor_note_html"><div class="ttname"><a href="class_editor_note.html">EditorNote</a></div><div class="ttdoc">Represents a note in the editor with associated event information.</div><div class="ttdef"><b>Definition</b> EditorNote.cs:11</div></div>
-<div class="ttc" id="aclass_move_notes_html_a0973e03af54f26a23ccb7f4be63eaee3"><div class="ttname"><a href="#a0973e03af54f26a23ccb7f4be63eaee3">MoveNotes.notes</a></div><div class="ttdeci">List&lt; NoteWrapper &gt; notes</div><div class="ttdef"><b>Definition</b> SongEditor.cs:543</div></div>
-<div class="ttc" id="aclass_move_notes_html_a408d9598fd299c36674d15d5c5ec7f2c"><div class="ttname"><a href="#a408d9598fd299c36674d15d5c5ec7f2c">MoveNotes.downPos</a></div><div class="ttdeci">Vector2 downPos</div><div class="ttdef"><b>Definition</b> SongEditor.cs:542</div></div>
-<div class="ttc" id="aclass_song_editor_html"><div class="ttname"><a href="class_song_editor.html">SongEditor</a></div><div class="ttdoc">Manages the song editor functionality.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:13</div></div>
-<div class="ttc" id="aclass_song_editor_html_a230315399a7c29c6ecb86e72d263c1db"><div class="ttname"><a href="class_song_editor.html#a230315399a7c29c6ecb86e72d263c1db">SongEditor.instance</a></div><div class="ttdeci">static SongEditor instance</div><div class="ttdef"><b>Definition</b> SongEditor.cs:15</div></div>
+<div class="ttc" id="aclass_move_notes_html_a0973e03af54f26a23ccb7f4be63eaee3"><div class="ttname"><a href="#a0973e03af54f26a23ccb7f4be63eaee3">MoveNotes.notes</a></div><div class="ttdeci">List&lt; NoteWrapper &gt; notes</div><div class="ttdef"><b>Definition</b> SongEditor.cs:607</div></div>
+<div class="ttc" id="aclass_move_notes_html_a408d9598fd299c36674d15d5c5ec7f2c"><div class="ttname"><a href="#a408d9598fd299c36674d15d5c5ec7f2c">MoveNotes.downPos</a></div><div class="ttdeci">Vector2 downPos</div><div class="ttdef"><b>Definition</b> SongEditor.cs:606</div></div>
+<div class="ttc" id="aclass_song_editor_html"><div class="ttname"><a href="class_song_editor.html">SongEditor</a></div><div class="ttdoc">Manages the song editor functionality.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:12</div></div>
+<div class="ttc" id="aclass_song_editor_html_a230315399a7c29c6ecb86e72d263c1db"><div class="ttname"><a href="class_song_editor.html#a230315399a7c29c6ecb86e72d263c1db">SongEditor.instance</a></div><div class="ttdeci">static SongEditor instance</div><div class="ttdef"><b>Definition</b> SongEditor.cs:14</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -256,18 +256,18 @@ Additional Inherited Members</h2></td></tr>
 <p>Move notes based on distance mouse is dragged from the initial mouse position (<a class="el" href="#a408d9598fd299c36674d15d5c5ec7f2c">downPos</a>). </p>
 
 <p>Reimplemented from <a class="el" href="class_editor_action.html#a612c3627e7ae235d2ea115f859ed79b5">EditorAction</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  561</span>    {</div>
-<div class="line"><span class="lineno">  562</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="class_editor_action.html#af2e919270d825c132c96c4e00bd37665">CheckHold</a>()) <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  563</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="class_editor_action.html#a5cf9f7cb95413158ed1f7c7ecb570676">GetMouseRaycast</a>(out RaycastHit2D holdHit))</div>
-<div class="line"><span class="lineno">  564</span>        {</div>
-<div class="line"><span class="lineno">  565</span>            <a class="code hl_variable" href="#a4e170743e4f96f2e9a5771b27ab72000">holdpos</a> = holdHit.point;</div>
-<div class="line"><span class="lineno">  566</span>            <a class="code hl_function" href="#adb3f9d6bb884d37261c7514c0f3bc35b">moveNotes</a>(<a class="code hl_variable" href="#a408d9598fd299c36674d15d5c5ec7f2c">downPos</a>.x - <a class="code hl_variable" href="#a4e170743e4f96f2e9a5771b27ab72000">holdpos</a>.x, <a class="code hl_variable" href="#a408d9598fd299c36674d15d5c5ec7f2c">downPos</a>.y - <a class="code hl_variable" href="#a4e170743e4f96f2e9a5771b27ab72000">holdpos</a>.y);</div>
-<div class="line"><span class="lineno">  567</span>        }</div>
-<div class="line"><span class="lineno">  568</span>    }</div>
-<div class="ttc" id="aclass_editor_action_html_a5cf9f7cb95413158ed1f7c7ecb570676"><div class="ttname"><a href="class_editor_action.html#a5cf9f7cb95413158ed1f7c7ecb570676">EditorAction.GetMouseRaycast</a></div><div class="ttdeci">bool GetMouseRaycast(out RaycastHit2D hit)</div><div class="ttdoc">Sends raycast from Camera.main to mouse position and assigns the raycasthit2d to hit.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:362</div></div>
-<div class="ttc" id="aclass_editor_action_html_af2e919270d825c132c96c4e00bd37665"><div class="ttname"><a href="class_editor_action.html#af2e919270d825c132c96c4e00bd37665">EditorAction.CheckHold</a></div><div class="ttdeci">bool CheckHold()</div><div class="ttdef"><b>Definition</b> SongEditor.cs:374</div></div>
-<div class="ttc" id="aclass_move_notes_html_a4e170743e4f96f2e9a5771b27ab72000"><div class="ttname"><a href="#a4e170743e4f96f2e9a5771b27ab72000">MoveNotes.holdpos</a></div><div class="ttdeci">Vector2 holdpos</div><div class="ttdef"><b>Definition</b> SongEditor.cs:542</div></div>
-<div class="ttc" id="aclass_move_notes_html_adb3f9d6bb884d37261c7514c0f3bc35b"><div class="ttname"><a href="#adb3f9d6bb884d37261c7514c0f3bc35b">MoveNotes.moveNotes</a></div><div class="ttdeci">void moveNotes(float xDist, float yDist)</div><div class="ttdoc">handles moving currently selected notes.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:584</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  625</span>    {</div>
+<div class="line"><span class="lineno">  626</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="class_editor_action.html#af2e919270d825c132c96c4e00bd37665">CheckHold</a>()) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  627</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="class_editor_action.html#a5cf9f7cb95413158ed1f7c7ecb570676">GetMouseRaycast</a>(out RaycastHit2D holdHit))</div>
+<div class="line"><span class="lineno">  628</span>        {</div>
+<div class="line"><span class="lineno">  629</span>            <a class="code hl_variable" href="#a4e170743e4f96f2e9a5771b27ab72000">holdpos</a> = holdHit.point;</div>
+<div class="line"><span class="lineno">  630</span>            <a class="code hl_function" href="#adb3f9d6bb884d37261c7514c0f3bc35b">moveNotes</a>(<a class="code hl_variable" href="#a408d9598fd299c36674d15d5c5ec7f2c">downPos</a>.x - <a class="code hl_variable" href="#a4e170743e4f96f2e9a5771b27ab72000">holdpos</a>.x, <a class="code hl_variable" href="#a408d9598fd299c36674d15d5c5ec7f2c">downPos</a>.y - <a class="code hl_variable" href="#a4e170743e4f96f2e9a5771b27ab72000">holdpos</a>.y);</div>
+<div class="line"><span class="lineno">  631</span>        }</div>
+<div class="line"><span class="lineno">  632</span>    }</div>
+<div class="ttc" id="aclass_editor_action_html_a5cf9f7cb95413158ed1f7c7ecb570676"><div class="ttname"><a href="class_editor_action.html#a5cf9f7cb95413158ed1f7c7ecb570676">EditorAction.GetMouseRaycast</a></div><div class="ttdeci">bool GetMouseRaycast(out RaycastHit2D hit)</div><div class="ttdoc">Sends raycast from Camera.main to mouse position and assigns the raycasthit2d to hit.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:427</div></div>
+<div class="ttc" id="aclass_editor_action_html_af2e919270d825c132c96c4e00bd37665"><div class="ttname"><a href="class_editor_action.html#af2e919270d825c132c96c4e00bd37665">EditorAction.CheckHold</a></div><div class="ttdeci">bool CheckHold()</div><div class="ttdef"><b>Definition</b> SongEditor.cs:439</div></div>
+<div class="ttc" id="aclass_move_notes_html_a4e170743e4f96f2e9a5771b27ab72000"><div class="ttname"><a href="#a4e170743e4f96f2e9a5771b27ab72000">MoveNotes.holdpos</a></div><div class="ttdeci">Vector2 holdpos</div><div class="ttdef"><b>Definition</b> SongEditor.cs:606</div></div>
+<div class="ttc" id="aclass_move_notes_html_adb3f9d6bb884d37261c7514c0f3bc35b"><div class="ttname"><a href="#adb3f9d6bb884d37261c7514c0f3bc35b">MoveNotes.moveNotes</a></div><div class="ttdeci">void moveNotes(float xDist, float yDist)</div><div class="ttdoc">handles moving currently selected notes.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:648</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -306,23 +306,23 @@ Additional Inherited Members</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><span class="lineno">  585</span>    {</div>
-<div class="line"><span class="lineno">  586</span>        Debug.Log(xDist + <span class="stringliteral">&quot; &quot;</span> + yDist);</div>
-<div class="line"><span class="lineno">  587</span>        <span class="comment">// detect if mouse has moved multiples of 1 unit on the x axis, or vsnap units on the y axis and shift note positions accordingly. </span></div>
-<div class="line"><span class="lineno">  588</span>        <span class="keywordflow">foreach</span> (NoteWrapper note <span class="keywordflow">in</span> <a class="code hl_variable" href="#a0973e03af54f26a23ccb7f4be63eaee3">notes</a>)</div>
-<div class="line"><span class="lineno">  589</span>        {</div>
-<div class="line"><span class="lineno">  590</span>            <a class="code hl_variable" href="#ac4da2ace96d1a55996a7bb82c3a5ee89">x</a> = Mathf.RoundToInt(-xDist);</div>
-<div class="line"><span class="lineno">  591</span>            <a class="code hl_variable" href="#a2bd287924a8cd45b9d8c80fe244b8d0d">y</a> = Utility.RoundToFraction(-yDist, <a class="code hl_class" href="class_song_editor.html">SongEditor</a>.<a class="code hl_variable" href="class_song_editor.html#a230315399a7c29c6ecb86e72d263c1db">instance</a>.vSnap);</div>
-<div class="line"><span class="lineno">  592</span> </div>
-<div class="line"><span class="lineno">  593</span> </div>
-<div class="line"><span class="lineno">  594</span>            Vector3 posChange = (Vector3)note.initialPosition + <span class="keyword">new</span> Vector3(<a class="code hl_variable" href="#ac4da2ace96d1a55996a7bb82c3a5ee89">x</a>, <a class="code hl_variable" href="#a2bd287924a8cd45b9d8c80fe244b8d0d">y</a>, 0);</div>
-<div class="line"><span class="lineno">  595</span> </div>
-<div class="line"><span class="lineno">  596</span>            note.editorNote.transform.position = <span class="keyword">new</span> Vector3(Mathf.Clamp(posChange.x, 0, 87), Mathf.Clamp(posChange.y, 0, Mathf.Infinity), posChange.z);</div>
-<div class="line"><span class="lineno">  597</span> </div>
-<div class="line"><span class="lineno">  598</span>        }</div>
-<div class="line"><span class="lineno">  599</span>    }</div>
-<div class="ttc" id="aclass_move_notes_html_a2bd287924a8cd45b9d8c80fe244b8d0d"><div class="ttname"><a href="#a2bd287924a8cd45b9d8c80fe244b8d0d">MoveNotes.y</a></div><div class="ttdeci">float y</div><div class="ttdef"><b>Definition</b> SongEditor.cs:544</div></div>
-<div class="ttc" id="aclass_move_notes_html_ac4da2ace96d1a55996a7bb82c3a5ee89"><div class="ttname"><a href="#ac4da2ace96d1a55996a7bb82c3a5ee89">MoveNotes.x</a></div><div class="ttdeci">float x</div><div class="ttdef"><b>Definition</b> SongEditor.cs:544</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  649</span>    {</div>
+<div class="line"><span class="lineno">  650</span>        Debug.Log(xDist + <span class="stringliteral">&quot; &quot;</span> + yDist);</div>
+<div class="line"><span class="lineno">  651</span>        <span class="comment">// detect if mouse has moved multiples of 1 unit on the x axis, or vsnap units on the y axis and shift note positions accordingly. </span></div>
+<div class="line"><span class="lineno">  652</span>        <span class="keywordflow">foreach</span> (NoteWrapper note <span class="keywordflow">in</span> <a class="code hl_variable" href="#a0973e03af54f26a23ccb7f4be63eaee3">notes</a>)</div>
+<div class="line"><span class="lineno">  653</span>        {</div>
+<div class="line"><span class="lineno">  654</span>            <a class="code hl_variable" href="#ac4da2ace96d1a55996a7bb82c3a5ee89">x</a> = Mathf.RoundToInt(-xDist);</div>
+<div class="line"><span class="lineno">  655</span>            <a class="code hl_variable" href="#a2bd287924a8cd45b9d8c80fe244b8d0d">y</a> = Utility.RoundToFraction(-yDist, <a class="code hl_class" href="class_song_editor.html">SongEditor</a>.<a class="code hl_variable" href="class_song_editor.html#a230315399a7c29c6ecb86e72d263c1db">instance</a>.vSnap);</div>
+<div class="line"><span class="lineno">  656</span> </div>
+<div class="line"><span class="lineno">  657</span> </div>
+<div class="line"><span class="lineno">  658</span>            Vector3 posChange = (Vector3)note.initialPosition + <span class="keyword">new</span> Vector3(<a class="code hl_variable" href="#ac4da2ace96d1a55996a7bb82c3a5ee89">x</a>, <a class="code hl_variable" href="#a2bd287924a8cd45b9d8c80fe244b8d0d">y</a>, 0);</div>
+<div class="line"><span class="lineno">  659</span> </div>
+<div class="line"><span class="lineno">  660</span>            note.editorNote.transform.position = <span class="keyword">new</span> Vector3(Mathf.Clamp(posChange.x, 0, 87), Mathf.Clamp(posChange.y, 0, Mathf.Infinity), posChange.z);</div>
+<div class="line"><span class="lineno">  661</span> </div>
+<div class="line"><span class="lineno">  662</span>        }</div>
+<div class="line"><span class="lineno">  663</span>    }</div>
+<div class="ttc" id="aclass_move_notes_html_a2bd287924a8cd45b9d8c80fe244b8d0d"><div class="ttname"><a href="#a2bd287924a8cd45b9d8c80fe244b8d0d">MoveNotes.y</a></div><div class="ttdeci">float y</div><div class="ttdef"><b>Definition</b> SongEditor.cs:608</div></div>
+<div class="ttc" id="aclass_move_notes_html_ac4da2ace96d1a55996a7bb82c3a5ee89"><div class="ttname"><a href="#ac4da2ace96d1a55996a7bb82c3a5ee89">MoveNotes.x</a></div><div class="ttdeci">float x</div><div class="ttdef"><b>Definition</b> SongEditor.cs:608</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="#a5bc615597ad7a7d90af258af5c550aa3">Hold()</a>.</p>
 
@@ -354,14 +354,14 @@ Additional Inherited Members</h2></td></tr>
 <p>Update note values and clear list of NoteWrappers. </p>
 
 <p>Reimplemented from <a class="el" href="class_editor_action.html#ac737c102a3dc37a245e8302c9c84a838">EditorAction</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  573</span>    {</div>
-<div class="line"><span class="lineno">  574</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="class_editor_action.html#a82846b3a001c1b187369e390dec5e15d">CheckUp</a>()) <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  575</span>        <a class="code hl_function" href="#a7f42cec95f298a77e5ab05612336a0cb">UpdateNoteEvents</a>();</div>
-<div class="line"><span class="lineno">  576</span>        <a class="code hl_variable" href="#a0973e03af54f26a23ccb7f4be63eaee3">notes</a>.Clear();</div>
-<div class="line"><span class="lineno">  577</span> </div>
-<div class="line"><span class="lineno">  578</span>    }</div>
-<div class="ttc" id="aclass_editor_action_html_a82846b3a001c1b187369e390dec5e15d"><div class="ttname"><a href="class_editor_action.html#a82846b3a001c1b187369e390dec5e15d">EditorAction.CheckUp</a></div><div class="ttdeci">bool CheckUp()</div><div class="ttdef"><b>Definition</b> SongEditor.cs:375</div></div>
-<div class="ttc" id="aclass_move_notes_html_a7f42cec95f298a77e5ab05612336a0cb"><div class="ttname"><a href="#a7f42cec95f298a77e5ab05612336a0cb">MoveNotes.UpdateNoteEvents</a></div><div class="ttdeci">void UpdateNoteEvents()</div><div class="ttdoc">Updates start/end time and note number after moving notes.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:603</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  637</span>    {</div>
+<div class="line"><span class="lineno">  638</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="class_editor_action.html#a82846b3a001c1b187369e390dec5e15d">CheckUp</a>()) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  639</span>        <a class="code hl_function" href="#a7f42cec95f298a77e5ab05612336a0cb">UpdateNoteEvents</a>();</div>
+<div class="line"><span class="lineno">  640</span>        <a class="code hl_variable" href="#a0973e03af54f26a23ccb7f4be63eaee3">notes</a>.Clear();</div>
+<div class="line"><span class="lineno">  641</span> </div>
+<div class="line"><span class="lineno">  642</span>    }</div>
+<div class="ttc" id="aclass_editor_action_html_a82846b3a001c1b187369e390dec5e15d"><div class="ttname"><a href="class_editor_action.html#a82846b3a001c1b187369e390dec5e15d">EditorAction.CheckUp</a></div><div class="ttdeci">bool CheckUp()</div><div class="ttdef"><b>Definition</b> SongEditor.cs:440</div></div>
+<div class="ttc" id="aclass_move_notes_html_a7f42cec95f298a77e5ab05612336a0cb"><div class="ttname"><a href="#a7f42cec95f298a77e5ab05612336a0cb">MoveNotes.UpdateNoteEvents</a></div><div class="ttdeci">void UpdateNoteEvents()</div><div class="ttdoc">Updates start/end time and note number after moving notes.</div><div class="ttdef"><b>Definition</b> SongEditor.cs:667</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -389,13 +389,13 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Updates start/end time and note number after moving notes. </p>
-<div class="fragment"><div class="line"><span class="lineno">  604</span>    {</div>
-<div class="line"><span class="lineno">  605</span>        <span class="keywordflow">foreach</span> (NoteWrapper note <span class="keywordflow">in</span> <a class="code hl_variable" href="#a0973e03af54f26a23ccb7f4be63eaee3">notes</a>)</div>
-<div class="line"><span class="lineno">  606</span>        {</div>
-<div class="line"><span class="lineno">  607</span>            note.editorNote.UpdateNoteEvent();</div>
-<div class="line"><span class="lineno">  608</span>            note.editorNote.UpdateNoteNumber();</div>
-<div class="line"><span class="lineno">  609</span>        }</div>
-<div class="line"><span class="lineno">  610</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">  668</span>    {</div>
+<div class="line"><span class="lineno">  669</span>        <span class="keywordflow">foreach</span> (NoteWrapper note <span class="keywordflow">in</span> <a class="code hl_variable" href="#a0973e03af54f26a23ccb7f4be63eaee3">notes</a>)</div>
+<div class="line"><span class="lineno">  670</span>        {</div>
+<div class="line"><span class="lineno">  671</span>            note.editorNote.UpdateNoteEvent();</div>
+<div class="line"><span class="lineno">  672</span>            note.editorNote.UpdateNoteNumber();</div>
+<div class="line"><span class="lineno">  673</span>        }</div>
+<div class="line"><span class="lineno">  674</span>    }</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="#a38eda5774cf7a92f58cd28b44534b775">Up()</a>.</p>
 

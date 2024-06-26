@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>KiBoard: Class Members - Functions</title>
+<title>KiBoard GDD &amp; Technical Documentation: Class Members - Functions</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,9 +26,8 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Kiboard.png"/></td>
   <td id="projectalign">
-   <div id="projectname">KiBoard<span id="projectnumber">&#160;1.0.0</span>
+   <div id="projectname">KiBoard GDD &amp; Technical Documentation<span id="projectnumber">&#160;1.0.0</span>
    </div>
    <div id="projectbrief">A Piano Based Rhythm Game</div>
   </td>
@@ -101,21 +100,27 @@ $(function(){initNavTree('functions_func_c.html',''); initResizable(true); });
 <div class="textblock">Here is a list of all functions with links to the classes they belong to:</div>
 
 <h3><a id="index_c" name="index_c"></a>- c -</h3><ul>
-<li>Callback()&#160;:&#160;<a class="el" href="class_midi_jack_1_1_midi_state_updater.html#a7ddca47534c67a33e6eec063aaebe2d5">MidiJack.MidiStateUpdater</a></li>
+<li>CalculateFPS()&#160;:&#160;<a class="el" href="class_kiboard_debug.html#addfdc0d79b7ec2e4918564ba15dac691">KiboardDebug</a></li>
+<li>CamToBeat()&#160;:&#160;<a class="el" href="class_song_editor.html#ac0742d5852e146689b9afc8f0c3a2ba2">SongEditor</a></li>
 <li>ChangeMultiplier()&#160;:&#160;<a class="el" href="class_combo.html#a51227d52ba67b4042bc2f2aac261dc91">Combo</a></li>
+<li>CheckBlackNote()&#160;:&#160;<a class="el" href="class_spawn_piano.html#ac81e9adf1fb7d3ea08726933755c55a4">SpawnPiano</a></li>
+<li>CheckDown()&#160;:&#160;<a class="el" href="class_editor_action.html#ad4c1a80e07df7f4311b2cf73a44d9323">EditorAction</a></li>
 <li>CheckFileGroupContents()&#160;:&#160;<a class="el" href="struct_file_group.html#a8e99a21a1cb5e53a7b593042ff1c1fda">FileGroup</a></li>
+<li>CheckHold()&#160;:&#160;<a class="el" href="class_editor_action.html#af2e919270d825c132c96c4e00bd37665">EditorAction</a></li>
+<li>CheckNotesKeyboard12()&#160;:&#160;<a class="el" href="class_midi_input.html#af8ec16c57a8b0e8b30bb38331dafd265">MidiInput</a></li>
+<li>CheckOpenMenu()&#160;:&#160;<a class="el" href="class_kiboard_debug.html#af18704c14a91ac3523d39ce61cbb60e9">KiboardDebug</a></li>
 <li>CheckSpawnNote()&#160;:&#160;<a class="el" href="class_game_manager.html#a750548d06231926291304fc3b5ebb0d5">GameManager</a></li>
-<li>Cleanup()&#160;:&#160;<a class="el" href="class_decoder_importer.html#a6211d031f7dc646fc14021c09dc0ccf6">DecoderImporter</a>, <a class="el" href="class_n_audio_importer.html#afd6a628b44ab40e01c5dd52914531517">NAudioImporter</a></li>
+<li>CheckUp()&#160;:&#160;<a class="el" href="class_editor_action.html#a82846b3a001c1b187369e390dec5e15d">EditorAction</a></li>
 <li>ClearAllKeyColours()&#160;:&#160;<a class="el" href="class_spawn_piano.html#aa315569c9f65e31f9df8dc0e052f7f97">SpawnPiano</a></li>
 <li>ClearCombo()&#160;:&#160;<a class="el" href="class_combo.html#a5c1d9c0676b635e234c214d5c5587e9e">Combo</a></li>
 <li>ClearReplay()&#160;:&#160;<a class="el" href="class_replay.html#a0d97ab2056465d34269abb9d08ee54fe">Replay</a></li>
 <li>ClearScore()&#160;:&#160;<a class="el" href="class_song_score.html#a51eee760b1aa969dfbc348c4dfcabbaa">SongScore</a></li>
-<li>ConvertNoteEventToNotePosition()&#160;:&#160;<a class="el" href="class_song_note_editor.html#a05ea5d53cf9e8d601a734be1ef97df55">SongNoteEditor</a></li>
+<li>ClearSelectedNotes()&#160;:&#160;<a class="el" href="class_song_editor.html#af7592a7f7f144baf3f8a21f033d983b7">SongEditor</a></li>
 <li>ConvertNoteNameToNumber()&#160;:&#160;<a class="el" href="class_game_manager.html#a131c1f0873da6899dc644060748a8b99">GameManager</a></li>
 <li>ConvertNoteNumberToName()&#160;:&#160;<a class="el" href="class_game_manager.html#af2b61b305c4b0b48b6dea78162472aef">GameManager</a></li>
-<li>ConvertYPositionToSongTime()&#160;:&#160;<a class="el" href="class_song_note_editor.html#a28dc32a65d6746937bc9fc1b079c83f0">SongNoteEditor</a></li>
-<li>CreateGameObject()&#160;:&#160;<a class="el" href="class_midi_jack_1_1_midi_state_updater.html#a17ad276f93a694ea9cedf914902f7ccb">MidiJack.MidiStateUpdater</a></li>
-<li>CreateNote()&#160;:&#160;<a class="el" href="class_song_editor.html#ac8e68c626474391444f53c2fcee74dba">SongEditor</a></li>
+<li>CountNotes()&#160;:&#160;<a class="el" href="class_midi_read_file.html#a8e7e3e4784f3f430c338ff138f4b92e3">MidiReadFile</a></li>
+<li>CreateBeatNumbers()&#160;:&#160;<a class="el" href="class_beat_number_generator.html#a3f03ddb9312dbafc05f474c123eee134">BeatNumberGenerator</a></li>
+<li>CreateNote()&#160;:&#160;<a class="el" href="class_add_note.html#afb7d9ae102a827f8f4e0ae787665c542">AddNote</a>, <a class="el" href="class_song_editor.html#af7e43d1d5adc7550a37790778038d4d6">SongEditor</a></li>
 <li>CreateTimingText()&#160;:&#160;<a class="el" href="class_game_u_i.html#a028174544700e306eaefc533e877b430">GameUI</a></li>
 </ul>
 </div><!-- contents -->

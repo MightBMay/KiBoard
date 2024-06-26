@@ -1,4 +1,5 @@
 using MidiJack;
+using NAudio.Midi;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ public class MidiInput : MonoBehaviour
     /// Currently loaded notes for the selected song.
     /// </summary>
     public List<NoteEventInfo> storedNoteEvents;
-    
+
     /// <summary>
     /// Reference to the <see cref="GameManager.PrepareNotes(float, List{NoteEventInfo}, bool)"/> prepareNotes Coroutine 
     /// </summary>
@@ -53,7 +54,7 @@ public class MidiInput : MonoBehaviour
     /// keyPrefab object with a RawImage component to assign <see cref="renderTexture"/> to.
     /// </summary>
     [SerializeField] GameObject imagePrefab;
-    
+
     /// <summary>
     /// Dictionary mapping for Computer keyboard input to note input.
     /// </summary>
@@ -121,10 +122,10 @@ public class MidiInput : MonoBehaviour
         }
     }
 
- /// <summary>
- /// Loads a preview of selected song into the <see cref="currentPreview"/> Scene variable, and begins playing the songs preview.
- /// </summary>
- /// <param name="sceneName"></param>
+    /// <summary>
+    /// Loads a preview of selected song into the <see cref="currentPreview"/> Scene variable, and begins playing the songs preview.
+    /// </summary>
+    /// <param name="sceneName"></param>
     public void LoadScenePreview(string sceneName)
     {
 
@@ -264,7 +265,7 @@ public class MidiInput : MonoBehaviour
 
     }
 
-    public void LoadSongFromNoteEvents(List<NoteEventInfo> noteEvents, float bpm,bool isPreview = false)
+    public void LoadSongFromNoteEvents(List<NoteEventInfo> noteEvents, float bpm, bool isPreview = false)
     {
         MP3Handler.instance.StopMusic();
         string gameMode;
@@ -296,7 +297,7 @@ public class MidiInput : MonoBehaviour
 
             if (GameSettings.usePiano) { HookMidiDevice(); } else { UnHookMidiDevice(); }
             storedNoteEvents = noteEvents;
-            GameSettings.bpm = GameSettings.bpm == 0 ? bpm: GameSettings.bpm;
+            GameSettings.bpm = GameSettings.bpm == 0 ? bpm : GameSettings.bpm;
             takeInput = true;
             inGame = true;
             if (PrepareNotesCoroutine != null) StopCoroutine(PrepareNotesCoroutine);
@@ -332,7 +333,7 @@ public class MidiInput : MonoBehaviour
     /// </summary>
     public void UnHookMidiDevice()
     {
-        
+
         try
         {
             MidiMaster.noteOnDelegate -= NoteOn;
@@ -409,7 +410,7 @@ public class MidiInput : MonoBehaviour
 
     }
 
-    public IEnumerator StartSong(List<NoteEventInfo> loadEvents,string mp3Path, bool isPreview = false)
+    public IEnumerator StartSong(List<NoteEventInfo> loadEvents, string mp3Path, bool isPreview = false)
     {
         GameManager.instance.currentSongScore?.ClearScore();
         var bpm = 130; //   GameSettings.bpm;
@@ -478,7 +479,7 @@ public class MidiInput : MonoBehaviour
 
 
 
-        
+
     }
 
     /// <summary>
@@ -531,9 +532,35 @@ public class MidiInput : MonoBehaviour
     public void RetryCurrentSong()
     {
         UnHookMidiDevice();
-        LoadSongFromCurrentSettings(false);
+        ReloadSong();
     }
+    void ReloadSong()
+    {
+        MP3Handler.instance.StopMusic();
+        string gameMode;
+        if (KiboardDebug.isMidiConnected && GameSettings.usePiano) { gameMode = "GameScene88"; } else { gameMode = "GameScene12"; }// determine if player should load into 88 oor 12 key game scene based on if they have a midi device.
+        try
+        {
+            TransitionManager.instance.LoadNewScene(gameMode);
+        }
 
+        catch (Exception e)
+        {
+            Debug.Log(e);
+            SceneManager.LoadScene(gameMode);
+        }
+
+        if (GameSettings.usePiano) { HookMidiDevice(); } else { UnHookMidiDevice(); }
+        takeInput = true;
+        inGame = true;
+        if (PrepareNotesCoroutine != null) StopCoroutine(PrepareNotesCoroutine);
+        GameManager.instance.StopSong();
+        GameManager.instance.StopReadiedNotes();
+        Replay.recordReplay = false;
+        StartCoroutine(StartSong());
+
+
+    }
     /// <summary>
     /// Checks for pressed keys in the 12-key keyboard layout.
     /// </summary>
@@ -591,7 +618,7 @@ public class MidiInput : MonoBehaviour
 
         // Check if the received timing is within a certain threshold of the stored timing
         //0.125f leniancy
-        return Mathf.Abs( (GameManager.instance.songTime + PlayerSettings.inputDelay)  - 0.125f - storedTiming);
+        return Mathf.Abs((GameManager.instance.songTime + PlayerSettings.inputDelay) - 0.125f - storedTiming);
     }
     /// <summary>
     /// Gets the timing score based on the timing difference.
