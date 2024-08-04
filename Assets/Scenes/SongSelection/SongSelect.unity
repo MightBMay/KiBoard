@@ -4207,14 +4207,6 @@ PrefabInstance:
       propertyPath: temp
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 4891119375135277128, guid: 8713daea6d5d4cb42b89a26c61b32971, type: 3}
-      propertyPath: imagePrefab
-      value: 
-      objectReference: {fileID: 4475225670068461732, guid: 4a8e9ffa46dfe7b4e904dc65284584ab, type: 3}
-    - target: {fileID: 4891119375135277128, guid: 8713daea6d5d4cb42b89a26c61b32971, type: 3}
-      propertyPath: renderTexture
-      value: 
-      objectReference: {fileID: 8400000, guid: a740532bd4fc8f344a7011dbd319ea0d, type: 2}
     - target: {fileID: 6773693939016771462, guid: 8713daea6d5d4cb42b89a26c61b32971, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6774,9 +6766,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1247325393}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: EnterSongEditor
+      - m_Target: {fileID: 283116488}
+        m_TargetAssemblyTypeName: UiHolder, Assembly-CSharp
+        m_MethodName: EnterEditor
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11990,22 +11982,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1741563221}
-    - target: {fileID: 5449399625689053571, guid: c56bdef3b3a7f1146a646e9348326e13, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5449399625689053571, guid: c56bdef3b3a7f1146a646e9348326e13, type: 3}
-      propertyPath: m_RenderMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5449399625689053571, guid: c56bdef3b3a7f1146a646e9348326e13, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5449399625689053571, guid: c56bdef3b3a7f1146a646e9348326e13, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1175418077
-      objectReference: {fileID: 0}
     - target: {fileID: 6333892562893241397, guid: c56bdef3b3a7f1146a646e9348326e13, type: 3}
       propertyPath: m_Name
       value: SceneTransitions

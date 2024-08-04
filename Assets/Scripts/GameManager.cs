@@ -156,7 +156,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Updates <see cref="songTime"/> variable with Time.deltaTime.
     /// </summary>
-    public void UpdateSongTime()
+    void UpdateSongTime()
     {
         if (startTimer)
         {
@@ -460,6 +460,7 @@ public class GameManager : MonoBehaviour
         startTimer = false;
         StopReadiedNotes();
         MidiInput.instance.inGame = false;
+        MP3Handler.instance.StopMusic();
     }
 
    
@@ -502,14 +503,8 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void EnterSongEditor()
     {
-        readiedNotes.Clear();
-        StopAllCoroutines();
-        startTimer = false;
-        songTime = 0;
-        StopSong();
-        MP3Handler.instance.StopMusic();
+        TransitionManager.canTransition = true;
         TransitionManager.instance.LoadNewScene("SongEditor88");       
-        Debug.Log("huh");
     }
 
 

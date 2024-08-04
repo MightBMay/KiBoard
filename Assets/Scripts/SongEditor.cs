@@ -101,19 +101,19 @@ public class SongEditor : MonoBehaviour
 
         NoteEventDataWrapper noteWrapper = MidiReadFile.GetNoteEventsFromFilePath(GameSettings.currentSongPath);
         bpm = noteWrapper.BPM;
-        Debug.Log(bpm);
-        noteWrapper.NoteEvents.ForEach(note => SpawnNote(note) );
+        noteWrapper.NoteEvents.ForEach(note => SpawnNote(note));
 
         void SpawnNote(NoteEventInfo noteInfo)
         {
-            try
-            {
-                Transform note = Instantiate(editorNotePrefab, noteHolder).transform;
-                float noteSize = noteInfo.endTime - noteInfo.startTime / 2;
-                float ypos = noteInfo.startTime * 15 + noteSize + 2;
-                note.position = new Vector2(noteInfo.noteNumber-21, ypos);// STILL DONT KNOW WHY 21 lmao
-            }
-            catch(Exception e) { Debug.Log(e); }
+                if (!GameManager.CheckSpawnNote(noteInfo))
+                {
+                    Transform note = Instantiate(editorNotePrefab, noteHolder).transform;
+                    float noteSize = noteInfo.endTime - noteInfo.startTime / 2;
+                    float ypos = noteInfo.startTime * 15 + noteSize + 2;
+
+                    note.position = new Vector2(noteInfo.noteNumber - 21, ypos);// STILL DONT KNOW WHY 21 lmao
+                }
+            
         }
     }
 
@@ -123,8 +123,9 @@ public class SongEditor : MonoBehaviour
         cam = Camera.main;
 
         InitializePianoRoll();
+        GameManager.instance.StopSong();
         triMouseButtons = FindObjectsOfType<TriMouseButton>(true);
-        
+
     }
 
 
@@ -671,7 +672,6 @@ public class MoveNotes : EditorAction
     /// <param name="yDist">Distance the mouse has moved on the y axis since button down</param>
     void moveNotes(float xDist, float yDist)
     {
-        Debug.Log(xDist + " " + yDist);
         // detect if mouse has moved multiples of 1 unit on the x axis, or vsnap units on the y axis and shift note positions accordingly. 
         foreach (NoteWrapper note in notes)
         {

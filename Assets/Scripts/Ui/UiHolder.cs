@@ -32,4 +32,9 @@ public class UiHolder : MonoBehaviour
     {
         animator.SetBool("isSongSelected", true);
     }
+
+    public void EnterEditor()
+    {
+        GameManager.instance.EnterSongEditor();
+    }
 }

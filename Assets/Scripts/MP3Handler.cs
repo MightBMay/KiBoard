@@ -106,14 +106,7 @@ public class MP3Handler : MonoBehaviour
     void OnDestroy()
     {
 
-        // Stop and dispose of the WaveOutEvent and Mp3FileReader when the script is destroyed
-        if (waveOut != null)
-        {
-            waveOut.Stop();
-            waveOut.Dispose();
-        }
-
-        // Abort the audio playback thread
+        StopMusic();
 
     }
 
